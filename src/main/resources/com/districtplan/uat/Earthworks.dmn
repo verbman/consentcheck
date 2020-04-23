@@ -1748,63 +1748,9 @@
     <dmn:informationRequirement id="_C1D37E79-6963-4F1C-B6FD-AFBB89F7620D">
       <dmn:requiredDecision href="#_9D746EF5-D2F8-4FCC-A273-A99A45F78AF7"/>
     </dmn:informationRequirement>
-    <dmn:decisionTable id="_76FB7A9A-358E-4DC1-B07A-66C7B93ED351" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
-      <dmn:input id="_8E86AFBC-CAC1-43D7-9A95-8ABAD03C84AA">
-        <dmn:inputExpression id="_BEC53B17-9588-45A0-8E0A-CAC997FCE7A8" typeRef="number">
-          <dmn:text>CutFillHeightDepth</dmn:text>
-        </dmn:inputExpression>
-      </dmn:input>
-      <dmn:input id="_E2799DC5-8E72-43D7-B926-BD7379A2EA5C">
-        <dmn:inputExpression id="_9B8E2471-CD35-4134-96AD-05AD37AD57FF" typeRef="number">
-          <dmn:text>EarthworksArea</dmn:text>
-        </dmn:inputExpression>
-      </dmn:input>
-      <dmn:output id="_40BFD390-F1ED-45A4-A1C1-7646502959E4"/>
-      <dmn:rule id="_F166A5B7-4525-45FF-9864-DFF9194F1F54">
-        <dmn:inputEntry id="_6834C1E1-EEF1-4114-845B-5A49A6A65A77">
-          <dmn:text>&gt;2.5</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_D28FD25B-C39B-438F-B189-05EEAC3B29C8">
-          <dmn:text>&lt;=250</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_8CD08128-56B6-45BA-9D4B-472C934BC059">
-          <dmn:text>true and R30.2.1_NotCoastalEdge</dmn:text>
-        </dmn:outputEntry>
-      </dmn:rule>
-      <dmn:rule id="_F305C215-4530-452B-9E72-2FBAC90A17FB">
-        <dmn:inputEntry id="_F78B848C-DA50-460A-AC9A-770986248A36">
-          <dmn:text>&lt;=2.5</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_EB8172E3-165B-4699-AA57-2A17F9BF8C4A">
-          <dmn:text>&gt;250</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_2C881571-29BB-4A2F-913A-79F61621AC69">
-          <dmn:text>true and R30.2.1_NotCoastalEdge</dmn:text>
-        </dmn:outputEntry>
-      </dmn:rule>
-      <dmn:rule id="_60D7F3B3-027E-4B13-A5B6-104D1FC201DA">
-        <dmn:inputEntry id="_1AD4A5C3-1840-454B-91F5-37B99D335017">
-          <dmn:text>&gt;2.5</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_C4AE2BAD-D4B0-4CA1-A38A-221232DA0F1E">
-          <dmn:text>&gt;250</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_D64FD3FF-CC1D-4070-85F5-D0FBE14F95F0">
-          <dmn:text>true and R30.2.1_NotCoastalEdge</dmn:text>
-        </dmn:outputEntry>
-      </dmn:rule>
-      <dmn:rule id="_E4749758-269E-49FC-A054-11889ED62A79">
-        <dmn:inputEntry id="_7884234B-7D93-4690-A51A-48528DD2DC2D">
-          <dmn:text>&lt;=2.5</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_FBD5E0B0-0B11-48F1-A376-1B8CE1541F73">
-          <dmn:text>&lt;=250</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_3D52DD3C-4957-4BD7-B5E8-3B5BA7E5AFFB">
-          <dmn:text>false</dmn:text>
-        </dmn:outputEntry>
-      </dmn:rule>
-    </dmn:decisionTable>
+    <dmn:literalExpression id="_E69E3F87-821F-4BA6-A688-87F37D1C469D">
+      <dmn:text>R30.2.1_NotCoastalEdge and (CutFillHeightDepth > 2.5 or EarthworksArea > 250)</dmn:text>
+    </dmn:literalExpression>
   </dmn:decision>
   <dmn:decision id="_8402356F-EB26-4887-B494-9CDEA7506171" name="R30.2.1.2_viii">
     <dmn:extensionElements/>
@@ -2260,12 +2206,8 @@
             <kie:width>530.0</kie:width>
             <kie:width>100.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_76FB7A9A-358E-4DC1-B07A-66C7B93ED351">
-            <kie:width>50.0</kie:width>
-            <kie:width>132.0</kie:width>
-            <kie:width>161.0</kie:width>
-            <kie:width>280.0</kie:width>
-            <kie:width>354.0</kie:width>
+          <kie:ComponentWidths dmnElementRef="_E69E3F87-821F-4BA6-A688-87F37D1C469D">
+            <kie:width>1002.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_8FCE2A0B-6F31-475F-B7DB-9E0BE9E73112">
             <kie:width>300.0</kie:width>
