@@ -9,6 +9,16 @@
       <dmn:text>1</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
+  <dmn:decision id="_AD70093C-7283-41DE-8E51-9B11EC630B23" name="QuestionSetRelevance">
+    <dmn:extensionElements/>
+    <dmn:variable id="_D67AB9BC-EF64-4510-A825-6012376394F9" name="QuestionSetRelevance" typeRef="boolean"/>
+    <dmn:informationRequirement id="_ED3BB557-8AC2-4033-B4FB-7E81658DAB65">
+      <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_583C7DEF-B44A-4A7B-9EB9-6B3DC1CAFB8C">
+      <dmn:text>list contains(Activities_Value[Noun="Landslip"].Verb, "stabilise")</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:decision id="_29CBF409-4B49-4B15-ACDD-DAE04BC6120F" name="LandslipRetainingStructureHeight">
     <dmn:extensionElements/>
     <dmn:variable id="_119C44AE-78CF-4BA4-A2D6-8BBF7453DD9D" name="LandslipRetainingStructureHeight" typeRef="number"/>
@@ -23,16 +33,6 @@
     </dmn:informationRequirement>
     <dmn:literalExpression id="_9038D7FE-B413-45AC-8F2C-9ED9F55659A9">
       <dmn:text>if not(LandslipCause_Value) and not(LandslipReshapeGround_Value) then (LandslipReshapeGround +1) else 0</dmn:text>
-    </dmn:literalExpression>
-  </dmn:decision>
-  <dmn:decision id="_AD70093C-7283-41DE-8E51-9B11EC630B23" name="QuestionSetRelevance">
-    <dmn:extensionElements/>
-    <dmn:variable id="_D67AB9BC-EF64-4510-A825-6012376394F9" name="QuestionSetRelevance" typeRef="boolean"/>
-    <dmn:informationRequirement id="_ED3BB557-8AC2-4033-B4FB-7E81658DAB65">
-      <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
-    </dmn:informationRequirement>
-    <dmn:literalExpression id="_583C7DEF-B44A-4A7B-9EB9-6B3DC1CAFB8C">
-      <dmn:text>list contains(Activities_Value[Noun="Landslip"].Verb, "stabilise")</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:inputData id="_20A694B1-0B5E-4E95-A481-E8430CC634E2" name="LandslipReshapeGround_Value">
@@ -67,7 +67,7 @@
       <dmn:requiredDecision href="#_A2F298C8-8542-41C1-A9E3-9452A323B85D"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_CD204A1F-1F7F-4A42-9E78-821BEBC260C5">
-      <dmn:text>if LandslipCause then (LandslipCause + 1) else 0</dmn:text>
+      <dmn:text>if not(LandslipCause_Value) then (LandslipCause + 1) else 0</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:association id="_A4DA98DB-F334-4E9B-BD84-22DD490320BA" associationDirection="None">
@@ -91,11 +91,11 @@
           <kie:ComponentWidths dmnElementRef="_4D614351-52EA-4E58-8F9D-A6FFE1BB7577">
             <kie:width>300.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_9038D7FE-B413-45AC-8F2C-9ED9F55659A9">
-            <kie:width>1110.0</kie:width>
-          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_583C7DEF-B44A-4A7B-9EB9-6B3DC1CAFB8C">
             <kie:width>949.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_9038D7FE-B413-45AC-8F2C-9ED9F55659A9">
+            <kie:width>1110.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_FEF5DC4A-BC02-41FC-83DA-BBDFD5C2AC77">
             <kie:width>802.0</kie:width>
@@ -112,6 +112,15 @@
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="430" y="68" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_AD70093C-7283-41DE-8E51-9B11EC630B23" dmnElementRef="_AD70093C-7283-41DE-8E51-9B11EC630B23" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="231" y="68" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_29CBF409-4B49-4B15-ACDD-DAE04BC6120F" dmnElementRef="_29CBF409-4B49-4B15-ACDD-DAE04BC6120F" isCollapsed="false">
@@ -139,15 +148,6 @@
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="118" y="244" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_AD70093C-7283-41DE-8E51-9B11EC630B23" dmnElementRef="_AD70093C-7283-41DE-8E51-9B11EC630B23" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="238" green="238" blue="238"/>
-          <dmndi:StrokeColor red="180" green="180" blue="180"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="231" y="68" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_B7D4AF81-3425-4132-AECA-ABB8315BAD66" dmnElementRef="_B7D4AF81-3425-4132-AECA-ABB8315BAD66" isCollapsed="false">
@@ -195,6 +195,10 @@
         <dc:Bounds x="430" y="250" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-_ED3BB557-8AC2-4033-B4FB-7E81658DAB65" dmnElementRef="_ED3BB557-8AC2-4033-B4FB-7E81658DAB65">
+        <di:waypoint x="281" y="183.3421052631579"/>
+        <di:waypoint x="281" y="93"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_D1129910-F8E8-4220-96C9-8F929D85FB16" dmnElementRef="_D1129910-F8E8-4220-96C9-8F929D85FB16">
         <di:waypoint x="480" y="275"/>
         <di:waypoint x="480" y="366"/>
@@ -210,10 +214,6 @@
       <dmndi:DMNEdge id="dmnedge-_A4DA98DB-F334-4E9B-BD84-22DD490320BA" dmnElementRef="_A4DA98DB-F334-4E9B-BD84-22DD490320BA">
         <di:waypoint x="281" y="294.3421052631579"/>
         <di:waypoint x="168" y="244"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_ED3BB557-8AC2-4033-B4FB-7E81658DAB65" dmnElementRef="_ED3BB557-8AC2-4033-B4FB-7E81658DAB65">
-        <di:waypoint x="281" y="183.3421052631579"/>
-        <di:waypoint x="281" y="93"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_F5C96491-A073-490F-B818-CCCB4D56D455" dmnElementRef="_F5C96491-A073-490F-B818-CCCB4D56D455">
         <di:waypoint x="331" y="364.3421052631579"/>
