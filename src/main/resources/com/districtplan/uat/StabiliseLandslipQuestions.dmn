@@ -12,9 +12,6 @@
   <dmn:decision id="_29CBF409-4B49-4B15-ACDD-DAE04BC6120F" name="LandslipRetainingStructureHeight">
     <dmn:extensionElements/>
     <dmn:variable id="_119C44AE-78CF-4BA4-A2D6-8BBF7453DD9D" name="LandslipRetainingStructureHeight" typeRef="number"/>
-    <dmn:informationRequirement id="_5937BA4E-39C9-4D14-B118-B1D66EB25DE5">
-      <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
-    </dmn:informationRequirement>
     <dmn:informationRequirement id="_D1129910-F8E8-4220-96C9-8F929D85FB16">
       <dmn:requiredDecision href="#_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9"/>
     </dmn:informationRequirement>
@@ -25,7 +22,17 @@
       <dmn:requiredInput href="#_C2429ABB-48E3-4E63-B351-0532677AE4B7"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_9038D7FE-B413-45AC-8F2C-9ED9F55659A9">
-      <dmn:text>if not(LandslipCause_Value) and not(LandslipReshapeGround_Value) and list contains(Activities_Value[Noun="Landslip"].Verb, "stabilise") then (LandslipReshapeGround +1) else 0</dmn:text>
+      <dmn:text>if not(LandslipCause_Value) and not(LandslipReshapeGround_Value) then (LandslipReshapeGround +1) else 0</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_AD70093C-7283-41DE-8E51-9B11EC630B23" name="QuestionSetRelevance">
+    <dmn:extensionElements/>
+    <dmn:variable id="_D67AB9BC-EF64-4510-A825-6012376394F9" name="QuestionSetRelevance" typeRef="boolean"/>
+    <dmn:informationRequirement id="_ED3BB557-8AC2-4033-B4FB-7E81658DAB65">
+      <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_583C7DEF-B44A-4A7B-9EB9-6B3DC1CAFB8C">
+      <dmn:text>list contains(Activities_Value[Noun="Landslip"].Verb, "stabilise")</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:inputData id="_20A694B1-0B5E-4E95-A481-E8430CC634E2" name="LandslipReshapeGround_Value">
@@ -43,22 +50,16 @@
   <dmn:decision id="_A2F298C8-8542-41C1-A9E3-9452A323B85D" name="LandslipCause">
     <dmn:extensionElements/>
     <dmn:variable id="_4F716487-C01F-47E3-87B2-5704C699E77A" name="LandslipCause" typeRef="number"/>
-    <dmn:informationRequirement id="_E3636CD4-18A8-4869-8381-1576F84BD41B">
-      <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
-    </dmn:informationRequirement>
     <dmn:informationRequirement id="_35ACCC64-A6D0-4EA2-8D74-CCC80E710555">
       <dmn:requiredDecision href="#_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_FEF5DC4A-BC02-41FC-83DA-BBDFD5C2AC77">
-      <dmn:text>if list contains(Activities_Value[Noun="Landslip"].Verb, "stabilise") then (Activities +1) else 0</dmn:text>
+      <dmn:text>Activities +1</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:decision id="_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9" name="LandslipReshapeGround">
     <dmn:extensionElements/>
     <dmn:variable id="_A9442935-BB06-40B4-94FF-E4DB88ABE88F" name="LandslipReshapeGround" typeRef="number"/>
-    <dmn:informationRequirement id="_99DBEA1A-D530-4F86-903C-81E33E0BBE6E">
-      <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
-    </dmn:informationRequirement>
     <dmn:informationRequirement id="_C56E1E56-5AF7-4CBF-808D-D642D6B4311B">
       <dmn:requiredInput href="#_C2429ABB-48E3-4E63-B351-0532677AE4B7"/>
     </dmn:informationRequirement>
@@ -66,7 +67,7 @@
       <dmn:requiredDecision href="#_A2F298C8-8542-41C1-A9E3-9452A323B85D"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_CD204A1F-1F7F-4A42-9E78-821BEBC260C5">
-      <dmn:text>if not(LandslipCause_Value) and list contains(Activities_Value[Noun="Landslip"].Verb, "stabilise") then (LandslipCause +1) else 0</dmn:text>
+      <dmn:text>(LandslipCause +1) else 0</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:association id="_A4DA98DB-F334-4E9B-BD84-22DD490320BA" associationDirection="None">
@@ -92,6 +93,9 @@
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_9038D7FE-B413-45AC-8F2C-9ED9F55659A9">
             <kie:width>1110.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_583C7DEF-B44A-4A7B-9EB9-6B3DC1CAFB8C">
+            <kie:width>949.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_FEF5DC4A-BC02-41FC-83DA-BBDFD5C2AC77">
             <kie:width>802.0</kie:width>
@@ -135,6 +139,15 @@
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="118" y="244" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_AD70093C-7283-41DE-8E51-9B11EC630B23" dmnElementRef="_AD70093C-7283-41DE-8E51-9B11EC630B23" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="231" y="68" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_B7D4AF81-3425-4132-AECA-ABB8315BAD66" dmnElementRef="_B7D4AF81-3425-4132-AECA-ABB8315BAD66" isCollapsed="false">
@@ -182,10 +195,6 @@
         <dc:Bounds x="430" y="250" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNEdge id="dmnedge-_5937BA4E-39C9-4D14-B118-B1D66EB25DE5" dmnElementRef="_5937BA4E-39C9-4D14-B118-B1D66EB25DE5">
-        <di:waypoint x="281" y="183.3421052631579"/>
-        <di:waypoint x="480" y="366"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_D1129910-F8E8-4220-96C9-8F929D85FB16" dmnElementRef="_D1129910-F8E8-4220-96C9-8F929D85FB16">
         <di:waypoint x="480" y="275"/>
         <di:waypoint x="480" y="366"/>
@@ -202,21 +211,17 @@
         <di:waypoint x="281" y="294.3421052631579"/>
         <di:waypoint x="168" y="244"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_ED3BB557-8AC2-4033-B4FB-7E81658DAB65" dmnElementRef="_ED3BB557-8AC2-4033-B4FB-7E81658DAB65">
+        <di:waypoint x="281" y="183.3421052631579"/>
+        <di:waypoint x="281" y="93"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_F5C96491-A073-490F-B818-CCCB4D56D455" dmnElementRef="_F5C96491-A073-490F-B818-CCCB4D56D455">
         <di:waypoint x="331" y="364.3421052631579"/>
         <di:waypoint x="118" y="364.3421052631579"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_E3636CD4-18A8-4869-8381-1576F84BD41B" dmnElementRef="_E3636CD4-18A8-4869-8381-1576F84BD41B">
-        <di:waypoint x="281" y="183.3421052631579"/>
-        <di:waypoint x="480" y="184"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_35ACCC64-A6D0-4EA2-8D74-CCC80E710555" dmnElementRef="_35ACCC64-A6D0-4EA2-8D74-CCC80E710555">
         <di:waypoint x="480" y="93"/>
         <di:waypoint x="480" y="184"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_99DBEA1A-D530-4F86-903C-81E33E0BBE6E" dmnElementRef="_99DBEA1A-D530-4F86-903C-81E33E0BBE6E">
-        <di:waypoint x="281" y="183.3421052631579"/>
-        <di:waypoint x="480" y="275"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_C56E1E56-5AF7-4CBF-808D-D642D6B4311B" dmnElementRef="_C56E1E56-5AF7-4CBF-808D-D642D6B4311B">
         <di:waypoint x="281" y="269.3421052631579"/>
