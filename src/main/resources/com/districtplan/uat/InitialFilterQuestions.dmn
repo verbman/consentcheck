@@ -1,7 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://districtplan.wellington.govt.nz/83/dmn/InitialFilterQuestions" xmlns:included1="https://districtplan.wellington.govt.nz/83/dmn/types" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_280DDB79-6DD6-4E8C-A27F-0A60C895B3AD" name="InitialFilterQuestions" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://districtplan.wellington.govt.nz/83/dmn/InitialFilterQuestions">
   <dmn:extensionElements/>
-  <dmn:import id="_13549B4D-4155-4362-81B8-DCB1F54635E6" name="Types" namespace="https://districtplan.wellington.govt.nz/83/dmn/types" locationURI="Types.dmn" importType="http://www.omg.org/spec/DMN/20180521/MODEL/"/>
+  <dmn:import id="_2B8FEBB6-1FF8-4624-8BB6-A66A12F9182D" name="Types" namespace="https://districtplan.wellington.govt.nz/83/dmn/types" locationURI="Types.dmn" importType="http://www.omg.org/spec/DMN/20180521/MODEL/"/>
+  <dmn:inputData id="_BDBBF216-E389-4088-84AF-00B0DDF2E591" name="ExistingBuildings_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_AA895895-FDC0-469D-90FA-C0F0A153B240" name="ExistingBuildings_Value" typeRef="Types.ExistingBuildings"/>
+  </dmn:inputData>
   <dmn:decision id="_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE" name="SpatialLayers">
     <dmn:extensionElements/>
     <dmn:variable id="_DFAE501B-7D6E-409E-9B6F-495E405EA0F5" name="SpatialLayers" typeRef="number"/>
@@ -9,10 +13,6 @@
       <dmn:text>1</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
-  <dmn:inputData id="_BDBBF216-E389-4088-84AF-00B0DDF2E591" name="ExistingBuildings_Value">
-    <dmn:extensionElements/>
-    <dmn:variable id="_AA895895-FDC0-469D-90FA-C0F0A153B240" name="ExistingBuildings_Value" typeRef="Types.ExistingBuildings"/>
-  </dmn:inputData>
   <dmn:decision id="_AA1B222B-BD61-49E0-A59B-D90E0F9889E1" name="FrontSite">
     <dmn:extensionElements/>
     <dmn:variable id="_58AB75A0-EE11-4785-983A-F7F888E3951B" name="FrontSite" typeRef="number"/>
@@ -176,6 +176,31 @@ BuildAddtoAlter(Activities_Value[Noun="accessory building"].Verb) then (&#xd;
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
+  <dmn:decision id="_655EC5D1-630A-4113-82E2-296E8F9EA2AF" name="PlannedActivitiesIncludesDemolish">
+    <dmn:extensionElements/>
+    <dmn:variable id="_6BCBB00F-BAF3-4CE0-9FA5-870474D21E16" name="PlannedActivitiesIncludesDemolish" typeRef="number"/>
+    <dmn:informationRequirement id="_15DAC235-BAA5-4400-9F0B-D887FB564CC9">
+      <dmn:requiredInput href="#_91A08DE1-F013-46FB-BBC7-99398C33177B"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_6B07A2A6-34B3-4470-8226-0F1B4265BFC0">
+      <dmn:requiredDecision href="#_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_C5DBEE9E-78A9-4FC4-AD35-427FB08450B5">
+      <dmn:requiredDecision href="#_D2B3BB91-641E-494B-90A3-91A7EA9159EE"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_84537453-8030-4D9A-B18B-3F9401BF991F">
+      <dmn:text>if SingleZone and&#xd;
+list contains (SpatialLayers_Value.Type, "Residential Areas where pre-1930 demolition controls apply") and &#xd;
+not(list contains (SpatialLayers_Value.Type, "Heritage Features")) and &#xd;
+not(list contains (SpatialLayers_Value.Type, "Heritage Areas")) then 2 else 0&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:decision id="_A2F298C8-8542-41C1-A9E3-9452A323B85D" name="PlannedActivities">
     <dmn:extensionElements/>
     <dmn:variable id="_4F716487-C01F-47E3-87B2-5704C699E77A" name="PlannedActivities" typeRef="number"/>
@@ -197,31 +222,6 @@ ResidentialCheck(SpatialLayers_Value) and&#xd;
 not(list contains (SpatialLayers_Value.Type, "Heritage Features")) and&#xd;
 not(list contains (SpatialLayers_Value.Type, "Heritage Areas")) and&#xd;
 not(list contains (SpatialLayers_Value.Type, "Residential Areas where pre-1930 demolition controls apply")) then 2 else 0&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-</dmn:text>
-    </dmn:literalExpression>
-  </dmn:decision>
-  <dmn:decision id="_655EC5D1-630A-4113-82E2-296E8F9EA2AF" name="PlannedActivitiesIncludesDemolish">
-    <dmn:extensionElements/>
-    <dmn:variable id="_6BCBB00F-BAF3-4CE0-9FA5-870474D21E16" name="PlannedActivitiesIncludesDemolish" typeRef="number"/>
-    <dmn:informationRequirement id="_15DAC235-BAA5-4400-9F0B-D887FB564CC9">
-      <dmn:requiredInput href="#_91A08DE1-F013-46FB-BBC7-99398C33177B"/>
-    </dmn:informationRequirement>
-    <dmn:informationRequirement id="_6B07A2A6-34B3-4470-8226-0F1B4265BFC0">
-      <dmn:requiredDecision href="#_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE"/>
-    </dmn:informationRequirement>
-    <dmn:informationRequirement id="_C5DBEE9E-78A9-4FC4-AD35-427FB08450B5">
-      <dmn:requiredDecision href="#_D2B3BB91-641E-494B-90A3-91A7EA9159EE"/>
-    </dmn:informationRequirement>
-    <dmn:literalExpression id="_84537453-8030-4D9A-B18B-3F9401BF991F">
-      <dmn:text>if SingleZone and&#xd;
-list contains (SpatialLayers_Value.Type, "Residential Areas where pre-1930 demolition controls apply") and &#xd;
-not(list contains (SpatialLayers_Value.Type, "Heritage Features")) and &#xd;
-not(list contains (SpatialLayers_Value.Type, "Heritage Areas")) then 2 else 0&#xd;
-&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -251,16 +251,6 @@ not(list contains (SpatialLayers_Value.Type, "Heritage Areas")) then 2 else 0&#x
     <dmn:extensionElements/>
     <dmn:variable id="_B5962BAE-F703-49A3-8946-D2D7A1233D31" name="SiteSpecificRule"/>
   </dmn:inputData>
-  <dmn:businessKnowledgeModel id="_0DA8114E-D8DE-4E56-9AA4-E1AE9869A4A6" name="BuildAddtoAlter">
-    <dmn:extensionElements/>
-    <dmn:variable id="_B8F7B451-7A80-4159-A8C9-836AC3F6BD2A" name="BuildAddtoAlter" typeRef="boolean"/>
-    <dmn:encapsulatedLogic id="_A29DD04E-6C4F-4002-B967-1ECB8003913B" kind="FEEL">
-      <dmn:formalParameter id="_77A341D3-A3DD-44BE-8A78-4BD6448034BF" name="verbs" typeRef="Types.ActivityVerb"/>
-      <dmn:literalExpression id="_A891D325-BCFD-4346-9E2B-AF9CAC0C4E91">
-        <dmn:text>list contains(verbs, "alter") or list contains(verbs, "build") or list contains(verbs, "add to")</dmn:text>
-      </dmn:literalExpression>
-    </dmn:encapsulatedLogic>
-  </dmn:businessKnowledgeModel>
   <dmn:decision id="_20CE4674-9E04-450E-8989-7F1DE585BE8D" name="BuildingConstructedBefore27July2000">
     <dmn:extensionElements/>
     <dmn:variable id="_32EAFD9B-6BB2-4E11-9351-B010E5E662B3" name="BuildingConstructedBefore27July2000" typeRef="number"/>
@@ -298,19 +288,16 @@ list contains(ExistingBuildings_Value,"residential building") then (&#xd;
 ) else 0</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
-  <dmn:decision id="_D2B3BB91-641E-494B-90A3-91A7EA9159EE" name="SingleZone">
+  <dmn:businessKnowledgeModel id="_0DA8114E-D8DE-4E56-9AA4-E1AE9869A4A6" name="BuildAddtoAlter">
     <dmn:extensionElements/>
-    <dmn:variable id="_5DB9AFAC-7947-45AC-8009-E394A510A66F" name="SingleZone" typeRef="boolean"/>
-    <dmn:informationRequirement id="_0E045655-9A6C-4720-AC05-1E493B53BDDB">
-      <dmn:requiredInput href="#_91A08DE1-F013-46FB-BBC7-99398C33177B"/>
-    </dmn:informationRequirement>
-    <dmn:knowledgeRequirement id="_623F67D1-2CC3-4389-8D34-A4E5C7F921BA">
-      <dmn:requiredKnowledge href="#_BDFD0FD4-858C-49CE-9F6B-A5095AFA72C0"/>
-    </dmn:knowledgeRequirement>
-    <dmn:literalExpression id="_006A58A6-D10A-4011-9C64-89F49E32B82C">
-      <dmn:text>sum(for x in SpatialLayers_Value.Type return if ZonesList(x) then 1 else 0) = 1</dmn:text>
-    </dmn:literalExpression>
-  </dmn:decision>
+    <dmn:variable id="_B8F7B451-7A80-4159-A8C9-836AC3F6BD2A" name="BuildAddtoAlter" typeRef="boolean"/>
+    <dmn:encapsulatedLogic id="_A29DD04E-6C4F-4002-B967-1ECB8003913B" kind="FEEL">
+      <dmn:formalParameter id="_77A341D3-A3DD-44BE-8A78-4BD6448034BF" name="verbs" typeRef="Types.ActivityVerb"/>
+      <dmn:literalExpression id="_A891D325-BCFD-4346-9E2B-AF9CAC0C4E91">
+        <dmn:text>list contains(verbs, "alter") or list contains(verbs, "build") or list contains(verbs, "add to")</dmn:text>
+      </dmn:literalExpression>
+    </dmn:encapsulatedLogic>
+  </dmn:businessKnowledgeModel>
   <dmn:businessKnowledgeModel id="_5ECA8442-FBEE-4D31-8885-C60E61E8743E" name="ResidentialCheck">
     <dmn:extensionElements/>
     <dmn:variable id="_3DBEBD74-C056-4B4A-BA2D-3D2FF1BE5636" name="ResidentialCheck" typeRef="boolean"/>
@@ -326,6 +313,19 @@ list contains (sl[Type="Residential"].Title, "Medium Density Residential Area")&
       </dmn:literalExpression>
     </dmn:encapsulatedLogic>
   </dmn:businessKnowledgeModel>
+  <dmn:decision id="_D2B3BB91-641E-494B-90A3-91A7EA9159EE" name="SingleZone">
+    <dmn:extensionElements/>
+    <dmn:variable id="_5DB9AFAC-7947-45AC-8009-E394A510A66F" name="SingleZone" typeRef="boolean"/>
+    <dmn:informationRequirement id="_0E045655-9A6C-4720-AC05-1E493B53BDDB">
+      <dmn:requiredInput href="#_91A08DE1-F013-46FB-BBC7-99398C33177B"/>
+    </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_623F67D1-2CC3-4389-8D34-A4E5C7F921BA">
+      <dmn:requiredKnowledge href="#_BDFD0FD4-858C-49CE-9F6B-A5095AFA72C0"/>
+    </dmn:knowledgeRequirement>
+    <dmn:literalExpression id="_006A58A6-D10A-4011-9C64-89F49E32B82C">
+      <dmn:text>sum(for x in SpatialLayers_Value.Type return if ZonesList(x) then 1 else 0) = 1</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:decision id="_55F18113-18E7-48F2-930A-285937C578AD" name="SideRearProperty">
     <dmn:extensionElements/>
     <dmn:variable id="_8118A06B-DED8-4BEA-AD25-C09EF1D119E1" name="SideRearProperty" typeRef="number"/>
@@ -375,11 +375,11 @@ list contains (sl[Type="Residential"].Title, "Medium Density Residential Area")&
           <kie:ComponentWidths dmnElementRef="_EC61762F-62A7-4C0F-927D-603C25E41F50">
             <kie:width>848.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_FEF5DC4A-BC02-41FC-83DA-BBDFD5C2AC77">
-            <kie:width>1132.0</kie:width>
-          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_84537453-8030-4D9A-B18B-3F9401BF991F">
             <kie:width>1125.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_FEF5DC4A-BC02-41FC-83DA-BBDFD5C2AC77">
+            <kie:width>1132.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_5E109416-0692-48E6-AC50-825DE93E1314">
             <kie:width>2376.0</kie:width>
@@ -388,18 +388,15 @@ list contains (sl[Type="Residential"].Title, "Medium Density Residential Area")&
             <kie:width>50.0</kie:width>
             <kie:width>2376.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_EF37C764-7D6E-4C83-B30A-6CAEB896CE6B">
+            <kie:width>941.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_A891D325-BCFD-4346-9E2B-AF9CAC0C4E91">
             <kie:width>836.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_A29DD04E-6C4F-4002-B967-1ECB8003913B">
             <kie:width>50.0</kie:width>
             <kie:width>836.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_EF37C764-7D6E-4C83-B30A-6CAEB896CE6B">
-            <kie:width>941.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_006A58A6-D10A-4011-9C64-89F49E32B82C">
-            <kie:width>1163.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_0CBBD492-5294-40D6-8D5D-FFE0FB28EDAE">
             <kie:width>728.0</kie:width>
@@ -408,20 +405,14 @@ list contains (sl[Type="Residential"].Title, "Medium Density Residential Area")&
             <kie:width>50.0</kie:width>
             <kie:width>728.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_006A58A6-D10A-4011-9C64-89F49E32B82C">
+            <kie:width>1163.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_2C5588CA-7847-4A21-9B81-34610A9D7F6D">
             <kie:width>773.0</kie:width>
           </kie:ComponentWidths>
         </kie:ComponentsWidthsExtension>
       </di:extension>
-      <dmndi:DMNShape id="dmnshape-_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE" dmnElementRef="_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="238" green="238" blue="238"/>
-          <dmndi:StrokeColor red="180" green="180" blue="180"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="681" y="22" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_BDBBF216-E389-4088-84AF-00B0DDF2E591" dmnElementRef="_BDBBF216-E389-4088-84AF-00B0DDF2E591" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="137" green="203" blue="200"/>
@@ -429,6 +420,15 @@ list contains (sl[Type="Residential"].Title, "Medium Density Residential Area")&
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="958" y="565" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE" dmnElementRef="_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="681" y="22" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_AA1B222B-BD61-49E0-A59B-D90E0F9889E1" dmnElementRef="_AA1B222B-BD61-49E0-A59B-D90E0F9889E1" isCollapsed="false">
@@ -476,15 +476,6 @@ list contains (sl[Type="Residential"].Title, "Medium Density Residential Area")&
         <dc:Bounds x="599" y="649" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_A2F298C8-8542-41C1-A9E3-9452A323B85D" dmnElementRef="_A2F298C8-8542-41C1-A9E3-9452A323B85D" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="238" green="238" blue="238"/>
-          <dmndi:StrokeColor red="180" green="180" blue="180"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="604" y="120" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_655EC5D1-630A-4113-82E2-296E8F9EA2AF" dmnElementRef="_655EC5D1-630A-4113-82E2-296E8F9EA2AF" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="238" green="238" blue="238"/>
@@ -492,6 +483,15 @@ list contains (sl[Type="Residential"].Title, "Medium Density Residential Area")&
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="767" y="120" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_A2F298C8-8542-41C1-A9E3-9452A323B85D" dmnElementRef="_A2F298C8-8542-41C1-A9E3-9452A323B85D" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="604" y="120" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_BDFD0FD4-858C-49CE-9F6B-A5095AFA72C0" dmnElementRef="_BDFD0FD4-858C-49CE-9F6B-A5095AFA72C0" isCollapsed="false">
@@ -530,15 +530,6 @@ list contains (sl[Type="Residential"].Title, "Medium Density Residential Area")&
         <dc:Bounds x="71.5981308411215" y="27.684210526315795" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_0DA8114E-D8DE-4E56-9AA4-E1AE9869A4A6" dmnElementRef="_0DA8114E-D8DE-4E56-9AA4-E1AE9869A4A6" isCollapsed="false">
-        <dmndi:DMNStyle>
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="0" green="0" blue="0"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="958" y="346.3421052631579" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_20CE4674-9E04-450E-8989-7F1DE585BE8D" dmnElementRef="_20CE4674-9E04-450E-8989-7F1DE585BE8D" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="238" green="238" blue="238"/>
@@ -548,13 +539,13 @@ list contains (sl[Type="Residential"].Title, "Medium Density Residential Area")&
         <dc:Bounds x="754" y="566" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_D2B3BB91-641E-494B-90A3-91A7EA9159EE" dmnElementRef="_D2B3BB91-641E-494B-90A3-91A7EA9159EE" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="238" green="238" blue="238"/>
-          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+      <dmndi:DMNShape id="dmnshape-_0DA8114E-D8DE-4E56-9AA4-E1AE9869A4A6" dmnElementRef="_0DA8114E-D8DE-4E56-9AA4-E1AE9869A4A6" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="239" y="213" width="100" height="50"/>
+        <dc:Bounds x="958" y="346.3421052631579" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_5ECA8442-FBEE-4D31-8885-C60E61E8743E" dmnElementRef="_5ECA8442-FBEE-4D31-8885-C60E61E8743E" isCollapsed="false">
@@ -564,6 +555,15 @@ list contains (sl[Type="Residential"].Title, "Medium Density Residential Area")&
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="236.59813084112147" y="356.3421052631579" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_D2B3BB91-641E-494B-90A3-91A7EA9159EE" dmnElementRef="_D2B3BB91-641E-494B-90A3-91A7EA9159EE" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="239" y="213" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_55F18113-18E7-48F2-930A-285937C578AD" dmnElementRef="_55F18113-18E7-48F2-930A-285937C578AD" isCollapsed="false">
@@ -671,6 +671,18 @@ list contains (sl[Type="Residential"].Title, "Medium Density Residential Area")&
         <di:waypoint x="1008" y="371.3421052631579"/>
         <di:waypoint x="649" y="674"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_15DAC235-BAA5-4400-9F0B-D887FB564CC9" dmnElementRef="_15DAC235-BAA5-4400-9F0B-D887FB564CC9">
+        <di:waypoint x="454" y="45.684210526315795"/>
+        <di:waypoint x="817" y="145"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_6B07A2A6-34B3-4470-8226-0F1B4265BFC0" dmnElementRef="_6B07A2A6-34B3-4470-8226-0F1B4265BFC0">
+        <di:waypoint x="731" y="47"/>
+        <di:waypoint x="817" y="145"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_C5DBEE9E-78A9-4FC4-AD35-427FB08450B5" dmnElementRef="_C5DBEE9E-78A9-4FC4-AD35-427FB08450B5">
+        <di:waypoint x="289" y="238"/>
+        <di:waypoint x="817" y="145"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_E63AFB41-C595-45BD-AF9D-F9866C150EDF" dmnElementRef="_E63AFB41-C595-45BD-AF9D-F9866C150EDF">
         <di:waypoint x="454" y="45.684210526315795"/>
         <di:waypoint x="654" y="145"/>
@@ -686,18 +698,6 @@ list contains (sl[Type="Residential"].Title, "Medium Density Residential Area")&
       <dmndi:DMNEdge id="dmnedge-_2E6DD596-A3C9-4E98-A06B-E7E22FC410BE" dmnElementRef="_2E6DD596-A3C9-4E98-A06B-E7E22FC410BE">
         <di:waypoint x="286.5981308411215" y="381.3421052631579"/>
         <di:waypoint x="654" y="145"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_15DAC235-BAA5-4400-9F0B-D887FB564CC9" dmnElementRef="_15DAC235-BAA5-4400-9F0B-D887FB564CC9">
-        <di:waypoint x="454" y="45.684210526315795"/>
-        <di:waypoint x="817" y="145"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_6B07A2A6-34B3-4470-8226-0F1B4265BFC0" dmnElementRef="_6B07A2A6-34B3-4470-8226-0F1B4265BFC0">
-        <di:waypoint x="731" y="47"/>
-        <di:waypoint x="817" y="145"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_C5DBEE9E-78A9-4FC4-AD35-427FB08450B5" dmnElementRef="_C5DBEE9E-78A9-4FC4-AD35-427FB08450B5">
-        <di:waypoint x="289" y="238"/>
-        <di:waypoint x="817" y="145"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_2DAB98BB-E94C-4D37-9CC4-C5D2E813535D" dmnElementRef="_2DAB98BB-E94C-4D37-9CC4-C5D2E813535D">
         <di:waypoint x="649" y="526"/>
