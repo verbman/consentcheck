@@ -2435,9 +2435,52 @@
     <dmn:informationRequirement id="_539A451F-792D-404A-8B7B-02CB2E5BDBBA">
       <dmn:requiredInput href="#_C389C7B3-6F57-456E-8D44-E4DDE2334FD9"/>
     </dmn:informationRequirement>
-    <dmn:literalExpression id="_27B6727E-BCA3-4736-B91B-EDA5E1E836B2">
-      <dmn:text>if (CutFillHeightDepth &lt;=1.5) and not(GroundSlope34) then true else null</dmn:text>
-    </dmn:literalExpression>
+    <dmn:decisionTable id="_293BD749-110D-41D5-8582-54C9EF7ED918" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_EDC12D99-461F-436E-967F-C54DA5D71DCA">
+        <dmn:inputExpression id="_2AF7DF0B-C905-476B-B580-E06CAF557AA3" typeRef="number">
+          <dmn:text>CutFillHeightDepth</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_FEC5D40C-7296-4ADF-9024-B7AABB5F8BF6">
+        <dmn:inputExpression id="_79FF0475-FF5C-4482-BAAD-CA13B1C7FE80" typeRef="boolean">
+          <dmn:text>GroundSlope34</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_60831507-593E-4DE4-A8F7-6C96F25A3AC8"/>
+      <dmn:rule id="_824921A9-83E1-454B-BEE3-70AF6664DEC6">
+        <dmn:inputEntry id="_5E3E0313-99BF-47BF-8EFC-1881C6E05734">
+          <dmn:text>&lt;= 1.5</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0664F328-652D-462E-BA97-32BF0E7A0E98">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_473AA045-ED83-461D-B94C-30ACDC22A673">
+          <dmn:text>true</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_CB1F41C7-197E-4BFA-B1D9-266286C0436B">
+        <dmn:inputEntry id="_B0939196-75E5-44BA-A24B-926A1AD30A93">
+          <dmn:text>&lt;= 1.5</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F4A87AAC-01EB-43B6-8A6D-42BC49C7E80B">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_72FDFB35-C093-4A55-A51E-DA344866A481">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_E4A49B14-FA63-420F-B4C8-A78CBCD066EE">
+        <dmn:inputEntry id="_2B6734F1-0302-4C82-9761-C08708824924">
+          <dmn:text>&gt;1.5</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CB0F6625-3AAE-4AE4-8D9D-74BCB9D2209D">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_8BACFF8E-E79E-4DAC-A369-1C5511277016">
+          <dmn:text>null</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
   </dmn:decision>
   <dmn:association id="_7399E61C-C404-49CD-BDD5-9FE9A0E1F267" associationDirection="None">
     <dmn:sourceRef href="#_F9338FB0-0FF7-4157-A44D-E34B2D41967A"/>
@@ -2708,8 +2751,12 @@
           <kie:ComponentWidths dmnElementRef="_DA469DE1-AC36-4247-B5A1-D7F855981BFA">
             <kie:width>796.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_27B6727E-BCA3-4736-B91B-EDA5E1E836B2">
-            <kie:width>900.0</kie:width>
+          <kie:ComponentWidths dmnElementRef="_293BD749-110D-41D5-8582-54C9EF7ED918">
+            <kie:width>50.0</kie:width>
+            <kie:width>175.0</kie:width>
+            <kie:width>184.0</kie:width>
+            <kie:width>152.0</kie:width>
+            <kie:width>100.0</kie:width>
           </kie:ComponentWidths>
         </kie:ComponentsWidthsExtension>
       </di:extension>
