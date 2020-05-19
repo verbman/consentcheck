@@ -28,15 +28,18 @@
       <dmn:requiredKnowledge href="#_0E214E3F-7B16-43BF-B176-44294F18742D"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_5B1450F0-4EC1-42A0-9860-262FF10CDED7">
-      <dmn:text>if list contains(SpatialLayers_Value.Title, "Inner Residential") or &#xd;
+      <dmn:text>if &#xd;
+(list contains(SpatialLayers_Value.Title, "Inner Residential") or &#xd;
 list contains(SpatialLayers_Value.Title, "Outer Residential") and&#xd;
 not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "IR5 - Oriental Bay Height Area")) and&#xd;
 (BuildAddTo(Activities[Noun="residential building"]) or&#xd;
 BuildAddTo(Activities[Noun="accessory building"]) or&#xd;
 BuildAddTo(Activities[Noun="residential structure"])) and &#xd;
-not(list contains(Activities_Value[Noun="earthworks"].Verb, "undertake") then (&#xd;
+not(list contains(Activities_Value[Noun="earthworks"].Verb, "undertake")) &#xd;
+then (&#xd;
   if ProposedRearYard > 0 then (ProposedRearYard + 1) else (Activities + 1) &#xd;
-) else 0&#xd;
+) &#xd;
+else 0&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -80,13 +83,14 @@ not(list contains(Activities_Value[Noun="earthworks"].Verb, "undertake") then (&
       <dmn:requiredKnowledge href="#_0E214E3F-7B16-43BF-B176-44294F18742D"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_C8BBA1B4-E56E-47CE-B1F8-3DA46B22E570">
-      <dmn:text>if list contains(SpatialLayers_Value.Title, "Inner Residential") or &#xd;
+      <dmn:text>if &#xd;
+(list contains(SpatialLayers_Value.Title, "Inner Residential") or &#xd;
 list contains(SpatialLayers_Value.Title, "Outer Residential") or&#xd;
 list contains(SpatialLayers_Value.Title, "Medium Density Residential Area") and&#xd;
 not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "IR5 - Oriental Bay Height Area")) and&#xd;
 (BuildAddTo(Activities[Noun="residential building"]) or&#xd;
 BuildAddTo(Activities[Noun="accessory building"]) or&#xd;
-list contains(Activities_Value[Noun="undertake"].Verb, "earthworks")) &#xd;
+list contains(Activities_Value[Noun="undertake"].Verb, "earthworks"))) &#xd;
 then (&#xd;
   if BuildingWithin1mOfBuilding > 0 then (BuildingWithin1mOfBuilding + 1) else (&#xd;
     if ExistingBuildingWithin1mOfBoundary > 0 then (ExistingBuildingWithin1mOfBoundary + 1) else (&#xd;
@@ -95,7 +99,8 @@ then (&#xd;
       ) &#xd;
     ) &#xd;
   ) &#xd;
-) else 0&#xd;
+) &#xd;
+else 0&#xd;
 &#xd;
 &#xd;
     </dmn:text>
@@ -140,11 +145,13 @@ then (&#xd;
       <dmn:requiredKnowledge href="#_0E214E3F-7B16-43BF-B176-44294F18742D"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_79A3A0A2-0B1C-4D79-95AF-784EF6AEE02B">
-      <dmn:text>if list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "IR2 - Mt Victoria") and&#xd;
+      <dmn:text>if (&#xd;
+list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "IR2 - Mt Victoria") and&#xd;
 not(list contains(Activities_Value[Noun="earthworks"].Verb, "undertake") and &#xd;
 BuildAddTo(Activities[Noun="residential building"]) or&#xd;
-BuildAddTo(Activities[Noun="accessory building"]) &#xd;
-then (Activities + 1) else 0</dmn:text>
+BuildAddTo(Activities[Noun="accessory building"])) &#xd;
+then (Activities + 1) &#xd;
+else 0</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:decision id="_F50500C0-34D3-44F2-84E9-37D1DAB098E6" name="ProximityPoriruaStream">
@@ -172,19 +179,22 @@ then (Activities + 1) else 0</dmn:text>
       <dmn:requiredKnowledge href="#_0E214E3F-7B16-43BF-B176-44294F18742D"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_3E89E8CE-EE29-4845-88AF-1555A508C0D3">
-      <dmn:text>if list contains(SpatialLayers_Value.Title, "Inner Residential") or &#xd;
+      <dmn:text>if &#xd;
+(list contains(SpatialLayers_Value.Title, "Inner Residential") or &#xd;
 list contains(SpatialLayers_Value.Title, "Outer Residential") or&#xd;
 list contains(SpatialLayers_Value.Title, "Medium Density Residential Area") and&#xd;
 (BuildAddTo(Activities[Noun="residential building"]) or&#xd;
 BuildAddTo(Activities[Noun="accessory building"]) or&#xd;
 BuildAddTo(Activities[Noun="residential structure"])) and &#xd;
-not(list contains(Activities_Value[Noun="earthworks"].Verb, "undertake") then (&#xd;
+not(list contains(Activities_Value[Noun="earthworks"].Verb, "undertake")) &#xd;
+then (&#xd;
   if DeckInSideYard > 0 then (DeckInSideYard + 1) else (&#xd;
     if ((ProposedRearYard > 0) and (ProposedRearAccess &lt; 0)) then (ProposedRearYard + 1) else (&#xd;
       if ((ProposedRearYard > 0) and (ProposedRearAccess > 0)) then (ProposedRearAccess + 1) else (Activities + 1)&#xd;
     )&#xd;
   )&#xd;
-) else 0&#xd;
+) &#xd;
+else 0&#xd;
 &#xd;
  &#xd;
 &#xd;
@@ -267,17 +277,20 @@ list contains(Activities_Value[Noun="earthworks"].Verb, "undertake")&#xd;
       <dmn:requiredKnowledge href="#_0E214E3F-7B16-43BF-B176-44294F18742D"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_8E4AAA4C-33EF-494D-8CF8-DC9D25C51F3E">
-      <dmn:text>if list contains(SpatialLayers_Value.Title, "Inner Residential") or &#xd;
+      <dmn:text>if &#xd;
+(list contains(SpatialLayers_Value.Title, "Inner Residential") or &#xd;
 list contains(SpatialLayers_Value.Title, "Outer Residential") or&#xd;
 list contains(SpatialLayers_Value.Title, "Medium Density Residential Area") and&#xd;
 not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "IR5 - Oriental Bay Height Area")) and&#xd;
 (BuildAddTo(Activities[Noun="residential building"]) or&#xd;
 BuildAddTo(Activities[Noun="accessory building"])) and &#xd;
-not(list contains(Activities_Value[Noun="earthworks"].Verb, "undertake") then (&#xd;
+not(list contains(Activities_Value[Noun="earthworks"].Verb, "undertake")) &#xd;
+then (&#xd;
   if ((ProposedRearYard > 0) and (ProposedRearAccess &lt; 0)) then (ProposedRearYard + 1) else (&#xd;
     if ((ProposedRearYard > 0) and (ProposedRearAccess > 0)) then (ProposedRearAccess + 1) else (Activities + 1)&#xd;
   ) &#xd;
-) else 0&#xd;
+) &#xd;
+else 0&#xd;
 &#xd;
 &#xd;
 &#xd;
