@@ -141,18 +141,10 @@ then (&#xd;
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_79A3A0A2-0B1C-4D79-95AF-784EF6AEE02B">
       <dmn:text>if list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "IR2 - Mt Victoria") and&#xd;
-not(list contains(Activities_Value[Noun="earthworks"].Verb, "undertake") or&#xd;
-list contains(Activities_Value[Noun="residential building"].Verb, "build") or&#xd;
-list contains(Activities_Value[Noun="residential building"].Verb, "add to") or&#xd;
-list contains(Activities_Value[Noun="accessory building"].Verb, "build") or&#xd;
-list contains(Activities_Value[Noun="accessory building"].Verb, "add to") &#xd;
-then (Activities + 1) else 0&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-</dmn:text>
+not(list contains(Activities_Value[Noun="earthworks"].Verb, "undertake") and &#xd;
+BuildAddTo(Activities[Noun="residential building"]) or&#xd;
+BuildAddTo(Activities[Noun="accessory building"]) &#xd;
+then (Activities + 1) else 0</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:decision id="_F50500C0-34D3-44F2-84E9-37D1DAB098E6" name="ProximityPoriruaStream">
