@@ -32,9 +32,9 @@
 (list contains(SpatialLayers_Value.Title, "Inner Residential") or &#xd;
 list contains(SpatialLayers_Value.Title, "Outer Residential") and&#xd;
 not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "IR5 - Oriental Bay Height Area")) and&#xd;
-(BuildAddTo(Activities[Noun="residential building"]) or&#xd;
-BuildAddTo(Activities[Noun="accessory building"]) or&#xd;
-BuildAddTo(Activities[Noun="residential structure"])) and &#xd;
+(BuildAddTo(Activities_Value[Noun="residential building"]) or&#xd;
+BuildAddTo(Activities_Value[Noun="accessory building"]) or&#xd;
+BuildAddTo(Activities_Value[Noun="residential structure"])) and &#xd;
 (not(list contains(Activities_Value[Noun="earthworks"].Verb, "undertake")))) &#xd;
 then (&#xd;
   if ProposedRearYard > 0 then (ProposedRearYard + 1) else (Activities + 1) &#xd;
@@ -225,14 +225,9 @@ else 0&#xd;
       <dmn:requiredKnowledge href="#_0E214E3F-7B16-43BF-B176-44294F18742D"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_111FE633-C6EF-47FF-A147-C978C18E2AC8">
-      <dmn:text>if list contains(Activities_Value[Noun="earthworks"].Verb, "undertake") or&#xd;
-(BuildAddTo(Activities_Value[Noun="residential building"]) or&#xd;
-BuildAddTo(Activities_Value[Noun="accessory building"] or BuildAddTo(Activities_Value[Noun="residential structure"]))&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-</dmn:text>
+      <dmn:text>(BuildAddTo(Activities_Value[Noun="residential building"]) or&#xd;
+BuildAddTo(Activities_Value[Noun="accessory building"]) or&#xd;
+BuildAddTo(Activities_Value[Noun="residential structure"]))</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:inputData id="_B7D4AF81-3425-4132-AECA-ABB8315BAD66" name="Activities_Value">
@@ -280,8 +275,8 @@ BuildAddTo(Activities_Value[Noun="accessory building"] or BuildAddTo(Activities_
 list contains(SpatialLayers_Value.Title, "Outer Residential") or&#xd;
 list contains(SpatialLayers_Value.Title, "Medium Density Residential Area") and&#xd;
 not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "IR5 - Oriental Bay Height Area")) and&#xd;
-(BuildAddTo(Activities[Noun="residential building"]) or&#xd;
-BuildAddTo(Activities[Noun="accessory building"])) and &#xd;
+(BuildAddTo(Activities_Value[Noun="residential building"]) or&#xd;
+BuildAddTo(Activities_Value[Noun="accessory building"])) and &#xd;
 not(list contains(Activities_Value[Noun="earthworks"].Verb, "undertake"))) &#xd;
 then (&#xd;
   if (ProposedRearYard > 0 and ProposedRearAccess &lt; 0) then (ProposedRearYard + 1) else (&#xd;
