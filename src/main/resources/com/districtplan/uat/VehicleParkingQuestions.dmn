@@ -78,6 +78,16 @@ else 0</dmn:text>
     <dmn:extensionElements/>
     <dmn:variable id="_48D6A5A4-FF8C-4769-AE53-93920677F342" name="BoardingHouse_Value" typeRef="boolean"/>
   </dmn:inputData>
+  <dmn:decision id="_B908EDEC-DEE2-470E-BC88-F393824286B9" name="BoardingHouseValueNullToFalse">
+    <dmn:extensionElements/>
+    <dmn:variable id="_911B1D92-AE87-4207-96FD-25883E5D3751" name="BoardingHouseValueNullToFalse" typeRef="boolean"/>
+    <dmn:informationRequirement id="_C3A4C715-28E0-4E4A-817A-6243272D7A18">
+      <dmn:requiredInput href="#_17472C3C-3E93-42C6-AA7E-D433F03A1C6E"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_E1F4F2F6-897B-4691-A1D7-64A97D9679F1">
+      <dmn:text>if BoardingHouse_Value = null then false else true</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:decision id="_94BF4F96-D074-4C15-87DF-81393EB85FBF" name="QuestionSetRelevance">
     <dmn:extensionElements/>
     <dmn:variable id="_C7729DE3-480F-4B11-99E1-F80C406271E9" name="QuestionSetRelevance" typeRef="boolean"/>
@@ -129,14 +139,14 @@ else 0&#xd;
   <dmn:decision id="_503B97EB-4395-4CC6-A996-910BE9D84BF1" name="NumberCarParks">
     <dmn:extensionElements/>
     <dmn:variable id="_E04FFEBC-CBD5-40BA-8F99-A116DA6212DB" name="NumberCarParks" typeRef="number"/>
-    <dmn:informationRequirement id="_C3A4C715-28E0-4E4A-817A-6243272D7A18">
-      <dmn:requiredInput href="#_17472C3C-3E93-42C6-AA7E-D433F03A1C6E"/>
-    </dmn:informationRequirement>
     <dmn:informationRequirement id="_7F1984C9-5E07-478D-8BB2-ADCD3E8C3B2E">
       <dmn:requiredDecision href="#_5D302B9B-D524-4B29-9D32-C7D3B41A598C"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_6F02E540-ED28-4E36-AAC9-672F4054EE3D">
+      <dmn:requiredDecision href="#_B908EDEC-DEE2-470E-BC88-F393824286B9"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_9FFDF1AC-BBC7-4E86-A222-0BBF874BF238">
-      <dmn:text>if ((BoardingHouse_Value = null) or not(BoardingHouse_Value)) then (&#xd;
+      <dmn:text>if not(BoardingHouseValueNullToFalse) then (&#xd;
   if (BoardingHouse > 0) then (BoardingHouse + 1) else 0) else 0</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
@@ -183,8 +193,11 @@ else 0&#xd;
           <kie:ComponentWidths dmnElementRef="_4D614351-52EA-4E58-8F9D-A6FFE1BB7577">
             <kie:width>300.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_E1F4F2F6-897B-4691-A1D7-64A97D9679F1">
+            <kie:width>454.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_5A6554D9-2A02-4C09-9866-5658EF7F55FA">
-            <kie:width>300.0</kie:width>
+            <kie:width>515.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_FEF5DC4A-BC02-41FC-83DA-BBDFD5C2AC77">
             <kie:width>300.0</kie:width>
@@ -228,6 +241,15 @@ else 0&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="793" y="343.3421052631579" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_B908EDEC-DEE2-470E-BC88-F393824286B9" dmnElementRef="_B908EDEC-DEE2-470E-BC88-F393824286B9" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="791" y="258" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_8DA501EC-3711-499F-990D-8FF533A2C162" dmnElementRef="_8DA501EC-3711-499F-990D-8FF533A2C162" isCollapsed="false">
@@ -281,7 +303,7 @@ else 0&#xd;
           <dmndi:StrokeColor red="129" green="178" blue="177"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="791" y="252.68421052631578" width="100" height="50"/>
+        <dc:Bounds x="791" y="164.34210526315792" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_94BF4F96-D074-4C15-87DF-81393EB85FBF" dmnElementRef="_94BF4F96-D074-4C15-87DF-81393EB85FBF" isCollapsed="false">
@@ -365,8 +387,12 @@ else 0&#xd;
         <dc:Bounds x="645" y="435" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-_C3A4C715-28E0-4E4A-817A-6243272D7A18" dmnElementRef="_C3A4C715-28E0-4E4A-817A-6243272D7A18">
+        <di:waypoint x="841" y="189.34210526315792"/>
+        <di:waypoint x="841" y="308"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_6F36EAE5-E020-4088-ABAF-4AF3DD2DEC55" dmnElementRef="_6F36EAE5-E020-4088-ABAF-4AF3DD2DEC55">
-        <di:waypoint x="841" y="277.6842105263158"/>
+        <di:waypoint x="841" y="189.34210526315792"/>
         <di:waypoint x="477" y="374"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_46AE4AC8-E0DC-46E8-9FD4-D863A94803D7" dmnElementRef="_46AE4AC8-E0DC-46E8-9FD4-D863A94803D7">
@@ -417,12 +443,12 @@ else 0&#xd;
         <di:waypoint x="108.5981308411215" y="410.3421052631579"/>
         <di:waypoint x="293" y="295"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_C3A4C715-28E0-4E4A-817A-6243272D7A18" dmnElementRef="_C3A4C715-28E0-4E4A-817A-6243272D7A18">
-        <di:waypoint x="841" y="277.6842105263158"/>
-        <di:waypoint x="695" y="374"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7F1984C9-5E07-478D-8BB2-ADCD3E8C3B2E" dmnElementRef="_7F1984C9-5E07-478D-8BB2-ADCD3E8C3B2E">
         <di:waypoint x="477" y="290"/>
+        <di:waypoint x="695" y="374"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_6F02E540-ED28-4E36-AAC9-672F4054EE3D" dmnElementRef="_6F02E540-ED28-4E36-AAC9-672F4054EE3D">
+        <di:waypoint x="841" y="283"/>
         <di:waypoint x="695" y="374"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_8C3E0D41-6A1C-4697-9512-D21A2B3A1442" dmnElementRef="_8C3E0D41-6A1C-4697-9512-D21A2B3A1442">
