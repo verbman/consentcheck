@@ -544,9 +544,52 @@
     <dmn:informationRequirement id="_7A74DE14-B0D8-4C3C-829F-79800AFCB551">
       <dmn:requiredDecision href="#_A326BD00-DDE8-4B83-B58B-59D0C8DBA067"/>
     </dmn:informationRequirement>
-    <dmn:literalExpression id="_1621BD28-3E90-4797-A62F-A65D91864124">
-      <dmn:text>if R5.1.7 then "Permitted" else "Discretionary Restricted"</dmn:text>
-    </dmn:literalExpression>
+    <dmn:decisionTable id="_C1D3D4AD-A02E-4CE6-A648-2DB9042C3FA4" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_8C008204-3AE1-4F1A-9FE9-EAD5060D23DC">
+        <dmn:inputExpression id="_A0554333-5C16-4E21-9279-C9D799D68A05" typeRef="boolean">
+          <dmn:text>R5.1.7</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_BF7C0286-2FB0-42D1-B85A-5B9DC522CA93">
+        <dmn:inputExpression id="_ABCDBB75-DB1C-4EB0-A985-85DA722307A5" typeRef="boolean">
+          <dmn:text>R5.3.4</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_30814912-188D-46F9-B9B1-55BA22359257"/>
+      <dmn:rule id="_D4E43ED5-7712-4BDD-8F30-89A7C060FFA9">
+        <dmn:inputEntry id="_F67D00B8-083B-40B2-9F61-B1936D048D5B">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0C17A30B-1DF0-42B2-A860-924339D078A9">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_5FF2E683-E80B-426C-9B25-085E04F39135">
+          <dmn:text>"Permitted"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_C73FF599-DF94-4088-890C-A5D6E697FFC1">
+        <dmn:inputEntry id="_9F13F193-5815-4B71-8FBD-337B5876D513">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_20066F86-C313-476A-BDF7-4C8AFE0B8066">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_7429C427-CF9C-4202-BC75-9EF5638F3273">
+          <dmn:text>"Discretionary Restricted"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_58EE273B-424F-4C08-BDA9-E19EEA145C93">
+        <dmn:inputEntry id="_100CEF9D-3279-48B2-9511-54449A222D35">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4A37AEFF-EED7-4776-9EE0-3E222E2FCF8C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_10FA5CBF-C38F-4D64-91EC-37F6D0AB1A9E">
+          <dmn:text>"Invalid"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
   </dmn:decision>
   <dmn:inputData id="_48B4DA5D-1E72-4DF4-B67C-0F11141C21CB" name="BuildingWithin1mOfBuilding">
     <dmn:extensionElements/>
@@ -736,8 +779,12 @@
             <kie:width>100.0</kie:width>
             <kie:width>100.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_1621BD28-3E90-4797-A62F-A65D91864124">
-            <kie:width>400.0</kie:width>
+          <kie:ComponentWidths dmnElementRef="_C1D3D4AD-A02E-4CE6-A648-2DB9042C3FA4">
+            <kie:width>50.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>253.0</kie:width>
+            <kie:width>100.0</kie:width>
           </kie:ComponentWidths>
         </kie:ComponentsWidthsExtension>
       </di:extension>
