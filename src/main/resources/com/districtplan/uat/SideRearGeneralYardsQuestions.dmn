@@ -277,20 +277,22 @@ list contains(Activities_Value[Noun="earthworks"].Verb, "undertake")&#xd;
       <dmn:requiredKnowledge href="#_0E214E3F-7B16-43BF-B176-44294F18742D"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_8E4AAA4C-33EF-494D-8CF8-DC9D25C51F3E">
-      <dmn:text>if ProposedRearYard > 0 and ProposedRearAccess > 0 then ProposedRearAccess + 1 else 0&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-</dmn:text>
+      <dmn:text>if &#xd;
+(list contains(SpatialLayers_Value.Title, "Inner Residential") or &#xd;
+list contains(SpatialLayers_Value.Title, "Outer Residential") or&#xd;
+list contains(SpatialLayers_Value.Title, "Medium Density Residential Area") and&#xd;
+not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "IR5 - Oriental Bay Height Area")) and&#xd;
+(BuildAddTo(Activities_Value[Noun="residential building"].Verb) or&#xd;
+BuildAddTo(Activities_Value[Noun="accessory building"].Verb)) and &#xd;
+not(list contains(Activities_Value[Noun="earthworks"].Verb, "undertake"))) &#xd;
+then (&#xd;
+  if ((ProposedRearYard > 0) and (ProposedRearAccess &lt; 0)) then (ProposedRearYard + 1) else (&#xd;
+    if ((ProposedRearYard &lt; 0) and (ProposedRearAccess > 0)) then (ProposedRearAccess + 1) else (&#xd;
+      if ((ProposedRearYard > 0) and (ProposedRearAccess > 0)) then (ProposedRearAccess + 1) else (Activities + 1)&#xd;
+    )&#xd;
+  ) &#xd;
+) &#xd;
+else 0</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:inputData id="_740637B6-85B5-4017-932B-4390C5EB50CD" name="SpatialLayers_Value">
