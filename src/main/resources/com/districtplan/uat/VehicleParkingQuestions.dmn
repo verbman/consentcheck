@@ -102,18 +102,38 @@ else (&#xd;
     <dmn:informationRequirement id="_C3A4C715-28E0-4E4A-817A-6243272D7A18">
       <dmn:requiredInput href="#_17472C3C-3E93-42C6-AA7E-D433F03A1C6E"/>
     </dmn:informationRequirement>
-    <dmn:literalExpression id="_E1F4F2F6-897B-4691-A1D7-64A97D9679F1">
-      <dmn:text>if BoardingHouse_Value = null then false else (&#xd;
-  if BoardingHouse_Value = false then false else (&#xd;
-    if BoardingHouse_Value = true then true else null&#xd;
-  )&#xd;
-)&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-    </dmn:text>
-    </dmn:literalExpression>
+    <dmn:decisionTable id="_976F2D40-37ED-4C3E-B35D-5AFC2CFD8FA7" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_FDDACDA0-2C56-4370-A278-4FFFECDE6666">
+        <dmn:inputExpression id="_2512C305-494E-48AC-8EA0-D4B4D341739C" typeRef="boolean">
+          <dmn:text>BoardingHouse_Value</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_EAB77165-B065-47C9-A1E7-55B05A3D8BBF"/>
+      <dmn:rule id="_B68F3366-5EFE-4E6C-BF8A-605201F74657">
+        <dmn:inputEntry id="_52E493F7-DD86-4FF3-8B7F-962D2EA3B9FB">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_BB3D4678-37AE-470C-BD93-499DE13E2DEC">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_299BB278-4BAA-4FA1-9599-54A51A20C576">
+        <dmn:inputEntry id="_7320EA1F-C967-47B5-AF70-59F67570DA62">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_71B5C7C3-3EE3-4092-9C6B-1D0236673F49">
+          <dmn:text>true</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_CC0B17E6-8ED9-454C-904B-226936A48CF7">
+        <dmn:inputEntry id="_EDCE5922-7E80-47DF-8C77-10C17420CAF9">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_F88C5F66-1172-4A2F-9ADB-58B294D48C02">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
   </dmn:decision>
   <dmn:decision id="_94BF4F96-D074-4C15-87DF-81393EB85FBF" name="QuestionSetRelevance">
     <dmn:extensionElements/>
@@ -241,8 +261,11 @@ else 0&#xd;
           <kie:ComponentWidths dmnElementRef="_297FED24-A1F0-40E9-82DE-370B5A1CC10F">
             <kie:width>848.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_E1F4F2F6-897B-4691-A1D7-64A97D9679F1">
-            <kie:width>454.0</kie:width>
+          <kie:ComponentWidths dmnElementRef="_976F2D40-37ED-4C3E-B35D-5AFC2CFD8FA7">
+            <kie:width>50.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_111FE633-C6EF-47FF-A147-C978C18E2AC8">
             <kie:width>718.0</kie:width>
