@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://districtplan.wellington.govt.nz/83/dmn/SideRearGeneralYards" xmlns:included1="https://districtplan.wellington.govt.nz/83/dmn/types" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_F3094ADC-147D-4D49-8098-0A90217DA7D0" name="SideRearGeneralYards2" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://districtplan.wellington.govt.nz/83/dmn/SideRearGeneralYards2">
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://districtplan.wellington.govt.nz/83/dmn/SideRearGeneralYards2" xmlns:included1="https://districtplan.wellington.govt.nz/83/dmn/types" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_F3094ADC-147D-4D49-8098-0A90217DA7D0" name="SideRearGeneralYards" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://districtplan.wellington.govt.nz/83/dmn/SideRearGeneralYards">
   <dmn:extensionElements/>
   <dmn:import id="_95598F58-48C8-4E80-92BA-306F95A04379" name="Types" namespace="https://districtplan.wellington.govt.nz/83/dmn/types" locationURI="Types.dmn" importType="http://www.omg.org/spec/DMN/20180521/MODEL/"/>
   <dmn:decision id="_6F84CF10-BEE6-4A15-8391-C2883AB7C433" name="S5.6.2.2.11_PoriruaStream">
@@ -421,16 +421,6 @@
       <dmn:text>list contains(SpatialLayers[Type="Residential"].Title, "Inner Residential")</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
-  <dmn:decision id="_87CB31DC-0527-4AF2-A6ED-8EEF7C81F48B" name="R5.1.7">
-    <dmn:extensionElements/>
-    <dmn:variable id="_3A0CD277-8D36-43B0-9E3C-92735F94A8A9" name="R5.1.7" typeRef="boolean"/>
-    <dmn:informationRequirement id="_A4A207CE-D4F6-414C-86E5-45F9397ED731">
-      <dmn:requiredDecision href="#_A326BD00-DDE8-4B83-B58B-59D0C8DBA067"/>
-    </dmn:informationRequirement>
-    <dmn:literalExpression id="_A867AC48-0991-4606-B61D-D53389AB64CF">
-      <dmn:text>not(R5.3.4)</dmn:text>
-    </dmn:literalExpression>
-  </dmn:decision>
   <dmn:decision id="_17B5CD57-4604-4FEC-8398-4B35D09D9304" name="S5.6.2.2.6NullToTrue">
     <dmn:extensionElements/>
     <dmn:variable id="_0045D9D4-4445-40FD-A974-FC42460A0160" name="S5.6.2.2.6NullToTrue" typeRef="boolean"/>
@@ -469,6 +459,16 @@
         </dmn:outputEntry>
       </dmn:rule>
     </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:decision id="_87CB31DC-0527-4AF2-A6ED-8EEF7C81F48B" name="R5.1.7">
+    <dmn:extensionElements/>
+    <dmn:variable id="_3A0CD277-8D36-43B0-9E3C-92735F94A8A9" name="R5.1.7" typeRef="boolean"/>
+    <dmn:informationRequirement id="_A4A207CE-D4F6-414C-86E5-45F9397ED731">
+      <dmn:requiredDecision href="#_A326BD00-DDE8-4B83-B58B-59D0C8DBA067"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_A867AC48-0991-4606-B61D-D53389AB64CF">
+      <dmn:text>not(R5.3.4)</dmn:text>
+    </dmn:literalExpression>
   </dmn:decision>
   <dmn:decision id="_5771E74B-4FCB-4948-8C7A-D82996783441" name="S5.6.2.2.8NullToTrue">
     <dmn:extensionElements/>
@@ -1037,6 +1037,10 @@ Side and Rear Yards
     <dmn:extensionElements/>
     <dmn:variable id="_E0ECC2B2-44B5-403F-8878-0BEC7ACE70BB" name="ProximityPoriruaStream" typeRef="boolean"/>
   </dmn:inputData>
+  <dmn:inputData id="_48B4DA5D-1E72-4DF4-B67C-0F11141C21CB" name="BuildingWithin1mOfBuilding">
+    <dmn:extensionElements/>
+    <dmn:variable id="_7688D174-BB73-4F26-917A-11BCCCEE2081" name="BuildingWithin1mOfBuilding" typeRef="boolean"/>
+  </dmn:inputData>
   <dmn:knowledgeSource id="_EDB3772B-ACFB-4C5C-99AB-896469D3D3BF" name="DP5.6.2.2.11" locationURI="c11d3938-38a4-4178-8308-b8b6a04e2521">
     <dmn:description>Wellington City District Plan Residential Standard 
 Side and Rear Yards
@@ -1044,9 +1048,91 @@ Side and Rear Yards
     <dmn:extensionElements/>
     <dmn:type></dmn:type>
   </dmn:knowledgeSource>
-  <dmn:inputData id="_48B4DA5D-1E72-4DF4-B67C-0F11141C21CB" name="BuildingWithin1mOfBuilding">
+  <dmn:decision id="_782ADAE1-78B6-47B3-921F-5F4088B177D8" name="RulesMet">
     <dmn:extensionElements/>
-    <dmn:variable id="_7688D174-BB73-4F26-917A-11BCCCEE2081" name="BuildingWithin1mOfBuilding" typeRef="boolean"/>
+    <dmn:variable id="_7F3C9ED1-CF23-4E9A-A55E-E71C665B1919" name="RulesMet" typeRef="Types.PlanContents"/>
+    <dmn:informationRequirement id="_2EE22B47-CDD8-45B0-A611-A18ACE4611DC">
+      <dmn:requiredDecision href="#_A326BD00-DDE8-4B83-B58B-59D0C8DBA067"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_8CA966EB-879E-4A6E-A6E2-A440D2BE177E">
+      <dmn:requiredDecision href="#_87CB31DC-0527-4AF2-A6ED-8EEF7C81F48B"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_57401786-6299-41CB-8E8D-19376F6783BF" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_42CB42D2-3A75-4C07-89CD-39F47AF49462">
+        <dmn:inputExpression id="_0B1EE9DA-72E2-4152-9238-DC2156A042D2" typeRef="boolean">
+          <dmn:text>R5.1.7</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_505E337A-D1E1-4612-AAC2-31C7C1C329C9">
+        <dmn:inputExpression id="_01A23290-D3AE-4FEC-A578-0FB075D5D343" typeRef="boolean">
+          <dmn:text>R5.3.4</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_F0F0EABD-8796-4836-A795-963001DD5771" name="names" typeRef="string"/>
+      <dmn:output id="_0981BAC4-903D-4020-8DC9-122632C18ED3" name="uuids" typeRef="string"/>
+      <dmn:rule id="_E2F3A2B8-B095-4CA3-9075-8588C58BE07F">
+        <dmn:description>Residential buildings, accessory buildings and residential structures subject to standards 5.6.2</dmn:description>
+        <dmn:inputEntry id="_351577FA-F9AB-4AFA-8243-06BF678FFFAD">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_33312DAB-D230-4BD7-8FD6-10E570AB9F74">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_43E80379-13C9-4C43-AE81-F64CE421D248">
+          <dmn:text>"5.1.7"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_9DD7A5CD-2AD2-4871-AD73-8EB55724509F">
+          <dmn:text>"f2d2a43a-199f-44fd-b7b0-1aa6fac5360e"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_0046BC54-3B9F-455C-B54F-62E2939813EE">
+        <dmn:description>Residential buildings, accessory buildings and residential structures not provided for as Permitted Activities, Yards</dmn:description>
+        <dmn:inputEntry id="_A8EACFD1-7C57-45D9-9603-116D5DD1E27D">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E86D120F-2B39-41CC-A04E-3AD088907C5E">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_B7EFEF60-B7C4-4493-8295-D8E1EAA60BD5">
+          <dmn:text>["5.3.4","5.3.4.2"]</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_6F47C913-A336-4C86-A125-541BA52BD24F">
+          <dmn:text>["7720d9db-9f99-423a-afe8-435a2f7be257","38e60ec1-c7ee-411a-b28b-a56025823ac5"]</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_BBAF06EC-582B-469A-9BCA-1B52AED612E2">
+        <dmn:inputEntry id="_BAC27C97-65BF-467A-942D-4B8E467E7954">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A928F197-A99A-4CD3-9B80-A6FBC89B173D">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_923C005C-A4BA-40C9-A28D-ADB50F0BA6CA">
+          <dmn:text>""</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_F25D23E7-D42D-46DD-86C9-0A6100EA9479">
+          <dmn:text>[]</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_77D77D2C-3A74-4CE5-9B51-D4D322FB9606">
+        <dmn:inputEntry id="_ED767E9E-CD1A-42C1-B8FC-A9DA27FC8B74">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BB4E9929-F05F-4777-8A49-9981366D0273">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_8349BBE5-A9C9-4E47-AE9D-F475CBD0AFBA">
+          <dmn:text>""</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_393F508B-DAF1-4ED6-BFDE-5651CEB7E7A8">
+          <dmn:text>[]</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:inputData id="_6EC78069-18D9-4EEA-8FC6-50764D0393A9" name="DeckInSideYard">
+    <dmn:extensionElements/>
+    <dmn:variable id="_3C15BCE3-F1A2-4989-8298-B7AB2D57C560" name="DeckInSideYard" typeRef="boolean"/>
   </dmn:inputData>
   <dmn:decision id="_D8E9AF7E-E507-4080-ABBC-BDA1D370C548" name="S5.6.2.2.11_WaterBody">
     <dmn:extensionElements/>
@@ -1280,92 +1366,6 @@ Side and Rear Yards
         </dmn:inputEntry>
         <dmn:outputEntry id="_808EC8F6-757E-4CB6-B9B0-BA6AE1AF200E">
           <dmn:text>null</dmn:text>
-        </dmn:outputEntry>
-      </dmn:rule>
-    </dmn:decisionTable>
-  </dmn:decision>
-  <dmn:inputData id="_6EC78069-18D9-4EEA-8FC6-50764D0393A9" name="DeckInSideYard">
-    <dmn:extensionElements/>
-    <dmn:variable id="_3C15BCE3-F1A2-4989-8298-B7AB2D57C560" name="DeckInSideYard" typeRef="boolean"/>
-  </dmn:inputData>
-  <dmn:decision id="_782ADAE1-78B6-47B3-921F-5F4088B177D8" name="RulesMet">
-    <dmn:extensionElements/>
-    <dmn:variable id="_7F3C9ED1-CF23-4E9A-A55E-E71C665B1919" name="RulesMet" typeRef="Types.PlanContents"/>
-    <dmn:informationRequirement id="_2EE22B47-CDD8-45B0-A611-A18ACE4611DC">
-      <dmn:requiredDecision href="#_A326BD00-DDE8-4B83-B58B-59D0C8DBA067"/>
-    </dmn:informationRequirement>
-    <dmn:informationRequirement id="_8CA966EB-879E-4A6E-A6E2-A440D2BE177E">
-      <dmn:requiredDecision href="#_87CB31DC-0527-4AF2-A6ED-8EEF7C81F48B"/>
-    </dmn:informationRequirement>
-    <dmn:decisionTable id="_57401786-6299-41CB-8E8D-19376F6783BF" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
-      <dmn:input id="_42CB42D2-3A75-4C07-89CD-39F47AF49462">
-        <dmn:inputExpression id="_0B1EE9DA-72E2-4152-9238-DC2156A042D2" typeRef="boolean">
-          <dmn:text>R5.1.7</dmn:text>
-        </dmn:inputExpression>
-      </dmn:input>
-      <dmn:input id="_505E337A-D1E1-4612-AAC2-31C7C1C329C9">
-        <dmn:inputExpression id="_01A23290-D3AE-4FEC-A578-0FB075D5D343" typeRef="boolean">
-          <dmn:text>R5.3.4</dmn:text>
-        </dmn:inputExpression>
-      </dmn:input>
-      <dmn:output id="_F0F0EABD-8796-4836-A795-963001DD5771" name="names" typeRef="string"/>
-      <dmn:output id="_0981BAC4-903D-4020-8DC9-122632C18ED3" name="uuids" typeRef="string"/>
-      <dmn:rule id="_E2F3A2B8-B095-4CA3-9075-8588C58BE07F">
-        <dmn:description>Residential buildings, accessory buildings and residential structures subject to standards 5.6.2</dmn:description>
-        <dmn:inputEntry id="_351577FA-F9AB-4AFA-8243-06BF678FFFAD">
-          <dmn:text>true</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_33312DAB-D230-4BD7-8FD6-10E570AB9F74">
-          <dmn:text>false</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_43E80379-13C9-4C43-AE81-F64CE421D248">
-          <dmn:text>"5.1.7"</dmn:text>
-        </dmn:outputEntry>
-        <dmn:outputEntry id="_9DD7A5CD-2AD2-4871-AD73-8EB55724509F">
-          <dmn:text>"f2d2a43a-199f-44fd-b7b0-1aa6fac5360e"</dmn:text>
-        </dmn:outputEntry>
-      </dmn:rule>
-      <dmn:rule id="_0046BC54-3B9F-455C-B54F-62E2939813EE">
-        <dmn:description>Residential buildings, accessory buildings and residential structures not provided for as Permitted Activities, Yards</dmn:description>
-        <dmn:inputEntry id="_A8EACFD1-7C57-45D9-9603-116D5DD1E27D">
-          <dmn:text>false</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_E86D120F-2B39-41CC-A04E-3AD088907C5E">
-          <dmn:text>true</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_B7EFEF60-B7C4-4493-8295-D8E1EAA60BD5">
-          <dmn:text>["5.3.4","5.3.4.2"]</dmn:text>
-        </dmn:outputEntry>
-        <dmn:outputEntry id="_6F47C913-A336-4C86-A125-541BA52BD24F">
-          <dmn:text>["7720d9db-9f99-423a-afe8-435a2f7be257","38e60ec1-c7ee-411a-b28b-a56025823ac5"]</dmn:text>
-        </dmn:outputEntry>
-      </dmn:rule>
-      <dmn:rule id="_BBAF06EC-582B-469A-9BCA-1B52AED612E2">
-        <dmn:inputEntry id="_BAC27C97-65BF-467A-942D-4B8E467E7954">
-          <dmn:text>true</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_A928F197-A99A-4CD3-9B80-A6FBC89B173D">
-          <dmn:text>true</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_923C005C-A4BA-40C9-A28D-ADB50F0BA6CA">
-          <dmn:text>""</dmn:text>
-        </dmn:outputEntry>
-        <dmn:outputEntry id="_F25D23E7-D42D-46DD-86C9-0A6100EA9479">
-          <dmn:text>[]</dmn:text>
-        </dmn:outputEntry>
-      </dmn:rule>
-      <dmn:rule id="_77D77D2C-3A74-4CE5-9B51-D4D322FB9606">
-        <dmn:inputEntry id="_ED767E9E-CD1A-42C1-B8FC-A9DA27FC8B74">
-          <dmn:text>false</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_BB4E9929-F05F-4777-8A49-9981366D0273">
-          <dmn:text>false</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_8349BBE5-A9C9-4E47-AE9D-F475CBD0AFBA">
-          <dmn:text>""</dmn:text>
-        </dmn:outputEntry>
-        <dmn:outputEntry id="_393F508B-DAF1-4ED6-BFDE-5651CEB7E7A8">
-          <dmn:text>[]</dmn:text>
         </dmn:outputEntry>
       </dmn:rule>
     </dmn:decisionTable>
@@ -2834,6 +2834,12 @@ Standard 5.6.2.2.10 states that 5.6.2.2.9 does not apply to IR5 - Oriental Bay H
       </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
+  <dmn:knowledgeSource id="_7A446C74-6A38-4BE2-9382-5D7860010D0B" name="DP5.6.2.2.6" locationURI="55768394-3c53-4598-86f2-b2ae5d0ef33d">
+    <dmn:description>Wellington City District Plan Residential Standard 
+Side and Rear Yards 5.6.2.2.6</dmn:description>
+    <dmn:extensionElements/>
+    <dmn:type></dmn:type>
+  </dmn:knowledgeSource>
   <dmn:decision id="_A9C4020A-5622-46FA-986D-500A5C8EA72D" name="CoastalMarine">
     <dmn:extensionElements/>
     <dmn:variable id="_C7558EDE-76CA-4915-91A0-1972A80F554E" name="CoastalMarine" typeRef="boolean"/>
@@ -2844,12 +2850,6 @@ Standard 5.6.2.2.10 states that 5.6.2.2.9 does not apply to IR5 - Oriental Bay H
       <dmn:text>not(PoriruaStreamCatchment)</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
-  <dmn:knowledgeSource id="_7A446C74-6A38-4BE2-9382-5D7860010D0B" name="DP5.6.2.2.6" locationURI="55768394-3c53-4598-86f2-b2ae5d0ef33d">
-    <dmn:description>Wellington City District Plan Residential Standard 
-Side and Rear Yards 5.6.2.2.6</dmn:description>
-    <dmn:extensionElements/>
-    <dmn:type></dmn:type>
-  </dmn:knowledgeSource>
   <dmn:decision id="_4EC71E25-9B4D-4FD7-A8C9-BD6B97A21C33" name="S5.6.2.2.7NullToTrue">
     <dmn:extensionElements/>
     <dmn:variable id="_BC4EF46C-113D-426E-9E21-647C1758D897" name="S5.6.2.2.7NullToTrue" typeRef="boolean"/>
@@ -3013,14 +3013,14 @@ Side and Rear Yards 5.6.2.2.6</dmn:description>
             <kie:width>100.0</kie:width>
             <kie:width>398.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_A867AC48-0991-4606-B61D-D53389AB64CF">
-            <kie:width>300.0</kie:width>
-          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_07A68D7B-97DC-401F-8F77-A09AAA12E6A7">
             <kie:width>50.0</kie:width>
             <kie:width>100.0</kie:width>
             <kie:width>174.0</kie:width>
             <kie:width>100.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_A867AC48-0991-4606-B61D-D53389AB64CF">
+            <kie:width>300.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_04269200-6B57-4717-B644-6CBDFD7E8CD6">
             <kie:width>50.0</kie:width>
@@ -3128,6 +3128,14 @@ Side and Rear Yards 5.6.2.2.6</dmn:description>
             <kie:width>339.0</kie:width>
             <kie:width>358.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_57401786-6299-41CB-8E8D-19376F6783BF">
+            <kie:width>50.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>167.0</kie:width>
+            <kie:width>236.0</kie:width>
+            <kie:width>607.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_87A26017-FC41-41ED-8916-21BB2DCE8EC2">
             <kie:width>50.0</kie:width>
             <kie:width>179.0</kie:width>
@@ -3137,14 +3145,6 @@ Side and Rear Yards 5.6.2.2.6</dmn:description>
             <kie:width>100.0</kie:width>
             <kie:width>214.0</kie:width>
             <kie:width>529.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_57401786-6299-41CB-8E8D-19376F6783BF">
-            <kie:width>50.0</kie:width>
-            <kie:width>100.0</kie:width>
-            <kie:width>100.0</kie:width>
-            <kie:width>167.0</kie:width>
-            <kie:width>236.0</kie:width>
-            <kie:width>607.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_B136C83F-0B58-4B4C-AF41-386A9BD03B27">
             <kie:width>50.0</kie:width>
@@ -3199,15 +3199,6 @@ Side and Rear Yards 5.6.2.2.6</dmn:description>
         <dc:Bounds x="549" y="1093" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_87CB31DC-0527-4AF2-A6ED-8EEF7C81F48B" dmnElementRef="_87CB31DC-0527-4AF2-A6ED-8EEF7C81F48B" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="224" green="204" blue="168"/>
-          <dmndi:StrokeColor red="161" green="134" blue="71"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="1137" y="104" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_17B5CD57-4604-4FEC-8398-4B35D09D9304" dmnElementRef="_17B5CD57-4604-4FEC-8398-4B35D09D9304" isCollapsed="false">
         <dmndi:DMNStyle>
           <dmndi:FillColor red="255" green="255" blue="255"/>
@@ -3215,6 +3206,15 @@ Side and Rear Yards 5.6.2.2.6</dmn:description>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="901" y="95" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_87CB31DC-0527-4AF2-A6ED-8EEF7C81F48B" dmnElementRef="_87CB31DC-0527-4AF2-A6ED-8EEF7C81F48B" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="224" green="204" blue="168"/>
+          <dmndi:StrokeColor red="161" green="134" blue="71"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="1137" y="104" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_7C59D66C-E0E5-44C1-BFB7-1ACA1538FC09" dmnElementRef="_7C59D66C-E0E5-44C1-BFB7-1ACA1538FC09" isCollapsed="false">
@@ -3280,15 +3280,6 @@ Side and Rear Yards 5.6.2.2.6</dmn:description>
         <dc:Bounds x="1453" y="1730" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_EDB3772B-ACFB-4C5C-99AB-896469D3D3BF" dmnElementRef="_EDB3772B-ACFB-4C5C-99AB-896469D3D3BF" isCollapsed="false">
-        <dmndi:DMNStyle>
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="0" green="0" blue="0"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="393.5981308411215" y="1350" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_48B4DA5D-1E72-4DF4-B67C-0F11141C21CB" dmnElementRef="_48B4DA5D-1E72-4DF4-B67C-0F11141C21CB" isCollapsed="false">
         <dmndi:DMNStyle fontSize="8">
           <dmndi:FillColor red="243" green="229" blue="248"/>
@@ -3296,6 +3287,15 @@ Side and Rear Yards 5.6.2.2.6</dmn:description>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="369.5981308411215" y="534.3421052631579" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_EDB3772B-ACFB-4C5C-99AB-896469D3D3BF" dmnElementRef="_EDB3772B-ACFB-4C5C-99AB-896469D3D3BF" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="393.5981308411215" y="1350" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_3B49A23E-8B35-4F41-B2B3-BCBF53C9C522" dmnElementRef="_3B49A23E-8B35-4F41-B2B3-BCBF53C9C522" isCollapsed="false">
@@ -3388,15 +3388,6 @@ Side and Rear Yards 5.6.2.2.6</dmn:description>
         <dc:Bounds x="1137" y="229" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_A9C4020A-5622-46FA-986D-500A5C8EA72D" dmnElementRef="_A9C4020A-5622-46FA-986D-500A5C8EA72D" isCollapsed="false">
-        <dmndi:DMNStyle>
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="0" green="0" blue="0"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="808" y="1730" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_7A446C74-6A38-4BE2-9382-5D7860010D0B" dmnElementRef="_7A446C74-6A38-4BE2-9382-5D7860010D0B" isCollapsed="false">
         <dmndi:DMNStyle>
           <dmndi:FillColor red="255" green="255" blue="255"/>
@@ -3404,6 +3395,15 @@ Side and Rear Yards 5.6.2.2.6</dmn:description>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="549.5981308411215" y="26.68421052631578" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_A9C4020A-5622-46FA-986D-500A5C8EA72D" dmnElementRef="_A9C4020A-5622-46FA-986D-500A5C8EA72D" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="808" y="1730" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_ACBF9DC9-8567-4C59-A869-BE29AB326CC9" dmnElementRef="_ACBF9DC9-8567-4C59-A869-BE29AB326CC9" isCollapsed="false">
@@ -3496,13 +3496,13 @@ Side and Rear Yards 5.6.2.2.6</dmn:description>
         <dc:Bounds x="382" y="1019.3421052631579" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_D8E9AF7E-E507-4080-ABBC-BDA1D370C548" dmnElementRef="_D8E9AF7E-E507-4080-ABBC-BDA1D370C548" isCollapsed="false">
+      <dmndi:DMNShape id="dmnshape-_782ADAE1-78B6-47B3-921F-5F4088B177D8" dmnElementRef="_782ADAE1-78B6-47B3-921F-5F4088B177D8" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="169" green="192" blue="225"/>
-          <dmndi:StrokeColor red="71" green="104" blue="161"/>
+          <dmndi:FillColor red="204" green="218" blue="183"/>
+          <dmndi:StrokeColor red="133" green="150" blue="99"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="549" y="1598" width="100" height="50"/>
+        <dc:Bounds x="1414" y="229" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_6EC78069-18D9-4EEA-8FC6-50764D0393A9" dmnElementRef="_6EC78069-18D9-4EEA-8FC6-50764D0393A9" isCollapsed="false">
@@ -3514,13 +3514,13 @@ Side and Rear Yards 5.6.2.2.6</dmn:description>
         <dc:Bounds x="364.5981308411215" y="773.3421052631579" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_782ADAE1-78B6-47B3-921F-5F4088B177D8" dmnElementRef="_782ADAE1-78B6-47B3-921F-5F4088B177D8" isCollapsed="false">
+      <dmndi:DMNShape id="dmnshape-_D8E9AF7E-E507-4080-ABBC-BDA1D370C548" dmnElementRef="_D8E9AF7E-E507-4080-ABBC-BDA1D370C548" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="204" green="218" blue="183"/>
-          <dmndi:StrokeColor red="133" green="150" blue="99"/>
+          <dmndi:FillColor red="169" green="192" blue="225"/>
+          <dmndi:StrokeColor red="71" green="104" blue="161"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="1414" y="229" width="100" height="50"/>
+        <dc:Bounds x="549" y="1598" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_32F45A4D-E733-4596-926F-6398FC788398" dmnElementRef="_32F45A4D-E733-4596-926F-6398FC788398" isCollapsed="false">
@@ -3659,13 +3659,13 @@ Side and Rear Yards 5.6.2.2.6</dmn:description>
         <di:waypoint x="443.5981308411215" y="1375"/>
         <di:waypoint x="599" y="1118"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_A4A207CE-D4F6-414C-86E5-45F9397ED731" dmnElementRef="_A4A207CE-D4F6-414C-86E5-45F9397ED731">
-        <di:waypoint x="1187" y="254"/>
-        <di:waypoint x="1187" y="129"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_FD3EF70F-41BC-4E25-969B-B551C85EAE88" dmnElementRef="_FD3EF70F-41BC-4E25-969B-B551C85EAE88">
         <di:waypoint x="601" y="120"/>
         <di:waypoint x="951" y="120"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_A4A207CE-D4F6-414C-86E5-45F9397ED731" dmnElementRef="_A4A207CE-D4F6-414C-86E5-45F9397ED731">
+        <di:waypoint x="1187" y="254"/>
+        <di:waypoint x="1187" y="129"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_B1A3345C-B3EE-4EFA-87BE-4F97F32A276D" dmnElementRef="_B1A3345C-B3EE-4EFA-87BE-4F97F32A276D">
         <di:waypoint x="858" y="1755"/>
@@ -3855,6 +3855,14 @@ Side and Rear Yards 5.6.2.2.6</dmn:description>
         <di:waypoint x="432" y="1044.342105263158"/>
         <di:waypoint x="1464" y="489"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_2EE22B47-CDD8-45B0-A611-A18ACE4611DC" dmnElementRef="_2EE22B47-CDD8-45B0-A611-A18ACE4611DC">
+        <di:waypoint x="1187" y="254"/>
+        <di:waypoint x="1464" y="254"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_8CA966EB-879E-4A6E-A6E2-A440D2BE177E" dmnElementRef="_8CA966EB-879E-4A6E-A6E2-A440D2BE177E">
+        <di:waypoint x="1187" y="129"/>
+        <di:waypoint x="1464" y="229"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_6CB9A547-F67D-4FFF-B323-252BA44EB3F2" dmnElementRef="_6CB9A547-F67D-4FFF-B323-252BA44EB3F2">
         <di:waypoint x="432" y="1118"/>
         <di:waypoint x="599" y="1623"/>
@@ -3878,14 +3886,6 @@ Side and Rear Yards 5.6.2.2.6</dmn:description>
       <dmndi:DMNEdge id="dmnedge-_2812C64A-A3CD-4AD2-AB4C-36677561276C" dmnElementRef="_2812C64A-A3CD-4AD2-AB4C-36677561276C">
         <di:waypoint x="443.5981308411215" y="1375"/>
         <di:waypoint x="599" y="1623"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_2EE22B47-CDD8-45B0-A611-A18ACE4611DC" dmnElementRef="_2EE22B47-CDD8-45B0-A611-A18ACE4611DC">
-        <di:waypoint x="1187" y="254"/>
-        <di:waypoint x="1464" y="254"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_8CA966EB-879E-4A6E-A6E2-A440D2BE177E" dmnElementRef="_8CA966EB-879E-4A6E-A6E2-A440D2BE177E">
-        <di:waypoint x="1187" y="129"/>
-        <di:waypoint x="1464" y="229"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_D8ED4925-0E54-4B4A-86B4-FF5FEA770737" dmnElementRef="_D8ED4925-0E54-4B4A-86B4-FF5FEA770737">
         <di:waypoint x="420" y="386"/>
