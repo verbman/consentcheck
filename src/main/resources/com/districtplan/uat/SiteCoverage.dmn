@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://districtplan.wellington.govt.nz/83/dmn/template" xmlns:included1="https://districtplan.wellington.govt.nz/83/dmn/types" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_F3094ADC-147D-4D49-8098-0A90217DA7D0" name="SiteCoverage" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://districtplan.wellington.govt.nz/83/dmn/SiteCoverage">
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://districtplan.wellington.govt.nz/83/dmn/SiteCoverage" xmlns:included1="https://districtplan.wellington.govt.nz/83/dmn/types" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_F3094ADC-147D-4D49-8098-0A90217DA7D0" name="SiteCoverage" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://districtplan.wellington.govt.nz/83/dmn/SiteCoverage">
   <dmn:extensionElements/>
   <dmn:import id="_822C354A-34BE-49B6-B1D6-4C2683B36DAA" name="Types" namespace="https://districtplan.wellington.govt.nz/83/dmn/types" locationURI="Types.dmn" importType="http://www.omg.org/spec/DMN/20180521/MODEL/"/>
   <dmn:decision id="_F6098BC7-3C0C-4A10-B119-08EBFE29571F" name="OR3Roseneath">
@@ -171,8 +171,8 @@ then true else(&#xd;
       </dmn:input>
       <dmn:output id="_E360F860-BF9E-4180-BCD7-83C05491967E" name="name" typeRef="string"/>
       <dmn:output id="_831EC4AE-12F4-4A9C-ADAE-54A3372C8B11" name="uuids" typeRef="string"/>
+      <dmn:annotation name=""/>
       <dmn:rule id="_95FB8C91-033B-404C-9A1D-532D82B876DA">
-        <dmn:description>Site coverage</dmn:description>
         <dmn:inputEntry id="_FCAA2AED-DD1A-48FF-AC6D-B3A12443CF95">
           <dmn:text>false</dmn:text>
         </dmn:inputEntry>
@@ -182,6 +182,9 @@ then true else(&#xd;
         <dmn:outputEntry id="_E3EAED41-97B2-4FD0-A5DB-921425DC2293">
           <dmn:text>["6a125fc3-2970-4209-81f4-4979b61fbe7d"]</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>Site coverage</dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_E5FD8352-6FD1-49A2-817D-E16AB0174541">
         <dmn:inputEntry id="_D5DF7833-6BBF-4A92-AC61-6A920924DF3E">
@@ -193,6 +196,9 @@ then true else(&#xd;
         <dmn:outputEntry id="_371E8FD5-F3EF-417F-8504-6A90FA2592F0">
           <dmn:text>[]</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
@@ -208,6 +214,16 @@ then true else(&#xd;
 )</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
+  <dmn:businessKnowledgeModel id="_8EEB12D9-0889-431C-B51B-6CEB3E60AD83" name="BuildAddToAlter">
+    <dmn:extensionElements/>
+    <dmn:variable id="_F1774086-DB62-4111-95B7-9182FD3B1684" name="BuildAddToAlter" typeRef="boolean"/>
+    <dmn:encapsulatedLogic id="_48CCE915-054D-4631-86B2-52E80B21FEE4" kind="FEEL">
+      <dmn:formalParameter id="_C8516710-5518-4967-B1FD-654D6B8ED6E8" name="verbs" typeRef="Types.ActivityVerb"/>
+      <dmn:literalExpression id="_E03DE7C4-CB50-4634-852E-8BE4C2A83B2E">
+        <dmn:text></dmn:text>
+      </dmn:literalExpression>
+    </dmn:encapsulatedLogic>
+  </dmn:businessKnowledgeModel>
   <dmn:decision id="_7B7374A6-BE0B-4B26-869E-CC920591FABD" name="IR3OR4Area1ConditionNullToFalse">
     <dmn:extensionElements/>
     <dmn:variable id="_1D7AFDF8-779D-4019-8828-E48E0DE3D5D8" name="IR3OR4Area1ConditionNullToFalse" typeRef="boolean"/>
@@ -225,6 +241,10 @@ then true else(&#xd;
     </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
+  <dmn:inputData id="_87285743-359E-4CCC-A8EC-1699483440D3" name="Activities">
+    <dmn:extensionElements/>
+    <dmn:variable id="_4199E9B6-5EB6-479F-A054-1F2201BF37BE" name="Activities" typeRef="Types.Activities"/>
+  </dmn:inputData>
   <dmn:decision id="_E7325906-5A8C-4A2E-AB43-C41C22660CBC" name="OR3NullToFalse">
     <dmn:extensionElements/>
     <dmn:variable id="_3374087A-8913-415B-9BEB-AB429D56D7B7" name="OR3NullToFalse" typeRef="boolean"/>
@@ -401,6 +421,7 @@ then true else (&#xd;
         </dmn:inputExpression>
       </dmn:input>
       <dmn:output id="_F2692682-4688-4E75-A5A6-8D40AC6825A2"/>
+      <dmn:annotation name=""/>
       <dmn:rule id="_9744BE78-E5D4-4163-B979-0E2CD3D33E09">
         <dmn:inputEntry id="_9A303379-C9C9-42F1-9C66-015C878EBAEF">
           <dmn:text>false</dmn:text>
@@ -414,6 +435,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_720B903D-F04C-41B7-9732-EB3A5C8E9CF8">
           <dmn:text>true</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_DB5E1383-B7DF-41FC-96D6-FE0DC7AA253D">
         <dmn:inputEntry id="_8AEB8C23-528F-4C64-AF5C-1FC32340F389">
@@ -428,6 +452,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_3583ECF6-BDCD-4546-9B84-AEEF09CBC133">
           <dmn:text>true</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_6F0D5FBE-711C-4C11-9C48-63EBECA25025">
         <dmn:inputEntry id="_2803F1D4-6C09-42DF-9453-42F4A58D8B37">
@@ -442,6 +469,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_1784A39E-39F8-4DC0-A195-CC044B98E9A2">
           <dmn:text>true</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_ED67DAFF-4299-4C47-BEED-E3F990D5F8ED">
         <dmn:inputEntry id="_424C5A20-03E4-4478-93B2-F648056B695F">
@@ -456,6 +486,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_168183D8-FCC7-44C3-A874-FC6C559BDAA3">
           <dmn:text>true</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_9358F92A-BD42-4763-9231-6D5F6EF07E07">
         <dmn:inputEntry id="_6B1DBA0C-C0D4-4587-B139-7CE950D4C0E2">
@@ -470,6 +503,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_5205D41E-A14C-4FA3-9025-73779D94C0C5">
           <dmn:text>true</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_29CFD7DB-2F6E-4E97-BC6B-E2FD3B9EF0C2">
         <dmn:inputEntry id="_938DDEA8-3B61-4586-9D95-F089F0541461">
@@ -484,6 +520,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_1E1D03B5-DD1A-4374-9563-47651EC55DAB">
           <dmn:text>false</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_8D543821-0406-4E60-A03C-3A8C3983E663">
         <dmn:inputEntry id="_06EA77E2-0D9F-4A17-B7D8-86A06299DC6D">
@@ -498,6 +537,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_7724C314-9A15-4516-858A-80B29386753D">
           <dmn:text>false</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_1A9E786A-89DD-4E44-ACB9-75B22AAE9C3A">
         <dmn:inputEntry id="_D5B6C064-DF3A-4590-B446-CA2041FDEBC5">
@@ -512,6 +554,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_C049E61E-AAA4-462E-91D3-928DAAB41632">
           <dmn:text>false</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_BB2E9403-5DFB-48F1-B4B5-D1CDCADB6473">
         <dmn:inputEntry id="_A7050C98-2916-49AA-8A67-F93A4A73DC24">
@@ -526,6 +571,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_017760B4-F856-4C57-9586-B14E0B848569">
           <dmn:text>false</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_2E2EA796-1BC0-4039-A42D-CB396AC61B7D">
         <dmn:inputEntry id="_8FB1BDEE-B3E7-4364-B0D2-6C8CF30253ED">
@@ -540,6 +588,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_ABBCCBDB-4F3E-4E6C-8CA9-FC5EADBF7FEC">
           <dmn:text>false</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_51C957CE-871B-4891-B014-F4C865B70999">
         <dmn:inputEntry id="_53533A0D-7476-42BA-9CC1-793C71F1F7D4">
@@ -554,6 +605,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_8598F5BD-A506-430F-AA49-B3595B1E7AD2">
           <dmn:text>false</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_487E8C87-0E9D-4ED3-A3F0-48498D4CF695">
         <dmn:inputEntry id="_81F15FAA-1233-443E-AC99-8C638BD659AB">
@@ -568,6 +622,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_F6B9F10C-6BC8-4986-8329-F26B64E48CEB">
           <dmn:text>false</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_85CF445C-1B63-4A55-9156-C084D7B06B4A">
         <dmn:inputEntry id="_5EC9F1BE-E8F2-4F57-8388-28EF08110695">
@@ -582,6 +639,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_54885462-47D3-46AB-94D9-D9859075D4A9">
           <dmn:text>null</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_488EC473-77DD-4EDD-ACBB-CC91ECB7C610">
         <dmn:inputEntry id="_969E315A-ED1A-4F54-9D20-9594D8F77CB8">
@@ -596,6 +656,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_AEE60637-43FE-47BE-8FBF-17581528331C">
           <dmn:text>null</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_87ED3563-EDE2-4D46-94E3-CC7DCD6D78B3">
         <dmn:inputEntry id="_5ADDA673-E983-4A67-BC58-1B02880EDA12">
@@ -610,6 +673,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_3A6F5DA2-DB1A-4394-BB8E-312EA9660F03">
           <dmn:text>null</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
@@ -683,6 +749,7 @@ then true else (&#xd;
         </dmn:inputExpression>
       </dmn:input>
       <dmn:output id="_79A12B66-07C0-479C-84DC-24B13B52EF61"/>
+      <dmn:annotation name=""/>
       <dmn:rule id="_CD418960-9603-41C2-9FA2-AD81CDF6E141">
         <dmn:inputEntry id="_5A70D425-3339-412E-ABED-42FA99F6359C">
           <dmn:text>true</dmn:text>
@@ -693,6 +760,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_E388F53B-AB9D-4B92-BA54-059BC388E487">
           <dmn:text>false</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_3A3AC4A4-B111-4D21-9AB8-47922D0E70FE">
         <dmn:inputEntry id="_B1847277-57DE-492B-A3D0-06AB3B1EC8A7">
@@ -704,6 +774,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_E320E1C5-6823-4D86-98B7-1F240524C521">
           <dmn:text>true</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_AE322F29-A683-49E1-8C9F-BF3A78DCC7E6">
         <dmn:inputEntry id="_C3B523EC-6FD2-455E-A989-FF2E5057D03D">
@@ -715,6 +788,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_E7F70EC4-6B5D-47E2-ADB2-EB55245E2165">
           <dmn:text>false</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_0AED1279-3F46-4CBC-B14B-A824748815A4">
         <dmn:inputEntry id="_D780F5DC-0CAC-411A-9068-7ECF6E5D2F29">
@@ -726,6 +802,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_C2A436FF-88C1-49D7-B327-DA6C6F940317">
           <dmn:text>false</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
@@ -758,6 +837,7 @@ then true else (&#xd;
         </dmn:inputExpression>
       </dmn:input>
       <dmn:output id="_0D752200-D63F-4C92-B850-E634DE9F28BF"/>
+      <dmn:annotation name=""/>
       <dmn:rule id="_D4CEF958-B2A7-4FC2-9279-9E273B8C60C1">
         <dmn:inputEntry id="_9C4B61F2-695D-4BFB-BE20-7DB5305AEAEE">
           <dmn:text>true</dmn:text>
@@ -771,6 +851,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_8D08C59F-AEF8-4621-8524-AE44071775F2">
           <dmn:text>"Permitted"</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_B0933E99-D8A3-4E1E-89A8-B6E8979DA9F1">
         <dmn:inputEntry id="_E66F9E92-95E1-43E6-ADEE-413A729937D1">
@@ -785,6 +868,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_C0C764D6-71A2-4A0F-86AF-AC7A8ABE68D7">
           <dmn:text>"Permitted"</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_A8DFAEA8-D4FE-46D0-963A-E029F55C4605">
         <dmn:inputEntry id="_22D4F2C5-6D6A-4380-8E6D-D8794DD7BD7E">
@@ -799,6 +885,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_5B8D3359-DACB-4B8F-8DCF-EB419394F4D6">
           <dmn:text>"Discretionary Restricted"</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_5964FA1F-9730-4ABE-91FB-135CEC5D4752">
         <dmn:inputEntry id="_D8B9707E-489E-4C51-9F1E-042C41E6F0BB">
@@ -813,6 +902,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_949D75B0-AC88-4F87-877E-E0D482518318">
           <dmn:text>"Discretionary Restricted"</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_A4F4AC53-8F28-437B-9BE3-02DE253337B0">
         <dmn:inputEntry id="_A9FE8626-5AEC-4A89-9819-40729C602939">
@@ -827,6 +919,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_1594BBB5-CD3A-4C5B-BA5E-439DF3E9E692">
           <dmn:text>"Non Complying"</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_2A5B31AF-DF4B-477B-9CA7-A5E5A99846C0">
         <dmn:inputEntry id="_6F2B9DF8-8AA8-464E-BC97-9448996ABE1B">
@@ -841,6 +936,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_6D20323E-D57E-4E2E-A2DD-6E8F3FE9EEC0">
           <dmn:text>"Invalid"</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_E7856ED9-6598-4AA9-A496-3BA61CBEC48D">
         <dmn:inputEntry id="_5A19F61A-3895-465B-AD5E-EA9E799E12BF">
@@ -855,6 +953,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_50CD90A1-DE9C-4960-BE67-CFEE19CED160">
           <dmn:text>"Invalid"</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
@@ -936,6 +1037,7 @@ then true else (&#xd;
         </dmn:inputExpression>
       </dmn:input>
       <dmn:output id="_8E2A17D4-AE5C-4179-B7A7-12D38926323E"/>
+      <dmn:annotation name=""/>
       <dmn:rule id="_D000F665-8895-4C21-AA33-2E84E1069F86">
         <dmn:inputEntry id="_F4F20BB7-4EFA-4969-97CB-19AC9D0FDADB">
           <dmn:text>true</dmn:text>
@@ -946,6 +1048,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_FA08AB49-DB74-4249-88FB-E434D0FFF4F7">
           <dmn:text>true</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_5002E45F-1C0A-4E8C-BC73-9A7E29C60D7B">
         <dmn:inputEntry id="_CB7086D4-8795-4FFD-9B6C-A84C812EDC60">
@@ -957,6 +1062,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_A86E604D-6249-47E2-B2FC-0936E70DAE93">
           <dmn:text>true</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_A74786EC-F2C3-4BEE-93F0-8C3C1D32BB5A">
         <dmn:inputEntry id="_69446CF7-AEBB-4D18-8632-F1EDB1F3947A">
@@ -968,6 +1076,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_E8DEE915-DB42-4111-8808-CABC0BBE9FE4">
           <dmn:text>false</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_3B82F79B-8ABD-4D32-A841-641A4F0A27AE">
         <dmn:inputEntry id="_6B385AF7-ECC0-49F2-93E3-405B56223A45">
@@ -979,6 +1090,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_AD6E82DF-2578-47EA-AA7D-EAB2B4F603AB">
           <dmn:text>false</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
@@ -1084,6 +1198,7 @@ list contains(SpatialLayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
         </dmn:inputExpression>
       </dmn:input>
       <dmn:output id="_052A191F-118D-458C-8EDA-A7B611DDE31E"/>
+      <dmn:annotation name=""/>
       <dmn:rule id="_3DAC36B5-7ACC-4BDF-86C3-BF946A20C0E2">
         <dmn:inputEntry id="_55511BC7-0D39-4CC4-8729-11AB4127D8F7">
           <dmn:text>true</dmn:text>
@@ -1094,6 +1209,9 @@ list contains(SpatialLayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
         <dmn:outputEntry id="_04AF5D93-7A34-473E-ACE1-82A8E7215379">
           <dmn:text>false</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_D33C5FA3-E086-41D5-8944-0118C058B5A9">
         <dmn:inputEntry id="_A5ADFA8C-81D5-4873-9542-4CD11F4C5010">
@@ -1105,6 +1223,9 @@ list contains(SpatialLayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
         <dmn:outputEntry id="_24FC6428-A618-4296-A412-F4400D4D1E4A">
           <dmn:text>false</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_F68DA8BD-E3F2-4DB3-84D1-AC2B8510268B">
         <dmn:inputEntry id="_3A0D622B-E97A-43AC-B56E-608FB0C99742">
@@ -1116,6 +1237,9 @@ list contains(SpatialLayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
         <dmn:outputEntry id="_BFB1EAA0-A970-4179-A402-2764AA4289F0">
           <dmn:text>true</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_8E5782CD-609A-4656-89E6-F80AA453E272">
         <dmn:inputEntry id="_D66E5419-607A-4757-942F-D90860152CC0">
@@ -1127,6 +1251,9 @@ list contains(SpatialLayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
         <dmn:outputEntry id="_B3FC681C-5AB9-4BB8-96F7-3BC0626079B9">
           <dmn:text>null</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
@@ -1160,8 +1287,8 @@ list contains(SpatialLayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
       </dmn:input>
       <dmn:output id="_FA56D3FB-DD92-4A4C-BAC9-A3ABC41DA8D0" name="name" typeRef="string"/>
       <dmn:output id="_402B64C9-EBAD-4A3C-9FED-8E9C00E6961F" name="uuids" typeRef="string"/>
+      <dmn:annotation name=""/>
       <dmn:rule id="_8E482D28-0400-4313-B798-027BAD757B0F">
-        <dmn:description>Residential buildings, accessory buildings and residential structures subject to standards 5.6.2</dmn:description>
         <dmn:inputEntry id="_4AE47F0D-23C0-4D75-98A0-86227EB205C3">
           <dmn:text>true</dmn:text>
         </dmn:inputEntry>
@@ -1177,9 +1304,11 @@ list contains(SpatialLayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
         <dmn:outputEntry id="_71658507-4E3A-4A99-9CC1-F3CCA77BA829">
           <dmn:text>["f2d2a43a-199f-44fd-b7b0-1aa6fac5360e"]</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>Residential buildings, accessory buildings and residential structures subject to standards 5.6.2</dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_F1D5494E-A23D-4F1B-A450-9E925D198228">
-        <dmn:description>Residential buildings, accessory buildings and residential structures subject to standards 5.6.2</dmn:description>
         <dmn:inputEntry id="_2E1AF0A5-1949-49CB-82F3-E5FF00314B77">
           <dmn:text>true</dmn:text>
         </dmn:inputEntry>
@@ -1195,9 +1324,11 @@ list contains(SpatialLayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
         <dmn:outputEntry id="_0E6C742B-AABF-4F64-8591-BAEC550264E4">
           <dmn:text>["f2d2a43a-199f-44fd-b7b0-1aa6fac5360e"]</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>Residential buildings, accessory buildings and residential structures subject to standards 5.6.2</dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_F14670CD-8F33-47DB-B502-1E8911DFD2CD">
-        <dmn:description>Residential buildings, accessory buildings and residential structures not provided for as Permitted Activities</dmn:description>
         <dmn:inputEntry id="_2C374915-6FC2-43C3-85E4-F972E3718F10">
           <dmn:text>false</dmn:text>
         </dmn:inputEntry>
@@ -1213,9 +1344,11 @@ list contains(SpatialLayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
         <dmn:outputEntry id="_297239ED-414D-4E5B-8F14-594CE3BA669B">
           <dmn:text>["7720d9db-9f99-423a-afe8-435a2f7be257", "968df3be-bd42-43b0-95c6-1c7a9a92a41e"]</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>Residential buildings, accessory buildings and residential structures not provided for as Permitted Activities</dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_EEB8A8F7-2AAF-44F0-9CC1-511173F4C1D6">
-        <dmn:description>Residential buildings, accessory buildings and residential structures not provided for as Permitted Activities</dmn:description>
         <dmn:inputEntry id="_70D4BBF6-1CD6-48E8-A1D4-0A413C4367EA">
           <dmn:text>false</dmn:text>
         </dmn:inputEntry>
@@ -1231,9 +1364,11 @@ list contains(SpatialLayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
         <dmn:outputEntry id="_B432A35E-C499-483B-9738-817B126983B6">
           <dmn:text>["7720d9db-9f99-423a-afe8-435a2f7be257", "968df3be-bd42-43b0-95c6-1c7a9a92a41e"]</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>Residential buildings, accessory buildings and residential structures not provided for as Permitted Activities</dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_FF7C6C92-86E1-49E3-8279-8D365289E93D">
-        <dmn:description>Non-Complying Activities</dmn:description>
         <dmn:inputEntry id="_AAAE8177-765C-4DCF-A0C4-1C6854E40888">
           <dmn:text>false</dmn:text>
         </dmn:inputEntry>
@@ -1249,6 +1384,9 @@ list contains(SpatialLayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
         <dmn:outputEntry id="_9B99CB93-0FB0-44CE-A634-C06B86EC4D31">
           <dmn:text>["44eddd87-61c4-46c5-9a2b-d8b11cfaa493"]</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>Non-Complying Activities</dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_045F1C15-282F-45D5-BCCB-2A009385F8CA">
         <dmn:inputEntry id="_F505B1D7-24F3-4842-A841-D6A182C542E1">
@@ -1266,6 +1404,9 @@ list contains(SpatialLayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
         <dmn:outputEntry id="_568644EF-83B9-4F78-ACEC-7145F95CDD6A">
           <dmn:text>[]</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_77D63F1E-522D-435F-A3E1-6E8B39B4C9AE">
         <dmn:inputEntry id="_A10F4817-545F-438D-AA87-EB6AA06E0D18">
@@ -1283,6 +1424,9 @@ list contains(SpatialLayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
         <dmn:outputEntry id="_1B71A2AB-8A69-4A5F-91BB-716C36C32B59">
           <dmn:text>[]</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_24C2F95F-E972-4419-A5B4-E80DCDB4D0C9">
         <dmn:inputEntry id="_A63517E2-ED77-4299-9650-CAF54CA31D3D">
@@ -1300,6 +1444,9 @@ list contains(SpatialLayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
         <dmn:outputEntry id="_F3558D15-7488-4D43-AFC4-8B82718337D7">
           <dmn:text>[]</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_A15E1DB9-2759-4F0C-B392-0F6865C59784">
         <dmn:inputEntry id="_4594919D-F7E6-47E8-BD38-B55763E4A8AA">
@@ -1317,6 +1464,9 @@ list contains(SpatialLayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
         <dmn:outputEntry id="_9FFBA8E3-2BC3-46B5-9EF6-4F674B59C1E1">
           <dmn:text>[]</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
@@ -1368,6 +1518,7 @@ list contains(SpatialLayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
         </dmn:inputExpression>
       </dmn:input>
       <dmn:output id="_47C55578-8CA9-4C76-BDD3-96B0831F5C42"/>
+      <dmn:annotation name=""/>
       <dmn:rule id="_3CB19659-39B8-4BC5-A222-F1B2D0D3F8E4">
         <dmn:inputEntry id="_7DEE507B-7D2C-4BDC-9A7E-EB873CBB0EFC">
           <dmn:text>true</dmn:text>
@@ -1384,6 +1535,9 @@ list contains(SpatialLayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
         <dmn:outputEntry id="_4371C635-16EC-4E80-A772-598428ACD304">
           <dmn:text>false</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_62795A62-E8E6-42AE-9050-7C788E23D4DF">
         <dmn:inputEntry id="_C0ED4D41-9DDA-424F-83E1-1EBE79B5C604">
@@ -1401,6 +1555,9 @@ list contains(SpatialLayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
         <dmn:outputEntry id="_91E81EFB-15C1-4BA6-B496-CA80003533C1">
           <dmn:text>false</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_B3743560-8077-405E-8B57-C101C8C682C7">
         <dmn:inputEntry id="_855D9455-B4EA-427C-A74F-ACCF01BE905B">
@@ -1418,6 +1575,9 @@ list contains(SpatialLayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
         <dmn:outputEntry id="_F73BE0B9-E5F3-4B0A-9BD2-976B87EE6FCC">
           <dmn:text>true</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_2DEE519D-3A16-42AD-972E-E7A6AF2A056A">
         <dmn:inputEntry id="_02B0890B-22BB-4C6A-B6B1-85BCB1A6AE40">
@@ -1435,6 +1595,9 @@ list contains(SpatialLayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
         <dmn:outputEntry id="_B517B4E7-0338-42AF-B001-5BE0940E736A">
           <dmn:text>true</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_DE346FCE-6E10-40F9-AC2C-8AADF7B1C0EF">
         <dmn:inputEntry id="_D7E2BADD-F967-4B26-A271-ACEFB3904746">
@@ -1452,6 +1615,9 @@ list contains(SpatialLayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
         <dmn:outputEntry id="_1D02DABC-0E8E-4008-A613-C6E47BAD3635">
           <dmn:text>true</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_0FD88E2F-304E-4ADB-8BB4-3F1A329AAAD0">
         <dmn:inputEntry id="_88F22AF1-96BF-41BB-8AD2-ACB2200E3AE8">
@@ -1469,6 +1635,9 @@ list contains(SpatialLayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
         <dmn:outputEntry id="_2228F514-13B8-4C1B-A5DD-FF2490384C61">
           <dmn:text>false</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
@@ -1591,6 +1760,7 @@ then true else (&#xd;
       </dmn:input>
       <dmn:output id="_45B84B60-A4CE-4EA8-8F71-91B54FF42507" name="name" typeRef="string"/>
       <dmn:output id="_B006E62E-77CC-4961-9DCB-E831B9BD90A8" name="uuids" typeRef="string"/>
+      <dmn:annotation name=""/>
       <dmn:rule id="_A8C742EA-E20B-48D6-BC7E-3D3A42C0A632">
         <dmn:inputEntry id="_1623694F-AB40-4A70-845B-20A003339997">
           <dmn:text>true</dmn:text>
@@ -1604,6 +1774,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_F13F33E2-D575-4C61-8127-C944D6078246">
           <dmn:text>["c7d319b0-6c0f-4701-8717-2a622aec6658"]</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_A5388C4B-2474-4426-8A58-F008B697DD65">
         <dmn:inputEntry id="_1594D5ED-A900-457E-AD13-E84AE27A2C75">
@@ -1618,6 +1791,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_945F83A7-AE53-4FFC-874A-065B5E259C07">
           <dmn:text>["c7d319b0-6c0f-4701-8717-2a622aec6658"]</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_2CE0744F-CBE3-4683-998B-784FACA310C8">
         <dmn:inputEntry id="_C82CF745-97EE-4304-B7AB-EA7DBB3A3856">
@@ -1632,6 +1808,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_0DBEC7BB-BE1A-45C0-8F10-ADC9C75A0014">
           <dmn:text>["75fb73f2-a225-4f91-ab54-e53befc1d6d7"]</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_A0FE56A3-9B08-421E-8DED-25A49A9D9A74">
         <dmn:inputEntry id="_6AB5EABF-1A89-4F23-B735-5C79C021D813">
@@ -1646,6 +1825,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_09E27237-1D38-4916-B8A8-FB1DDB83F301">
           <dmn:text>["75fb73f2-a225-4f91-ab54-e53befc1d6d7"]</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_39A0B642-FE4A-4811-8080-99A926288059">
         <dmn:inputEntry id="_1B048A9E-3313-418D-9701-2B458F075463">
@@ -1660,6 +1842,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_1C49DE11-10F4-49E4-858C-9387327577A5">
           <dmn:text>[]</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_A353E36F-1946-4963-B03B-0A4758152CC2">
         <dmn:inputEntry id="_3DE7277D-FDAC-4ECA-9934-E8109C971A69">
@@ -1674,6 +1859,9 @@ then true else (&#xd;
         <dmn:outputEntry id="_B23A9F49-3C89-4971-903D-59280013CB22">
           <dmn:text>[]</dmn:text>
         </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
       </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
@@ -1904,6 +2092,13 @@ list contains(SpatialLayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_6F136C3F-DBF2-407F-9D11-4E8D3AE24BCE">
             <kie:width>666.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_E03DE7C4-CB50-4634-852E-8BE4C2A83B2E">
+            <kie:width>150.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_48CCE915-054D-4631-86B2-52E80B21FEE4">
+            <kie:width>50.0</kie:width>
+            <kie:width>150.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_6655FE8C-AE26-41AA-A961-160301810E5B">
             <kie:width>716.0</kie:width>
@@ -2271,6 +2466,24 @@ list contains(SpatialLayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="224" y="34" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_8EEB12D9-0889-431C-B51B-6CEB3E60AD83" dmnElementRef="_8EEB12D9-0889-431C-B51B-6CEB3E60AD83" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="36.5981308411215" y="452" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_87285743-359E-4CCC-A8EC-1699483440D3" dmnElementRef="_87285743-359E-4CCC-A8EC-1699483440D3" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="8">
+          <dmndi:FillColor red="243" green="229" blue="248"/>
+          <dmndi:StrokeColor red="210" green="193" blue="208"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="102.5981308411215" y="196.68421052631578" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_E54DBEC0-EC41-43CB-AED8-70DC0753EC06" dmnElementRef="_E54DBEC0-EC41-43CB-AED8-70DC0753EC06" isCollapsed="false">
