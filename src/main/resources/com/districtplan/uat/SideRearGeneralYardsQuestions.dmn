@@ -324,7 +324,15 @@ Suburb="Seatoun"</dmn:text>
       <dmn:requiredDecision href="#_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_A5C68125-0E09-4102-ABCC-354B73AF2175">
-      <dmn:text>if ProximityPoriruaStream > 0 then (ProximityPoriruaStream + 1) else(&#xd;
+      <dmn:text>if (list contains(SpatialLayers_Value.Title, "Inner Residential") or &#xd;
+list contains(SpatialLayers_Value.Title, "Outer Residential") or&#xd;
+list contains(SpatialLayers_Value.Title, "Medium Density Residential Area") and&#xd;
+(BuildAddTo(Activities_Value[Noun="residential building"].Verb) or&#xd;
+BuildAddTo(Activities_Value[Noun="accessory building"].Verb) or&#xd;
+BuildAddTo(Activities_Value[Noun="residential structure"].Verb)) and &#xd;
+not(list contains(Activities_Value[Noun="earthworks"].Verb, "undertake"))) &#xd;
+then (&#xd;
+if ProximityPoriruaStream > 0 then (ProximityPoriruaStream + 1) else(&#xd;
   if ProximityCoastalMarineArea > 0 then (ProximityCoastalMarineArea + 1) else(&#xd;
     if DeckInSideYard > 0 then (DeckInSideYard + 1) else (&#xd;
       if ((ProposedRearYard > 0) and (ProposedRearAccess &lt; 0)) then (ProposedRearYard + 1) else(&#xd;
@@ -332,7 +340,7 @@ Suburb="Seatoun"</dmn:text>
       )&#xd;
     )&#xd;
   )&#xd;
-) &#xd;
+) else 0&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -491,7 +499,7 @@ else 0</dmn:text>
             <kie:width>925.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_A5C68125-0E09-4102-ABCC-354B73AF2175">
-            <kie:width>863.0</kie:width>
+            <kie:width>952.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_8E4AAA4C-33EF-494D-8CF8-DC9D25C51F3E">
             <kie:width>947.0</kie:width>
