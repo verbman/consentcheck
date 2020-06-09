@@ -104,15 +104,17 @@ else 0&#xd;
     <dmn:knowledgeRequirement id="_B60F522C-E8F4-4353-BBC2-3B11605325DB">
       <dmn:requiredKnowledge href="#_0E214E3F-7B16-43BF-B176-44294F18742D"/>
     </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_B1BF4419-4849-4F8B-B2BF-2B89F9048289">
+      <dmn:requiredKnowledge href="#_45A0096D-AAEE-401A-91E0-67647436FD22"/>
+    </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_C8BBA1B4-E56E-47CE-B1F8-3DA46B22E570">
       <dmn:text>if QuestionSetRelevance and &#xd;
 (not(IR5OrientalBayHeightArea)) and&#xd;
 (list contains(SpatialLayers_Value.Title, "Inner Residential") or &#xd;
 list contains(SpatialLayers_Value.Title, "Outer Residential") or&#xd;
 list contains(SpatialLayers_Value.Title, "Medium Density Residential Area")) and&#xd;
-((list contains(Activities_Value[Noun="undertake"].Verb,"earthworks")) or&#xd;
-(BuildAddTo(Activities_Value[Noun="residential building"].Verb) or&#xd;
-BuildAddTo(Activities_Value[Noun="accessory building"].Verb)))&#xd;
+(Earthworks or BuildAddTo(Activities_Value[Noun="residential building"].Verb) or&#xd;
+BuildAddTo(Activities_Value[Noun="accessory building"].Verb))&#xd;
 then (&#xd;
   if BuildingWithin1mOfBuilding > 0 then (BuildingWithin1mOfBuilding + 1) else (&#xd;
     if ExistingBuildingWithin1mOfBoundary > 0 then (ExistingBuildingWithin1mOfBoundary + 1) else (&#xd;
@@ -453,6 +455,16 @@ else 0</dmn:text>
       </dmn:literalExpression>
     </dmn:encapsulatedLogic>
   </dmn:businessKnowledgeModel>
+  <dmn:businessKnowledgeModel id="_45A0096D-AAEE-401A-91E0-67647436FD22" name="Earthworks">
+    <dmn:extensionElements/>
+    <dmn:variable id="_C7D62082-C3C4-4000-9DF5-1985375883FE" name="Earthworks" typeRef="boolean"/>
+    <dmn:encapsulatedLogic id="_63C0BD63-A7D7-4D73-BFA8-362A9AD4BC44" kind="FEEL">
+      <dmn:formalParameter id="_AC8C7917-45F1-4192-9AA2-69ACB53CCC0A" name="noun" typeRef="Types.ActivityNoun"/>
+      <dmn:literalExpression id="_4951A703-0B64-4D93-9064-504FF92CF89E">
+        <dmn:text>list contains(noun, "earthworks")</dmn:text>
+      </dmn:literalExpression>
+    </dmn:encapsulatedLogic>
+  </dmn:businessKnowledgeModel>
   <dmn:decision id="_FAA14141-83DB-4950-8C7E-04B26EF10FC3" name="ProximityCoastalMarineArea">
     <dmn:extensionElements/>
     <dmn:variable id="_EB1056A8-4BFB-4278-BCBF-7F45C819A3A8" name="ProximityCoastalMarineArea" typeRef="number"/>
@@ -533,6 +545,13 @@ else 0</dmn:text>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_3E89E8CE-EE29-4845-88AF-1555A508C0D3">
             <kie:width>751.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_4951A703-0B64-4D93-9064-504FF92CF89E">
+            <kie:width>532.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_63C0BD63-A7D7-4D73-BFA8-362A9AD4BC44">
+            <kie:width>50.0</kie:width>
+            <kie:width>532.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_111FE633-C6EF-47FF-A147-C978C18E2AC8">
             <kie:width>925.0</kie:width>
@@ -637,6 +656,15 @@ else 0</dmn:text>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="478" y="466" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_45A0096D-AAEE-401A-91E0-67647436FD22" dmnElementRef="_45A0096D-AAEE-401A-91E0-67647436FD22" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="844" y="334.6842105263158" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_94BF4F96-D074-4C15-87DF-81393EB85FBF" dmnElementRef="_94BF4F96-D074-4C15-87DF-81393EB85FBF" isCollapsed="false">
@@ -799,6 +827,10 @@ else 0</dmn:text>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_8C2CDE33-151D-42E1-99CE-067D8B8F151C" dmnElementRef="_8C2CDE33-151D-42E1-99CE-067D8B8F151C">
         <di:waypoint x="114" y="42"/>
+        <di:waypoint x="724" y="373"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_B1BF4419-4849-4F8B-B2BF-2B89F9048289" dmnElementRef="_B1BF4419-4849-4F8B-B2BF-2B89F9048289">
+        <di:waypoint x="894" y="359.6842105263158"/>
         <di:waypoint x="724" y="373"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_BF9088A4-5F44-465A-8FC8-57DBBA06064A" dmnElementRef="_BF9088A4-5F44-465A-8FC8-57DBBA06064A">
