@@ -98,8 +98,11 @@ BuildAddTo(Activities_Value[Noun="residential structure"].Verb))&#xd;
     <dmn:informationRequirement id="_3FCCE4D0-2B8E-4093-8EA5-BBFE3A60E092">
       <dmn:requiredDecision href="#_2F4D0DD8-7F53-4A6D-A237-365AA0800114"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_4058C46B-E21C-4755-A5D1-7CF4BB38B1DA">
+      <dmn:requiredDecision href="#_94BF4F96-D074-4C15-87DF-81393EB85FBF"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_6E452D55-48CA-414B-9086-6EBB2D78C32A">
-      <dmn:text>if SiteCoverageOR = 0 then (Activities + 1) else 0</dmn:text>
+      <dmn:text>if QuestionSetRelevance and SiteCoverageOR = 0 then (Activities + 1) else 0</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:decision id="_2F4D0DD8-7F53-4A6D-A237-365AA0800114" name="SiteCoverageOR">
@@ -111,8 +114,12 @@ BuildAddTo(Activities_Value[Noun="residential structure"].Verb))&#xd;
     <dmn:informationRequirement id="_A62BA482-2346-4420-8832-813EF00BAA03">
       <dmn:requiredInput href="#_78CA181B-F982-47E5-9969-F570D6A1582F"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_4C193536-003A-43CD-A631-68F2E1B91ADD">
+      <dmn:requiredDecision href="#_94BF4F96-D074-4C15-87DF-81393EB85FBF"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_4F27AB9D-2859-4D53-8DD8-E0B2E579663C">
-      <dmn:text>if list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential") and&#xd;
+      <dmn:text>if QuestionSetRelevance and &#xd;
+list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential") and&#xd;
 not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "OR3 - Roseneath")) and&#xd;
 not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "OR4 - Mitchelltown/Holloway Road"))&#xd;
 then (Activities + 1) else 0</dmn:text>
@@ -262,12 +269,20 @@ then (Activities + 1) else 0</dmn:text>
         <di:waypoint x="470" y="209"/>
         <di:waypoint x="570" y="209"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_4058C46B-E21C-4755-A5D1-7CF4BB38B1DA" dmnElementRef="_4058C46B-E21C-4755-A5D1-7CF4BB38B1DA">
+        <di:waypoint x="278" y="64"/>
+        <di:waypoint x="620" y="209"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_56945209-5FEB-45D3-A0CE-27D56F8AEAD9" dmnElementRef="_56945209-5FEB-45D3-A0CE-27D56F8AEAD9">
         <di:waypoint x="542" y="134"/>
         <di:waypoint x="470" y="209"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_A62BA482-2346-4420-8832-813EF00BAA03" dmnElementRef="_A62BA482-2346-4420-8832-813EF00BAA03">
         <di:waypoint x="140.29906542056074" y="265"/>
+        <di:waypoint x="470" y="209"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_4C193536-003A-43CD-A631-68F2E1B91ADD" dmnElementRef="_4C193536-003A-43CD-A631-68F2E1B91ADD">
+        <di:waypoint x="278" y="64"/>
         <di:waypoint x="470" y="209"/>
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
