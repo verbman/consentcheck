@@ -4,6 +4,7 @@
   <dmn:import id="_E0A5DD94-AE0F-44CE-9ABD-20034AEAB0F0" name="Types" namespace="https://districtplan.wellington.govt.nz/83/dmn/types" locationURI="Types.dmn" importType="http://www.omg.org/spec/DMN/20180521/MODEL/"/>
   <dmn:decision id="_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE" name="SpatialLayers">
     <dmn:extensionElements/>
+    <dmn:question>What is the street address of the property?</dmn:question>
     <dmn:variable id="_DFAE501B-7D6E-409E-9B6F-495E405EA0F5" name="SpatialLayers" typeRef="number"/>
     <dmn:literalExpression id="_4D614351-52EA-4E58-8F9D-A6FFE1BB7577">
       <dmn:text>1</dmn:text>
@@ -37,6 +38,21 @@ list contains(spatiallayers[Type="Residential"].Title, "Medium Density Residenti
   </dmn:inputData>
   <dmn:decision id="_A2F298C8-8542-41C1-A9E3-9452A323B85D" name="Activities">
     <dmn:extensionElements/>
+    <dmn:question>Which of these activities are you planning?</dmn:question>
+    <dmn:allowedAnswers>Build Residential building
+Build Accessory building
+Build Residential structure
+Add to Residential building
+Add to Accessory building
+Add to Residential structure
+Alter Residential building
+Alter Accessory building
+Alter Residential structure
+Demolish or alter all or part of an existing residential building that was built or consented before 1930
+Change the vehicle access to your site
+Install any fixed plant
+Undertake earthworks
+Stabilise a landslip</dmn:allowedAnswers>
     <dmn:variable id="_4F716487-C01F-47E3-87B2-5704C699E77A" name="Activities" typeRef="number"/>
     <dmn:informationRequirement id="_7CB215FB-173A-4441-AF28-B001777504A5">
       <dmn:requiredDecision href="#_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE"/>
@@ -47,6 +63,7 @@ list contains(spatiallayers[Type="Residential"].Title, "Medium Density Residenti
   </dmn:decision>
   <dmn:decision id="_CC99E2DF-E9BF-4BE5-98F9-47E6E912D742" name="NumberBoardingHouseBedrooms">
     <dmn:extensionElements/>
+    <dmn:question>How many bedrooms will there be in the boarding house?</dmn:question>
     <dmn:variable id="_4AE84137-22F4-44BD-B890-2BD83F796582" name="NumberBoardingHouseBedrooms" typeRef="number"/>
     <dmn:informationRequirement id="_6F36EAE5-E020-4088-ABAF-4AF3DD2DEC55">
       <dmn:requiredInput href="#_17472C3C-3E93-42C6-AA7E-D433F03A1C6E"/>
@@ -60,6 +77,9 @@ list contains(spatiallayers[Type="Residential"].Title, "Medium Density Residenti
   </dmn:decision>
   <dmn:decision id="_5D302B9B-D524-4B29-9D32-C7D3B41A598C" name="BoardingHouse">
     <dmn:extensionElements/>
+    <dmn:question>Is your proposal for a boarding house?</dmn:question>
+    <dmn:allowedAnswers>yes
+no</dmn:allowedAnswers>
     <dmn:variable id="_8A6B77AE-D7AA-4330-B944-021353E4839C" name="BoardingHouse" typeRef="number"/>
     <dmn:informationRequirement id="_E146A2A6-5D16-4A9E-98C0-629B241CA9E5">
       <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
@@ -89,6 +109,10 @@ else 0</dmn:text>
   </dmn:decision>
   <dmn:decision id="_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9" name="CarParkAUSNZStandard">
     <dmn:extensionElements/>
+    <dmn:question>Will all car parking be provided and maintained in accordance with the AUSNZ Parking facilities - Off-street car parking standard?</dmn:question>
+    <dmn:allowedAnswers>yes
+no
+I don't know</dmn:allowedAnswers>
     <dmn:variable id="_A9442935-BB06-40B4-94FF-E4DB88ABE88F" name="CarParkAUSNZStandard" typeRef="number"/>
     <dmn:informationRequirement id="_7E10C7ED-7E5B-4996-8E3B-DCB3F1B48D31">
       <dmn:requiredDecision href="#_ECDD4E42-6F0A-4B20-A07D-BA7FACC9C428"/>
@@ -126,6 +150,7 @@ else (&#xd;
   </dmn:inputData>
   <dmn:decision id="_ECDD4E42-6F0A-4B20-A07D-BA7FACC9C428" name="TwoHouseholdUnitsParking">
     <dmn:extensionElements/>
+    <dmn:question>How many on-site car parks will be provided?</dmn:question>
     <dmn:variable id="_A675765E-16AB-48D7-AA17-194F7678F2E2" name="TwoHouseholdUnitsParking" typeRef="number"/>
     <dmn:informationRequirement id="_FA3873F9-3829-4328-ABF9-90F1B88D31F5">
       <dmn:requiredInput href="#_C2429ABB-48E3-4E63-B351-0532677AE4B7"/>
@@ -167,6 +192,7 @@ else 0&#xd;
   </dmn:inputData>
   <dmn:decision id="_503B97EB-4395-4CC6-A996-910BE9D84BF1" name="NumberCarParks">
     <dmn:extensionElements/>
+    <dmn:question>How many car parks are you planning to have for residents?</dmn:question>
     <dmn:variable id="_E04FFEBC-CBD5-40BA-8F99-A116DA6212DB" name="NumberCarParks" typeRef="number"/>
     <dmn:informationRequirement id="_7F1984C9-5E07-478D-8BB2-ADCD3E8C3B2E">
       <dmn:requiredDecision href="#_5D302B9B-D524-4B29-9D32-C7D3B41A598C"/>
@@ -194,6 +220,7 @@ else 0&#xd;
   </dmn:inputData>
   <dmn:decision id="_41124519-21E8-463D-9304-475F9A6AA26F" name="NumberBoardingHouseCarParks">
     <dmn:extensionElements/>
+    <dmn:question>How many car parks will you have for residents?</dmn:question>
     <dmn:variable id="_9F6DD4A2-1C39-44C5-8AA7-329115EB39A3" name="NumberBoardingHouseCarParks" typeRef="number"/>
     <dmn:informationRequirement id="_8C3E0D41-6A1C-4697-9512-D21A2B3A1442">
       <dmn:requiredDecision href="#_CC99E2DF-E9BF-4BE5-98F9-47E6E912D742"/>
@@ -204,6 +231,7 @@ else 0&#xd;
   </dmn:decision>
   <dmn:decision id="_047A2B4F-C5D0-4DB6-8A67-1E59A9F763C9" name="NumberVisitorCarParks">
     <dmn:extensionElements/>
+    <dmn:question>How many car parks are you planning to have for visitors?</dmn:question>
     <dmn:variable id="_B1BD2E95-1263-4322-8E25-7F76D7D65C2A" name="NumberVisitorCarParks" typeRef="number"/>
     <dmn:informationRequirement id="_24A13D80-E698-4134-8E22-57710BF53189">
       <dmn:requiredInput href="#_8DA501EC-3711-499F-990D-8FF533A2C162"/>
@@ -255,6 +283,13 @@ list contains(activities[Noun="residential structure"].Verb, "add to")&#xd;
           <kie:ComponentWidths dmnElementRef="_4D614351-52EA-4E58-8F9D-A6FFE1BB7577">
             <kie:width>300.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_9B182488-AA8F-4993-B99F-6899A29EE9AB">
+            <kie:width>893.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_288432B0-32C5-49ED-AE4C-93A11EFA15F2">
+            <kie:width>50.0</kie:width>
+            <kie:width>893.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_FEF5DC4A-BC02-41FC-83DA-BBDFD5C2AC77">
             <kie:width>300.0</kie:width>
           </kie:ComponentWidths>
@@ -266,13 +301,6 @@ list contains(activities[Noun="residential structure"].Verb, "add to")&#xd;
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_297FED24-A1F0-40E9-82DE-370B5A1CC10F">
             <kie:width>848.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_9B182488-AA8F-4993-B99F-6899A29EE9AB">
-            <kie:width>893.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_288432B0-32C5-49ED-AE4C-93A11EFA15F2">
-            <kie:width>50.0</kie:width>
-            <kie:width>893.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_AF797A63-B86B-4260-9F23-3D34E4DB3CB3">
             <kie:width>812.0</kie:width>
@@ -302,6 +330,15 @@ list contains(activities[Noun="residential structure"].Verb, "add to")&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="491" y="106" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_9C262F21-F3C3-4485-A004-B2DE1F62AF7D" dmnElementRef="_9C262F21-F3C3-4485-A004-B2DE1F62AF7D" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="123.5981308411215" y="168.6842105263158" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_95EA32E4-A707-484D-A856-BAC05CAE95B5" dmnElementRef="_95EA32E4-A707-484D-A856-BAC05CAE95B5" isCollapsed="false">
@@ -365,15 +402,6 @@ list contains(activities[Noun="residential structure"].Verb, "add to")&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="858" y="298.3421052631579" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_9C262F21-F3C3-4485-A004-B2DE1F62AF7D" dmnElementRef="_9C262F21-F3C3-4485-A004-B2DE1F62AF7D" isCollapsed="false">
-        <dmndi:DMNStyle>
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="0" green="0" blue="0"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="123.5981308411215" y="168.6842105263158" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_ECDD4E42-6F0A-4B20-A07D-BA7FACC9C428" dmnElementRef="_ECDD4E42-6F0A-4B20-A07D-BA7FACC9C428" isCollapsed="false">
@@ -481,16 +509,16 @@ list contains(activities[Noun="residential structure"].Verb, "add to")&#xd;
         <di:waypoint x="175.5981308411215" y="436.3421052631579"/>
         <di:waypoint x="542" y="331"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_3403A206-053A-4E55-8A7A-1C4E8B152DD0" dmnElementRef="_3403A206-053A-4E55-8A7A-1C4E8B152DD0">
+        <di:waypoint x="174.5981308411215" y="259.6842105263158"/>
+        <di:waypoint x="542" y="331"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_037CEECE-20C9-4351-948A-C303F8CB37EA" dmnElementRef="_037CEECE-20C9-4351-948A-C303F8CB37EA">
         <di:waypoint x="175.5981308411215" y="67.68421052631581"/>
         <di:waypoint x="542" y="331"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_800EE1AE-576B-4196-B9F8-5049A730C748" dmnElementRef="_800EE1AE-576B-4196-B9F8-5049A730C748">
         <di:waypoint x="173.5981308411215" y="193.6842105263158"/>
-        <di:waypoint x="542" y="331"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_3403A206-053A-4E55-8A7A-1C4E8B152DD0" dmnElementRef="_3403A206-053A-4E55-8A7A-1C4E8B152DD0">
-        <di:waypoint x="174.5981308411215" y="259.6842105263158"/>
         <di:waypoint x="542" y="331"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7E10C7ED-7E5B-4996-8E3B-DCB3F1B48D31" dmnElementRef="_7E10C7ED-7E5B-4996-8E3B-DCB3F1B48D31">
