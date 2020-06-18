@@ -17,12 +17,12 @@
     <dmn:informationRequirement id="_289DD497-104E-4CB7-A10F-EA52CF28DE04">
       <dmn:requiredDecision href="#_6D27A50D-38E3-4812-93FC-98AA523D4B24"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_C2892479-C805-4CBA-BB71-0B162BF81A99">
-      <dmn:requiredInput href="#_C93DBBAC-ABF5-42DC-8973-AE32F95B8C83"/>
+    <dmn:informationRequirement id="_FB01FD7E-F515-489A-8F0E-A8E0F18B7575">
+      <dmn:requiredInput href="#_86A99B64-EFA9-408B-B6A4-3A2C78778979"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_187EBBA1-43E3-4079-A1E6-7232A4822C76">
       <dmn:text>if ProposedSetBackRoad2 > 0 and&#xd;
-not(S5.6.2.2.1Met) then&#xd;
+ProposedSetBackRoad2_Value &lt; 3 then&#xd;
 ProposedSetBackRoad2 + 1 else 0&#xd;
 &#xd;
 &#xd;
@@ -229,6 +229,10 @@ then (Activities + 1) else (&#xd;
     <dmn:extensionElements/>
     <dmn:variable id="_F72BD19F-21BB-4F21-9314-FEE0A0731CE6" name="CornerSite_Value" typeRef="boolean"/>
   </dmn:inputData>
+  <dmn:inputData id="_86A99B64-EFA9-408B-B6A4-3A2C78778979" name="ProposedSetBackRoad2_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_6F445554-5F6A-4468-8BC5-62B58C4DF90B" name="ProposedSetBackRoad2_Value" typeRef="number"/>
+  </dmn:inputData>
   <dmn:decision id="_2E8B5249-BA14-485A-85A0-AFCE8C2AA1B7" name="ProposedSetBackRoad1">
     <dmn:extensionElements/>
     <dmn:question>For your largest front yard, what is the distance between the front property boundary and the nearest point (excluding eaves) of the proposed residential building in metres?</dmn:question>
@@ -278,6 +282,10 @@ CornerSite + 1 else 0&#xd;
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
+  <dmn:inputData id="_E338F649-6437-45F9-BD68-F37CB815DF6C" name="ProposedSetBackRoad1_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_4929B9B5-E8F9-4A2D-A1E5-43FBA277CB3C" name="ProposedSetBackRoad1_Value" typeRef="number"/>
+  </dmn:inputData>
   <dmn:decision id="_33DB0DEE-EEBD-4412-922C-4EE3327A387E" name="ProposedSetBack">
     <dmn:extensionElements/>
     <dmn:question>What is the distance between the front property boundary and the nearest point (excluding eaves) of the proposed residential building in metres?</dmn:question>
@@ -364,13 +372,12 @@ then (Activities + 1) else 0&#xd;
     <dmn:informationRequirement id="_57E367C6-530B-4CE0-B5FB-1E9A7CE331B8">
       <dmn:requiredDecision href="#_86130E51-7734-4DB0-8E3F-A9511013964C"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_949F943C-75F5-4E19-9817-33D00C8F610A">
-      <dmn:requiredInput href="#_C93DBBAC-ABF5-42DC-8973-AE32F95B8C83"/>
+    <dmn:informationRequirement id="_C48FA9A0-A1BA-404F-B397-6C79F444E6C9">
+      <dmn:requiredInput href="#_E338F649-6437-45F9-BD68-F37CB815DF6C"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_1FAFE413-0D29-4033-A650-93768F1ED3EB">
-      <dmn:text>if MinimumWidthOfRoad1 > 0 and&#xd;
-not(S5.6.2.2.1Met) then&#xd;
-MinimumWidthOfRoad1 + 1 else 0&#xd;
+      <dmn:text>if MinimumWidthOfRoad1 > 0 then MinimumWidthOfRoad1 + 1 else&#xd;
+  if ProposedSetBackRoad1_Value >=3 then ProposedSetBackRoad1 + 1 else 0&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -386,12 +393,12 @@ MinimumWidthOfRoad1 + 1 else 0&#xd;
     <dmn:informationRequirement id="_4D732920-BC7C-4F30-A65F-42B514666EB8">
       <dmn:requiredDecision href="#_2E8B5249-BA14-485A-85A0-AFCE8C2AA1B7"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_17A1AA3C-4034-4C1B-B64E-88A772BBFC90">
-      <dmn:requiredInput href="#_C93DBBAC-ABF5-42DC-8973-AE32F95B8C83"/>
+    <dmn:informationRequirement id="_13BADCCB-9DCA-49AA-A1CB-0D9D7272CE77">
+      <dmn:requiredInput href="#_E338F649-6437-45F9-BD68-F37CB815DF6C"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_C284B79E-25EF-4402-A184-F861D9C7FA4D">
       <dmn:text>if ProposedSetBackRoad1 > 0 and&#xd;
-not(S5.6.2.2.1Met) then&#xd;
+ProposedSetBackRoad1_Value &lt; 3 then&#xd;
 ProposedSetBackRoad1 + 1 else 0&#xd;
 &#xd;
 &#xd;
@@ -495,6 +502,15 @@ ProposedSetBackRoad1 + 1 else 0&#xd;
         <dc:Bounds x="813" y="405" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_E338F649-6437-45F9-BD68-F37CB815DF6C" dmnElementRef="_E338F649-6437-45F9-BD68-F37CB815DF6C" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="1081.5981308411215" y="670.6842105263158" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_819C1576-CB4C-4FA9-ADC8-720A7C0964C6" dmnElementRef="_819C1576-CB4C-4FA9-ADC8-720A7C0964C6" isCollapsed="false">
         <dmndi:DMNStyle>
           <dmndi:FillColor red="255" green="255" blue="255"/>
@@ -567,6 +583,15 @@ ProposedSetBackRoad1 + 1 else 0&#xd;
         <dc:Bounds x="383" y="322" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_86A99B64-EFA9-408B-B6A4-3A2C78778979" dmnElementRef="_86A99B64-EFA9-408B-B6A4-3A2C78778979" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="1082.5981308411215" y="830.6842105263158" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_33DB0DEE-EEBD-4412-922C-4EE3327A387E" dmnElementRef="_33DB0DEE-EEBD-4412-922C-4EE3327A387E" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="238" green="238" blue="238"/>
@@ -634,8 +659,8 @@ ProposedSetBackRoad1 + 1 else 0&#xd;
         <di:waypoint x="863" y="777"/>
         <di:waypoint x="863" y="857"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_C2892479-C805-4CBA-BB71-0B162BF81A99" dmnElementRef="_C2892479-C805-4CBA-BB71-0B162BF81A99">
-        <di:waypoint x="1131.5981308411215" y="503.68421052631584"/>
+      <dmndi:DMNEdge id="dmnedge-_FB01FD7E-F515-489A-8F0E-A8E0F18B7575" dmnElementRef="_FB01FD7E-F515-489A-8F0E-A8E0F18B7575">
+        <di:waypoint x="1132.5981308411215" y="855.6842105263158"/>
         <di:waypoint x="863" y="857"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_3424CAF8-111B-4359-8328-31D8669A0809" dmnElementRef="_3424CAF8-111B-4359-8328-31D8669A0809">
@@ -778,16 +803,16 @@ ProposedSetBackRoad1 + 1 else 0&#xd;
         <di:waypoint x="863" y="697"/>
         <di:waypoint x="863" y="777"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_949F943C-75F5-4E19-9817-33D00C8F610A" dmnElementRef="_949F943C-75F5-4E19-9817-33D00C8F610A">
-        <di:waypoint x="1131.5981308411215" y="503.68421052631584"/>
+      <dmndi:DMNEdge id="dmnedge-_C48FA9A0-A1BA-404F-B397-6C79F444E6C9" dmnElementRef="_C48FA9A0-A1BA-404F-B397-6C79F444E6C9">
+        <di:waypoint x="1131.5981308411215" y="695.6842105263158"/>
         <di:waypoint x="863" y="777"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_4D732920-BC7C-4F30-A65F-42B514666EB8" dmnElementRef="_4D732920-BC7C-4F30-A65F-42B514666EB8">
         <di:waypoint x="863" y="616"/>
         <di:waypoint x="863" y="697"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_17A1AA3C-4034-4C1B-B64E-88A772BBFC90" dmnElementRef="_17A1AA3C-4034-4C1B-B64E-88A772BBFC90">
-        <di:waypoint x="1131.5981308411215" y="503.68421052631584"/>
+      <dmndi:DMNEdge id="dmnedge-_13BADCCB-9DCA-49AA-A1CB-0D9D7272CE77" dmnElementRef="_13BADCCB-9DCA-49AA-A1CB-0D9D7272CE77">
+        <di:waypoint x="1131.5981308411215" y="695.6842105263158"/>
         <di:waypoint x="863" y="697"/>
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
