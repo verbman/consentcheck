@@ -9,6 +9,19 @@
       <dmn:text>1</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
+  <dmn:decision id="_D6E3579E-CDC7-4050-809F-99304306D23A" name="ResultantActivityVerb">
+    <dmn:extensionElements/>
+    <dmn:variable id="_F94DAA8A-8454-4C0F-AFFB-77D28D43E429" name="ResultantActivityVerb" typeRef="Types.ActivityVerb"/>
+    <dmn:informationRequirement id="_81998370-83A0-407E-AC6C-A5FF202314FF">
+      <dmn:requiredInput href="#_C2429ABB-48E3-4E63-B351-0532677AE4B7"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_BD97E5B1-392B-4B5B-9A17-3C9112758239">
+      <dmn:requiredInput href="#_20A694B1-0B5E-4E95-A481-E8430CC634E2"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_B040E99E-3120-44E6-A4C2-6246264A3FC0">
+      <dmn:text>if LandslipCause_Value or LandslipReshapeGround_Value then "earthworks" else null </dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:decision id="_29CBF409-4B49-4B15-ACDD-DAE04BC6120F" name="LandslipRetainingStructureHeight">
     <dmn:extensionElements/>
     <dmn:variable id="_119C44AE-78CF-4BA4-A2D6-8BBF7453DD9D" name="LandslipRetainingStructureHeight" typeRef="number"/>
@@ -67,9 +80,9 @@
       <dmn:text>LandslipCause + 1</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
-  <dmn:decision id="_10DC1244-FC24-4777-8D62-F25980AD8265" name="ResultantActivity">
+  <dmn:decision id="_10DC1244-FC24-4777-8D62-F25980AD8265" name="ResultantActivityNoun">
     <dmn:extensionElements/>
-    <dmn:variable id="_823B2E3B-8C51-43E9-A898-2006A98F4A99" name="ResultantActivity" typeRef="Types.Activities"/>
+    <dmn:variable id="_823B2E3B-8C51-43E9-A898-2006A98F4A99" name="ResultantActivityNoun" typeRef="Types.ActivityNoun"/>
     <dmn:informationRequirement id="_5A7D4439-200E-41E1-A801-6A4B212DB44F">
       <dmn:requiredInput href="#_20A694B1-0B5E-4E95-A481-E8430CC634E2"/>
     </dmn:informationRequirement>
@@ -77,7 +90,7 @@
       <dmn:requiredInput href="#_C2429ABB-48E3-4E63-B351-0532677AE4B7"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_62C51F34-9984-4184-91A8-BB4939E9AED5">
-      <dmn:text>if LandslipCause_Value or LandslipReshapeGround_Value then Activities_Value([Noun="undertake"].Verb, "earthworks") else null </dmn:text>
+      <dmn:text>if LandslipCause_Value or LandslipReshapeGround_Value then "undertake" else null </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmndi:DMNDI>
@@ -102,6 +115,9 @@
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_CD204A1F-1F7F-4A42-9E78-821BEBC260C5">
             <kie:width>1092.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_B040E99E-3120-44E6-A4C2-6246264A3FC0">
+            <kie:width>1385.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_62C51F34-9984-4184-91A8-BB4939E9AED5">
             <kie:width>1385.0</kie:width>
@@ -132,7 +148,7 @@
           <dmndi:StrokeColor red="129" green="178" blue="177"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="92" y="418" width="100" height="50"/>
+        <dc:Bounds x="92" y="461" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_11FDCA74-FB65-4F0C-AB59-23B9C34BA8DE" dmnElementRef="_11FDCA74-FB65-4F0C-AB59-23B9C34BA8DE" isCollapsed="false">
@@ -159,7 +175,7 @@
           <dmndi:StrokeColor red="129" green="178" blue="177"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="92" y="361.3421052631579" width="100" height="50"/>
+        <dc:Bounds x="92" y="396.3421052631579" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_A2F298C8-8542-41C1-A9E3-9452A323B85D" dmnElementRef="_A2F298C8-8542-41C1-A9E3-9452A323B85D" isCollapsed="false">
@@ -178,6 +194,15 @@
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="296" y="215" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_D6E3579E-CDC7-4050-809F-99304306D23A" dmnElementRef="_D6E3579E-CDC7-4050-809F-99304306D23A" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="296" y="462" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_10DC1244-FC24-4777-8D62-F25980AD8265" dmnElementRef="_10DC1244-FC24-4777-8D62-F25980AD8265" isCollapsed="false">
@@ -209,12 +234,20 @@
         <di:waypoint x="346" y="149"/>
         <di:waypoint x="346" y="240"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_81998370-83A0-407E-AC6C-A5FF202314FF" dmnElementRef="_81998370-83A0-407E-AC6C-A5FF202314FF">
+        <di:waypoint x="142" y="421.3421052631579"/>
+        <di:waypoint x="346" y="487"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_BD97E5B1-392B-4B5B-9A17-3C9112758239" dmnElementRef="_BD97E5B1-392B-4B5B-9A17-3C9112758239">
+        <di:waypoint x="142" y="486"/>
+        <di:waypoint x="346" y="487"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_5A7D4439-200E-41E1-A801-6A4B212DB44F" dmnElementRef="_5A7D4439-200E-41E1-A801-6A4B212DB44F">
-        <di:waypoint x="142" y="443"/>
+        <di:waypoint x="142" y="486"/>
         <di:waypoint x="346" y="422"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_4E494900-1CDA-488E-8F9E-33B1FD860B27" dmnElementRef="_4E494900-1CDA-488E-8F9E-33B1FD860B27">
-        <di:waypoint x="142" y="386.3421052631579"/>
+        <di:waypoint x="142" y="421.3421052631579"/>
         <di:waypoint x="346" y="422"/>
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
