@@ -32,6 +32,16 @@
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
+  <dmn:businessKnowledgeModel id="_2138ED6C-3A59-45EC-A047-0C75A6FC56D1" name="FenceWall">
+    <dmn:extensionElements/>
+    <dmn:variable id="_78CD7AAC-A3EB-496E-A666-EBAA43B27109" name="FenceWall" typeRef="boolean"/>
+    <dmn:encapsulatedLogic id="_693E07F7-413D-409E-A7F2-968969615941" kind="FEEL">
+      <dmn:formalParameter id="_075EE1A4-C386-4871-9518-A218115E1A10" name="activities" typeRef="Types.Activities"/>
+      <dmn:literalExpression id="_BB517682-2030-4EF3-B104-C07D76B8C9C3">
+        <dmn:text>list contains(activities[Noun="residential fence or wall"].Verb, "build")</dmn:text>
+      </dmn:literalExpression>
+    </dmn:encapsulatedLogic>
+  </dmn:businessKnowledgeModel>
   <dmn:businessKnowledgeModel id="_246F5A08-167E-44EF-986C-8B7189505F53" name="SiteCoverageSpatialLayers">
     <dmn:extensionElements/>
     <dmn:variable id="_E012B4C8-30CC-444B-B382-2F491B212562" name="SiteCoverageSpatialLayers" typeRef="boolean"/>
@@ -81,8 +91,11 @@ list contains(spatiallayers[Type="Residential"].Title, "Medium Density Residenti
     <dmn:knowledgeRequirement id="_C98CAF61-4B39-49EC-A2F2-800C4C4DE8F4">
       <dmn:requiredKnowledge href="#_246F5A08-167E-44EF-986C-8B7189505F53"/>
     </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_15D6C886-CCDB-4D7A-AF15-056C508B4C7C">
+      <dmn:requiredKnowledge href="#_2138ED6C-3A59-45EC-A047-0C75A6FC56D1"/>
+    </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_6E452D55-48CA-414B-9086-6EBB2D78C32A">
-      <dmn:text>if SiteCoverageActivities(Activities_Value) and &#xd;
+      <dmn:text>if SiteCoverageActivities(Activities_Value) and not(FenceWall(Activities_Value)) and&#xd;
 SiteCoverageSpatialLayers(SpatialLayers_Value) and&#xd;
 SiteCoverageOR = 0 then (Activities + 1) else 0&#xd;
 &#xd;
@@ -107,8 +120,11 @@ SiteCoverageOR = 0 then (Activities + 1) else 0&#xd;
     <dmn:knowledgeRequirement id="_A1522407-40DE-4C7D-8F3B-313BD566CDC4">
       <dmn:requiredKnowledge href="#_325A5CAE-FE7E-4FC6-82F5-FE3851165D58"/>
     </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_ED11EBDC-DB97-4DC5-A383-F5DE20D06AEC">
+      <dmn:requiredKnowledge href="#_2138ED6C-3A59-45EC-A047-0C75A6FC56D1"/>
+    </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_4F27AB9D-2859-4D53-8DD8-E0B2E579663C">
-      <dmn:text>if SiteCoverageActivities(Activities_Value) and&#xd;
+      <dmn:text>if SiteCoverageActivities(Activities_Value) and not(FenceWall(Activities_Value)) and&#xd;
 list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential") and&#xd;
 not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "OR3 - Roseneath")) and&#xd;
 not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "OR4 - Mitchelltown/Holloway Road"))&#xd;
@@ -134,8 +150,7 @@ list contains(activities[Noun="residential building"].Verb, "add to") or&#xd;
 list contains(activities[Noun="accessory building"].Verb, "build") or&#xd;
 list contains(activities[Noun="accessory building"].Verb, "add to") or &#xd;
 list contains(activities[Noun="residential structure"].Verb, "build") or&#xd;
-list contains(activities[Noun="residential structure"].Verb, "add to") and&#xd;
-not(list contains(activities[Noun="residential fence or wall"].Verb, "build"))&#xd;
+list contains(activities[Noun="residential structure"].Verb, "add to")&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -158,6 +173,13 @@ not(list contains(activities[Noun="residential fence or wall"].Verb, "build"))&#
         <kie:ComponentsWidthsExtension>
           <kie:ComponentWidths dmnElementRef="_4D614351-52EA-4E58-8F9D-A6FFE1BB7577">
             <kie:width>300.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_BB517682-2030-4EF3-B104-C07D76B8C9C3">
+            <kie:width>908.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_693E07F7-413D-409E-A7F2-968969615941">
+            <kie:width>50.0</kie:width>
+            <kie:width>908.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_D3C9EA90-61FE-4964-B40D-5B366C15C853">
             <kie:width>891.0</kie:width>
@@ -194,6 +216,15 @@ not(list contains(activities[Noun="residential fence or wall"].Verb, "build"))&#
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="357" y="36" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_2138ED6C-3A59-45EC-A047-0C75A6FC56D1" dmnElementRef="_2138ED6C-3A59-45EC-A047-0C75A6FC56D1" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="110" y="391" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_78CA181B-F982-47E5-9969-F570D6A1582F" dmnElementRef="_78CA181B-F982-47E5-9969-F570D6A1582F" isCollapsed="false">
@@ -300,6 +331,10 @@ not(list contains(activities[Noun="residential fence or wall"].Verb, "build"))&#
         <di:waypoint x="142" y="218"/>
         <di:waypoint x="485" y="211"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_15D6C886-CCDB-4D7A-AF15-056C508B4C7C" dmnElementRef="_15D6C886-CCDB-4D7A-AF15-056C508B4C7C">
+        <di:waypoint x="160" y="416"/>
+        <di:waypoint x="485" y="211"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_56945209-5FEB-45D3-A0CE-27D56F8AEAD9" dmnElementRef="_56945209-5FEB-45D3-A0CE-27D56F8AEAD9">
         <di:waypoint x="407" y="136"/>
         <di:waypoint x="335" y="211"/>
@@ -314,6 +349,10 @@ not(list contains(activities[Noun="residential fence or wall"].Verb, "build"))&#
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_A1522407-40DE-4C7D-8F3B-313BD566CDC4" dmnElementRef="_A1522407-40DE-4C7D-8F3B-313BD566CDC4">
         <di:waypoint x="141" y="59.684210526315795"/>
+        <di:waypoint x="335" y="211"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_ED11EBDC-DB97-4DC5-A383-F5DE20D06AEC" dmnElementRef="_ED11EBDC-DB97-4DC5-A383-F5DE20D06AEC">
+        <di:waypoint x="160" y="416"/>
         <di:waypoint x="335" y="211"/>
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
