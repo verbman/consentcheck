@@ -354,9 +354,6 @@
     <dmn:knowledgeRequirement id="_CF407458-F670-4811-9F46-8CCA9A52FC4D">
       <dmn:requiredKnowledge href="#_ECAE5FFC-79CB-4E4F-BACE-0E2590845460"/>
     </dmn:knowledgeRequirement>
-    <dmn:knowledgeRequirement id="_18F22222-0E0D-42FA-B3DF-88546D34386B">
-      <dmn:requiredKnowledge href="#_2F563D6C-1B13-4B5B-8C51-C772894F5C00"/>
-    </dmn:knowledgeRequirement>
     <dmn:knowledgeRequirement id="_FFE57772-0EB4-4637-8040-01005FBA598D">
       <dmn:requiredKnowledge href="#_432A657F-4FB5-484C-981B-28DF00E5E9D0"/>
     </dmn:knowledgeRequirement>
@@ -366,7 +363,6 @@
     <dmn:literalExpression id="_C5435F47-D05D-4289-BC59-79FCC17D8922">
       <dmn:text>if SiteCoverageActivities(Activities) then (&#xd;
   if (InnerResidentialArea(SpatialLayers) or MediumDensityResidentialArea(SpatialLayers)) and not(IR3AroValley(SpatialLayers)) and not(IR5OrientalBayHeightArea(SpatialLayers)) then 50 else&#xd;
-  if IR5OrientalBayHeightArea(SpatialLayers) then 100 else&#xd;
   if IR3AroValley(SpatialLayers) or OR4MitchellTownHollowayRoadArea1(SpatialLayers) then 40 else&#xd;
   if OR3Roseneath(SpatialLayers) then 45 else&#xd;
   if OR4MitchellTownHollowayRoadArea2(SpatialLayers) then 30 else&#xd;
@@ -1108,16 +1104,6 @@ Site Coverage 5.3.4.4</dmn:description>
     <dmn:extensionElements/>
     <dmn:type></dmn:type>
   </dmn:knowledgeSource>
-  <dmn:businessKnowledgeModel id="_2F563D6C-1B13-4B5B-8C51-C772894F5C00" name="IR5OrientalBayHeightArea">
-    <dmn:extensionElements/>
-    <dmn:variable id="_C9A3032F-4A37-4CC0-9D95-8C66F27B5932" name="IR5OrientalBayHeightArea" typeRef="boolean"/>
-    <dmn:encapsulatedLogic id="_F93C400B-6AC5-4F23-B110-1264A3A8C4DC" kind="FEEL">
-      <dmn:formalParameter id="_E00D60FF-9C1B-4B5E-82A1-55EAC79693FB" name="spatiallayers" typeRef="Types.SpatialLayers"/>
-      <dmn:literalExpression id="_A098FC40-5356-4A87-A734-B99A5D6EDD21">
-        <dmn:text>list contains(spatiallayers[Type="Special Residential Area"].Title, "IR5 - Oriental Bay Height Area")</dmn:text>
-      </dmn:literalExpression>
-    </dmn:encapsulatedLogic>
-  </dmn:businessKnowledgeModel>
   <dmn:businessKnowledgeModel id="_823DB962-10E0-4DBD-A756-DA42852D7B73" name="IR3AroValley">
     <dmn:extensionElements/>
     <dmn:variable id="_B53B6C21-B7B7-4BBD-9C09-F3FC8DA0939C" name="IR3AroValley" typeRef="boolean"/>
@@ -1377,15 +1363,15 @@ list contains(spatiallayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
             <kie:width>100.0</kie:width>
             <kie:width>100.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_6655FE8C-AE26-41AA-A961-160301810E5B">
+            <kie:width>716.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_C4CB2F78-31D0-4927-8BFD-244D6C0C6436">
             <kie:width>691.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_B1825434-2AF8-43E0-A2BF-85CEDD6ADCE5">
             <kie:width>50.0</kie:width>
             <kie:width>691.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_6655FE8C-AE26-41AA-A961-160301810E5B">
-            <kie:width>716.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_0BB892E2-FF09-4A35-B285-F985BFC39487">
             <kie:width>621.0</kie:width>
@@ -1468,13 +1454,6 @@ list contains(spatiallayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
             <kie:width>174.0</kie:width>
             <kie:width>377.0</kie:width>
             <kie:width>100.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_A098FC40-5356-4A87-A734-B99A5D6EDD21">
-            <kie:width>788.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_F93C400B-6AC5-4F23-B110-1264A3A8C4DC">
-            <kie:width>50.0</kie:width>
-            <kie:width>788.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_F7F90461-3ECA-467F-91C4-395E23545004">
             <kie:width>788.0</kie:width>
@@ -1564,15 +1543,6 @@ list contains(spatiallayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
         <dc:Bounds x="1147" y="70.34210526315792" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_432A657F-4FB5-484C-981B-28DF00E5E9D0" dmnElementRef="_432A657F-4FB5-484C-981B-28DF00E5E9D0" isCollapsed="false">
-        <dmndi:DMNStyle>
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="0" green="0" blue="0"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="95.5981308411215" y="141" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_90D30720-ED05-4C5F-AF23-BA90DA072385" dmnElementRef="_90D30720-ED05-4C5F-AF23-BA90DA072385" isCollapsed="false">
         <dmndi:DMNStyle fontSize="8">
           <dmndi:FillColor red="243" green="229" blue="248"/>
@@ -1598,6 +1568,15 @@ list contains(spatiallayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="828.2990654205607" y="69.68421052631578" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_432A657F-4FB5-484C-981B-28DF00E5E9D0" dmnElementRef="_432A657F-4FB5-484C-981B-28DF00E5E9D0" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="95.5981308411215" y="141" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_FF76BA46-770B-45CE-8B6C-5D6CC0260490" dmnElementRef="_FF76BA46-770B-45CE-8B6C-5D6CC0260490" isCollapsed="false">
@@ -1651,7 +1630,7 @@ list contains(spatiallayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
           <dmndi:StrokeColor red="0" green="0" blue="0"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="658.5981308411215" y="611" width="100" height="50"/>
+        <dc:Bounds x="540" y="609" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_782ADAE1-78B6-47B3-921F-5F4088B177D8" dmnElementRef="_782ADAE1-78B6-47B3-921F-5F4088B177D8" isCollapsed="false">
@@ -1678,7 +1657,7 @@ list contains(spatiallayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
           <dmndi:StrokeColor red="0" green="0" blue="0"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="773.5981308411215" y="611" width="100" height="50"/>
+        <dc:Bounds x="655" y="609" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_4B64BC4B-989A-4600-B4B7-E675772BFB5C" dmnElementRef="_4B64BC4B-989A-4600-B4B7-E675772BFB5C" isCollapsed="false">
@@ -1687,7 +1666,7 @@ list contains(spatiallayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
           <dmndi:StrokeColor red="0" green="0" blue="0"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="995.5981308411215" y="611" width="100" height="50"/>
+        <dc:Bounds x="876.5981308411215" y="609" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_ED3B20C2-6C31-4BFA-9A56-BC6D0CC551B1" dmnElementRef="_ED3B20C2-6C31-4BFA-9A56-BC6D0CC551B1" isCollapsed="false">
@@ -1705,7 +1684,7 @@ list contains(spatiallayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
           <dmndi:StrokeColor red="0" green="0" blue="0"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="886.2990654205607" y="611" width="100" height="50"/>
+        <dc:Bounds x="767" y="609" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_05493EA7-6133-42B8-BDC3-0F645EE56FCD" dmnElementRef="_05493EA7-6133-42B8-BDC3-0F645EE56FCD" isCollapsed="false">
@@ -1789,15 +1768,6 @@ list contains(spatiallayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
         <dc:Bounds x="1147.75" y="1" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_2F563D6C-1B13-4B5B-8C51-C772894F5C00" dmnElementRef="_2F563D6C-1B13-4B5B-8C51-C772894F5C00" isCollapsed="false">
-        <dmndi:DMNStyle>
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="0" green="0" blue="0"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="539" y="611" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_823DB962-10E0-4DBD-A756-DA42852D7B73" dmnElementRef="_823DB962-10E0-4DBD-A756-DA42852D7B73" isCollapsed="false">
         <dmndi:DMNStyle>
           <dmndi:FillColor red="255" green="255" blue="255"/>
@@ -1840,7 +1810,7 @@ list contains(spatiallayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
           <dmndi:StrokeColor red="0" green="0" blue="0"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="1114" y="611" width="100" height="50"/>
+        <dc:Bounds x="995" y="609" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_ACBF9DC9-8567-4C59-A869-BE29AB326CC9" dmnElementRef="_ACBF9DC9-8567-4C59-A869-BE29AB326CC9" isCollapsed="false">
@@ -1939,35 +1909,31 @@ list contains(spatiallayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
         <di:waypoint x="406" y="316"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_D1B12B81-4B6C-4CF5-9DFD-D56AE7688EEF" dmnElementRef="_D1B12B81-4B6C-4CF5-9DFD-D56AE7688EEF">
-        <di:waypoint x="708.5981308411215" y="636"/>
+        <di:waypoint x="590" y="634"/>
         <di:waypoint x="406" y="316"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_DF1349DD-1701-464B-815E-46858174E9F3" dmnElementRef="_DF1349DD-1701-464B-815E-46858174E9F3">
-        <di:waypoint x="823.5981308411215" y="636"/>
+        <di:waypoint x="705" y="634"/>
         <di:waypoint x="406" y="316"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_5BC6A787-CB9E-46C6-A726-0B343F16BFA8" dmnElementRef="_5BC6A787-CB9E-46C6-A726-0B343F16BFA8">
-        <di:waypoint x="936.2990654205607" y="636"/>
+        <di:waypoint x="817" y="634"/>
         <di:waypoint x="406" y="316"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_2E95F7C4-D115-492D-9D99-5EA52E36715D" dmnElementRef="_2E95F7C4-D115-492D-9D99-5EA52E36715D">
-        <di:waypoint x="1045.5981308411215" y="636"/>
+        <di:waypoint x="926.5981308411215" y="634"/>
         <di:waypoint x="406" y="316"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_CF407458-F670-4811-9F46-8CCA9A52FC4D" dmnElementRef="_CF407458-F670-4811-9F46-8CCA9A52FC4D">
-        <di:waypoint x="1164" y="636"/>
-        <di:waypoint x="406" y="316"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_18F22222-0E0D-42FA-B3DF-88546D34386B" dmnElementRef="_18F22222-0E0D-42FA-B3DF-88546D34386B">
-        <di:waypoint x="589" y="636"/>
-        <di:waypoint x="406" y="316"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_ED691F2A-02DC-4348-9B76-CCF7EBBF3ECD" dmnElementRef="_ED691F2A-02DC-4348-9B76-CCF7EBBF3ECD">
-        <di:waypoint x="404.5981308411215" y="257.6842105263158"/>
+        <di:waypoint x="1045" y="634"/>
         <di:waypoint x="406" y="316"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_FFE57772-0EB4-4637-8040-01005FBA598D" dmnElementRef="_FFE57772-0EB4-4637-8040-01005FBA598D">
         <di:waypoint x="145.5981308411215" y="166"/>
+        <di:waypoint x="406" y="316"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_ED691F2A-02DC-4348-9B76-CCF7EBBF3ECD" dmnElementRef="_ED691F2A-02DC-4348-9B76-CCF7EBBF3ECD">
+        <di:waypoint x="404.5981308411215" y="257.6842105263158"/>
         <di:waypoint x="406" y="316"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_D6228A12-F353-43EB-BC5A-B1ADE9444BCA" dmnElementRef="_D6228A12-F353-43EB-BC5A-B1ADE9444BCA">
@@ -2003,11 +1969,11 @@ list contains(spatiallayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
         <di:waypoint x="1038" y="464"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_02D10224-8E5D-44D2-817F-F894966BC33E" dmnElementRef="_02D10224-8E5D-44D2-817F-F894966BC33E">
-        <di:waypoint x="708.5981308411215" y="636"/>
+        <di:waypoint x="590" y="634"/>
         <di:waypoint x="1038" y="464"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_D17B0709-FFE9-41C6-9FE7-31DD6714A346" dmnElementRef="_D17B0709-FFE9-41C6-9FE7-31DD6714A346">
-        <di:waypoint x="823.5981308411215" y="636"/>
+        <di:waypoint x="705" y="634"/>
         <di:waypoint x="1038" y="464"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7BC77D1A-B480-4D38-ACB7-08407494AF62" dmnElementRef="_7BC77D1A-B480-4D38-ACB7-08407494AF62">
@@ -2059,11 +2025,11 @@ list contains(spatiallayers[Type="Mitchelltown Density Areas"].Title, "Mitchellt
         <di:waypoint x="1038" y="294"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7B721F7A-DD17-4B22-9489-F3DE2428B28E" dmnElementRef="_7B721F7A-DD17-4B22-9489-F3DE2428B28E">
-        <di:waypoint x="708.5981308411215" y="636"/>
+        <di:waypoint x="590" y="634"/>
         <di:waypoint x="1038" y="294"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_CA137A05-91F6-4AC4-A799-DB8CAA484254" dmnElementRef="_CA137A05-91F6-4AC4-A799-DB8CAA484254">
-        <di:waypoint x="823.5981308411215" y="636"/>
+        <di:waypoint x="705" y="634"/>
         <di:waypoint x="1038" y="294"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_DA405C12-A61F-48F0-94C2-1CBE8D163024" dmnElementRef="_DA405C12-A61F-48F0-94C2-1CBE8D163024">
