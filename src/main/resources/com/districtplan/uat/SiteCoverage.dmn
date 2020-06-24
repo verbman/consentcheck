@@ -364,7 +364,7 @@
       <dmn:requiredAuthority href="#_05493EA7-6133-42B8-BDC3-0F645EE56FCD"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_C5435F47-D05D-4289-BC59-79FCC17D8922">
-      <dmn:text>if SiteCoverageActivities(Activities) then (&#xd;
+      <dmn:text>if SiteCoverageActivities(Activities) and not(FenceWall(Activities)) then (&#xd;
   if (InnerResidentialArea(SpatialLayers) or MediumDensityResidentialArea(SpatialLayers)) and not(IR3AroValley(SpatialLayers)) and not(IR5OrientalBayHeightArea(SpatialLayers)) then 50 else&#xd;
   if IR3AroValley(SpatialLayers) or OR4MitchellTownHollowayRoadArea1(SpatialLayers) then 40 else&#xd;
   if OR3Roseneath(SpatialLayers) then 45 else&#xd;
@@ -512,13 +512,12 @@ list contains(activities[Noun="residential fence or wall"].Verb, "add to")</dmn:
     <dmn:encapsulatedLogic id="_9AB5DA21-8468-438A-8D91-9B2E625077B8" kind="FEEL">
       <dmn:formalParameter id="_627D5F42-4CB0-46E6-841A-4425919F615C" name="activities" typeRef="Types.Activities"/>
       <dmn:literalExpression id="_0BB892E2-FF09-4A35-B285-F985BFC39487">
-        <dmn:text>not(list contains(activities[Noun="residential fence or wall"].Verb)) and&#xd;
-(list contains(activities[Noun="residential building"].Verb, "build") or &#xd;
+        <dmn:text>list contains(activities[Noun="residential building"].Verb, "build") or &#xd;
 list contains(activities[Noun="residential building"].Verb, "add to") or&#xd;
 list contains(activities[Noun="accessory building"].Verb, "build") or&#xd;
 list contains(activities[Noun="accessory building"].Verb, "add to") or &#xd;
 list contains(activities[Noun="residential structure"].Verb, "build") or&#xd;
-list contains(activities[Noun="residential structure"].Verb, "add to"))&#xd;
+list contains(activities[Noun="residential structure"].Verb, "add to")&#xd;
 &#xd;
 &#xd;
 &#xd;
