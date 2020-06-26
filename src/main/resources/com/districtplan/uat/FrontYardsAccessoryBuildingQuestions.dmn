@@ -148,9 +148,6 @@ no</dmn:allowedAnswers>
     <dmn:informationRequirement id="_4242F48B-6575-461D-8220-818782F6B4F6">
       <dmn:requiredDecision href="#_82B3654B-4FBE-4ABB-B4C3-B8B159BD12AB"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_6D001008-CA1F-4029-AFF3-0C6248CD5FFA">
-      <dmn:requiredInput href="#_3D7FE2C3-569A-4E39-A81B-D00596D24EDD"/>
-    </dmn:informationRequirement>
     <dmn:informationRequirement id="_800CA84E-96B6-4159-83B2-82F5CBD1C093">
       <dmn:requiredInput href="#_D5A135DD-D0D3-4FB1-A87B-D141B31C387F"/>
     </dmn:informationRequirement>
@@ -537,16 +534,18 @@ no</dmn:allowedAnswers>
     <dmn:informationRequirement id="_C4A08636-405F-43D9-ACDF-071D8C20D388">
       <dmn:requiredDecision href="#_82B3654B-4FBE-4ABB-B4C3-B8B159BD12AB"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_1E5915E4-50D0-4C70-91AE-6EC5C32F6070">
-      <dmn:requiredInput href="#_D6E96C90-7B9A-4F7A-B0F7-F14EE1992232"/>
-    </dmn:informationRequirement>
     <dmn:informationRequirement id="_ADBDC62A-8142-42BB-9335-C5EC8A26FBD9">
       <dmn:requiredInput href="#_D5A135DD-D0D3-4FB1-A87B-D141B31C387F"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_C4D065F4-FD9F-4914-ACEF-B2F31EB47E4B">
+      <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_D67F88CC-5A33-4531-AAF3-C832B81D6800">
       <dmn:text>if list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential") and&#xd;
 AccessoryBuildingStructureFrontYard_Value and&#xd;
-(CuldesacDeadendSite_Value = null) then (AccessoryBuildingStructureFrontYard + 1) else 0&#xd;
+not(list contains(Activities_Value[Noun="residential building"].Verb, "build")) and &#xd;
+not(list contains(Activities_Value[Noun="residential building"].Verb, "add to"))&#xd;
+then (AccessoryBuildingStructureFrontYard + 1) else 0&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -1051,10 +1050,6 @@ ProposedSetBackAccessoryBuildingRoad1 + 1 else 0&#xd;
         <di:waypoint x="695" y="193"/>
         <di:waypoint x="556" y="289"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_6D001008-CA1F-4029-AFF3-0C6248CD5FFA" dmnElementRef="_6D001008-CA1F-4029-AFF3-0C6248CD5FFA">
-        <di:waypoint x="233.59813084112147" y="477"/>
-        <di:waypoint x="556" y="289"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_800CA84E-96B6-4159-83B2-82F5CBD1C093" dmnElementRef="_800CA84E-96B6-4159-83B2-82F5CBD1C093">
         <di:waypoint x="1132" y="396.6842105263158"/>
         <di:waypoint x="556" y="289"/>
@@ -1223,12 +1218,12 @@ ProposedSetBackAccessoryBuildingRoad1 + 1 else 0&#xd;
         <di:waypoint x="695" y="193"/>
         <di:waypoint x="864" y="263"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_1E5915E4-50D0-4C70-91AE-6EC5C32F6070" dmnElementRef="_1E5915E4-50D0-4C70-91AE-6EC5C32F6070">
-        <di:waypoint x="1139" y="479"/>
-        <di:waypoint x="864" y="313"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_ADBDC62A-8142-42BB-9335-C5EC8A26FBD9" dmnElementRef="_ADBDC62A-8142-42BB-9335-C5EC8A26FBD9">
         <di:waypoint x="1132" y="396.6842105263158"/>
+        <di:waypoint x="864" y="288"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_C4D065F4-FD9F-4914-ACEF-B2F31EB47E4B" dmnElementRef="_C4D065F4-FD9F-4914-ACEF-B2F31EB47E4B">
+        <di:waypoint x="249.59813084112147" y="99.68421052631578"/>
         <di:waypoint x="864" y="288"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_A96E0525-3670-4141-99B7-307ACCAB9750" dmnElementRef="_A96E0525-3670-4141-99B7-307ACCAB9750">
