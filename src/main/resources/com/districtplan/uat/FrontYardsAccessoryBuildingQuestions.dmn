@@ -583,10 +583,14 @@ no</dmn:allowedAnswers>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_D67F88CC-5A33-4531-AAF3-C832B81D6800">
       <dmn:text>if list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential") and&#xd;
-AccessoryBuildingStructureFrontYard_Value and&#xd;
-not(list contains(Activities_Value[Noun="residential building"].Verb, "build")) and &#xd;
-not(list contains(Activities_Value[Noun="residential building"].Verb, "add to"))&#xd;
-then (AccessoryBuildingStructureFrontYard + 1) else 0&#xd;
+AccessoryBuildingStructureFrontYard_Value then &#xd;
+  if (list contains(Activities_Value[Noun="residential structure"].Verb, "build") or&#xd;
+  list contains(Activities_Value[Noun="residential structure"].Verb, "add to")) and&#xd;
+  (not(list contains(Activities_Value[Noun="accessory building"].Verb, "build")) and  &#xd;
+  not(list contains(Activities_Value[Noun="accessory building"].Verb, "add to"))) then 0 else&#xd;
+  if not(list contains(Activities_Value[Noun="residential building"].Verb, "build")) and &#xd;
+  not(list contains(Activities_Value[Noun="residential building"].Verb, "add to"))&#xd;
+  then (AccessoryBuildingStructureFrontYard + 1) else 0&#xd;
 &#xd;
 &#xd;
 &#xd;
