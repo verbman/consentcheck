@@ -154,11 +154,16 @@ no</dmn:allowedAnswers>
     <dmn:informationRequirement id="_800CA84E-96B6-4159-83B2-82F5CBD1C093">
       <dmn:requiredInput href="#_D5A135DD-D0D3-4FB1-A87B-D141B31C387F"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_5613053F-5532-4A08-A1A7-1914283FAFDE">
+      <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_B875ED68-83DB-4215-B0A7-A5EB937446DA">
       <dmn:text>if (list contains(SpatialLayers_Value[Type="Residential"].Title, "Inner Residential") or&#xd;
 list contains(SpatialLayers_Value[Type="Residential"].Title, "Medium Density Residential Area")) and&#xd;
 AccessoryBuildingStructureFrontYard_Value and&#xd;
-(CornerSite_Value = null) then (AccessoryBuildingStructureFrontYard + 1) else (&#xd;
+(not(list contains(Activities_Value[Noun="accessory building"].Verb, "build")) or &#xd;
+not(list contains(Activities_Value[Noun="accessory building"].Verb, "add to")))&#xd;
+then (AccessoryBuildingStructureFrontYard + 1) else (&#xd;
   if list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential") and &#xd;
   not(CuldesacDeadendSite_Value)&#xd;
   then (CuldesacDeadendSite + 1) else 0&#xd;
@@ -749,15 +754,6 @@ ProposedSetBackAccessoryBuildingRoad1 + 1 else 0&#xd;
         <dc:Bounds x="645" y="86" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_8A396A47-8B3E-45D5-9845-AD1B882C7D50" dmnElementRef="_8A396A47-8B3E-45D5-9845-AD1B882C7D50" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="137" green="203" blue="200"/>
-          <dmndi:StrokeColor red="129" green="178" blue="177"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="1092" y="571" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_1E4429BD-6449-4AD7-87D1-70F22D54CA4D" dmnElementRef="_1E4429BD-6449-4AD7-87D1-70F22D54CA4D" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="238" green="238" blue="238"/>
@@ -774,6 +770,15 @@ ProposedSetBackAccessoryBuildingRoad1 + 1 else 0&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="183.59813084112147" y="452" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_8A396A47-8B3E-45D5-9845-AD1B882C7D50" dmnElementRef="_8A396A47-8B3E-45D5-9845-AD1B882C7D50" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="1092" y="571" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_2E8B5249-BA14-485A-85A0-AFCE8C2AA1B7" dmnElementRef="_2E8B5249-BA14-485A-85A0-AFCE8C2AA1B7" isCollapsed="false">
@@ -1050,6 +1055,10 @@ ProposedSetBackAccessoryBuildingRoad1 + 1 else 0&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_800CA84E-96B6-4159-83B2-82F5CBD1C093" dmnElementRef="_800CA84E-96B6-4159-83B2-82F5CBD1C093">
         <di:waypoint x="1132" y="396.6842105263158"/>
+        <di:waypoint x="556" y="289"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_5613053F-5532-4A08-A1A7-1914283FAFDE" dmnElementRef="_5613053F-5532-4A08-A1A7-1914283FAFDE">
+        <di:waypoint x="249.59813084112147" y="99.68421052631578"/>
         <di:waypoint x="556" y="289"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_051A805A-304F-4E21-85F2-112F164F47BF" dmnElementRef="_051A805A-304F-4E21-85F2-112F164F47BF">
