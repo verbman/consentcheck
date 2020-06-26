@@ -483,14 +483,21 @@ not(S5.6.2.2.1Met) then&#xd;
     <dmn:informationRequirement id="_E5418F7E-EC27-4B54-B494-0DC0C4823085">
       <dmn:requiredDecision href="#_82B3654B-4FBE-4ABB-B4C3-B8B159BD12AB"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_FDFC6BEE-9C44-46B4-833F-C00BC5444EF5">
+      <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_F955AD13-AFE4-4812-96DE-989DCD918493">
       <dmn:text>if (CornerSite > 0) and not(CornerSite_Value) then &#xd;
 (CornerSite + 1) else (&#xd;
-  if (CornerSite &lt; 0) and not(CornerSite_Value) then&#xd;
+  if (not(CornerSite_Value) and&#xd;
+  list contains(Activities_Value[Noun="residential building"].Verb, "build") or &#xd;
+  list contains(Activities_Value[Noun="residential building"].Verb, "add to") then&#xd;
   (AccessoryBuildingStructureFrontYard + 1) else (&#xd;
-    if (CuldesacDeadendSite > 0) and CuldesacDeadendSite_Value &#xd;
+    if (CuldesacDeadendSite > 0) and CuldesacDeadendSite_Value&#xd;
     then (CuldesacDeadendSite + 1) else (&#xd;
-      if (CuldesacDeadendSite &lt; 0) and CuldesacDeadendSite_Value then&#xd;
+      if CuldesacDeadendSite_Value and&#xd;
+      list contains(Activities_Value[Noun="residential building"].Verb, "build") or &#xd;
+      list contains(Activities_Value[Noun="residential building"].Verb, "add to") then&#xd;
       (AccessoryBuildingStructureFrontYard + 1) else 0&#xd;
     )&#xd;
   )&#xd;
@@ -1217,6 +1224,10 @@ ProposedSetBackAccessoryBuildingRoad1 + 1 else 0&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_E5418F7E-EC27-4B54-B494-0DC0C4823085" dmnElementRef="_E5418F7E-EC27-4B54-B494-0DC0C4823085">
         <di:waypoint x="695" y="193"/>
+        <di:waypoint x="694" y="398"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_FDFC6BEE-9C44-46B4-833F-C00BC5444EF5" dmnElementRef="_FDFC6BEE-9C44-46B4-833F-C00BC5444EF5">
+        <di:waypoint x="249.59813084112147" y="99.68421052631578"/>
         <di:waypoint x="694" y="398"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_024ECE0D-1A0C-406F-A088-FF2F13915A5B" dmnElementRef="_024ECE0D-1A0C-406F-A088-FF2F13915A5B">
