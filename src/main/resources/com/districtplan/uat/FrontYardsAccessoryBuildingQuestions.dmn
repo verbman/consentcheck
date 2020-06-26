@@ -472,10 +472,15 @@ not(S5.6.2.2.1Met) then&#xd;
     <dmn:informationRequirement id="_00DD783D-370F-4306-B8DE-4DEE87A2C0C3">
       <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_DA604D3C-436A-49F9-AE59-F469B548A327">
+      <dmn:requiredInput href="#_110689B3-7F3A-4421-BB20-67677E9B15C5"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_B67CA254-44CD-4494-9719-C887E3EBE42E">
-      <dmn:text>if (CornerSite > 0) and CornerSite_Value then &#xd;
+      <dmn:text>if not(list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential")) and&#xd;
+(CornerSite > 0) and CornerSite_Value then &#xd;
 (CornerSite + 1) else (&#xd;
-  if CornerSite_Value and&#xd;
+  if not(list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential")) and&#xd;
+  CornerSite_Value and&#xd;
   list contains(Activities_Value[Noun="residential building"].Verb, "build") or &#xd;
   list contains(Activities_Value[Noun="residential building"].Verb, "add to") then&#xd;
   AccessoryBuildingStructureFrontYard + 1 else 0&#xd;
@@ -1252,6 +1257,10 @@ ProposedSetBackAccessoryBuildingRoad1 + 1 else 0&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_00DD783D-370F-4306-B8DE-4DEE87A2C0C3" dmnElementRef="_00DD783D-370F-4306-B8DE-4DEE87A2C0C3">
         <di:waypoint x="249.59813084112147" y="99.68421052631578"/>
+        <di:waypoint x="440" y="398"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_DA604D3C-436A-49F9-AE59-F469B548A327" dmnElementRef="_DA604D3C-436A-49F9-AE59-F469B548A327">
+        <di:waypoint x="240.59813084112147" y="348"/>
         <di:waypoint x="440" y="398"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_DACE2996-B5A0-49E2-B0A4-8CDCE0E0E7F0" dmnElementRef="_DACE2996-B5A0-49E2-B0A4-8CDCE0E0E7F0">
