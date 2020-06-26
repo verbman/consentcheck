@@ -161,10 +161,12 @@ no</dmn:allowedAnswers>
       <dmn:text>if (list contains(SpatialLayers_Value[Type="Residential"].Title, "Inner Residential") or&#xd;
 list contains(SpatialLayers_Value[Type="Residential"].Title, "Medium Density Residential Area")) and&#xd;
 AccessoryBuildingStructureFrontYard_Value and&#xd;
-(not(list contains(Activities_Value[Noun="residential building"].Verb, "build")) or &#xd;
-not(list contains(Activities_Value[Noun="residential building"].Verb, "add to")))&#xd;
+not(list contains(Activities_Value[Noun="residential building"].Verb, "build")) and &#xd;
+not(list contains(Activities_Value[Noun="residential building"].Verb, "add to"))&#xd;
 then (AccessoryBuildingStructureFrontYard + 1) else (&#xd;
   if list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential") and &#xd;
+  not(list contains(Activities_Value[Noun="residential building"].Verb, "build")) and &#xd;
+  not(list contains(Activities_Value[Noun="residential building"].Verb, "add to")) and&#xd;
   not(CuldesacDeadendSite_Value)&#xd;
   then (CuldesacDeadendSite + 1) else 0&#xd;
 )&#xd;
