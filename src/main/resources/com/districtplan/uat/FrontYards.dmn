@@ -713,6 +713,27 @@ list contains(activities[Noun="residential structure"].Verb, "add to")&#xd;
     <dmn:informationRequirement id="_281B7B56-A899-45D5-A4D1-2A92042F10A6">
       <dmn:requiredInput href="#_DC6C2897-5BBB-401D-8750-35BADD7997ED"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_DB1CC1E3-9026-410A-A28B-7A44C65BF9C5">
+      <dmn:requiredInput href="#_D36E7672-C7E0-47B2-911D-8631BDD8E565"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_15828228-A19A-4FAA-95CE-1EB5B2723017">
+      <dmn:requiredInput href="#_68A00A82-BBB9-4360-8102-70AF1E808B5E"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_F146F328-1B55-4E02-BC98-B392BE375F2A">
+      <dmn:requiredInput href="#_A88EF974-80D1-48B9-BC0D-4DB73371FE39"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_5A753258-6FA6-451C-84E0-C870B8028913">
+      <dmn:requiredInput href="#_32FF65AF-991F-4799-9BEF-5A57FDF5CEDD"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_702F40AE-4BFA-423D-B749-8105AFE92E99">
+      <dmn:requiredInput href="#_746033CD-EE08-4503-8E83-3A0FC53E1DD7"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_BF86001A-5111-4537-9317-385F9C54B173">
+      <dmn:requiredInput href="#_EFCED87C-1336-4365-B605-15628891D04C"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_5A00A7D4-2125-4A9A-9C91-6A4BAA0A375D">
+      <dmn:requiredInput href="#_6BEBF08A-A607-4F64-84B4-AD8934B77AB2"/>
+    </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_F6512480-F853-4D0B-8654-C5D58547625F">
       <dmn:requiredKnowledge href="#_C330E371-8CCA-44B6-841E-C4A6CE9A77F8"/>
     </dmn:knowledgeRequirement>
@@ -739,9 +760,30 @@ list contains(activities[Noun="residential structure"].Verb, "add to")&#xd;
  if MediumDensityResidentialArea(SpatialLayers) then 3 else&#xd;
  if InnerResidentialArea(SpatialLayers) and not(IR4MtCookNewtownBerhampore(SpatialLayers)) and not(IR5OrientalBayHeightArea(SpatialLayers)) then 1 else&#xd;
  if IR4MtCookNewtownBerhampore(SpatialLayers) then 3 else&#xd;
- if OuterResidentialArea(SpatialLayers) then 3 else&#xd;
- if ProposedSetBack &lt;= 3 then 3 else&#xd;
- if ProposedSetBack > 3 then (10 - (MinimumWidthOfRoad/2)) else 0&#xd;
+ if OuterResidentialArea(SpatialLayers) and&#xd;
+ ProposedSetBack &lt;= 3 then 3 else&#xd;
+ if OuterResidentialArea(SpatialLayers) and&#xd;
+ ProposedSetBack > 3 then (10 - (MinimumWidthOfRoad/2)) else&#xd;
+ if OuterResidentialArea(SpatialLayers) and&#xd;
+ ProposedSetBackRoad1 &lt;= 3 then 3 else&#xd;
+ if OuterResidentialArea(SpatialLayers) and&#xd;
+ ProposedSetBackAccessoryRoad1 > 3 then (10 - (MinimumWidthOfRoad1/2)) else&#xd;
+ if OuterResidentialArea(SpatialLayers) and&#xd;
+ ProposedSetBackRoad2 &lt;= 3 then 3 else&#xd;
+ if OuterResidentialArea(SpatialLayers) and&#xd;
+ ProposedSetBackRoad2 > 3 then (10 - (MinimumWidthOfRoad2/2)) else 0&#xd;
+ if OuterResidentialArea(SpatialLayers) and&#xd;
+ ProposedSetBackAccessoryBuilding &lt;= 3 then 3 else&#xd;
+ if OuterResidentialArea(SpatialLayers) and&#xd;
+ ProposedSetBackAccessoryBuilding > 3 then (10 - (MinimumWidthOfRoad/2)) else&#xd;
+ if OuterResidentialArea(SpatialLayers) and&#xd;
+ ProposedSetBackAccessoryBuildingRoad1 &lt;= 3 then 3 else&#xd;
+ if OuterResidentialArea(SpatialLayers) and&#xd;
+ ProposedSetBackAccessoryBuildingRoad1 > 3 then (10 - (MinimumWidthOfRoad1/2)) else&#xd;
+ if OuterResidentialArea(SpatialLayers) and&#xd;
+ ProposedSetBackAccessoryBuildingRoad2 &lt;= 3 then 3 else&#xd;
+ if OuterResidentialArea(SpatialLayers) and&#xd;
+ ProposedSetBackAccessoryBuildingRoad2 > 3 then (10 - (MinimumWidthOfRoad2/2)) else 0&#xd;
 else 0&#xd;
  &#xd;
 &#xd;
@@ -1497,6 +1539,34 @@ not(AdjoiningBuildingLineAccessoryBuilding)</dmn:text>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_281B7B56-A899-45D5-A4D1-2A92042F10A6" dmnElementRef="_281B7B56-A899-45D5-A4D1-2A92042F10A6">
         <di:waypoint x="749.2990654205607" y="222.34210526315792"/>
+        <di:waypoint x="458" y="162"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_DB1CC1E3-9026-410A-A28B-7A44C65BF9C5" dmnElementRef="_DB1CC1E3-9026-410A-A28B-7A44C65BF9C5">
+        <di:waypoint x="749.2990654205607" y="285.6842105263158"/>
+        <di:waypoint x="458" y="162"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_15828228-A19A-4FAA-95CE-1EB5B2723017" dmnElementRef="_15828228-A19A-4FAA-95CE-1EB5B2723017">
+        <di:waypoint x="1052.2990654205607" y="89.6842105263158"/>
+        <di:waypoint x="458" y="162"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_F146F328-1B55-4E02-BC98-B392BE375F2A" dmnElementRef="_F146F328-1B55-4E02-BC98-B392BE375F2A">
+        <di:waypoint x="1171" y="91.6842105263158"/>
+        <di:waypoint x="458" y="162"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_5A753258-6FA6-451C-84E0-C870B8028913" dmnElementRef="_5A753258-6FA6-451C-84E0-C870B8028913">
+        <di:waypoint x="1056.2990654205607" y="150.6842105263158"/>
+        <di:waypoint x="458" y="162"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_702F40AE-4BFA-423D-B749-8105AFE92E99" dmnElementRef="_702F40AE-4BFA-423D-B749-8105AFE92E99">
+        <di:waypoint x="1173" y="151.3421052631579"/>
+        <di:waypoint x="458" y="162"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_BF86001A-5111-4537-9317-385F9C54B173" dmnElementRef="_BF86001A-5111-4537-9317-385F9C54B173">
+        <di:waypoint x="941.2990654205607" y="148.68421052631578"/>
+        <di:waypoint x="458" y="162"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_5A00A7D4-2125-4A9A-9C91-6A4BAA0A375D" dmnElementRef="_5A00A7D4-2125-4A9A-9C91-6A4BAA0A375D">
+        <di:waypoint x="939.2990654205607" y="87.6842105263158"/>
         <di:waypoint x="458" y="162"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7A35ED3B-9029-41B7-A611-30CB6F65CFB1" dmnElementRef="_7A35ED3B-9029-41B7-A611-30CB6F65CFB1">
