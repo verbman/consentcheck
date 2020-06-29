@@ -732,13 +732,15 @@ list contains(activities[Noun="residential structure"].Verb, "add to")&#xd;
       <dmn:requiredAuthority href="#_D17D616C-6FB5-4145-B7CE-5972F143BE34"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_AE2E567C-3DDB-4B0B-AF90-4DEE389C9F94">
-      <dmn:text>if SitePosition="front" and FrontYardsActivities(Activities) then (&#xd;
+      <dmn:text>if SitePosition="front" and FrontYardsActivities(Activities) then&#xd;
  if MediumDensityResidentialArea(SpatialLayers) then 3 else&#xd;
  if InnerResidentialArea(SpatialLayers) and not(IR4MtCookNewtownBerhampore(SpatialLayers)) and not(IR5OrientalBayHeightArea(SpatialLayers)) then 1 else&#xd;
  if IR4MtCookNewtownBerhampore(SpatialLayers) then 3 else&#xd;
- if OuterResidentialArea(SpatialLayers) then 3 else&#xd;
- if OuterResidentialArea(SpatialLayers) then (10 - (MinimumWidthOfRoad/2)) else 0&#xd;
- ) else 0&#xd;
+ if OuterResidentialArea(SpatialLayers) then &#xd;
+ 3 else&#xd;
+ if ProposedSetBack &lt;= 3 then 3 else&#xd;
+ if ProposedSetBack > 3 then (10 - (MinimumWidthOfRoad/2)) else 0&#xd;
+else 0&#xd;
  &#xd;
 &#xd;
 &#xd;
