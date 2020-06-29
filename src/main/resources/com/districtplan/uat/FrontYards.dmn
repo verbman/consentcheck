@@ -338,6 +338,9 @@ Residential buildings, accessory buildings and residential structures subject to
     <dmn:informationRequirement id="_28638D85-50D5-48F0-A5A7-40E010CCE93A">
       <dmn:requiredInput href="#_2B4F2783-3512-476F-995F-34594DF47B03"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_D469F717-8A28-4001-A965-762C13EEDFDA">
+      <dmn:requiredInput href="#_FB9E83E6-CFD5-44F7-AABE-922F05E53AA4"/>
+    </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_F6512480-F853-4D0B-8654-C5D58547625F">
       <dmn:requiredKnowledge href="#_C330E371-8CCA-44B6-841E-C4A6CE9A77F8"/>
     </dmn:knowledgeRequirement>
@@ -366,7 +369,8 @@ not(CuldesacDeadendSite) then&#xd;
  if MediumDensityResidentialArea(SpatialLayers) then 3 else&#xd;
  if InnerResidentialArea(SpatialLayers) and not(IR4MtCookNewtownBerhampore(SpatialLayers)) and not(IR5OrientalBayHeightArea(SpatialLayers)) then 1 else&#xd;
  if IR4MtCookNewtownBerhampore(SpatialLayers) then 3 else&#xd;
- if OuterResidentialArea(SpatialLayers) then&#xd;
+ if OuterResidentialArea(SpatialLayers) and&#xd;
+ not(CornerSite) then&#xd;
    if ProposedSetBack >= 3 then 3 else&#xd;
    if ProposedSetBack &lt; 3 then (10 - (MinimumWidthOfRoad/2)) else&#xd;
    if ProposedSetBackAccessoryBuilding >= 3 then 3 else&#xd;
@@ -1686,6 +1690,10 @@ not(AdjoiningBuildingLineAccessoryBuilding)</dmn:text>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_28638D85-50D5-48F0-A5A7-40E010CCE93A" dmnElementRef="_28638D85-50D5-48F0-A5A7-40E010CCE93A">
         <di:waypoint x="151.29906542056074" y="435"/>
+        <di:waypoint x="463" y="120"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_D469F717-8A28-4001-A965-762C13EEDFDA" dmnElementRef="_D469F717-8A28-4001-A965-762C13EEDFDA">
+        <di:waypoint x="152.5981308411215" y="519.3421052631579"/>
         <di:waypoint x="463" y="120"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7A35ED3B-9029-41B7-A611-30CB6F65CFB1" dmnElementRef="_7A35ED3B-9029-41B7-A611-30CB6F65CFB1">
