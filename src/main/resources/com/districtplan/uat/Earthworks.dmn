@@ -247,7 +247,7 @@ list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) the
 (not(list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge"))) and&#xd;
 (list contains(SpatialLayers[Type="Residential"].Title, "Inner Residential") or&#xd;
 list contains(SpatialLayers[Type="Residential"].Title, "Medium Density Residential Area") or&#xd;
-list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) then "building consent required" else ""&#xd;
+list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) then "building consent obtained" else ""&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -319,12 +319,9 @@ list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) the
     <dmn:informationRequirement id="_F0F6B7A0-992A-4966-B151-41E46D8D0FC1">
       <dmn:requiredInput href="#_C389C7B3-6F57-456E-8D44-E4DDE2334FD9"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_E44BBFD6-92B7-4B54-B99B-919B2DBD2A44">
-      <dmn:requiredDecision href="#_742BFD9B-8E81-401A-8066-0F4B4644B3EE"/>
-    </dmn:informationRequirement>
     <dmn:literalExpression id="_445C239C-3B3B-443A-803F-CA6D848488EF">
-      <dmn:text>if R30.1.1.1_b_i > 0 and CutFillHeightDepth > R30.1.1.1_a_i and CutFillHeightDepth &lt;= R30.1.1.1_b_i then true else&#xd;
-  if R30.1.1.1_b_i = 0 or CutFillHeightDepth &lt;= R30.1.1.1_a_i then null else false&#xd;
+      <dmn:text>if R30.1.1.1_b_i > 0 and CutFillHeightDepth &lt;= R30.1.1.1_b_i then true else&#xd;
+  if R30.1.1.1_b_i = 0 then null else false&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -556,7 +553,7 @@ list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edg
       <dmn:requiredDecision href="#_7D881438-EC9D-4084-B9D2-BA8883E142BD"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_F043E567-9552-4D6A-853B-00565F1F5308">
-      <dmn:text>if R30.1.2.1_b_iMet != null and R30.1.2.1_b_ii = "building consent required" and EarthworksBuildingConsentObtained then true else&#xd;
+      <dmn:text>if R30.1.2.1_b_iMet != null and R30.1.2.1_b_ii = "building consent obtained" and EarthworksBuildingConsentObtained then true else&#xd;
   if R30.1.2.1_b_ii = "" or R30.1.2.1_b_iMet = null then null else false&#xd;
 &#xd;
 &#xd;
@@ -3432,7 +3429,7 @@ not(HazardFloodingArea(SpatialLayers)) then true else&#xd;
       <dmn:requiredDecision href="#_0CAAAB71-0BBE-4E20-8B65-F0DF0972EB1E"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_54F305BF-F16C-4769-B748-93B7F0298EE2">
-      <dmn:text>if R30.1.1.1_b_iMet != null and R30.1.1.1_b_ii = "building consent required" and EarthworksBuildingConsentObtained then true else&#xd;
+      <dmn:text>if R30.1.1.1_b_iMet != null and R30.1.1.1_b_ii = "building consent obtained" and EarthworksBuildingConsentObtained then true else&#xd;
   if R30.1.1.1_b_ii = "" or R30.1.1.1_b_iMet = null then null else false&#xd;
 &#xd;
 &#xd;
@@ -3463,12 +3460,9 @@ not(HazardFloodingArea(SpatialLayers)) then true else&#xd;
     <dmn:informationRequirement id="_34824880-F128-4B25-A6D3-F285B282FBF7">
       <dmn:requiredInput href="#_C389C7B3-6F57-456E-8D44-E4DDE2334FD9"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_CEF1BF89-8734-488A-8E7D-B737E462B13D">
-      <dmn:requiredDecision href="#_DB51F458-C77D-482F-B08C-09BB8148818A"/>
-    </dmn:informationRequirement>
     <dmn:literalExpression id="_8233A3ED-976E-49B3-BBC7-58BEE1823689">
-      <dmn:text>if R30.1.2.1_b_i > 0 and CutFillHeightDepth > R30.1.2.1_a_i and CutFillHeightDepth &lt;= R30.1.2.1_b_i then true else&#xd;
-  if R30.1.2.1_b_i = 0 or CutFillHeightDepth &lt;= R30.1.2.1_a_i then null else false&#xd;
+      <dmn:text>if R30.1.2.1_b_i > 0 and CutFillHeightDepth &lt;= R30.1.2.1_b_i then true else&#xd;
+  if R30.1.2.1_b_i = 0 then null else false&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -3495,7 +3489,7 @@ not(HazardFloodingArea(SpatialLayers)) then true else&#xd;
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_D3436901-AB02-4FDD-ACDE-3966BDBCD772">
       <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
-list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge") then "building consent required" else ""&#xd;
+list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge") then "building consent obtained" else ""&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -5257,7 +5251,7 @@ list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edg
             <kie:width>728.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_5F10F511-AA2D-402D-9F47-A690ED72E912">
-            <kie:width>631.0</kie:width>
+            <kie:width>1003.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_E194EAED-711E-457E-8D8E-30BC85B71960">
             <kie:width>728.0</kie:width>
@@ -5422,7 +5416,7 @@ list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edg
             <kie:width>1007.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_54F305BF-F16C-4769-B748-93B7F0298EE2">
-            <kie:width>830.0</kie:width>
+            <kie:width>1164.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_8233A3ED-976E-49B3-BBC7-58BEE1823689">
             <kie:width>885.0</kie:width>
@@ -6794,10 +6788,6 @@ list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edg
         <di:waypoint x="933" y="83.68421052631578"/>
         <di:waypoint x="1165" y="308"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_E44BBFD6-92B7-4B54-B99B-919B2DBD2A44" dmnElementRef="_E44BBFD6-92B7-4B54-B99B-919B2DBD2A44">
-        <di:waypoint x="759" y="70"/>
-        <di:waypoint x="1165" y="308"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_E96358D1-77B0-470A-9D41-2753FAF7E115" dmnElementRef="_E96358D1-77B0-470A-9D41-2753FAF7E115">
         <di:waypoint x="759" y="70"/>
         <di:waypoint x="1113" y="70"/>
@@ -7276,10 +7266,6 @@ list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edg
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_34824880-F128-4B25-A6D3-F285B282FBF7" dmnElementRef="_34824880-F128-4B25-A6D3-F285B282FBF7">
         <di:waypoint x="933" y="83.68421052631578"/>
-        <di:waypoint x="1165" y="1182"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_CEF1BF89-8734-488A-8E7D-B737E462B13D" dmnElementRef="_CEF1BF89-8734-488A-8E7D-B737E462B13D">
-        <di:waypoint x="759" y="942"/>
         <di:waypoint x="1165" y="1182"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_DF51C6C0-1E04-4CE9-B948-0587C7519E02" dmnElementRef="_DF51C6C0-1E04-4CE9-B948-0587C7519E02">
