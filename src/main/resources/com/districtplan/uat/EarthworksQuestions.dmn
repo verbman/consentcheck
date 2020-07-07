@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://districtplan.wellington.govt.nz/83/dmn/earthworks/questions1" xmlns:included1="https://districtplan.wellington.govt.nz/83/dmn/types" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_280DDB79-6DD6-4E8C-A27F-0A60C895B3AD" name="EarthworksQuestions1" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://districtplan.wellington.govt.nz/83/dmn/earthworks/questions1">
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://districtplan.wellington.govt.nz/83/dmn/earthworks/questions1" xmlns:included1="https://districtplan.wellington.govt.nz/83/dmn/types" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_280DDB79-6DD6-4E8C-A27F-0A60C895B3AD" name="EarthworksQuestions" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://districtplan.wellington.govt.nz/83/dmn/earthworks/questions">
   <dmn:extensionElements/>
   <dmn:import id="_86F881FA-8FF2-49E0-BD45-701B9D275B67" name="Types" namespace="https://districtplan.wellington.govt.nz/83/dmn/types" locationURI="Types.dmn" importType="http://www.omg.org/spec/DMN/20180521/MODEL/"/>
   <dmn:decision id="_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE" name="CutFillHeightDepth">
@@ -35,37 +35,9 @@ Activities + 1 else 0</dmn:text>
     <dmn:informationRequirement id="_D07B75C2-EEF1-44FD-9F74-C5510A98BDF2">
       <dmn:requiredDecision href="#_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9"/>
     </dmn:informationRequirement>
-    <dmn:decisionTable id="_E2B67A84-7766-44DF-8926-EFAD1A83C5E0" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
-      <dmn:input id="_B55D89F6-DBCF-4BC8-B0FF-FFBB96146B6C">
-        <dmn:inputExpression id="_990EA7F1-8CBB-42CE-8FC6-862B5BA94465" typeRef="number">
-          <dmn:text>CutFillHeightDepth_Value</dmn:text>
-        </dmn:inputExpression>
-      </dmn:input>
-      <dmn:output id="_00BEC369-CA4E-4F1F-947B-837B084F0F89"/>
-      <dmn:annotation name=""/>
-      <dmn:rule id="_F89A52D9-4C97-4828-BD00-13B1F22F610C">
-        <dmn:inputEntry id="_894610C6-16FB-4332-B62C-1A4A9913C1AA">
-          <dmn:text>&lt;=1.5</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_8DE7ED6F-F2C8-45F9-9CD2-C6843E703F1E">
-          <dmn:text>GroundSlope34 + 1</dmn:text>
-        </dmn:outputEntry>
-        <dmn:annotationEntry>
-          <dmn:text></dmn:text>
-        </dmn:annotationEntry>
-      </dmn:rule>
-      <dmn:rule id="_7E590BE6-5D99-4439-B228-736422A77DB4">
-        <dmn:inputEntry id="_48A43E37-1035-459B-B09E-3E1C9A8081A7">
-          <dmn:text>&gt;1.5</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_E531EFEF-CE37-4D69-9F26-4296CDD9462A">
-          <dmn:text>0</dmn:text>
-        </dmn:outputEntry>
-        <dmn:annotationEntry>
-          <dmn:text></dmn:text>
-        </dmn:annotationEntry>
-      </dmn:rule>
-    </dmn:decisionTable>
+    <dmn:literalExpression id="_B020A5F8-5DE1-4616-9F6B-D4FF4C7F967F">
+      <dmn:text>if GroundSlope34 > 0 then GroundSlope34 + 1 else 0</dmn:text>
+    </dmn:literalExpression>
   </dmn:decision>
   <dmn:inputData id="_62F984C7-9B89-4F78-A53C-989DEE7724AE" name="SpatialLayers_Value">
     <dmn:extensionElements/>
@@ -80,37 +52,9 @@ Activities + 1 else 0</dmn:text>
     <dmn:informationRequirement id="_01708F95-0CEF-43D3-B303-A6787E1C1B63">
       <dmn:requiredDecision href="#_9D696667-91E0-4BD5-B073-F0B78ED96F80"/>
     </dmn:informationRequirement>
-    <dmn:decisionTable id="_F6274CB7-B37E-43DC-B39B-9D94F1EE7E5A" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
-      <dmn:input id="_8BB55323-E027-4E31-BCB0-32A41531950B">
-        <dmn:inputExpression id="_0B44EF19-07B8-4B3F-9FD9-32B18CC942C0" typeRef="boolean">
-          <dmn:text>DistanceWaterway_Value</dmn:text>
-        </dmn:inputExpression>
-      </dmn:input>
-      <dmn:output id="_5D995820-5F40-43D3-AE81-9351DD6B424F"/>
-      <dmn:annotation name=""/>
-      <dmn:rule id="_3AF0210B-AA20-4DEE-8BC1-4233E1E52905">
-        <dmn:inputEntry id="_904DCC05-5674-4637-944C-5990025E4C20">
-          <dmn:text>true</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_BF7FAB73-3C69-41A8-B592-832E059E2216">
-          <dmn:text>DistanceWaterway + 1</dmn:text>
-        </dmn:outputEntry>
-        <dmn:annotationEntry>
-          <dmn:text></dmn:text>
-        </dmn:annotationEntry>
-      </dmn:rule>
-      <dmn:rule id="_B9061E9A-9604-4587-8C82-A4C1B89BC262">
-        <dmn:inputEntry id="_CCDA4AE8-4231-4E63-B244-67FDC0EEB5AC">
-          <dmn:text>false</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_A47A5953-428F-455B-BD44-72EAE2B83644">
-          <dmn:text>0</dmn:text>
-        </dmn:outputEntry>
-        <dmn:annotationEntry>
-          <dmn:text></dmn:text>
-        </dmn:annotationEntry>
-      </dmn:rule>
-    </dmn:decisionTable>
+    <dmn:literalExpression id="_1A189715-6A3C-49A3-8BE7-4F8591B34EB2">
+      <dmn:text>if DistanceWaterway_Value then DistanceWaterway + 1 else 0</dmn:text>
+    </dmn:literalExpression>
   </dmn:decision>
   <dmn:businessKnowledgeModel id="_E875248B-18A9-4129-95DD-DF494D9931DB" name="EarthworksActivities">
     <dmn:extensionElements/>
@@ -129,7 +73,7 @@ Activities + 1 else 0</dmn:text>
       <dmn:requiredDecision href="#_CC99E2DF-E9BF-4BE5-98F9-47E6E912D742"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_A51C0434-13F4-40D9-A9F8-42A17132832E">
-      <dmn:text>EarthworksArea + 1</dmn:text>
+      <dmn:text>if EarthworksArea > 0 then EarthworksArea + 1 else 0</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:decision id="_CC99E2DF-E9BF-4BE5-98F9-47E6E912D742" name="EarthworksArea">
@@ -148,7 +92,14 @@ Activities + 1 else 0</dmn:text>
       <dmn:requiredInput href="#_F5011596-3AFF-4F30-8C22-B6E985972A66"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_5A6554D9-2A02-4C09-9866-5658EF7F55FA">
-      <dmn:text>if DistanceBoundary > EarthworksBuildingConsentObtained then (DistanceBoundary + 1) else (EarthworksBuildingConsentObtained + 1)</dmn:text>
+      <dmn:text>if not(GroundSlope34_Value) and CutFillHeightDepth_Value &lt;= DistanceBoundary_Value then DistanceBoundary + 1 else &#xd;
+  if EarthworksBuildingConsentObtained > 0 then EarthworksBuildingConsentObtained + 1 else 0&#xd;
+&#xd;
+&#xd;
+  &#xd;
+&#xd;
+&#xd;
+  </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:inputData id="_286B02FD-1E48-4EDD-8622-F979FBE27D28" name="EarthworksStatus">
@@ -176,7 +127,11 @@ Activities + 1 else 0</dmn:text>
     <dmn:literalExpression id="_71E8D86D-6047-4731-B89F-4446CCECF439">
       <dmn:text>if CutFillHeightDepth_Value > 1.5 then CutFillHeightDepth + 1 else&#xd;
   if GroundSlope34_Value or &#xd;
-  CutFillHeightDepth_Value > DistanceBoundary_Value then DistanceBoundary + 1 else 0</dmn:text>
+  CutFillHeightDepth_Value > DistanceBoundary_Value then DistanceBoundary + 1 else 0&#xd;
+&#xd;
+&#xd;
+&#xd;
+  </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:decision id="_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9" name="GroundSlope34">
@@ -188,37 +143,9 @@ Activities + 1 else 0</dmn:text>
     <dmn:informationRequirement id="_8C4B0996-27F9-440A-A023-4C30945462DF">
       <dmn:requiredDecision href="#_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE"/>
     </dmn:informationRequirement>
-    <dmn:decisionTable id="_B8C48390-3A42-4D48-89FE-2F334A09C15B" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
-      <dmn:input id="_74DF09CC-8FA9-472F-8A8C-A1B25A7209EA">
-        <dmn:inputExpression id="_24CC7F0D-FC23-4323-96E4-B956DC2E45CA" typeRef="number">
-          <dmn:text>CutFillHeightDepth_Value</dmn:text>
-        </dmn:inputExpression>
-      </dmn:input>
-      <dmn:output id="_DA8EFBC1-B347-4193-871A-D65EF723010D"/>
-      <dmn:annotation name=""/>
-      <dmn:rule id="_8B747467-E2C2-4F6B-AC7A-B68DF0F2B7E5">
-        <dmn:inputEntry id="_8E456A7B-6199-4D34-9324-2B1196A6E371">
-          <dmn:text>&lt;= 1.5</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_DBD59CC6-670B-494A-8C3A-226313D5921F">
-          <dmn:text>CutFillHeightDepth+1</dmn:text>
-        </dmn:outputEntry>
-        <dmn:annotationEntry>
-          <dmn:text></dmn:text>
-        </dmn:annotationEntry>
-      </dmn:rule>
-      <dmn:rule id="_C13419E2-2BDB-46D7-8742-1431FB8AAFD0">
-        <dmn:inputEntry id="_926BD132-6642-498A-B9C3-A50BE141B9D5">
-          <dmn:text>&gt; 1.5</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_D4E43EB9-D904-452C-8CB7-1640B632B1B4">
-          <dmn:text>0</dmn:text>
-        </dmn:outputEntry>
-        <dmn:annotationEntry>
-          <dmn:text></dmn:text>
-        </dmn:annotationEntry>
-      </dmn:rule>
-    </dmn:decisionTable>
+    <dmn:literalExpression id="_1EF0A3A0-A16F-47E6-B471-DE3BBE2596A3">
+      <dmn:text>if CutFillHeightDepth_Value &lt;= 1.5 then CutFillHeightDepth + 1 else 0</dmn:text>
+    </dmn:literalExpression>
   </dmn:decision>
   <dmn:inputData id="_F5011596-3AFF-4F30-8C22-B6E985972A66" name="GroundSlope34_Value">
     <dmn:extensionElements/>
@@ -257,7 +184,8 @@ Activities + 1 else 0</dmn:text>
       <dmn:requiredDecision href="#_82E8A204-C631-4798-BAA7-6F56D49CFE9C"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_3E89E8CE-EE29-4845-88AF-1555A508C0D3">
-      <dmn:text>if DistanceWaterway > DistanceWaterwayMetres then (DistanceWaterway + 1) else (DistanceWaterwayMetres + 1)</dmn:text>
+      <dmn:text>if DistanceWaterwayMetres > 0 then DistanceWaterwayMetres + 1 else&#xd;
+  if DistanceWaterwayMetres = 0 then DistanceWaterway + 1 else 0</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:inputData id="_B72956F1-06EA-4DF6-990F-65AA37E931DF" name="Activities_Value">
@@ -352,17 +280,11 @@ else 0&#xd;
           <kie:ComponentWidths dmnElementRef="_4D614351-52EA-4E58-8F9D-A6FFE1BB7577">
             <kie:width>579.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_E2B67A84-7766-44DF-8926-EFAD1A83C5E0">
-            <kie:width>50.0</kie:width>
-            <kie:width>100.0</kie:width>
-            <kie:width>199.0</kie:width>
-            <kie:width>429.0</kie:width>
+          <kie:ComponentWidths dmnElementRef="_B020A5F8-5DE1-4616-9F6B-D4FF4C7F967F">
+            <kie:width>561.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_F6274CB7-B37E-43DC-B39B-9D94F1EE7E5A">
-            <kie:width>50.0</kie:width>
-            <kie:width>100.0</kie:width>
-            <kie:width>205.0</kie:width>
-            <kie:width>100.0</kie:width>
+          <kie:ComponentWidths dmnElementRef="_1A189715-6A3C-49A3-8BE7-4F8591B34EB2">
+            <kie:width>637.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_7CB004A6-0835-4706-9F02-44C843521140">
             <kie:width>663.0</kie:width>
@@ -372,19 +294,16 @@ else 0&#xd;
             <kie:width>663.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_A51C0434-13F4-40D9-A9F8-42A17132832E">
-            <kie:width>300.0</kie:width>
+            <kie:width>592.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_5A6554D9-2A02-4C09-9866-5658EF7F55FA">
-            <kie:width>1204.0</kie:width>
+            <kie:width>1310.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_71E8D86D-6047-4731-B89F-4446CCECF439">
             <kie:width>858.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_B8C48390-3A42-4D48-89FE-2F334A09C15B">
-            <kie:width>50.0</kie:width>
-            <kie:width>100.0</kie:width>
-            <kie:width>236.0</kie:width>
-            <kie:width>100.0</kie:width>
+          <kie:ComponentWidths dmnElementRef="_1EF0A3A0-A16F-47E6-B471-DE3BBE2596A3">
+            <kie:width>966.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_972BE4E1-8475-4CEF-8BD9-985DA60C355A">
             <kie:width>300.0</kie:width>
@@ -482,7 +401,7 @@ else 0&#xd;
           <dmndi:StrokeColor red="180" green="180" blue="180"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="391" y="426" width="100" height="50"/>
+        <dc:Bounds x="391" y="423" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_286B02FD-1E48-4EDD-8622-F979FBE27D28" dmnElementRef="_286B02FD-1E48-4EDD-8622-F979FBE27D28" isCollapsed="false">
@@ -648,24 +567,24 @@ else 0&#xd;
         <di:waypoint x="511" y="620"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_322DFEE5-33B3-4E37-8FB2-6ADD5F0BF2D6" dmnElementRef="_322DFEE5-33B3-4E37-8FB2-6ADD5F0BF2D6">
-        <di:waypoint x="441" y="451"/>
+        <di:waypoint x="441" y="448"/>
         <di:waypoint x="441" y="549"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_DABEDE42-0B1D-49D9-980E-53E2071DD333" dmnElementRef="_DABEDE42-0B1D-49D9-980E-53E2071DD333">
         <di:waypoint x="568" y="274"/>
-        <di:waypoint x="441" y="451"/>
+        <di:waypoint x="441" y="448"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_B6D4B820-04D1-4849-BA0E-4AD2D449DE71" dmnElementRef="_B6D4B820-04D1-4849-BA0E-4AD2D449DE71">
         <di:waypoint x="374" y="342"/>
-        <di:waypoint x="441" y="451"/>
+        <di:waypoint x="441" y="448"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_319EBE40-F14B-414E-BD99-A53212BFE5A1" dmnElementRef="_319EBE40-F14B-414E-BD99-A53212BFE5A1">
         <di:waypoint x="704" y="341"/>
-        <di:waypoint x="441" y="451"/>
+        <di:waypoint x="441" y="448"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_58F54A79-31EF-4B70-B072-765FC0FD287D" dmnElementRef="_58F54A79-31EF-4B70-B072-765FC0FD287D">
         <di:waypoint x="704" y="274"/>
-        <di:waypoint x="441" y="451"/>
+        <di:waypoint x="441" y="448"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_E146A2A6-5D16-4A9E-98C0-629B241CA9E5" dmnElementRef="_E146A2A6-5D16-4A9E-98C0-629B241CA9E5">
         <di:waypoint x="170" y="337"/>
