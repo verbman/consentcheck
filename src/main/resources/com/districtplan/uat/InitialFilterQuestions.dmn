@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://districtplan.wellington.govt.nz/83/dmn/InitialFilterQuestions2" xmlns:included1="https://districtplan.wellington.govt.nz/83/dmn/types" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_280DDB79-6DD6-4E8C-A27F-0A60C895B3AD" name="InitialFilterQuestions" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://districtplan.wellington.govt.nz/83/dmn/InitialFilterQuestions">
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://districtplan.wellington.govt.nz/83/dmn/InitialFilterQuestions" xmlns:included1="https://districtplan.wellington.govt.nz/83/dmn/types" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_280DDB79-6DD6-4E8C-A27F-0A60C895B3AD" name="InitialFilterQuestions" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://districtplan.wellington.govt.nz/83/dmn/InitialFilterQuestions">
   <dmn:extensionElements/>
   <dmn:import id="_2B8FEBB6-1FF8-4624-8BB6-A66A12F9182D" name="Types" namespace="https://districtplan.wellington.govt.nz/83/dmn/types" locationURI="Types.dmn" importType="http://www.omg.org/spec/DMN/20180521/MODEL/"/>
   <dmn:inputData id="_BDBBF216-E389-4088-84AF-00B0DDF2E591" name="ExistingBuildings_Value">
@@ -8,6 +8,7 @@
   </dmn:inputData>
   <dmn:decision id="_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE" name="SpatialLayers">
     <dmn:extensionElements/>
+    <dmn:question>What is the street address of the property?</dmn:question>
     <dmn:variable id="_DFAE501B-7D6E-409E-9B6F-495E405EA0F5" name="SpatialLayers" typeRef="number"/>
     <dmn:literalExpression id="_4D614351-52EA-4E58-8F9D-A6FFE1BB7577">
       <dmn:text>1</dmn:text>
@@ -15,6 +16,9 @@
   </dmn:decision>
   <dmn:decision id="_AA1B222B-BD61-49E0-A59B-D90E0F9889E1" name="FrontSite">
     <dmn:extensionElements/>
+    <dmn:question>Does the property have direct road frontage?</dmn:question>
+    <dmn:allowedAnswers>yes
+no</dmn:allowedAnswers>
     <dmn:variable id="_58AB75A0-EE11-4785-983A-F7F888E3951B" name="FrontSite" typeRef="number"/>
     <dmn:informationRequirement id="_72F614EA-FF38-4A9F-B961-3E4E99AA3239">
       <dmn:requiredDecision href="#_42D26DD3-2BA9-4CAD-9664-C5CC0A3453F9"/>
@@ -74,6 +78,12 @@ if count(Activities_Value) = 0 then 3 else 0&#xd;
   </dmn:inputData>
   <dmn:decision id="_42D26DD3-2BA9-4CAD-9664-C5CC0A3453F9" name="ExistingBuildings">
     <dmn:extensionElements/>
+    <dmn:question>What kinds of buildings already exist on the property?</dmn:question>
+    <dmn:allowedAnswers>residential building
+accessory building
+residential structure
+non residential building 
+none</dmn:allowedAnswers>
     <dmn:variable id="_4DA8A362-6B7B-4C33-9077-8F72BA9FAB86" name="ExistingBuildings" typeRef="number"/>
     <dmn:informationRequirement id="_1EE0144F-DC4C-4FF9-889E-2C0DF8A589AD">
       <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
@@ -97,6 +107,7 @@ then 3 else 0&#xd;
   </dmn:decision>
   <dmn:decision id="_5F5F4E7F-E8FD-4BEB-8B20-2F091DA8D5CC" name="NumberHouseholdUnits">
     <dmn:extensionElements/>
+    <dmn:question>How many household units will there be on the site as a result of your proposal?</dmn:question>
     <dmn:variable id="_72427C86-73E0-4D9B-BEE3-EF052809560E" name="NumberHouseholdUnits" typeRef="number"/>
     <dmn:informationRequirement id="_86241B69-BC59-450D-99E6-8BA7F56D38B0">
       <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
@@ -126,6 +137,9 @@ BuildAddtoAlter(Activities_Value[Noun="accessory building"].Verb) then (&#xd;
   </dmn:decision>
   <dmn:decision id="_678B1D46-E622-4E2A-B531-0730F5949E06" name="StructureFence">
     <dmn:extensionElements/>
+    <dmn:question>Are you planning to build, or add to a fence or wall, or combination of these structures?</dmn:question>
+    <dmn:allowedAnswers>yes
+no</dmn:allowedAnswers>
     <dmn:variable id="_0C12E4E1-24ED-4BEC-A111-2228C485993E" name="StructureFence" typeRef="number"/>
     <dmn:informationRequirement id="_98DDEFC2-9C7A-4117-8ED4-B2F22328C180">
       <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
@@ -183,6 +197,27 @@ BuildAddtoAlter(Activities_Value[Noun="accessory building"].Verb) then (&#xd;
   </dmn:decision>
   <dmn:decision id="_A2F298C8-8542-41C1-A9E3-9452A323B85D" name="Activities">
     <dmn:extensionElements/>
+    <dmn:question>Which of these activities are you planning?</dmn:question>
+    <dmn:allowedAnswers>Build one or more new:
+Residential building
+Accessory building
+Residential structure
+
+Add to one or more existing:
+Residential building
+Accessory building
+Residential structure
+
+Alter one or more existing:
+Residential building
+Accessory building
+
+And/or:
+Demolish or alter all or part of an existing residential building that was built or consented before 1930
+Change the vehicle access to your site
+Install any fixed plant
+Undertake earthworks
+Stabilise a landslip</dmn:allowedAnswers>
     <dmn:variable id="_4F716487-C01F-47E3-87B2-5704C699E77A" name="Activities" typeRef="number"/>
     <dmn:informationRequirement id="_E63AFB41-C595-45BD-AF9D-F9866C150EDF">
       <dmn:requiredInput href="#_91A08DE1-F013-46FB-BBC7-99398C33177B"/>
@@ -255,6 +290,9 @@ not(list contains (SpatialLayers_Value.Type, "Heritage Areas")) then 2 else 0&#x
   </dmn:businessKnowledgeModel>
   <dmn:decision id="_20CE4674-9E04-450E-8989-7F1DE585BE8D" name="BuildingConstructedBefore27July2000">
     <dmn:extensionElements/>
+    <dmn:question>Was the existing building constructed before 27 July 2000?</dmn:question>
+    <dmn:allowedAnswers>yes
+no</dmn:allowedAnswers>
     <dmn:variable id="_32EAFD9B-6BB2-4E11-9351-B010E5E662B3" name="BuildingConstructedBefore27July2000" typeRef="number"/>
     <dmn:informationRequirement id="_2DAB98BB-E94C-4D37-9CC4-C5D2E813535D">
       <dmn:requiredDecision href="#_5F5F4E7F-E8FD-4BEB-8B20-2F091DA8D5CC"/>
@@ -325,6 +363,9 @@ list contains (spatiallayers[Type="Residential"].Title, "Medium Density Resident
   </dmn:businessKnowledgeModel>
   <dmn:decision id="_55F18113-18E7-48F2-930A-285937C578AD" name="SideRearProperty">
     <dmn:extensionElements/>
+    <dmn:question>Will the proposed activity affect the side or rear of the property?</dmn:question>
+    <dmn:allowedAnswers>yes
+no</dmn:allowedAnswers>
     <dmn:variable id="_8118A06B-DED8-4BEA-AD25-C09EF1D119E1" name="SideRearProperty" typeRef="number"/>
     <dmn:informationRequirement id="_FEF80148-DFDF-4281-A202-6BF896F35402">
       <dmn:requiredDecision href="#_AA1B222B-BD61-49E0-A59B-D90E0F9889E1"/>
