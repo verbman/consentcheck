@@ -1064,9 +1064,6 @@ NumberHouseholdUnits >=3</dmn:text>
   <dmn:decision id="_A326BD00-DDE8-4B83-B58B-59D0C8DBA067" name="R5.3.7">
     <dmn:extensionElements/>
     <dmn:variable id="_72D092F1-F689-4952-950D-5478EA868D56" name="R5.3.7" typeRef="boolean"/>
-    <dmn:informationRequirement id="_D83A1F10-09C9-4697-9B9F-4C8F679C64C3">
-      <dmn:requiredDecision href="#_3E3FAED9-5B19-4F48-915C-B4DCDF2978AA"/>
-    </dmn:informationRequirement>
     <dmn:informationRequirement id="_23DCDA2B-92F2-44AE-94B0-41E17151FA28">
       <dmn:requiredDecision href="#_77D67D3F-50EC-49D0-ACBF-4651F5BCEE22"/>
     </dmn:informationRequirement>
@@ -1077,7 +1074,18 @@ NumberHouseholdUnits >=3</dmn:text>
       <dmn:requiredDecision href="#_3748473C-EC6F-4D90-84FB-1F1F522AF99A"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_D08EDD7E-DE5B-49D8-B2F5-E1CA64222B25">
-      <dmn:text>MultiUnit and (MultiUnitInnerResidentialMDRA or MultiUnitOuterResidential or MultiUnitResidentialCoastalEdge)</dmn:text>
+      <dmn:text>if MultiUnit then&#xd;
+  if not(IR5OrientalBayHeightArea(SpatialLayers)) and (InnerResidentialArea(SpatialLayers) or MediumDensityResidentialArea(SpatialLayers)) then true else&#xd;
+  if OuterResidentialArea(SpatialLayers) and not(OR2ResidentialCoastalEdge(SpatialLayers)) and not(HazardFaultLineArea(SpatialLayers)) then true else&#xd;
+  if OR2ResidentialCoastalEdge(SpatialLayers) then true else false&#xd;
+else false&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:decision id="_CDC3D6DB-6DCC-4E35-B58A-AB3CC6305A18" name="R5.3.7.2">
@@ -2413,10 +2421,6 @@ else false&#xd;
       <dmndi:DMNEdge id="dmnedge-_00C37D92-8A52-4434-95E0-3379BC1D026F" dmnElementRef="_00C37D92-8A52-4434-95E0-3379BC1D026F">
         <di:waypoint x="857" y="465"/>
         <di:waypoint x="1250" y="695"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_D83A1F10-09C9-4697-9B9F-4C8F679C64C3" dmnElementRef="_D83A1F10-09C9-4697-9B9F-4C8F679C64C3">
-        <di:waypoint x="365" y="314"/>
-        <di:waypoint x="857" y="315"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_23DCDA2B-92F2-44AE-94B0-41E17151FA28" dmnElementRef="_23DCDA2B-92F2-44AE-94B0-41E17151FA28">
         <di:waypoint x="365" y="472"/>
