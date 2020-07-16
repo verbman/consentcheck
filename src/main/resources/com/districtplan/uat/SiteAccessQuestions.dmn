@@ -1,0 +1,888 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://districtplan.wellington.govt.nz/83/dmn/SiteAccessQuestions" xmlns:included1="https://districtplan.wellington.govt.nz/83/dmn/types" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_280DDB79-6DD6-4E8C-A27F-0A60C895B3AD" name="SiteAccessQuestions" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://districtplan.wellington.govt.nz/83/dmn/SiteAccessQuestions">
+  <dmn:extensionElements/>
+  <dmn:import id="_3886E949-17AC-4EBA-A83A-E6455C118260" name="Types" namespace="https://districtplan.wellington.govt.nz/83/dmn/types" locationURI="Types.dmn" importType="http://www.omg.org/spec/DMN/20180521/MODEL/"/>
+  <dmn:decision id="_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE" name="SpatialLayers">
+    <dmn:extensionElements/>
+    <dmn:variable id="_DFAE501B-7D6E-409E-9B6F-495E405EA0F5" name="SpatialLayers" typeRef="number"/>
+    <dmn:literalExpression id="_4D614351-52EA-4E58-8F9D-A6FFE1BB7577">
+      <dmn:text>1</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:inputData id="_2F23EB51-DE18-4A73-84E7-1F7E64B0BA30" name="RoadTypes1_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_73828090-E1A9-4EFA-8FD6-90D0DC64AC53" name="RoadTypes1_Value" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmn:decision id="_29CBF409-4B49-4B15-ACDD-DAE04BC6120F" name="LegalRightOfWay">
+    <dmn:extensionElements/>
+    <dmn:question>Is there a formal legal right of way instrument provided and maintained in accordance with the AUSNZ Parking Facilities Standard?</dmn:question>
+    <dmn:allowedAnswers>yes
+no
+don't know</dmn:allowedAnswers>
+    <dmn:variable id="_119C44AE-78CF-4BA4-A2D6-8BBF7453DD9D" name="LegalRightOfWay" typeRef="number"/>
+    <dmn:informationRequirement id="_CCF8153D-6ED2-486E-B986-3B683BBBB7AC">
+      <dmn:requiredDecision href="#_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_C0732176-2560-484D-8F86-7E3CF3B6D06D">
+      <dmn:requiredInput href="#_FEDC5CCC-4838-4DF9-9439-BB825D9A0E1F"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_0213AE50-E21E-4AE4-ABA6-788E8C483B12">
+      <dmn:text>if AccessDirectFromPublicRoad > 0 and &#xd;
+not(AccessDirectFromPublicRoad_Value) then &#xd;
+AccessDirectFromPublicRoad + 1 else 0&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_342DD341-423D-424C-8F8E-6A8013484B85" name="MaxWidthVehicleAccessORMDRA7Units">
+    <dmn:extensionElements/>
+    <dmn:question>Will the maximum width of each vehicular access be no more than 6 metres?</dmn:question>
+    <dmn:allowedAnswers>yes
+no</dmn:allowedAnswers>
+    <dmn:variable id="_A58C1F5A-0D0C-4CB6-821B-A6821486CF00" name="MaxWidthVehicleAccessORMDRA7Units" typeRef="number"/>
+    <dmn:informationRequirement id="_15E21895-3149-4CE7-AC84-3876AFBAEE44">
+      <dmn:requiredInput href="#_6FCBDBA6-06EE-4D5B-8E53-777E835D3AF6"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_39325546-2B01-4FC9-9390-38CC7DDD6D99">
+      <dmn:requiredInput href="#_DA3F6F7B-2A2A-4F34-B9EE-D8A0637BE6F9"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_03CC328D-5BB6-4F22-A2E2-EE597FF5D6BC">
+      <dmn:requiredDecision href="#_0294A5FE-E4EF-4549-AFBC-A7A6898CA136"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_9F73D2C8-1456-4802-8601-AC13C6D471E4">
+      <dmn:requiredDecision href="#_F50500C0-34D3-44F2-84E9-37D1DAB098E6"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_E6FD6FBB-AE6C-49E8-8865-3BD5F4580777">
+      <dmn:requiredDecision href="#_41124519-21E8-463D-9304-475F9A6AA26F"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_0A07F231-86D4-4BFB-BBEF-AB6BC15C4A06">
+      <dmn:requiredInput href="#_235129B9-77B2-4629-9F5E-E56DEBD78C0B"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_5E0B7AAA-936B-4573-BFD0-85EEB266F6FF">
+      <dmn:requiredDecision href="#_ADF44FD6-20E7-4D1F-BB8A-C122078DADB0"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_C3860959-EC26-4755-94F6-A5E8B406EC3F">
+      <dmn:requiredInput href="#_627503F4-A14F-40DA-9F29-60C1AFE13BBB"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_1E819248-96AF-4A61-8F53-92C4166E4ADA">
+      <dmn:requiredInput href="#_2F23EB51-DE18-4A73-84E7-1F7E64B0BA30"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_DBF57AEF-E15D-459A-9735-482FBDADADF1">
+      <dmn:requiredInput href="#_21549E36-42D4-4A86-93F5-F832EACECBC5"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_19E35FA3-D384-4D4A-9AA3-9F0103DF1669">
+      <dmn:requiredDecision href="#_29CBF409-4B49-4B15-ACDD-DAE04BC6120F"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_48A18355-5870-41D4-8C16-547284CBAE05">
+      <dmn:text>if (list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential") and&#xd;
+not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "OR2 - Residential Coastal Edge"))) or&#xd;
+(list contains(SpatialLayers_Value[Type="Residential"].Title, "Medium Density Residential Area") and NumberHouseholdUnits >= 7) then&#xd;
+  if LegalRightOfWay > 0 then LegalRightOfWay + 1 else&#xd;
+  if NumberRoadFrontages_Value &lt;= 1 then RestrictedRoadFrontageAccess + 1 else&#xd;
+  if RestrictedRoadFrontageAccess > 0 and RoadTypes1_Value and RoadTypes2_Value then RestrictedRoadFrontageAccess + 1 else&#xd;
+  if not(RoadTypes1_Value) then RoadTypes1 + 1 else&#xd;
+  if NumberVehicleAccesses > 0 then NumberVehicleAccesses + 1 else&#xd;
+  if LocalSubCollectorAccess > 0 and LocalSubCollectorAccess_Value then LocalSubCollectorAccess + 1 else 0&#xd;
+else 0&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:businessKnowledgeModel id="_451EE7E1-3B0A-4229-9EDE-300A2835B4BD" name="SiteAccessActivities">
+    <dmn:extensionElements/>
+    <dmn:variable id="_4749467E-E252-44A0-8DF8-89AFA8156900" name="SiteAccessActivities" typeRef="boolean"/>
+    <dmn:encapsulatedLogic id="_EBEF6D0F-1FA5-411A-8155-CBFE041CEC7D" kind="FEEL">
+      <dmn:formalParameter id="_47AE7B31-B0F4-4186-B14A-E50A16749E67" name="activities" typeRef="Types.Activities"/>
+      <dmn:literalExpression id="_53EC070A-DBB9-48F9-8E99-E4DC2CA34A6C">
+        <dmn:text>list contains(activities[Noun="vehicle access"].Verb, "change")&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+      </dmn:literalExpression>
+    </dmn:encapsulatedLogic>
+  </dmn:businessKnowledgeModel>
+  <dmn:decision id="_82E8A204-C631-4798-BAA7-6F56D49CFE9C" name="RoadTypes2">
+    <dmn:extensionElements/>
+    <dmn:question>Are any of the road frontages to one or more local roads or sub-collector roads (that do not have restricted road frontages)?</dmn:question>
+    <dmn:allowedAnswers>yes
+no</dmn:allowedAnswers>
+    <dmn:variable id="_668E6723-DB20-418A-B41B-3C311E3F1D32" name="RoadTypes2" typeRef="number"/>
+    <dmn:informationRequirement id="_36AE158F-EC37-4EF2-A9E2-E0C466EC5735">
+      <dmn:requiredDecision href="#_41124519-21E8-463D-9304-475F9A6AA26F"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_AC5F9947-B641-4C1E-AE38-F3966737A956">
+      <dmn:requiredInput href="#_2F23EB51-DE18-4A73-84E7-1F7E64B0BA30"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_63D7E3BD-681E-4F96-8E4C-B1EEC2E7DB3B">
+      <dmn:text>if RoadTypes1_Value then RoadTypes1 + 1 else 0</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_A2F298C8-8542-41C1-A9E3-9452A323B85D" name="Activities">
+    <dmn:extensionElements/>
+    <dmn:variable id="_4F716487-C01F-47E3-87B2-5704C699E77A" name="Activities" typeRef="number"/>
+    <dmn:informationRequirement id="_1551339C-3421-4646-B87A-0792B40190F7">
+      <dmn:requiredDecision href="#_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_FEF5DC4A-BC02-41FC-83DA-BBDFD5C2AC77">
+      <dmn:text>2</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_CC99E2DF-E9BF-4BE5-98F9-47E6E912D742" name="VehicleAccessPerRoadFrontage">
+    <dmn:extensionElements/>
+    <dmn:question>How many vehicle accesses are you planning to have per road frontage?</dmn:question>
+    <dmn:variable id="_4AE84137-22F4-44BD-B890-2BD83F796582" name="VehicleAccessPerRoadFrontage" typeRef="number"/>
+    <dmn:informationRequirement id="_431D20A2-4C4E-4052-9D60-95E98DE7179D">
+      <dmn:requiredDecision href="#_5D302B9B-D524-4B29-9D32-C7D3B41A598C"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_5A6554D9-2A02-4C09-9866-5658EF7F55FA">
+      <dmn:text>if NumberRoadFrontages > 0 then NumberRoadFrontages + 1 else 0</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9" name="AccessDirectFromPublicRoad">
+    <dmn:extensionElements/>
+    <dmn:question>Will all vehicle access to the site be provided directly from a public road (i.e. not via a right of way)?</dmn:question>
+    <dmn:allowedAnswers>yes
+no</dmn:allowedAnswers>
+    <dmn:variable id="_A9442935-BB06-40B4-94FF-E4DB88ABE88F" name="AccessDirectFromPublicRoad" typeRef="number"/>
+    <dmn:informationRequirement id="_99DBEA1A-D530-4F86-903C-81E33E0BBE6E">
+      <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_37EF5306-C397-4545-BF66-5DEE2C915127">
+      <dmn:requiredDecision href="#_A2F298C8-8542-41C1-A9E3-9452A323B85D"/>
+    </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_DFB1ECEC-50FF-4113-B2D7-8F4F537C3117">
+      <dmn:requiredKnowledge href="#_451EE7E1-3B0A-4229-9EDE-300A2835B4BD"/>
+    </dmn:knowledgeRequirement>
+    <dmn:literalExpression id="_9BB36F36-213A-43A8-A0E9-445FA9AF5E9D">
+      <dmn:text>if SiteAccessActivities(Activities_Value) then Activities + 1 else 0</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_5D302B9B-D524-4B29-9D32-C7D3B41A598C" name="NumberRoadFrontages">
+    <dmn:extensionElements/>
+    <dmn:question>How many road frontages does the site have?</dmn:question>
+    <dmn:variable id="_8A6B77AE-D7AA-4330-B944-021353E4839C" name="NumberRoadFrontages" typeRef="number"/>
+    <dmn:informationRequirement id="_B4269628-64A8-42F7-9681-ACDADA56875F">
+      <dmn:requiredDecision href="#_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_F2CF1377-990E-4782-B68B-A1BB14C361FA">
+      <dmn:requiredInput href="#_FEDC5CCC-4838-4DF9-9439-BB825D9A0E1F"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_96F53EF3-CE69-4BEE-A556-36BE9E0B2AB6">
+      <dmn:text>if AccessDirectFromPublicRoad > 0 and &#xd;
+AccessDirectFromPublicRoad_Value then &#xd;
+AccessDirectFromPublicRoad + 1 else 0&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:inputData id="_627503F4-A14F-40DA-9F29-60C1AFE13BBB" name="NumberRoadFrontages_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_5D4ECF30-00D0-4336-ACB0-36EC251D66AF" name="NumberRoadFrontages_Value" typeRef="number"/>
+  </dmn:inputData>
+  <dmn:decision id="_F50500C0-34D3-44F2-84E9-37D1DAB098E6" name="LocalSubCollectorAccess">
+    <dmn:extensionElements/>
+    <dmn:question>Will the proposed vehicle access be only to local or sub-collector roads?</dmn:question>
+    <dmn:allowedAnswers>yes
+no</dmn:allowedAnswers>
+    <dmn:variable id="_B87E8DBA-D9F7-4570-B2B9-129E2A67F4C6" name="LocalSubCollectorAccess" typeRef="number"/>
+    <dmn:informationRequirement id="_8CEFD7A6-1E74-4F79-9BEA-97CEE4584204">
+      <dmn:requiredDecision href="#_82E8A204-C631-4798-BAA7-6F56D49CFE9C"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_C036BC41-2D47-4F23-B339-711ACC7FC4CE">
+      <dmn:requiredInput href="#_2F23EB51-DE18-4A73-84E7-1F7E64B0BA30"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_EF9F22ED-1205-480F-868A-6AEB6BE2A733">
+      <dmn:requiredInput href="#_235129B9-77B2-4629-9F5E-E56DEBD78C0B"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_3E89E8CE-EE29-4845-88AF-1555A508C0D3">
+      <dmn:text>if RoadTypes1_Value and RoadTypes2_Value then RoadTypes2 + 1 else 0</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_5FD85D29-480F-49DF-BB07-88E02F387D98" name="MaxWidthVehicleAccessIRRCEMDRA6Units">
+    <dmn:extensionElements/>
+    <dmn:question>Will the maximum width of each vehicular access be no more than 3.7 metres?</dmn:question>
+    <dmn:allowedAnswers>yes
+no</dmn:allowedAnswers>
+    <dmn:variable id="_699C3991-3CDC-4A21-A605-867E628A0E7E" name="MaxWidthVehicleAccessIRRCEMDRA6Units" typeRef="number"/>
+    <dmn:informationRequirement id="_F6D05B0E-B196-4D6E-9844-A436338C36DF">
+      <dmn:requiredInput href="#_6FCBDBA6-06EE-4D5B-8E53-777E835D3AF6"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_0945A691-A8CB-4E18-9945-D415EBEE815B">
+      <dmn:requiredInput href="#_DA3F6F7B-2A2A-4F34-B9EE-D8A0637BE6F9"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_E562BD91-F5D8-4F5A-B4BD-27031F745EB8">
+      <dmn:requiredDecision href="#_0294A5FE-E4EF-4549-AFBC-A7A6898CA136"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_431B476C-F10A-465C-BF6B-F4937EC8B4DD">
+      <dmn:requiredDecision href="#_F50500C0-34D3-44F2-84E9-37D1DAB098E6"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_8A945DDA-0270-41F1-96F6-F7399CD838FE">
+      <dmn:requiredDecision href="#_41124519-21E8-463D-9304-475F9A6AA26F"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_FC2E6702-83F8-43C6-8D20-1D65955BE7E0">
+      <dmn:requiredInput href="#_2F23EB51-DE18-4A73-84E7-1F7E64B0BA30"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_3CCBF53D-FED6-498F-A2DA-C9E8DAE84BE2">
+      <dmn:requiredDecision href="#_ADF44FD6-20E7-4D1F-BB8A-C122078DADB0"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_29806F67-C076-42B7-ADBB-9127EE588D98">
+      <dmn:requiredInput href="#_627503F4-A14F-40DA-9F29-60C1AFE13BBB"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_1E735B3C-BC7E-44FA-B95C-8482035073A6">
+      <dmn:requiredInput href="#_235129B9-77B2-4629-9F5E-E56DEBD78C0B"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_D3982BF4-6FCA-4EE4-ABE8-08BBB4BE592B">
+      <dmn:requiredInput href="#_21549E36-42D4-4A86-93F5-F832EACECBC5"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_0F1D04D7-E50D-4411-8309-54D1F9FCB884">
+      <dmn:requiredDecision href="#_29CBF409-4B49-4B15-ACDD-DAE04BC6120F"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_30CC1D12-7E68-4AD4-907F-BC3C0EFAF548">
+      <dmn:text>if (list contains(SpatialLayers_Value[Type="Residential"].Title, "Inner Residential") or&#xd;
+(list contains(SpatialLayers_Value[Type="Residential"].Title, "Medium Density Residential Area") and NumberHouseholdUnits &lt;= 6) or&#xd;
+list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "OR2 - Residential Coastal Edge")) then&#xd;
+  if LegalRightOfWay > 0 then LegalRightOfWay + 1 else&#xd;
+  if NumberRoadFrontages_Value &lt;= 1 then RestrictedRoadFrontageAccess + 1 else&#xd;
+  if RestrictedRoadFrontageAccess > 0 and RoadTypes1_Value and RoadTypes2_Value then RestrictedRoadFrontageAccess + 1 else&#xd;
+  if not(RoadTypes1_Value) then RoadTypes1 + 1 else&#xd;
+  if NumberVehicleAccesses > 0 then NumberVehicleAccesses + 1 else&#xd;
+  if LocalSubCollectorAccess > 0 and LocalSubCollectorAccess_Value then LocalSubCollectorAccess + 1 else 0&#xd;
+else 0&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:inputData id="_FEDC5CCC-4838-4DF9-9439-BB825D9A0E1F" name="AccessDirectFromPublicRoad_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_6E184521-3AEA-418C-9F4D-213916B0D68C" name="AccessDirectFromPublicRoad_Value" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmn:decision id="_0294A5FE-E4EF-4549-AFBC-A7A6898CA136" name="NumberVehicleAccesses">
+    <dmn:extensionElements/>
+    <dmn:question>How many vehicle accesses will there be in total?</dmn:question>
+    <dmn:variable id="_8995CC40-5BFE-45D6-B2A8-332175DF6CB2" name="NumberVehicleAccesses" typeRef="number"/>
+    <dmn:informationRequirement id="_6156D144-81CF-4FF4-AA70-44E0E3222AEE">
+      <dmn:requiredDecision href="#_ADF44FD6-20E7-4D1F-BB8A-C122078DADB0"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_320FAE43-27E8-4AD6-B7EB-311AE6972B04">
+      <dmn:requiredInput href="#_2F23EB51-DE18-4A73-84E7-1F7E64B0BA30"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_F72DBB68-E1A3-4B0B-8D46-A52ED169BB82">
+      <dmn:requiredInput href="#_235129B9-77B2-4629-9F5E-E56DEBD78C0B"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_6BF823EB-8B7A-4018-8C61-E6C4353F1AB4">
+      <dmn:text>if RoadTypes1_Value and not(RoadTypes2_Value) then RestrictedRoadFrontageAccess + 1 else 0</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:inputData id="_6FCBDBA6-06EE-4D5B-8E53-777E835D3AF6" name="SpatialLayers_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_EFF7FCD8-0EC0-49EF-B8FC-C7D729DB594E" name="SpatialLayers_Value" typeRef="Types.SpatialLayers"/>
+  </dmn:inputData>
+  <dmn:inputData id="_21549E36-42D4-4A86-93F5-F832EACECBC5" name="LocalSubCollectorAccess_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_3E6321B6-380A-41C0-AC4B-761C9FE13BD6" name="LocalSubCollectorAccess_Value" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmn:inputData id="_B7D4AF81-3425-4132-AECA-ABB8315BAD66" name="Activities_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_BEF5BB6B-98C5-4093-A1A3-7F10F651EA36" name="Activities_Value" typeRef="Types.Activities"/>
+  </dmn:inputData>
+  <dmn:inputData id="_DA3F6F7B-2A2A-4F34-B9EE-D8A0637BE6F9" name="NumberHouseholdUnits">
+    <dmn:extensionElements/>
+    <dmn:variable id="_6F3EA665-B0B4-4A3B-AEA3-0CE634E645E8" name="NumberHouseholdUnits" typeRef="number"/>
+  </dmn:inputData>
+  <dmn:decision id="_41124519-21E8-463D-9304-475F9A6AA26F" name="RoadTypes1">
+    <dmn:extensionElements/>
+    <dmn:question>Are any of the road frontages:
+to a State highway, or
+an Arterial, Principal or Collector road, or
+a restricted road frontage?</dmn:question>
+    <dmn:allowedAnswers>yes
+no</dmn:allowedAnswers>
+    <dmn:variable id="_9F6DD4A2-1C39-44C5-8AA7-329115EB39A3" name="RoadTypes1" typeRef="number"/>
+    <dmn:informationRequirement id="_04392CD8-8A44-4A6C-A793-60D4CBDC487A">
+      <dmn:requiredDecision href="#_CC99E2DF-E9BF-4BE5-98F9-47E6E912D742"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_2A6EC786-E17F-447F-B57C-6827D9D4FA56">
+      <dmn:requiredInput href="#_627503F4-A14F-40DA-9F29-60C1AFE13BBB"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_8E4AAA4C-33EF-494D-8CF8-DC9D25C51F3E">
+      <dmn:text>if NumberRoadFrontages_Value > 1 then VehicleAccessPerRoadFrontage + 1 else 0</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_EEEB1B16-CF40-465B-A8ED-B7179F2E300F" name="VehicleAccessAUSNZStandard">
+    <dmn:extensionElements/>
+    <dmn:question>Is there a formal legal right of way instrument provided and maintained in accordance with the AUSNZ Parking Facilities Standard?</dmn:question>
+    <dmn:allowedAnswers>yes
+no
+don't know</dmn:allowedAnswers>
+    <dmn:variable id="_9DBBB176-90E7-46F6-A230-AF06F73EB784" name="VehicleAccessAUSNZStandard" typeRef="number"/>
+    <dmn:informationRequirement id="_F18D6CC9-ADE2-410E-BC17-819AA291E7E3">
+      <dmn:requiredDecision href="#_342DD341-423D-424C-8F8E-6A8013484B85"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_9A6CDE93-5691-4DA8-B166-BFF198133B3D">
+      <dmn:requiredDecision href="#_5FD85D29-480F-49DF-BB07-88E02F387D98"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_C45B3E74-45BF-4634-B79B-656E2CA1D869">
+      <dmn:text>if MaxWidthVehicleAccessIRRCEMDRA6Units > 0 then &#xd;
+MaxWidthVehicleAccessIRRCEMDRA6Units + 1 else &#xd;
+  if MaxWidthVehicleAccessORMDRA7Units > 0 then&#xd;
+  MaxWidthVehicleAccessORMDRA7Units + 1 else 0&#xd;
+&#xd;
+&#xd;
+  &#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_ADF44FD6-20E7-4D1F-BB8A-C122078DADB0" name="RestrictedRoadFrontageAccess">
+    <dmn:extensionElements/>
+    <dmn:question>Will the proposed vehicle access be across a restricted road frontage?</dmn:question>
+    <dmn:allowedAnswers>yes
+no</dmn:allowedAnswers>
+    <dmn:variable id="_601F9DEA-D270-4F00-82BF-B85BACAE6974" name="RestrictedRoadFrontageAccess" typeRef="number"/>
+    <dmn:informationRequirement id="_DCF651A6-704E-4E59-8EAB-887A9E347F74">
+      <dmn:requiredDecision href="#_459E6CDD-EE65-4320-9E8D-34DA61B753D5"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_896C5651-6F17-4ADB-940B-F4F613C67F10">
+      <dmn:requiredDecision href="#_CC99E2DF-E9BF-4BE5-98F9-47E6E912D742"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_551BE91F-AE5A-4FB0-B25A-962A0BB32C60">
+      <dmn:requiredInput href="#_627503F4-A14F-40DA-9F29-60C1AFE13BBB"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_15989D12-796E-4CFC-947E-9AE8F97FA816">
+      <dmn:requiredDecision href="#_F50500C0-34D3-44F2-84E9-37D1DAB098E6"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_44C97249-7035-4A0B-84F9-619FCD9BAD03">
+      <dmn:requiredInput href="#_21549E36-42D4-4A86-93F5-F832EACECBC5"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_E39D26AD-56FC-47FD-8F9D-7044C03323C9">
+      <dmn:text>if StateHighwayAccess > 0 then StateHighwayAccess + 1 else&#xd;
+  if NumberRoadFrontages_Value &lt;= 1 then VehicleAccessPerRoadFrontage + 1 else&#xd;
+  if LocalSubCollectorAccess > 0 and not(LocalSubCollectorAccess_Value) then LocalSubCollectorAccess + 1 else 0&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+  </dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:inputData id="_235129B9-77B2-4629-9F5E-E56DEBD78C0B" name="RoadTypes2_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_E9E163FF-4285-4540-A430-10B5CD472C77" name="RoadTypes2_Value" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmn:decision id="_459E6CDD-EE65-4320-9E8D-34DA61B753D5" name="StateHighwayAccess">
+    <dmn:extensionElements/>
+    <dmn:question>Will the proposed vehicle access be to a State Highway?</dmn:question>
+    <dmn:allowedAnswers>yes
+no</dmn:allowedAnswers>
+    <dmn:variable id="_5D79EA3D-243E-42E2-A8DC-67B8CB638E20" name="StateHighwayAccess" typeRef="number"/>
+    <dmn:informationRequirement id="_3B0F94B1-A9C2-4375-AF88-E43FECFC58F3">
+      <dmn:requiredDecision href="#_82E8A204-C631-4798-BAA7-6F56D49CFE9C"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_1394AA8B-E34D-4BEB-A298-8755805A74C7">
+      <dmn:requiredInput href="#_2F23EB51-DE18-4A73-84E7-1F7E64B0BA30"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_20F15B39-F7D0-48CE-A0CD-97B0AEDC2343">
+      <dmn:requiredInput href="#_235129B9-77B2-4629-9F5E-E56DEBD78C0B"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_187B4367-C2AF-45F9-95B8-3B236A4AF458">
+      <dmn:text>if RoadTypes1_Value and not(RoadTypes2_Value) then RoadTypes2 + 1 else 0</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_0213AE50-E21E-4AE4-ABA6-788E8C483B12">
+            <kie:width>816.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_48A18355-5870-41D4-8C16-547284CBAE05">
+            <kie:width>898.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_53EC070A-DBB9-48F9-8E99-E4DC2CA34A6C">
+            <kie:width>624.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_EBEF6D0F-1FA5-411A-8155-CBFE041CEC7D">
+            <kie:width>50.0</kie:width>
+            <kie:width>624.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_FEF5DC4A-BC02-41FC-83DA-BBDFD5C2AC77">
+            <kie:width>300.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_5A6554D9-2A02-4C09-9866-5658EF7F55FA">
+            <kie:width>678.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_9BB36F36-213A-43A8-A0E9-445FA9AF5E9D">
+            <kie:width>1115.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_96F53EF3-CE69-4BEE-A556-36BE9E0B2AB6">
+            <kie:width>607.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_3E89E8CE-EE29-4845-88AF-1555A508C0D3">
+            <kie:width>791.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_30CC1D12-7E68-4AD4-907F-BC3C0EFAF548">
+            <kie:width>1136.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_8E4AAA4C-33EF-494D-8CF8-DC9D25C51F3E">
+            <kie:width>583.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_C45B3E74-45BF-4634-B79B-656E2CA1D869">
+            <kie:width>816.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_4D614351-52EA-4E58-8F9D-A6FFE1BB7577">
+            <kie:width>300.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_63D7E3BD-681E-4F96-8E4C-B1EEC2E7DB3B">
+            <kie:width>571.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_6BF823EB-8B7A-4018-8C61-E6C4353F1AB4">
+            <kie:width>804.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_E39D26AD-56FC-47FD-8F9D-7044C03323C9">
+            <kie:width>937.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_187B4367-C2AF-45F9-95B8-3B236A4AF458">
+            <kie:width>599.0</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-_29CBF409-4B49-4B15-ACDD-DAE04BC6120F" dmnElementRef="_29CBF409-4B49-4B15-ACDD-DAE04BC6120F" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="313" y="276" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_342DD341-423D-424C-8F8E-6A8013484B85" dmnElementRef="_342DD341-423D-424C-8F8E-6A8013484B85" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="370" y="895" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_451EE7E1-3B0A-4229-9EDE-300A2835B4BD" dmnElementRef="_451EE7E1-3B0A-4229-9EDE-300A2835B4BD" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="94.5981308411215" y="43.684210526315795" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_A2F298C8-8542-41C1-A9E3-9452A323B85D" dmnElementRef="_A2F298C8-8542-41C1-A9E3-9452A323B85D" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="450" y="96" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_CC99E2DF-E9BF-4BE5-98F9-47E6E912D742" dmnElementRef="_CC99E2DF-E9BF-4BE5-98F9-47E6E912D742" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="587" y="358" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9" dmnElementRef="_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="450" y="183" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_5D302B9B-D524-4B29-9D32-C7D3B41A598C" dmnElementRef="_5D302B9B-D524-4B29-9D32-C7D3B41A598C" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="586.8571428571429" y="276" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_627503F4-A14F-40DA-9F29-60C1AFE13BBB" dmnElementRef="_627503F4-A14F-40DA-9F29-60C1AFE13BBB" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="469.29906542056074" y="445.3421052631579" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_F50500C0-34D3-44F2-84E9-37D1DAB098E6" dmnElementRef="_F50500C0-34D3-44F2-84E9-37D1DAB098E6" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="878.8571428571429" y="620" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_5FD85D29-480F-49DF-BB07-88E02F387D98" dmnElementRef="_5FD85D29-480F-49DF-BB07-88E02F387D98" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="225" y="895" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_21549E36-42D4-4A86-93F5-F832EACECBC5" dmnElementRef="_21549E36-42D4-4A86-93F5-F832EACECBC5" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="814" y="842" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_B7D4AF81-3425-4132-AECA-ABB8315BAD66" dmnElementRef="_B7D4AF81-3425-4132-AECA-ABB8315BAD66" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="90" y="106.6842105263158" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_41124519-21E8-463D-9304-475F9A6AA26F" dmnElementRef="_41124519-21E8-463D-9304-475F9A6AA26F" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="764" y="448" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_EEEB1B16-CF40-465B-A8ED-B7179F2E300F" dmnElementRef="_EEEB1B16-CF40-465B-A8ED-B7179F2E300F" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="298" y="1021" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE" dmnElementRef="_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="450" y="32" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_2F23EB51-DE18-4A73-84E7-1F7E64B0BA30" dmnElementRef="_2F23EB51-DE18-4A73-84E7-1F7E64B0BA30" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="814" y="723" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_82E8A204-C631-4798-BAA7-6F56D49CFE9C" dmnElementRef="_82E8A204-C631-4798-BAA7-6F56D49CFE9C" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="764" y="533" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_FEDC5CCC-4838-4DF9-9439-BB825D9A0E1F" dmnElementRef="_FEDC5CCC-4838-4DF9-9439-BB825D9A0E1F" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="89.5981308411215" y="171.68421052631578" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_0294A5FE-E4EF-4549-AFBC-A7A6898CA136" dmnElementRef="_0294A5FE-E4EF-4549-AFBC-A7A6898CA136" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="586.8571428571429" y="779.8571428571429" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_6FCBDBA6-06EE-4D5B-8E53-777E835D3AF6" dmnElementRef="_6FCBDBA6-06EE-4D5B-8E53-777E835D3AF6" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="78.5981308411215" y="816.6842105263158" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_DA3F6F7B-2A2A-4F34-B9EE-D8A0637BE6F9" dmnElementRef="_DA3F6F7B-2A2A-4F34-B9EE-D8A0637BE6F9" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="78.5981308411215" y="717.3421052631579" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_ADF44FD6-20E7-4D1F-BB8A-C122078DADB0" dmnElementRef="_ADF44FD6-20E7-4D1F-BB8A-C122078DADB0" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="586.8571428571429" y="698.8571428571429" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_235129B9-77B2-4629-9F5E-E56DEBD78C0B" dmnElementRef="_235129B9-77B2-4629-9F5E-E56DEBD78C0B" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="814" y="782.3421052631579" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_459E6CDD-EE65-4320-9E8D-34DA61B753D5" dmnElementRef="_459E6CDD-EE65-4320-9E8D-34DA61B753D5" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="649" y="620" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-_CCF8153D-6ED2-486E-B986-3B683BBBB7AC" dmnElementRef="_CCF8153D-6ED2-486E-B986-3B683BBBB7AC">
+        <di:waypoint x="500" y="208"/>
+        <di:waypoint x="363" y="276"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_C0732176-2560-484D-8F86-7E3CF3B6D06D" dmnElementRef="_C0732176-2560-484D-8F86-7E3CF3B6D06D">
+        <di:waypoint x="139.5981308411215" y="196.68421052631578"/>
+        <di:waypoint x="363" y="301"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_15E21895-3149-4CE7-AC84-3876AFBAEE44" dmnElementRef="_15E21895-3149-4CE7-AC84-3876AFBAEE44">
+        <di:waypoint x="128.5981308411215" y="841.6842105263158"/>
+        <di:waypoint x="420" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_39325546-2B01-4FC9-9390-38CC7DDD6D99" dmnElementRef="_39325546-2B01-4FC9-9390-38CC7DDD6D99">
+        <di:waypoint x="128.5981308411215" y="742.3421052631579"/>
+        <di:waypoint x="420" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_03CC328D-5BB6-4F22-A2E2-EE597FF5D6BC" dmnElementRef="_03CC328D-5BB6-4F22-A2E2-EE597FF5D6BC">
+        <di:waypoint x="636.8571428571429" y="804.8571428571429"/>
+        <di:waypoint x="420" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_9F73D2C8-1456-4802-8601-AC13C6D471E4" dmnElementRef="_9F73D2C8-1456-4802-8601-AC13C6D471E4">
+        <di:waypoint x="928.8571428571429" y="645"/>
+        <di:waypoint x="420" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_E6FD6FBB-AE6C-49E8-8865-3BD5F4580777" dmnElementRef="_E6FD6FBB-AE6C-49E8-8865-3BD5F4580777">
+        <di:waypoint x="814" y="473"/>
+        <di:waypoint x="420" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_0A07F231-86D4-4BFB-BBEF-AB6BC15C4A06" dmnElementRef="_0A07F231-86D4-4BFB-BBEF-AB6BC15C4A06">
+        <di:waypoint x="864" y="807.3421052631579"/>
+        <di:waypoint x="420" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_5E0B7AAA-936B-4573-BFD0-85EEB266F6FF" dmnElementRef="_5E0B7AAA-936B-4573-BFD0-85EEB266F6FF">
+        <di:waypoint x="636.8571428571429" y="723.8571428571429"/>
+        <di:waypoint x="420" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_C3860959-EC26-4755-94F6-A5E8B406EC3F" dmnElementRef="_C3860959-EC26-4755-94F6-A5E8B406EC3F">
+        <di:waypoint x="519.2990654205607" y="470.3421052631579"/>
+        <di:waypoint x="420" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_1E819248-96AF-4A61-8F53-92C4166E4ADA" dmnElementRef="_1E819248-96AF-4A61-8F53-92C4166E4ADA">
+        <di:waypoint x="864" y="748"/>
+        <di:waypoint x="420" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_DBF57AEF-E15D-459A-9735-482FBDADADF1" dmnElementRef="_DBF57AEF-E15D-459A-9735-482FBDADADF1">
+        <di:waypoint x="864" y="867"/>
+        <di:waypoint x="420" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_19E35FA3-D384-4D4A-9AA3-9F0103DF1669" dmnElementRef="_19E35FA3-D384-4D4A-9AA3-9F0103DF1669">
+        <di:waypoint x="363" y="301"/>
+        <di:waypoint x="420" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_1551339C-3421-4646-B87A-0792B40190F7" dmnElementRef="_1551339C-3421-4646-B87A-0792B40190F7">
+        <di:waypoint x="500" y="57"/>
+        <di:waypoint x="500" y="121"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_431D20A2-4C4E-4052-9D60-95E98DE7179D" dmnElementRef="_431D20A2-4C4E-4052-9D60-95E98DE7179D">
+        <di:waypoint x="636.8571428571429" y="301"/>
+        <di:waypoint x="637" y="383"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_99DBEA1A-D530-4F86-903C-81E33E0BBE6E" dmnElementRef="_99DBEA1A-D530-4F86-903C-81E33E0BBE6E">
+        <di:waypoint x="140" y="131.68421052631578"/>
+        <di:waypoint x="500" y="208"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_37EF5306-C397-4545-BF66-5DEE2C915127" dmnElementRef="_37EF5306-C397-4545-BF66-5DEE2C915127">
+        <di:waypoint x="500" y="121"/>
+        <di:waypoint x="500" y="183"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_DFB1ECEC-50FF-4113-B2D7-8F4F537C3117" dmnElementRef="_DFB1ECEC-50FF-4113-B2D7-8F4F537C3117">
+        <di:waypoint x="144.5981308411215" y="68.6842105263158"/>
+        <di:waypoint x="500" y="208"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_B4269628-64A8-42F7-9681-ACDADA56875F" dmnElementRef="_B4269628-64A8-42F7-9681-ACDADA56875F">
+        <di:waypoint x="500" y="208"/>
+        <di:waypoint x="636.8571428571429" y="301"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_F2CF1377-990E-4782-B68B-A1BB14C361FA" dmnElementRef="_F2CF1377-990E-4782-B68B-A1BB14C361FA">
+        <di:waypoint x="139.5981308411215" y="196.68421052631578"/>
+        <di:waypoint x="636.8571428571429" y="301"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_8CEFD7A6-1E74-4F79-9BEA-97CEE4584204" dmnElementRef="_8CEFD7A6-1E74-4F79-9BEA-97CEE4584204">
+        <di:waypoint x="814" y="558"/>
+        <di:waypoint x="928.8571428571429" y="645"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_C036BC41-2D47-4F23-B339-711ACC7FC4CE" dmnElementRef="_C036BC41-2D47-4F23-B339-711ACC7FC4CE">
+        <di:waypoint x="864" y="748"/>
+        <di:waypoint x="928.8571428571429" y="645"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_EF9F22ED-1205-480F-868A-6AEB6BE2A733" dmnElementRef="_EF9F22ED-1205-480F-868A-6AEB6BE2A733">
+        <di:waypoint x="864" y="807.3421052631579"/>
+        <di:waypoint x="928.8571428571429" y="645"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_F6D05B0E-B196-4D6E-9844-A436338C36DF" dmnElementRef="_F6D05B0E-B196-4D6E-9844-A436338C36DF">
+        <di:waypoint x="128.5981308411215" y="841.6842105263158"/>
+        <di:waypoint x="275" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_0945A691-A8CB-4E18-9945-D415EBEE815B" dmnElementRef="_0945A691-A8CB-4E18-9945-D415EBEE815B">
+        <di:waypoint x="128.5981308411215" y="742.3421052631579"/>
+        <di:waypoint x="275" y="895"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_E562BD91-F5D8-4F5A-B4BD-27031F745EB8" dmnElementRef="_E562BD91-F5D8-4F5A-B4BD-27031F745EB8">
+        <di:waypoint x="636.8571428571429" y="804.8571428571429"/>
+        <di:waypoint x="275" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_431B476C-F10A-465C-BF6B-F4937EC8B4DD" dmnElementRef="_431B476C-F10A-465C-BF6B-F4937EC8B4DD">
+        <di:waypoint x="928.8571428571429" y="645"/>
+        <di:waypoint x="275" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_8A945DDA-0270-41F1-96F6-F7399CD838FE" dmnElementRef="_8A945DDA-0270-41F1-96F6-F7399CD838FE">
+        <di:waypoint x="814" y="473"/>
+        <di:waypoint x="275" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_FC2E6702-83F8-43C6-8D20-1D65955BE7E0" dmnElementRef="_FC2E6702-83F8-43C6-8D20-1D65955BE7E0">
+        <di:waypoint x="864" y="748"/>
+        <di:waypoint x="275" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_3CCBF53D-FED6-498F-A2DA-C9E8DAE84BE2" dmnElementRef="_3CCBF53D-FED6-498F-A2DA-C9E8DAE84BE2">
+        <di:waypoint x="636.8571428571429" y="723.8571428571429"/>
+        <di:waypoint x="275" y="895"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_29806F67-C076-42B7-ADBB-9127EE588D98" dmnElementRef="_29806F67-C076-42B7-ADBB-9127EE588D98">
+        <di:waypoint x="519.2990654205607" y="470.3421052631579"/>
+        <di:waypoint x="275" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_1E735B3C-BC7E-44FA-B95C-8482035073A6" dmnElementRef="_1E735B3C-BC7E-44FA-B95C-8482035073A6">
+        <di:waypoint x="864" y="807.3421052631579"/>
+        <di:waypoint x="275" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_D3982BF4-6FCA-4EE4-ABE8-08BBB4BE592B" dmnElementRef="_D3982BF4-6FCA-4EE4-ABE8-08BBB4BE592B">
+        <di:waypoint x="864" y="867"/>
+        <di:waypoint x="275" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_0F1D04D7-E50D-4411-8309-54D1F9FCB884" dmnElementRef="_0F1D04D7-E50D-4411-8309-54D1F9FCB884">
+        <di:waypoint x="363" y="301"/>
+        <di:waypoint x="275" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_04392CD8-8A44-4A6C-A793-60D4CBDC487A" dmnElementRef="_04392CD8-8A44-4A6C-A793-60D4CBDC487A">
+        <di:waypoint x="637" y="383"/>
+        <di:waypoint x="814" y="473"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_2A6EC786-E17F-447F-B57C-6827D9D4FA56" dmnElementRef="_2A6EC786-E17F-447F-B57C-6827D9D4FA56">
+        <di:waypoint x="519.2990654205607" y="470.3421052631579"/>
+        <di:waypoint x="814" y="473"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_F18D6CC9-ADE2-410E-BC17-819AA291E7E3" dmnElementRef="_F18D6CC9-ADE2-410E-BC17-819AA291E7E3">
+        <di:waypoint x="420" y="920"/>
+        <di:waypoint x="348" y="1046"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_9A6CDE93-5691-4DA8-B166-BFF198133B3D" dmnElementRef="_9A6CDE93-5691-4DA8-B166-BFF198133B3D">
+        <di:waypoint x="275" y="920"/>
+        <di:waypoint x="348" y="1046"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_36AE158F-EC37-4EF2-A9E2-E0C466EC5735" dmnElementRef="_36AE158F-EC37-4EF2-A9E2-E0C466EC5735">
+        <di:waypoint x="814" y="473"/>
+        <di:waypoint x="814" y="558"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_AC5F9947-B641-4C1E-AE38-F3966737A956" dmnElementRef="_AC5F9947-B641-4C1E-AE38-F3966737A956">
+        <di:waypoint x="864" y="748"/>
+        <di:waypoint x="814" y="583"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_6156D144-81CF-4FF4-AA70-44E0E3222AEE" dmnElementRef="_6156D144-81CF-4FF4-AA70-44E0E3222AEE">
+        <di:waypoint x="636.8571428571429" y="723.8571428571429"/>
+        <di:waypoint x="636.8571428571429" y="804.8571428571429"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_320FAE43-27E8-4AD6-B7EB-311AE6972B04" dmnElementRef="_320FAE43-27E8-4AD6-B7EB-311AE6972B04">
+        <di:waypoint x="864" y="748"/>
+        <di:waypoint x="636.8571428571429" y="804.8571428571429"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_F72DBB68-E1A3-4B0B-8D46-A52ED169BB82" dmnElementRef="_F72DBB68-E1A3-4B0B-8D46-A52ED169BB82">
+        <di:waypoint x="864" y="807.3421052631579"/>
+        <di:waypoint x="636.8571428571429" y="804.8571428571429"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_DCF651A6-704E-4E59-8EAB-887A9E347F74" dmnElementRef="_DCF651A6-704E-4E59-8EAB-887A9E347F74">
+        <di:waypoint x="699" y="645"/>
+        <di:waypoint x="636.8571428571429" y="723.8571428571429"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_896C5651-6F17-4ADB-940B-F4F613C67F10" dmnElementRef="_896C5651-6F17-4ADB-940B-F4F613C67F10">
+        <di:waypoint x="637" y="383"/>
+        <di:waypoint x="636.8571428571429" y="723.8571428571429"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_551BE91F-AE5A-4FB0-B25A-962A0BB32C60" dmnElementRef="_551BE91F-AE5A-4FB0-B25A-962A0BB32C60">
+        <di:waypoint x="519.2990654205607" y="470.3421052631579"/>
+        <di:waypoint x="636.8571428571429" y="723.8571428571429"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_15989D12-796E-4CFC-947E-9AE8F97FA816" dmnElementRef="_15989D12-796E-4CFC-947E-9AE8F97FA816">
+        <di:waypoint x="928.8571428571429" y="645"/>
+        <di:waypoint x="636.8571428571429" y="723.8571428571429"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_44C97249-7035-4A0B-84F9-619FCD9BAD03" dmnElementRef="_44C97249-7035-4A0B-84F9-619FCD9BAD03">
+        <di:waypoint x="864" y="867"/>
+        <di:waypoint x="636.8571428571429" y="723.8571428571429"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_3B0F94B1-A9C2-4375-AF88-E43FECFC58F3" dmnElementRef="_3B0F94B1-A9C2-4375-AF88-E43FECFC58F3">
+        <di:waypoint x="814" y="558"/>
+        <di:waypoint x="699" y="645"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_1394AA8B-E34D-4BEB-A298-8755805A74C7" dmnElementRef="_1394AA8B-E34D-4BEB-A298-8755805A74C7">
+        <di:waypoint x="864" y="748"/>
+        <di:waypoint x="699" y="645"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_20F15B39-F7D0-48CE-A0CD-97B0AEDC2343" dmnElementRef="_20F15B39-F7D0-48CE-A0CD-97B0AEDC2343">
+        <di:waypoint x="864" y="807.3421052631579"/>
+        <di:waypoint x="699" y="645"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
