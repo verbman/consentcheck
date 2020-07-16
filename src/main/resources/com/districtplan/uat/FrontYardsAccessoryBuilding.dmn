@@ -93,7 +93,7 @@ ProposedSetBackAccessoryBuilding >=S5.6.2.2.3 then true else&#xd;
   if S5.6.2.2.1Met and not(S5.6.2.2.3Met) and not(S5.6.2.2.4Met) and not(S5.6.2.2.5Met) then false else&#xd;
   if S5.6.2.2.1Met and S5.6.2.2.3Met then true else&#xd;
   if not(S5.6.2.2.1Met) and (S5.6.2.2.3Met or S5.6.2.2.4Met or S5.6.2.2.5Met) then true else&#xd;
-  if not(S5.6.2.2.1Met) and (not(S5.6.2.2.3Met) or not(S5.6.2.2.4Met) or not(S5.6.2.2.5Met)) then false else false&#xd;
+  if not(S5.6.2.2.1Met) and (not(S5.6.2.2.3Met) or not(S5.6.2.2.4Met) or not(S5.6.2.2.5Met)) then false else null&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -755,7 +755,8 @@ list contains(Activities[Noun="residential structure"].Verb, "add to")) then (&#
       <dmn:requiredAuthority href="#_B42BF277-92C4-42E5-A7BB-C6BA0021A59E"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_D08EDD7E-DE5B-49D8-B2F5-E1CA64222B25">
-      <dmn:text>not(R5.1.7)</dmn:text>
+      <dmn:text>if not(R5.1.7) then true else&#xd;
+  if R5.1.7 = null then null else false</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:inputData id="_C6D0397E-F2C6-497D-B78B-9C609915AF1C" name="SitePosition">
