@@ -1,0 +1,245 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://districtplan.wellington.govt.nz/83/dmn/MinimumSiteDimensionQuestions" xmlns:included1="https://districtplan.wellington.govt.nz/83/dmn/types" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_280DDB79-6DD6-4E8C-A27F-0A60C895B3AD" name="MinimumSiteDimensionQuestions" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://districtplan.wellington.govt.nz/83/dmn/MinimumSiteDimensionQuestions">
+  <dmn:extensionElements/>
+  <dmn:import id="_3886E949-17AC-4EBA-A83A-E6455C118260" name="Types" namespace="https://districtplan.wellington.govt.nz/83/dmn/types" locationURI="Types.dmn" importType="http://www.omg.org/spec/DMN/20180521/MODEL/"/>
+  <dmn:decision id="_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE" name="SpatialLayers">
+    <dmn:extensionElements/>
+    <dmn:variable id="_DFAE501B-7D6E-409E-9B6F-495E405EA0F5" name="SpatialLayers" typeRef="number"/>
+    <dmn:literalExpression id="_4D614351-52EA-4E58-8F9D-A6FFE1BB7577">
+      <dmn:text>1</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:inputData id="_347F2FBA-BE29-49BE-A803-40E23366FF2F" name="SpatialLayers_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_5BC9A235-4930-40D9-9AB5-12F7D1BEC681" name="SpatialLayers_Value" typeRef="Types.SpatialLayers"/>
+  </dmn:inputData>
+  <dmn:businessKnowledgeModel id="_4306AB83-CA4B-437E-84AF-0485953E2E56" name="MinimumSiteAreaSpatialLayers">
+    <dmn:extensionElements/>
+    <dmn:variable id="_9874183E-409E-450B-A754-FAAECC102F34" name="MinimumSiteAreaSpatialLayers" typeRef="boolean"/>
+    <dmn:encapsulatedLogic id="_FD919AF9-84BB-4991-8CD1-E112529569A7" kind="FEEL">
+      <dmn:formalParameter id="_0E2C0ADD-0AE7-4870-8D2E-6C77BF9D35EF" name="spatiallayers" typeRef="Types.SpatialLayers"/>
+      <dmn:literalExpression id="_7634C83A-613C-44CB-B9B2-FE8B85BF081D">
+        <dmn:text>list contains(spatiallayers[Type="Special Residential Area"].Title, "MD2 - Medium Density Residential Area 2")</dmn:text>
+      </dmn:literalExpression>
+    </dmn:encapsulatedLogic>
+  </dmn:businessKnowledgeModel>
+  <dmn:businessKnowledgeModel id="_451EE7E1-3B0A-4229-9EDE-300A2835B4BD" name="MinimumSiteAreaActivities">
+    <dmn:extensionElements/>
+    <dmn:variable id="_4749467E-E252-44A0-8DF8-89AFA8156900" name="MinimumSiteAreaActivities" typeRef="boolean"/>
+    <dmn:encapsulatedLogic id="_EBEF6D0F-1FA5-411A-8155-CBFE041CEC7D" kind="FEEL">
+      <dmn:formalParameter id="_47AE7B31-B0F4-4186-B14A-E50A16749E67" name="activities" typeRef="Types.Activities"/>
+      <dmn:literalExpression id="_53EC070A-DBB9-48F9-8E99-E4DC2CA34A6C">
+        <dmn:text>list contains(activities[Noun="residential building"].Verb, "build") or &#xd;
+list contains(activities[Noun="residential building"].Verb, "add to")&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+      </dmn:literalExpression>
+    </dmn:encapsulatedLogic>
+  </dmn:businessKnowledgeModel>
+  <dmn:inputData id="_29848503-B906-4770-B922-414ECEB46BB5" name="Suburb">
+    <dmn:extensionElements/>
+    <dmn:variable id="_CAA52B30-BAC8-4C80-8376-31B40C950578" name="Suburb" typeRef="Types.Suburb"/>
+  </dmn:inputData>
+  <dmn:inputData id="_B7D4AF81-3425-4132-AECA-ABB8315BAD66" name="Activities_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_BEF5BB6B-98C5-4093-A1A3-7F10F651EA36" name="Activities_Value" typeRef="Types.Activities"/>
+  </dmn:inputData>
+  <dmn:inputData id="_7638927D-524D-42EF-B614-C616DF423CC5" name="MultiUnit">
+    <dmn:extensionElements/>
+    <dmn:variable id="_2AD5A6FF-1C06-4501-9C67-8F8CA577108D" name="MultiUnit" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmn:decision id="_A2F298C8-8542-41C1-A9E3-9452A323B85D" name="Activities">
+    <dmn:extensionElements/>
+    <dmn:variable id="_4F716487-C01F-47E3-87B2-5704C699E77A" name="Activities" typeRef="number"/>
+    <dmn:informationRequirement id="_1551339C-3421-4646-B87A-0792B40190F7">
+      <dmn:requiredDecision href="#_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_FEF5DC4A-BC02-41FC-83DA-BBDFD5C2AC77">
+      <dmn:text>2</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_5D302B9B-D524-4B29-9D32-C7D3B41A598C" name="MinimumSiteDimension">
+    <dmn:extensionElements/>
+    <dmn:question>Is the site capable of accommodating a circle with a radius of 11 metres (laid horizontally)?</dmn:question>
+    <dmn:variable id="_8A6B77AE-D7AA-4330-B944-021353E4839C" name="MinimumSiteDimension" typeRef="number"/>
+    <dmn:informationRequirement id="_E146A2A6-5D16-4A9E-98C0-629B241CA9E5">
+      <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_EF3E443E-8A35-41DD-B2C7-65398156E675">
+      <dmn:requiredDecision href="#_A2F298C8-8542-41C1-A9E3-9452A323B85D"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_88BD3375-A172-491A-A20D-605F27D4CBFB">
+      <dmn:requiredInput href="#_29848503-B906-4770-B922-414ECEB46BB5"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_B6A64CEA-2DFF-4853-BEAF-254F337F9A77">
+      <dmn:requiredInput href="#_347F2FBA-BE29-49BE-A803-40E23366FF2F"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_8B943F36-C69D-4BC4-AFB4-516AC8910EC0">
+      <dmn:requiredInput href="#_7638927D-524D-42EF-B614-C616DF423CC5"/>
+    </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_3F60921A-55DD-4888-8CB1-76BE659E17A0">
+      <dmn:requiredKnowledge href="#_451EE7E1-3B0A-4229-9EDE-300A2835B4BD"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_FDCD2097-91D5-41FD-9B79-011A63B0AB87">
+      <dmn:requiredKnowledge href="#_4306AB83-CA4B-437E-84AF-0485953E2E56"/>
+    </dmn:knowledgeRequirement>
+    <dmn:literalExpression id="_E08B10DE-410B-42D3-A027-AE593370271C">
+      <dmn:text>if MinimumSiteAreaActivities(Activities_Value) and&#xd;
+MinimumSiteAreaSpatialLayers(SpatialLayers_Value) and&#xd;
+Suburb="Johnsonville" and MultiUnit then Activities + 1 else 0&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_4D614351-52EA-4E58-8F9D-A6FFE1BB7577">
+            <kie:width>300.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_7634C83A-613C-44CB-B9B2-FE8B85BF081D">
+            <kie:width>897.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_FD919AF9-84BB-4991-8CD1-E112529569A7">
+            <kie:width>50.0</kie:width>
+            <kie:width>897.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_53EC070A-DBB9-48F9-8E99-E4DC2CA34A6C">
+            <kie:width>624.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_EBEF6D0F-1FA5-411A-8155-CBFE041CEC7D">
+            <kie:width>50.0</kie:width>
+            <kie:width>624.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_FEF5DC4A-BC02-41FC-83DA-BBDFD5C2AC77">
+            <kie:width>300.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_E08B10DE-410B-42D3-A027-AE593370271C">
+            <kie:width>620.0</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE" dmnElementRef="_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="411" y="30" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_347F2FBA-BE29-49BE-A803-40E23366FF2F" dmnElementRef="_347F2FBA-BE29-49BE-A803-40E23366FF2F" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="115" y="255.68421052631578" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_4306AB83-CA4B-437E-84AF-0485953E2E56" dmnElementRef="_4306AB83-CA4B-437E-84AF-0485953E2E56" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="115" y="186.34210526315792" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_451EE7E1-3B0A-4229-9EDE-300A2835B4BD" dmnElementRef="_451EE7E1-3B0A-4229-9EDE-300A2835B4BD" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="119.5981308411215" y="52.684210526315795" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_29848503-B906-4770-B922-414ECEB46BB5" dmnElementRef="_29848503-B906-4770-B922-414ECEB46BB5" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="115" y="320" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_B7D4AF81-3425-4132-AECA-ABB8315BAD66" dmnElementRef="_B7D4AF81-3425-4132-AECA-ABB8315BAD66" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="115" y="120.34210526315789" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_7638927D-524D-42EF-B614-C616DF423CC5" dmnElementRef="_7638927D-524D-42EF-B614-C616DF423CC5" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="115" y="385" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_A2F298C8-8542-41C1-A9E3-9452A323B85D" dmnElementRef="_A2F298C8-8542-41C1-A9E3-9452A323B85D" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="411" y="109" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_5D302B9B-D524-4B29-9D32-C7D3B41A598C" dmnElementRef="_5D302B9B-D524-4B29-9D32-C7D3B41A598C" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="411" y="188" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-_1551339C-3421-4646-B87A-0792B40190F7" dmnElementRef="_1551339C-3421-4646-B87A-0792B40190F7">
+        <di:waypoint x="461" y="55"/>
+        <di:waypoint x="461" y="134"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_E146A2A6-5D16-4A9E-98C0-629B241CA9E5" dmnElementRef="_E146A2A6-5D16-4A9E-98C0-629B241CA9E5">
+        <di:waypoint x="165" y="145.3421052631579"/>
+        <di:waypoint x="461" y="213"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_EF3E443E-8A35-41DD-B2C7-65398156E675" dmnElementRef="_EF3E443E-8A35-41DD-B2C7-65398156E675">
+        <di:waypoint x="461" y="134"/>
+        <di:waypoint x="461" y="213"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_88BD3375-A172-491A-A20D-605F27D4CBFB" dmnElementRef="_88BD3375-A172-491A-A20D-605F27D4CBFB">
+        <di:waypoint x="165" y="345"/>
+        <di:waypoint x="461" y="213"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_B6A64CEA-2DFF-4853-BEAF-254F337F9A77" dmnElementRef="_B6A64CEA-2DFF-4853-BEAF-254F337F9A77">
+        <di:waypoint x="165" y="280.6842105263158"/>
+        <di:waypoint x="461" y="213"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_8B943F36-C69D-4BC4-AFB4-516AC8910EC0" dmnElementRef="_8B943F36-C69D-4BC4-AFB4-516AC8910EC0">
+        <di:waypoint x="165" y="410"/>
+        <di:waypoint x="461" y="213"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_3F60921A-55DD-4888-8CB1-76BE659E17A0" dmnElementRef="_3F60921A-55DD-4888-8CB1-76BE659E17A0">
+        <di:waypoint x="169.5981308411215" y="77.6842105263158"/>
+        <di:waypoint x="461" y="213"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_FDCD2097-91D5-41FD-9B79-011A63B0AB87" dmnElementRef="_FDCD2097-91D5-41FD-9B79-011A63B0AB87">
+        <di:waypoint x="165" y="211.34210526315792"/>
+        <di:waypoint x="461" y="213"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
