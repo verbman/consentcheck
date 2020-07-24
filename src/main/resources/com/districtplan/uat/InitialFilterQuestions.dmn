@@ -372,6 +372,9 @@ ExistingBuildingsCheck(ExistingBuildings_Value) then (&#xd;
     <dmn:informationRequirement id="_4E4C06F2-9595-4F5B-B366-0541711BE607">
       <dmn:requiredDecision href="#_20CE4674-9E04-450E-8989-7F1DE585BE8D"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_817D8350-0130-452B-B74C-46DA6083D585">
+      <dmn:requiredInput href="#_BDBBF216-E389-4088-84AF-00B0DDF2E591"/>
+    </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_FE488B33-9B7E-4105-B6A1-477B5C42F06A">
       <dmn:requiredKnowledge href="#_0DA8114E-D8DE-4E56-9AA4-E1AE9869A4A6"/>
     </dmn:knowledgeRequirement>
@@ -380,7 +383,12 @@ ExistingBuildingsCheck(ExistingBuildings_Value) then (&#xd;
 BuildAddtoAlter(Activities_Value[Noun="accessory building"].Verb)) and&#xd;
 list contains (SpatialLayers_Value[Type="Residential"].Title, "Outer Residential") and&#xd;
 NumberHouseholdUnits_Value = 2 and&#xd;
-LandArea &lt; 800 then BuildingConstructedBefore27July2000 + 1 else 0&#xd;
+LandArea &lt; 800 and&#xd;
+list contains(ExistingBuildings_Value, "residential building") &#xd;
+then BuildingConstructedBefore27July2000 + 1 else 0&#xd;
+&#xd;
+&#xd;
+&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -839,6 +847,10 @@ list contains(Activities_Value[Noun="earthworks"].Verb, "undertake") then (&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_FE488B33-9B7E-4105-B6A1-477B5C42F06A" dmnElementRef="_FE488B33-9B7E-4105-B6A1-477B5C42F06A">
         <di:waypoint x="889" y="386"/>
+        <di:waypoint x="529" y="672"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_817D8350-0130-452B-B74C-46DA6083D585" dmnElementRef="_817D8350-0130-452B-B74C-46DA6083D585">
+        <di:waypoint x="889" y="576.3421052631579"/>
         <di:waypoint x="529" y="672"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_FEF80148-DFDF-4281-A202-6BF896F35402" dmnElementRef="_FEF80148-DFDF-4281-A202-6BF896F35402">
