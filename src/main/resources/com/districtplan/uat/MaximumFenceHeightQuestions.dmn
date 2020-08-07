@@ -1,0 +1,546 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://districtplan.wellington.govt.nz/83/dmn/MaximumFenceHeightQuestions" xmlns:included1="https://districtplan.wellington.govt.nz/83/dmn/types" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_280DDB79-6DD6-4E8C-A27F-0A60C895B3AD" name="MaximumFenceHeightQuestions" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://districtplan.wellington.govt.nz/83/dmn/MaximumFenceHeightQuestions">
+  <dmn:extensionElements/>
+  <dmn:import id="_3886E949-17AC-4EBA-A83A-E6455C118260" name="Types" namespace="https://districtplan.wellington.govt.nz/83/dmn/types" locationURI="Types.dmn" importType="http://www.omg.org/spec/DMN/20180521/MODEL/"/>
+  <dmn:decision id="_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE" name="SpatialLayers">
+    <dmn:extensionElements/>
+    <dmn:variable id="_DFAE501B-7D6E-409E-9B6F-495E405EA0F5" name="SpatialLayers" typeRef="number"/>
+    <dmn:literalExpression id="_4D614351-52EA-4E58-8F9D-A6FFE1BB7577">
+      <dmn:text>1</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_29CBF409-4B49-4B15-ACDD-DAE04BC6120F" name="SideRearFenceWall">
+    <dmn:extensionElements/>
+    <dmn:question>Will the proposed fence or wall be built within 1 metre of a side or rear boundary?</dmn:question>
+    <dmn:allowedAnswers>yes
+no</dmn:allowedAnswers>
+    <dmn:variable id="_119C44AE-78CF-4BA4-A2D6-8BBF7453DD9D" name="SideRearFenceWall" typeRef="number"/>
+    <dmn:informationRequirement id="_CCF8153D-6ED2-486E-B986-3B683BBBB7AC">
+      <dmn:requiredDecision href="#_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_04392CD8-8A44-4A6C-A793-60D4CBDC487A">
+      <dmn:requiredDecision href="#_CC99E2DF-E9BF-4BE5-98F9-47E6E912D742"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_8C7E2035-AD58-4B05-A2A4-B5B5D54EE5D0">
+      <dmn:requiredInput href="#_E22F9388-922E-4D0A-B005-3127B8808F9C"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_0213AE50-E21E-4AE4-ABA6-788E8C483B12">
+      <dmn:text>if FrontYardFrontageFenceWall > 0 and &#xd;
+not(FrontYardFrontageFenceWall_Value) then &#xd;
+FrontYardFrontageFenceWall + 1 else&#xd;
+  if MaxHeightProposedFrontFenceWall > 0 then &#xd;
+  MaxHeightProposedFrontFenceWall + 1 else 0&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:businessKnowledgeModel id="_4306AB83-CA4B-437E-84AF-0485953E2E56" name="MaximumFenceHeightSpatialLayers">
+    <dmn:extensionElements/>
+    <dmn:variable id="_9874183E-409E-450B-A754-FAAECC102F34" name="MaximumFenceHeightSpatialLayers" typeRef="boolean"/>
+    <dmn:encapsulatedLogic id="_FD919AF9-84BB-4991-8CD1-E112529569A7" kind="FEEL">
+      <dmn:formalParameter id="_0E2C0ADD-0AE7-4870-8D2E-6C77BF9D35EF" name="spatiallayers" typeRef="Types.SpatialLayers"/>
+      <dmn:literalExpression id="_7634C83A-613C-44CB-B9B2-FE8B85BF081D">
+        <dmn:text>list contains(spatiallayers[Type="Residential"].Title, "Inner Residential") or&#xd;
+list contains(spatiallayers[Type="Residential"].Title, "Outer Residential") or&#xd;
+list contains(spatiallayers[Type="Residential"].Title, "Medium Density Residential Area")&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+      </dmn:literalExpression>
+    </dmn:encapsulatedLogic>
+  </dmn:businessKnowledgeModel>
+  <dmn:businessKnowledgeModel id="_451EE7E1-3B0A-4229-9EDE-300A2835B4BD" name="MaximumFenceHeightActivities">
+    <dmn:extensionElements/>
+    <dmn:variable id="_4749467E-E252-44A0-8DF8-89AFA8156900" name="MaximumFenceHeightActivities" typeRef="boolean"/>
+    <dmn:encapsulatedLogic id="_EBEF6D0F-1FA5-411A-8155-CBFE041CEC7D" kind="FEEL">
+      <dmn:formalParameter id="_47AE7B31-B0F4-4186-B14A-E50A16749E67" name="activities" typeRef="Types.Activities"/>
+      <dmn:literalExpression id="_53EC070A-DBB9-48F9-8E99-E4DC2CA34A6C">
+        <dmn:text>list contains(activities[Noun="residential fence or wall"].Verb, "build") or &#xd;
+list contains(activities[Noun="residential fence or wall"].Verb, "add to")&#xd;
+</dmn:text>
+      </dmn:literalExpression>
+    </dmn:encapsulatedLogic>
+  </dmn:businessKnowledgeModel>
+  <dmn:decision id="_82E8A204-C631-4798-BAA7-6F56D49CFE9C" name="PostWireFenceWall">
+    <dmn:extensionElements/>
+    <dmn:question>Will the proposed fence or wall be constructed of post and wire and comprise at least 80% transparent voids or gaps?</dmn:question>
+    <dmn:allowedAnswers>yes
+no</dmn:allowedAnswers>
+    <dmn:variable id="_668E6723-DB20-418A-B41B-3C311E3F1D32" name="PostWireFenceWall" typeRef="number"/>
+    <dmn:informationRequirement id="_36AE158F-EC37-4EF2-A9E2-E0C466EC5735">
+      <dmn:requiredDecision href="#_41124519-21E8-463D-9304-475F9A6AA26F"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_25AA01EE-2599-4712-A758-61030A726CC2">
+      <dmn:requiredInput href="#_C2429ABB-48E3-4E63-B351-0532677AE4B7"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_390BB9EB-3C7A-40FB-BCF0-F394134CEF68">
+      <dmn:text>if FenceWall10MetreContour > 0 and &#xd;
+FenceWall10MetreContour_Value then &#xd;
+FenceWall10MetreContour + 1 else 0&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_2D7E20FC-AF35-4098-B105-78A3BEB349F4" name="MaxHeightProposedSideFenceWall">
+    <dmn:extensionElements/>
+    <dmn:question>What is the maximum height of the proposed fence or wall in metres, measured from ground level at the boundary?</dmn:question>
+    <dmn:variable id="_E579CA45-F1F5-4145-9063-2906E63D9A14" name="MaxHeightProposedSideFenceWall" typeRef="number"/>
+    <dmn:informationRequirement id="_22683D4A-1D1F-4407-9E92-A7AC20A67087">
+      <dmn:requiredDecision href="#_29CBF409-4B49-4B15-ACDD-DAE04BC6120F"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_4CF5FEF9-F87A-47CB-9A40-DE70B424E1E2">
+      <dmn:requiredInput href="#_A2821A1D-C938-4088-B9C3-D75D78D84009"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_3980FDEF-5A5F-485D-9E92-DF97ED2933DD">
+      <dmn:text>if SideRearFenceWall > 0 and &#xd;
+SideRearFenceWall_Value then SideRearFenceWall + 1 else 0</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_A2F298C8-8542-41C1-A9E3-9452A323B85D" name="Activities">
+    <dmn:extensionElements/>
+    <dmn:variable id="_4F716487-C01F-47E3-87B2-5704C699E77A" name="Activities" typeRef="number"/>
+    <dmn:informationRequirement id="_1551339C-3421-4646-B87A-0792B40190F7">
+      <dmn:requiredDecision href="#_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_FEF5DC4A-BC02-41FC-83DA-BBDFD5C2AC77">
+      <dmn:text>2</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_CC99E2DF-E9BF-4BE5-98F9-47E6E912D742" name="MaxHeightProposedFrontFenceWall">
+    <dmn:extensionElements/>
+    <dmn:question>What is the maximum height of the proposed fence or wall in metres, measured from ground level at the boundary?</dmn:question>
+    <dmn:variable id="_4AE84137-22F4-44BD-B890-2BD83F796582" name="MaxHeightProposedFrontFenceWall" typeRef="number"/>
+    <dmn:informationRequirement id="_0E1BE1C4-A2DF-4A10-8867-0FBBFD2F8DDD">
+      <dmn:requiredDecision href="#_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_0409D7B9-E5D1-43E6-947F-DFC65061871B">
+      <dmn:requiredInput href="#_E22F9388-922E-4D0A-B005-3127B8808F9C"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_5A6554D9-2A02-4C09-9866-5658EF7F55FA">
+      <dmn:text>if FrontYardFrontageFenceWall > 0 and&#xd;
+FrontYardFrontageFenceWall_Value then FrontYardFrontageFenceWall + 1 else 0</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9" name="FrontYardFrontageFenceWall">
+    <dmn:extensionElements/>
+    <dmn:question>Will the proposed fence or wall be built on a street frontage or in a front yard?</dmn:question>
+    <dmn:allowedAnswers>yes
+no</dmn:allowedAnswers>
+    <dmn:variable id="_A9442935-BB06-40B4-94FF-E4DB88ABE88F" name="FrontYardFrontageFenceWall" typeRef="number"/>
+    <dmn:informationRequirement id="_99DBEA1A-D530-4F86-903C-81E33E0BBE6E">
+      <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_D60929DF-25C1-43AB-B0B0-FEE5D3E1C912">
+      <dmn:requiredInput href="#_347F2FBA-BE29-49BE-A803-40E23366FF2F"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_37EF5306-C397-4545-BF66-5DEE2C915127">
+      <dmn:requiredDecision href="#_A2F298C8-8542-41C1-A9E3-9452A323B85D"/>
+    </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_DFB1ECEC-50FF-4113-B2D7-8F4F537C3117">
+      <dmn:requiredKnowledge href="#_451EE7E1-3B0A-4229-9EDE-300A2835B4BD"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_B0163362-2C6E-4274-9FB3-931AFFD9EA72">
+      <dmn:requiredKnowledge href="#_4306AB83-CA4B-437E-84AF-0485953E2E56"/>
+    </dmn:knowledgeRequirement>
+    <dmn:literalExpression id="_9BB36F36-213A-43A8-A0E9-445FA9AF5E9D">
+      <dmn:text>if MaximumFenceHeightActivities(Activities_Value) and MaximumFenceHeightSpatialLayers(SpatialLayers_Value) then Activities + 1 else 0</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_F50500C0-34D3-44F2-84E9-37D1DAB098E6" name="TransparentFence">
+    <dmn:extensionElements/>
+    <dmn:question>Will at least 50% of the area of the proposed fence that exceeds 1.2 metres in height be maintained as transparent voids or gaps?</dmn:question>
+    <dmn:allowedAnswers>yes
+no
+not applicable</dmn:allowedAnswers>
+    <dmn:variable id="_B87E8DBA-D9F7-4570-B2B9-129E2A67F4C6" name="TransparentFence" typeRef="number"/>
+    <dmn:informationRequirement id="_8CEFD7A6-1E74-4F79-9BEA-97CEE4584204">
+      <dmn:requiredDecision href="#_82E8A204-C631-4798-BAA7-6F56D49CFE9C"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_9593B18A-3CAD-425B-9FF6-BB42DB064112">
+      <dmn:requiredDecision href="#_41124519-21E8-463D-9304-475F9A6AA26F"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_64EE696C-B4CE-4CFA-945C-4CF6B5C85D5A">
+      <dmn:requiredInput href="#_C2429ABB-48E3-4E63-B351-0532677AE4B7"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_CFDE468D-F0F2-4540-9F04-EBD4FC40EF16">
+      <dmn:requiredInput href="#_9F297A75-BD14-4B09-931A-CB505E92C481"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_69E5DC72-878C-4FAA-8FB7-AAD87C2C4DD5">
+      <dmn:requiredInput href="#_E22F9388-922E-4D0A-B005-3127B8808F9C"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_3E89E8CE-EE29-4845-88AF-1555A508C0D3">
+      <dmn:text>if FrontYardFrontageFenceWall_Value and&#xd;
+MaxHeightProposedFrontFenceWall_Value > 1.2 then&#xd;
+  if not(FenceWall10MetreContour_Value) then&#xd;
+  FenceWall10MetreContour + 1 else&#xd;
+  if FenceWall10MetreContour_Value then&#xd;
+  PostWireFenceWall + 1 else 0&#xd;
+else 0&#xd;
+ &#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:inputData id="_347F2FBA-BE29-49BE-A803-40E23366FF2F" name="SpatialLayers_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_5BC9A235-4930-40D9-9AB5-12F7D1BEC681" name="SpatialLayers_Value" typeRef="Types.SpatialLayers"/>
+  </dmn:inputData>
+  <dmn:inputData id="_B7D4AF81-3425-4132-AECA-ABB8315BAD66" name="Activities_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_BEF5BB6B-98C5-4093-A1A3-7F10F651EA36" name="Activities_Value" typeRef="Types.Activities"/>
+  </dmn:inputData>
+  <dmn:inputData id="_C2429ABB-48E3-4E63-B351-0532677AE4B7" name="FenceWall10MetreContour_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_99EEECF0-54E2-47E9-9F4D-52B0F1E0F9A6" name="FenceWall10MetreContour_Value" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmn:decision id="_41124519-21E8-463D-9304-475F9A6AA26F" name="FenceWall10MetreContour">
+    <dmn:extensionElements/>
+    <dmn:question>Will the proposed fence or wall be built above the 10 metre contour line?</dmn:question>
+    <dmn:allowedAnswers>yes
+no</dmn:allowedAnswers>
+    <dmn:variable id="_9F6DD4A2-1C39-44C5-8AA7-329115EB39A3" name="FenceWall10MetreContour" typeRef="number"/>
+    <dmn:informationRequirement id="_91BD435E-D837-439F-8327-44626BCBF9B1">
+      <dmn:requiredInput href="#_347F2FBA-BE29-49BE-A803-40E23366FF2F"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_172188CE-3B3E-44FC-BAD5-0EDFDDC4E169">
+      <dmn:requiredDecision href="#_29CBF409-4B49-4B15-ACDD-DAE04BC6120F"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_A15B1D7B-E806-4298-A25B-E5BD15F68060">
+      <dmn:requiredDecision href="#_2D7E20FC-AF35-4098-B105-78A3BEB349F4"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_098E7F77-A9EC-420C-9E1E-1BF535A9BEFB">
+      <dmn:requiredInput href="#_A2821A1D-C938-4088-B9C3-D75D78D84009"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_8E4AAA4C-33EF-494D-8CF8-DC9D25C51F3E">
+      <dmn:text>if list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "OR2 - Residential Coastal Edge") then &#xd;
+  if SideRearFenceWall > 0 and not(SideRearFenceWall_Value) then SideRearFenceWall + 1 else&#xd;
+  if MaxHeightProposedSideFenceWall > 0 then MaxHeightProposedSideFenceWall + 1 else 0&#xd;
+else 0&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:inputData id="_9F297A75-BD14-4B09-931A-CB505E92C481" name="MaxHeightProposedFrontFenceWall_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_A5794AB1-0B0E-4659-95F3-2A6797A7A0F2" name="MaxHeightProposedFrontFenceWall_Value" typeRef="number"/>
+  </dmn:inputData>
+  <dmn:inputData id="_A2821A1D-C938-4088-B9C3-D75D78D84009" name="SideRearFenceWall_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_0AA2B644-C4CB-464C-93DD-0C7990CC03C2" name="SideRearFenceWall_Value" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmn:inputData id="_E22F9388-922E-4D0A-B005-3127B8808F9C" name="FrontYardFrontageFenceWall_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_3889DD50-E045-415A-B0A8-043D0E9AAB0C" name="FrontYardFrontageFenceWall_Value" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_4D614351-52EA-4E58-8F9D-A6FFE1BB7577">
+            <kie:width>300.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_0213AE50-E21E-4AE4-ABA6-788E8C483B12">
+            <kie:width>1056.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_7634C83A-613C-44CB-B9B2-FE8B85BF081D">
+            <kie:width>750.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_FD919AF9-84BB-4991-8CD1-E112529569A7">
+            <kie:width>50.0</kie:width>
+            <kie:width>750.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_53EC070A-DBB9-48F9-8E99-E4DC2CA34A6C">
+            <kie:width>660.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_EBEF6D0F-1FA5-411A-8155-CBFE041CEC7D">
+            <kie:width>50.0</kie:width>
+            <kie:width>660.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_390BB9EB-3C7A-40FB-BCF0-F394134CEF68">
+            <kie:width>381.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_3980FDEF-5A5F-485D-9E92-DF97ED2933DD">
+            <kie:width>637.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_FEF5DC4A-BC02-41FC-83DA-BBDFD5C2AC77">
+            <kie:width>300.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_5A6554D9-2A02-4C09-9866-5658EF7F55FA">
+            <kie:width>637.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_9BB36F36-213A-43A8-A0E9-445FA9AF5E9D">
+            <kie:width>1115.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_3E89E8CE-EE29-4845-88AF-1555A508C0D3">
+            <kie:width>437.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_8E4AAA4C-33EF-494D-8CF8-DC9D25C51F3E">
+            <kie:width>881.0</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE" dmnElementRef="_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="316" y="30" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_29CBF409-4B49-4B15-ACDD-DAE04BC6120F" dmnElementRef="_29CBF409-4B49-4B15-ACDD-DAE04BC6120F" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="315" y="274" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_4306AB83-CA4B-437E-84AF-0485953E2E56" dmnElementRef="_4306AB83-CA4B-437E-84AF-0485953E2E56" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="115.00000000000001" y="183" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_451EE7E1-3B0A-4229-9EDE-300A2835B4BD" dmnElementRef="_451EE7E1-3B0A-4229-9EDE-300A2835B4BD" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="119.5981308411215" y="50.684210526315795" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_82E8A204-C631-4798-BAA7-6F56D49CFE9C" dmnElementRef="_82E8A204-C631-4798-BAA7-6F56D49CFE9C" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="313" y="518" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_2D7E20FC-AF35-4098-B105-78A3BEB349F4" dmnElementRef="_2D7E20FC-AF35-4098-B105-78A3BEB349F4" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="454" y="364" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_A2F298C8-8542-41C1-A9E3-9452A323B85D" dmnElementRef="_A2F298C8-8542-41C1-A9E3-9452A323B85D" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="316" y="101" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_CC99E2DF-E9BF-4BE5-98F9-47E6E912D742" dmnElementRef="_CC99E2DF-E9BF-4BE5-98F9-47E6E912D742" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="454" y="273" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9" dmnElementRef="_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="315" y="183" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_F50500C0-34D3-44F2-84E9-37D1DAB098E6" dmnElementRef="_F50500C0-34D3-44F2-84E9-37D1DAB098E6" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="454" y="601" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_347F2FBA-BE29-49BE-A803-40E23366FF2F" dmnElementRef="_347F2FBA-BE29-49BE-A803-40E23366FF2F" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="115" y="298.6842105263158" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_B7D4AF81-3425-4132-AECA-ABB8315BAD66" dmnElementRef="_B7D4AF81-3425-4132-AECA-ABB8315BAD66" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="115" y="116.6842105263158" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_C2429ABB-48E3-4E63-B351-0532677AE4B7" dmnElementRef="_C2429ABB-48E3-4E63-B351-0532677AE4B7" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="115" y="515.3421052631579" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_41124519-21E8-463D-9304-475F9A6AA26F" dmnElementRef="_41124519-21E8-463D-9304-475F9A6AA26F" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="313" y="435" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_9F297A75-BD14-4B09-931A-CB505E92C481" dmnElementRef="_9F297A75-BD14-4B09-931A-CB505E92C481" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="115" y="591" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_A2821A1D-C938-4088-B9C3-D75D78D84009" dmnElementRef="_A2821A1D-C938-4088-B9C3-D75D78D84009" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="592" y="433.6842105263158" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_E22F9388-922E-4D0A-B005-3127B8808F9C" dmnElementRef="_E22F9388-922E-4D0A-B005-3127B8808F9C" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="592" y="196.3421052631579" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-_CCF8153D-6ED2-486E-B986-3B683BBBB7AC" dmnElementRef="_CCF8153D-6ED2-486E-B986-3B683BBBB7AC">
+        <di:waypoint x="365" y="208"/>
+        <di:waypoint x="365" y="274"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_04392CD8-8A44-4A6C-A793-60D4CBDC487A" dmnElementRef="_04392CD8-8A44-4A6C-A793-60D4CBDC487A">
+        <di:waypoint x="504" y="298"/>
+        <di:waypoint x="415" y="299"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_8C7E2035-AD58-4B05-A2A4-B5B5D54EE5D0" dmnElementRef="_8C7E2035-AD58-4B05-A2A4-B5B5D54EE5D0">
+        <di:waypoint x="642" y="221.3421052631579"/>
+        <di:waypoint x="365" y="299"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_36AE158F-EC37-4EF2-A9E2-E0C466EC5735" dmnElementRef="_36AE158F-EC37-4EF2-A9E2-E0C466EC5735">
+        <di:waypoint x="363" y="460"/>
+        <di:waypoint x="363" y="543"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_25AA01EE-2599-4712-A758-61030A726CC2" dmnElementRef="_25AA01EE-2599-4712-A758-61030A726CC2">
+        <di:waypoint x="165" y="540.3421052631579"/>
+        <di:waypoint x="363" y="543"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_22683D4A-1D1F-4407-9E92-A7AC20A67087" dmnElementRef="_22683D4A-1D1F-4407-9E92-A7AC20A67087">
+        <di:waypoint x="365" y="299"/>
+        <di:waypoint x="504" y="389"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_4CF5FEF9-F87A-47CB-9A40-DE70B424E1E2" dmnElementRef="_4CF5FEF9-F87A-47CB-9A40-DE70B424E1E2">
+        <di:waypoint x="642" y="458.6842105263158"/>
+        <di:waypoint x="504" y="389"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_1551339C-3421-4646-B87A-0792B40190F7" dmnElementRef="_1551339C-3421-4646-B87A-0792B40190F7">
+        <di:waypoint x="366" y="55"/>
+        <di:waypoint x="366" y="126"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_0E1BE1C4-A2DF-4A10-8867-0FBBFD2F8DDD" dmnElementRef="_0E1BE1C4-A2DF-4A10-8867-0FBBFD2F8DDD">
+        <di:waypoint x="365" y="208"/>
+        <di:waypoint x="504" y="298"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_0409D7B9-E5D1-43E6-947F-DFC65061871B" dmnElementRef="_0409D7B9-E5D1-43E6-947F-DFC65061871B">
+        <di:waypoint x="642" y="221.3421052631579"/>
+        <di:waypoint x="504" y="298"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_99DBEA1A-D530-4F86-903C-81E33E0BBE6E" dmnElementRef="_99DBEA1A-D530-4F86-903C-81E33E0BBE6E">
+        <di:waypoint x="165" y="141.68421052631578"/>
+        <di:waypoint x="365" y="208"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_D60929DF-25C1-43AB-B0B0-FEE5D3E1C912" dmnElementRef="_D60929DF-25C1-43AB-B0B0-FEE5D3E1C912">
+        <di:waypoint x="165" y="323.6842105263158"/>
+        <di:waypoint x="365" y="208"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_37EF5306-C397-4545-BF66-5DEE2C915127" dmnElementRef="_37EF5306-C397-4545-BF66-5DEE2C915127">
+        <di:waypoint x="366" y="126"/>
+        <di:waypoint x="365" y="183"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_DFB1ECEC-50FF-4113-B2D7-8F4F537C3117" dmnElementRef="_DFB1ECEC-50FF-4113-B2D7-8F4F537C3117">
+        <di:waypoint x="169.5981308411215" y="75.6842105263158"/>
+        <di:waypoint x="365" y="208"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_B0163362-2C6E-4274-9FB3-931AFFD9EA72" dmnElementRef="_B0163362-2C6E-4274-9FB3-931AFFD9EA72">
+        <di:waypoint x="165" y="208"/>
+        <di:waypoint x="365" y="208"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_8CEFD7A6-1E74-4F79-9BEA-97CEE4584204" dmnElementRef="_8CEFD7A6-1E74-4F79-9BEA-97CEE4584204">
+        <di:waypoint x="363" y="543"/>
+        <di:waypoint x="504" y="626"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_9593B18A-3CAD-425B-9FF6-BB42DB064112" dmnElementRef="_9593B18A-3CAD-425B-9FF6-BB42DB064112">
+        <di:waypoint x="363" y="460"/>
+        <di:waypoint x="504" y="626"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_64EE696C-B4CE-4CFA-945C-4CF6B5C85D5A" dmnElementRef="_64EE696C-B4CE-4CFA-945C-4CF6B5C85D5A">
+        <di:waypoint x="165" y="540.3421052631579"/>
+        <di:waypoint x="504" y="626"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_CFDE468D-F0F2-4540-9F04-EBD4FC40EF16" dmnElementRef="_CFDE468D-F0F2-4540-9F04-EBD4FC40EF16">
+        <di:waypoint x="165" y="616"/>
+        <di:waypoint x="504" y="626"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_69E5DC72-878C-4FAA-8FB7-AAD87C2C4DD5" dmnElementRef="_69E5DC72-878C-4FAA-8FB7-AAD87C2C4DD5">
+        <di:waypoint x="642" y="221.3421052631579"/>
+        <di:waypoint x="504" y="626"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_91BD435E-D837-439F-8327-44626BCBF9B1" dmnElementRef="_91BD435E-D837-439F-8327-44626BCBF9B1">
+        <di:waypoint x="165" y="323.6842105263158"/>
+        <di:waypoint x="363" y="460"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_172188CE-3B3E-44FC-BAD5-0EDFDDC4E169" dmnElementRef="_172188CE-3B3E-44FC-BAD5-0EDFDDC4E169">
+        <di:waypoint x="365" y="299"/>
+        <di:waypoint x="363" y="460"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_A15B1D7B-E806-4298-A25B-E5BD15F68060" dmnElementRef="_A15B1D7B-E806-4298-A25B-E5BD15F68060">
+        <di:waypoint x="504" y="389"/>
+        <di:waypoint x="363" y="460"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_098E7F77-A9EC-420C-9E1E-1BF535A9BEFB" dmnElementRef="_098E7F77-A9EC-420C-9E1E-1BF535A9BEFB">
+        <di:waypoint x="642" y="458.6842105263158"/>
+        <di:waypoint x="363" y="460"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
