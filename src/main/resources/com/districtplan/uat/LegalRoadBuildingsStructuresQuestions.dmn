@@ -19,28 +19,9 @@
     <dmn:encapsulatedLogic id="_FD919AF9-84BB-4991-8CD1-E112529569A7" kind="FEEL">
       <dmn:formalParameter id="_0E2C0ADD-0AE7-4870-8D2E-6C77BF9D35EF" name="spatiallayers" typeRef="Types.SpatialLayers"/>
       <dmn:literalExpression id="_7634C83A-613C-44CB-B9B2-FE8B85BF081D">
-        <dmn:text>(list contains(spatiallayers[Type="Residential"].Title, "Inner Residential") or&#xd;
+        <dmn:text>list contains(spatiallayers[Type="Residential"].Title, "Inner Residential") or&#xd;
 list contains(spatiallayers[Type="Residential"].Title, "Outer Residential") or&#xd;
-list contains(spatiallayers[Type="Residential"].Title, "Medium Density Residential Area")) and&#xd;
-list contains(spatiallayers[Type="Hazard (Fault Line) Areas"].Title, "Hazard (Fault Line) Area")&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-</dmn:text>
-      </dmn:literalExpression>
-    </dmn:encapsulatedLogic>
-  </dmn:businessKnowledgeModel>
-  <dmn:businessKnowledgeModel id="_451EE7E1-3B0A-4229-9EDE-300A2835B4BD" name="LegalRoadBuildingsStructuresActivities">
-    <dmn:extensionElements/>
-    <dmn:variable id="_4749467E-E252-44A0-8DF8-89AFA8156900" name="LegalRoadBuildingsStructuresActivities" typeRef="boolean"/>
-    <dmn:encapsulatedLogic id="_EBEF6D0F-1FA5-411A-8155-CBFE041CEC7D" kind="FEEL">
-      <dmn:formalParameter id="_47AE7B31-B0F4-4186-B14A-E50A16749E67" name="activities" typeRef="Types.Activities"/>
-      <dmn:literalExpression id="_53EC070A-DBB9-48F9-8E99-E4DC2CA34A6C">
-        <dmn:text>list contains(activities[Noun="residential building"].Verb, "build") or &#xd;
-list contains(activities[Noun="residential building"].Verb, "add to") or&#xd;
-list contains(activities[Noun="residential building"].Verb, "alter")&#xd;
+list contains(spatiallayers[Type="Residential"].Title, "Medium Density Residential Area")&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -79,12 +60,14 @@ list contains(activities[Noun="residential building"].Verb, "alter")&#xd;
     <dmn:knowledgeRequirement id="_B0163362-2C6E-4274-9FB3-931AFFD9EA72">
       <dmn:requiredKnowledge href="#_4306AB83-CA4B-437E-84AF-0485953E2E56"/>
     </dmn:knowledgeRequirement>
-    <dmn:knowledgeRequirement id="_DFB1ECEC-50FF-4113-B2D7-8F4F537C3117">
-      <dmn:requiredKnowledge href="#_451EE7E1-3B0A-4229-9EDE-300A2835B4BD"/>
-    </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_9BB36F36-213A-43A8-A0E9-445FA9AF5E9D">
-      <dmn:text>if LegalRoadBuildingsStructuresActivities(Activities_Value) and &#xd;
-LegalRoadBuildingsStructuresSpatialLayers(SpatialLayers_Value) then Activities + 1 else 0</dmn:text>
+      <dmn:text>if LegalRoadBuildingsStructuresSpatialLayers(SpatialLayers_Value) and &#xd;
+(list contains(activities[Noun="accessory building"].Verb, "build") or&#xd;
+list contains(activities[Noun="accessory building"].Verb, "add to")) then Activities + 1 else 0&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmndi:DMNDI>
@@ -100,13 +83,6 @@ LegalRoadBuildingsStructuresSpatialLayers(SpatialLayers_Value) then Activities +
           <kie:ComponentWidths dmnElementRef="_FD919AF9-84BB-4991-8CD1-E112529569A7">
             <kie:width>50.0</kie:width>
             <kie:width>750.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_53EC070A-DBB9-48F9-8E99-E4DC2CA34A6C">
-            <kie:width>624.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_EBEF6D0F-1FA5-411A-8155-CBFE041CEC7D">
-            <kie:width>50.0</kie:width>
-            <kie:width>624.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_FEF5DC4A-BC02-41FC-83DA-BBDFD5C2AC77">
             <kie:width>300.0</kie:width>
@@ -141,15 +117,6 @@ LegalRoadBuildingsStructuresSpatialLayers(SpatialLayers_Value) then Activities +
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="115" y="186.3421052631579" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_451EE7E1-3B0A-4229-9EDE-300A2835B4BD" dmnElementRef="_451EE7E1-3B0A-4229-9EDE-300A2835B4BD" isCollapsed="false">
-        <dmndi:DMNStyle>
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="0" green="0" blue="0"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="119.5981308411215" y="52.684210526315795" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_B7D4AF81-3425-4132-AECA-ABB8315BAD66" dmnElementRef="_B7D4AF81-3425-4132-AECA-ABB8315BAD66" isCollapsed="false">
@@ -197,10 +164,6 @@ LegalRoadBuildingsStructuresSpatialLayers(SpatialLayers_Value) then Activities +
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_B0163362-2C6E-4274-9FB3-931AFFD9EA72" dmnElementRef="_B0163362-2C6E-4274-9FB3-931AFFD9EA72">
         <di:waypoint x="165" y="211.3421052631579"/>
-        <di:waypoint x="461" y="213"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_DFB1ECEC-50FF-4113-B2D7-8F4F537C3117" dmnElementRef="_DFB1ECEC-50FF-4113-B2D7-8F4F537C3117">
-        <di:waypoint x="169.5981308411215" y="77.6842105263158"/>
         <di:waypoint x="461" y="213"/>
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
