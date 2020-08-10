@@ -9,16 +9,18 @@ Residential buildings, accessory buildings and residential structures not provid
     <dmn:extensionElements/>
     <dmn:type></dmn:type>
   </dmn:knowledgeSource>
-  <dmn:businessKnowledgeModel id="_162DC7F1-EF22-4B75-AC18-37982D1DE529" name="ResidentialBuildingHazardFaultLineAreaActivities">
+  <dmn:businessKnowledgeModel id="_162DC7F1-EF22-4B75-AC18-37982D1DE529" name="LegalRoadBuildingsStructuresActivities">
     <dmn:extensionElements/>
-    <dmn:variable id="_878880E4-3EBF-4B99-B837-75C4F3EB1254" name="ResidentialBuildingHazardFaultLineAreaActivities" typeRef="boolean"/>
+    <dmn:variable id="_878880E4-3EBF-4B99-B837-75C4F3EB1254" name="LegalRoadBuildingsStructuresActivities" typeRef="boolean"/>
     <dmn:encapsulatedLogic id="_CAD1C4B8-6E96-486A-A184-2472643D0AC8" kind="FEEL">
       <dmn:formalParameter id="_9BD1541E-655D-408F-911A-7F993753C589" name="activities" typeRef="Types.Activities"/>
       <dmn:literalExpression id="_033DCC66-4A1E-4D45-B3B8-CA6B01564136">
-        <dmn:text>list contains(activities[Noun="residential building"].Verb, "build") or &#xd;
-list contains(activities[Noun="residential building"].Verb, "add to") or&#xd;
-list contains(activities[Noun="residential building"].Verb, "alter")&#xd;
-&#xd;
+        <dmn:text>list contains(activities[Noun="accessory building"].Verb, "build") or &#xd;
+list contains(activities[Noun="accessory building"].Verb, "add to") or&#xd;
+list contains(activities[Noun="residential structure"].Verb, "build") or &#xd;
+list contains(activities[Noun="residential structure"].Verb, "add to") or&#xd;
+list contains(activities[Noun="residential fence or wall"].Verb, "build") or &#xd;
+list contains(activities[Noun="residential fence or wall"].Verb, "add to")&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -127,9 +129,9 @@ Residential buildings, accessory buildings and residential structures subject to
     <dmn:extensionElements/>
     <dmn:variable id="_5C72E1F7-03EE-448F-A3AE-9E65BCD42720" name="SpatialLayers" typeRef="Types.SpatialLayers"/>
   </dmn:inputData>
-  <dmn:decision id="_69755C18-1F1F-4AFA-A816-9BB075FBF7FE" name="S5.6.2.11">
+  <dmn:decision id="_69755C18-1F1F-4AFA-A816-9BB075FBF7FE" name="R5.3.9">
     <dmn:extensionElements/>
-    <dmn:variable id="_55D6475E-D2A6-4101-B888-B4D943B0DBBC" name="S5.6.2.11" typeRef="string"/>
+    <dmn:variable id="_55D6475E-D2A6-4101-B888-B4D943B0DBBC" name="R5.3.9" typeRef="string"/>
     <dmn:informationRequirement id="_F7813B3E-0881-4087-8082-FB0684724F95">
       <dmn:requiredInput href="#_FF9E4109-6622-4987-BA94-B2DD13F30A1C"/>
     </dmn:informationRequirement>
@@ -148,19 +150,15 @@ Residential buildings, accessory buildings and residential structures subject to
     <dmn:knowledgeRequirement id="_58C58778-8B0F-4D2D-9D79-C26CC5F8B8E5">
       <dmn:requiredKnowledge href="#_9C36EA52-022B-417B-87C0-D01E9CB65009"/>
     </dmn:knowledgeRequirement>
-    <dmn:knowledgeRequirement id="_0FCD1273-72E5-4DAB-996A-74F05BA3000A">
-      <dmn:requiredKnowledge href="#_B43B33D1-6CB5-4408-9DE5-3BA05B81F1FF"/>
-    </dmn:knowledgeRequirement>
     <dmn:authorityRequirement id="_08CE2FA5-0236-4703-A70B-6AF0CD252B2C">
       <dmn:requiredAuthority href="#_BB23ECF6-ABC5-4B77-BB28-5016CD0E58A9"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_5A8AFE1A-52FB-4140-8383-E84671F1EE0A">
-      <dmn:text>if ResidentialBuildingHazardFaultLineAreaActivities(Activities) and&#xd;
+      <dmn:text>if LegalRoadBuildingsStructuresActivities(Activities) and&#xd;
 (InnerResidentialArea(SpatialLayers) or&#xd;
 OuterResidentialArea(SpatialLayers) or&#xd;
-MediumDensityResidentialArea(SpatialLayers)) and&#xd;
-HazardFaultLineArea(SpatialLayers) then &#xd;
-"light roof and light wall cladding" else null&#xd;
+MediumDensityResidentialArea(SpatialLayers)) then &#xd;
+"v" else null&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -172,14 +170,20 @@ HazardFaultLineArea(SpatialLayers) then &#xd;
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
-  <dmn:decision id="_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB" name="S5.6.2.11Met">
+  <dmn:decision id="_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB" name="R5.3.9Met">
     <dmn:extensionElements/>
-    <dmn:variable id="_F75E3AEF-2D4E-418E-B3EE-E275595C6158" name="S5.6.2.11Met" typeRef="boolean"/>
+    <dmn:variable id="_F75E3AEF-2D4E-418E-B3EE-E275595C6158" name="R5.3.9Met" typeRef="boolean"/>
     <dmn:informationRequirement id="_C0AEC952-C96B-4ED5-97CF-CCCD2BFABC8D">
       <dmn:requiredDecision href="#_69755C18-1F1F-4AFA-A816-9BB075FBF7FE"/>
     </dmn:informationRequirement>
     <dmn:informationRequirement id="_9BF130DC-D1D9-4051-AD4C-A7F0999B36F9">
       <dmn:requiredInput href="#_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_FB6B6379-8564-42D1-9D0F-B2DC71FC1F96">
+      <dmn:requiredInput href="#_F8BE8794-48AA-454D-85A3-0B1ABA77F052"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_7967BD28-2EF4-4A7B-BFBA-18DE1B5D75DB">
+      <dmn:requiredInput href="#_D4710A54-9901-421C-8772-E0EA95072948"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_059B26F4-1786-4F10-838B-6C2DFFD14DDC">
       <dmn:text>if S5.6.2.11="light roof and light wall cladding" and&#xd;
@@ -205,22 +209,16 @@ LightRoofandLightWall then true else&#xd;
   if R5.1.7 = null then null else false</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
-  <dmn:businessKnowledgeModel id="_B43B33D1-6CB5-4408-9DE5-3BA05B81F1FF" name="HazardFaultLineArea">
-    <dmn:extensionElements/>
-    <dmn:variable id="_35CD131E-D904-4797-A912-7DCB4E440E39" name="HazardFaultLineArea" typeRef="boolean"/>
-    <dmn:encapsulatedLogic id="_AEE93638-1DB2-47A8-A7BA-39CD4368FD2F" kind="FEEL">
-      <dmn:formalParameter id="_983291FE-F63E-4E43-8C55-7135F292B80F" name="spatiallayers" typeRef="Types.SpatialLayers"/>
-      <dmn:literalExpression id="_395C8395-71CC-444D-B156-81BF73D18B44">
-        <dmn:text>list contains(spatiallayers[Type="Hazard (Fault Line) Areas"].Title, "Hazard (Fault Line) Area")</dmn:text>
-      </dmn:literalExpression>
-    </dmn:encapsulatedLogic>
-  </dmn:businessKnowledgeModel>
-  <dmn:knowledgeSource id="_BB23ECF6-ABC5-4B77-BB28-5016CD0E58A9" name="DP_5.6.2.11" locationURI="b221223b-406e-49c0-9681-7fd7bca47d73">
-    <dmn:description>Wellington City District Plan Residential Standard
-Residential buildings within a Hazard (Fault Line) Area 5.6.2.11</dmn:description>
+  <dmn:knowledgeSource id="_BB23ECF6-ABC5-4B77-BB28-5016CD0E58A9" name="DP_5.3.9" locationURI="e82ca827-0f61-41ee-8ac4-293c727428ee">
+    <dmn:description>Wellington City District Plan Residential Discretionary Restricted Rule
+Accessory buildings and residential structures including fences and walls, on a legal road</dmn:description>
     <dmn:extensionElements/>
     <dmn:type></dmn:type>
   </dmn:knowledgeSource>
+  <dmn:inputData id="_D4710A54-9901-421C-8772-E0EA95072948" name="LegalRoadFenceWall">
+    <dmn:extensionElements/>
+    <dmn:variable id="_B337A8BC-B538-4744-B6FA-AED18447D89C" name="LegalRoadFenceWall" typeRef="boolean"/>
+  </dmn:inputData>
   <dmn:decision id="_ACBF9DC9-8567-4C59-A869-BE29AB326CC9" name="Status">
     <dmn:extensionElements/>
     <dmn:variable id="_8B244CF2-9921-4C40-96B6-75EC6209021F" name="Status" typeRef="Types.Status"/>
@@ -395,9 +393,9 @@ Buildings in Hazard (Fault Line) Area</dmn:text>
       </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
-  <dmn:inputData id="_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0" name="LightRoofandLightWall">
+  <dmn:inputData id="_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0" name="LegalRoadAccessoryBuilding">
     <dmn:extensionElements/>
-    <dmn:variable id="_CC0AA15A-835C-41DE-BB61-840D6242067E" name="LightRoofandLightWall" typeRef="boolean"/>
+    <dmn:variable id="_CC0AA15A-835C-41DE-BB61-840D6242067E" name="LegalRoadAccessoryBuilding" typeRef="boolean"/>
   </dmn:inputData>
   <dmn:businessKnowledgeModel id="_9C36EA52-022B-417B-87C0-D01E9CB65009" name="OuterResidentialArea">
     <dmn:extensionElements/>
@@ -419,6 +417,10 @@ Buildings in Hazard (Fault Line) Area</dmn:text>
       </dmn:literalExpression>
     </dmn:encapsulatedLogic>
   </dmn:businessKnowledgeModel>
+  <dmn:inputData id="_F8BE8794-48AA-454D-85A3-0B1ABA77F052" name="LegalRoadResidentialStructure">
+    <dmn:extensionElements/>
+    <dmn:variable id="_5E34089A-E25E-47AE-9E0C-8B29A9D342F5" name="LegalRoadResidentialStructure" typeRef="boolean"/>
+  </dmn:inputData>
   <dmn:association id="_7399E61C-C404-49CD-BDD5-9FE9A0E1F267" associationDirection="None">
     <dmn:sourceRef href="#_F9338FB0-0FF7-4157-A44D-E34B2D41967A"/>
     <dmn:targetRef href="#_B15F9BCA-04E0-45C8-8051-697EF12DDFF4"/>
@@ -479,13 +481,6 @@ Buildings in Hazard (Fault Line) Area</dmn:text>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_D08EDD7E-DE5B-49D8-B2F5-E1CA64222B25">
             <kie:width>954.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_395C8395-71CC-444D-B156-81BF73D18B44">
-            <kie:width>658.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_AEE93638-1DB2-47A8-A7BA-39CD4368FD2F">
-            <kie:width>50.0</kie:width>
-            <kie:width>658.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_76312133-D1CA-4EB7-9D4D-23EB9D5B3F72">
             <kie:width>50.0</kie:width>
@@ -581,6 +576,15 @@ Buildings in Hazard (Fault Line) Area</dmn:text>
         <dc:Bounds x="748" y="200" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_F8BE8794-48AA-454D-85A3-0B1ABA77F052" dmnElementRef="_F8BE8794-48AA-454D-85A3-0B1ABA77F052" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="8">
+          <dmndi:FillColor red="243" green="229" blue="248"/>
+          <dmndi:StrokeColor red="210" green="193" blue="208"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="573.5981308411215" y="129.68421052631578" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_FF9E4109-6622-4987-BA94-B2DD13F30A1C" dmnElementRef="_FF9E4109-6622-4987-BA94-B2DD13F30A1C" isCollapsed="false">
         <dmndi:DMNStyle fontSize="8">
           <dmndi:FillColor red="243" green="229" blue="248"/>
@@ -644,13 +648,13 @@ Buildings in Hazard (Fault Line) Area</dmn:text>
         <dc:Bounds x="881" y="79" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_B43B33D1-6CB5-4408-9DE5-3BA05B81F1FF" dmnElementRef="_B43B33D1-6CB5-4408-9DE5-3BA05B81F1FF" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="62" green="179" blue="247"/>
+      <dmndi:DMNShape id="dmnshape-_D4710A54-9901-421C-8772-E0EA95072948" dmnElementRef="_D4710A54-9901-421C-8772-E0EA95072948" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="8">
+          <dmndi:FillColor red="243" green="229" blue="248"/>
+          <dmndi:StrokeColor red="210" green="193" blue="208"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="71" y="431" width="100" height="50"/>
+        <dc:Bounds x="573.5981308411215" y="262" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_BB23ECF6-ABC5-4B77-BB28-5016CD0E58A9" dmnElementRef="_BB23ECF6-ABC5-4B77-BB28-5016CD0E58A9" isCollapsed="false">
@@ -760,10 +764,6 @@ Buildings in Hazard (Fault Line) Area</dmn:text>
         <di:waypoint x="121" y="397.3421052631579"/>
         <di:waypoint x="379" y="225"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_0FCD1273-72E5-4DAB-996A-74F05BA3000A" dmnElementRef="_0FCD1273-72E5-4DAB-996A-74F05BA3000A">
-        <di:waypoint x="121" y="456"/>
-        <di:waypoint x="379" y="225"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_08CE2FA5-0236-4703-A70B-6AF0CD252B2C" dmnElementRef="_08CE2FA5-0236-4703-A70B-6AF0CD252B2C">
         <di:waypoint x="378.25" y="154.68421052631578"/>
         <di:waypoint x="379" y="225"/>
@@ -774,6 +774,14 @@ Buildings in Hazard (Fault Line) Area</dmn:text>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_9BF130DC-D1D9-4051-AD4C-A7F0999B36F9" dmnElementRef="_9BF130DC-D1D9-4051-AD4C-A7F0999B36F9">
         <di:waypoint x="515.5981308411215" y="154.68421052631578"/>
+        <di:waypoint x="517" y="226"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_FB6B6379-8564-42D1-9D0F-B2DC71FC1F96" dmnElementRef="_FB6B6379-8564-42D1-9D0F-B2DC71FC1F96">
+        <di:waypoint x="623.5981308411215" y="154.68421052631578"/>
+        <di:waypoint x="517" y="226"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_7967BD28-2EF4-4A7B-BFBA-18DE1B5D75DB" dmnElementRef="_7967BD28-2EF4-4A7B-BFBA-18DE1B5D75DB">
+        <di:waypoint x="623.5981308411215" y="287"/>
         <di:waypoint x="517" y="226"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_6DE60FC4-29ED-46E5-B742-EC6CF575DD33" dmnElementRef="_6DE60FC4-29ED-46E5-B742-EC6CF575DD33">
