@@ -13,9 +13,9 @@
     <dmn:extensionElements/>
     <dmn:variable id="_5BC9A235-4930-40D9-9AB5-12F7D1BEC681" name="SpatialLayers_Value" typeRef="Types.SpatialLayers"/>
   </dmn:inputData>
-  <dmn:businessKnowledgeModel id="_4306AB83-CA4B-437E-84AF-0485953E2E56" name="ResidentialBuildingHazardFaultLineAreaSpatialLayers">
+  <dmn:businessKnowledgeModel id="_4306AB83-CA4B-437E-84AF-0485953E2E56" name="LegalRoadBuildingsStructuresSpatialLayers">
     <dmn:extensionElements/>
-    <dmn:variable id="_9874183E-409E-450B-A754-FAAECC102F34" name="ResidentialBuildingHazardFaultLineAreaSpatialLayers" typeRef="boolean"/>
+    <dmn:variable id="_9874183E-409E-450B-A754-FAAECC102F34" name="LegalRoadBuildingsStructuresSpatialLayers" typeRef="boolean"/>
     <dmn:encapsulatedLogic id="_FD919AF9-84BB-4991-8CD1-E112529569A7" kind="FEEL">
       <dmn:formalParameter id="_0E2C0ADD-0AE7-4870-8D2E-6C77BF9D35EF" name="spatiallayers" typeRef="Types.SpatialLayers"/>
       <dmn:literalExpression id="_7634C83A-613C-44CB-B9B2-FE8B85BF081D">
@@ -32,9 +32,9 @@ list contains(spatiallayers[Type="Hazard (Fault Line) Areas"].Title, "Hazard (Fa
       </dmn:literalExpression>
     </dmn:encapsulatedLogic>
   </dmn:businessKnowledgeModel>
-  <dmn:businessKnowledgeModel id="_451EE7E1-3B0A-4229-9EDE-300A2835B4BD" name="ResidentialBuildingHazardFaultLineAreaActivities">
+  <dmn:businessKnowledgeModel id="_451EE7E1-3B0A-4229-9EDE-300A2835B4BD" name="LegalRoadBuildingsStructuresActivities">
     <dmn:extensionElements/>
-    <dmn:variable id="_4749467E-E252-44A0-8DF8-89AFA8156900" name="ResidentialBuildingHazardFaultLineAreaActivities" typeRef="boolean"/>
+    <dmn:variable id="_4749467E-E252-44A0-8DF8-89AFA8156900" name="LegalRoadBuildingsStructuresActivities" typeRef="boolean"/>
     <dmn:encapsulatedLogic id="_EBEF6D0F-1FA5-411A-8155-CBFE041CEC7D" kind="FEEL">
       <dmn:formalParameter id="_47AE7B31-B0F4-4186-B14A-E50A16749E67" name="activities" typeRef="Types.Activities"/>
       <dmn:literalExpression id="_53EC070A-DBB9-48F9-8E99-E4DC2CA34A6C">
@@ -64,9 +64,9 @@ list contains(activities[Noun="residential building"].Verb, "alter")&#xd;
       <dmn:text>2</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
-  <dmn:decision id="_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9" name="LightRoofandLightWall">
+  <dmn:decision id="_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9" name="LegalRoadAccessoryBuilding">
     <dmn:extensionElements/>
-    <dmn:variable id="_A9442935-BB06-40B4-94FF-E4DB88ABE88F" name="LightRoofandLightWall" typeRef="number"/>
+    <dmn:variable id="_A9442935-BB06-40B4-94FF-E4DB88ABE88F" name="LegalRoadAccessoryBuilding" typeRef="number"/>
     <dmn:informationRequirement id="_99DBEA1A-D530-4F86-903C-81E33E0BBE6E">
       <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
     </dmn:informationRequirement>
@@ -76,15 +76,15 @@ list contains(activities[Noun="residential building"].Verb, "alter")&#xd;
     <dmn:informationRequirement id="_37EF5306-C397-4545-BF66-5DEE2C915127">
       <dmn:requiredDecision href="#_A2F298C8-8542-41C1-A9E3-9452A323B85D"/>
     </dmn:informationRequirement>
-    <dmn:knowledgeRequirement id="_DFB1ECEC-50FF-4113-B2D7-8F4F537C3117">
-      <dmn:requiredKnowledge href="#_451EE7E1-3B0A-4229-9EDE-300A2835B4BD"/>
-    </dmn:knowledgeRequirement>
     <dmn:knowledgeRequirement id="_B0163362-2C6E-4274-9FB3-931AFFD9EA72">
       <dmn:requiredKnowledge href="#_4306AB83-CA4B-437E-84AF-0485953E2E56"/>
     </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_DFB1ECEC-50FF-4113-B2D7-8F4F537C3117">
+      <dmn:requiredKnowledge href="#_451EE7E1-3B0A-4229-9EDE-300A2835B4BD"/>
+    </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_9BB36F36-213A-43A8-A0E9-445FA9AF5E9D">
-      <dmn:text>if ResidentialBuildingHazardFaultLineAreaActivities(Activities_Value) and &#xd;
-ResidentialBuildingHazardFaultLineAreaSpatialLayers(SpatialLayers_Value) then Activities + 1 else 0</dmn:text>
+      <dmn:text>if LegalRoadBuildingsStructuresActivities(Activities_Value) and &#xd;
+LegalRoadBuildingsStructuresSpatialLayers(SpatialLayers_Value) then Activities + 1 else 0</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmndi:DMNDI>
@@ -195,12 +195,12 @@ ResidentialBuildingHazardFaultLineAreaSpatialLayers(SpatialLayers_Value) then Ac
         <di:waypoint x="461" y="125"/>
         <di:waypoint x="461" y="188"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_DFB1ECEC-50FF-4113-B2D7-8F4F537C3117" dmnElementRef="_DFB1ECEC-50FF-4113-B2D7-8F4F537C3117">
-        <di:waypoint x="169.5981308411215" y="77.6842105263158"/>
-        <di:waypoint x="461" y="213"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_B0163362-2C6E-4274-9FB3-931AFFD9EA72" dmnElementRef="_B0163362-2C6E-4274-9FB3-931AFFD9EA72">
         <di:waypoint x="165" y="211.3421052631579"/>
+        <di:waypoint x="461" y="213"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_DFB1ECEC-50FF-4113-B2D7-8F4F537C3117" dmnElementRef="_DFB1ECEC-50FF-4113-B2D7-8F4F537C3117">
+        <di:waypoint x="169.5981308411215" y="77.6842105263158"/>
         <di:waypoint x="461" y="213"/>
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
