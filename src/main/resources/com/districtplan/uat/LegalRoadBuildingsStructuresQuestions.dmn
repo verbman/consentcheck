@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://districtplan.wellington.govt.nz/83/dmn/HazardFaultLineAreaResidentialBuildingQuestions" xmlns:included1="https://districtplan.wellington.govt.nz/83/dmn/types" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_280DDB79-6DD6-4E8C-A27F-0A60C895B3AD" name="LegalRoadBuildingsStructuresQuestions" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://districtplan.wellington.govt.nz/83/dmn/LegalRoadBuildingsStructuresQuestions">
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://districtplan.wellington.govt.nz/83/dmn/LegalRoadBuildingsStructuresQuestions" xmlns:included1="https://districtplan.wellington.govt.nz/83/dmn/types" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_280DDB79-6DD6-4E8C-A27F-0A60C895B3AD" name="LegalRoadBuildingsStructuresQuestions" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://districtplan.wellington.govt.nz/83/dmn/LegalRoadBuildingsStructuresQuestions">
   <dmn:extensionElements/>
   <dmn:import id="_3886E949-17AC-4EBA-A83A-E6455C118260" name="Types" namespace="https://districtplan.wellington.govt.nz/83/dmn/types" locationURI="Types.dmn" importType="http://www.omg.org/spec/DMN/20180521/MODEL/"/>
   <dmn:decision id="_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE" name="SpatialLayers">
@@ -43,13 +43,23 @@ list contains(spatiallayers[Type="Residential"].Title, "Medium Density Residenti
     <dmn:informationRequirement id="_801A4ACB-F6EB-4D7C-857F-BB43DE175045">
       <dmn:requiredInput href="#_347F2FBA-BE29-49BE-A803-40E23366FF2F"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_D00445CD-37CB-400A-8073-DF0B4C7F4799">
+      <dmn:requiredDecision href="#_52A5539F-F57D-4677-9F37-0CFFFF8EE664"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_A4EBDB23-7210-4BA2-BC80-88A354263D59">
+      <dmn:requiredDecision href="#_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9"/>
+    </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_00B07113-9FF1-4638-8814-0D93718B6803">
       <dmn:requiredKnowledge href="#_4306AB83-CA4B-437E-84AF-0485953E2E56"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_1E6638D6-76F6-46A5-8D2C-DFE24937AF39">
       <dmn:text>if LegalRoadBuildingsStructuresSpatialLayers(SpatialLayers_Value) and &#xd;
 (list contains(Activities_Value[Noun="residential fence or wall"].Verb, "build") or&#xd;
-list contains(Activities_Value[Noun="residential fence or wall"].Verb, "add to")) then Activities + 1 else 0&#xd;
+list contains(Activities_Value[Noun="residential fence or wall"].Verb, "add to")) then Activities + 1 else&#xd;
+  if LegalRoadResidentialStructure > 0 then&#xd;
+  LegalRoadResidentialStructure + 1 else&#xd;
+  if LegalRoadAccessoryBuilding > 0 then&#xd;
+  LegalRoadAccessoryBuilding + else 0&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -107,13 +117,23 @@ list contains(Activities_Value[Noun="accessory building"].Verb, "add to")) then 
     <dmn:informationRequirement id="_8D54C66B-5E38-4FCB-B347-69A279DEBFBA">
       <dmn:requiredInput href="#_347F2FBA-BE29-49BE-A803-40E23366FF2F"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_88AC11A3-7BC9-46A7-92A7-F37F083D46EE">
+      <dmn:requiredDecision href="#_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9"/>
+    </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_4B162163-DDE7-44E1-B5C4-F2B45D60EBC0">
       <dmn:requiredKnowledge href="#_4306AB83-CA4B-437E-84AF-0485953E2E56"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_F97F6F65-8C15-424A-ADAF-0987D4CCA7BF">
       <dmn:text>if LegalRoadBuildingsStructuresSpatialLayers(SpatialLayers_Value) and &#xd;
 (list contains(Activities_Value[Noun="residential structure"].Verb, "build") or&#xd;
-list contains(Activities_Value[Noun="residential structure"].Verb, "add to")) then Activities + 1 else 0&#xd;
+list contains(Activities_Value[Noun="residential structure"].Verb, "add to")) then Activities + 1 else&#xd;
+  if LegalRoadAccessoryBuilding > 0 then&#xd;
+  LegalRoadAccessoryBuilding + 1 else 0&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+  &#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -127,15 +147,15 @@ list contains(Activities_Value[Noun="residential structure"].Verb, "add to")) th
           <kie:ComponentWidths dmnElementRef="_4D614351-52EA-4E58-8F9D-A6FFE1BB7577">
             <kie:width>300.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_1E6638D6-76F6-46A5-8D2C-DFE24937AF39">
-            <kie:width>1115.0</kie:width>
-          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_7634C83A-613C-44CB-B9B2-FE8B85BF081D">
             <kie:width>750.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_FD919AF9-84BB-4991-8CD1-E112529569A7">
             <kie:width>50.0</kie:width>
             <kie:width>750.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_1E6638D6-76F6-46A5-8D2C-DFE24937AF39">
+            <kie:width>1115.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_FEF5DC4A-BC02-41FC-83DA-BBDFD5C2AC77">
             <kie:width>300.0</kie:width>
@@ -157,15 +177,6 @@ list contains(Activities_Value[Noun="residential structure"].Verb, "add to")) th
         <dc:Bounds x="407" y="28" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_E0505F01-47B7-4F97-9919-247D678A35A9" dmnElementRef="_E0505F01-47B7-4F97-9919-247D678A35A9" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="238" green="238" blue="238"/>
-          <dmndi:StrokeColor red="180" green="180" blue="180"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="528" y="188" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_347F2FBA-BE29-49BE-A803-40E23366FF2F" dmnElementRef="_347F2FBA-BE29-49BE-A803-40E23366FF2F" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="137" green="203" blue="200"/>
@@ -182,6 +193,15 @@ list contains(Activities_Value[Noun="residential structure"].Verb, "add to")) th
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="115" y="258" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_E0505F01-47B7-4F97-9919-247D678A35A9" dmnElementRef="_E0505F01-47B7-4F97-9919-247D678A35A9" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="536" y="433" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_B7D4AF81-3425-4132-AECA-ABB8315BAD66" dmnElementRef="_B7D4AF81-3425-4132-AECA-ABB8315BAD66" isCollapsed="false">
@@ -217,24 +237,32 @@ list contains(Activities_Value[Noun="residential structure"].Verb, "add to")) th
           <dmndi:StrokeColor red="180" green="180" blue="180"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="407" y="188" width="100" height="50"/>
+        <dc:Bounds x="407" y="292" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="dmnedge-_E398929C-B4E3-48E5-8826-67E3DAFDC5BC" dmnElementRef="_E398929C-B4E3-48E5-8826-67E3DAFDC5BC">
         <di:waypoint x="457" y="123"/>
-        <di:waypoint x="578" y="213"/>
+        <di:waypoint x="586" y="458"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_5AD48FE1-E584-48B9-A1E0-7BD032A7DA18" dmnElementRef="_5AD48FE1-E584-48B9-A1E0-7BD032A7DA18">
         <di:waypoint x="165" y="141.68421052631578"/>
-        <di:waypoint x="578" y="188"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_00B07113-9FF1-4638-8814-0D93718B6803" dmnElementRef="_00B07113-9FF1-4638-8814-0D93718B6803">
-        <di:waypoint x="165" y="283"/>
-        <di:waypoint x="578" y="213"/>
+        <di:waypoint x="586" y="433"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_801A4ACB-F6EB-4D7C-857F-BB43DE175045" dmnElementRef="_801A4ACB-F6EB-4D7C-857F-BB43DE175045">
         <di:waypoint x="165" y="348.6842105263158"/>
-        <di:waypoint x="578" y="213"/>
+        <di:waypoint x="586" y="458"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_00B07113-9FF1-4638-8814-0D93718B6803" dmnElementRef="_00B07113-9FF1-4638-8814-0D93718B6803">
+        <di:waypoint x="165" y="283"/>
+        <di:waypoint x="586" y="458"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_D00445CD-37CB-400A-8073-DF0B4C7F4799" dmnElementRef="_D00445CD-37CB-400A-8073-DF0B4C7F4799">
+        <di:waypoint x="457" y="317"/>
+        <di:waypoint x="586" y="458"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_A4EBDB23-7210-4BA2-BC80-88A354263D59" dmnElementRef="_A4EBDB23-7210-4BA2-BC80-88A354263D59">
+        <di:waypoint x="336" y="213"/>
+        <di:waypoint x="586" y="458"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_1551339C-3421-4646-B87A-0792B40190F7" dmnElementRef="_1551339C-3421-4646-B87A-0792B40190F7">
         <di:waypoint x="457" y="53"/>
@@ -258,19 +286,23 @@ list contains(Activities_Value[Noun="residential structure"].Verb, "add to")) th
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_0A421051-6BF3-4BFF-836C-C0214490C7F4" dmnElementRef="_0A421051-6BF3-4BFF-836C-C0214490C7F4">
         <di:waypoint x="457" y="123"/>
-        <di:waypoint x="457" y="213"/>
+        <di:waypoint x="457" y="317"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_A1919B13-6EDB-4145-BA22-A32D82635227" dmnElementRef="_A1919B13-6EDB-4145-BA22-A32D82635227">
         <di:waypoint x="165" y="141.68421052631578"/>
-        <di:waypoint x="457" y="213"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_4B162163-DDE7-44E1-B5C4-F2B45D60EBC0" dmnElementRef="_4B162163-DDE7-44E1-B5C4-F2B45D60EBC0">
-        <di:waypoint x="165" y="283"/>
-        <di:waypoint x="407" y="213"/>
+        <di:waypoint x="457" y="317"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_8D54C66B-5E38-4FCB-B347-69A279DEBFBA" dmnElementRef="_8D54C66B-5E38-4FCB-B347-69A279DEBFBA">
         <di:waypoint x="165" y="348.6842105263158"/>
-        <di:waypoint x="457" y="213"/>
+        <di:waypoint x="457" y="317"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_4B162163-DDE7-44E1-B5C4-F2B45D60EBC0" dmnElementRef="_4B162163-DDE7-44E1-B5C4-F2B45D60EBC0">
+        <di:waypoint x="165" y="283"/>
+        <di:waypoint x="407" y="317"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_88AC11A3-7BC9-46A7-92A7-F37F083D46EE" dmnElementRef="_88AC11A3-7BC9-46A7-92A7-F37F083D46EE">
+        <di:waypoint x="336" y="213"/>
+        <di:waypoint x="457" y="317"/>
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
