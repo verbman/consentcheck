@@ -126,7 +126,9 @@ list contains(Activities_Value[Noun="accessory building"].Verb, "add to")) then 
     <dmn:literalExpression id="_F97F6F65-8C15-424A-ADAF-0987D4CCA7BF">
       <dmn:text>if LegalRoadBuildingsStructuresSpatialLayers(SpatialLayers_Value) and &#xd;
 (list contains(Activities_Value[Noun="residential structure"].Verb, "build") or&#xd;
-list contains(Activities_Value[Noun="residential structure"].Verb, "add to")) then Activities + 1 else&#xd;
+list contains(Activities_Value[Noun="residential structure"].Verb, "add to")) then &#xd;
+  if LegalRoadAccessoryBuilding = 0 then &#xd;
+  Activities + 1 else&#xd;
   if LegalRoadAccessoryBuilding > 0 then&#xd;
   LegalRoadAccessoryBuilding + 1 else 0&#xd;
 &#xd;
@@ -252,16 +254,16 @@ list contains(Activities_Value[Noun="residential structure"].Verb, "add to")) th
         <di:waypoint x="165" y="348.6842105263158"/>
         <di:waypoint x="583" y="449"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_00B07113-9FF1-4638-8814-0D93718B6803" dmnElementRef="_00B07113-9FF1-4638-8814-0D93718B6803">
-        <di:waypoint x="165" y="283"/>
-        <di:waypoint x="583" y="449"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_D00445CD-37CB-400A-8073-DF0B4C7F4799" dmnElementRef="_D00445CD-37CB-400A-8073-DF0B4C7F4799">
         <di:waypoint x="457" y="317"/>
         <di:waypoint x="583" y="449"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_A4EBDB23-7210-4BA2-BC80-88A354263D59" dmnElementRef="_A4EBDB23-7210-4BA2-BC80-88A354263D59">
         <di:waypoint x="336" y="213"/>
+        <di:waypoint x="583" y="449"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_00B07113-9FF1-4638-8814-0D93718B6803" dmnElementRef="_00B07113-9FF1-4638-8814-0D93718B6803">
+        <di:waypoint x="165" y="283"/>
         <di:waypoint x="583" y="449"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_1551339C-3421-4646-B87A-0792B40190F7" dmnElementRef="_1551339C-3421-4646-B87A-0792B40190F7">
@@ -296,13 +298,13 @@ list contains(Activities_Value[Noun="residential structure"].Verb, "add to")) th
         <di:waypoint x="165" y="348.6842105263158"/>
         <di:waypoint x="457" y="317"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_4B162163-DDE7-44E1-B5C4-F2B45D60EBC0" dmnElementRef="_4B162163-DDE7-44E1-B5C4-F2B45D60EBC0">
-        <di:waypoint x="165" y="283"/>
-        <di:waypoint x="407" y="317"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_88AC11A3-7BC9-46A7-92A7-F37F083D46EE" dmnElementRef="_88AC11A3-7BC9-46A7-92A7-F37F083D46EE">
         <di:waypoint x="336" y="213"/>
         <di:waypoint x="457" y="317"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_4B162163-DDE7-44E1-B5C4-F2B45D60EBC0" dmnElementRef="_4B162163-DDE7-44E1-B5C4-F2B45D60EBC0">
+        <di:waypoint x="165" y="283"/>
+        <di:waypoint x="407" y="317"/>
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
