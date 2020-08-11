@@ -55,11 +55,21 @@ list contains(spatiallayers[Type="Residential"].Title, "Medium Density Residenti
     <dmn:literalExpression id="_1E6638D6-76F6-46A5-8D2C-DFE24937AF39">
       <dmn:text>if LegalRoadBuildingsStructuresSpatialLayers(SpatialLayers_Value) and &#xd;
 (list contains(Activities_Value[Noun="residential fence or wall"].Verb, "build") or&#xd;
-list contains(Activities_Value[Noun="residential fence or wall"].Verb, "add to")) then Activities + 1 else&#xd;
+list contains(Activities_Value[Noun="residential fence or wall"].Verb, "add to")) then &#xd;
+  if LegalRoadResidentialStructure = 0 and&#xd;
+  LegalRoadAccessoryBuilding = 0 then&#xd;
+  Activities + 1 else&#xd;
   if LegalRoadResidentialStructure > 0 then&#xd;
   LegalRoadResidentialStructure + 1 else&#xd;
   if LegalRoadAccessoryBuilding > 0 then&#xd;
   LegalRoadAccessoryBuilding + 1 else 0&#xd;
+else 0&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+  &#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -158,7 +168,7 @@ else 0&#xd;
             <kie:width>750.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_1E6638D6-76F6-46A5-8D2C-DFE24937AF39">
-            <kie:width>1115.0</kie:width>
+            <kie:width>746.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_FEF5DC4A-BC02-41FC-83DA-BBDFD5C2AC77">
             <kie:width>300.0</kie:width>
