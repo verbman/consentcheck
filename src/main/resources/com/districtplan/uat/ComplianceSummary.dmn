@@ -1,0 +1,1793 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://districtplan.wellington.govt.nz/83/ComplianceSummary" xmlns:included1="https://districtplan.wellington.govt.nz/83/dmn/types" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_F3094ADC-147D-4D49-8098-0A90217DA7D0" name="ComplianceSummary" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://districtplan.wellington.govt.nz/83/ComplianceSummary">
+  <dmn:extensionElements/>
+  <dmn:import id="_0C4C9E33-6CBD-48B7-BC90-FC1E65BE7AF6" name="Types" namespace="https://districtplan.wellington.govt.nz/83/dmn/types" locationURI="Types.dmn" importType="http://www.omg.org/spec/DMN/20180521/MODEL/"/>
+  <dmn:decision id="_B6F0EEEC-7793-494D-A6E2-3310F6835BE1" name="R5.3.9Notification">
+    <dmn:extensionElements/>
+    <dmn:variable id="_A4F7F83B-016F-4404-8DB8-06E8FAA116DF" name="R5.3.9Notification" typeRef="boolean"/>
+    <dmn:informationRequirement id="_C6A85EF2-937C-4FE5-97D9-D0865DDEB512">
+      <dmn:requiredInput href="#_BB982218-4655-4D5F-9313-DDB0D5B5DEC6"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_7395998D-89B9-4FC6-9B4A-3752E28407D9">
+      <dmn:text>list contains(NotificationClause.name, "5.3.9")</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_D70B36E0-608D-4030-BCDD-F3457E3AD4EF" name="R5.3.10BNotification">
+    <dmn:extensionElements/>
+    <dmn:variable id="_3336D26F-9722-4B68-8BAC-BDB1B68AE8E1" name="R5.3.10BNotification" typeRef="boolean"/>
+    <dmn:informationRequirement id="_81EC6A64-E800-4606-882A-A2668A81B3D8">
+      <dmn:requiredInput href="#_BB982218-4655-4D5F-9313-DDB0D5B5DEC6"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_3A995725-2186-4A12-B7E6-22CC185BAE39">
+      <dmn:text>list contains(NotificationClause.name, "5.3.10B")&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_5A6D6F98-06FE-47AE-98BC-0087AF372ED5" name="BoundaryActivities">
+    <dmn:extensionElements/>
+    <dmn:variable id="_5E6413F1-77C2-4FE3-8ABD-A1319D3F540A" name="BoundaryActivities" typeRef="boolean"/>
+    <dmn:informationRequirement id="_090484C2-743D-4B22-A85C-45DDC6E0AD68">
+      <dmn:requiredDecision href="#_BB6500E4-0165-4346-A438-90A425C73CBC"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_AE2C2E4E-A32D-4416-BFF9-C8C8A563EC6E">
+      <dmn:requiredDecision href="#_706EE2D2-1983-494E-BF38-015AB68E72C1"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_1CA7E536-C930-4556-94E0-7320632802E5">
+      <dmn:requiredDecision href="#_3C31E54F-B0EE-4CEE-AA62-F9885BEACA79"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_48C46D6A-8574-4B02-B495-4D5D3FF1971F" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_5CA2B7EC-DA32-4097-B290-086BF94D6564">
+        <dmn:inputExpression id="_D67B1713-A5B5-49EA-81F0-DAB6BDB023EB" typeRef="boolean">
+          <dmn:text>BoundaryStandards</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_7D87AF1D-95FD-4951-8192-6FAEC51727E0">
+        <dmn:inputExpression id="_04263D15-25FD-49C0-BB3E-6CC82D5A16B9" typeRef="boolean">
+          <dmn:text>NotBoundaryStandards</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_7BD31B31-B73D-49DB-8140-91CC43307AB1">
+        <dmn:inputExpression id="_D79C7150-8E3F-4650-B423-057DFB265CC5" typeRef="boolean">
+          <dmn:text>NotBoundaryRules</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_F815A80F-8CE6-44CA-B009-4532E350D932"/>
+      <dmn:annotation name="annotation-1"/>
+      <dmn:rule id="_FF57A0FD-E1D2-4C32-BF05-D89CDEDCD12A">
+        <dmn:inputEntry id="_BBFE8A3A-68C0-4D8E-9D75-952FC1886827">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5541D6C3-2F61-4437-8046-062B6B9A43F3">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2A0BBA09-4EE2-4894-ABAC-9A67D4D357BF">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_87A1071D-BEB1-4EA7-AFBE-100815C9410B">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_D815D580-F1FB-4378-B6E4-3059903D11C9">
+        <dmn:inputEntry id="_337DC897-40C3-4501-ADED-988439380DE3">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_16F059F8-87B3-41B1-BDBA-D4EF8EC0483D">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B467B992-14D9-412B-872A-C9FBFAC40E8B">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_AC8B58E7-CBBB-40E4-8827-D08FC054CC1C">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_41D00F2E-729C-4DB4-84FB-3E2AC4C88C23">
+        <dmn:inputEntry id="_2979B8F5-1A78-4011-9CE0-40FD5B2029EE">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B18630DD-BAE7-470F-BEA6-818A2DDDCF9C">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0705A6FC-1E6E-40B5-A5DC-116E8C67120D">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_216CF9F1-A115-460C-A3FB-DC772AC8BB0D">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_86B2F5A1-BFC9-4F35-9C9B-A53A254E0548">
+        <dmn:inputEntry id="_F7BCA809-4280-4DBC-B566-8548EE8205E1">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4D42F4E8-CA73-4A32-9627-77CE0988DCC6">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8AA2E0E5-D6DE-4615-80B4-C60C627072F5">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_2F6247BE-8DC1-4CC9-BF48-8401EA6D8779">
+          <dmn:text>true</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_025390AC-3B35-4045-AAC3-4EC0D628C717">
+        <dmn:inputEntry id="_49592D0A-9F2C-4ACA-8B62-58EC8724E142">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7B095DED-F083-4427-AB9D-64FC6E219A7A">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C6789764-4012-44CD-B691-BFFCE6DC6E35">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_015684AB-859E-4410-AF07-E65E538A7BB1">
+          <dmn:text>true</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_F92E1DE4-22B2-4DC8-AF6F-D01911477AB6">
+        <dmn:inputEntry id="_C1583946-CE72-41A1-B42C-34AC99C6ACFB">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3257439E-93C3-4A1E-A544-4EE6963D3B22">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6C2826CB-43B7-464F-A156-302513D30837">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_62F50C6C-1056-4DF7-B881-71F50160F9C0">
+          <dmn:text>true</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_28165857-ADC1-4ED2-91D3-4D61EB9A98C5">
+        <dmn:inputEntry id="_4A15B3B8-266E-4C68-A0B2-D0BEC832CD04">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C361733A-DAA1-4744-AD30-11844504DCC2">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4126EDC0-C2F0-4962-A2FF-48DD35BE51DB">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_41427778-E5DE-4519-9D91-31CE17B282F4">
+          <dmn:text>true</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_8278B8E7-81F9-4C73-8A72-A55D62EE6D21">
+        <dmn:inputEntry id="_158096C6-8343-4D3D-BF43-5D0A88643BB1">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BD4EC5E2-AC61-47E6-96B2-C43AE813193D">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_530EAA42-DB43-463F-B999-9F0879327E15">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_62640FDF-5C92-4B5D-879A-DFFAFA3DABC0">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_6D95CB1A-9E33-4E35-90B0-B2FE8542CE05">
+        <dmn:inputEntry id="_A54DD586-19D2-4E4A-B343-F993A1073285">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D5358470-5707-4790-A4B3-CC22CFA9CA73">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_634287DF-1A82-4935-AAC2-DBB44C41C1DE">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_660ACD1B-B702-43D1-AA26-3139EFE546C3">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_FB0193E6-DD85-46F7-88BB-E9C71A207752">
+        <dmn:inputEntry id="_45EE24FB-7144-484C-9824-BB3300E99CDB">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F28D3915-ED1A-4CBD-8A78-49D8F4DCBD19">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_539C4117-748B-4297-B263-06ABA4D44393">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_13E98165-81D0-4246-9974-1F9D8D7886C1">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_02D33E5E-5ACD-4543-B372-6082F0032AFD">
+        <dmn:inputEntry id="_6C7494B0-2E86-4CA9-80A1-942B41AACBD8">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6FF93D03-0D72-4A1D-B858-453F2110A3B2">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C0B416A2-3977-4F78-ABAE-32B759FE59C1">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_97FE0119-7E6D-4C93-8A99-2C8DBCE7EA6D">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_F839A92F-0665-45FD-BC6A-778ABBFE41E5">
+        <dmn:inputEntry id="_BE650EBC-1425-4138-A135-268509D274C8">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_553C9CF2-C716-4EFF-A120-0DF2E30F0818">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B9BF46EF-877D-4FFD-83D0-DEEFBBE7597F">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_DF5235B3-7CA4-45FC-93EA-6969584DDFA7">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_F03FD12A-A8BD-41C1-BE4C-FCEEA7FA09DA">
+        <dmn:inputEntry id="_CC329FEB-4EBB-4374-81BB-B3E747173A52">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2CA4747C-1EBC-4970-94DF-FF63BC900046">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CDA5627D-254E-47BD-8364-CFC11CD0887A">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_664FEFD6-F4A3-4388-BD13-AE45ED71CF7F">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_DC068914-E3D8-4DD4-80E1-368D8650A9CF">
+        <dmn:inputEntry id="_223C1930-8907-4C85-8F07-C9CC502E4D1B">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8580CEBB-BEBE-4344-A91D-D4EAE515147D">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_81F012CA-EEC5-4F58-BBD0-57B597CCDCD2">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_1B6118EC-DA09-4190-B9A2-B2DE22D3E983">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_8A586FC0-70C9-41C0-B835-4192B9E653BA">
+        <dmn:inputEntry id="_FDA03E4B-C8E3-4A12-A9B7-953257D102E8">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_197440D7-8B5C-4E9B-9FEC-E9A849C14797">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8B880AE2-E33B-4AA5-AAAB-F56C0DEE1EEB">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_772837DB-C36C-4A59-87A5-C04A6B6F06D3">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_C1D97951-912F-4D5C-95F2-213CFACE5452">
+        <dmn:inputEntry id="_8AD95D7C-E3D2-493C-AB2C-52D226A1F444">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4066046F-CE28-4566-9A7A-2A8F3C704CB5">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4BA713AD-7DAD-4481-ADE1-A703E6AC63B5">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_66C960F4-77B8-46AD-B0B3-E82CC6A3B525">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_9443D23D-7066-4B1F-8535-60118EBF0DF1">
+        <dmn:inputEntry id="_DEE43F7D-2C4C-4848-8C0D-860A9503CCD6">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DE7732E6-BC63-4415-9A25-D42F4C2F3824">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E80CE31D-A6D3-4507-9220-BDF0CECEB875">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_485699FE-47C9-481F-BB26-0C60DFEF5A3C">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:decision id="_D104EF4B-C443-4B4F-9810-5076E180CF05" name="NotificationClauses">
+    <dmn:extensionElements/>
+    <dmn:variable id="_353E37A8-4A0F-46EF-9766-DC821318B022" name="NotificationClauses" typeRef="Types.PlanContents"/>
+    <dmn:informationRequirement id="_DF6079CC-62F9-453F-918C-3C354A5ED7CE">
+      <dmn:requiredDecision href="#_E12BB3D2-BCDC-4EF6-B664-CD946B355244"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_3C8833EA-B16A-4FB8-9762-3D958A22AFCA">
+      <dmn:requiredDecision href="#_A03C0987-0D14-41C7-BE87-7A9CDBFF20B3"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_4849558A-2F12-4208-A63E-C650F377C5B0">
+      <dmn:requiredDecision href="#_92CDB305-5983-4B50-8FC2-CE92940EE232"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_43B3F229-0509-42A9-9EC3-FDECE637A62C">
+      <dmn:requiredDecision href="#_B6AA8734-4259-45BE-BC15-96CC43D80EF9"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_84A4A22E-13C0-44D4-BEDA-14CD746E93E5">
+      <dmn:requiredDecision href="#_B6F0EEEC-7793-494D-A6E2-3310F6835BE1"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_2567B653-6BD5-4064-BC36-4632105A8734">
+      <dmn:requiredDecision href="#_ACBF9DC9-8567-4C59-A869-BE29AB326CC9"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_35A9B159-FCEC-4A9C-863F-BFB652660A5B">
+      <dmn:requiredDecision href="#_B12A6C38-499A-4AD9-A9C1-420E04DBC4BC"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_2560ED9C-A9CC-445A-BDEA-C9EEED66F265">
+      <dmn:requiredDecision href="#_E14FFA00-42C2-412C-B6AD-EC579AB7805A"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_653B8A62-38EA-408F-A86A-7C2CF032930E">
+      <dmn:requiredDecision href="#_D70B36E0-608D-4030-BCDD-F3457E3AD4EF"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_17C07266-925B-4EA7-83F3-FD1C42D45E4C" hitPolicy="COLLECT" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_2A6584B0-BD12-44BD-8785-EFFD5001549E">
+        <dmn:inputExpression id="_596D4634-1173-46E5-8EAB-EE9B3C73D5D0" typeRef="boolean">
+          <dmn:text>R5.3.1Notification</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_AE969C50-A96F-49E6-80ED-770598D69C38">
+        <dmn:inputExpression id="_DACA87B9-5EBA-4143-810A-38591526B6A0" typeRef="boolean">
+          <dmn:text>R5.3.4Notification</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_0D06127B-973E-44FF-B201-6A57429B5312">
+        <dmn:inputExpression id="_F457DAD7-C4D8-4582-B0F6-F59DEC5FE977" typeRef="boolean">
+          <dmn:text>R5.3.5Notification</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_3CF0C16F-C606-4AB4-B354-C78B8081B412">
+        <dmn:inputExpression id="_0B67DCF4-C0E3-47C6-98BF-EB9219E94CBF" typeRef="boolean">
+          <dmn:text>R5.3.9Notification</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_87A16BDA-636C-44D0-B9DB-AD126EFD0A4F">
+        <dmn:inputExpression id="_C9EE01A5-513F-4E67-B7B8-682C3AB766A1" typeRef="boolean">
+          <dmn:text>R5.3.7Notification</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_5BD44A53-73AA-4AB3-91E4-1E8C13CD9C25">
+        <dmn:inputExpression id="_CE39DAEF-D6E5-44C7-8496-2AD94BD29939" typeRef="boolean">
+          <dmn:text>R5.3.8Notification</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_E8A09E9C-BF86-44EC-BCE5-C1FFDABAFEDB">
+        <dmn:inputExpression id="_F0B9E098-54F5-4406-B269-9EFF92F09CC4" typeRef="boolean">
+          <dmn:text>R5.3.10Notification</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_6B403143-ED38-4F4D-9140-A3A87A879B24">
+        <dmn:inputExpression id="_0FF47F0C-5C07-4FEA-8ED5-A0997CF73BD2" typeRef="boolean">
+          <dmn:text>R5.3.10BNotification</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_42D65579-03A5-442E-B33E-9C6C92266BA6">
+        <dmn:inputExpression id="_96854239-A5C2-43FB-BDE1-F822771D1168" typeRef="Types.Status">
+          <dmn:text>OverallActivityStatus</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_2AD31F79-28BA-4189-88D6-181AD3DDC79B" name="name" typeRef="string"/>
+      <dmn:output id="_B5697398-B93A-4745-A935-81E2F6E2A48F" name="uuids" typeRef="string"/>
+      <dmn:annotation name="annotation-1"/>
+      <dmn:rule id="_15DD3C8F-49B9-41CA-8DEE-167CD93C8891">
+        <dmn:inputEntry id="_F15029A5-8344-4CB8-A7E3-2AFCB1569BB3">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D1070152-B0C0-4DB6-B1E5-FF09E1849D50">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_39933171-0E40-4342-B538-0EB2C486384D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CD741632-A082-41EA-B008-F84D50386394">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C56623E4-42DB-4C4F-8C64-AC7D20B8A437">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CB137B82-38A4-435B-A5D0-9A806C1E66A0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_07F8352E-DEB8-4550-9445-4F2DC5F93DA0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C8E851DF-9422-4B9D-A446-FC1F41088E2A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_68B1053C-45BE-4B1D-A21E-A08792F16E38">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_2633237F-DDFC-48A1-9AA8-7A0A1AFFD8BF">
+          <dmn:text>"5.3.1.2"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_13DB75C3-1A54-4EB8-9347-213979B9E7AF">
+          <dmn:text>"6d270f42-0b64-437d-9de0-b6476daf125f"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>5.3.1.2 Vehicle parking</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_B5C7F4B0-792E-4D11-8198-8B593E6442CD">
+        <dmn:inputEntry id="_B94D9817-653C-4C48-8BAE-22A3FB6B2B5F">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8FC5619A-0996-4D9A-8190-F70A9D9BDF00">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7CC7D9B4-D78E-44C5-8221-7A6E54B0AB86">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_64F52D6A-949F-4507-BFCA-8853D7585378">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2BC6BEE3-81A4-404A-80EF-DDA9B7FCC9DF">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4E69DA7F-7DD3-41E7-9BFE-F1D432F58F17">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6FDA0529-C24E-43FC-A340-80B15BC5EDD0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_09BE8E45-7AD1-4E0C-8C08-0A51753F3053">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0B78E15E-81A0-4A85-9521-D4D023CF893D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_F00C5EC4-0F48-4869-9572-F67A897BC788">
+          <dmn:text>"5.3.1.3"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_EB533CE8-7ECD-4FB4-AEFA-EF17D6401FFF">
+          <dmn:text>"6d270f42-0b64-437d-9de0-b6476daf125f"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>5.3.1.3 Site access</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_DE51AEDA-9F60-47A6-A20F-D97869AC0C37">
+        <dmn:inputEntry id="_740D358B-1EA5-4672-911A-42160716764D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4A47F940-7477-4A8A-A9E0-C559A80B5603">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2BBFDBEF-D702-41C5-A16A-993696190E6B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_54024327-89B7-4B01-AC65-1DA16049656B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ACD1B1EF-D681-4901-B537-F1F4AC654026">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F9368FE0-291D-4CA6-B2FD-16886E7AB6CE">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_43B4BDD5-0D70-4588-9A46-45F97F7FAA21">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8EAF533D-FF21-4EA3-9052-99DDA51F9BAB">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9CFF3C55-8A90-465E-9473-65349E9BD340">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_8BFA79A6-A550-489A-8ECA-B89E1B874478">
+          <dmn:text>"5.3.4.2"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_A920EA1D-80FF-4FF3-AF61-1DECA2D8748D">
+          <dmn:text>"fa1d1f15-a6d2-45cd-8a07-1c8daa69d7f3"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>5.3.4.2 Yards (for S5.6.2.2.11)</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_FC2E8E2E-C9BE-4633-9B4F-FA6FA94F65F9">
+        <dmn:inputEntry id="_ACA0DEDB-4B34-4DC6-8D87-927C58707000">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2869001B-1537-44B4-9015-4CF5504ECEED">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7024956E-1749-46D0-A52E-97E23B31653C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1E49ED8E-CDDC-446C-9712-0BA8A0CF8EAA">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D530B7A5-AB34-464F-BE45-ACE793A193B1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B7370CEC-FF0A-40F0-8502-B10FB3DE386C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1F7E828D-7533-4FFF-A1CF-8DFF9238F84B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CF6A6B5F-051B-4C12-9612-81068CBD3375">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1E495476-6400-4FCF-B4AA-C69B6A3014BE">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_F587E746-65C9-45D5-85B1-00938CE00562">
+          <dmn:text>"5.3.4.3"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_954FB1D2-64CB-4F76-9300-4E3AE003E1C4">
+          <dmn:text>"77f5f55c-edcd-4b3e-be47-f3e6856f7cd5"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>5.3.4.3 Ground level open space (for S5.6.2.3.3)</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_1B27A055-27F5-419E-9FBF-13065143CAE3">
+        <dmn:inputEntry id="_8B684323-73C9-4C5D-8DDC-DC2F022E6046">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_62B061B9-0D2A-455C-BF8F-B1EC231A1B63">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0D5F50C0-7F1C-4253-8AAD-BA42CC10CCC0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0C8D5786-3A2C-472F-942F-733BE3D377B1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_410EF5C4-0BE3-43A5-B6D0-BDE529085843">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_70411998-8D0F-4572-9E3F-A3551EFB5B7C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_96F8C50C-755D-45FF-B167-AF3F2FA5AABF">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D6ECF215-B70E-41A8-A9C6-675FDACA0B89">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4303C55A-B4D7-423F-B433-5C4BE800A5A4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_1F34A3DF-C6A4-4AA5-B893-0DA66EB38E2E">
+          <dmn:text>"5.3.4.6"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_6698FC4E-2572-429B-A753-CBE4B96A1BE8">
+          <dmn:text>"7c9f6971-394d-444f-9ef5-6aa94d4ce12c"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>5.3.4.6 Accessory building height</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_2DDB9B05-D360-44F4-935A-62180DB27CB5">
+        <dmn:inputEntry id="_877FAAA5-0B6F-47D4-945C-76B60674079B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5B7DB7E9-4EF0-405E-8C0E-C7C9A229003C">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_287CFB30-A86B-475D-B742-AC6613539811">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7DA46529-00FA-4DAC-B75D-BC857AD775CE">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_58F71A2A-9CCE-4040-876E-E000C39491B7">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_EACD9280-518F-416C-BE96-74CAFB639AAF">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8ECD848B-8BC8-488D-8C75-401EB3031FFB">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_301A250E-5F35-4C6A-A98E-26686D222CF3">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DD0A3121-7ABA-470A-A0B6-705CAB709A3C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_B641E872-CAED-430F-88E1-AA6708D1C8E2">
+          <dmn:text>"5.3.4.9"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_6C7976D0-87F2-4C34-B7A9-56457E9CEA26">
+          <dmn:text>"7c9f6971-394d-444f-9ef5-6aa94d4ce12c"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>5.3.4.9 Hazard (Fault Line) Area</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_EF92EDE7-D020-4502-A632-F06CD56B3D16">
+        <dmn:inputEntry id="_39495B6F-AB1D-408B-9ABC-0F9A67174E02">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8E788CA5-F1EC-40A6-A425-D3DE7BD438CD">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A57D17E4-2999-4572-A6DE-2D11022A1C10">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_AC1A9FFC-572D-4133-9001-C0714202E756">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2A8E66BF-2629-4DE8-89AA-42D7B2A2995D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A999851E-01C4-4299-AB98-E4281469325A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8E3EA0A2-097A-4571-9A14-C974C0B055BC">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C2B61821-3807-4191-AC8E-45DBADEAB807">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CE414625-797B-4917-B03C-05EE5B3C3776">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_7D2B0DC9-7DB1-40AC-96ED-AB8B9F3257C5">
+          <dmn:text>"5.3.4.10"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_8CBE3EEB-23B4-4B8B-81D8-D978F11596D6">
+          <dmn:text>"5ad0a909-a4b9-4ceb-b8d9-cc2a357bd3e7"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>5.3.4.10 High voltage transmission lines</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_50F99E75-4DAD-4315-92DD-D1523C4AF346">
+        <dmn:inputEntry id="_1D5BEDC1-6DD4-405F-AF86-AC26C7755D21">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1F8C5CB1-695D-4F77-A7FB-070A5D85B90C">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BEDCE1FC-C434-4AB9-858F-8B6E36687CA1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E645BDF4-A4F7-4BCE-BBE4-9591C53A6734">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F3723C16-0FC1-4DAA-A6BA-FBE57683C0E7">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FDB82CB3-ED37-450C-AC0C-246D69FBD009">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DAC708A4-7A1B-4F2D-A0F3-719B544EB41B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A1119444-67C9-4602-BF5B-78326C55FA7A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FFEE27EB-C29D-4E75-906E-5A2B52B9973D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_D02A8B1D-A8C2-4F68-9E81-281C9EF6151E">
+          <dmn:text>"5.3.4.12"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_588E889C-CC2D-40C2-83D4-4FAD55313D99">
+          <dmn:text>"7c9f6971-394d-444f-9ef5-6aa94d4ce12c"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>5.3.4.12 Noise insulation - Airnoise</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_E712044B-F7EF-4BCE-B3DC-221243457FA6">
+        <dmn:inputEntry id="_C5B2A40A-F3D1-4298-BDF4-657D32FEEEE1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3A09FDD8-5F58-425D-9985-BA8A95E08481">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_46DDBB2A-4DA9-420A-AA88-D0F1331EA9EA">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2F7B0AD4-A0D1-4BF9-AD02-4EA88D60F5B5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2DC61C59-57A6-4232-ACFF-511B35B14F50">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7AF51A62-9F07-40C1-8D1E-184DC92F8997">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D8A9F788-0555-45AD-94F3-FC8821F47100">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_12942A65-9301-4FFD-912F-9040CEB3CDB1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F9167CB7-B6D4-4CB8-91DC-BC1DDD5F2B7B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_CC57D91F-F49B-46E6-907C-117AB17CBDF9">
+          <dmn:text>"5.3.4.13"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_3FE21439-23B7-4B03-AE07-1D8C80DDFD64">
+          <dmn:text>"7c9f6971-394d-444f-9ef5-6aa94d4ce12c"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>5.3.4.13 Noise insulation - Port Noise</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_E72D300E-C9F5-47F2-9779-07CEBA487FE1">
+        <dmn:inputEntry id="_CC85CE32-C77E-4627-A316-231997CDCA7E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3474AFF7-48B7-48FA-8C0F-CDC1B7ABDE77">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CBC03EED-85B0-45C9-933E-DA4ABD776E73">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7AD64466-E267-4F1D-8B05-CF517C93F8D8">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_251B38A9-25B6-4363-AEAD-75504AB6BCA1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DB0F7F73-F610-4C5D-9E11-BBC224CD163E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4163F3CD-F375-438E-B764-4E494BADDE86">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_97A6C995-CC4F-4168-8D23-ABEDBDECCC95">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D98CA3A6-1633-43DE-B6FC-012E6E2046B7">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_0485C8ED-44B6-421B-B6C8-8323D3D975A2">
+          <dmn:text>"5.3.5"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_3F2DDE77-F034-404A-A1C2-71C498F637AC">
+          <dmn:text>"f937fb69-f440-4f91-92c3-23d833648f40"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>5.3.5 Thorndon Character Area and Mt Victoria North Residential Character Area</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_A9FF0DE8-E627-4AF7-B5F8-8B878A7E4EE2">
+        <dmn:inputEntry id="_BDCC9256-B70E-45E6-9300-70887393D480">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CCAF5916-E42F-4C49-9E51-999802339B89">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_44F5EE7C-F483-472D-8485-4BA9CDDB9643">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_87E4727D-0A82-43F3-BB24-E9C834A1144C">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_85CDDF69-A2EB-483C-8232-6C7C1B98EFC2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ECA0D163-4A69-4172-A737-4FE86690A668">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_03AC0F68-EF33-4C18-9C14-60882115644D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A62428CA-F653-453B-AC61-AE27A955FBF8">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_19B4F89A-F07C-4626-AAE9-FD7415924646">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_5181D9EB-0748-407D-A75B-9FD5CC46D758">
+          <dmn:text>"5.3.9"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_8C941F57-4CE6-4C86-9824-289050EF8AEE">
+          <dmn:text>"bff7618d-b615-496d-b2e7-4c9c4652efed"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>5.3.9 Buildings and structures on a legal road</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_98CE1FAF-4D96-42DE-A5C3-A2C7DE630ABF">
+        <dmn:inputEntry id="_7AD3C064-AF8B-47E6-8741-098F6A3BFD13">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_380B99F1-EF86-4B5E-B41B-EECF3F0839E2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1743F6A5-D020-4513-A477-45ACDD474169">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C10FB71D-7398-4E56-9F2F-2B39D2D9D7FE">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5A8B86B5-CE21-4651-8674-45F62A060905">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C6545B04-3757-48BE-9659-A2D0117BAAEA">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F17E1058-9F1C-4BA3-812A-47729AAEB6C0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CF752318-E0E6-4DB5-8CCE-A308A6E062EB">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_89B96A83-06AD-4274-A9A4-8E4C7853E1F9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_EBF2C705-01D9-4528-8791-DB9237D887F4">
+          <dmn:text>"5.3.7"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_2F1DA1F5-05E8-4583-BEBF-ADEF5AE249B9">
+          <dmn:text>"aeb06b9d-9846-4d31-bda8-a416d401af79"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>5.3.7 Multi Unit</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_60A2808C-EE09-44F3-BF78-763317ABDF50">
+        <dmn:inputEntry id="_97F24B6B-562A-476D-B666-9F3D2737BDC7">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4484ACEA-AF7A-4FD1-8E34-209B6F0229C3">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B8CA237A-4DCD-42D8-A560-D1122B8149A6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B31094FC-1E82-425E-A1A7-843C520CFA59">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BC9BB407-1FD1-4030-A6B1-C4C6E2DB2E73">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_282B3FEB-28B5-42BD-8F88-1A44FFDC1B47">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FF3E6EE5-C1A2-4CA9-99B2-AA5930C88114">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_97EEF886-E271-4AF7-9DDB-7D41CCCFCB7F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_AB0E8973-063D-4248-8072-B3F574257B71">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_F302C176-76D2-4E22-9B06-F1F2FE1ACFD7">
+          <dmn:text>"5.3.7"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_9151B5FB-6D6E-4957-A667-765B65D01BFB">
+          <dmn:text>"a62e0796-4276-4110-9de1-ae0f2b04904b"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>5.3.7 Multi Unit</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_07F99F9A-A712-4393-9453-18F7711E69A4">
+        <dmn:inputEntry id="_62D07029-71CD-46EA-9051-2671646811CB">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7EC5943E-1660-4199-87B8-8F3EAD2FA2FF">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3E00528F-A617-4AD3-B48B-62E23AAD3A4F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BE722988-B7DB-4A13-B7CD-3EF33C766753">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_41309BDD-01B0-44CA-A542-879CC98D678E">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B620B89E-CE23-40BE-8EB2-066CC4E1D058">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9CE3AB79-44E1-4413-9509-19F828762EFA">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E5080F0D-9394-4960-99C9-B943B5D82FAF">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2BD3DC98-C28C-4BB7-9AE0-985457B93576">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_3A7C4A07-EBCE-4F8F-8FC9-24A0B1B8E413">
+          <dmn:text>"5.3.7"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_A43EFBE0-0E9E-4720-82C0-CE9C20E5D873">
+          <dmn:text>"4abf3290-d788-4b64-b2d0-23ee03d07c02"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>5.3.7 Multi Unit</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_48437DE9-5E75-4442-99EE-1BD143D24C5A">
+        <dmn:inputEntry id="_1A984DC3-4907-4048-99A2-17892027E471">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ABAEE9ED-1A29-4061-9222-93887B7FCDF8">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_18806E1D-6121-4B4F-84F9-4A7A23A78A1A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6C858098-9CD5-428A-8D74-AF10109C6649">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_75800128-E569-4839-9E98-D2A67FDE4278">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_BF79E55F-3966-4ACC-9222-4A3104CC39EF">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A9E501BE-0341-43FC-A9EB-F2E9ED540C1A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3E0056BE-6754-4FD7-A2B6-6FC65348CE16">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_91953D1A-123A-42DD-8D9C-62BE360489A8">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_D623FC35-E09A-4F30-A8E0-0F37DE81DB33">
+          <dmn:text>"5.3.8"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_6F714FF4-7A6E-46F3-97E5-ACF3DA292A7C">
+          <dmn:text>"03950c8d-5c5b-4d41-9db5-e681fb5a0e77"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>5.3.8 Oriental Bay Height Area</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_CB10D606-B977-4495-972C-14C82CDCE097">
+        <dmn:inputEntry id="_CA10CCAD-8190-455C-9C55-78F0AF866EF5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C6CC5CFB-7041-4890-9320-C9E4136628BD">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_67FF0301-0593-4071-B0A5-52E8D902446E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0AC11FFA-4235-4BB3-B111-760225AC9A6B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6E7C5E7F-031F-43F1-87E0-7CFD2E9D7F32">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_32C8202C-1396-4DCA-B670-BBEA239E6F35">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1137D643-F97C-40D0-BC6F-64B9C68AB1D4">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CC0F37B5-D1E9-48E2-9CA5-4CE81F09E3B2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_87151DEA-446B-411C-BDEE-01014305C91C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_75D33688-4F12-4038-969F-7BAAB7DBA3F8">
+          <dmn:text>"5.3.10"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_2A913BE4-259F-4B10-B686-688AA8D9AA25">
+          <dmn:text>"dde63e4a-b49f-4db6-ba26-898cccc57be3"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>5.3.10 Tawa (Hazard Flooding) Area</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_90F56E18-F695-4307-967B-45232F810D41">
+        <dmn:inputEntry id="_F6C3E649-DD23-4072-9633-6A7A1EB78103">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3C43CC9A-3640-4B2F-9598-764F3C8096AE">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_050C38A6-FA2D-4C42-B882-258D3D7F7DC4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7C3E155C-63D1-44D1-99B3-C1747175790C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_83347DC2-59FE-4B82-9907-A03D19D1539D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ADDF10EF-202F-43F9-8728-13775948ACCC">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_64D93B51-49D4-4AA5-8F7C-366AEC61D2CB">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6A6A43C7-91DA-4549-B595-7A74094DF474">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_727FD368-4FA7-45CF-B894-7DEFC461C440">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_1FD27A6D-FD04-4DEC-B8B2-A27D43BCB6DD">
+          <dmn:text>"5.3.10B"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_33FF2AEC-1322-4455-8CDA-D165F883C090">
+          <dmn:text>"3cad4355-c94b-4f03-9873-4195cbf9566a"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>5.3.10B Two household units in Airnoise boundary </dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_5B8445E4-EEBD-4004-9BED-EBBEF21510E7">
+        <dmn:inputEntry id="_7342251F-DC79-48E0-BCB5-55D930AAFE04">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DD3EDF4D-532B-422B-BBB6-D24C742B5C42">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_EC8B128C-E871-411B-BD5A-56E783761CF3">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5A02B8E8-B643-4C9D-BD8A-4078EFFE597A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5A81D592-2E89-4B33-9123-576C5348CA97">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_64B8A290-16DF-4332-9BF4-CF96EA5FB5A7">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_68A07474-43F8-48E1-B679-9ABBE6F037B7">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F92CAECA-7776-4B40-B11D-6783B26A63A8">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C0B6E324-A95D-4376-B098-2CF293AD30E3">
+          <dmn:text>"Discretionary Restricted"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_AA25901C-F49F-452F-9032-BF3140425D5D">
+          <dmn:text></dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_6020B7E6-F498-4326-B535-CC4CBB3340E4">
+          <dmn:text></dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>Guidance on precluded public notification</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_C3F70C9E-38D6-4C0A-8D82-72202B2D57AA">
+        <dmn:inputEntry id="_51924DDD-F0DC-4500-8B49-8704833F1B28">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F4EE4B00-7266-4B96-9B0A-59ED4BB476D0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_016A333A-3840-472C-80B3-BB845648B692">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_31805D0E-0FB1-4E47-86C8-B739B22AEE2F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DCE2D772-D746-40D9-BDD6-6FFA903C0EEE">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B173FEEC-52C7-4489-81B0-B5849B9C0A05">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_636C3B3D-70D2-482B-AB63-B739747FB20D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_532AE072-6CD6-4997-8339-57D2E5302782">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_553375E6-B5AC-46C4-9B93-87B853B45189">
+          <dmn:text>"Discretionary Unrestricted"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_A3D0B5D9-8E23-4855-9B7B-4BB12C17F095">
+          <dmn:text></dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_B8BECF3E-D859-41E5-BE06-6D8DACF6B25B">
+          <dmn:text></dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>Guidance on precluded public notification</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_71576EE8-3D67-4160-9540-B340F2044A5F">
+        <dmn:inputEntry id="_D1B61470-C720-4395-BF62-D0DD8E4C6D00">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6F6BF4DA-D7BB-4741-BAE7-1445CF5A7A4D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_AD661E88-E381-4EC8-A3D3-D1A46120B4E3">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_31282CD6-E7D5-48A4-90A3-C537F13163B2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2525C458-2561-41C9-8E64-B5D8FDF4124C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3274A18B-5144-4B4F-97D4-9EABBD42C097">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C7EB4FDF-DE05-4A3C-8457-5D27E09A045F">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1133FDE1-1D91-4739-B4CD-2B94673B4A85">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D716997C-5BA2-455F-AA2B-44BDA44035CE">
+          <dmn:text>"Controlled"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_F9B5FCE8-BA54-4B96-B89F-B95158271B06">
+          <dmn:text></dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_6AC57607-501F-4A4C-9C04-D683755753EE">
+          <dmn:text></dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>Guidance for specific preclusion for a controlled activity</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:inputData id="_DD6217A7-9E9C-427D-AB4C-D2BFA5ED5CFB" name="RulesTriggered">
+    <dmn:extensionElements/>
+    <dmn:variable id="_370CC405-AB13-4E22-ACFE-0A16304E6844" name="RulesTriggered" typeRef="Types.PlanContents"/>
+  </dmn:inputData>
+  <dmn:inputData id="_3339928E-4F9A-4EF4-998E-97DA1EC5F54E" name="StandardsNotMet">
+    <dmn:extensionElements/>
+    <dmn:variable id="_0619E9D8-04EC-49B6-813E-C6377F1A17D4" name="StandardsNotMet" typeRef="Types.PlanContents"/>
+  </dmn:inputData>
+  <dmn:decision id="_F2B7D834-0896-4901-804F-6F1511AF86FA" name="BoundaryActivitiesGuidance">
+    <dmn:extensionElements/>
+    <dmn:variable id="_903F58CC-9CEB-466C-94E0-D948059AA75D" name="BoundaryActivitiesGuidance" typeRef="Types.PlanContents"/>
+    <dmn:informationRequirement id="_796A676B-D48D-409A-AE3D-C12008BBD122">
+      <dmn:requiredDecision href="#_5A6D6F98-06FE-47AE-98BC-0087AF372ED5"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_9A48FCBF-2400-4834-B0A7-BF859412EF57" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_984E79B1-BB9A-423A-936F-D80958EB66D7">
+        <dmn:inputExpression id="_5B5A842D-DDBD-4CC2-A0AD-CD89E0EFAE22" typeRef="boolean">
+          <dmn:text>BoundaryActivities</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_436F6BA4-3EBA-4763-84F8-AECE3FF7E4D1" name="name" typeRef="string"/>
+      <dmn:output id="_5B481022-4317-42F1-917A-376EB1E00420" name="uuids" typeRef="string"/>
+      <dmn:annotation name="annotation-1"/>
+      <dmn:rule id="_E766682A-E844-4195-BBEC-9BC9FBE8B57D">
+        <dmn:inputEntry id="_41066951-319C-4565-8E79-F9B93C804762">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_BE9AA997-48BD-446D-B1E2-5E01C6748A21">
+          <dmn:text></dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_63F54ABD-04B7-45FE-B769-F45EF342F97C">
+          <dmn:text></dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:decision id="_E14FFA00-42C2-412C-B6AD-EC579AB7805A" name="R5.3.10Notification">
+    <dmn:extensionElements/>
+    <dmn:variable id="_BDE334D2-A1BC-4B76-93CC-518C4190BD56" name="R5.3.10Notification" typeRef="boolean"/>
+    <dmn:informationRequirement id="_81AA1767-CF4C-4BC7-BF9E-ABE50F27A092">
+      <dmn:requiredInput href="#_BB982218-4655-4D5F-9313-DDB0D5B5DEC6"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_E98396F0-A12F-4BB4-AD38-55A3898284F9">
+      <dmn:text>list contains(NotificationClause.name, "5.3.10")&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_A03C0987-0D14-41C7-BE87-7A9CDBFF20B3" name="R5.3.4Notification">
+    <dmn:extensionElements/>
+    <dmn:variable id="_D0EEE4F7-468F-4D78-ADA1-ABD381427B8A" name="R5.3.4Notification" typeRef="boolean"/>
+    <dmn:informationRequirement id="_3B0E5E4A-F47F-48D6-8D43-8F775B086482">
+      <dmn:requiredInput href="#_BB982218-4655-4D5F-9313-DDB0D5B5DEC6"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_482E510D-CE71-4FE9-AAC8-DF7D0A4CD3BD">
+      <dmn:text>list contains(NotificationClause.name, "5.3.4.2") and&#xd;
+list contains(NotificationClause.name, "5.3.4.3") and&#xd;
+list contains(NotificationClause.name, "5.3.4.6") and&#xd;
+list contains(NotificationClause.name, "5.3.4.9") and&#xd;
+list contains(NotificationClause.name, "5.3.4.10") and&#xd;
+list contains(NotificationClause.name, "5.3.4.12") and&#xd;
+list contains(NotificationClause.name, "5.3.4.13")&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_3C31E54F-B0EE-4CEE-AA62-F9885BEACA79" name="NotBoundaryRules">
+    <dmn:extensionElements/>
+    <dmn:variable id="_0C78F69F-CB15-40F8-8B03-095CB7E3B3F3" name="NotBoundaryRules" typeRef="boolean"/>
+    <dmn:informationRequirement id="_280F0612-68A4-4E0F-BBE7-3EB7B41092A2">
+      <dmn:requiredInput href="#_DD6217A7-9E9C-427D-AB4C-D2BFA5ED5CFB"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_CA05FEA8-E452-4B00-B30E-351D29BBAC40">
+      <dmn:text>list contains(RulesTriggered.name, "4.2.4.2") or&#xd;
+list contains(RulesTriggered.name, "5.3.1") or&#xd;
+list contains(RulesTriggered.name, "5.3.5") or&#xd;
+list contains(RulesTriggered.name, "5.3.6") or&#xd;
+list contains(RulesTriggered.name, "5.3.7") or&#xd;
+list contains(RulesTriggered.name, "5.3.8") or&#xd;
+list contains(RulesTriggered.name, "5.3.9") or&#xd;
+list contains(RulesTriggered.name, "5.3.10") or&#xd;
+list contains(RulesTriggered.name, "5.3.10B") or&#xd;
+list contains(RulesTriggered.name, "5.4.4") or&#xd;
+list contains(RulesTriggered.name, "5.4.5")&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_92CDB305-5983-4B50-8FC2-CE92940EE232" name="R5.3.5Notification">
+    <dmn:extensionElements/>
+    <dmn:variable id="_D0AF941D-6765-419A-A804-CD18C469D4FD" name="R5.3.5Notification" typeRef="boolean"/>
+    <dmn:informationRequirement id="_E42E5350-46A3-4AA7-911A-E10C81820772">
+      <dmn:requiredInput href="#_BB982218-4655-4D5F-9313-DDB0D5B5DEC6"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_8686E802-0A6C-4EE7-921A-07A7AC827E9B">
+      <dmn:text>list contains(NotificationClause.name, "5.3.5")</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_BB6500E4-0165-4346-A438-90A425C73CBC" name="BoundaryStandards">
+    <dmn:extensionElements/>
+    <dmn:variable id="_F431BE9F-6785-4713-A12B-ACFA4156CB24" name="BoundaryStandards" typeRef="boolean"/>
+    <dmn:informationRequirement id="_9DE9B502-4A9A-4270-A613-00C60D2F5B69">
+      <dmn:requiredInput href="#_3339928E-4F9A-4EF4-998E-97DA1EC5F54E"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_C642CC14-B114-4AF6-AE0B-0F7B02677119">
+      <dmn:text>list contains(StandardsNotMet.name,"5.6.2.2.6") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.2.7") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.2.8") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.2.9") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.8.1") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.9.1") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.9.2") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.10.2_a") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.10.2_b")</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_B12A6C38-499A-4AD9-A9C1-420E04DBC4BC" name="R5.3.8Notification">
+    <dmn:extensionElements/>
+    <dmn:variable id="_BCFE565A-4DA0-4979-A135-D555F5161DB2" name="R5.3.8Notification" typeRef="boolean"/>
+    <dmn:informationRequirement id="_610EEAE4-9351-4201-AC10-98B13BAE9FCD">
+      <dmn:requiredInput href="#_BB982218-4655-4D5F-9313-DDB0D5B5DEC6"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_73DF2AA5-026A-44C9-85F0-2F54CBA2EA36">
+      <dmn:text>list contains(NotificationClause.name, "5.3.8")&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_ACBF9DC9-8567-4C59-A869-BE29AB326CC9" name="OverallActivityStatus">
+    <dmn:extensionElements/>
+    <dmn:variable id="_8B244CF2-9921-4C40-96B6-75EC6209021F" name="OverallActivityStatus" typeRef="Types.Status"/>
+    <dmn:informationRequirement id="_91D3E7D4-1F6D-46FE-A50E-692E9A3BEF00">
+      <dmn:requiredInput href="#_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_C2A4207F-502E-49A2-954C-F6E02A050828">
+      <dmn:text>if list contains(ActivityStatus,"Non Complying") then "Non Complying" else&#xd;
+if list contains(ActivityStatus,"Discretionary Unrestricted") and&#xd;
+not(list contains(ActivityStatus,"Non Complying")) then "Discretionary Unrestricted" else &#xd;
+if list contains(ActivityStatus,"Discretionary Restricted") and&#xd;
+not(list contains(ActivityStatus,"Discretionary Unrestricted")) and&#xd;
+not(list contains(ActivityStatus,"Non Complying")) then "Discretionary Restricted" else&#xd;
+if list contains(ActivityStatus,"Controlled") and&#xd;
+not(list contains(ActivityStatus,"Discretionary Restricted")) and&#xd;
+not(list contains(ActivityStatus,"Discretionary Unrestricted")) and&#xd;
+not(list contains(ActivityStatus,"Non Complying")) then "Controlled" else&#xd;
+if list contains(ActivityStatus,"Permitted") and&#xd;
+not(list contains(ActivityStatus,"Controlled")) and&#xd;
+not(list contains(ActivityStatus,"Discretionary Restricted")) and&#xd;
+not(list contains(ActivityStatus,"Discretionary Unrestricted")) and&#xd;
+not(list contains(ActivityStatus,"Non Complying")) then "Permitted" else null&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:inputData id="_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0" name="ActivityStatus">
+    <dmn:extensionElements/>
+    <dmn:variable id="_CC0AA15A-835C-41DE-BB61-840D6242067E" name="ActivityStatus" typeRef="Types.ActivityStatus"/>
+  </dmn:inputData>
+  <dmn:decision id="_706EE2D2-1983-494E-BF38-015AB68E72C1" name="NotBoundaryStandards">
+    <dmn:extensionElements/>
+    <dmn:variable id="_2DB3F3B7-C9B7-4D75-B051-6F482DB6E42F" name="NotBoundaryStandards" typeRef="boolean"/>
+    <dmn:informationRequirement id="_4D48C9EB-4501-4497-A923-93A8DAEA7267">
+      <dmn:requiredInput href="#_3339928E-4F9A-4EF4-998E-97DA1EC5F54E"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_FFFE0CD8-3104-4B81-9069-22745BAE77FB">
+      <dmn:text>list contains(StandardsNotMet.name, "5.6.1.2.1") or&#xd;
+list contains(StandardsNotMet.name, "5.6.1.3") or&#xd;
+list contains(StandardsNotMet.name, "5.6.1.4.1") or&#xd;
+list contains(StandardsNotMet.name, "5.6.1.4.2") or&#xd;
+list contains(StandardsNotMet.name, "5.6.1.4.3") or&#xd;
+list contains(StandardsNotMet.name, "5.6.1.4.4") or&#xd;
+list contains(StandardsNotMet.name, "5.6.1.4.5") or&#xd;
+list contains(StandardsNotMet.name, "5.6.1.4.6") or&#xd;
+list contains(StandardsNotMet.name, "5.6.1.4.7") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.1.1") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.2.1") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.2.3") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.2.4") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.2.5") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.2.11") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.3.1") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.3.2") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.3.4") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.3.5") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.4") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.5.1") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.5.2") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.5.4") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.6.1") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.7.1") or&#xd;
+list contains(StandardsNotMet.name, "S5.6.2.8(a).1") or&#xd;
+list contains(StandardsNotMet.name, "S5.6.2.8(a).2") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.9.3") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.10.1") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.10.3") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.11") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.12.1") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.13.1") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.14.1") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.14.2") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.15.1") or&#xd;
+list contains(StandardsNotMet.name, "5.6.2.15.2")</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_B6AA8734-4259-45BE-BC15-96CC43D80EF9" name="R5.3.7Notification">
+    <dmn:extensionElements/>
+    <dmn:variable id="_2A0DE18E-D3CF-4CC7-B528-B12F0B3E24FD" name="R5.3.7Notification" typeRef="boolean"/>
+    <dmn:informationRequirement id="_5770E3BB-D716-4E99-8822-6DE569AF7945">
+      <dmn:requiredInput href="#_BB982218-4655-4D5F-9313-DDB0D5B5DEC6"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_82265089-C09E-40F0-B071-ECF567B33140">
+      <dmn:text>list contains(NotificationClause.name, "5.3.7")&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:inputData id="_BB982218-4655-4D5F-9313-DDB0D5B5DEC6" name="NotificationClause">
+    <dmn:extensionElements/>
+    <dmn:variable id="_882EEB63-1620-4DED-9CAD-E924A81B29BA" name="NotificationClause" typeRef="Types.PlanContents"/>
+  </dmn:inputData>
+  <dmn:decision id="_E12BB3D2-BCDC-4EF6-B664-CD946B355244" name="R5.3.1Notification">
+    <dmn:extensionElements/>
+    <dmn:variable id="_7016DF38-0903-4980-9A93-94D4FA24C8AB" name="R5.3.1Notification" typeRef="boolean"/>
+    <dmn:informationRequirement id="_6D683B10-10C4-4F5E-B495-F1752CDB33BD">
+      <dmn:requiredInput href="#_BB982218-4655-4D5F-9313-DDB0D5B5DEC6"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_EC75431C-6E8B-4C6B-80C8-C7C46DF432F5">
+      <dmn:text>list contains(NotificationClause.name, "5.3.1.2") and&#xd;
+list contains(NotificationClause.name, "5.3.1.3")</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_7395998D-89B9-4FC6-9B4A-3752E28407D9">
+            <kie:width>832.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_E98396F0-A12F-4BB4-AD38-55A3898284F9">
+            <kie:width>832.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_48C46D6A-8574-4B02-B495-4D5D3FF1971F">
+            <kie:width>50.0</kie:width>
+            <kie:width>141.0</kie:width>
+            <kie:width>166.0</kie:width>
+            <kie:width>168.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_3A995725-2186-4A12-B7E6-22CC185BAE39">
+            <kie:width>832.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_17C07266-925B-4EA7-83F3-FD1C42D45E4C">
+            <kie:width>50.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>239.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>347.0</kie:width>
+            <kie:width>392.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_9A48FCBF-2400-4834-B0A7-BF859412EF57">
+            <kie:width>50.0</kie:width>
+            <kie:width>145.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>162.0</kie:width>
+            <kie:width>100.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_482E510D-CE71-4FE9-AAC8-DF7D0A4CD3BD">
+            <kie:width>832.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_CA05FEA8-E452-4B00-B30E-351D29BBAC40">
+            <kie:width>432.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_8686E802-0A6C-4EE7-921A-07A7AC827E9B">
+            <kie:width>832.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_C642CC14-B114-4AF6-AE0B-0F7B02677119">
+            <kie:width>832.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_C2A4207F-502E-49A2-954C-F6E02A050828">
+            <kie:width>722.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_FFFE0CD8-3104-4B81-9069-22745BAE77FB">
+            <kie:width>832.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_82265089-C09E-40F0-B071-ECF567B33140">
+            <kie:width>832.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_73DF2AA5-026A-44C9-85F0-2F54CBA2EA36">
+            <kie:width>832.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_EC75431C-6E8B-4C6B-80C8-C7C46DF432F5">
+            <kie:width>693.0</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-_B6F0EEEC-7793-494D-A6E2-3310F6835BE1" dmnElementRef="_B6F0EEEC-7793-494D-A6E2-3310F6835BE1" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="204" green="207" blue="199"/>
+          <dmndi:StrokeColor red="112" green="113" blue="111"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="251" y="305" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_E14FFA00-42C2-412C-B6AD-EC579AB7805A" dmnElementRef="_E14FFA00-42C2-412C-B6AD-EC579AB7805A" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="204" green="207" blue="199"/>
+          <dmndi:StrokeColor red="112" green="113" blue="111"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="251" y="500" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_5A6D6F98-06FE-47AE-98BC-0087AF372ED5" dmnElementRef="_5A6D6F98-06FE-47AE-98BC-0087AF372ED5" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="204" green="218" blue="183"/>
+          <dmndi:StrokeColor red="133" green="150" blue="99"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="401" y="731" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_D70B36E0-608D-4030-BCDD-F3457E3AD4EF" dmnElementRef="_D70B36E0-608D-4030-BCDD-F3457E3AD4EF" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="204" green="207" blue="199"/>
+          <dmndi:StrokeColor red="112" green="113" blue="111"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="251" y="569" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_D104EF4B-C443-4B4F-9810-5076E180CF05" dmnElementRef="_D104EF4B-C443-4B4F-9810-5076E180CF05" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="204" green="218" blue="183"/>
+          <dmndi:StrokeColor red="133" green="150" blue="99"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="401" y="338" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_DD6217A7-9E9C-427D-AB4C-D2BFA5ED5CFB" dmnElementRef="_DD6217A7-9E9C-427D-AB4C-D2BFA5ED5CFB" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="8">
+          <dmndi:FillColor red="243" green="229" blue="248"/>
+          <dmndi:StrokeColor red="210" green="193" blue="208"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="86.29906542056074" y="799.3421052631579" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_3339928E-4F9A-4EF4-998E-97DA1EC5F54E" dmnElementRef="_3339928E-4F9A-4EF4-998E-97DA1EC5F54E" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="8">
+          <dmndi:FillColor red="243" green="229" blue="248"/>
+          <dmndi:StrokeColor red="210" green="193" blue="208"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="86.29906542056074" y="699" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_F2B7D834-0896-4901-804F-6F1511AF86FA" dmnElementRef="_F2B7D834-0896-4901-804F-6F1511AF86FA" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="204" green="218" blue="183"/>
+          <dmndi:StrokeColor red="133" green="150" blue="99"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="551" y="731" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_A03C0987-0D14-41C7-BE87-7A9CDBFF20B3" dmnElementRef="_A03C0987-0D14-41C7-BE87-7A9CDBFF20B3" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="204" green="207" blue="199"/>
+          <dmndi:StrokeColor red="112" green="113" blue="111"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="251" y="175" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_3C31E54F-B0EE-4CEE-AA62-F9885BEACA79" dmnElementRef="_3C31E54F-B0EE-4CEE-AA62-F9885BEACA79" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="204" green="207" blue="199"/>
+          <dmndi:StrokeColor red="112" green="113" blue="111"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="251" y="799" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_92CDB305-5983-4B50-8FC2-CE92940EE232" dmnElementRef="_92CDB305-5983-4B50-8FC2-CE92940EE232" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="204" green="207" blue="199"/>
+          <dmndi:StrokeColor red="112" green="113" blue="111"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="251" y="240" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_BB6500E4-0165-4346-A438-90A425C73CBC" dmnElementRef="_BB6500E4-0165-4346-A438-90A425C73CBC" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="204" green="207" blue="199"/>
+          <dmndi:StrokeColor red="112" green="113" blue="111"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="251" y="662" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_ACBF9DC9-8567-4C59-A869-BE29AB326CC9" dmnElementRef="_ACBF9DC9-8567-4C59-A869-BE29AB326CC9" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="204" green="218" blue="183"/>
+          <dmndi:StrokeColor red="133" green="150" blue="99"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="401" y="36" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0" dmnElementRef="_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="8">
+          <dmndi:FillColor red="243" green="229" blue="248"/>
+          <dmndi:StrokeColor red="210" green="193" blue="208"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="86.29906542056074" y="35.68421052631578" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_706EE2D2-1983-494E-BF38-015AB68E72C1" dmnElementRef="_706EE2D2-1983-494E-BF38-015AB68E72C1" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="204" green="207" blue="199"/>
+          <dmndi:StrokeColor red="112" green="113" blue="111"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="251" y="734" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_B6AA8734-4259-45BE-BC15-96CC43D80EF9" dmnElementRef="_B6AA8734-4259-45BE-BC15-96CC43D80EF9" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="204" green="207" blue="199"/>
+          <dmndi:StrokeColor red="112" green="113" blue="111"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="251" y="372" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_BB982218-4655-4D5F-9313-DDB0D5B5DEC6" dmnElementRef="_BB982218-4655-4D5F-9313-DDB0D5B5DEC6" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="8">
+          <dmndi:FillColor red="243" green="229" blue="248"/>
+          <dmndi:StrokeColor red="210" green="193" blue="208"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="86.29906542056074" y="339.3421052631579" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_B12A6C38-499A-4AD9-A9C1-420E04DBC4BC" dmnElementRef="_B12A6C38-499A-4AD9-A9C1-420E04DBC4BC" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="204" green="207" blue="199"/>
+          <dmndi:StrokeColor red="112" green="113" blue="111"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="251" y="439" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_E12BB3D2-BCDC-4EF6-B664-CD946B355244" dmnElementRef="_E12BB3D2-BCDC-4EF6-B664-CD946B355244" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="204" green="207" blue="199"/>
+          <dmndi:StrokeColor red="112" green="113" blue="111"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="251" y="110" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-_C6A85EF2-937C-4FE5-97D9-D0865DDEB512" dmnElementRef="_C6A85EF2-937C-4FE5-97D9-D0865DDEB512">
+        <di:waypoint x="136.29906542056074" y="364.3421052631579"/>
+        <di:waypoint x="301" y="330"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_81AA1767-CF4C-4BC7-BF9E-ABE50F27A092" dmnElementRef="_81AA1767-CF4C-4BC7-BF9E-ABE50F27A092">
+        <di:waypoint x="136.29906542056074" y="364.3421052631579"/>
+        <di:waypoint x="301" y="525"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_090484C2-743D-4B22-A85C-45DDC6E0AD68" dmnElementRef="_090484C2-743D-4B22-A85C-45DDC6E0AD68">
+        <di:waypoint x="301" y="687"/>
+        <di:waypoint x="451" y="756"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_AE2C2E4E-A32D-4416-BFF9-C8C8A563EC6E" dmnElementRef="_AE2C2E4E-A32D-4416-BFF9-C8C8A563EC6E">
+        <di:waypoint x="301" y="759"/>
+        <di:waypoint x="451" y="756"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_1CA7E536-C930-4556-94E0-7320632802E5" dmnElementRef="_1CA7E536-C930-4556-94E0-7320632802E5">
+        <di:waypoint x="301" y="824"/>
+        <di:waypoint x="451" y="756"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_81EC6A64-E800-4606-882A-A2668A81B3D8" dmnElementRef="_81EC6A64-E800-4606-882A-A2668A81B3D8">
+        <di:waypoint x="136.29906542056074" y="364.3421052631579"/>
+        <di:waypoint x="301" y="594"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_DF6079CC-62F9-453F-918C-3C354A5ED7CE" dmnElementRef="_DF6079CC-62F9-453F-918C-3C354A5ED7CE">
+        <di:waypoint x="301" y="135"/>
+        <di:waypoint x="451" y="363"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_3C8833EA-B16A-4FB8-9762-3D958A22AFCA" dmnElementRef="_3C8833EA-B16A-4FB8-9762-3D958A22AFCA">
+        <di:waypoint x="301" y="200"/>
+        <di:waypoint x="451" y="363"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_4849558A-2F12-4208-A63E-C650F377C5B0" dmnElementRef="_4849558A-2F12-4208-A63E-C650F377C5B0">
+        <di:waypoint x="301" y="265"/>
+        <di:waypoint x="451" y="363"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_43B3F229-0509-42A9-9EC3-FDECE637A62C" dmnElementRef="_43B3F229-0509-42A9-9EC3-FDECE637A62C">
+        <di:waypoint x="301" y="397"/>
+        <di:waypoint x="451" y="363"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_84A4A22E-13C0-44D4-BEDA-14CD746E93E5" dmnElementRef="_84A4A22E-13C0-44D4-BEDA-14CD746E93E5">
+        <di:waypoint x="301" y="330"/>
+        <di:waypoint x="451" y="363"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_2567B653-6BD5-4064-BC36-4632105A8734" dmnElementRef="_2567B653-6BD5-4064-BC36-4632105A8734">
+        <di:waypoint x="451" y="61"/>
+        <di:waypoint x="451" y="363"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_35A9B159-FCEC-4A9C-863F-BFB652660A5B" dmnElementRef="_35A9B159-FCEC-4A9C-863F-BFB652660A5B">
+        <di:waypoint x="301" y="464"/>
+        <di:waypoint x="451" y="363"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_2560ED9C-A9CC-445A-BDEA-C9EEED66F265" dmnElementRef="_2560ED9C-A9CC-445A-BDEA-C9EEED66F265">
+        <di:waypoint x="301" y="525"/>
+        <di:waypoint x="451" y="363"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_653B8A62-38EA-408F-A86A-7C2CF032930E" dmnElementRef="_653B8A62-38EA-408F-A86A-7C2CF032930E">
+        <di:waypoint x="301" y="594"/>
+        <di:waypoint x="451" y="363"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_796A676B-D48D-409A-AE3D-C12008BBD122" dmnElementRef="_796A676B-D48D-409A-AE3D-C12008BBD122">
+        <di:waypoint x="451" y="756"/>
+        <di:waypoint x="601" y="756"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_3B0E5E4A-F47F-48D6-8D43-8F775B086482" dmnElementRef="_3B0E5E4A-F47F-48D6-8D43-8F775B086482">
+        <di:waypoint x="136.29906542056074" y="364.3421052631579"/>
+        <di:waypoint x="301" y="200"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_280F0612-68A4-4E0F-BBE7-3EB7B41092A2" dmnElementRef="_280F0612-68A4-4E0F-BBE7-3EB7B41092A2">
+        <di:waypoint x="136.29906542056074" y="824.3421052631579"/>
+        <di:waypoint x="301" y="824"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_E42E5350-46A3-4AA7-911A-E10C81820772" dmnElementRef="_E42E5350-46A3-4AA7-911A-E10C81820772">
+        <di:waypoint x="136.29906542056074" y="364.3421052631579"/>
+        <di:waypoint x="301" y="265"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_9DE9B502-4A9A-4270-A613-00C60D2F5B69" dmnElementRef="_9DE9B502-4A9A-4270-A613-00C60D2F5B69">
+        <di:waypoint x="136.29906542056074" y="724"/>
+        <di:waypoint x="301" y="687"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_91D3E7D4-1F6D-46FE-A50E-692E9A3BEF00" dmnElementRef="_91D3E7D4-1F6D-46FE-A50E-692E9A3BEF00">
+        <di:waypoint x="136.29906542056074" y="60.68421052631578"/>
+        <di:waypoint x="451" y="61"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_4D48C9EB-4501-4497-A923-93A8DAEA7267" dmnElementRef="_4D48C9EB-4501-4497-A923-93A8DAEA7267">
+        <di:waypoint x="136.29906542056074" y="724"/>
+        <di:waypoint x="301" y="759"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_5770E3BB-D716-4E99-8822-6DE569AF7945" dmnElementRef="_5770E3BB-D716-4E99-8822-6DE569AF7945">
+        <di:waypoint x="136.29906542056074" y="364.3421052631579"/>
+        <di:waypoint x="301" y="397"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_610EEAE4-9351-4201-AC10-98B13BAE9FCD" dmnElementRef="_610EEAE4-9351-4201-AC10-98B13BAE9FCD">
+        <di:waypoint x="136.29906542056074" y="364.3421052631579"/>
+        <di:waypoint x="301" y="464"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_6D683B10-10C4-4F5E-B495-F1752CDB33BD" dmnElementRef="_6D683B10-10C4-4F5E-B495-F1752CDB33BD">
+        <di:waypoint x="136.29906542056074" y="364.3421052631579"/>
+        <di:waypoint x="301" y="135"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
