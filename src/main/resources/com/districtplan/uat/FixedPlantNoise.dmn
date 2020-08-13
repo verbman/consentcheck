@@ -983,8 +983,14 @@ Fixed plant noise 5.3.4.11</dmn:description>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_EAC0F854-7C8B-4D60-8CF6-2BBCC64819DD">
       <dmn:text>if FixedPlantNoiseActivities(Activities) then&#xd;
-  if InnerResidentialArea(SpatialLayers) or MediumDensityResidentialArea(SpatialLayers) then 40 else&#xd;
-  if OuterResidentialArea(SpatialLayers) then 40 else 0&#xd;
+  if not(FixedPlantNoiseIndoorMeasurementNight) and&#xd;
+  InnerResidentialArea(SpatialLayers) or MediumDensityResidentialArea(SpatialLayers) then 40 else&#xd;
+  if not(FixedPlantNoiseIndoorMeasurementNight) and&#xd;
+  OuterResidentialArea(SpatialLayers) then 40 else&#xd;
+  if FixedPlantNoiseIndoorMeasurementNight and&#xd;
+  InnerResidentialArea(SpatialLayers) or MediumDensityResidentialArea(SpatialLayers) then 25 else&#xd;
+  if FixedPlantNoiseIndoorMeasurementNight and&#xd;
+  OuterResidentialArea(SpatialLayers) then 25 else 0&#xd;
 else 0&#xd;
 &#xd;
 &#xd;
