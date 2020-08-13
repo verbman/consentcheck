@@ -9,21 +9,39 @@
       <dmn:text>1</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
+  <dmn:decision id="_EE30884C-6EDF-4188-8887-26C8B5B73023" name="FixedPlantNoiseIndoorMeasurementDay">
+    <dmn:extensionElements/>
+    <dmn:question>What is the noise level, measured in dB LAeq over 15 minutes, during the period Monday to Sunday 7am to 10pm?</dmn:question>
+    <dmn:variable id="_78412DE6-4A5B-4212-AC08-46FABEEF58BB" name="FixedPlantNoiseIndoorMeasurementDay" typeRef="number"/>
+    <dmn:informationRequirement id="_41455B00-8115-41FB-9A48-A31201CF7C04">
+      <dmn:requiredDecision href="#_5D302B9B-D524-4B29-9D32-C7D3B41A598C"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_F7633749-AAF1-410D-914B-F53A635578D1">
+      <dmn:text>if FixedPlantNoiseLevelDay > 0 then FixedPlantNoiseLevelDay + 1 else 0</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_17B6D6D6-6A3A-4DAE-9BBC-BBBC5089DA76" name="FixedPlantNoiseIndoorMeasurementNightMax">
+    <dmn:extensionElements/>
+    <dmn:question>What is the noise level, measured in dB LAeq over 15 minutes, during the period Monday to Sunday 7am to 10pm?</dmn:question>
+    <dmn:variable id="_C2319F5D-B6FC-4490-ACA0-2357C53E745F" name="FixedPlantNoiseIndoorMeasurementNightMax" typeRef="number"/>
+    <dmn:informationRequirement id="_7059E92E-1C6A-4DB3-A7D9-0042120767C4">
+      <dmn:requiredDecision href="#_CC99E2DF-E9BF-4BE5-98F9-47E6E912D742"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_666D6C54-0E7F-4ECA-9765-38088816A936">
+      <dmn:text>if FixedPlantNoiseLevelNight > 0 then FixedPlantNoiseLevelNight + 1 else 0</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:decision id="_29CBF409-4B49-4B15-ACDD-DAE04BC6120F" name="FixedPlantNoiseLevelNight">
     <dmn:extensionElements/>
     <dmn:question>What is the noise level, measured in dB LAeq over 15 minutes, during the period Monday to Sunday 10pm to 7am?</dmn:question>
     <dmn:variable id="_119C44AE-78CF-4BA4-A2D6-8BBF7453DD9D" name="FixedPlantNoiseLevelNight" typeRef="number"/>
-    <dmn:informationRequirement id="_41455B00-8115-41FB-9A48-A31201CF7C04">
-      <dmn:requiredDecision href="#_5D302B9B-D524-4B29-9D32-C7D3B41A598C"/>
+    <dmn:informationRequirement id="_D00DD2CF-CDFE-4D56-A303-C2CF0894CE2C">
+      <dmn:requiredDecision href="#_EE30884C-6EDF-4188-8887-26C8B5B73023"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_0213AE50-E21E-4AE4-ABA6-788E8C483B12">
-      <dmn:text>if FixedPlantNoiseLevelDay > 0 then FixedPlantNoiseLevelDay + 1 else 0</dmn:text>
+      <dmn:text>if FixedPlantNoiseIndoorMeasurementDay > 0 then FixedPlantNoiseIndoorMeasurementDay + 1 else 0</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
-  <dmn:inputData id="_347F2FBA-BE29-49BE-A803-40E23366FF2F" name="SpatialLayers_Value">
-    <dmn:extensionElements/>
-    <dmn:variable id="_5BC9A235-4930-40D9-9AB5-12F7D1BEC681" name="SpatialLayers_Value" typeRef="Types.SpatialLayers"/>
-  </dmn:inputData>
   <dmn:businessKnowledgeModel id="_4306AB83-CA4B-437E-84AF-0485953E2E56" name="FixedPlantNoiseSpatialLayers">
     <dmn:extensionElements/>
     <dmn:variable id="_9874183E-409E-450B-A754-FAAECC102F34" name="FixedPlantNoiseSpatialLayers" typeRef="boolean"/>
@@ -58,14 +76,6 @@ list contains(spatiallayers[Type="Residential"].Title, "Medium Density Residenti
       </dmn:literalExpression>
     </dmn:encapsulatedLogic>
   </dmn:businessKnowledgeModel>
-  <dmn:inputData id="_B7D4AF81-3425-4132-AECA-ABB8315BAD66" name="Activities_Value">
-    <dmn:extensionElements/>
-    <dmn:variable id="_BEF5BB6B-98C5-4093-A1A3-7F10F651EA36" name="Activities_Value" typeRef="Types.Activities"/>
-  </dmn:inputData>
-  <dmn:inputData id="_C2429ABB-48E3-4E63-B351-0532677AE4B7" name="FixedPlantNoiseKnown_Value">
-    <dmn:extensionElements/>
-    <dmn:variable id="_99EEECF0-54E2-47E9-9F4D-52B0F1E0F9A6" name="FixedPlantNoiseKnown_Value" typeRef="boolean"/>
-  </dmn:inputData>
   <dmn:decision id="_A2F298C8-8542-41C1-A9E3-9452A323B85D" name="Activities">
     <dmn:extensionElements/>
     <dmn:variable id="_4F716487-C01F-47E3-87B2-5704C699E77A" name="Activities" typeRef="number"/>
@@ -80,11 +90,11 @@ list contains(spatiallayers[Type="Residential"].Title, "Medium Density Residenti
     <dmn:extensionElements/>
     <dmn:question>What is the noise level, measured in dB LAFmax, during the period Monday to Sunday 10pm to 7am?</dmn:question>
     <dmn:variable id="_4AE84137-22F4-44BD-B890-2BD83F796582" name="FixedPlantNoiseLevelNightMax" typeRef="number"/>
-    <dmn:informationRequirement id="_94DCE143-27A2-4ABA-90EB-45ABE94AF33C">
-      <dmn:requiredDecision href="#_29CBF409-4B49-4B15-ACDD-DAE04BC6120F"/>
+    <dmn:informationRequirement id="_5C573B79-C86D-47F1-A32A-6BF45B8BA334">
+      <dmn:requiredDecision href="#_F6C99D98-87AE-4CB2-B056-1D7900D0266B"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_5A6554D9-2A02-4C09-9866-5658EF7F55FA">
-      <dmn:text>if FixedPlantNoiseLevelNight > 0 then FixedPlantNoiseLevelNight + 1 else 0</dmn:text>
+      <dmn:text>if FixedPlantNoiseIndoorMeasurementNight > 0 then FixedPlantNoiseIndoorMeasurementNight + 1 else 0</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:decision id="_5D302B9B-D524-4B29-9D32-C7D3B41A598C" name="FixedPlantNoiseLevelDay">
@@ -126,6 +136,29 @@ no</dmn:allowedAnswers>
       <dmn:text>if FixedPlantNoiseActivities(Activities_Value) and FixedPlantNoiseSpatialLayers(SpatialLayers_Value) then Activities + 1 else 0</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
+  <dmn:inputData id="_347F2FBA-BE29-49BE-A803-40E23366FF2F" name="SpatialLayers_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_5BC9A235-4930-40D9-9AB5-12F7D1BEC681" name="SpatialLayers_Value" typeRef="Types.SpatialLayers"/>
+  </dmn:inputData>
+  <dmn:decision id="_F6C99D98-87AE-4CB2-B056-1D7900D0266B" name="FixedPlantNoiseIndoorMeasurementNight">
+    <dmn:extensionElements/>
+    <dmn:question>What is the noise level, measured in dB LAeq over 15 minutes, during the period Monday to Sunday 7am to 10pm?</dmn:question>
+    <dmn:variable id="_990063B4-72FB-407D-825F-13E823DFF086" name="FixedPlantNoiseIndoorMeasurementNight" typeRef="number"/>
+    <dmn:informationRequirement id="_94DCE143-27A2-4ABA-90EB-45ABE94AF33C">
+      <dmn:requiredDecision href="#_29CBF409-4B49-4B15-ACDD-DAE04BC6120F"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_4978BEBB-3AC9-42FD-974E-E8CC0EAF7B2B">
+      <dmn:text>if FixedPlantNoiseLevelNight then FixedPlantNoiseLevelNight + 1 else 0</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:inputData id="_B7D4AF81-3425-4132-AECA-ABB8315BAD66" name="Activities_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_BEF5BB6B-98C5-4093-A1A3-7F10F651EA36" name="Activities_Value" typeRef="Types.Activities"/>
+  </dmn:inputData>
+  <dmn:inputData id="_C2429ABB-48E3-4E63-B351-0532677AE4B7" name="FixedPlantNoiseKnown_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_99EEECF0-54E2-47E9-9F4D-52B0F1E0F9A6" name="FixedPlantNoiseKnown_Value" typeRef="boolean"/>
+  </dmn:inputData>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram>
       <di:extension>
@@ -150,6 +183,9 @@ no</dmn:allowedAnswers>
             <kie:width>50.0</kie:width>
             <kie:width>624.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_4978BEBB-3AC9-42FD-974E-E8CC0EAF7B2B">
+            <kie:width>681.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_FEF5DC4A-BC02-41FC-83DA-BBDFD5C2AC77">
             <kie:width>300.0</kie:width>
           </kie:ComponentWidths>
@@ -161,6 +197,12 @@ no</dmn:allowedAnswers>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_9BB36F36-213A-43A8-A0E9-445FA9AF5E9D">
             <kie:width>1115.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_F7633749-AAF1-410D-914B-F53A635578D1">
+            <kie:width>681.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_666D6C54-0E7F-4ECA-9765-38088816A936">
+            <kie:width>681.0</kie:width>
           </kie:ComponentWidths>
         </kie:ComponentsWidthsExtension>
       </di:extension>
@@ -179,16 +221,7 @@ no</dmn:allowedAnswers>
           <dmndi:StrokeColor red="180" green="180" blue="180"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="411" y="370" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_347F2FBA-BE29-49BE-A803-40E23366FF2F" dmnElementRef="_347F2FBA-BE29-49BE-A803-40E23366FF2F" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="137" green="203" blue="200"/>
-          <dmndi:StrokeColor red="129" green="178" blue="177"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="120.00000000000001" y="213.3421052631579" width="100" height="50"/>
+        <dc:Bounds x="411" y="435" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_4306AB83-CA4B-437E-84AF-0485953E2E56" dmnElementRef="_4306AB83-CA4B-437E-84AF-0485953E2E56" isCollapsed="false">
@@ -209,22 +242,13 @@ no</dmn:allowedAnswers>
         <dc:Bounds x="120.59813084112149" y="17.684210526315795" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_B7D4AF81-3425-4132-AECA-ABB8315BAD66" dmnElementRef="_B7D4AF81-3425-4132-AECA-ABB8315BAD66" isCollapsed="false">
+      <dmndi:DMNShape id="dmnshape-_F6C99D98-87AE-4CB2-B056-1D7900D0266B" dmnElementRef="_F6C99D98-87AE-4CB2-B056-1D7900D0266B" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="137" green="203" blue="200"/>
-          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="121" y="82.34210526315789" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_C2429ABB-48E3-4E63-B351-0532677AE4B7" dmnElementRef="_C2429ABB-48E3-4E63-B351-0532677AE4B7" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="137" green="203" blue="200"/>
-          <dmndi:StrokeColor red="129" green="178" blue="177"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="121" y="281.3421052631579" width="100" height="50"/>
+        <dc:Bounds x="411" y="512" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_A2F298C8-8542-41C1-A9E3-9452A323B85D" dmnElementRef="_A2F298C8-8542-41C1-A9E3-9452A323B85D" isCollapsed="false">
@@ -242,7 +266,7 @@ no</dmn:allowedAnswers>
           <dmndi:StrokeColor red="180" green="180" blue="180"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="411" y="453" width="100" height="50"/>
+        <dc:Bounds x="411" y="594" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_5D302B9B-D524-4B29-9D32-C7D3B41A598C" dmnElementRef="_5D302B9B-D524-4B29-9D32-C7D3B41A598C" isCollapsed="false">
@@ -263,17 +287,66 @@ no</dmn:allowedAnswers>
         <dc:Bounds x="411" y="194" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNEdge id="dmnedge-_41455B00-8115-41FB-9A48-A31201CF7C04" dmnElementRef="_41455B00-8115-41FB-9A48-A31201CF7C04">
-        <di:waypoint x="461" y="306"/>
-        <di:waypoint x="461" y="395"/>
+      <dmndi:DMNShape id="dmnshape-_347F2FBA-BE29-49BE-A803-40E23366FF2F" dmnElementRef="_347F2FBA-BE29-49BE-A803-40E23366FF2F" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="120.00000000000001" y="213.3421052631579" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_EE30884C-6EDF-4188-8887-26C8B5B73023" dmnElementRef="_EE30884C-6EDF-4188-8887-26C8B5B73023" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="411" y="358" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_B7D4AF81-3425-4132-AECA-ABB8315BAD66" dmnElementRef="_B7D4AF81-3425-4132-AECA-ABB8315BAD66" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="121" y="82.34210526315789" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_C2429ABB-48E3-4E63-B351-0532677AE4B7" dmnElementRef="_C2429ABB-48E3-4E63-B351-0532677AE4B7" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="121" y="281.3421052631579" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_17B6D6D6-6A3A-4DAE-9BBC-BBBC5089DA76" dmnElementRef="_17B6D6D6-6A3A-4DAE-9BBC-BBBC5089DA76" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="411" y="676" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-_D00DD2CF-CDFE-4D56-A303-C2CF0894CE2C" dmnElementRef="_D00DD2CF-CDFE-4D56-A303-C2CF0894CE2C">
+        <di:waypoint x="461" y="383"/>
+        <di:waypoint x="461" y="460"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_94DCE143-27A2-4ABA-90EB-45ABE94AF33C" dmnElementRef="_94DCE143-27A2-4ABA-90EB-45ABE94AF33C">
+        <di:waypoint x="461" y="460"/>
+        <di:waypoint x="461" y="537"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_1551339C-3421-4646-B87A-0792B40190F7" dmnElementRef="_1551339C-3421-4646-B87A-0792B40190F7">
         <di:waypoint x="461" y="55"/>
         <di:waypoint x="461" y="134"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_94DCE143-27A2-4ABA-90EB-45ABE94AF33C" dmnElementRef="_94DCE143-27A2-4ABA-90EB-45ABE94AF33C">
-        <di:waypoint x="461" y="395"/>
-        <di:waypoint x="461" y="478"/>
+      <dmndi:DMNEdge id="dmnedge-_5C573B79-C86D-47F1-A32A-6BF45B8BA334" dmnElementRef="_5C573B79-C86D-47F1-A32A-6BF45B8BA334">
+        <di:waypoint x="461" y="537"/>
+        <di:waypoint x="461" y="619"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_EF8D335B-B2EC-4409-A0A9-F8B9135AA735" dmnElementRef="_EF8D335B-B2EC-4409-A0A9-F8B9135AA735">
         <di:waypoint x="171" y="306.3421052631579"/>
@@ -302,6 +375,14 @@ no</dmn:allowedAnswers>
       <dmndi:DMNEdge id="dmnedge-_DFB1ECEC-50FF-4113-B2D7-8F4F537C3117" dmnElementRef="_DFB1ECEC-50FF-4113-B2D7-8F4F537C3117">
         <di:waypoint x="170.59813084112147" y="42.684210526315795"/>
         <di:waypoint x="461" y="219"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_41455B00-8115-41FB-9A48-A31201CF7C04" dmnElementRef="_41455B00-8115-41FB-9A48-A31201CF7C04">
+        <di:waypoint x="461" y="306"/>
+        <di:waypoint x="461" y="383"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_7059E92E-1C6A-4DB3-A7D9-0042120767C4" dmnElementRef="_7059E92E-1C6A-4DB3-A7D9-0042120767C4">
+        <di:waypoint x="461" y="619"/>
+        <di:waypoint x="461" y="701"/>
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
