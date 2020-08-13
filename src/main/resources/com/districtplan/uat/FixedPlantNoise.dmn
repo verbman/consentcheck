@@ -1094,8 +1094,14 @@ else 0&#xd;
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_ADB74C97-D9DD-4A92-995A-1A1DDFFB3997">
       <dmn:text>if FixedPlantNoiseActivities(Activities) then&#xd;
-  if InnerResidentialArea(SpatialLayers) or MediumDensityResidentialArea(SpatialLayers) then 45 else&#xd;
-  if OuterResidentialArea(SpatialLayers) then 45 else 0&#xd;
+  if not(FixedPlantNoiseIndoorMeasurementDay) and&#xd;
+  InnerResidentialArea(SpatialLayers) or MediumDensityResidentialArea(SpatialLayers) then 45 else&#xd;
+  if not(FixedPlantNoiseIndoorMeasurementDay) and&#xd;
+  OuterResidentialArea(SpatialLayers) then 45 else&#xd;
+  if FixedPlantNoiseIndoorMeasurementDay and&#xd;
+  InnerResidentialArea(SpatialLayers) or MediumDensityResidentialArea(SpatialLayers) then 30 else&#xd;
+  if FixedPlantNoiseIndoorMeasurementDay and&#xd;
+  OuterResidentialArea(SpatialLayers) then 30 else 0&#xd;
 else 0&#xd;
 &#xd;
 &#xd;
