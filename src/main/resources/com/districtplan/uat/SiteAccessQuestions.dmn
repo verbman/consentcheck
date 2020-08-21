@@ -2,17 +2,6 @@
 <dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://districtplan.wellington.govt.nz/83/dmn/SiteAccessQuestions" xmlns:included1="https://districtplan.wellington.govt.nz/83/dmn/types" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_280DDB79-6DD6-4E8C-A27F-0A60C895B3AD" name="SiteAccessQuestions" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://districtplan.wellington.govt.nz/83/dmn/SiteAccessQuestions">
   <dmn:extensionElements/>
   <dmn:import id="_3886E949-17AC-4EBA-A83A-E6455C118260" name="Types" namespace="https://districtplan.wellington.govt.nz/83/dmn/types" locationURI="Types.dmn" importType="http://www.omg.org/spec/DMN/20180521/MODEL/"/>
-  <dmn:decision id="_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE" name="SpatialLayers">
-    <dmn:extensionElements/>
-    <dmn:variable id="_DFAE501B-7D6E-409E-9B6F-495E405EA0F5" name="SpatialLayers" typeRef="number"/>
-    <dmn:literalExpression id="_4D614351-52EA-4E58-8F9D-A6FFE1BB7577">
-      <dmn:text>1</dmn:text>
-    </dmn:literalExpression>
-  </dmn:decision>
-  <dmn:inputData id="_2F23EB51-DE18-4A73-84E7-1F7E64B0BA30" name="RoadTypes1_Value">
-    <dmn:extensionElements/>
-    <dmn:variable id="_73828090-E1A9-4EFA-8FD6-90D0DC64AC53" name="RoadTypes1_Value" typeRef="boolean"/>
-  </dmn:inputData>
   <dmn:decision id="_29CBF409-4B49-4B15-ACDD-DAE04BC6120F" name="LegalRightOfWay">
     <dmn:extensionElements/>
     <dmn:question>Is there a formal legal right of way instrument provided and maintained in accordance with the AUSNZ Parking Facilities Standard?</dmn:question>
@@ -34,6 +23,10 @@ AccessDirectFromPublicRoad + 1 else 0&#xd;
 &#xd;
 </dmn:text>
     </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_0FF7023F-1701-4B12-BD69-8742DDC80F9C" name="QuestionSetRelevance">
+    <dmn:extensionElements/>
+    <dmn:variable id="_D05EB4DD-3266-4225-98D2-B0248281690D" name="QuestionSetRelevance"/>
   </dmn:decision>
   <dmn:decision id="_342DD341-423D-424C-8F8E-6A8013484B85" name="MaxWidthVehicleAccessORMDRA7Units">
     <dmn:extensionElements/>
@@ -108,22 +101,6 @@ else 0&#xd;
       </dmn:literalExpression>
     </dmn:encapsulatedLogic>
   </dmn:businessKnowledgeModel>
-  <dmn:decision id="_82E8A204-C631-4798-BAA7-6F56D49CFE9C" name="RoadTypes2">
-    <dmn:extensionElements/>
-    <dmn:question>Are any of the road frontages to one or more local roads or sub-collector roads (that do not have restricted road frontages)?</dmn:question>
-    <dmn:allowedAnswers>yes
-no</dmn:allowedAnswers>
-    <dmn:variable id="_668E6723-DB20-418A-B41B-3C311E3F1D32" name="RoadTypes2" typeRef="number"/>
-    <dmn:informationRequirement id="_36AE158F-EC37-4EF2-A9E2-E0C466EC5735">
-      <dmn:requiredDecision href="#_41124519-21E8-463D-9304-475F9A6AA26F"/>
-    </dmn:informationRequirement>
-    <dmn:informationRequirement id="_AC5F9947-B641-4C1E-AE38-F3966737A956">
-      <dmn:requiredInput href="#_2F23EB51-DE18-4A73-84E7-1F7E64B0BA30"/>
-    </dmn:informationRequirement>
-    <dmn:literalExpression id="_63D7E3BD-681E-4F96-8E4C-B1EEC2E7DB3B">
-      <dmn:text>if RoadTypes1_Value then RoadTypes1 + 1 else 0</dmn:text>
-    </dmn:literalExpression>
-  </dmn:decision>
   <dmn:decision id="_A2F298C8-8542-41C1-A9E3-9452A323B85D" name="Activities">
     <dmn:extensionElements/>
     <dmn:variable id="_4F716487-C01F-47E3-87B2-5704C699E77A" name="Activities" typeRef="number"/>
@@ -267,31 +244,6 @@ else 0&#xd;
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
-  <dmn:inputData id="_FEDC5CCC-4838-4DF9-9439-BB825D9A0E1F" name="AccessDirectFromPublicRoad_Value">
-    <dmn:extensionElements/>
-    <dmn:variable id="_6E184521-3AEA-418C-9F4D-213916B0D68C" name="AccessDirectFromPublicRoad_Value" typeRef="boolean"/>
-  </dmn:inputData>
-  <dmn:decision id="_0294A5FE-E4EF-4549-AFBC-A7A6898CA136" name="NumberVehicleAccesses">
-    <dmn:extensionElements/>
-    <dmn:question>How many vehicle accesses will there be in total?</dmn:question>
-    <dmn:variable id="_8995CC40-5BFE-45D6-B2A8-332175DF6CB2" name="NumberVehicleAccesses" typeRef="number"/>
-    <dmn:informationRequirement id="_6156D144-81CF-4FF4-AA70-44E0E3222AEE">
-      <dmn:requiredDecision href="#_ADF44FD6-20E7-4D1F-BB8A-C122078DADB0"/>
-    </dmn:informationRequirement>
-    <dmn:informationRequirement id="_320FAE43-27E8-4AD6-B7EB-311AE6972B04">
-      <dmn:requiredInput href="#_2F23EB51-DE18-4A73-84E7-1F7E64B0BA30"/>
-    </dmn:informationRequirement>
-    <dmn:informationRequirement id="_F72DBB68-E1A3-4B0B-8D46-A52ED169BB82">
-      <dmn:requiredInput href="#_235129B9-77B2-4629-9F5E-E56DEBD78C0B"/>
-    </dmn:informationRequirement>
-    <dmn:literalExpression id="_6BF823EB-8B7A-4018-8C61-E6C4353F1AB4">
-      <dmn:text>if RoadTypes1_Value and not(RoadTypes2_Value) then RestrictedRoadFrontageAccess + 1 else 0</dmn:text>
-    </dmn:literalExpression>
-  </dmn:decision>
-  <dmn:inputData id="_6FCBDBA6-06EE-4D5B-8E53-777E835D3AF6" name="SpatialLayers_Value">
-    <dmn:extensionElements/>
-    <dmn:variable id="_EFF7FCD8-0EC0-49EF-B8FC-C7D729DB594E" name="SpatialLayers_Value" typeRef="Types.SpatialLayers"/>
-  </dmn:inputData>
   <dmn:inputData id="_21549E36-42D4-4A86-93F5-F832EACECBC5" name="LocalSubCollectorAccess_Value">
     <dmn:extensionElements/>
     <dmn:variable id="_3E6321B6-380A-41C0-AC4B-761C9FE13BD6" name="LocalSubCollectorAccess_Value" typeRef="boolean"/>
@@ -299,10 +251,6 @@ else 0&#xd;
   <dmn:inputData id="_B7D4AF81-3425-4132-AECA-ABB8315BAD66" name="Activities_Value">
     <dmn:extensionElements/>
     <dmn:variable id="_BEF5BB6B-98C5-4093-A1A3-7F10F651EA36" name="Activities_Value" typeRef="Types.Activities"/>
-  </dmn:inputData>
-  <dmn:inputData id="_DA3F6F7B-2A2A-4F34-B9EE-D8A0637BE6F9" name="NumberHouseholdUnits">
-    <dmn:extensionElements/>
-    <dmn:variable id="_6F3EA665-B0B4-4A3B-AEA3-0CE634E645E8" name="NumberHouseholdUnits" typeRef="number"/>
   </dmn:inputData>
   <dmn:decision id="_41124519-21E8-463D-9304-475F9A6AA26F" name="RoadTypes1">
     <dmn:extensionElements/>
@@ -349,6 +297,62 @@ MaxWidthVehicleAccessIRRCEMDRA6Units + 1 else &#xd;
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
+  <dmn:decision id="_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE" name="SpatialLayers">
+    <dmn:extensionElements/>
+    <dmn:variable id="_DFAE501B-7D6E-409E-9B6F-495E405EA0F5" name="SpatialLayers" typeRef="number"/>
+    <dmn:literalExpression id="_4D614351-52EA-4E58-8F9D-A6FFE1BB7577">
+      <dmn:text>1</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:inputData id="_2F23EB51-DE18-4A73-84E7-1F7E64B0BA30" name="RoadTypes1_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_73828090-E1A9-4EFA-8FD6-90D0DC64AC53" name="RoadTypes1_Value" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmn:decision id="_82E8A204-C631-4798-BAA7-6F56D49CFE9C" name="RoadTypes2">
+    <dmn:extensionElements/>
+    <dmn:question>Are any of the road frontages to one or more local roads or sub-collector roads (that do not have restricted road frontages)?</dmn:question>
+    <dmn:allowedAnswers>yes
+no</dmn:allowedAnswers>
+    <dmn:variable id="_668E6723-DB20-418A-B41B-3C311E3F1D32" name="RoadTypes2" typeRef="number"/>
+    <dmn:informationRequirement id="_36AE158F-EC37-4EF2-A9E2-E0C466EC5735">
+      <dmn:requiredDecision href="#_41124519-21E8-463D-9304-475F9A6AA26F"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_AC5F9947-B641-4C1E-AE38-F3966737A956">
+      <dmn:requiredInput href="#_2F23EB51-DE18-4A73-84E7-1F7E64B0BA30"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_63D7E3BD-681E-4F96-8E4C-B1EEC2E7DB3B">
+      <dmn:text>if RoadTypes1_Value then RoadTypes1 + 1 else 0</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:inputData id="_FEDC5CCC-4838-4DF9-9439-BB825D9A0E1F" name="AccessDirectFromPublicRoad_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_6E184521-3AEA-418C-9F4D-213916B0D68C" name="AccessDirectFromPublicRoad_Value" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmn:decision id="_0294A5FE-E4EF-4549-AFBC-A7A6898CA136" name="NumberVehicleAccesses">
+    <dmn:extensionElements/>
+    <dmn:question>How many vehicle accesses will there be in total?</dmn:question>
+    <dmn:variable id="_8995CC40-5BFE-45D6-B2A8-332175DF6CB2" name="NumberVehicleAccesses" typeRef="number"/>
+    <dmn:informationRequirement id="_6156D144-81CF-4FF4-AA70-44E0E3222AEE">
+      <dmn:requiredDecision href="#_ADF44FD6-20E7-4D1F-BB8A-C122078DADB0"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_320FAE43-27E8-4AD6-B7EB-311AE6972B04">
+      <dmn:requiredInput href="#_2F23EB51-DE18-4A73-84E7-1F7E64B0BA30"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_F72DBB68-E1A3-4B0B-8D46-A52ED169BB82">
+      <dmn:requiredInput href="#_235129B9-77B2-4629-9F5E-E56DEBD78C0B"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_6BF823EB-8B7A-4018-8C61-E6C4353F1AB4">
+      <dmn:text>if RoadTypes1_Value and not(RoadTypes2_Value) then RestrictedRoadFrontageAccess + 1 else 0</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:inputData id="_6FCBDBA6-06EE-4D5B-8E53-777E835D3AF6" name="SpatialLayers_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_EFF7FCD8-0EC0-49EF-B8FC-C7D729DB594E" name="SpatialLayers_Value" typeRef="Types.SpatialLayers"/>
+  </dmn:inputData>
+  <dmn:inputData id="_DA3F6F7B-2A2A-4F34-B9EE-D8A0637BE6F9" name="NumberHouseholdUnits">
+    <dmn:extensionElements/>
+    <dmn:variable id="_6F3EA665-B0B4-4A3B-AEA3-0CE634E645E8" name="NumberHouseholdUnits" typeRef="number"/>
+  </dmn:inputData>
   <dmn:decision id="_ADF44FD6-20E7-4D1F-BB8A-C122078DADB0" name="RestrictedRoadFrontageAccess">
     <dmn:extensionElements/>
     <dmn:question>Will the proposed vehicle access be across a restricted road frontage?</dmn:question>
@@ -587,6 +591,15 @@ no</dmn:allowedAnswers>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="298" y="1021" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_0FF7023F-1701-4B12-BD69-8742DDC80F9C" dmnElementRef="_0FF7023F-1701-4B12-BD69-8742DDC80F9C" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="102" y="353" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE" dmnElementRef="_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE" isCollapsed="false">
