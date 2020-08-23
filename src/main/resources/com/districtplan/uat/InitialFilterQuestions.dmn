@@ -95,6 +95,9 @@ none</dmn:allowedAnswers>
     <dmn:informationRequirement id="_E25FABAA-1DD4-4D04-8ECE-6E68C87C82C3">
       <dmn:requiredDecision href="#_A2F298C8-8542-41C1-A9E3-9452A323B85D"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_E30DEBDB-D582-421F-B143-8ED159631656">
+      <dmn:requiredDecision href="#_FB42AAB7-D1B0-4EDE-9059-B9AE84A8AB32"/>
+    </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_D679831E-DC60-424C-940A-A553A5C8627C">
       <dmn:requiredKnowledge href="#_0DA8114E-D8DE-4E56-9AA4-E1AE9869A4A6"/>
     </dmn:knowledgeRequirement>
@@ -160,6 +163,55 @@ BuildAddtoAlter(Activities_Value[Noun="residential structure"].Verb)) then (&#xd
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
+  <dmn:decision id="_FB42AAB7-D1B0-4EDE-9059-B9AE84A8AB32" name="ActivitiesDemolition">
+    <dmn:extensionElements/>
+    <dmn:question>Which of these activities are you planning?</dmn:question>
+    <dmn:allowedAnswers>Build one or more new:
+Residential building
+Accessory building
+Residential structure
+
+Add to one or more existing:
+Residential building
+Accessory building
+Residential structure
+
+Alter one or more existing:
+Residential building
+Accessory building
+
+And/or:
+Demolish or alter all or part of an existing residential building that was built or consented before 1930
+Change the vehicle access to your site
+Install any fixed plant
+Undertake earthworks
+Stabilise a landslip</dmn:allowedAnswers>
+    <dmn:variable id="_71FFD3CC-9CB1-4110-9BCA-98220234CF56" name="ActivitiesDemolition" typeRef="number"/>
+    <dmn:informationRequirement id="_22F367BC-89B0-4947-A78F-AA09FA040A48">
+      <dmn:requiredDecision href="#_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_94BF73B6-3F7B-4BA7-B692-995F69541055">
+      <dmn:requiredInput href="#_91A08DE1-F013-46FB-BBC7-99398C33177B"/>
+    </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_2369AE82-B403-4355-890B-0BCA5D17AE70">
+      <dmn:requiredKnowledge href="#_5ECA8442-FBEE-4D31-8885-C60E61E8743E"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_FAF4F62A-5D29-47BF-B897-8937DB33A34A">
+      <dmn:requiredKnowledge href="#_151C79D2-3CF8-4EDB-B7DC-5F0B7D274BD7"/>
+    </dmn:knowledgeRequirement>
+    <dmn:literalExpression id="_4598AC8E-DB95-4EC4-890C-4227507B80DE">
+      <dmn:text>if SingleZone(SpatialLayers_Value.Type) and&#xd;
+ResidentialCheck(SpatialLayers_Value) and&#xd;
+list contains(SpatialLayers_Value.Type, "Residential Areas where pre-1930 demolition controls apply") and&#xd;
+not(list contains (SpatialLayers_Value.Type, "Heritage Features")) and&#xd;
+not(list contains (SpatialLayers_Value.Type, "Heritage Areas")) then 2 else 0&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:decision id="_A2F298C8-8542-41C1-A9E3-9452A323B85D" name="Activities">
     <dmn:extensionElements/>
     <dmn:question>Which of these activities are you planning?</dmn:question>
@@ -199,6 +251,7 @@ Stabilise a landslip</dmn:allowedAnswers>
     <dmn:literalExpression id="_FEF5DC4A-BC02-41FC-83DA-BBDFD5C2AC77">
       <dmn:text>if SingleZone(SpatialLayers_Value.Type) and&#xd;
 ResidentialCheck(SpatialLayers_Value) and&#xd;
+not(list contains(SpatialLayers_Value.Type, "Residential Areas where pre-1930 demolition controls apply")) and&#xd;
 not(list contains (SpatialLayers_Value.Type, "Heritage Features")) and&#xd;
 not(list contains (SpatialLayers_Value.Type, "Heritage Areas")) then 2 else 0&#xd;
 &#xd;
@@ -471,6 +524,9 @@ list contains(Activities_Value[Noun="earthworks"].Verb, "undertake") then (&#xd;
             <kie:width>50.0</kie:width>
             <kie:width>2376.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_4598AC8E-DB95-4EC4-890C-4227507B80DE">
+            <kie:width>1132.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_0E8DC3A8-6EB0-4258-BE4D-98F23FC8E2ED">
             <kie:width>817.0</kie:width>
           </kie:ComponentWidths>
@@ -528,7 +584,7 @@ list contains(Activities_Value[Noun="earthworks"].Verb, "undertake") then (&#xd;
           <dmndi:StrokeColor red="180" green="180" blue="180"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="562" y="23" width="100" height="50"/>
+        <dc:Bounds x="580" y="25" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_AA1B222B-BD61-49E0-A59B-D90E0F9889E1" dmnElementRef="_AA1B222B-BD61-49E0-A59B-D90E0F9889E1" isCollapsed="false">
@@ -591,7 +647,7 @@ list contains(Activities_Value[Noun="earthworks"].Verb, "undertake") then (&#xd;
           <dmndi:StrokeColor red="180" green="180" blue="180"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="562" y="116" width="100" height="50"/>
+        <dc:Bounds x="498" y="117" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_BDFD0FD4-858C-49CE-9F6B-A5095AFA72C0" dmnElementRef="_BDFD0FD4-858C-49CE-9F6B-A5095AFA72C0" isCollapsed="false">
@@ -601,6 +657,15 @@ list contains(Activities_Value[Noun="earthworks"].Verb, "undertake") then (&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="119.59813084112147" y="320.3421052631579" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_FB42AAB7-D1B0-4EDE-9059-B9AE84A8AB32" dmnElementRef="_FB42AAB7-D1B0-4EDE-9059-B9AE84A8AB32" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="659" y="121" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_151C79D2-3CF8-4EDB-B7DC-5F0B7D274BD7" dmnElementRef="_151C79D2-3CF8-4EDB-B7DC-5F0B7D274BD7" isCollapsed="false">
@@ -690,7 +755,7 @@ list contains(Activities_Value[Noun="earthworks"].Verb, "undertake") then (&#xd;
           <dmndi:StrokeColor red="0" green="0" blue="0"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="120.29906542056074" y="191.34210526315792" width="100" height="50"/>
+        <dc:Bounds x="120.29906542056074" y="191.68421052631578" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_55F18113-18E7-48F2-930A-285937C578AD" dmnElementRef="_55F18113-18E7-48F2-930A-285937C578AD" isCollapsed="false">
@@ -715,7 +780,7 @@ list contains(Activities_Value[Noun="earthworks"].Verb, "undertake") then (&#xd;
         <di:waypoint x="529" y="416"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_59653473-4E81-40BD-9BC8-DFB9F405819D" dmnElementRef="_59653473-4E81-40BD-9BC8-DFB9F405819D">
-        <di:waypoint x="612" y="48"/>
+        <di:waypoint x="630" y="50"/>
         <di:waypoint x="335" y="141"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_4E69C12A-620C-49C4-A4BB-BC724E3E04BB" dmnElementRef="_4E69C12A-620C-49C4-A4BB-BC724E3E04BB">
@@ -731,7 +796,7 @@ list contains(Activities_Value[Noun="earthworks"].Verb, "undertake") then (&#xd;
         <di:waypoint x="335" y="141"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_0E892F46-5757-43D9-AADB-937698334675" dmnElementRef="_0E892F46-5757-43D9-AADB-937698334675">
-        <di:waypoint x="170.29906542056074" y="216.34210526315792"/>
+        <di:waypoint x="170.29906542056074" y="216.68421052631578"/>
         <di:waypoint x="335" y="141"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_D809030E-0209-4018-B7F9-8A8C4F37D131" dmnElementRef="_D809030E-0209-4018-B7F9-8A8C4F37D131">
@@ -743,11 +808,15 @@ list contains(Activities_Value[Noun="earthworks"].Verb, "undertake") then (&#xd;
         <di:waypoint x="612" y="325"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_E25FABAA-1DD4-4D04-8ECE-6E68C87C82C3" dmnElementRef="_E25FABAA-1DD4-4D04-8ECE-6E68C87C82C3">
-        <di:waypoint x="612" y="141"/>
+        <di:waypoint x="548" y="142"/>
         <di:waypoint x="612" y="325"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_D679831E-DC60-424C-940A-A553A5C8627C" dmnElementRef="_D679831E-DC60-424C-940A-A553A5C8627C">
         <di:waypoint x="889" y="386"/>
+        <di:waypoint x="612" y="325"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_E30DEBDB-D582-421F-B143-8ED159631656" dmnElementRef="_E30DEBDB-D582-421F-B143-8ED159631656">
+        <di:waypoint x="709" y="146"/>
         <di:waypoint x="612" y="325"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_86241B69-BC59-450D-99E6-8BA7F56D38B0" dmnElementRef="_86241B69-BC59-450D-99E6-8BA7F56D38B0">
@@ -772,19 +841,35 @@ list contains(Activities_Value[Noun="earthworks"].Verb, "undertake") then (&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_E63AFB41-C595-45BD-AF9D-F9866C150EDF" dmnElementRef="_E63AFB41-C595-45BD-AF9D-F9866C150EDF">
         <di:waypoint x="333.5981308411215" y="48.684210526315795"/>
-        <di:waypoint x="612" y="141"/>
+        <di:waypoint x="548" y="142"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_23798A13-41F3-49F5-8513-8B5DC403C747" dmnElementRef="_23798A13-41F3-49F5-8513-8B5DC403C747">
-        <di:waypoint x="612" y="48"/>
-        <di:waypoint x="612" y="141"/>
+        <di:waypoint x="630" y="50"/>
+        <di:waypoint x="548" y="142"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_2E6DD596-A3C9-4E98-A06B-E7E22FC410BE" dmnElementRef="_2E6DD596-A3C9-4E98-A06B-E7E22FC410BE">
-        <di:waypoint x="170.29906542056074" y="216.34210526315792"/>
-        <di:waypoint x="612" y="141"/>
+        <di:waypoint x="170.29906542056074" y="216.68421052631578"/>
+        <di:waypoint x="548" y="142"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_4D0D9E44-D19A-4F3D-951B-512B205447E2" dmnElementRef="_4D0D9E44-D19A-4F3D-951B-512B205447E2">
         <di:waypoint x="169.59813084112147" y="280.3421052631579"/>
-        <di:waypoint x="612" y="141"/>
+        <di:waypoint x="548" y="142"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_22F367BC-89B0-4947-A78F-AA09FA040A48" dmnElementRef="_22F367BC-89B0-4947-A78F-AA09FA040A48">
+        <di:waypoint x="630" y="50"/>
+        <di:waypoint x="709" y="146"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_2369AE82-B403-4355-890B-0BCA5D17AE70" dmnElementRef="_2369AE82-B403-4355-890B-0BCA5D17AE70">
+        <di:waypoint x="170.29906542056074" y="216.68421052631578"/>
+        <di:waypoint x="709" y="146"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_FAF4F62A-5D29-47BF-B897-8937DB33A34A" dmnElementRef="_FAF4F62A-5D29-47BF-B897-8937DB33A34A">
+        <di:waypoint x="169.59813084112147" y="280.3421052631579"/>
+        <di:waypoint x="709" y="146"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_94BF73B6-3F7B-4BA7-B692-995F69541055" dmnElementRef="_94BF73B6-3F7B-4BA7-B692-995F69541055">
+        <di:waypoint x="333.5981308411215" y="48.684210526315795"/>
+        <di:waypoint x="709" y="146"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_F37BC6A7-DBE1-4624-9605-AB4AA7D3C858" dmnElementRef="_F37BC6A7-DBE1-4624-9605-AB4AA7D3C858">
         <di:waypoint x="169.59813084112147" y="345.3421052631579"/>
