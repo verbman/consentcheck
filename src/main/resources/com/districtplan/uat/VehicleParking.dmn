@@ -143,7 +143,8 @@ CarParksPerUnit(NumberHouseholdUnitCarParks,NumberHouseholdUnits) = null) and&#x
 VisitorCarParksPerUnit(NumberVisitorCarParks,NumberHouseholdUnits) = null) and&#xd;
 ((BoardingHouseCarParksPerBedroom(NumberBoardingHouseCarParks, NumberBoardingHouseBedrooms) != null and BoardingHouseCarParksPerBedroom(NumberBoardingHouseCarParks, NumberBoardingHouseBedrooms) >= S5.6.1.3_BoardingHouseParking) or&#xd;
 BoardingHouseCarParksPerBedroom(NumberBoardingHouseCarParks, NumberBoardingHouseBedrooms) = null) and&#xd;
-CarParkAUSNZStandard = S5.6.1.3_AUSNZStandard or&#xd;
+S5.6.1.3_AUSNZStandard = "meets AUSNZ Parking Facilities Standard" and&#xd;
+CarParkAUSNZStandard = "Yes" or&#xd;
 CarParkAUSNZStandard = null &#xd;
 then true else false&#xd;
 &#xd;
@@ -233,7 +234,8 @@ OuterResidentialArea(SpatialLayers)) and (NumberBoardingHouseBedrooms >=7) then 
       <dmn:requiredAuthority href="#_7143ADA4-BCCB-43FB-B8ED-03CFC2F2D6F3"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_EB4DD0DD-BF91-4478-B5AC-7997CC221B64">
-      <dmn:text>if VehicleParkingActivities(Activities) and (InnerResidentialArea(SpatialLayers) or MediumDensityResidentialArea(SpatialLayers) or OuterResidentialArea(SpatialLayers)) then "Yes" else null</dmn:text>
+      <dmn:text>if VehicleParkingActivities(Activities) and &#xd;
+(InnerResidentialArea(SpatialLayers) or MediumDensityResidentialArea(SpatialLayers) or OuterResidentialArea(SpatialLayers)) then "meets AUSNZ Parking Facilities Standard" else null</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:decision id="_782ADAE1-78B6-47B3-921F-5F4088B177D8" name="RulesTriggered">
