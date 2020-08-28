@@ -1034,11 +1034,9 @@ CoastalMarineArea then 10 else 0&#xd;
       <dmn:requiredDecision href="#_A6EDFE97-E5F1-471B-AD6F-5236D2B46DF4"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_2077A5F0-4932-452A-B50F-8598E1785C43">
-      <dmn:text>if ((S5.6.2.2.11_PoriruaStream = 10 and ProximityPoriruaStream) and &#xd;
-(S5.6.2.2.11_WaterBody = 5 and ProximityToWaterbody)) or &#xd;
-((S5.6.2.2.11_CoastalMarineEdge = 10 and ProximityCoastalMarineArea) and &#xd;
-(S5.6.2.2.11_WaterBody = 5 and ProximityToWaterbody)) or&#xd;
-(S5.6.2.2.11_WaterBody = 5 and ProximityToWaterbody) then true else &#xd;
+      <dmn:text>if (S5.6.2.2.11_PoriruaStream = 10 and not(ProximityPoriruaStream)) or &#xd;
+(S5.6.2.2.11_CoastalMarineEdge = 10 and not(ProximityCoastalMarineArea)) or &#xd;
+(S5.6.2.2.11_WaterBody = 5 and not(ProximityToWaterbody)) then false else &#xd;
 if (S5.6.2.2.11_PoriruaStream = 0 and&#xd;
 S5.6.2.2.11_CoastalMarineEdge = 0 and&#xd;
 S5.6.2.2.11_WaterBody = 0) then null else false&#xd;
