@@ -241,115 +241,6 @@ The demolition of any building, excluding accessory buildings, constructed befor
     <dmn:extensionElements/>
     <dmn:type></dmn:type>
   </dmn:knowledgeSource>
-  <dmn:inputData id="_0C7BE88D-AB73-4362-B883-83597E8AA50C" name="DemolishPrimaryForm">
-    <dmn:extensionElements/>
-    <dmn:variable id="_45CDD399-9208-46B2-89FF-8F48349E7608" name="DemolishPrimaryForm" typeRef="boolean"/>
-  </dmn:inputData>
-  <dmn:businessKnowledgeModel id="_162DC7F1-EF22-4B75-AC18-37982D1DE529" name="DemolitionBuildingStructureActivities">
-    <dmn:extensionElements/>
-    <dmn:variable id="_878880E4-3EBF-4B99-B837-75C4F3EB1254" name="DemolitionBuildingStructureActivities" typeRef="boolean"/>
-    <dmn:encapsulatedLogic id="_CAD1C4B8-6E96-486A-A184-2472643D0AC8" kind="FEEL">
-      <dmn:formalParameter id="_9BD1541E-655D-408F-911A-7F993753C589" name="activities" typeRef="Types.Activities"/>
-      <dmn:literalExpression id="_033DCC66-4A1E-4D45-B3B8-CA6B01564136">
-        <dmn:text>list contains(activities[Noun="residential building"].Verb, "add to") or&#xd;
-list contains(activities[Noun="residential building"].Verb, "alter") or&#xd;
-list contains(activities[Noun="residential building"].Verb, "demolish")&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-</dmn:text>
-      </dmn:literalExpression>
-    </dmn:encapsulatedLogic>
-  </dmn:businessKnowledgeModel>
-  <dmn:decision id="_B0AB143E-F4C8-486C-9C4E-C110E8867AB6" name="R5.1.12_ArchitecturalFeature">
-    <dmn:extensionElements/>
-    <dmn:variable id="_3E36C56C-A014-4C42-B090-33CEE072EE6F" name="R5.1.12_ArchitecturalFeature" typeRef="string"/>
-    <dmn:informationRequirement id="_66CB279F-3EB3-4A3B-8CA6-C4867A4C866E">
-      <dmn:requiredInput href="#_9AF94EE9-C81E-4E15-8287-3AFE94D76B74"/>
-    </dmn:informationRequirement>
-    <dmn:informationRequirement id="_0337CB1C-9D90-4C38-A370-A29EA9D8AC01">
-      <dmn:requiredInput href="#_FF9E4109-6622-4987-BA94-B2DD13F30A1C"/>
-    </dmn:informationRequirement>
-    <dmn:informationRequirement id="_B17E0C51-AF1A-42B2-8BB2-B2827CD4FD9D">
-      <dmn:requiredInput href="#_6A454643-F949-45DF-9409-31D50BAD21F2"/>
-    </dmn:informationRequirement>
-    <dmn:knowledgeRequirement id="_0CACFC8A-8851-4D52-BA9C-41B98259F378">
-      <dmn:requiredKnowledge href="#_0E74B5B2-A1F4-41EE-8AAE-656AAA8686F8"/>
-    </dmn:knowledgeRequirement>
-    <dmn:knowledgeRequirement id="_05DCB7E3-5952-4323-B5E2-5825641BF271">
-      <dmn:requiredKnowledge href="#_C2A0391E-652B-42B5-9E9B-196947E9BE0D"/>
-    </dmn:knowledgeRequirement>
-    <dmn:knowledgeRequirement id="_B7EDBA03-79E3-4729-A7DA-C50F702487D9">
-      <dmn:requiredKnowledge href="#_A2394239-9503-47FD-A1EA-5297FEA363B1"/>
-    </dmn:knowledgeRequirement>
-    <dmn:knowledgeRequirement id="_4A6FE985-7CC1-4240-B883-002BD99FFE4E">
-      <dmn:requiredKnowledge href="#_162DC7F1-EF22-4B75-AC18-37982D1DE529"/>
-    </dmn:knowledgeRequirement>
-    <dmn:authorityRequirement id="_BAB369B6-EF93-426E-BFA8-A4F9BA77D193">
-      <dmn:requiredAuthority href="#_BB23ECF6-ABC5-4B77-BB28-5016CD0E58A9"/>
-    </dmn:authorityRequirement>
-    <dmn:literalExpression id="_E07F788A-399D-46DC-96D3-FB8DE62F655F">
-      <dmn:text>if ResidentialAreasPre-1930DemolitionControls(SpatialLayers) and&#xd;
-not(HeritageAreas(SpatialLayers)) and&#xd;
-not(HeritageFeatures(SpatialLayers)) and&#xd;
-ConstructedPriorTo1930 then "removal or demolition" else null&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-</dmn:text>
-    </dmn:literalExpression>
-  </dmn:decision>
-  <dmn:decision id="_62D0A4BE-C422-49C0-8C68-2DA3FBB0CEFB" name="RulesNotMet">
-    <dmn:extensionElements/>
-    <dmn:variable id="_50E15702-3FF6-4223-A3A5-D02C771D1970" name="RulesNotMet" typeRef="Types.PlanContents"/>
-    <dmn:informationRequirement id="_8F0AD37B-B281-4E8D-92F6-77E1FE5DF333">
-      <dmn:requiredDecision href="#_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB"/>
-    </dmn:informationRequirement>
-    <dmn:decisionTable id="_6BBA7F9A-154F-4C21-B2A6-AE5171F3B59C" hitPolicy="COLLECT" preferredOrientation="Rule-as-Row">
-      <dmn:input id="_5EA49186-9A2B-4B88-A7B3-6D1FC3EEFFFF">
-        <dmn:inputExpression id="_64F013D8-F3EB-44D7-BC63-94601FEBACB5" typeRef="boolean">
-          <dmn:text>R5.1.12Met</dmn:text>
-        </dmn:inputExpression>
-      </dmn:input>
-      <dmn:output id="_445FECFB-8E01-49B5-8B22-EE9E2139C02C" name="name" typeRef="string"/>
-      <dmn:output id="_19116A54-A9CF-47B8-AE85-A83505798FF5" name="uuids" typeRef="string"/>
-      <dmn:annotation name=""/>
-      <dmn:rule id="_C575B273-1A86-463A-8A05-8B3548FEDBB7">
-        <dmn:inputEntry id="_11AB1E58-1A9B-4874-879A-2DCF01DA62CE">
-          <dmn:text>false</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_B48CC327-5F5C-44C6-8442-255DD9E3A9D0">
-          <dmn:text>"5.1.12"</dmn:text>
-        </dmn:outputEntry>
-        <dmn:outputEntry id="_F09D7ED2-12D4-4AD8-B387-DAACDD008EAD">
-          <dmn:text>"380e8110-b902-4836-89cc-7830348e5b3e"</dmn:text>
-        </dmn:outputEntry>
-        <dmn:annotationEntry>
-          <dmn:text></dmn:text>
-        </dmn:annotationEntry>
-      </dmn:rule>
-    </dmn:decisionTable>
-  </dmn:decision>
-  <dmn:inputData id="_13B38CDB-F5F4-4918-8C44-2591DFBFA4B1" name="Suburb">
-    <dmn:extensionElements/>
-    <dmn:variable id="_D168E9A6-BD87-42CD-A28B-DE48498BCE68" name="Suburb" typeRef="Types.Suburb"/>
-  </dmn:inputData>
-  <dmn:businessKnowledgeModel id="_C2A0391E-652B-42B5-9E9B-196947E9BE0D" name="HeritageAreas">
-    <dmn:extensionElements/>
-    <dmn:variable id="_EA38DDFE-62E6-4F51-9548-F1ADFF3E6DFD" name="HeritageAreas" typeRef="boolean"/>
-    <dmn:encapsulatedLogic id="_3B6643BD-9556-4CA3-874E-21F58C19392F" kind="FEEL">
-      <dmn:formalParameter id="_B8E41FA5-ED5B-495C-A9FF-B69E53A0034F" name="spatiallayers" typeRef="Types.SpatialLayers"/>
-      <dmn:literalExpression id="_52ABC58B-222A-41C9-B5E4-A058AFCBD843">
-        <dmn:text>list contains(spatiallayers[Type="Heritage Features"].Title, "Heritage Features")</dmn:text>
-      </dmn:literalExpression>
-    </dmn:encapsulatedLogic>
-  </dmn:businessKnowledgeModel>
   <dmn:businessKnowledgeModel id="_A2394239-9503-47FD-A1EA-5297FEA363B1" name="ResidentialAreasPre-1930DemolitionControls">
     <dmn:extensionElements/>
     <dmn:variable id="_C4CBC045-E676-425B-A2D0-C8D8C1F8AD35" name="ResidentialAreasPre-1930DemolitionControls" typeRef="boolean"/>
@@ -469,6 +360,226 @@ not(ResidentialAreasPre-1930DemolitionControls(SpatialLayers))</dmn:text>
     <dmn:extensionElements/>
     <dmn:variable id="_F54024AF-4EAA-4F0A-BB86-E79DE0B15AC3" name="DemolishArchitecturalFeature" typeRef="boolean"/>
   </dmn:inputData>
+  <dmn:decision id="_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB" name="R5.1.12Met">
+    <dmn:extensionElements/>
+    <dmn:variable id="_F75E3AEF-2D4E-418E-B3EE-E275595C6158" name="R5.1.12Met" typeRef="boolean"/>
+    <dmn:informationRequirement id="_C0AEC952-C96B-4ED5-97CF-CCCD2BFABC8D">
+      <dmn:requiredDecision href="#_69755C18-1F1F-4AFA-A816-9BB075FBF7FE"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_9BF130DC-D1D9-4051-AD4C-A7F0999B36F9">
+      <dmn:requiredInput href="#_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_2A2BBD27-2207-474B-ABF4-D859F5DA7B5C">
+      <dmn:requiredDecision href="#_B0AB143E-F4C8-486C-9C4E-C110E8867AB6"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_86403990-9575-4CFB-963A-F1D55ECEFC05">
+      <dmn:requiredInput href="#_F5D7E743-0A2D-4F16-9141-A43F2FD1C22E"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_71CE16F2-E1E9-4507-94F3-383E092AF3C9">
+      <dmn:requiredInput href="#_0C7BE88D-AB73-4362-B883-83597E8AA50C"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_1EBD493B-F15F-431A-96EE-265F100C86B3">
+      <dmn:requiredInput href="#_ED05464F-D326-465B-BCE1-D8CF8319726C"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_059B26F4-1786-4F10-838B-6C2DFFD14DDC">
+      <dmn:text>if (R5.1.12_Whole="removal or demolition" and&#xd;
+not(DemolishWholeBuilding)) and&#xd;
+(R5.1.12_ArchitecturalFeature="removal or demolition" and&#xd;
+not(DemolishPrimaryForm) and&#xd;
+not(DemolishArchitecturalFeature)) then true else&#xd;
+if R5.1.12_ArchitecturalFeature="removal or demolition" and&#xd;
+not(AdditionAffectingPrimaryForm) and&#xd;
+not(DemolishArchitecturalFeature) then true else&#xd;
+if R5.1.12_ArchitecturalFeature="removal or demolition" and&#xd;
+not(DemolishArchitecturalFeature) then true else&#xd;
+if R5.1.12_Whole=null or R5.1.12_ArchitecturalFeature=null then null&#xd;
+else false&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:knowledgeSource id="_BB23ECF6-ABC5-4B77-BB28-5016CD0E58A9" name="DP_5.1.12" locationURI="380e8110-b902-4836-89cc-7830348e5b3e">
+    <dmn:description>Wellington City District Plan Residential Permitted Rule
+Demolition or removal of buildings and structures except heritage items, pre 1930’s buildings in the Inner Residential Area and Holloway Road (Outer Residential Area) and the removal or demolition of architectural features from the primary façade constructed prior to 1930</dmn:description>
+    <dmn:extensionElements/>
+    <dmn:type></dmn:type>
+  </dmn:knowledgeSource>
+  <dmn:decision id="_782ADAE1-78B6-47B3-921F-5F4088B177D8" name="RulesTriggered">
+    <dmn:extensionElements/>
+    <dmn:variable id="_7F3C9ED1-CF23-4E9A-A55E-E71C665B1919" name="RulesTriggered" typeRef="Types.PlanContents"/>
+    <dmn:informationRequirement id="_95AE9539-9644-4754-A7A5-303BB142D034">
+      <dmn:requiredDecision href="#_A326BD00-DDE8-4B83-B58B-59D0C8DBA067"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_CE63E97F-D24E-4E34-975D-E3C625074C70">
+      <dmn:requiredDecision href="#_F9338FB0-0FF7-4157-A44D-E34B2D41967A"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_C4BE5089-DA2B-481F-86C2-D5B37AC7DF3F" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_322D23B2-E8F8-4C04-87AC-F88EC365554B">
+        <dmn:inputExpression id="_7653C160-836B-4590-8EBE-B5994C4C5045" typeRef="boolean">
+          <dmn:text>R5.1.12</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_83C37CB6-6B9F-4D5B-9B45-8873A7700FB6">
+        <dmn:inputExpression id="_5AE84D54-0E46-480F-92E0-3772D6383C30" typeRef="boolean">
+          <dmn:text>R5.3.6</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_43A3DEC1-8930-4AAD-9205-5EC4DF03B770" name="name" typeRef="string"/>
+      <dmn:output id="_0E82A9DB-295B-432C-9BF5-B9F7164297ED" name="uuids" typeRef="string"/>
+      <dmn:annotation name="annotation-1"/>
+      <dmn:rule id="_D4CB96C5-963F-4996-8731-D4C6857D4EBF">
+        <dmn:inputEntry id="_24470E80-3603-4D0C-A756-E4FE8DB04620">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_257ABB20-C2E4-4014-902F-C9A947C53878">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_0974EDD1-E1B5-4853-A86C-7E9B3ACD1F9E">
+          <dmn:text>"5.1.12"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_D7CB9FF0-1094-443A-BCB7-A6ED502E1DD8">
+          <dmn:text>"380e8110-b902-4836-89cc-7830348e5b3e"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>Demolition or removal of buildings and structures except heritage items, pre 1930’s buildings in the Inner Residential Area and Holloway Road (Outer Residential Area) and the removal or demolition of architectural features from the primary façade constructed prior to 1930</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_CB0F1363-2391-40BC-B802-FC43AA7747A1">
+        <dmn:inputEntry id="_2FD9DC45-1862-46CA-A9D0-01EF3ABA98B2">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CA171965-3FDA-445F-9F93-3F348170296C">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_D378EB46-6C17-4055-864C-85CED75E0E05">
+          <dmn:text>"5.3.6"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_5F5DFD89-CBD6-4A98-BC44-7A391A553EBD">
+          <dmn:text>"fff5f672-83bc-48aa-996d-127a1640ce0b"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>The demolition of any building, excluding accessory buildings, constructed before 1930 in the Inner Residential Area and Holloway Road (Outer Residential Area) (see Appendix 1)</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:inputData id="_0C7BE88D-AB73-4362-B883-83597E8AA50C" name="DemolishPrimaryForm">
+    <dmn:extensionElements/>
+    <dmn:variable id="_45CDD399-9208-46B2-89FF-8F48349E7608" name="DemolishPrimaryForm" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmn:businessKnowledgeModel id="_162DC7F1-EF22-4B75-AC18-37982D1DE529" name="DemolitionBuildingStructureActivities">
+    <dmn:extensionElements/>
+    <dmn:variable id="_878880E4-3EBF-4B99-B837-75C4F3EB1254" name="DemolitionBuildingStructureActivities" typeRef="boolean"/>
+    <dmn:encapsulatedLogic id="_CAD1C4B8-6E96-486A-A184-2472643D0AC8" kind="FEEL">
+      <dmn:formalParameter id="_9BD1541E-655D-408F-911A-7F993753C589" name="activities" typeRef="Types.Activities"/>
+      <dmn:literalExpression id="_033DCC66-4A1E-4D45-B3B8-CA6B01564136">
+        <dmn:text>list contains(activities[Noun="residential building"].Verb, "add to") or&#xd;
+list contains(activities[Noun="residential building"].Verb, "alter") or&#xd;
+list contains(activities[Noun="residential building"].Verb, "demolish")&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+      </dmn:literalExpression>
+    </dmn:encapsulatedLogic>
+  </dmn:businessKnowledgeModel>
+  <dmn:decision id="_B0AB143E-F4C8-486C-9C4E-C110E8867AB6" name="R5.1.12_ArchitecturalFeature">
+    <dmn:extensionElements/>
+    <dmn:variable id="_3E36C56C-A014-4C42-B090-33CEE072EE6F" name="R5.1.12_ArchitecturalFeature" typeRef="string"/>
+    <dmn:informationRequirement id="_66CB279F-3EB3-4A3B-8CA6-C4867A4C866E">
+      <dmn:requiredInput href="#_9AF94EE9-C81E-4E15-8287-3AFE94D76B74"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_0337CB1C-9D90-4C38-A370-A29EA9D8AC01">
+      <dmn:requiredInput href="#_FF9E4109-6622-4987-BA94-B2DD13F30A1C"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_B17E0C51-AF1A-42B2-8BB2-B2827CD4FD9D">
+      <dmn:requiredInput href="#_6A454643-F949-45DF-9409-31D50BAD21F2"/>
+    </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_0CACFC8A-8851-4D52-BA9C-41B98259F378">
+      <dmn:requiredKnowledge href="#_0E74B5B2-A1F4-41EE-8AAE-656AAA8686F8"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_05DCB7E3-5952-4323-B5E2-5825641BF271">
+      <dmn:requiredKnowledge href="#_C2A0391E-652B-42B5-9E9B-196947E9BE0D"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_B7EDBA03-79E3-4729-A7DA-C50F702487D9">
+      <dmn:requiredKnowledge href="#_A2394239-9503-47FD-A1EA-5297FEA363B1"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_4A6FE985-7CC1-4240-B883-002BD99FFE4E">
+      <dmn:requiredKnowledge href="#_162DC7F1-EF22-4B75-AC18-37982D1DE529"/>
+    </dmn:knowledgeRequirement>
+    <dmn:authorityRequirement id="_BAB369B6-EF93-426E-BFA8-A4F9BA77D193">
+      <dmn:requiredAuthority href="#_BB23ECF6-ABC5-4B77-BB28-5016CD0E58A9"/>
+    </dmn:authorityRequirement>
+    <dmn:literalExpression id="_E07F788A-399D-46DC-96D3-FB8DE62F655F">
+      <dmn:text>if ResidentialAreasPre-1930DemolitionControls(SpatialLayers) and&#xd;
+not(HeritageAreas(SpatialLayers)) and&#xd;
+not(HeritageFeatures(SpatialLayers)) and&#xd;
+ConstructedPriorTo1930 then "removal or demolition" else null&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_62D0A4BE-C422-49C0-8C68-2DA3FBB0CEFB" name="RulesNotMet">
+    <dmn:extensionElements/>
+    <dmn:variable id="_50E15702-3FF6-4223-A3A5-D02C771D1970" name="RulesNotMet" typeRef="Types.PlanContents"/>
+    <dmn:informationRequirement id="_8F0AD37B-B281-4E8D-92F6-77E1FE5DF333">
+      <dmn:requiredDecision href="#_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_6BBA7F9A-154F-4C21-B2A6-AE5171F3B59C" hitPolicy="COLLECT" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_5EA49186-9A2B-4B88-A7B3-6D1FC3EEFFFF">
+        <dmn:inputExpression id="_64F013D8-F3EB-44D7-BC63-94601FEBACB5" typeRef="boolean">
+          <dmn:text>R5.1.12Met</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_445FECFB-8E01-49B5-8B22-EE9E2139C02C" name="name" typeRef="string"/>
+      <dmn:output id="_19116A54-A9CF-47B8-AE85-A83505798FF5" name="uuids" typeRef="string"/>
+      <dmn:annotation name=""/>
+      <dmn:rule id="_C575B273-1A86-463A-8A05-8B3548FEDBB7">
+        <dmn:inputEntry id="_11AB1E58-1A9B-4874-879A-2DCF01DA62CE">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_B48CC327-5F5C-44C6-8442-255DD9E3A9D0">
+          <dmn:text>"5.1.12"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_F09D7ED2-12D4-4AD8-B387-DAACDD008EAD">
+          <dmn:text>"380e8110-b902-4836-89cc-7830348e5b3e"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:inputData id="_13B38CDB-F5F4-4918-8C44-2591DFBFA4B1" name="Suburb">
+    <dmn:extensionElements/>
+    <dmn:variable id="_D168E9A6-BD87-42CD-A28B-DE48498BCE68" name="Suburb" typeRef="Types.Suburb"/>
+  </dmn:inputData>
+  <dmn:businessKnowledgeModel id="_C2A0391E-652B-42B5-9E9B-196947E9BE0D" name="HeritageAreas">
+    <dmn:extensionElements/>
+    <dmn:variable id="_EA38DDFE-62E6-4F51-9548-F1ADFF3E6DFD" name="HeritageAreas" typeRef="boolean"/>
+    <dmn:encapsulatedLogic id="_3B6643BD-9556-4CA3-874E-21F58C19392F" kind="FEEL">
+      <dmn:formalParameter id="_B8E41FA5-ED5B-495C-A9FF-B69E53A0034F" name="spatiallayers" typeRef="Types.SpatialLayers"/>
+      <dmn:literalExpression id="_52ABC58B-222A-41C9-B5E4-A058AFCBD843">
+        <dmn:text>list contains(spatiallayers[Type="Heritage Features"].Title, "Heritage Features")</dmn:text>
+      </dmn:literalExpression>
+    </dmn:encapsulatedLogic>
+  </dmn:businessKnowledgeModel>
   <dmn:inputData id="_FF9E4109-6622-4987-BA94-B2DD13F30A1C" name="Activities">
     <dmn:extensionElements/>
     <dmn:variable id="_27C97310-ECD3-4413-B813-680D2CC8A733" name="Activities" typeRef="Types.Activities"/>
@@ -518,52 +629,6 @@ ConstructedPriorTo1930 then "removal or demolition" else null&#xd;
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
-  <dmn:decision id="_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB" name="R5.1.12Met">
-    <dmn:extensionElements/>
-    <dmn:variable id="_F75E3AEF-2D4E-418E-B3EE-E275595C6158" name="R5.1.12Met" typeRef="boolean"/>
-    <dmn:informationRequirement id="_C0AEC952-C96B-4ED5-97CF-CCCD2BFABC8D">
-      <dmn:requiredDecision href="#_69755C18-1F1F-4AFA-A816-9BB075FBF7FE"/>
-    </dmn:informationRequirement>
-    <dmn:informationRequirement id="_9BF130DC-D1D9-4051-AD4C-A7F0999B36F9">
-      <dmn:requiredInput href="#_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0"/>
-    </dmn:informationRequirement>
-    <dmn:informationRequirement id="_2A2BBD27-2207-474B-ABF4-D859F5DA7B5C">
-      <dmn:requiredDecision href="#_B0AB143E-F4C8-486C-9C4E-C110E8867AB6"/>
-    </dmn:informationRequirement>
-    <dmn:informationRequirement id="_86403990-9575-4CFB-963A-F1D55ECEFC05">
-      <dmn:requiredInput href="#_F5D7E743-0A2D-4F16-9141-A43F2FD1C22E"/>
-    </dmn:informationRequirement>
-    <dmn:informationRequirement id="_71CE16F2-E1E9-4507-94F3-383E092AF3C9">
-      <dmn:requiredInput href="#_0C7BE88D-AB73-4362-B883-83597E8AA50C"/>
-    </dmn:informationRequirement>
-    <dmn:informationRequirement id="_1EBD493B-F15F-431A-96EE-265F100C86B3">
-      <dmn:requiredInput href="#_ED05464F-D326-465B-BCE1-D8CF8319726C"/>
-    </dmn:informationRequirement>
-    <dmn:literalExpression id="_059B26F4-1786-4F10-838B-6C2DFFD14DDC">
-      <dmn:text>if (R5.1.12_Whole="removal or demolition" and&#xd;
-not(DemolishWholeBuilding)) and&#xd;
-(R5.1.12_ArchitecturalFeature="removal or demolition" and&#xd;
-not(DemolishPrimaryForm) and&#xd;
-not(DemolishArchitecturalFeature)) then true else&#xd;
-if R5.1.12_ArchitecturalFeature="removal or demolition" and&#xd;
-not(AdditionAffectingPrimaryForm) and&#xd;
-not(DemolishArchitecturalFeature) then true else&#xd;
-if R5.1.12_ArchitecturalFeature="removal or demolition" and&#xd;
-not(DemolishArchitecturalFeature) then true else&#xd;
-if R5.1.12_Whole=null or R5.1.12_ArchitecturalFeature=null then null&#xd;
-else false&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-</dmn:text>
-    </dmn:literalExpression>
-  </dmn:decision>
   <dmn:inputData id="_ED05464F-D326-465B-BCE1-D8CF8319726C" name="AdditionAffectingPrimaryForm">
     <dmn:extensionElements/>
     <dmn:variable id="_F3A6D68C-B0B6-4CB6-B153-558A3072EB5B" name="AdditionAffectingPrimaryForm" typeRef="boolean"/>
@@ -591,12 +656,43 @@ else false&#xd;
       </dmn:literalExpression>
     </dmn:encapsulatedLogic>
   </dmn:businessKnowledgeModel>
-  <dmn:knowledgeSource id="_BB23ECF6-ABC5-4B77-BB28-5016CD0E58A9" name="DP_5.1.12" locationURI="380e8110-b902-4836-89cc-7830348e5b3e">
-    <dmn:description>Wellington City District Plan Residential Permitted Rule
-Demolition or removal of buildings and structures except heritage items, pre 1930’s buildings in the Inner Residential Area and Holloway Road (Outer Residential Area) and the removal or demolition of architectural features from the primary façade constructed prior to 1930</dmn:description>
+  <dmn:decision id="_A59DBF96-5684-4062-961A-95EA13FEA2AB" name="R5.1.12_PrimaryForm">
     <dmn:extensionElements/>
-    <dmn:type></dmn:type>
-  </dmn:knowledgeSource>
+    <dmn:variable id="_7B42AE87-052B-4D6F-86D3-42F296BBADEE" name="R5.1.12_PrimaryForm" typeRef="string"/>
+    <dmn:informationRequirement id="_50F7F253-5329-4510-A4B1-22223E455A00">
+      <dmn:requiredInput href="#_9AF94EE9-C81E-4E15-8287-3AFE94D76B74"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_82079420-779B-48ED-B184-27E310DD79C4">
+      <dmn:requiredInput href="#_FF9E4109-6622-4987-BA94-B2DD13F30A1C"/>
+    </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_14F76E81-BF37-428A-B420-6A9985449A40">
+      <dmn:requiredKnowledge href="#_0E74B5B2-A1F4-41EE-8AAE-656AAA8686F8"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_B1FAC7A2-A600-4F17-851E-8EFCDBE4A264">
+      <dmn:requiredKnowledge href="#_C2A0391E-652B-42B5-9E9B-196947E9BE0D"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_A4973237-675A-4592-BD6F-F0C1C650BA4E">
+      <dmn:requiredKnowledge href="#_A2394239-9503-47FD-A1EA-5297FEA363B1"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_61D84F8A-F2E8-40B9-A215-65C6FDFCF61C">
+      <dmn:requiredKnowledge href="#_162DC7F1-EF22-4B75-AC18-37982D1DE529"/>
+    </dmn:knowledgeRequirement>
+    <dmn:literalExpression id="_D08F2F81-89FB-455A-BB1E-41088FF1CC46">
+      <dmn:text>if ResidentialAreasPre-1930DemolitionControls(SpatialLayers) and&#xd;
+not(HeritageAreas(SpatialLayers)) and&#xd;
+not(HeritageFeatures(SpatialLayers)) and&#xd;
+ConstructedPriorTo1930 and&#xd;
+list contains(activities[Noun="residential building"].Verb, "add to") &#xd;
+then "effects primary form" else null&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:decision id="_ACBF9DC9-8567-4C59-A869-BE29AB326CC9" name="Status">
     <dmn:extensionElements/>
     <dmn:variable id="_8B244CF2-9921-4C40-96B6-75EC6209021F" name="Status" typeRef="Types.Status"/>
@@ -673,65 +769,6 @@ Demolition or removal of buildings and structures except heritage items, pre 193
         </dmn:outputEntry>
         <dmn:annotationEntry>
           <dmn:text></dmn:text>
-        </dmn:annotationEntry>
-      </dmn:rule>
-    </dmn:decisionTable>
-  </dmn:decision>
-  <dmn:decision id="_782ADAE1-78B6-47B3-921F-5F4088B177D8" name="RulesTriggered">
-    <dmn:extensionElements/>
-    <dmn:variable id="_7F3C9ED1-CF23-4E9A-A55E-E71C665B1919" name="RulesTriggered" typeRef="Types.PlanContents"/>
-    <dmn:informationRequirement id="_95AE9539-9644-4754-A7A5-303BB142D034">
-      <dmn:requiredDecision href="#_A326BD00-DDE8-4B83-B58B-59D0C8DBA067"/>
-    </dmn:informationRequirement>
-    <dmn:informationRequirement id="_CE63E97F-D24E-4E34-975D-E3C625074C70">
-      <dmn:requiredDecision href="#_F9338FB0-0FF7-4157-A44D-E34B2D41967A"/>
-    </dmn:informationRequirement>
-    <dmn:decisionTable id="_C4BE5089-DA2B-481F-86C2-D5B37AC7DF3F" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
-      <dmn:input id="_322D23B2-E8F8-4C04-87AC-F88EC365554B">
-        <dmn:inputExpression id="_7653C160-836B-4590-8EBE-B5994C4C5045" typeRef="boolean">
-          <dmn:text>R5.1.12</dmn:text>
-        </dmn:inputExpression>
-      </dmn:input>
-      <dmn:input id="_83C37CB6-6B9F-4D5B-9B45-8873A7700FB6">
-        <dmn:inputExpression id="_5AE84D54-0E46-480F-92E0-3772D6383C30" typeRef="boolean">
-          <dmn:text>R5.3.6</dmn:text>
-        </dmn:inputExpression>
-      </dmn:input>
-      <dmn:output id="_43A3DEC1-8930-4AAD-9205-5EC4DF03B770" name="name" typeRef="string"/>
-      <dmn:output id="_0E82A9DB-295B-432C-9BF5-B9F7164297ED" name="uuids" typeRef="string"/>
-      <dmn:annotation name="annotation-1"/>
-      <dmn:rule id="_D4CB96C5-963F-4996-8731-D4C6857D4EBF">
-        <dmn:inputEntry id="_24470E80-3603-4D0C-A756-E4FE8DB04620">
-          <dmn:text>true</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_257ABB20-C2E4-4014-902F-C9A947C53878">
-          <dmn:text>false</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_0974EDD1-E1B5-4853-A86C-7E9B3ACD1F9E">
-          <dmn:text>"5.1.12"</dmn:text>
-        </dmn:outputEntry>
-        <dmn:outputEntry id="_D7CB9FF0-1094-443A-BCB7-A6ED502E1DD8">
-          <dmn:text>"380e8110-b902-4836-89cc-7830348e5b3e"</dmn:text>
-        </dmn:outputEntry>
-        <dmn:annotationEntry>
-          <dmn:text>Demolition or removal of buildings and structures except heritage items, pre 1930’s buildings in the Inner Residential Area and Holloway Road (Outer Residential Area) and the removal or demolition of architectural features from the primary façade constructed prior to 1930</dmn:text>
-        </dmn:annotationEntry>
-      </dmn:rule>
-      <dmn:rule id="_CB0F1363-2391-40BC-B802-FC43AA7747A1">
-        <dmn:inputEntry id="_2FD9DC45-1862-46CA-A9D0-01EF3ABA98B2">
-          <dmn:text>false</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_CA171965-3FDA-445F-9F93-3F348170296C">
-          <dmn:text>true</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_D378EB46-6C17-4055-864C-85CED75E0E05">
-          <dmn:text>"5.3.6"</dmn:text>
-        </dmn:outputEntry>
-        <dmn:outputEntry id="_5F5DFD89-CBD6-4A98-BC44-7A391A553EBD">
-          <dmn:text>"fff5f672-83bc-48aa-996d-127a1640ce0b"</dmn:text>
-        </dmn:outputEntry>
-        <dmn:annotationEntry>
-          <dmn:text>The demolition of any building, excluding accessory buildings, constructed before 1930 in the Inner Residential Area and Holloway Road (Outer Residential Area) (see Appendix 1)</dmn:text>
         </dmn:annotationEntry>
       </dmn:rule>
     </dmn:decisionTable>
@@ -841,6 +878,9 @@ Demolition or removal of buildings and structures except heritage items, pre 193
             <kie:width>184.0</kie:width>
             <kie:width>308.0</kie:width>
             <kie:width>328.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_D08F2F81-89FB-455A-BB1E-41088FF1CC46">
+            <kie:width>766.0</kie:width>
           </kie:ComponentWidths>
         </kie:ComponentsWidthsExtension>
       </di:extension>
@@ -1069,6 +1109,15 @@ Demolition or removal of buildings and structures except heritage items, pre 193
         <dc:Bounds x="1427" y="122" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_A59DBF96-5684-4062-961A-95EA13FEA2AB" dmnElementRef="_A59DBF96-5684-4062-961A-95EA13FEA2AB" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="169" green="192" blue="225"/>
+          <dmndi:StrokeColor red="71" green="104" blue="161"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="326" y="355" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0" dmnElementRef="_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0" isCollapsed="false">
         <dmndi:DMNStyle fontSize="8">
           <dmndi:FillColor red="243" green="229" blue="248"/>
@@ -1246,6 +1295,30 @@ Demolition or removal of buildings and structures except heritage items, pre 193
       <dmndi:DMNEdge id="dmnedge-_3829BA40-835F-4A56-95E4-F4D2F1A29EFE" dmnElementRef="_3829BA40-835F-4A56-95E4-F4D2F1A29EFE">
         <di:waypoint x="1069" y="226"/>
         <di:waypoint x="1477" y="147"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_50F7F253-5329-4510-A4B1-22223E455A00" dmnElementRef="_50F7F253-5329-4510-A4B1-22223E455A00">
+        <di:waypoint x="120.5981308411215" y="409"/>
+        <di:waypoint x="376" y="380"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_14F76E81-BF37-428A-B420-6A9985449A40" dmnElementRef="_14F76E81-BF37-428A-B420-6A9985449A40">
+        <di:waypoint x="126.5981308411215" y="345"/>
+        <di:waypoint x="376" y="380"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_B1FAC7A2-A600-4F17-851E-8EFCDBE4A264" dmnElementRef="_B1FAC7A2-A600-4F17-851E-8EFCDBE4A264">
+        <di:waypoint x="126.59813084112147" y="285"/>
+        <di:waypoint x="376" y="380"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_A4973237-675A-4592-BD6F-F0C1C650BA4E" dmnElementRef="_A4973237-675A-4592-BD6F-F0C1C650BA4E">
+        <di:waypoint x="126.5981308411215" y="223"/>
+        <di:waypoint x="376" y="380"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_82079420-779B-48ED-B184-27E310DD79C4" dmnElementRef="_82079420-779B-48ED-B184-27E310DD79C4">
+        <di:waypoint x="126.59813084112147" y="158.68421052631578"/>
+        <di:waypoint x="376" y="380"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_61D84F8A-F2E8-40B9-A215-65C6FDFCF61C" dmnElementRef="_61D84F8A-F2E8-40B9-A215-65C6FDFCF61C">
+        <di:waypoint x="126.5981308411215" y="95.6842105263158"/>
+        <di:waypoint x="376" y="380"/>
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
