@@ -307,6 +307,64 @@ Maximum height 5.6.2.5</dmn:description>
       </dmn:literalExpression>
     </dmn:encapsulatedLogic>
   </dmn:businessKnowledgeModel>
+  <dmn:decision id="_07850A30-5C56-4E57-8BCB-953DBABBF16E" name="R5.3.4.16Applied">
+    <dmn:extensionElements/>
+    <dmn:variable id="_0368F801-9123-4530-BFF3-C351E95199CA" name="R5.3.4.16Applied" typeRef="number"/>
+    <dmn:informationRequirement id="_38B1A9FB-AB24-476D-B9A9-C7EA67B03C69">
+      <dmn:requiredDecision href="#_8FBC5D2E-B8A2-4A2C-9243-5D25A8011CD2"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_6BAD51FB-43E9-44EC-A143-82B2CC805745">
+      <dmn:requiredDecision href="#_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_667DD99E-5637-4A81-A8C3-12BF84A26068">
+      <dmn:requiredDecision href="#_639022F0-0C51-4CE0-8A7B-CFCB8DCCEE7B"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_D28EAAC6-4B57-4DCC-A70C-0AD8271D4285">
+      <dmn:requiredInput href="#_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_393F99DD-2073-4B3A-A2E1-338E556D4867">
+      <dmn:requiredInput href="#_CE2A1FDC-7DD8-4E4A-A2D4-96F7D1AD8972"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_8DBBCD94-7854-4740-9FB3-B32A13A12CB9">
+      <dmn:text>if R5.3.4.16 > 0 then&#xd;
+  if S5.6.2.5.1 = null then null else&#xd;
+  if S5.6.2.5.2 > 0 and &#xd;
+  ProposedResidentialBuildingMaxHeight !=null then&#xd;
+  (S5.6.2.5.2 * R5.3.4.16) + S5.6.2.5.2) else&#xd;
+  if S5.6.2.5.2 > 0 then&#xd;
+  ((S5.6.2.5.2 * R5.3.4.16) + S5.6.2.5.2) else&#xd;
+  if S5.6.2.5.1 > 0 and &#xd;
+  ProposedResidentialBuildingMaxHeight !=null and&#xd;
+  RoofSlopeResidentialBuilding = "Yes" then&#xd;
+  (((S5.6.2.5.1 + S5.6.2.5.5) * R5.3.4.16) + (S5.6.2.5.1 + S5.6.2.5.5)) else&#xd;
+  if S5.6.2.5.1 > 0 and &#xd;
+  ProposedResidentialBuildingMaxHeight !=null and&#xd;
+  (RoofSlopeResidentialBuilding = "No" or&#xd;
+  RoofSlopeResidentialBuilding = "Not applicable" or&#xd;
+  RoofSlopeResidentialBuilding = null) then&#xd;
+  ((S5.6.2.5.1 * R5.3.4.16) + S5.6.2.5.1) else&#xd;
+  if S5.6.2.5.1 > 0 then &#xd;
+  ((S5.6.2.5.1 * R5.3.4.16) + S5.6.2.5.1) else null &#xd;
+else null&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+  </dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:decision id="_83E9B891-40E9-4DAD-8EAF-19E5EE1012FE" name="R5.3.4.17Met">
     <dmn:extensionElements/>
     <dmn:variable id="_59C10D31-4AA1-4245-B347-138C7AE61882" name="R5.3.4.17Met" typeRef="boolean"/>
@@ -1969,6 +2027,9 @@ OR2ResidentialCoastalEdge(SpatialLayers) and&#xd;
           <kie:ComponentWidths dmnElementRef="_016129C1-E503-4F77-984F-61AC4163EEDD">
             <kie:width>567.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_8DBBCD94-7854-4740-9FB3-B32A13A12CB9">
+            <kie:width>1057.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_8EB6069C-64D8-4C1A-B592-08333FA0A5C0">
             <kie:width>830.0</kie:width>
           </kie:ComponentWidths>
@@ -2532,6 +2593,15 @@ OR2ResidentialCoastalEdge(SpatialLayers) and&#xd;
         <dc:Bounds x="556.2990654205607" y="514.3421052631579" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_07850A30-5C56-4E57-8BCB-953DBABBF16E" dmnElementRef="_07850A30-5C56-4E57-8BCB-953DBABBF16E" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="1096" y="369" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0" dmnElementRef="_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0" isCollapsed="false">
         <dmndi:DMNStyle fontSize="8">
           <dmndi:FillColor red="243" green="229" blue="248"/>
@@ -3062,6 +3132,26 @@ OR2ResidentialCoastalEdge(SpatialLayers) and&#xd;
       <dmndi:DMNEdge id="dmnedge-_6067A958-B7B5-49C9-9465-3B536CB11100" dmnElementRef="_6067A958-B7B5-49C9-9465-3B536CB11100">
         <di:waypoint x="473.25" y="411.34210526315786"/>
         <di:waypoint x="474" y="478"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_38B1A9FB-AB24-476D-B9A9-C7EA67B03C69" dmnElementRef="_38B1A9FB-AB24-476D-B9A9-C7EA67B03C69">
+        <di:waypoint x="1030" y="359"/>
+        <di:waypoint x="1146" y="394"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_6BAD51FB-43E9-44EC-A143-82B2CC805745" dmnElementRef="_6BAD51FB-43E9-44EC-A143-82B2CC805745">
+        <di:waypoint x="612" y="211"/>
+        <di:waypoint x="1146" y="394"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_667DD99E-5637-4A81-A8C3-12BF84A26068" dmnElementRef="_667DD99E-5637-4A81-A8C3-12BF84A26068">
+        <di:waypoint x="612" y="347"/>
+        <di:waypoint x="1146" y="394"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_D28EAAC6-4B57-4DCC-A70C-0AD8271D4285" dmnElementRef="_D28EAAC6-4B57-4DCC-A70C-0AD8271D4285">
+        <di:waypoint x="731.5981308411215" y="140.68421052631578"/>
+        <di:waypoint x="1146" y="394"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_393F99DD-2073-4B3A-A2E1-338E556D4867" dmnElementRef="_393F99DD-2073-4B3A-A2E1-338E556D4867">
+        <di:waypoint x="606.2990654205607" y="430.3421052631579"/>
+        <di:waypoint x="1146" y="394"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_C38749EC-7E7F-41CC-B97A-810F074B7D87" dmnElementRef="_C38749EC-7E7F-41CC-B97A-810F074B7D87">
         <di:waypoint x="878.2990654205607" y="964"/>
