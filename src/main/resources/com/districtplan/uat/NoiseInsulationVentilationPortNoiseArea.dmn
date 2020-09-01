@@ -27,6 +27,47 @@ Residential buildings, accessory buildings and residential structures not provid
     <dmn:extensionElements/>
     <dmn:variable id="_E544C9ED-849C-4334-B5E0-1A52261A5F17" name="AccousticDesignPerformanceStandard" typeRef="boolean"/>
   </dmn:inputData>
+  <dmn:decision id="_E5450015-2A85-48CF-9673-755E5D52B2B8" name="S5.6.2.15.2_SupplementaryAirSource">
+    <dmn:description>The supplementary source of air is to achieve a minimum of 7.5 litres per second per person</dmn:description>
+    <dmn:extensionElements/>
+    <dmn:variable id="_8FF8674F-7EF8-4940-8F39-5E6B8C9C7F4A" name="S5.6.2.15.2_SupplementaryAirSource" typeRef="number"/>
+    <dmn:informationRequirement id="_431D93E2-966B-464F-BAF9-B69F75C484FC">
+      <dmn:requiredInput href="#_FF9E4109-6622-4987-BA94-B2DD13F30A1C"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_A9A8687C-C92D-427C-9C69-7AB83044CDBE">
+      <dmn:requiredInput href="#_9AF94EE9-C81E-4E15-8287-3AFE94D76B74"/>
+    </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_4183E5A6-5748-426D-824D-34C57A538693">
+      <dmn:requiredKnowledge href="#_162DC7F1-EF22-4B75-AC18-37982D1DE529"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_7EBA0AE7-35BF-4E12-AF21-F251BA099AEB">
+      <dmn:requiredKnowledge href="#_D8F01EF1-7326-44E7-B8BB-CB6975F03CFB"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_76293D4D-48D9-4652-8C8A-F12DACA15E1B">
+      <dmn:requiredKnowledge href="#_0CD77B39-EC94-4EB6-8D36-74859D41E58C"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_BB58B0D4-974E-418A-BF74-9EA1509BC897">
+      <dmn:requiredKnowledge href="#_9C36EA52-022B-417B-87C0-D01E9CB65009"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_90DAB90A-DD46-4DD7-9D5C-0C8AB1FB15B8">
+      <dmn:requiredKnowledge href="#_C1C19FCB-8ABC-4E9E-8A91-0E022D9234A6"/>
+    </dmn:knowledgeRequirement>
+    <dmn:literalExpression id="_68271B79-AABC-45AD-8F7B-BD70450AC3C8">
+      <dmn:description>The supplementary source of air is to achieve a minimum of 7.5 litres per second per person</dmn:description>
+      <dmn:text>if NoiseInsulationVentilationPortNoiseAreaActivities(Activities) and&#xd;
+(InnerResidentialArea(SpatialLayers) or&#xd;
+MediumDensityResidentialArea(SpatialLayers) or&#xd;
+OuterResidentialArea(SpatialLayers)) and&#xd;
+PortNoiseBoundary(SpatialLayers) and &#xd;
+S5.6.2.15.3 then 7.5 else 0&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:decision id="_F9338FB0-0FF7-4157-A44D-E34B2D41967A" name="R5.1.7">
     <dmn:extensionElements/>
     <dmn:variable id="_58BF5BD2-36E6-4ABC-8601-A7F9B48BE91A" name="R5.1.7" typeRef="boolean"/>
@@ -48,10 +89,10 @@ Residential buildings, accessory buildings and residential structures not provid
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
-  <dmn:decision id="_CB8A9E75-F769-4D63-9EC9-E36BCB8E3A93" name="S5.6.2.15.2">
+  <dmn:decision id="_CB8A9E75-F769-4D63-9EC9-E36BCB8E3A93" name="S5.6.2.15.2_OpenableWindows">
     <dmn:description>The supplementary source of air is to achieve a minimum of 7.5 litres per second per person</dmn:description>
     <dmn:extensionElements/>
-    <dmn:variable id="_8CF92374-0E3A-4839-A149-BB7EFE4C97F6" name="S5.6.2.15.2" typeRef="number"/>
+    <dmn:variable id="_8CF92374-0E3A-4839-A149-BB7EFE4C97F6" name="S5.6.2.15.2_OpenableWindows" typeRef="string"/>
     <dmn:informationRequirement id="_ED0138CC-30DB-46A5-B1B6-10B3507BF180">
       <dmn:requiredInput href="#_FF9E4109-6622-4987-BA94-B2DD13F30A1C"/>
     </dmn:informationRequirement>
@@ -86,7 +127,8 @@ Residential buildings, accessory buildings and residential structures not provid
 MediumDensityResidentialArea(SpatialLayers) or&#xd;
 OuterResidentialArea(SpatialLayers)) and&#xd;
 PortNoiseBoundary(SpatialLayers) and &#xd;
-S5.6.2.15.3 then 7.5 else 0&#xd;
+S5.6.2.15.3 then &#xd;
+"no openable windows" else null&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -148,12 +190,17 @@ AccousticDesignPerformanceStandard) then true else&#xd;
     <dmn:informationRequirement id="_53CCE070-50B0-4E26-85D7-07AE0FE3D183">
       <dmn:requiredInput href="#_D7F32616-4185-45B1-B27C-23719AEDC25E"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_F76A7EEA-CEA4-42D5-960F-286E4012090D">
+      <dmn:requiredDecision href="#_E5450015-2A85-48CF-9673-755E5D52B2B8"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_B0FE82E2-FC52-4F44-B468-93371D82901B">
-      <dmn:text>if S5.6.2.15.2 > 0 and&#xd;
+      <dmn:text>if S5.6.2.15.2_OpenableWindows !=null and&#xd;
+S5.6.2.15.2_SupplementaryAirSource !=null and&#xd;
 SupplementaryAirSource then true else&#xd;
   if not(NewHabitableRoom) or not(BedroomHabitableRoom) then true else&#xd;
   if BedroomHabitableRoom and not(BedroomOpenableWindows) then true else&#xd;
-  if S5.6.2.15.2 = 0 then null else false&#xd;
+  if S5.6.2.15.2_OpenableWindows = null or&#xd;
+  S5.6.2.15.2_SupplementaryAirSource = null then null else false&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -636,6 +683,9 @@ Noise Insulation and Ventilation - Port Noise Affected Area 5.6.2.15</dmn:descri
             <kie:width>50.0</kie:width>
             <kie:width>658.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_68271B79-AABC-45AD-8F7B-BD70450AC3C8">
+            <kie:width>684.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_6655FE8C-AE26-41AA-A961-160301810E5B">
             <kie:width>716.0</kie:width>
           </kie:ComponentWidths>
@@ -769,6 +819,15 @@ Noise Insulation and Ventilation - Port Noise Affected Area 5.6.2.15</dmn:descri
         <dc:Bounds x="585" y="201.34210526315792" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_E5450015-2A85-48CF-9673-755E5D52B2B8" dmnElementRef="_E5450015-2A85-48CF-9673-755E5D52B2B8" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="169" green="192" blue="225"/>
+          <dmndi:StrokeColor red="71" green="104" blue="161"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="329" y="404" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_F9338FB0-0FF7-4157-A44D-E34B2D41967A" dmnElementRef="_F9338FB0-0FF7-4157-A44D-E34B2D41967A" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="224" green="204" blue="168"/>
@@ -811,7 +870,7 @@ Noise Insulation and Ventilation - Port Noise Affected Area 5.6.2.15</dmn:descri
           <dmndi:StrokeColor red="180" green="180" blue="180"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="467" y="338.31578947368416" width="100" height="50"/>
+        <dc:Bounds x="467" y="338" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_6B5CDD9D-573E-4BFE-A2F8-2B4A9D9BF4DE" dmnElementRef="_6B5CDD9D-573E-4BFE-A2F8-2B4A9D9BF4DE" isCollapsed="false">
@@ -838,7 +897,7 @@ Noise Insulation and Ventilation - Port Noise Affected Area 5.6.2.15</dmn:descri
           <dmndi:StrokeColor red="71" green="104" blue="161"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="328" y="478" width="100" height="50"/>
+        <dc:Bounds x="328" y="546" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_A9DD6DA1-46BA-45B8-8BA3-985FCEAB5068" dmnElementRef="_A9DD6DA1-46BA-45B8-8BA3-985FCEAB5068" isCollapsed="false">
@@ -982,7 +1041,7 @@ Noise Insulation and Ventilation - Port Noise Affected Area 5.6.2.15</dmn:descri
           <dmndi:StrokeColor red="0" green="0" blue="0"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="327.29906542056074" y="413.3421052631579" width="100" height="50"/>
+        <dc:Bounds x="327.29906542056074" y="482" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_ACBF9DC9-8567-4C59-A869-BE29AB326CC9" dmnElementRef="_ACBF9DC9-8567-4C59-A869-BE29AB326CC9" isCollapsed="false">
@@ -1025,12 +1084,40 @@ Noise Insulation and Ventilation - Port Noise Affected Area 5.6.2.15</dmn:descri
         <di:waypoint x="798" y="225"/>
         <di:waypoint x="792" y="104"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_4183E5A6-5748-426D-824D-34C57A538693" dmnElementRef="_4183E5A6-5748-426D-824D-34C57A538693">
+        <di:waypoint x="126.5981308411215" y="95.6842105263158"/>
+        <di:waypoint x="379" y="429"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_431D93E2-966B-464F-BAF9-B69F75C484FC" dmnElementRef="_431D93E2-966B-464F-BAF9-B69F75C484FC">
+        <di:waypoint x="126.59813084112147" y="158.68421052631578"/>
+        <di:waypoint x="379" y="429"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_7EBA0AE7-35BF-4E12-AF21-F251BA099AEB" dmnElementRef="_7EBA0AE7-35BF-4E12-AF21-F251BA099AEB">
+        <di:waypoint x="126" y="220"/>
+        <di:waypoint x="379" y="429"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_76293D4D-48D9-4652-8C8A-F12DACA15E1B" dmnElementRef="_76293D4D-48D9-4652-8C8A-F12DACA15E1B">
+        <di:waypoint x="126" y="282"/>
+        <di:waypoint x="379" y="429"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_BB58B0D4-974E-418A-BF74-9EA1509BC897" dmnElementRef="_BB58B0D4-974E-418A-BF74-9EA1509BC897">
+        <di:waypoint x="126" y="339"/>
+        <di:waypoint x="379" y="429"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_90DAB90A-DD46-4DD7-9D5C-0C8AB1FB15B8" dmnElementRef="_90DAB90A-DD46-4DD7-9D5C-0C8AB1FB15B8">
+        <di:waypoint x="121.5981308411215" y="401.3421052631579"/>
+        <di:waypoint x="379" y="429"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_A9A8687C-C92D-427C-9C69-7AB83044CDBE" dmnElementRef="_A9A8687C-C92D-427C-9C69-7AB83044CDBE">
+        <di:waypoint x="115.5981308411215" y="524"/>
+        <di:waypoint x="379" y="429"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_9D53CB17-27C1-4D12-997A-CB55BA279E60" dmnElementRef="_9D53CB17-27C1-4D12-997A-CB55BA279E60">
         <di:waypoint x="517" y="226"/>
         <di:waypoint x="798" y="225"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_82063379-E6B6-4972-B088-0077D0C01E50" dmnElementRef="_82063379-E6B6-4972-B088-0077D0C01E50">
-        <di:waypoint x="517" y="363.31578947368416"/>
+        <di:waypoint x="517" y="363"/>
         <di:waypoint x="798" y="225"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_629DC596-2AF4-49DB-8C37-69A52D741908" dmnElementRef="_629DC596-2AF4-49DB-8C37-69A52D741908">
@@ -1050,7 +1137,7 @@ Noise Insulation and Ventilation - Port Noise Affected Area 5.6.2.15</dmn:descri
         <di:waypoint x="379" y="363.31578947368416"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_5D3B0380-6C99-40D2-A795-1A8DF6644C1C" dmnElementRef="_5D3B0380-6C99-40D2-A795-1A8DF6644C1C">
-        <di:waypoint x="378" y="503"/>
+        <di:waypoint x="378" y="571"/>
         <di:waypoint x="379" y="363.31578947368416"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_E360507F-CF93-4C48-94C1-F13F05AE4C12" dmnElementRef="_E360507F-CF93-4C48-94C1-F13F05AE4C12">
@@ -1095,39 +1182,43 @@ Noise Insulation and Ventilation - Port Noise Affected Area 5.6.2.15</dmn:descri
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_25FBF3B6-D1FF-4F39-8698-53110A28B7DA" dmnElementRef="_25FBF3B6-D1FF-4F39-8698-53110A28B7DA">
         <di:waypoint x="379" y="363.31578947368416"/>
-        <di:waypoint x="517" y="363.31578947368416"/>
+        <di:waypoint x="517" y="363"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_0341CEEE-BC47-4036-9399-231299820DA9" dmnElementRef="_0341CEEE-BC47-4036-9399-231299820DA9">
         <di:waypoint x="635" y="412"/>
-        <di:waypoint x="517" y="363.31578947368416"/>
+        <di:waypoint x="517" y="363"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_ED6DD47E-E367-4C47-B734-FECE47C45CD6" dmnElementRef="_ED6DD47E-E367-4C47-B734-FECE47C45CD6">
         <di:waypoint x="517.2990654205607" y="290"/>
-        <di:waypoint x="517" y="363.31578947368416"/>
+        <di:waypoint x="517" y="363"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_F79BB2E0-6F4E-4788-AAC0-63ED7B8F4B61" dmnElementRef="_F79BB2E0-6F4E-4788-AAC0-63ED7B8F4B61">
         <di:waypoint x="517.2990654205607" y="153.6842105263158"/>
-        <di:waypoint x="517" y="363.31578947368416"/>
+        <di:waypoint x="517" y="363"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_53CCE070-50B0-4E26-85D7-07AE0FE3D183" dmnElementRef="_53CCE070-50B0-4E26-85D7-07AE0FE3D183">
         <di:waypoint x="635" y="292"/>
-        <di:waypoint x="517" y="363.31578947368416"/>
+        <di:waypoint x="517" y="363"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_F76A7EEA-CEA4-42D5-960F-286E4012090D" dmnElementRef="_F76A7EEA-CEA4-42D5-960F-286E4012090D">
+        <di:waypoint x="379" y="429"/>
+        <di:waypoint x="517" y="363"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_55C3B2B4-A518-416E-BC27-1484B529827B" dmnElementRef="_55C3B2B4-A518-416E-BC27-1484B529827B">
         <di:waypoint x="115.5981308411215" y="524"/>
-        <di:waypoint x="378" y="503"/>
+        <di:waypoint x="378" y="571"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_CCE647E1-748C-41E1-B49A-EDB474515683" dmnElementRef="_CCE647E1-748C-41E1-B49A-EDB474515683">
         <di:waypoint x="126.59813084112147" y="158.68421052631578"/>
-        <di:waypoint x="378" y="503"/>
+        <di:waypoint x="378" y="571"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_5AF5F5A8-7316-41AD-8B5C-BA566610EC45" dmnElementRef="_5AF5F5A8-7316-41AD-8B5C-BA566610EC45">
         <di:waypoint x="121.5981308411215" y="461"/>
-        <di:waypoint x="378" y="503"/>
+        <di:waypoint x="378" y="571"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_09BE2449-6955-45AB-BA3A-DF1943F3537D" dmnElementRef="_09BE2449-6955-45AB-BA3A-DF1943F3537D">
-        <di:waypoint x="377.29906542056074" y="438.3421052631579"/>
-        <di:waypoint x="378" y="503"/>
+        <di:waypoint x="377.29906542056074" y="507"/>
+        <di:waypoint x="378" y="571"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_95AE9539-9644-4754-A7A5-303BB142D034" dmnElementRef="_95AE9539-9644-4754-A7A5-303BB142D034">
         <di:waypoint x="931" y="225"/>
@@ -1146,7 +1237,7 @@ Noise Insulation and Ventilation - Port Noise Affected Area 5.6.2.15</dmn:descri
         <di:waypoint x="1335" y="375"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_DC787D3C-F9A1-400B-A6F3-5912ABD5E6DC" dmnElementRef="_DC787D3C-F9A1-400B-A6F3-5912ABD5E6DC">
-        <di:waypoint x="517" y="363.31578947368416"/>
+        <di:waypoint x="517" y="363"/>
         <di:waypoint x="1335" y="375"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_F7813B3E-0881-4087-8082-FB0684724F95" dmnElementRef="_F7813B3E-0881-4087-8082-FB0684724F95">
@@ -1158,7 +1249,7 @@ Noise Insulation and Ventilation - Port Noise Affected Area 5.6.2.15</dmn:descri
         <di:waypoint x="379" y="225"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_A1366D45-77DE-4E1E-977C-B29948A9E51D" dmnElementRef="_A1366D45-77DE-4E1E-977C-B29948A9E51D">
-        <di:waypoint x="378" y="503"/>
+        <di:waypoint x="378" y="571"/>
         <di:waypoint x="379" y="225"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_515E5A32-8B52-4D1D-AD78-808397658777" dmnElementRef="_515E5A32-8B52-4D1D-AD78-808397658777">
