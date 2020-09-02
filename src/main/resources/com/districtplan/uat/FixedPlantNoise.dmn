@@ -284,7 +284,11 @@ Residential buildings, accessory buildings and residential structures subject to
     </dmn:informationRequirement>
     <dmn:literalExpression id="_BA7BEF51-C0D7-496D-8064-AE68E720F5F5">
       <dmn:text>if R5.3.4.20 > 0 and FixedPlantNoiseKnown then&#xd;
-S5.6.2.13.1_Mon-Sun_10pm-7am + R5.3.4.20 else null&#xd;
+  if S5.6.2.13.1_Mon-Sun_10pm-7am > 0 then&#xd;
+  S5.6.2.13.1_Mon-Sun_10pm-7am + R5.3.4.20 else&#xd;
+  if S5.6.2.13.1_Mon-Sun_8pm-7am > 0 then&#xd;
+  S5.6.2.13.1_Mon-Sun_8pm-7am + R5.3.4.20 else null&#xd;
+else null&#xd;
 &#xd;
 &#xd;
 &#xd;
