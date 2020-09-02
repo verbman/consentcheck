@@ -2016,7 +2016,11 @@ else 0&#xd;
     </dmn:informationRequirement>
     <dmn:literalExpression id="_9278E871-E416-4CF9-B5B9-02A89EC98C91">
       <dmn:text>if R5.3.4.20 > 0 and FixedPlantNoiseKnown then&#xd;
-S5.6.2.13.1_Mon-Sun_10pm-7am_Max + R5.3.4.20 else null&#xd;
+  if S5.6.2.13.1_Mon-Sun_10pm-7am_Max > 0 then&#xd;
+  S5.6.2.13.1_Mon-Sun_10pm-7am_Max + R5.3.4.20 else &#xd;
+  if S5.6.2.13.1_Mon-Sun_8pm-7am_Max > 0 then&#xd;
+  S5.6.2.13.1_Mon-Sun_8pm-7am_Max + R5.3.4.20 else null&#xd;
+else null&#xd;
 &#xd;
 &#xd;
 &#xd;
