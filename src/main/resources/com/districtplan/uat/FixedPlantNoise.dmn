@@ -394,14 +394,15 @@ else null&#xd;
     </dmn:informationRequirement>
     <dmn:literalExpression id="_95336BC4-C183-4E30-ABDF-8B151ECA101E">
       <dmn:text>if R5.3.4.20 > 0 and &#xd;
-FixedPlantNoiseKnown and &#xd;
-(not(FixedPlantAdjoinsRuralArea) or FixedPlantAdjoinsRuralArea = null) then&#xd;
-  if FixedPlantNoiseLevelDay > R5.3.4.20Applied_Day or&#xd;
+FixedPlantNoiseKnown then&#xd;
+  if (not(FixedPlantAdjoinsRuralArea) or FixedPlantAdjoinsRuralArea = null) and&#xd;
+  (FixedPlantNoiseLevelDay > R5.3.4.20Applied_Day or&#xd;
   FixedPlantNoiseLevelNight > R5.3.4.20Applied_Night or&#xd;
-  FixedPlantNoiseLevelNightMax > R5.3.4.20Applied_NightMax then false else&#xd;
-  if AdjoinsRuralFixedPlantNoiseLevelDay > R5.3.4.20Applied_Day or&#xd;
+  FixedPlantNoiseLevelNightMax > R5.3.4.20Applied_NightMax) then false else&#xd;
+  if FixedPlantAdjoinsRuralArea) and&#xd;
+  (AdjoinsRuralFixedPlantNoiseLevelDay > R5.3.4.20Applied_Day or&#xd;
   AdjoinsRuralFixedPlantNoiseLevelNight > R5.3.4.20Applied_Night or&#xd;
-  AdjoinsRuralFixedPlantNoiseLevelNightMax > R5.3.4.20Applied_NightMax then false else true&#xd;
+  AdjoinsRuralFixedPlantNoiseLevelNightMax > R5.3.4.20Applied_NightMax) then false else true&#xd;
 else null&#xd;
 &#xd;
 &#xd;
@@ -546,14 +547,15 @@ else null&#xd;
     </dmn:informationRequirement>
     <dmn:literalExpression id="_B66EFAE0-7441-405B-BFEA-CFE5ACB94B3E">
       <dmn:text>if R5.3.1.4 > 0 and &#xd;
-FixedPlantNoiseKnown and &#xd;
-(not(FixedPlantAdjoinsRuralArea) or FixedPlantAdjoinsRuralArea = null) then&#xd;
-  if FixedPlantNoiseLevelDay > R5.3.1.4Applied_Day or&#xd;
+FixedPlantNoiseKnown then&#xd;
+  if (not(FixedPlantAdjoinsRuralArea) or FixedPlantAdjoinsRuralArea = null) and&#xd;
+  (FixedPlantNoiseLevelDay > R5.3.1.4Applied_Day or&#xd;
   FixedPlantNoiseLevelNight > R5.3.1.4Applied_Night or&#xd;
-  FixedPlantNoiseLevelNightMax > R5.3.1.4Applied_NightMax then false else&#xd;
-  if AdjoinsRuralFixedPlantNoiseLevelDay > R5.3.1.4Applied_Day or&#xd;
+  FixedPlantNoiseLevelNightMax > R5.3.1.4Applied_NightMax) then false else&#xd;
+  if FixedPlantAdjoinsRuralArea and&#xd;
+  (AdjoinsRuralFixedPlantNoiseLevelDay > R5.3.1.4Applied_Day or&#xd;
   AdjoinsRuralFixedPlantNoiseLevelNight > R5.3.1.4Applied_Night or&#xd;
-  AdjoinsRuralFixedPlantNoiseLevelNightMax > R5.3.1.4Applied_NightMax then false else true&#xd;
+  AdjoinsRuralFixedPlantNoiseLevelNightMax > R5.3.1.4Applied_NightMax) then false else true&#xd;
 else null&#xd;
 &#xd;
 &#xd;
