@@ -68,7 +68,7 @@ Residential buildings, accessory buildings and residential structures subject to
   </dmn:knowledgeSource>
   <dmn:decision id="_30972329-B049-4A3C-9C35-DB3A5CA68E47" name="S5.6.2.10.3">
     <dmn:extensionElements/>
-    <dmn:variable id="_38CFA1D7-1EAB-4D03-AD06-A2B2ADA7A561" name="S5.6.2.10.3" typeRef="number"/>
+    <dmn:variable id="_38CFA1D7-1EAB-4D03-AD06-A2B2ADA7A561" name="S5.6.2.10.3" typeRef="string"/>
     <dmn:informationRequirement id="_5536163A-0E93-4742-8B80-E65819A80512">
       <dmn:requiredInput href="#_9AF94EE9-C81E-4E15-8287-3AFE94D76B74"/>
     </dmn:informationRequirement>
@@ -89,7 +89,7 @@ Residential buildings, accessory buildings and residential structures subject to
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_CCB2D242-992B-4F91-91FD-31DE2D7A9AAF">
       <dmn:text>if OR2ResidentialCoastalEdge(SpatialLayers) and&#xd;
-FenceWall10MetreContour then 80 else 0&#xd;
+FenceWall10MetreContour then "post and wire and at least 80% transparent" else null&#xd;
 &#xd;
 &#xd;
 </dmn:text>
@@ -647,8 +647,8 @@ TransparentFence="Not applicable" then true else&#xd;
       <dmn:requiredInput href="#_CE9D9814-64E0-4AF9-BCA8-EDECE7913FBE"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_EC996CC2-3BE3-4211-B995-402A5BF67938">
-      <dmn:text>if S5.6.2.10.3 > 0 and PostWireFenceWall then true else&#xd;
-  if S5.6.2.10.3 = 0 then null else false&#xd;
+      <dmn:text>if S5.6.2.10.3 !=null and PostWireFenceWall then true else&#xd;
+  if S5.6.2.10.3 = null then null else false&#xd;
 &#xd;
 &#xd;
   </dmn:text>
