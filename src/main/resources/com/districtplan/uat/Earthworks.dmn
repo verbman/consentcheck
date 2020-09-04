@@ -172,6 +172,12 @@ TransmissionLineBuffer32m(SpatialLayers) then 10 else null&#xd;
     <dmn:informationRequirement id="_9B0F385D-021D-437E-9218-ED88A036A3EB">
       <dmn:requiredInput href="#_9AF94EE9-C81E-4E15-8287-3AFE94D76B74"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_690E7AE4-1109-4A91-8DF8-B057C7FDB52C">
+      <dmn:requiredInput href="#_C389C7B3-6F57-456E-8D44-E4DDE2334FD9"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_26955BB9-3CFF-4552-B86B-B93B4AA562B6">
+      <dmn:requiredDecision href="#_742BFD9B-8E81-401A-8066-0F4B4644B3EE"/>
+    </dmn:informationRequirement>
     <dmn:authorityRequirement id="_3F19BC70-29BB-4247-A322-9520CEA7ABBA">
       <dmn:requiredAuthority href="#_4B63E4FD-36CE-4AD2-ADBF-551998C6EC70"/>
     </dmn:authorityRequirement>
@@ -180,7 +186,8 @@ TransmissionLineBuffer32m(SpatialLayers) then 10 else null&#xd;
 (not(list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge"))) and&#xd;
 (list contains(SpatialLayers[Type="Residential"].Title, "Inner Residential") or&#xd;
 list contains(SpatialLayers[Type="Residential"].Title, "Medium Density Residential Area") or&#xd;
-list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) then 2.5 else null&#xd;
+list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) and&#xd;
+CutFillHeightDepth > R30.1.1.1_a_i then 2.5 else null&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -6816,6 +6823,14 @@ DistanceBoundary >= CutFillHeightDepth then true else&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_3F19BC70-29BB-4247-A322-9520CEA7ABBA" dmnElementRef="_3F19BC70-29BB-4247-A322-9520CEA7ABBA">
         <di:waypoint x="621.5981308411215" y="310.68421052631584"/>
+        <di:waypoint x="759" y="311"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_690E7AE4-1109-4A91-8DF8-B057C7FDB52C" dmnElementRef="_690E7AE4-1109-4A91-8DF8-B057C7FDB52C">
+        <di:waypoint x="933" y="83.68421052631578"/>
+        <di:waypoint x="759" y="311"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_26955BB9-3CFF-4552-B86B-B93B4AA562B6" dmnElementRef="_26955BB9-3CFF-4552-B86B-B93B4AA562B6">
+        <di:waypoint x="759" y="70"/>
         <di:waypoint x="759" y="311"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_C5881DBF-4F82-4CC8-9BE0-CA5EC2BA6515" dmnElementRef="_C5881DBF-4F82-4CC8-9BE0-CA5EC2BA6515">
