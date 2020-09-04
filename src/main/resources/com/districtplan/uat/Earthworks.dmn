@@ -207,8 +207,8 @@ list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) the
       <dmn:requiredInput href="#_7AADEBBC-E4F1-41F2-A714-A1E21C47D111"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_E194EAED-711E-457E-8D8E-30BC85B71960">
-      <dmn:text>if R30.1.1.2 > 0 and not(DistanceWaterway) then true else&#xd;
-  if R30.1.1.2 > 0 and DistanceWaterway and DistanceWaterwayMetres >= R30.1.1.2 then true else&#xd;
+      <dmn:text>if R30.1.1.2 !=null and not(DistanceWaterway) then true else&#xd;
+  if R30.1.1.2 !=null and DistanceWaterway and DistanceWaterwayMetres >= R30.1.1.2 then true else&#xd;
   if R30.1.1.2 = null then null else&#xd;
   if DistanceWaterway and DistanceWaterwayMetres = null then false else false&#xd;
   &#xd;
@@ -320,7 +320,7 @@ list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) the
       <dmn:requiredInput href="#_C389C7B3-6F57-456E-8D44-E4DDE2334FD9"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_445C239C-3B3B-443A-803F-CA6D848488EF">
-      <dmn:text>if R30.1.1.1_b_i > 0 and CutFillHeightDepth &lt;= R30.1.1.1_b_i then true else&#xd;
+      <dmn:text>if R30.1.1.1_b_i !=null and CutFillHeightDepth &lt;= R30.1.1.1_b_i then true else&#xd;
   if R30.1.1.1_b_i = null then null else false&#xd;
 &#xd;
 &#xd;
@@ -549,7 +549,7 @@ list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edg
       <dmn:requiredDecision href="#_7D881438-EC9D-4084-B9D2-BA8883E142BD"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_F043E567-9552-4D6A-853B-00565F1F5308">
-      <dmn:text>if R30.1.2.1_b_iMet != null and R30.1.2.1_b_ii = "building consent obtained" and EarthworksBuildingConsentObtained then true else&#xd;
+      <dmn:text>if R30.1.2.1_b_iMet != null and R30.1.2.1_b_ii !=null and EarthworksBuildingConsentObtained then true else&#xd;
   if R30.1.2.1_b_ii = null or R30.1.2.1_b_iMet = null then null else false&#xd;
 &#xd;
 &#xd;
@@ -569,7 +569,7 @@ list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edg
       <dmn:requiredInput href="#_FF9E4109-6622-4987-BA94-B2DD13F30A1C"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_C5A9BFFF-22BA-426C-8094-92373B23CA1F">
-      <dmn:text>if R30.1.2.4 = "no visible dust" and not(SettledDust) then true else&#xd;
+      <dmn:text>if R30.1.2.4 !=null and not(SettledDust) then true else&#xd;
   if R30.1.2.4 = null then null else false</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
@@ -2821,7 +2821,7 @@ Earthworks that do not comply with the permitted activity conditions under 30.1.
       <dmn:requiredInput href="#_BDBFC31A-215B-4F24-807C-AF97CFB62FFD"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_5F45FA59-F819-4A6C-B8D0-C0AB553CB46D">
-      <dmn:text>if R30.1.2.1_a_iv > 0 and EarthworksArea &lt;= R30.1.2.1_a_iv then true else&#xd;
+      <dmn:text>if R30.1.2.1_a_iv !=null and EarthworksArea &lt;= R30.1.2.1_a_iv then true else&#xd;
   if R30.1.2.1_a_iv = null then null else false&#xd;
 &#xd;
 &#xd;
@@ -2858,7 +2858,7 @@ Earthworks that do not comply with the permitted activity conditions under 30.1.
       <dmn:requiredInput href="#_C389C7B3-6F57-456E-8D44-E4DDE2334FD9"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_F278D519-3919-424E-8CD5-F33B3ABEAFD0">
-      <dmn:text>if R30.1.1.1_a_iii = "cut height or fill depth less than or equal to distance to nearest boundary, building, structure" and&#xd;
+      <dmn:text>if R30.1.1.1_a_iii !=null and&#xd;
 DistanceBoundary >= CutFillHeightDepth then true else&#xd;
   if R30.1.1.1_a_iii =null then null else false&#xd;
 &#xd;
@@ -2989,7 +2989,7 @@ list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) the
       <dmn:requiredInput href="#_FF9E4109-6622-4987-BA94-B2DD13F30A1C"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_CEA00EF2-1467-4E7A-B6A8-6EEA6CD41D9D">
-      <dmn:text>if R30.1.1.4 = "no visible dust" and not(SettledDust) then true else&#xd;
+      <dmn:text>if R30.1.1.4 !=null and not(SettledDust) then true else&#xd;
   if R30.1.1.4 = null then null else false</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
@@ -3079,7 +3079,7 @@ list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) the
       <dmn:requiredDecision href="#_DB51F458-C77D-482F-B08C-09BB8148818A"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_A3C868BC-0A4D-4E54-A781-256E61439C1C">
-      <dmn:text>if R30.1.2.1_a_i > 0 and CutFillHeightDepth &lt;= R30.1.2.1_a_i then true else&#xd;
+      <dmn:text>if R30.1.2.1_a_i !=null and CutFillHeightDepth &lt;= R30.1.2.1_a_i then true else&#xd;
   if R30.1.2.1_a_i &lt;= null then null else false&#xd;
 &#xd;
 &#xd;
@@ -3261,7 +3261,7 @@ list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) the
       <dmn:requiredInput href="#_BDBFC31A-215B-4F24-807C-AF97CFB62FFD"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_CAD53FF4-82B9-4E3D-9984-6CEB12E93083">
-      <dmn:text>if R30.1.1.1_a_iv > 0 and EarthworksArea &lt;= R30.1.1.1_a_iv then true else&#xd;
+      <dmn:text>if R30.1.1.1_a_iv !=null and EarthworksArea &lt;= R30.1.1.1_a_iv then true else&#xd;
   if R30.1.1.1_a_iv = null then null else false&#xd;
 &#xd;
 &#xd;
@@ -3341,7 +3341,7 @@ list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edg
       <dmn:requiredDecision href="#_0CAAAB71-0BBE-4E20-8B65-F0DF0972EB1E"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_ACB10539-C54A-4754-A0C9-BC92D85E23A9">
-      <dmn:text>if R30.1.1.1_b_iMet != null and R30.1.1.1_b_iii > 0 and EarthworksArea &lt;= R30.1.1.1_b_iii then true else&#xd;
+      <dmn:text>if R30.1.1.1_b_iMet != null and R30.1.1.1_b_iii !=null and EarthworksArea &lt;= R30.1.1.1_b_iii then true else&#xd;
   if R30.1.1.1_b_iii = null or R30.1.1.1_b_iMet = null then null else false&#xd;
 &#xd;
 &#xd;
@@ -3403,7 +3403,7 @@ not(HazardFloodingArea(SpatialLayers)) then true else&#xd;
       <dmn:requiredDecision href="#_0CAAAB71-0BBE-4E20-8B65-F0DF0972EB1E"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_54F305BF-F16C-4769-B748-93B7F0298EE2">
-      <dmn:text>if R30.1.1.1_b_iMet != null and R30.1.1.1_b_ii = "building consent obtained" and EarthworksBuildingConsentObtained then true else&#xd;
+      <dmn:text>if R30.1.1.1_b_iMet != null and R30.1.1.1_b_ii !=null and EarthworksBuildingConsentObtained then true else&#xd;
   if R30.1.1.1_b_ii = null or R30.1.1.1_b_iMet = null then null else false&#xd;
 &#xd;
 &#xd;
@@ -3435,7 +3435,7 @@ not(HazardFloodingArea(SpatialLayers)) then true else&#xd;
       <dmn:requiredInput href="#_C389C7B3-6F57-456E-8D44-E4DDE2334FD9"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_8233A3ED-976E-49B3-BBC7-58BEE1823689">
-      <dmn:text>if R30.1.2.1_b_i > 0 and CutFillHeightDepth &lt;= R30.1.2.1_b_i then true else&#xd;
+      <dmn:text>if R30.1.2.1_b_i !=null and CutFillHeightDepth &lt;= R30.1.2.1_b_i then true else&#xd;
   if R30.1.2.1_b_i = null then null else false&#xd;
 &#xd;
 &#xd;
@@ -3739,8 +3739,8 @@ list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) the
       <dmn:requiredInput href="#_7AADEBBC-E4F1-41F2-A714-A1E21C47D111"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_FCD43AF6-0F69-4BA8-B9B9-15F657F2C4E5">
-      <dmn:text>if R30.1.2.2 > 0 and not(DistanceWaterway) then true else&#xd;
-  if R30.1.2.2 > 0 and DistanceWaterway and DistanceWaterwayMetres >= R30.1.2.2 then true else&#xd;
+      <dmn:text>if R30.1.2.2 !=null and not(DistanceWaterway) then true else&#xd;
+  if R30.1.2.2 !=null and DistanceWaterway and DistanceWaterwayMetres >= R30.1.2.2 then true else&#xd;
   if R30.1.2.2 = null then null else&#xd;
   if DistanceWaterway and DistanceWaterwayMetres = null then false else false&#xd;
 &#xd;
@@ -3883,7 +3883,7 @@ list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edg
       <dmn:requiredDecision href="#_7D881438-EC9D-4084-B9D2-BA8883E142BD"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_5BF5E3DD-9F8D-47B1-A674-790E5351E29E">
-      <dmn:text>if R30.1.2.1_b_iMet != null and R30.1.2.1_b_iii > 0 and EarthworksArea &lt;= R30.1.2.1_b_iii then true else&#xd;
+      <dmn:text>if R30.1.2.1_b_iMet != null and R30.1.2.1_b_iii !=null and EarthworksArea &lt;= R30.1.2.1_b_iii then true else&#xd;
   if R30.1.2.1_b_iii = null or R30.1.2.1_b_iMet = null then null else false&#xd;
 &#xd;
 &#xd;
@@ -5266,7 +5266,7 @@ list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edg
       <dmn:requiredInput href="#_2E4D4AEC-5651-4646-9FBE-AA2BFC975BA9"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_A605135D-89D2-4FC6-B47D-B0A214E69128">
-      <dmn:text>if R30.1.2.1_a_ii = "cut height or fill depth less than or equal to distance to nearest boundary, building, structure" and&#xd;
+      <dmn:text>if R30.1.2.1_a_ii !=null and&#xd;
 DistanceBoundary >= CutFillHeightDepth then true else&#xd;
   if R30.1.2.1_a_ii = null then null else false&#xd;
 &#xd;
