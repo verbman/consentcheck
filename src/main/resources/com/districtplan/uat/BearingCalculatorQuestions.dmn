@@ -14,8 +14,15 @@
     <dmn:informationRequirement id="_B3820BE5-1373-47A1-888D-5B88CD360CE2">
       <dmn:requiredInput href="#_7225D28A-CC92-4EA5-8E25-A804E6C21041"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_BD70CD41-F1EC-4CAB-A4A6-C7CFC4159DC9">
+      <dmn:requiredInput href="#_A9DAB02D-4737-4F50-B8A6-723AD6E2E084"/>
+    </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_D9E22D42-19D3-4234-90E2-FF40E4AEC6D7">
+      <dmn:requiredKnowledge href="#_4C4D2F4D-A315-4146-A320-526BC5A393E5"/>
+    </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_0213AE50-E21E-4AE4-ABA6-788E8C483B12">
-      <dmn:text>if not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "IR5 - Oriental Bay Height Area")) and&#xd;
+      <dmn:text>if BuildingRecessionPlanesActivities(Activities_Value) and&#xd;
+not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "IR5 - Oriental Bay Height Area")) and&#xd;
 not(list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential")) then 1 else&#xd;
   if list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "IR5 - Oriental Bay Height Area") and&#xd;
   not(list contains(ResidentialZone_Value[Type="Residential"].Title, "Outer Residential")) then &#xd;
@@ -92,8 +99,15 @@ list contains(SpatialLayers_Value[Type="Residential"].Title, "Medium Density Res
     <dmn:informationRequirement id="_D60929DF-25C1-43AB-B0B0-FEE5D3E1C912">
       <dmn:requiredInput href="#_347F2FBA-BE29-49BE-A803-40E23366FF2F"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_BCD097E3-4AAA-4960-B22B-B3567AF082FB">
+      <dmn:requiredInput href="#_A9DAB02D-4737-4F50-B8A6-723AD6E2E084"/>
+    </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_0D8261C8-90BC-4DBB-B672-9C990DFCE4D6">
+      <dmn:requiredKnowledge href="#_4C4D2F4D-A315-4146-A320-526BC5A393E5"/>
+    </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_9BB36F36-213A-43A8-A0E9-445FA9AF5E9D">
-      <dmn:text>if list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "IR5 - Oriental Bay Height Area") then 1 else 0</dmn:text>
+      <dmn:text>if BuildingRecessionPlanesActivities(Activities_Value) and&#xd;
+list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "IR5 - Oriental Bay Height Area") then 1 else 0</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:inputData id="_A9DAB02D-4737-4F50-B8A6-723AD6E2E084" name="Activities_Value">
@@ -114,11 +128,11 @@ list contains(SpatialLayers_Value[Type="Residential"].Title, "Medium Density Res
             <kie:width>50.0</kie:width>
             <kie:width>614.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_9BB36F36-213A-43A8-A0E9-445FA9AF5E9D">
-            <kie:width>1115.0</kie:width>
-          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_52221000-4C11-4EEE-95C9-F8603A7B5610">
             <kie:width>783.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_9BB36F36-213A-43A8-A0E9-445FA9AF5E9D">
+            <kie:width>1115.0</kie:width>
           </kie:ComponentWidths>
         </kie:ComponentsWidthsExtension>
       </di:extension>
@@ -131,6 +145,15 @@ list contains(SpatialLayers_Value[Type="Residential"].Title, "Medium Density Res
         <dc:Bounds x="458" y="213" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_4C4D2F4D-A315-4146-A320-526BC5A393E5" dmnElementRef="_4C4D2F4D-A315-4146-A320-526BC5A393E5" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="117" y="275" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_347F2FBA-BE29-49BE-A803-40E23366FF2F" dmnElementRef="_347F2FBA-BE29-49BE-A803-40E23366FF2F" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="137" green="203" blue="200"/>
@@ -140,13 +163,13 @@ list contains(SpatialLayers_Value[Type="Residential"].Title, "Medium Density Res
         <dc:Bounds x="313" y="113" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_4C4D2F4D-A315-4146-A320-526BC5A393E5" dmnElementRef="_4C4D2F4D-A315-4146-A320-526BC5A393E5" isCollapsed="false">
+      <dmndi:DMNShape id="dmnshape-_AF131F06-9760-4BB3-8365-D0816E1C077A" dmnElementRef="_AF131F06-9760-4BB3-8365-D0816E1C077A" isCollapsed="false">
         <dmndi:DMNStyle>
           <dmndi:FillColor red="255" green="255" blue="255"/>
           <dmndi:StrokeColor red="0" green="0" blue="0"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="116.00000000000001" y="213" width="100" height="50"/>
+        <dc:Bounds x="117" y="107" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_7225D28A-CC92-4EA5-8E25-A804E6C21041" dmnElementRef="_7225D28A-CC92-4EA5-8E25-A804E6C21041" isCollapsed="false">
@@ -165,15 +188,6 @@ list contains(SpatialLayers_Value[Type="Residential"].Title, "Medium Density Res
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="458" y="113" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_AF131F06-9760-4BB3-8365-D0816E1C077A" dmnElementRef="_AF131F06-9760-4BB3-8365-D0816E1C077A" isCollapsed="false">
-        <dmndi:DMNStyle>
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="0" green="0" blue="0"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="117" y="107" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_A9DAB02D-4737-4F50-B8A6-723AD6E2E084" dmnElementRef="_A9DAB02D-4737-4F50-B8A6-723AD6E2E084" isCollapsed="false">
@@ -197,9 +211,13 @@ list contains(SpatialLayers_Value[Type="Residential"].Title, "Medium Density Res
         <di:waypoint x="363" y="237"/>
         <di:waypoint x="508" y="238"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_D60929DF-25C1-43AB-B0B0-FEE5D3E1C912" dmnElementRef="_D60929DF-25C1-43AB-B0B0-FEE5D3E1C912">
-        <di:waypoint x="363" y="138"/>
-        <di:waypoint x="508" y="138"/>
+      <dmndi:DMNEdge id="dmnedge-_D9E22D42-19D3-4234-90E2-FF40E4AEC6D7" dmnElementRef="_D9E22D42-19D3-4234-90E2-FF40E4AEC6D7">
+        <di:waypoint x="167" y="300"/>
+        <di:waypoint x="508" y="238"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_BD70CD41-F1EC-4CAB-A4A6-C7CFC4159DC9" dmnElementRef="_BD70CD41-F1EC-4CAB-A4A6-C7CFC4159DC9">
+        <di:waypoint x="363" y="54"/>
+        <di:waypoint x="508" y="238"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_A6B1264E-C123-47B8-A038-D0957A2A0453" dmnElementRef="_A6B1264E-C123-47B8-A038-D0957A2A0453">
         <di:waypoint x="363" y="138"/>
@@ -210,8 +228,20 @@ list contains(SpatialLayers_Value[Type="Residential"].Title, "Medium Density Res
         <di:waypoint x="167" y="132"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_681F5DD7-F7C0-4AEE-BB03-A670B1A5C6F2" dmnElementRef="_681F5DD7-F7C0-4AEE-BB03-A670B1A5C6F2">
-        <di:waypoint x="166" y="238"/>
+        <di:waypoint x="167" y="300"/>
         <di:waypoint x="167" y="132"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_D60929DF-25C1-43AB-B0B0-FEE5D3E1C912" dmnElementRef="_D60929DF-25C1-43AB-B0B0-FEE5D3E1C912">
+        <di:waypoint x="363" y="138"/>
+        <di:waypoint x="508" y="138"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_0D8261C8-90BC-4DBB-B672-9C990DFCE4D6" dmnElementRef="_0D8261C8-90BC-4DBB-B672-9C990DFCE4D6">
+        <di:waypoint x="167" y="300"/>
+        <di:waypoint x="508" y="138"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_BCD097E3-4AAA-4960-B22B-B3567AF082FB" dmnElementRef="_BCD097E3-4AAA-4960-B22B-B3567AF082FB">
+        <di:waypoint x="363" y="54"/>
+        <di:waypoint x="508" y="138"/>
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
