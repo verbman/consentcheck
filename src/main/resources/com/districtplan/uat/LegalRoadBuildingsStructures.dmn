@@ -2,6 +2,10 @@
 <dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://districtplan.wellington.govt.nz/83/dmn/LegalRoadBuildingsStructures" xmlns:included1="https://districtplan.wellington.govt.nz/83/dmn/types" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_F3094ADC-147D-4D49-8098-0A90217DA7D0" name="LegalRoadBuildingsStructures" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://districtplan.wellington.govt.nz/83/dmn/LegalRoadBuildingsStructures">
   <dmn:extensionElements/>
   <dmn:import id="_37825258-54E8-4485-A1EC-80F95BDB9FE2" name="Types" namespace="https://districtplan.wellington.govt.nz/83/dmn/types" locationURI="../Types.dmn" importType="http://www.omg.org/spec/DMN/20180521/MODEL/"/>
+  <dmn:inputData id="_F0FB562E-F6C3-44E9-8B53-04473450725D" name="LegalRoadResidentialBuilding">
+    <dmn:extensionElements/>
+    <dmn:variable id="_59108464-BB10-42EF-A4D8-24AB38E0E16A" name="LegalRoadResidentialBuilding" typeRef="boolean"/>
+  </dmn:inputData>
   <dmn:businessKnowledgeModel id="_162DC7F1-EF22-4B75-AC18-37982D1DE529" name="LegalRoadBuildingsStructuresActivities">
     <dmn:extensionElements/>
     <dmn:variable id="_878880E4-3EBF-4B99-B837-75C4F3EB1254" name="LegalRoadBuildingsStructuresActivities" typeRef="boolean"/>
@@ -273,9 +277,13 @@ MediumDensityResidentialArea(SpatialLayers)) then &#xd;
     <dmn:informationRequirement id="_7967BD28-2EF4-4A7B-BFBA-18DE1B5D75DB">
       <dmn:requiredInput href="#_D4710A54-9901-421C-8772-E0EA95072948"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_DD86B5F9-B1AA-4316-9FF4-F34B0840F533">
+      <dmn:requiredInput href="#_F0FB562E-F6C3-44E9-8B53-04473450725D"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_059B26F4-1786-4F10-838B-6C2DFFD14DDC">
       <dmn:text>if R5.3.9="not on a legal road" and&#xd;
-(LegalRoadAccessoryBuilding or &#xd;
+(LegalRoadResidentialBuilding or&#xd;
+LegalRoadAccessoryBuilding or &#xd;
 LegalRoadResidentialStructure or&#xd;
 LegalRoadFenceWall) then true else&#xd;
   if R5.3.9 = null then null else false&#xd;
@@ -502,6 +510,15 @@ Accessory buildings and residential structures including fences and walls, on a 
         <dc:Bounds x="76.59813084112147" y="133.68421052631578" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_F0FB562E-F6C3-44E9-8B53-04473450725D" dmnElementRef="_F0FB562E-F6C3-44E9-8B53-04473450725D" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="8">
+          <dmndi:FillColor red="243" green="229" blue="248"/>
+          <dmndi:StrokeColor red="210" green="193" blue="208"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="467.29906542056074" y="132.68421052631578" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_9AF94EE9-C81E-4E15-8287-3AFE94D76B74" dmnElementRef="_9AF94EE9-C81E-4E15-8287-3AFE94D76B74" isCollapsed="false">
         <dmndi:DMNStyle fontSize="8">
           <dmndi:FillColor red="255" green="255" blue="255"/>
@@ -589,7 +606,7 @@ Accessory buildings and residential structures including fences and walls, on a 
           <dmndi:StrokeColor red="210" green="193" blue="208"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="465.5981308411215" y="129.3421052631579" width="100" height="50"/>
+        <dc:Bounds x="591.5981308411215" y="132.6842105263158" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_28ABB71C-350F-4418-B7E7-C31E55E120D1" dmnElementRef="_28ABB71C-350F-4418-B7E7-C31E55E120D1" isCollapsed="false">
@@ -625,7 +642,7 @@ Accessory buildings and residential structures including fences and walls, on a 
           <dmndi:StrokeColor red="210" green="193" blue="208"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="578" y="129.3421052631579" width="100" height="50"/>
+        <dc:Bounds x="581" y="272" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="dmnedge-_7FE18AEA-C985-4512-BD17-40C087C729CE" dmnElementRef="_7FE18AEA-C985-4512-BD17-40C087C729CE">
@@ -673,15 +690,19 @@ Accessory buildings and residential structures including fences and walls, on a 
         <di:waypoint x="517" y="226"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_9BF130DC-D1D9-4051-AD4C-A7F0999B36F9" dmnElementRef="_9BF130DC-D1D9-4051-AD4C-A7F0999B36F9">
-        <di:waypoint x="515.5981308411215" y="154.3421052631579"/>
+        <di:waypoint x="641.5981308411215" y="157.6842105263158"/>
         <di:waypoint x="517" y="226"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_FB6B6379-8564-42D1-9D0F-B2DC71FC1F96" dmnElementRef="_FB6B6379-8564-42D1-9D0F-B2DC71FC1F96">
-        <di:waypoint x="628" y="154.3421052631579"/>
+        <di:waypoint x="631" y="297"/>
         <di:waypoint x="517" y="226"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7967BD28-2EF4-4A7B-BFBA-18DE1B5D75DB" dmnElementRef="_7967BD28-2EF4-4A7B-BFBA-18DE1B5D75DB">
         <di:waypoint x="516.5981308411215" y="293"/>
+        <di:waypoint x="517" y="226"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_DD86B5F9-B1AA-4316-9FF4-F34B0840F533" dmnElementRef="_DD86B5F9-B1AA-4316-9FF4-F34B0840F533">
+        <di:waypoint x="517.2990654205607" y="157.68421052631578"/>
         <di:waypoint x="517" y="226"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_927C8439-0358-462C-815B-EA0D30AE36D2" dmnElementRef="_927C8439-0358-462C-815B-EA0D30AE36D2">
