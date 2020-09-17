@@ -32,8 +32,9 @@
       <dmn:requiredInput href="#_803CB9D5-52ED-4424-91D1-3783FA8CFD4D"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_16C2D508-9123-403F-8E81-578FEAFD93AD">
-      <dmn:text>if S5.6.2.2.7 = 1 and ProposedRearAccess="Yes" or ProposedRearAccess="Not applicable" then true else&#xd;
-  if ProposedRearAccess = null then null else false</dmn:text>
+      <dmn:text>if S5.6.2.2.7 = 1 and ProposedRearAccess="Yes" then true else&#xd;
+  if ProposedRearAccess = null or &#xd;
+  ProposedRearAccess="Not applicable" then null else false</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:decision id="_87CB31DC-0527-4AF2-A6ED-8EEF7C81F48B" name="R5.1.7">
@@ -310,7 +311,7 @@ Side and Rear Yards
 - be located closer than 2 metres to any side or rear boundary, AND
 - have a finished floor, paving or turf level that is 1.5 metres or more above ground level at the boundary?</dmn:description>
     <dmn:extensionElements/>
-    <dmn:variable id="_3C15BCE3-F1A2-4989-8298-B7AB2D57C560" name="DeckInSideYard" typeRef="boolean"/>
+    <dmn:variable id="_3C15BCE3-F1A2-4989-8298-B7AB2D57C560" name="DeckInSideYard" typeRef="string"/>
   </dmn:inputData>
   <dmn:decision id="_A6EDFE97-E5F1-471B-AD6F-5236D2B46DF4" name="S5.6.2.2.11_PoriruaStream">
     <dmn:extensionElements/>
@@ -1058,8 +1059,10 @@ S5.6.2.2.11_WaterBody = 0) then null else true&#xd;
       <dmn:requiredDecision href="#_DDB17916-31FB-42A8-83B7-94792C5EEACC"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_399821F0-ADC6-4540-80AC-13A73D8F918E">
-      <dmn:text>if S5.6.2.2.9 = 2 and DeckInSideYard then true else&#xd;
-  if DeckInSideYard = null then null else false</dmn:text>
+      <dmn:text>if S5.6.2.2.9 = 2 and DeckInSideYard="Yes" then true else&#xd;
+  if DeckInSideYard = null or&#xd;
+  DeckInSideYard = "Not applicable" then null else false&#xd;
+  </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:association id="_78959FB1-6900-4F23-AEC0-EEEB899C414E" associationDirection="None">
