@@ -97,8 +97,8 @@ then 3 else 0&#xd;
       <dmn:text>if (BuildAddtoAlter(Activities_Value[Noun="residential building"].Verb) or&#xd;
 BuildAddtoAlter(Activities_Value[Noun="accessory building"].Verb) or&#xd;
 BuildAddtoAlter(Activities_Value[Noun="residential structure"].Verb)) then (&#xd;
-  if SideRearProperty > 0 then &#xd;
-    (SideRearProperty + 1) &#xd;
+  if ActivityAtSideRear > 0 then &#xd;
+    (ActivityAtSideRear + 1) &#xd;
   else (&#xd;
     if SitePosition > 0 then &#xd;
       (SitePosition + 1) &#xd;
@@ -364,7 +364,7 @@ list contains (Activities_Value[Noun="residential building"].Verb, "alter")) and
 ExistingBuildingsCheck(ExistingBuildings_Value) then (&#xd;
   if NumberHouseholdUnits_Value = 2 then (&#xd;
     if NumberHouseholdUnits > 0 then (NumberHouseholdUnits + 1) else (&#xd;
-      if SideRearProperty > 0 then (SideRearProperty + 1) else (&#xd;
+      if ActivityAtSideRear > 0 then (ActivityAtSideRear + 1) else (&#xd;
         if SitePosition > 0 then (SitePosition + 1) else (&#xd;
           if ExistingBuildings > 0 then (ExistingBuildings + 1) else 3&#xd;
         )&#xd;
@@ -454,12 +454,12 @@ list contains (spatiallayers[Type="Residential"].Title, "Medium Density Resident
       </dmn:literalExpression>
     </dmn:encapsulatedLogic>
   </dmn:businessKnowledgeModel>
-  <dmn:decision id="_55F18113-18E7-48F2-930A-285937C578AD" name="SideRearProperty">
+  <dmn:decision id="_55F18113-18E7-48F2-930A-285937C578AD" name="ActivityAtSideRear">
     <dmn:extensionElements/>
     <dmn:question>Will the proposed activity affect the side or rear of the property?</dmn:question>
     <dmn:allowedAnswers>yes
 no</dmn:allowedAnswers>
-    <dmn:variable id="_8118A06B-DED8-4BEA-AD25-C09EF1D119E1" name="SideRearProperty" typeRef="number"/>
+    <dmn:variable id="_8118A06B-DED8-4BEA-AD25-C09EF1D119E1" name="ActivityAtSideRear" typeRef="number"/>
     <dmn:informationRequirement id="_FEF80148-DFDF-4281-A202-6BF896F35402">
       <dmn:requiredDecision href="#_AA1B222B-BD61-49E0-A59B-D90E0F9889E1"/>
     </dmn:informationRequirement>
