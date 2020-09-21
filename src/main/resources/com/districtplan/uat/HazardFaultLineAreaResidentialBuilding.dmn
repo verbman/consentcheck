@@ -99,6 +99,20 @@ list contains(activities[Noun="residential building"].Verb, "alter")&#xd;
       </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
+  <dmn:decision id="_F9338FB0-0FF7-4157-A44D-E34B2D41967A" name="R5.1.7">
+    <dmn:extensionElements/>
+    <dmn:variable id="_58BF5BD2-36E6-4ABC-8601-A7F9B48BE91A" name="R5.1.7" typeRef="boolean"/>
+    <dmn:informationRequirement id="_9D53CB17-27C1-4D12-997A-CB55BA279E60">
+      <dmn:requiredDecision href="#_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB"/>
+    </dmn:informationRequirement>
+    <dmn:authorityRequirement id="_39999380-8E09-4597-BA0B-D992EEA21C8F">
+      <dmn:requiredAuthority href="#_E63C7A33-7F64-4653-9E97-019410AC8BAE"/>
+    </dmn:authorityRequirement>
+    <dmn:literalExpression id="_6655FE8C-AE26-41AA-A961-160301810E5B">
+      <dmn:text>if S5.6.2.11Met !=null and S5.6.2.11Met then true else&#xd;
+  if S5.6.2.11Met = null then null else false</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:decision id="_0EFAEF0E-C4D0-4E42-80A1-C3D4874C89A4" name="NotificationClause">
     <dmn:extensionElements/>
     <dmn:variable id="_F2898F1C-6A6B-4B61-AC30-253817D2FAD8" name="NotificationClause" typeRef="Types.PlanContents"/>
@@ -129,20 +143,6 @@ list contains(activities[Noun="residential building"].Verb, "alter")&#xd;
         </dmn:annotationEntry>
       </dmn:rule>
     </dmn:decisionTable>
-  </dmn:decision>
-  <dmn:decision id="_F9338FB0-0FF7-4157-A44D-E34B2D41967A" name="R5.1.7">
-    <dmn:extensionElements/>
-    <dmn:variable id="_58BF5BD2-36E6-4ABC-8601-A7F9B48BE91A" name="R5.1.7" typeRef="boolean"/>
-    <dmn:informationRequirement id="_9D53CB17-27C1-4D12-997A-CB55BA279E60">
-      <dmn:requiredDecision href="#_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB"/>
-    </dmn:informationRequirement>
-    <dmn:authorityRequirement id="_39999380-8E09-4597-BA0B-D992EEA21C8F">
-      <dmn:requiredAuthority href="#_E63C7A33-7F64-4653-9E97-019410AC8BAE"/>
-    </dmn:authorityRequirement>
-    <dmn:literalExpression id="_6655FE8C-AE26-41AA-A961-160301810E5B">
-      <dmn:text>if S5.6.2.11Met !=null and S5.6.2.11Met then true else&#xd;
-  if S5.6.2.11Met = null then null else false</dmn:text>
-    </dmn:literalExpression>
   </dmn:decision>
   <dmn:inputData id="_FF9E4109-6622-4987-BA94-B2DD13F30A1C" name="Activities">
     <dmn:extensionElements/>
@@ -252,6 +252,65 @@ Residential buildings within a Hazard (Fault Line) Area 5.6.2.11</dmn:descriptio
     <dmn:extensionElements/>
     <dmn:type></dmn:type>
   </dmn:knowledgeSource>
+  <dmn:decision id="_58BDFAD3-8E7D-4DE9-A527-DAB12D44152F" name="ObjectivesAndPolicies">
+    <dmn:extensionElements/>
+    <dmn:variable id="_24C2DB3B-74CF-4516-97E9-EDB2B56A3EB5" name="ObjectivesAndPolicies" typeRef="Types.PlanContents"/>
+    <dmn:informationRequirement id="_F32EF2A9-72E9-464D-8CB8-E4C5D7058A17">
+      <dmn:requiredDecision href="#_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_48E55C6B-C734-4CA6-8140-AA3E09E8B36F" hitPolicy="COLLECT" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_2D80B10F-A77D-4C4C-A578-D8D6C32FF932">
+        <dmn:inputExpression id="_03A2FBE3-F9CF-402C-81A0-A040848B22B8" typeRef="boolean">
+          <dmn:text>S5.6.2.11Met</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_60FB2000-C42A-42D4-8C31-F56794F49BE2" name="name" typeRef="string"/>
+      <dmn:output id="_8FF233D8-0D68-4FCF-AFEC-14AE1A9E7E10" name="uuids" typeRef="string"/>
+      <dmn:annotation name=""/>
+      <dmn:rule id="_3CF452AD-A9FA-4094-A2AA-638363D7BFD9">
+        <dmn:inputEntry id="_B13C67F7-FA37-441D-92DC-B9D78221C19F">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_435FD52A-E14E-4AA6-BD8B-72B53BB5F673">
+          <dmn:text>"4.2.10"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_B7A03A8A-EFC8-4380-A8D4-C52E0A2CEB5B">
+          <dmn:text>"ccd39943-d887-4793-af6d-56529b901951"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_867E6241-F6B9-4EAE-B653-AFB155771DEF">
+        <dmn:inputEntry id="_8D6A678D-6834-4A0F-99FF-7A23EC4C203A">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_5A584400-00DA-494F-B702-C1AA457BB899">
+          <dmn:text>"4.2.10.2"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_D0BFAAD4-E080-4010-8C78-C6F4C0CC75C7">
+          <dmn:text>"ba6d9735-051b-47e4-b060-63c2233f00b7"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_F906417E-C9CD-4380-9A3D-E8A1DF541C78">
+        <dmn:inputEntry id="_6412D89D-9A1E-4125-8F7C-1A863269298C">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_608FA7E2-F3A1-4BBF-84D4-386244DF35D9">
+          <dmn:text>"4.2.10.3"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_E16B456B-F897-49A6-894D-26C22B1C278E">
+          <dmn:text>"4594708b-35e1-4264-9fb9-ae0a8ad609fd"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
   <dmn:decision id="_ACBF9DC9-8567-4C59-A869-BE29AB326CC9" name="Status">
     <dmn:extensionElements/>
     <dmn:variable id="_8B244CF2-9921-4C40-96B6-75EC6209021F" name="Status" typeRef="Types.Status"/>
@@ -380,30 +439,14 @@ Residential buildings within a Hazard (Fault Line) Area 5.6.2.11</dmn:descriptio
           <dmn:text>true</dmn:text>
         </dmn:inputEntry>
         <dmn:outputEntry id="_D87AA88E-C158-40E0-ABE5-B0BFCC0FC366">
-          <dmn:text>"5.3.4"</dmn:text>
-        </dmn:outputEntry>
-        <dmn:outputEntry id="_022F622E-8FD9-40B1-91B0-35FBBF3904F8">
-          <dmn:text>"7720d9db-9f99-423a-afe8-435a2f7be257"</dmn:text>
-        </dmn:outputEntry>
-        <dmn:annotationEntry>
-          <dmn:text>Residential buildings, accessory buildings and residential structures not provided for as Permitted Activities</dmn:text>
-        </dmn:annotationEntry>
-      </dmn:rule>
-      <dmn:rule id="_CB0F1363-2391-40BC-B802-FC43AA7747A1">
-        <dmn:inputEntry id="_2FD9DC45-1862-46CA-A9D0-01EF3ABA98B2">
-          <dmn:text>false</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_CA171965-3FDA-445F-9F93-3F348170296C">
-          <dmn:text>true</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_D378EB46-6C17-4055-864C-85CED75E0E05">
           <dmn:text>"5.3.4.9"</dmn:text>
         </dmn:outputEntry>
-        <dmn:outputEntry id="_5F5DFD89-CBD6-4A98-BC44-7A391A553EBD">
-          <dmn:text>"b3514c5c-277a-498f-bcf1-89954084c651"</dmn:text>
+        <dmn:outputEntry id="_022F622E-8FD9-40B1-91B0-35FBBF3904F8">
+          <dmn:text>"c85dc44a-b125-4c42-87a8-e5eaff0005fb"</dmn:text>
         </dmn:outputEntry>
         <dmn:annotationEntry>
-          <dmn:text>Buildings in Hazard (Fault Line) Area</dmn:text>
+          <dmn:text>Residential buildings, accessory buildings and residential structures not provided for as Permitted Activities
+Buildings in Hazard (Fault Line) Area</dmn:text>
         </dmn:annotationEntry>
       </dmn:rule>
     </dmn:decisionTable>
@@ -453,6 +496,34 @@ Residential buildings within a Hazard (Fault Line) Area 5.6.2.11</dmn:descriptio
     <dmndi:DMNDiagram>
       <di:extension>
         <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_651DDF0B-12F2-422B-A1FD-AF491311E41A">
+            <kie:width>50.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>356.0</kie:width>
+            <kie:width>100.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_6655FE8C-AE26-41AA-A961-160301810E5B">
+            <kie:width>716.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_059B26F4-1786-4F10-838B-6C2DFFD14DDC">
+            <kie:width>958.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_C4BE5089-DA2B-481F-86C2-D5B37AC7DF3F">
+            <kie:width>50.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>323.0</kie:width>
+            <kie:width>574.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_4BF4D8E9-BCF1-4708-8C37-219409B5C675">
+            <kie:width>658.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_063A1150-4E61-4EEE-B746-DDE38CDB9D9A">
+            <kie:width>50.0</kie:width>
+            <kie:width>658.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_033DCC66-4A1E-4D45-B3B8-CA6B01564136">
             <kie:width>953.0</kie:width>
           </kie:ComponentWidths>
@@ -474,13 +545,6 @@ Residential buildings within a Hazard (Fault Line) Area 5.6.2.11</dmn:descriptio
             <kie:width>342.0</kie:width>
             <kie:width>100.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_651DDF0B-12F2-422B-A1FD-AF491311E41A">
-            <kie:width>50.0</kie:width>
-            <kie:width>100.0</kie:width>
-            <kie:width>100.0</kie:width>
-            <kie:width>356.0</kie:width>
-            <kie:width>100.0</kie:width>
-          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_9AD3A9E8-A8EE-4E11-B7FA-44F181173A03">
             <kie:width>50.0</kie:width>
             <kie:width>100.0</kie:width>
@@ -488,14 +552,8 @@ Residential buildings within a Hazard (Fault Line) Area 5.6.2.11</dmn:descriptio
             <kie:width>323.0</kie:width>
             <kie:width>100.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_6655FE8C-AE26-41AA-A961-160301810E5B">
-            <kie:width>716.0</kie:width>
-          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_5A8AFE1A-52FB-4140-8383-E84671F1EE0A">
             <kie:width>697.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_059B26F4-1786-4F10-838B-6C2DFFD14DDC">
-            <kie:width>958.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_D08EDD7E-DE5B-49D8-B2F5-E1CA64222B25">
             <kie:width>954.0</kie:width>
@@ -514,20 +572,12 @@ Residential buildings within a Hazard (Fault Line) Area 5.6.2.11</dmn:descriptio
             <kie:width>308.0</kie:width>
             <kie:width>328.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_C4BE5089-DA2B-481F-86C2-D5B37AC7DF3F">
+          <kie:ComponentWidths dmnElementRef="_48E55C6B-C734-4CA6-8140-AA3E09E8B36F">
             <kie:width>50.0</kie:width>
             <kie:width>100.0</kie:width>
             <kie:width>100.0</kie:width>
+            <kie:width>342.0</kie:width>
             <kie:width>100.0</kie:width>
-            <kie:width>323.0</kie:width>
-            <kie:width>574.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_4BF4D8E9-BCF1-4708-8C37-219409B5C675">
-            <kie:width>658.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_063A1150-4E61-4EEE-B746-DDE38CDB9D9A">
-            <kie:width>50.0</kie:width>
-            <kie:width>658.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_B57ADD6B-1032-4D7B-93DB-285BEFB870A4">
             <kie:width>658.0</kie:width>
@@ -545,6 +595,78 @@ Residential buildings within a Hazard (Fault Line) Area 5.6.2.11</dmn:descriptio
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="879.5981308411215" y="136.34210526315792" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_B15F9BCA-04E0-45C8-8051-697EF12DDFF4" dmnElementRef="_B15F9BCA-04E0-45C8-8051-697EF12DDFF4" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="120" green="120" blue="120"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="742" y="79" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_500D6311-0C05-4F6F-9972-246B15225CBF" dmnElementRef="_500D6311-0C05-4F6F-9972-246B15225CBF" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="204" green="218" blue="183"/>
+          <dmndi:StrokeColor red="133" green="150" blue="99"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="1285" y="431" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_F9338FB0-0FF7-4157-A44D-E34B2D41967A" dmnElementRef="_F9338FB0-0FF7-4157-A44D-E34B2D41967A" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="224" green="204" blue="168"/>
+          <dmndi:StrokeColor red="161" green="134" blue="71"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="748" y="200" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_E63C7A33-7F64-4653-9E97-019410AC8BAE" dmnElementRef="_E63C7A33-7F64-4653-9E97-019410AC8BAE" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="746.5981308411215" y="135.68421052631578" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB" dmnElementRef="_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="467" y="201" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_BB23ECF6-ABC5-4B77-BB28-5016CD0E58A9" dmnElementRef="_BB23ECF6-ABC5-4B77-BB28-5016CD0E58A9" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="328.25" y="129.68421052631578" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_782ADAE1-78B6-47B3-921F-5F4088B177D8" dmnElementRef="_782ADAE1-78B6-47B3-921F-5F4088B177D8" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="204" green="218" blue="183"/>
+          <dmndi:StrokeColor red="133" green="150" blue="99"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="1285" y="262" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_9C36EA52-022B-417B-87C0-D01E9CB65009" dmnElementRef="_9C36EA52-022B-417B-87C0-D01E9CB65009" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="62" green="179" blue="247"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="71" y="372.3421052631579" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_162DC7F1-EF22-4B75-AC18-37982D1DE529" dmnElementRef="_162DC7F1-EF22-4B75-AC18-37982D1DE529" isCollapsed="false">
@@ -565,15 +687,6 @@ Residential buildings within a Hazard (Fault Line) Area 5.6.2.11</dmn:descriptio
         <dc:Bounds x="77" y="257.3421052631579" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_B15F9BCA-04E0-45C8-8051-697EF12DDFF4" dmnElementRef="_B15F9BCA-04E0-45C8-8051-697EF12DDFF4" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="0" green="0" blue="0"/>
-          <dmndi:FontColor red="120" green="120" blue="120"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="742" y="79" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_62D0A4BE-C422-49C0-8C68-2DA3FBB0CEFB" dmnElementRef="_62D0A4BE-C422-49C0-8C68-2DA3FBB0CEFB" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="204" green="218" blue="183"/>
@@ -583,31 +696,13 @@ Residential buildings within a Hazard (Fault Line) Area 5.6.2.11</dmn:descriptio
         <dc:Bounds x="1285" y="350" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_500D6311-0C05-4F6F-9972-246B15225CBF" dmnElementRef="_500D6311-0C05-4F6F-9972-246B15225CBF" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="204" green="218" blue="183"/>
-          <dmndi:StrokeColor red="133" green="150" blue="99"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="1285" y="431" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_0EFAEF0E-C4D0-4E42-80A1-C3D4874C89A4" dmnElementRef="_0EFAEF0E-C4D0-4E42-80A1-C3D4874C89A4" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="204" green="218" blue="183"/>
           <dmndi:StrokeColor red="133" green="150" blue="99"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="1285" y="497" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_F9338FB0-0FF7-4157-A44D-E34B2D41967A" dmnElementRef="_F9338FB0-0FF7-4157-A44D-E34B2D41967A" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="224" green="204" blue="168"/>
-          <dmndi:StrokeColor red="161" green="134" blue="71"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="748" y="200" width="100" height="50"/>
+        <dc:Bounds x="1285" y="571" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_FF9E4109-6622-4987-BA94-B2DD13F30A1C" dmnElementRef="_FF9E4109-6622-4987-BA94-B2DD13F30A1C" isCollapsed="false">
@@ -617,15 +712,6 @@ Residential buildings within a Hazard (Fault Line) Area 5.6.2.11</dmn:descriptio
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="76.59813084112147" y="133.68421052631578" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_E63C7A33-7F64-4653-9E97-019410AC8BAE" dmnElementRef="_E63C7A33-7F64-4653-9E97-019410AC8BAE" isCollapsed="false">
-        <dmndi:DMNStyle>
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="0" green="0" blue="0"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="746.5981308411215" y="135.68421052631578" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_9AF94EE9-C81E-4E15-8287-3AFE94D76B74" dmnElementRef="_9AF94EE9-C81E-4E15-8287-3AFE94D76B74" isCollapsed="false">
@@ -644,15 +730,6 @@ Residential buildings within a Hazard (Fault Line) Area 5.6.2.11</dmn:descriptio
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="329" y="200" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB" dmnElementRef="_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="238" green="238" blue="238"/>
-          <dmndi:StrokeColor red="180" green="180" blue="180"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="467" y="201" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_A326BD00-DDE8-4B83-B58B-59D0C8DBA067" dmnElementRef="_A326BD00-DDE8-4B83-B58B-59D0C8DBA067" isCollapsed="false">
@@ -682,15 +759,6 @@ Residential buildings within a Hazard (Fault Line) Area 5.6.2.11</dmn:descriptio
         <dc:Bounds x="71" y="431" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_BB23ECF6-ABC5-4B77-BB28-5016CD0E58A9" dmnElementRef="_BB23ECF6-ABC5-4B77-BB28-5016CD0E58A9" isCollapsed="false">
-        <dmndi:DMNStyle>
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="0" green="0" blue="0"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="328.25" y="129.68421052631578" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_ACBF9DC9-8567-4C59-A869-BE29AB326CC9" dmnElementRef="_ACBF9DC9-8567-4C59-A869-BE29AB326CC9" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="204" green="218" blue="183"/>
@@ -700,13 +768,13 @@ Residential buildings within a Hazard (Fault Line) Area 5.6.2.11</dmn:descriptio
         <dc:Bounds x="1285" y="121" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_782ADAE1-78B6-47B3-921F-5F4088B177D8" dmnElementRef="_782ADAE1-78B6-47B3-921F-5F4088B177D8" isCollapsed="false">
+      <dmndi:DMNShape id="dmnshape-_58BDFAD3-8E7D-4DE9-A527-DAB12D44152F" dmnElementRef="_58BDFAD3-8E7D-4DE9-A527-DAB12D44152F" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="204" green="218" blue="183"/>
           <dmndi:StrokeColor red="133" green="150" blue="99"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="1285" y="262" width="100" height="50"/>
+        <dc:Bounds x="1285" y="498" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0" dmnElementRef="_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0" isCollapsed="false">
@@ -727,15 +795,6 @@ Residential buildings within a Hazard (Fault Line) Area 5.6.2.11</dmn:descriptio
         <dc:Bounds x="1285" y="40" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_9C36EA52-022B-417B-87C0-D01E9CB65009" dmnElementRef="_9C36EA52-022B-417B-87C0-D01E9CB65009" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="62" green="179" blue="247"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="71" y="372.3421052631579" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_0CD77B39-EC94-4EB6-8D36-74859D41E58C" dmnElementRef="_0CD77B39-EC94-4EB6-8D36-74859D41E58C" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="255" green="255" blue="255"/>
@@ -749,17 +808,9 @@ Residential buildings within a Hazard (Fault Line) Area 5.6.2.11</dmn:descriptio
         <di:waypoint x="798" y="225"/>
         <di:waypoint x="792" y="104"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_8F0AD37B-B281-4E8D-92F6-77E1FE5DF333" dmnElementRef="_8F0AD37B-B281-4E8D-92F6-77E1FE5DF333">
-        <di:waypoint x="517" y="226"/>
-        <di:waypoint x="1335" y="375"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_4B21C620-5474-4868-BD9B-1CB5C729D7B8" dmnElementRef="_4B21C620-5474-4868-BD9B-1CB5C729D7B8">
         <di:waypoint x="931" y="225"/>
         <di:waypoint x="1335" y="456"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_1D8B7AF6-2639-42E7-9975-415D44F748CB" dmnElementRef="_1D8B7AF6-2639-42E7-9975-415D44F748CB">
-        <di:waypoint x="931" y="225"/>
-        <di:waypoint x="1335" y="522"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_9D53CB17-27C1-4D12-997A-CB55BA279E60" dmnElementRef="_9D53CB17-27C1-4D12-997A-CB55BA279E60">
         <di:waypoint x="517" y="226"/>
@@ -768,6 +819,30 @@ Residential buildings within a Hazard (Fault Line) Area 5.6.2.11</dmn:descriptio
       <dmndi:DMNEdge id="dmnedge-_39999380-8E09-4597-BA0B-D992EEA21C8F" dmnElementRef="_39999380-8E09-4597-BA0B-D992EEA21C8F">
         <di:waypoint x="796.5981308411215" y="160.68421052631578"/>
         <di:waypoint x="798" y="225"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_C0AEC952-C96B-4ED5-97CF-CCCD2BFABC8D" dmnElementRef="_C0AEC952-C96B-4ED5-97CF-CCCD2BFABC8D">
+        <di:waypoint x="379" y="225"/>
+        <di:waypoint x="517" y="226"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_9BF130DC-D1D9-4051-AD4C-A7F0999B36F9" dmnElementRef="_9BF130DC-D1D9-4051-AD4C-A7F0999B36F9">
+        <di:waypoint x="515.5981308411215" y="154.68421052631578"/>
+        <di:waypoint x="517" y="226"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_95AE9539-9644-4754-A7A5-303BB142D034" dmnElementRef="_95AE9539-9644-4754-A7A5-303BB142D034">
+        <di:waypoint x="931" y="225"/>
+        <di:waypoint x="1335" y="287"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_CE63E97F-D24E-4E34-975D-E3C625074C70" dmnElementRef="_CE63E97F-D24E-4E34-975D-E3C625074C70">
+        <di:waypoint x="798" y="225"/>
+        <di:waypoint x="1335" y="287"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_8F0AD37B-B281-4E8D-92F6-77E1FE5DF333" dmnElementRef="_8F0AD37B-B281-4E8D-92F6-77E1FE5DF333">
+        <di:waypoint x="517" y="226"/>
+        <di:waypoint x="1335" y="375"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_1D8B7AF6-2639-42E7-9975-415D44F748CB" dmnElementRef="_1D8B7AF6-2639-42E7-9975-415D44F748CB">
+        <di:waypoint x="931" y="225"/>
+        <di:waypoint x="1335" y="596"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_F7813B3E-0881-4087-8082-FB0684724F95" dmnElementRef="_F7813B3E-0881-4087-8082-FB0684724F95">
         <di:waypoint x="126.59813084112147" y="158.68421052631578"/>
@@ -801,14 +876,6 @@ Residential buildings within a Hazard (Fault Line) Area 5.6.2.11</dmn:descriptio
         <di:waypoint x="378.25" y="154.68421052631578"/>
         <di:waypoint x="379" y="225"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_C0AEC952-C96B-4ED5-97CF-CCCD2BFABC8D" dmnElementRef="_C0AEC952-C96B-4ED5-97CF-CCCD2BFABC8D">
-        <di:waypoint x="379" y="225"/>
-        <di:waypoint x="517" y="226"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_9BF130DC-D1D9-4051-AD4C-A7F0999B36F9" dmnElementRef="_9BF130DC-D1D9-4051-AD4C-A7F0999B36F9">
-        <di:waypoint x="515.5981308411215" y="154.68421052631578"/>
-        <di:waypoint x="517" y="226"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_6DE60FC4-29ED-46E5-B742-EC6CF575DD33" dmnElementRef="_6DE60FC4-29ED-46E5-B742-EC6CF575DD33">
         <di:waypoint x="798" y="225"/>
         <di:waypoint x="931" y="225"/>
@@ -829,13 +896,9 @@ Residential buildings within a Hazard (Fault Line) Area 5.6.2.11</dmn:descriptio
         <di:waypoint x="931" y="225"/>
         <di:waypoint x="1335" y="146"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_95AE9539-9644-4754-A7A5-303BB142D034" dmnElementRef="_95AE9539-9644-4754-A7A5-303BB142D034">
-        <di:waypoint x="931" y="225"/>
-        <di:waypoint x="1335" y="287"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_CE63E97F-D24E-4E34-975D-E3C625074C70" dmnElementRef="_CE63E97F-D24E-4E34-975D-E3C625074C70">
-        <di:waypoint x="798" y="225"/>
-        <di:waypoint x="1335" y="287"/>
+      <dmndi:DMNEdge id="dmnedge-_F32EF2A9-72E9-464D-8CB8-E4C5D7058A17" dmnElementRef="_F32EF2A9-72E9-464D-8CB8-E4C5D7058A17">
+        <di:waypoint x="517" y="226"/>
+        <di:waypoint x="1335" y="523"/>
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
