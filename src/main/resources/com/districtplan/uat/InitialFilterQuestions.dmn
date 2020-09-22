@@ -30,8 +30,12 @@ no</dmn:allowedAnswers>
       <dmn:requiredKnowledge href="#_0DA8114E-D8DE-4E56-9AA4-E1AE9869A4A6"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_E7725C1A-DED0-41B5-9473-DEB6354FC711">
-      <dmn:text>if BuildAddtoAlter(Activities_Value.Verb) then (&#xd;
-if ExistingBuildings > 0 then (ExistingBuildings + 1) else 3 ) else 0</dmn:text>
+      <dmn:text>if (BuildAddtoAlter(Activities_Value.Verb) or &#xd;
+list contains(Activities_Value[Noun="earthworks"].Verb, "undertake")) then (&#xd;
+if ExistingBuildings > 0 then (ExistingBuildings + 1) else 3 ) else 0&#xd;
+&#xd;
+&#xd;
+</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:inputData id="_E844BE80-619F-4B20-B548-6AE4F5839937" name="LandArea">
