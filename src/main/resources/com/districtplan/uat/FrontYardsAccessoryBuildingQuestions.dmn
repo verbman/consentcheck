@@ -178,7 +178,7 @@ list contains(SpatialLayers_Value[Type="Residential"].Title, "Medium Density Res
 AccessoryBuildingStructureFrontYard_Value and&#xd;
 (not(list contains(Activities_Value[Noun="residential building"].Verb, "build")) and &#xd;
 not(list contains(Activities_Value[Noun="residential building"].Verb, "add to"))) and&#xd;
-not(StructureOnly(Activities_Value)) then&#xd;
+not(StructureDeckOnly(Activities_Value)) then&#xd;
 (AccessoryBuildingStructureFrontYard + 1) else&#xd;
   if list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential") and&#xd;
   not(CuldesacDeadendSite_Value) and&#xd;
@@ -231,14 +231,16 @@ CornerSite + 1 else 0&#xd;
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
-  <dmn:businessKnowledgeModel id="_CDF2F1B1-4002-46C9-B06E-211B4C7F3014" name="StructureOnly">
+  <dmn:businessKnowledgeModel id="_CDF2F1B1-4002-46C9-B06E-211B4C7F3014" name="StructureDeckOnly">
     <dmn:extensionElements/>
-    <dmn:variable id="_A8D57B30-5457-48B3-8DFD-B39225359465" name="StructureOnly" typeRef="boolean"/>
+    <dmn:variable id="_A8D57B30-5457-48B3-8DFD-B39225359465" name="StructureDeckOnly" typeRef="boolean"/>
     <dmn:encapsulatedLogic id="_7FDE1DFE-9150-4B67-A4BB-6DB7015156F5" kind="FEEL">
       <dmn:formalParameter id="_5A3626E1-D8F8-44A9-92F3-F9922F1218D0" name="activities" typeRef="Types.Activities"/>
       <dmn:literalExpression id="_8703419D-7AE7-4A9D-8319-8C7BD5E6FFFF">
         <dmn:text>(list contains(activities[Noun="residential structure"].Verb, "build") or&#xd;
-list contains(activities[Noun="residential structure"].Verb, "add to")) and&#xd;
+list contains(activities[Noun="residential structure"].Verb, "add to") or&#xd;
+list contains(activities[Noun="deck or balcony"].Verb, "build") or&#xd;
+list contains(activities[Noun="deck or balcony"].Verb, "add to")) and&#xd;
 (not(list contains(activities[Noun="accessory building"].Verb, "build")) and  &#xd;
 not(list contains(activities[Noun="accessory building"].Verb, "add to")))&#xd;
 &#xd;
@@ -648,7 +650,7 @@ no</dmn:allowedAnswers>
     <dmn:literalExpression id="_D67F88CC-5A33-4531-AAF3-C832B81D6800">
       <dmn:text>if list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential") and&#xd;
 AccessoryBuildingStructureFrontYard_Value then &#xd;
-  if StructureOnly(Activities_Value) then 0 else&#xd;
+  if StructureDeckOnly(Activities_Value) then 0 else&#xd;
   if not(list contains(Activities_Value[Noun="residential building"].Verb, "build")) and &#xd;
   not(list contains(Activities_Value[Noun="residential building"].Verb, "add to"))&#xd;
   then (AccessoryBuildingStructureFrontYard + 1) else 0&#xd;
