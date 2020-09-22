@@ -131,6 +131,9 @@ AdditionInsideFootprintAccessoryBuilding + 1 else 0&#xd;
     <dmn:informationRequirement id="_4EA8D503-4D9E-4F0C-A4FE-6C8D438A4E20">
       <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_F5C4A9A0-27CF-404B-BEF3-2E8B2E6DD424">
+      <dmn:requiredInput href="#_3C87149E-4067-4B43-BB44-68C131C42A6D"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_5A6554D9-2A02-4C09-9866-5658EF7F55FA">
       <dmn:text>if (not(ExistingAccessoryBuildingComplianceHeightBRP_Value) or&#xd;
 not(ExistingComplianceAccessoryBuildingSiteCoverageYards_Value)) then&#xd;
@@ -138,7 +141,8 @@ not(ExistingComplianceAccessoryBuildingSiteCoverageYards_Value)) then&#xd;
   not(list contains(Activities_Value[Noun="accessory building"].Verb, "alter"))) then&#xd;
   ExistingComplianceAccessoryBuildingSiteCoverageYards + 1 else&#xd;
   if AlterationWithinExistingVolumeAccessoryBuilding > 0 and&#xd;
-  list contains(Activities_Value[Noun="accessory building"].Verb, "add to") then &#xd;
+  (not(AlterationWithinExistingVolumeAccessoryBuilding_Value) or&#xd;
+  list contains(Activities_Value[Noun="accessory building"].Verb, "add to")) then &#xd;
   AlterationWithinExistingVolumeAccessoryBuilding + 1 else 0&#xd;
 else 0&#xd;
 &#xd;
@@ -240,6 +244,10 @@ AdditionProposedAccessoryBuildingHeight + 1 else 0&#xd;
   <dmn:inputData id="_347F2FBA-BE29-49BE-A803-40E23366FF2F" name="SpatialLayers_Value">
     <dmn:extensionElements/>
     <dmn:variable id="_5BC9A235-4930-40D9-9AB5-12F7D1BEC681" name="SpatialLayers_Value" typeRef="Types.SpatialLayers"/>
+  </dmn:inputData>
+  <dmn:inputData id="_3C87149E-4067-4B43-BB44-68C131C42A6D" name="AlterationWithinExistingVolumeAccessoryBuilding_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_F9C944D5-5D6F-41BF-B047-43575B0DA1B9" name="AlterationWithinExistingVolumeAccessoryBuilding_Value" typeRef="boolean"/>
   </dmn:inputData>
   <dmn:inputData id="_B7D4AF81-3425-4132-AECA-ABB8315BAD66" name="Activities_Value">
     <dmn:extensionElements/>
@@ -443,6 +451,15 @@ AdditionIncreaseNonComplianceAccessoryBuilding + 1 else 0&#xd;
         <dc:Bounds x="410" y="183" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_3C87149E-4067-4B43-BB44-68C131C42A6D" dmnElementRef="_3C87149E-4067-4B43-BB44-68C131C42A6D" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="629" y="352.3421052631579" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_F50500C0-34D3-44F2-84E9-37D1DAB098E6" dmnElementRef="_F50500C0-34D3-44F2-84E9-37D1DAB098E6" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="238" green="238" blue="238"/>
@@ -560,6 +577,10 @@ AdditionIncreaseNonComplianceAccessoryBuilding + 1 else 0&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_4EA8D503-4D9E-4F0C-A4FE-6C8D438A4E20" dmnElementRef="_4EA8D503-4D9E-4F0C-A4FE-6C8D438A4E20">
         <di:waypoint x="259.5981308411215" y="287.3421052631579"/>
+        <di:waypoint x="543" y="378"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_F5C4A9A0-27CF-404B-BEF3-2E8B2E6DD424" dmnElementRef="_F5C4A9A0-27CF-404B-BEF3-2E8B2E6DD424">
+        <di:waypoint x="679" y="377.3421052631579"/>
         <di:waypoint x="543" y="378"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_56383476-F3F9-40DA-92E5-CEA8362CD140" dmnElementRef="_56383476-F3F9-40DA-92E5-CEA8362CD140">
