@@ -224,10 +224,10 @@ DemolitionBuildingStructureSpatialLayers(SpatialLayers_Value) then Activities + 
     </dmn:informationRequirement>
     <dmn:literalExpression id="_6068134B-AE26-489C-8E1E-6534C525E4D3">
       <dmn:text>if ConstructedPriorTo1930 > 0 and&#xd;
-ConstructedPriorTo1930_Value and&#xd;
-(list contains(Activities_Value[Noun="residential building"].Verb, "alter") and&#xd;
-not(list contains(Activities_Value[Noun="residential building"].Verb, "demolish"))) then&#xd;
-ConstructedPriorTo1930 + 1 else&#xd;
+ConstructedPriorTo1930_Value then&#xd;
+  if (list contains(Activities_Value[Noun="residential building"].Verb, "alter") and&#xd;
+  not(list contains(Activities_Value[Noun="residential building"].Verb, "demolish"))) then&#xd;
+  ConstructedPriorTo1930 + 1 else&#xd;
   if DemolishPrimaryForm > 0 and&#xd;
   not(DemolishPrimaryForm_Value) then&#xd;
   DemolishPrimaryForm + 1 else &#xd;
@@ -235,6 +235,7 @@ ConstructedPriorTo1930 + 1 else&#xd;
   not(AdditionAffectingPrimaryForm_Value) and&#xd;
   not(list contains(Activities_Value[Noun="residential building"].Verb, "demolish")) then &#xd;
   AdditionAffectingPrimaryForm + 1 else 0&#xd;
+else 0&#xd;
 &#xd;
 &#xd;
 &#xd;
