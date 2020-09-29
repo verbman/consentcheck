@@ -460,9 +460,6 @@ else 0&#xd;
     <dmn:allowedAnswers>yes
 no</dmn:allowedAnswers>
     <dmn:variable id="_93B2FBFA-2798-445C-81B3-2757AE758DE2" name="AdjoiningBuildingLineAccessoryBuilding" typeRef="number"/>
-    <dmn:informationRequirement id="_E1738709-935E-4FC0-BB81-0111F58A6E40">
-      <dmn:requiredInput href="#_8F964FAF-F2EF-4D44-AA93-FDC20D7B2A79"/>
-    </dmn:informationRequirement>
     <dmn:informationRequirement id="_D1EE5E89-0D0D-4C32-A739-953381B5FB61">
       <dmn:requiredInput href="#_C93DBBAC-ABF5-42DC-8973-AE32F95B8C83"/>
     </dmn:informationRequirement>
@@ -484,13 +481,16 @@ no</dmn:allowedAnswers>
     <dmn:informationRequirement id="_C23FA5AD-162F-4938-B794-E6D7B4A6E778">
       <dmn:requiredInput href="#_110689B3-7F3A-4421-BB20-67677E9B15C5"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_5A2B5962-5AC1-4D72-B690-45C3D006832C">
+      <dmn:requiredInput href="#_8A396A47-8B3E-45D5-9845-AD1B882C7D50"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_BEF91882-DC9F-4C1D-AECF-918AE13B7EE9">
       <dmn:text>if ProposedSetBackAccessoryBuilding > 0 and&#xd;
 not(list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential")) and &#xd;
 not(S5.6.2.2.1Met) then&#xd;
 (ProposedSetBackAccessoryBuilding + 1) else (&#xd;
   if CuldesacDeadendSite_Value and&#xd;
-  not(S5.6.2.2.3Met) then&#xd;
+  ProposedSetBackAccessoryBuilding_Value &lt; 3 then&#xd;
   (ProposedSetBackAccessoryBuilding + 1) else (&#xd;
     if MinimumWidthOfRoad > 0 and&#xd;
     not(S5.6.2.2.1Met) then&#xd;
@@ -697,9 +697,6 @@ else 0&#xd;
     </dmn:informationRequirement>
     <dmn:informationRequirement id="_EE8C6C7B-7E21-4623-8DFD-9A2F7B35FE6A">
       <dmn:requiredDecision href="#_6D27A50D-38E3-4812-93FC-98AA523D4B24"/>
-    </dmn:informationRequirement>
-    <dmn:informationRequirement id="_17809570-C21D-4023-B574-DAB910ADB9BD">
-      <dmn:requiredInput href="#_8F964FAF-F2EF-4D44-AA93-FDC20D7B2A79"/>
     </dmn:informationRequirement>
     <dmn:informationRequirement id="_4C27C9B8-70E1-4FE7-B0B3-373941AC205F">
       <dmn:requiredDecision href="#_33DB0DEE-EEBD-4412-922C-4EE3327A387E"/>
@@ -1339,10 +1336,6 @@ ProposedSetBackAccessoryBuildingRoad1 + 1 else&#xd;
         <di:waypoint x="240.59813084112147" y="370"/>
         <di:waypoint x="870" y="480"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_E1738709-935E-4FC0-BB81-0111F58A6E40" dmnElementRef="_E1738709-935E-4FC0-BB81-0111F58A6E40">
-        <di:waypoint x="241.29906542056074" y="562"/>
-        <di:waypoint x="695" y="568"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_D1EE5E89-0D0D-4C32-A739-953381B5FB61" dmnElementRef="_D1EE5E89-0D0D-4C32-A739-953381B5FB61">
         <di:waypoint x="1140" y="656"/>
         <di:waypoint x="695" y="568"/>
@@ -1369,6 +1362,10 @@ ProposedSetBackAccessoryBuildingRoad1 + 1 else&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_C23FA5AD-162F-4938-B794-E6D7B4A6E778" dmnElementRef="_C23FA5AD-162F-4938-B794-E6D7B4A6E778">
         <di:waypoint x="240.59813084112147" y="297.6842105263158"/>
+        <di:waypoint x="695" y="568"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_5A2B5962-5AC1-4D72-B690-45C3D006832C" dmnElementRef="_5A2B5962-5AC1-4D72-B690-45C3D006832C">
+        <di:waypoint x="1142" y="596"/>
         <di:waypoint x="695" y="568"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_13B76A84-83CE-4352-9C3F-CAA2E463A2C2" dmnElementRef="_13B76A84-83CE-4352-9C3F-CAA2E463A2C2">
@@ -1477,10 +1474,6 @@ ProposedSetBackAccessoryBuildingRoad1 + 1 else&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_EE8C6C7B-7E21-4623-8DFD-9A2F7B35FE6A" dmnElementRef="_EE8C6C7B-7E21-4623-8DFD-9A2F7B35FE6A">
         <di:waypoint x="871" y="823"/>
-        <di:waypoint x="820" y="1035"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_17809570-C21D-4023-B574-DAB910ADB9BD" dmnElementRef="_17809570-C21D-4023-B574-DAB910ADB9BD">
-        <di:waypoint x="241.29906542056074" y="562"/>
         <di:waypoint x="820" y="1035"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_4C27C9B8-70E1-4FE7-B0B3-373941AC205F" dmnElementRef="_4C27C9B8-70E1-4FE7-B0B3-373941AC205F">
