@@ -33,17 +33,6 @@
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
-  <dmn:businessKnowledgeModel id="_2138ED6C-3A59-45EC-A047-0C75A6FC56D1" name="FenceWall">
-    <dmn:extensionElements/>
-    <dmn:variable id="_78CD7AAC-A3EB-496E-A666-EBAA43B27109" name="FenceWall" typeRef="boolean"/>
-    <dmn:encapsulatedLogic id="_693E07F7-413D-409E-A7F2-968969615941" kind="FEEL">
-      <dmn:formalParameter id="_075EE1A4-C386-4871-9518-A218115E1A10" name="activities" typeRef="Types.Activities"/>
-      <dmn:literalExpression id="_BB517682-2030-4EF3-B104-C07D76B8C9C3">
-        <dmn:text>list contains(activities[Noun="residential fence or wall"].Verb, "build") or&#xd;
-list contains(activities[Noun="residential fence or wall"].Verb, "add to")</dmn:text>
-      </dmn:literalExpression>
-    </dmn:encapsulatedLogic>
-  </dmn:businessKnowledgeModel>
   <dmn:businessKnowledgeModel id="_246F5A08-167E-44EF-986C-8B7189505F53" name="SiteCoverageSpatialLayers">
     <dmn:extensionElements/>
     <dmn:variable id="_E012B4C8-30CC-444B-B382-2F491B212562" name="SiteCoverageSpatialLayers" typeRef="boolean"/>
@@ -94,11 +83,8 @@ list contains(spatiallayers[Type="Residential"].Title, "Medium Density Residenti
     <dmn:knowledgeRequirement id="_C98CAF61-4B39-49EC-A2F2-800C4C4DE8F4">
       <dmn:requiredKnowledge href="#_246F5A08-167E-44EF-986C-8B7189505F53"/>
     </dmn:knowledgeRequirement>
-    <dmn:knowledgeRequirement id="_15D6C886-CCDB-4D7A-AF15-056C508B4C7C">
-      <dmn:requiredKnowledge href="#_2138ED6C-3A59-45EC-A047-0C75A6FC56D1"/>
-    </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_6E452D55-48CA-414B-9086-6EBB2D78C32A">
-      <dmn:text>if SiteCoverageActivities(Activities_Value) and not(FenceWall(Activities_Value)) and&#xd;
+      <dmn:text>if SiteCoverageActivities(Activities_Value) and&#xd;
 SiteCoverageSpatialLayers(SpatialLayers_Value) and&#xd;
 SiteCoverageOR = 0 then (Activities + 1) else 0&#xd;
 &#xd;
@@ -120,15 +106,11 @@ SiteCoverageOR = 0 then (Activities + 1) else 0&#xd;
     <dmn:knowledgeRequirement id="_7E66E0DA-0257-43AD-93FC-A3C361E41041">
       <dmn:requiredKnowledge href="#_325A5CAE-FE7E-4FC6-82F5-FE3851165D58"/>
     </dmn:knowledgeRequirement>
-    <dmn:knowledgeRequirement id="_5238D18D-D8C6-4B4D-BDA6-460F6C2FE141">
-      <dmn:requiredKnowledge href="#_2138ED6C-3A59-45EC-A047-0C75A6FC56D1"/>
-    </dmn:knowledgeRequirement>
     <dmn:knowledgeRequirement id="_E12AF93E-03BD-4717-AAEE-F4618AA60A3F">
       <dmn:requiredKnowledge href="#_246F5A08-167E-44EF-986C-8B7189505F53"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_5E84C46B-3EE6-42CC-81C5-7CFDC4125DF7">
       <dmn:text>SiteCoverageActivities(Activities_Value) and &#xd;
-not(FenceWall(Activities_Value)) and&#xd;
 SiteCoverageSpatialLayers(SpatialLayers_Value)&#xd;
 &#xd;
 &#xd;
@@ -153,11 +135,8 @@ SiteCoverageSpatialLayers(SpatialLayers_Value)&#xd;
     <dmn:knowledgeRequirement id="_A1522407-40DE-4C7D-8F3B-313BD566CDC4">
       <dmn:requiredKnowledge href="#_325A5CAE-FE7E-4FC6-82F5-FE3851165D58"/>
     </dmn:knowledgeRequirement>
-    <dmn:knowledgeRequirement id="_ED11EBDC-DB97-4DC5-A383-F5DE20D06AEC">
-      <dmn:requiredKnowledge href="#_2138ED6C-3A59-45EC-A047-0C75A6FC56D1"/>
-    </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_4F27AB9D-2859-4D53-8DD8-E0B2E579663C">
-      <dmn:text>if SiteCoverageActivities(Activities_Value) and not(FenceWall(Activities_Value)) and&#xd;
+      <dmn:text>if SiteCoverageActivities(Activities_Value) and&#xd;
 list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential") and&#xd;
 not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "OR3 - Roseneath")) and&#xd;
 not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "OR4 - Mitchelltown/Holloway Road"))&#xd;
@@ -212,13 +191,6 @@ list contains(activities[Noun="deck or balcony"].Verb, "add to")&#xd;
           <kie:ComponentWidths dmnElementRef="_D3C9EA90-61FE-4964-B40D-5B366C15C853">
             <kie:width>891.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_BB517682-2030-4EF3-B104-C07D76B8C9C3">
-            <kie:width>908.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_693E07F7-413D-409E-A7F2-968969615941">
-            <kie:width>50.0</kie:width>
-            <kie:width>908.0</kie:width>
-          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_6C19F3DC-AC28-4177-A60B-34D10F6F6FE3">
             <kie:width>1041.0</kie:width>
           </kie:ComponentWidths>
@@ -271,7 +243,7 @@ list contains(activities[Noun="deck or balcony"].Verb, "add to")&#xd;
           <dmndi:StrokeColor red="129" green="178" blue="177"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="195" y="142.68421052631578" width="100" height="50"/>
+        <dc:Bounds x="194" y="112.34210526315789" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_510B9B24-30C3-4A8D-B982-62BE46545597" dmnElementRef="_510B9B24-30C3-4A8D-B982-62BE46545597" isCollapsed="false">
@@ -281,15 +253,6 @@ list contains(activities[Noun="deck or balcony"].Verb, "add to")&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="388" y="268" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_2138ED6C-3A59-45EC-A047-0C75A6FC56D1" dmnElementRef="_2138ED6C-3A59-45EC-A047-0C75A6FC56D1" isCollapsed="false">
-        <dmndi:DMNStyle>
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="0" green="0" blue="0"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="195" y="86.34210526315792" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_246F5A08-167E-44EF-986C-8B7189505F53" dmnElementRef="_246F5A08-167E-44EF-986C-8B7189505F53" isCollapsed="false">
@@ -363,7 +326,7 @@ list contains(activities[Noun="deck or balcony"].Verb, "add to")&#xd;
         <di:waypoint x="538" y="220"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_EBBFE600-BDAD-4E63-87F0-2729BA2867C2" dmnElementRef="_EBBFE600-BDAD-4E63-87F0-2729BA2867C2">
-        <di:waypoint x="245" y="167.68421052631578"/>
+        <di:waypoint x="244" y="137.3421052631579"/>
         <di:waypoint x="588" y="220"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_60D0C4C3-4F1E-4D10-BEEB-37369DDFF004" dmnElementRef="_60D0C4C3-4F1E-4D10-BEEB-37369DDFF004">
@@ -378,12 +341,8 @@ list contains(activities[Noun="deck or balcony"].Verb, "add to")&#xd;
         <di:waypoint x="245" y="227"/>
         <di:waypoint x="588" y="220"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_15D6C886-CCDB-4D7A-AF15-056C508B4C7C" dmnElementRef="_15D6C886-CCDB-4D7A-AF15-056C508B4C7C">
-        <di:waypoint x="245" y="111.34210526315792"/>
-        <di:waypoint x="588" y="220"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_792C16DF-D861-42A5-AD1A-2123DE36F0B9" dmnElementRef="_792C16DF-D861-42A5-AD1A-2123DE36F0B9">
-        <di:waypoint x="245" y="167.68421052631578"/>
+        <di:waypoint x="244" y="137.3421052631579"/>
         <di:waypoint x="124" y="56"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_2C113942-1B61-4A62-B6E9-9AAE3DA945C1" dmnElementRef="_2C113942-1B61-4A62-B6E9-9AAE3DA945C1">
@@ -392,10 +351,6 @@ list contains(activities[Noun="deck or balcony"].Verb, "add to")&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7E66E0DA-0257-43AD-93FC-A3C361E41041" dmnElementRef="_7E66E0DA-0257-43AD-93FC-A3C361E41041">
         <di:waypoint x="245" y="54.684210526315795"/>
-        <di:waypoint x="124" y="56"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_5238D18D-D8C6-4B4D-BDA6-460F6C2FE141" dmnElementRef="_5238D18D-D8C6-4B4D-BDA6-460F6C2FE141">
-        <di:waypoint x="245" y="111.34210526315792"/>
         <di:waypoint x="124" y="56"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_E12AF93E-03BD-4717-AAEE-F4618AA60A3F" dmnElementRef="_E12AF93E-03BD-4717-AAEE-F4618AA60A3F">
@@ -411,15 +366,11 @@ list contains(activities[Noun="deck or balcony"].Verb, "add to")&#xd;
         <di:waypoint x="438" y="220"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_5AD5BE97-6A66-4F91-9350-74E55DDCCD85" dmnElementRef="_5AD5BE97-6A66-4F91-9350-74E55DDCCD85">
-        <di:waypoint x="245" y="167.68421052631578"/>
+        <di:waypoint x="244" y="137.3421052631579"/>
         <di:waypoint x="438" y="220"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_A1522407-40DE-4C7D-8F3B-313BD566CDC4" dmnElementRef="_A1522407-40DE-4C7D-8F3B-313BD566CDC4">
         <di:waypoint x="245" y="54.684210526315795"/>
-        <di:waypoint x="438" y="220"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_ED11EBDC-DB97-4DC5-A383-F5DE20D06AEC" dmnElementRef="_ED11EBDC-DB97-4DC5-A383-F5DE20D06AEC">
-        <di:waypoint x="245" y="111.34210526315792"/>
         <di:waypoint x="438" y="220"/>
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
