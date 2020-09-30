@@ -58,17 +58,17 @@ Fixed plant noise 5.3.1.1</dmn:description>
       <dmn:text>if FixedPlantNoiseKnown !=null then&#xd;
   if FixedPlantNoiseKnown and &#xd;
   FixedPlantNoiseLevelDay > 0 and&#xd;
-  FixedPlantNoiseLevelDay &lt;= S5.6.2.13.1-MonSun_7am10pm and&#xd;
+  FixedPlantNoiseLevelDay &lt;= S5.6.2.13.1-Day and&#xd;
   FixedPlantNoiseLevelNight > 0 and&#xd;
-  FixedPlantNoiseLevelNight &lt;= S5.6.2.13.1-MonSun_10pm7am and&#xd;
+  FixedPlantNoiseLevelNight &lt;= S5.6.2.13.1-Night and&#xd;
   FixedPlantNoiseLevelNightMax > 0 and&#xd;
-  FixedPlantNoiseLevelNightMax &lt;= S5.6.2.13.1-MonSun_10pm7am_Max then true else &#xd;
+  FixedPlantNoiseLevelNightMax &lt;= S5.6.2.13.1-Night_Max then true else &#xd;
   if AdjoinsRuralFixedPlantNoiseLevelDay > 0 and&#xd;
-  AdjoinsRuralFixedPlantNoiseLevelDay &lt;= S5.6.2.13.1-MonSun_7am8pm and&#xd;
+  AdjoinsRuralFixedPlantNoiseLevelDay &lt;= S5.6.2.13.1-RuralDay and&#xd;
   AdjoinsRuralFixedPlantNoiseLevelNight > 0 and&#xd;
-  AdjoinsRuralFixedPlantNoiseLevelNight &lt;= S5.6.2.13.1-MonSun_8pm7am and&#xd;
+  AdjoinsRuralFixedPlantNoiseLevelNight &lt;= S5.6.2.13.1-RuralNight and&#xd;
   AdjoinsRuralFixedPlantNoiseLevelNightMax > 0 and&#xd;
-  AdjoinsRuralFixedPlantNoiseLevelNightMax &lt;= S5.6.2.13.1-MonSun_8pm7am_Max then true else false&#xd;
+  AdjoinsRuralFixedPlantNoiseLevelNightMax &lt;= S5.6.2.13.1-RuralNight_Max then true else false&#xd;
 else null&#xd;
 &#xd;
 &#xd;
@@ -80,9 +80,9 @@ else null&#xd;
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
-  <dmn:decision id="_61E0878E-73B9-46B3-AD6B-1C408DACED81" name="S5.6.2.13.1-MonSun_10pm7am">
+  <dmn:decision id="_61E0878E-73B9-46B3-AD6B-1C408DACED81" name="S5.6.2.13.1-Night">
     <dmn:extensionElements/>
-    <dmn:variable id="_E997B2BA-C70C-493D-8CB9-7B0212D43908" name="S5.6.2.13.1-MonSun_10pm7am" typeRef="number"/>
+    <dmn:variable id="_E997B2BA-C70C-493D-8CB9-7B0212D43908" name="S5.6.2.13.1-Night" typeRef="number"/>
     <dmn:informationRequirement id="_B8832D62-0573-4460-BDDA-995823FDAC10">
       <dmn:requiredInput href="#_FF9E4109-6622-4987-BA94-B2DD13F30A1C"/>
     </dmn:informationRequirement>
@@ -215,17 +215,17 @@ else 0&#xd;
       <dmn:text>if FixedPlantNoiseKnown !=null then&#xd;
   if FixedPlantNoiseKnown and&#xd;
   FixedPlantNoiseLevelDay !=null and&#xd;
-  FixedPlantNoiseLevelDay &lt;= S5.6.1.2.1-MonSun_7am10pm and&#xd;
+  FixedPlantNoiseLevelDay &lt;= S5.6.1.2.1-Day and&#xd;
   FixedPlantNoiseLevelNight !=null and&#xd;
-  FixedPlantNoiseLevelNight &lt;= S5.6.1.2.1-MonSun_10pm7am and&#xd;
+  FixedPlantNoiseLevelNight &lt;= S5.6.1.2.1-Night and&#xd;
   FixedPlantNoiseLevelNightMax !=null and&#xd;
-  FixedPlantNoiseLevelNightMax &lt;= S5.6.1.2.1-MonSun_10pm7am_Max then true else &#xd;
+  FixedPlantNoiseLevelNightMax &lt;= S5.6.1.2.1-Night_Max then true else &#xd;
   if AdjoinsRuralFixedPlantNoiseLevelDay !=null and&#xd;
-  AdjoinsRuralFixedPlantNoiseLevelDay &lt;= S5.6.1.2.1-MonSun_7am8pm and&#xd;
+  AdjoinsRuralFixedPlantNoiseLevelDay &lt;= S5.6.1.2.1-RuralDay and&#xd;
   AdjoinsRuralFixedPlantNoiseLevelNight !=null and&#xd;
-  AdjoinsRuralFixedPlantNoiseLevelNight &lt;= S5.6.1.2.1-MonSun_8pm7am and&#xd;
+  AdjoinsRuralFixedPlantNoiseLevelNight &lt;= S5.6.1.2.1-RuralNight and&#xd;
   AdjoinsRuralFixedPlantNoiseLevelNightMax !=null and&#xd;
-  AdjoinsRuralFixedPlantNoiseLevelNightMax &lt;= S5.6.1.2.1-MonSun_8pm7am_Max then true else false&#xd;
+  AdjoinsRuralFixedPlantNoiseLevelNightMax &lt;= S5.6.1.2.1-RuralNight_Max then true else false&#xd;
 else null&#xd;
 </dmn:text>
     </dmn:literalExpression>
@@ -247,10 +247,10 @@ else null&#xd;
     </dmn:informationRequirement>
     <dmn:literalExpression id="_0D84EC7D-DFDD-46AD-8072-F78D132981FA">
       <dmn:text>if R5.3.1.4 > 0 and FixedPlantNoiseKnown then&#xd;
-  if S5.6.1.2.1-MonSun_7am10pm > 0 then &#xd;
-  S5.6.1.2.1-MonSun_7am10pm + R5.3.1.4 else&#xd;
-  if S5.6.1.2.1-MonSun_7am8pm > 0 then&#xd;
-  S5.6.1.2.1-MonSun_7am8pm + R5.3.1.4 else null&#xd;
+  if S5.6.1.2.1-Day > 0 then &#xd;
+  S5.6.1.2.1-Day + R5.3.1.4 else&#xd;
+  if S5.6.1.2.1-RuralDay > 0 then&#xd;
+  S5.6.1.2.1-RuralDay + R5.3.1.4 else null&#xd;
 else null&#xd;
 &#xd;
 &#xd;
@@ -297,9 +297,9 @@ Residential buildings, accessory buildings and residential structures subject to
     <dmn:extensionElements/>
     <dmn:type></dmn:type>
   </dmn:knowledgeSource>
-  <dmn:decision id="_EF100F95-6472-43CE-94D6-739F27C96B62" name="S5.6.1.2.1-MonSun_7am8pm">
+  <dmn:decision id="_EF100F95-6472-43CE-94D6-739F27C96B62" name="S5.6.1.2.1-RuralDay">
     <dmn:extensionElements/>
-    <dmn:variable id="_061D3A3F-BCF0-4969-8AF8-77D4ECA1004E" name="S5.6.1.2.1-MonSun_7am8pm" typeRef="number"/>
+    <dmn:variable id="_061D3A3F-BCF0-4969-8AF8-77D4ECA1004E" name="S5.6.1.2.1-RuralDay" typeRef="number"/>
     <dmn:informationRequirement id="_B287BDE2-3DA5-4366-8F68-B0CFC5495AF7">
       <dmn:requiredInput href="#_FF9E4109-6622-4987-BA94-B2DD13F30A1C"/>
     </dmn:informationRequirement>
@@ -337,10 +337,10 @@ else 0</dmn:text>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_BA7BEF51-C0D7-496D-8064-AE68E720F5F5">
       <dmn:text>if R5.3.4.20 > 0 and FixedPlantNoiseKnown then&#xd;
-  if S5.6.2.13.1-MonSun_10pm7am > 0 then&#xd;
-  S5.6.2.13.1-MonSun_10pm7am + R5.3.4.20 else&#xd;
-  if S5.6.2.13.1-MonSun_8pm7am > 0 then&#xd;
-  S5.6.2.13.1-MonSun_8pm7am + R5.3.4.20 else null&#xd;
+  if S5.6.2.13.1-Night > 0 then&#xd;
+  S5.6.2.13.1-Night + R5.3.4.20 else&#xd;
+  if S5.6.2.13.1-RuralNight > 0 then&#xd;
+  S5.6.2.13.1-RuralNight + R5.3.4.20 else null&#xd;
 else null&#xd;
 &#xd;
 &#xd;
@@ -491,10 +491,10 @@ else null&#xd;
     </dmn:informationRequirement>
     <dmn:literalExpression id="_7F0BFE5A-F4B6-447B-9531-56DFED926CB7">
       <dmn:text>if R5.3.4.20 > 0 and FixedPlantNoiseKnown then&#xd;
-  if S5.6.2.13.1-MonSun_7am10pm > 0 then &#xd;
-  S5.6.2.13.1-MonSun_7am10pm + R5.3.4.20 else&#xd;
-  if S5.6.2.13.1-MonSun_7am8pm > 0 then&#xd;
-  S5.6.2.13.1-MonSun_7am8pm + R5.3.4.20 else null&#xd;
+  if S5.6.2.13.1-Day > 0 then &#xd;
+  S5.6.2.13.1-Day + R5.3.4.20 else&#xd;
+  if S5.6.2.13.1-RuralDay > 0 then&#xd;
+  S5.6.2.13.1-RuralDay + R5.3.4.20 else null&#xd;
 else null&#xd;
 &#xd;
 &#xd;
@@ -622,9 +622,9 @@ else null&#xd;
       <dmn:text>if not(S5.6.1.2.1Met) then 5 else 0</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
-  <dmn:decision id="_69755C18-1F1F-4AFA-A816-9BB075FBF7FE" name="S5.6.1.2.1-MonSun_7am10pm">
+  <dmn:decision id="_69755C18-1F1F-4AFA-A816-9BB075FBF7FE" name="S5.6.1.2.1-Day">
     <dmn:extensionElements/>
-    <dmn:variable id="_55D6475E-D2A6-4101-B888-B4D943B0DBBC" name="S5.6.1.2.1-MonSun_7am10pm" typeRef="number"/>
+    <dmn:variable id="_55D6475E-D2A6-4101-B888-B4D943B0DBBC" name="S5.6.1.2.1-Day" typeRef="number"/>
     <dmn:informationRequirement id="_F7813B3E-0881-4087-8082-FB0684724F95">
       <dmn:requiredInput href="#_FF9E4109-6622-4987-BA94-B2DD13F30A1C"/>
     </dmn:informationRequirement>
@@ -671,9 +671,9 @@ else 0&#xd;
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
-  <dmn:decision id="_B237DAA9-025B-462E-950B-F89A6C2240E7" name="S5.6.2.13.1-MonSun_7am10pm">
+  <dmn:decision id="_B237DAA9-025B-462E-950B-F89A6C2240E7" name="S5.6.2.13.1-Day">
     <dmn:extensionElements/>
-    <dmn:variable id="_D1D6F61B-596F-49E4-A6EC-8B83CBCDDF57" name="S5.6.2.13.1-MonSun_7am10pm" typeRef="number"/>
+    <dmn:variable id="_D1D6F61B-596F-49E4-A6EC-8B83CBCDDF57" name="S5.6.2.13.1-Day" typeRef="number"/>
     <dmn:informationRequirement id="_4DB76FF7-FF5A-4595-9A4B-2B99B4575E8B">
       <dmn:requiredInput href="#_FF9E4109-6622-4987-BA94-B2DD13F30A1C"/>
     </dmn:informationRequirement>
@@ -1334,9 +1334,9 @@ Fixed plant noise condition 5.3.1.4</dmn:description>
     <dmn:extensionElements/>
     <dmn:variable id="_70C9112D-9A93-4A87-A423-D490FF600506" name="FixedPlantNoiseIndoorMeasurementDay" typeRef="boolean"/>
   </dmn:inputData>
-  <dmn:decision id="_F77FB9B0-0EB0-435C-926E-979167D1C93B" name="S5.6.1.2.1-MonSun_8pm7am_Max">
+  <dmn:decision id="_F77FB9B0-0EB0-435C-926E-979167D1C93B" name="S5.6.1.2.1-RuralNight_Max">
     <dmn:extensionElements/>
-    <dmn:variable id="_A3042FD1-6F81-4373-BE69-2F0AC74B02EE" name="S5.6.1.2.1-MonSun_8pm7am_Max" typeRef="number"/>
+    <dmn:variable id="_A3042FD1-6F81-4373-BE69-2F0AC74B02EE" name="S5.6.1.2.1-RuralNight_Max" typeRef="number"/>
     <dmn:informationRequirement id="_943A07E6-D57D-4D29-BE1F-984E78075A3D">
       <dmn:requiredInput href="#_FF9E4109-6622-4987-BA94-B2DD13F30A1C"/>
     </dmn:informationRequirement>
@@ -1367,9 +1367,9 @@ else 0&#xd;
     <dmn:extensionElements/>
     <dmn:variable id="_EA4E21F2-A475-4346-9D7B-F36891082C55" name="AdjoinsRuralFixedPlantNoiseLevelNightMax" typeRef="number"/>
   </dmn:inputData>
-  <dmn:decision id="_BAC1D24E-BC10-4D47-81F5-89893EB027C1" name="S5.6.2.13.1-MonSun_10pm7am_Max">
+  <dmn:decision id="_BAC1D24E-BC10-4D47-81F5-89893EB027C1" name="S5.6.2.13.1-Night_Max">
     <dmn:extensionElements/>
-    <dmn:variable id="_327DA35A-6AE1-46FE-9C0A-38488B4C9C98" name="S5.6.2.13.1-MonSun_10pm7am_Max" typeRef="number"/>
+    <dmn:variable id="_327DA35A-6AE1-46FE-9C0A-38488B4C9C98" name="S5.6.2.13.1-Night_Max" typeRef="number"/>
     <dmn:informationRequirement id="_6C191E51-F2BF-4955-A2CE-92C8E40A1C53">
       <dmn:requiredInput href="#_FF9E4109-6622-4987-BA94-B2DD13F30A1C"/>
     </dmn:informationRequirement>
@@ -1605,9 +1605,9 @@ else 0&#xd;
       </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
-  <dmn:decision id="_5BD66249-8F05-4C9D-BEDE-603787F938CB" name="S5.6.2.13.1-MonSun_7am8pm">
+  <dmn:decision id="_5BD66249-8F05-4C9D-BEDE-603787F938CB" name="S5.6.2.13.1-RuralDay">
     <dmn:extensionElements/>
-    <dmn:variable id="_CF18FB95-F13E-40D4-AEF6-18E828BCF6E3" name="S5.6.2.13.1-MonSun_7am8pm" typeRef="number"/>
+    <dmn:variable id="_CF18FB95-F13E-40D4-AEF6-18E828BCF6E3" name="S5.6.2.13.1-RuralDay" typeRef="number"/>
     <dmn:informationRequirement id="_BEDC895C-20EB-4A93-A314-771F97AA6BA3">
       <dmn:requiredInput href="#_FF9E4109-6622-4987-BA94-B2DD13F30A1C"/>
     </dmn:informationRequirement>
@@ -1642,9 +1642,9 @@ Fixed plant noise condition 5.3.4.20</dmn:description>
     <dmn:extensionElements/>
     <dmn:type></dmn:type>
   </dmn:knowledgeSource>
-  <dmn:decision id="_C561E87E-8692-4B28-B528-2C92F3905D8B" name="S5.6.1.2.1-MonSun_10pm7am_Max">
+  <dmn:decision id="_C561E87E-8692-4B28-B528-2C92F3905D8B" name="S5.6.1.2.1-Night_Max">
     <dmn:extensionElements/>
-    <dmn:variable id="_17BA3883-501D-4061-886E-E58D6245F0BA" name="S5.6.1.2.1-MonSun_10pm7am_Max" typeRef="number"/>
+    <dmn:variable id="_17BA3883-501D-4061-886E-E58D6245F0BA" name="S5.6.1.2.1-Night_Max" typeRef="number"/>
     <dmn:informationRequirement id="_06D122B4-430B-42C0-99CC-90B17455D594">
       <dmn:requiredInput href="#_9AF94EE9-C81E-4E15-8287-3AFE94D76B74"/>
     </dmn:informationRequirement>
@@ -1696,9 +1696,9 @@ else 0&#xd;
     <dmn:extensionElements/>
     <dmn:variable id="_1754CB2A-77BF-4C59-830B-4CF47A5A47CD" name="AdjoinsRuralFixedPlantNoiseLevelDay" typeRef="number"/>
   </dmn:inputData>
-  <dmn:decision id="_4A957F43-7ECB-4573-BA23-407C1B6EF818" name="S5.6.2.13.1-MonSun_8pm7am_Max">
+  <dmn:decision id="_4A957F43-7ECB-4573-BA23-407C1B6EF818" name="S5.6.2.13.1-RuralNight_Max">
     <dmn:extensionElements/>
-    <dmn:variable id="_9CEBE0E5-C992-4A6B-BF2F-D83618AA6E68" name="S5.6.2.13.1-MonSun_8pm7am_Max" typeRef="number"/>
+    <dmn:variable id="_9CEBE0E5-C992-4A6B-BF2F-D83618AA6E68" name="S5.6.2.13.1-RuralNight_Max" typeRef="number"/>
     <dmn:informationRequirement id="_EE70F818-8473-459C-8E17-411ACC32307E">
       <dmn:requiredInput href="#_FF9E4109-6622-4987-BA94-B2DD13F30A1C"/>
     </dmn:informationRequirement>
@@ -1805,9 +1805,9 @@ Residential activities that comply with standards 5.6.1</dmn:description>
       </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
-  <dmn:decision id="_D51F2253-8403-4AF6-8BEA-1542F403A23E" name="S5.6.1.2.1-MonSun_8pm7am">
+  <dmn:decision id="_D51F2253-8403-4AF6-8BEA-1542F403A23E" name="S5.6.1.2.1-RuralNight">
     <dmn:extensionElements/>
-    <dmn:variable id="_930D8647-7638-47C2-8C14-19ACAABDA592" name="S5.6.1.2.1-MonSun_8pm7am" typeRef="number"/>
+    <dmn:variable id="_930D8647-7638-47C2-8C14-19ACAABDA592" name="S5.6.1.2.1-RuralNight" typeRef="number"/>
     <dmn:informationRequirement id="_64D79F78-2D7E-4D27-8776-87B79151F09F">
       <dmn:requiredInput href="#_FF9E4109-6622-4987-BA94-B2DD13F30A1C"/>
     </dmn:informationRequirement>
@@ -2043,9 +2043,9 @@ Fixed plant noise 5.3.4.11</dmn:description>
     <dmn:extensionElements/>
     <dmn:type></dmn:type>
   </dmn:knowledgeSource>
-  <dmn:decision id="_3BB93076-4996-4AC8-BC6B-530763AF69A3" name="S5.6.2.13.1-MonSun_8pm7am">
+  <dmn:decision id="_3BB93076-4996-4AC8-BC6B-530763AF69A3" name="S5.6.2.13.1-RuralNight">
     <dmn:extensionElements/>
-    <dmn:variable id="_17C93A8D-F331-4885-8269-7D9492DF28AB" name="S5.6.2.13.1-MonSun_8pm7am" typeRef="number"/>
+    <dmn:variable id="_17C93A8D-F331-4885-8269-7D9492DF28AB" name="S5.6.2.13.1-RuralNight" typeRef="number"/>
     <dmn:informationRequirement id="_87CB072C-FFD0-46C5-A538-F97209817882">
       <dmn:requiredInput href="#_FF9E4109-6622-4987-BA94-B2DD13F30A1C"/>
     </dmn:informationRequirement>
@@ -2091,10 +2091,10 @@ else 0&#xd;
     </dmn:informationRequirement>
     <dmn:literalExpression id="_FCC94F1B-730B-4237-8A9F-DCD7D45D7747">
       <dmn:text>if R5.3.1.4 > 0 and FixedPlantNoiseKnown then&#xd;
-  if S5.6.1.2.1-MonSun_10pm7am_Max > 0 then&#xd;
-  S5.6.1.2.1-MonSun_10pm7am_Max + R5.3.1.4 else &#xd;
-  if S5.6.1.2.1-MonSun_8pm7am_Max > 0 then&#xd;
-  S5.6.1.2.1-MonSun_8pm7am_Max + R5.3.1.4 else null&#xd;
+  if S5.6.1.2.1-Night_Max > 0 then&#xd;
+  S5.6.1.2.1-Night_Max + R5.3.1.4 else &#xd;
+  if S5.6.1.2.1-RuralNight_Max > 0 then&#xd;
+  S5.6.1.2.1-RuralNight_Max + R5.3.1.4 else null&#xd;
 else null&#xd;
 &#xd;
 &#xd;
@@ -2121,9 +2121,9 @@ else null&#xd;
     <dmn:extensionElements/>
     <dmn:variable id="_27C97310-ECD3-4413-B813-680D2CC8A733" name="Activities" typeRef="Types.Activities"/>
   </dmn:inputData>
-  <dmn:decision id="_D3CEDC03-386E-41B0-B5AD-83203E69E9A0" name="S5.6.1.2.1-MonSun_10pm7am">
+  <dmn:decision id="_D3CEDC03-386E-41B0-B5AD-83203E69E9A0" name="S5.6.1.2.1-Night">
     <dmn:extensionElements/>
-    <dmn:variable id="_5D87A246-21E5-4399-ABFF-9B6D4DCFB871" name="S5.6.1.2.1-MonSun_10pm7am" typeRef="number"/>
+    <dmn:variable id="_5D87A246-21E5-4399-ABFF-9B6D4DCFB871" name="S5.6.1.2.1-Night" typeRef="number"/>
     <dmn:informationRequirement id="_3FA9DA01-A424-4567-9753-6A58C41FCA41">
       <dmn:requiredInput href="#_9AF94EE9-C81E-4E15-8287-3AFE94D76B74"/>
     </dmn:informationRequirement>
@@ -2201,10 +2201,10 @@ else 0&#xd;
     </dmn:informationRequirement>
     <dmn:literalExpression id="_9278E871-E416-4CF9-B5B9-02A89EC98C91">
       <dmn:text>if R5.3.4.20 > 0 and FixedPlantNoiseKnown then&#xd;
-  if S5.6.2.13.1-MonSun_10pm7am_Max > 0 then&#xd;
-  S5.6.2.13.1-MonSun_10pm7am_Max + R5.3.4.20 else &#xd;
-  if S5.6.2.13.1-MonSun_8pm7am_Max > 0 then&#xd;
-  S5.6.2.13.1-MonSun_8pm7am_Max + R5.3.4.20 else null&#xd;
+  if S5.6.2.13.1-Night_Max > 0 then&#xd;
+  S5.6.2.13.1-Night_Max + R5.3.4.20 else &#xd;
+  if S5.6.2.13.1-RuralNight_Max > 0 then&#xd;
+  S5.6.2.13.1-RuralNight_Max + R5.3.4.20 else null&#xd;
 else null&#xd;
 &#xd;
 &#xd;
@@ -2234,10 +2234,10 @@ else null&#xd;
     </dmn:informationRequirement>
     <dmn:literalExpression id="_9D2CF07D-231D-436A-A065-DB05E32704BC">
       <dmn:text>if R5.3.1.4 > 0 and FixedPlantNoiseKnown then&#xd;
-  if S5.6.1.2.1-MonSun_10pm7am > 0 then&#xd;
-  S5.6.1.2.1-MonSun_10pm7am + R5.3.1.4 else&#xd;
-  if S5.6.1.2.1-MonSun_8pm7am > 0 then&#xd;
-  S5.6.1.2.1-MonSun_8pm7am + R5.3.1.4 else null&#xd;
+  if S5.6.1.2.1-Night > 0 then&#xd;
+  S5.6.1.2.1-Night + R5.3.1.4 else&#xd;
+  if S5.6.1.2.1-RuralNight > 0 then&#xd;
+  S5.6.1.2.1-RuralNight + R5.3.1.4 else null&#xd;
 else null&#xd;
 &#xd;
 &#xd;
