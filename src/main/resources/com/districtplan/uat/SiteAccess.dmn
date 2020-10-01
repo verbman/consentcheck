@@ -886,15 +886,14 @@ Site Access 5.6.1.4</dmn:description>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_E15C04A1-1CDA-4C50-B467-53B45471C3E5">
       <dmn:text>if S5.6.1.4.6-VehicleAccessStandard = "meets AUSNZ Parking Facilities Standard" then&#xd;
+  if S5.6.1.4.6 = null then&#xd;
+    if VehicleAccessAUSNZStandard = "Yes" then true else&#xd;
+    if VehicleAccessAUSNZStandard = "No" then false else&#xd;
+    if VehicleAccessAUSNZStandard = "I don't know" then false else&#xd;
   if S5.6.1.4.6 = "legal right of way instrument" then &#xd;
     if LegalRightOfWay = "Yes" and VehicleAccessAUSNZStandard = "Yes" then true else&#xd;
     if LegalRightOfWay = "No" or VehicleAccessAUSNZStandard = "No" then false else&#xd;
-    if LegalRightOfWay = "I don't know" or VehicleAccessAUSNZStandard = "I don't know" then false else&#xd;
-      if S5.6.1.4.6 = null then&#xd;
-        if VehicleAccessAUSNZStandard = "Yes" then true else&#xd;
-        if VehicleAccessAUSNZStandard = "No" then false else&#xd;
-        if VehicleAccessAUSNZStandard = "I don't know" then false else null&#xd;
-    else null&#xd;
+    if LegalRightOfWay = "I don't know" or VehicleAccessAUSNZStandard = "I don't know" then false else null&#xd;
   else false&#xd;
 else false&#xd;
 &#xd;
