@@ -884,26 +884,190 @@ Site Access 5.6.1.4</dmn:description>
     <dmn:informationRequirement id="_8617865F-E310-4B16-A61D-961BCE2F5714">
       <dmn:requiredDecision href="#_0193753E-58F8-4086-8605-1C04FEF8FD10"/>
     </dmn:informationRequirement>
-    <dmn:literalExpression id="_E15C04A1-1CDA-4C50-B467-53B45471C3E5">
-      <dmn:text>if S5.6.1.4.6-VehicleAccessStandard = "meets AUSNZ Parking Facilities Standard" and S5.6.1.4.6 = null then&#xd;
-  if VehicleAccessAUSNZStandard = "Yes" then true else&#xd;
-  if VehicleAccessAUSNZStandard = "No" then false else&#xd;
-  if VehicleAccessAUSNZStandard = "I don't know" then false else&#xd;
-    if S5.6.1.4.6-VehicleAccessStandard = "meets AUSNZ Parking Facilities Standard" and S5.6.1.4.6 = "legal right of way instrument" then &#xd;
-      if LegalRightOfWay = "Yes" and VehicleAccessAUSNZStandard = "Yes" then true else&#xd;
-      if LegalRightOfWay = "No" or VehicleAccessAUSNZStandard = "No" then false else&#xd;
-      if LegalRightOfWay = "I don't know" or VehicleAccessAUSNZStandard = "I don't know" then false &#xd;
-    else null&#xd;
-  else false&#xd;
-else null&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-  </dmn:text>
-    </dmn:literalExpression>
+    <dmn:decisionTable id="_063E0338-343C-4BE4-95A1-911DB859E0E2" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_7662EE5C-99A8-4FA3-B276-7F385657E65C">
+        <dmn:inputExpression id="_2A755101-F249-4903-9553-8A11ADBCBC68" typeRef="string">
+          <dmn:text>S5.6.1.4.6-VehicleAccessStandard</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_9CC21C2A-8FA5-497C-9E8B-4332F57FFA82">
+        <dmn:inputExpression id="_E71821D6-6EA6-4D36-B81B-FA59D0856D85" typeRef="string">
+          <dmn:text>S5.6.1.4.6</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_6D5A656C-93C4-4C2D-8484-D807A2E197A6">
+        <dmn:inputExpression id="_AD2936C8-C8E0-448C-85DE-087208AE9CD4" typeRef="string">
+          <dmn:text>VehicleAccessAUSNZStandard</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_654450E3-4610-405D-AFF5-26F2D4E9EE52">
+        <dmn:inputExpression id="_306FC4FC-BA5C-48ED-8746-8FE27F4AE058" typeRef="string">
+          <dmn:text>LegalRightOfWay</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_FE8743E3-1C09-45C2-A590-BBA840635A32"/>
+      <dmn:annotation name="annotation-1"/>
+      <dmn:rule id="_AB00A8D9-9BAF-4188-8112-E300ACAC7396">
+        <dmn:inputEntry id="_D78A9987-3EF0-4303-AD1A-765CE0374421">
+          <dmn:text>"meets AUSNZ Parking Facilities Standard"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D8321F7E-46A9-4D4F-AA20-1E8BCFD41D73">
+          <dmn:text>"meets AUSNZ Parking Facilities Standard"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_604C8A16-201B-4E84-A684-E0B1C9ABFC34">
+          <dmn:text>"Yes"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A72B9513-77E5-4580-88F6-B8900F343907">
+          <dmn:text>"Yes"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_F4448CC7-E19A-48D1-8565-C01FAA379CF0">
+          <dmn:text>true</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_26858D89-96FF-407A-9299-DD07E10C1582">
+        <dmn:inputEntry id="_2D5A1418-105C-4F1A-BBD3-E370BD7C2590">
+          <dmn:text>"meets AUSNZ Parking Facilities Standard"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C8810D82-456A-43BB-990B-C21476C940C3">
+          <dmn:text>"meets AUSNZ Parking Facilities Standard"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_05C7CB21-A07B-4ACB-913A-6C7F42D77964">
+          <dmn:text>"No"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_01139875-AC94-4409-B06C-875F6F287FA9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_14138DFB-7A40-46D1-936D-65AF9E802BA2">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_D2AE1452-8C9E-4713-9B5D-F518DB4E910C">
+        <dmn:inputEntry id="_F2620132-DE0D-4F04-A6E5-83831E3843F0">
+          <dmn:text>"meets AUSNZ Parking Facilities Standard"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E5620626-FDB9-4759-A730-644FF2CD9A49">
+          <dmn:text>"meets AUSNZ Parking Facilities Standard"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A2736CB1-FEEB-48A5-AA2E-E25D6FFF1393">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7B32CA86-4D98-460E-8812-3A6504F27610">
+          <dmn:text>"No"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_61FC77A2-DAEE-4D44-86D3-2939A13825E6">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_BC378987-40EA-4B6F-905A-D7C936D18C5F">
+        <dmn:inputEntry id="_718FA6D7-343B-44DD-9C79-77EE00402882">
+          <dmn:text>"meets AUSNZ Parking Facilities Standard"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_60602209-7A0B-4583-941A-9768A9AD8A2F">
+          <dmn:text>"meets AUSNZ Parking Facilities Standard"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D457EC67-1EED-45A1-8B39-0B4299704F8C">
+          <dmn:text>"I don't know"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_01D32315-8640-4B36-B1AD-FE1F06A5CD5B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_2E41A66C-F6AD-4FB2-8FF5-02E10FA21EF7">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_E24B08CF-67E3-49B3-9E5A-791C1EBF62AD">
+        <dmn:inputEntry id="_FF2FE069-4B1F-47AB-A2B2-85E4F0E747FF">
+          <dmn:text>"meets AUSNZ Parking Facilities Standard"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_72075809-F827-4F58-87B2-1ED3B995CB42">
+          <dmn:text>"meets AUSNZ Parking Facilities Standard"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_06A26B5C-67F3-4033-BAFB-5D9953E72037">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0A11368C-C07C-4F94-B647-333DECB2AFDE">
+          <dmn:text>"I don't know"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_26B1AE9F-62CF-4C85-802F-5B3C5C9A5097">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_20CFCA9B-840A-480C-A395-5B528D3AE017">
+        <dmn:inputEntry id="_73627471-154F-469C-9794-A33CFA048C09">
+          <dmn:text>"meets AUSNZ Parking Facilities Standard"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4798FE3A-174A-4E56-910A-1D8E924C4828">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_52507FDC-1AB0-4198-A180-9C0B1FA4C669">
+          <dmn:text>"Yes"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4EA56991-3047-4B75-BFD5-1851DCBFCF8F">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_0409D6C3-4ED2-43ED-AA90-514216FE65CC">
+          <dmn:text>true</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_8A6B11EE-E565-42DE-8177-5B1493D40571">
+        <dmn:inputEntry id="_3DA13CAA-F4C5-4FA6-B56A-4A61EF9F5B91">
+          <dmn:text>"meets AUSNZ Parking Facilities Standard"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2BE9DD50-2AFB-4CF0-B5D8-F73ADC6163DC">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B02C7A51-95A8-4F14-8D2D-C7D68EB1E6D2">
+          <dmn:text>"No"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E74C8EF6-4314-4DE0-9B25-D05A7E82B822">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_9E80D807-B980-4B43-BE12-46CC2F6EFA24">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_1F8CABB6-CA57-47B5-8AEB-7800DCFD7E07">
+        <dmn:inputEntry id="_86D22DC4-758F-48EA-AF6F-6D7CD96D10C7">
+          <dmn:text>"meets AUSNZ Parking Facilities Standard"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DA8F51BB-E402-4B28-8888-A50586B397B7">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_EAA63822-AE00-4931-A54E-471A4661212D">
+          <dmn:text>"I don't know"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_06B3E711-9AB0-4011-9BA4-B48B0C4A92B5">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_B1BA547A-F58F-4B1B-85D7-057A679B8598">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
   </dmn:decision>
   <dmn:decision id="_37ED1347-E670-4265-A37A-7456E404B63A" name="S5.6.1.4.5Met">
     <dmn:extensionElements/>
@@ -1423,8 +1587,14 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
             <kie:width>340.0</kie:width>
             <kie:width>100.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_E15C04A1-1CDA-4C50-B467-53B45471C3E5">
-            <kie:width>958.0</kie:width>
+          <kie:ComponentWidths dmnElementRef="_063E0338-343C-4BE4-95A1-911DB859E0E2">
+            <kie:width>50.0</kie:width>
+            <kie:width>154.0</kie:width>
+            <kie:width>177.0</kie:width>
+            <kie:width>167.0</kie:width>
+            <kie:width>172.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_CFDB1004-F1E0-4D58-9EC1-D6F1A7CCAC2F">
             <kie:width>958.0</kie:width>
