@@ -24,9 +24,6 @@
     <dmn:informationRequirement id="_76878C6D-9505-4DE7-8C12-D9C9852E6787">
       <dmn:requiredInput href="#_19FE0590-53C4-4FE2-9A3B-3962EB47B36B"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_3A5C850B-F386-40D4-9247-3C24B7F87F40">
-      <dmn:requiredInput href="#_C93DBBAC-ABF5-42DC-8973-AE32F95B8C83"/>
-    </dmn:informationRequirement>
     <dmn:informationRequirement id="_C8071E0E-A0A0-4A47-89D6-40E0502ADACF">
       <dmn:requiredDecision href="#_5CE9909E-F9B0-416E-B45F-BDD1EA62FC45"/>
     </dmn:informationRequirement>
@@ -48,11 +45,9 @@ list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "OR2 -
   (not(list contains(Activities_Value[Noun="accessory building"].Verb, "build")) and  &#xd;
   not(list contains(Activities_Value[Noun="accessory building"].Verb, "add to"))) then &#xd;
   (AccessoryBuildingStructureFrontYard + 1) else&#xd;
-  if ProposedSetBackAccessoryBuildingRoad2 > 0 and&#xd;
-  not(S5.6.2.2.1Met) then (MinimumWidthOfRoad2 + 1) else&#xd;
+  if ProposedSetBackAccessoryBuildingRoad2 > 0 then (MinimumWidthOfRoad2 + 1) else&#xd;
   if AdjoiningBuildingLineAccessoryBuilding_Value then (AdjoiningBuildingLineAccessoryBuilding + 1) else&#xd;
-  if CornerSiteProposedSetBackAccessoryBuilding > 0 and&#xd;
-  not(S5.6.2.2.1Met) then &#xd;
+  if CornerSiteProposedSetBackAccessoryBuilding > 0 then &#xd;
   CornerSiteProposedSetBackAccessoryBuilding + 1 else 0&#xd;
 ) else 0&#xd;
 &#xd;
@@ -372,9 +367,6 @@ FrontYardsAccessoryBuildingActivities(Activities_Value)</dmn:text>
     <dmn:informationRequirement id="_289DD497-104E-4CB7-A10F-EA52CF28DE04">
       <dmn:requiredDecision href="#_6D27A50D-38E3-4812-93FC-98AA523D4B24"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_C2892479-C805-4CBA-BB71-0B162BF81A99">
-      <dmn:requiredInput href="#_C93DBBAC-ABF5-42DC-8973-AE32F95B8C83"/>
-    </dmn:informationRequirement>
     <dmn:informationRequirement id="_3D4D143E-9B70-40AA-9826-6B021902CE5E">
       <dmn:requiredInput href="#_976EAD2E-89D3-422A-8136-08C6222B1FBA"/>
     </dmn:informationRequirement>
@@ -466,9 +458,6 @@ else 0&#xd;
     <dmn:allowedAnswers>yes
 no</dmn:allowedAnswers>
     <dmn:variable id="_93B2FBFA-2798-445C-81B3-2757AE758DE2" name="AdjoiningBuildingLineAccessoryBuilding" typeRef="number"/>
-    <dmn:informationRequirement id="_D1EE5E89-0D0D-4C32-A739-953381B5FB61">
-      <dmn:requiredInput href="#_C93DBBAC-ABF5-42DC-8973-AE32F95B8C83"/>
-    </dmn:informationRequirement>
     <dmn:informationRequirement id="_68E42475-2DF6-4BAB-9013-CDDA65FF920D">
       <dmn:requiredDecision href="#_72CB6906-5156-460A-9F5A-2F551A3D8C33"/>
     </dmn:informationRequirement>
@@ -492,14 +481,12 @@ no</dmn:allowedAnswers>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_BEF91882-DC9F-4C1D-AECF-918AE13B7EE9">
       <dmn:text>if ProposedSetBackAccessoryBuilding > 0 and&#xd;
-not(list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential")) and &#xd;
-not(S5.6.2.2.1Met) then&#xd;
+not(list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential")) then&#xd;
 (ProposedSetBackAccessoryBuilding + 1) else (&#xd;
   if CuldesacDeadendSite_Value and&#xd;
   ProposedSetBackAccessoryBuilding_Value &lt; 3 then&#xd;
   (ProposedSetBackAccessoryBuilding + 1) else (&#xd;
-    if MinimumWidthOfRoad > 0 and&#xd;
-    not(S5.6.2.2.1Met) then&#xd;
+    if MinimumWidthOfRoad > 0 then&#xd;
     MinimumWidthOfRoad + 1 else 0&#xd;
   )&#xd;
 )&#xd;
@@ -695,9 +682,6 @@ else 0&#xd;
     <dmn:informationRequirement id="_947C5E6A-596A-454F-83B8-C29C0D99690F">
       <dmn:requiredInput href="#_19FE0590-53C4-4FE2-9A3B-3962EB47B36B"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_7208110C-658C-4E68-9519-156D9C52E849">
-      <dmn:requiredInput href="#_C93DBBAC-ABF5-42DC-8973-AE32F95B8C83"/>
-    </dmn:informationRequirement>
     <dmn:informationRequirement id="_1F0936AC-53C3-4302-9FDB-9B8820988509">
       <dmn:requiredDecision href="#_5CE9909E-F9B0-416E-B45F-BDD1EA62FC45"/>
     </dmn:informationRequirement>
@@ -718,8 +702,7 @@ not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "O
   (not(list contains(Activities_Value[Noun="accessory building"].Verb, "build")) and  &#xd;
   not(list contains(Activities_Value[Noun="accessory building"].Verb, "add to"))) then &#xd;
   (AccessoryBuildingStructureFrontYard + 1) else&#xd;
-  if ProposedSetBackAccessoryBuildingRoad2 > 0 and&#xd;
-  not(S5.6.2.2.1Met) then (MinimumWidthOfRoad2 + 1) else&#xd;
+  if ProposedSetBackAccessoryBuildingRoad2 > 0 then (MinimumWidthOfRoad2 + 1) else&#xd;
   if AdjoiningBuildingLineAccessoryBuilding_Value then (AdjoiningBuildingLineAccessoryBuilding + 1) else 0&#xd;
 ) else 0&#xd;
 &#xd;
@@ -744,9 +727,6 @@ not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "O
     <dmn:variable id="_2DB885A3-3375-4CE1-B77E-A7EFE280CD32" name="MinimumWidthOfRoad1" typeRef="number"/>
     <dmn:informationRequirement id="_4D732920-BC7C-4F30-A65F-42B514666EB8">
       <dmn:requiredDecision href="#_2E8B5249-BA14-485A-85A0-AFCE8C2AA1B7"/>
-    </dmn:informationRequirement>
-    <dmn:informationRequirement id="_17A1AA3C-4034-4C1B-B64E-88A772BBFC90">
-      <dmn:requiredInput href="#_C93DBBAC-ABF5-42DC-8973-AE32F95B8C83"/>
     </dmn:informationRequirement>
     <dmn:informationRequirement id="_53EA70DF-6D4C-4C72-9C73-7AA7A7F10ACC">
       <dmn:requiredInput href="#_4A12512F-D824-4ACA-B66A-FCB3F0836A26"/>
@@ -1173,10 +1153,6 @@ ProposedSetBackAccessoryBuildingRoad1 + 1 else&#xd;
         <di:waypoint x="232.59813084112147" y="934"/>
         <di:waypoint x="561" y="1035"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_3A5C850B-F386-40D4-9247-3C24B7F87F40" dmnElementRef="_3A5C850B-F386-40D4-9247-3C24B7F87F40">
-        <di:waypoint x="1140" y="656"/>
-        <di:waypoint x="561" y="1035"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_C8071E0E-A0A0-4A47-89D6-40E0502ADACF" dmnElementRef="_C8071E0E-A0A0-4A47-89D6-40E0502ADACF">
         <di:waypoint x="870" y="907"/>
         <di:waypoint x="561" y="1035"/>
@@ -1301,10 +1277,6 @@ ProposedSetBackAccessoryBuildingRoad1 + 1 else&#xd;
         <di:waypoint x="871" y="823"/>
         <di:waypoint x="870" y="907"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_C2892479-C805-4CBA-BB71-0B162BF81A99" dmnElementRef="_C2892479-C805-4CBA-BB71-0B162BF81A99">
-        <di:waypoint x="1140" y="656"/>
-        <di:waypoint x="870" y="907"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_3D4D143E-9B70-40AA-9826-6B021902CE5E" dmnElementRef="_3D4D143E-9B70-40AA-9826-6B021902CE5E">
         <di:waypoint x="1139" y="905.6842105263158"/>
         <di:waypoint x="870" y="907"/>
@@ -1340,10 +1312,6 @@ ProposedSetBackAccessoryBuildingRoad1 + 1 else&#xd;
       <dmndi:DMNEdge id="dmnedge-_FA9A6E1C-08CD-4587-B4D8-46ABBBD0BCEF" dmnElementRef="_FA9A6E1C-08CD-4587-B4D8-46ABBBD0BCEF">
         <di:waypoint x="240.59813084112147" y="370"/>
         <di:waypoint x="870" y="480"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_D1EE5E89-0D0D-4C32-A739-953381B5FB61" dmnElementRef="_D1EE5E89-0D0D-4C32-A739-953381B5FB61">
-        <di:waypoint x="1140" y="656"/>
-        <di:waypoint x="695" y="568"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_68E42475-2DF6-4BAB-9013-CDDA65FF920D" dmnElementRef="_68E42475-2DF6-4BAB-9013-CDDA65FF920D">
         <di:waypoint x="870" y="480"/>
@@ -1469,10 +1437,6 @@ ProposedSetBackAccessoryBuildingRoad1 + 1 else&#xd;
         <di:waypoint x="232.59813084112147" y="934"/>
         <di:waypoint x="820" y="1035"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_7208110C-658C-4E68-9519-156D9C52E849" dmnElementRef="_7208110C-658C-4E68-9519-156D9C52E849">
-        <di:waypoint x="1140" y="656"/>
-        <di:waypoint x="820" y="1035"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_1F0936AC-53C3-4302-9FDB-9B8820988509" dmnElementRef="_1F0936AC-53C3-4302-9FDB-9B8820988509">
         <di:waypoint x="870" y="907"/>
         <di:waypoint x="820" y="1035"/>
@@ -1487,10 +1451,6 @@ ProposedSetBackAccessoryBuildingRoad1 + 1 else&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_4D732920-BC7C-4F30-A65F-42B514666EB8" dmnElementRef="_4D732920-BC7C-4F30-A65F-42B514666EB8">
         <di:waypoint x="870" y="666"/>
-        <di:waypoint x="929" y="740"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_17A1AA3C-4034-4C1B-B64E-88A772BBFC90" dmnElementRef="_17A1AA3C-4034-4C1B-B64E-88A772BBFC90">
-        <di:waypoint x="1140" y="656"/>
         <di:waypoint x="929" y="740"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_53EA70DF-6D4C-4C72-9C73-7AA7A7F10ACC" dmnElementRef="_53EA70DF-6D4C-4C72-9C73-7AA7A7F10ACC">
