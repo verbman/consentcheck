@@ -106,15 +106,19 @@ Alterations and additions to existing residential buildings constructed prior to
     <dmn:informationRequirement id="_200BD051-EFB6-479C-90A1-DB0EBEAF0478">
       <dmn:requiredDecision href="#_B0C85E95-1F10-4E92-85E7-3ABA5A15522A"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_9D0F9BE5-595E-46DA-BC2D-BC713735BAA5">
+      <dmn:requiredDecision href="#_5650BE55-3461-4935-BDEE-8FF08C10D234"/>
+    </dmn:informationRequirement>
     <dmn:authorityRequirement id="_39999380-8E09-4597-BA0B-D992EEA21C8F">
       <dmn:requiredAuthority href="#_E63C7A33-7F64-4653-9E97-019410AC8BAE"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_6655FE8C-AE26-41AA-A961-160301810E5B">
-      <dmn:text>if not(BuildingConstructedBefore27July2000) then &#xd;
-  if ((S5.6.2.9.1Met and S5.6.2.9.2Met and S5.6.2.9.3Met) or&#xd;
-  (S5.6.2.9.1Met and S5.6.2.9.2Met = null and S5.6.2.9.3Met = null) or&#xd;
-  (S5.6.2.9.2Met and S5.6.2.9.3Met and S5.6.2.9.1Met = null) or&#xd;
-  (S5.6.2.9.2Met and S5.6.2.9.3Met = null and S5.6.2.9.1Met = null)) then true else false&#xd;
+      <dmn:text>if S5.6.2.5.3Met then true else&#xd;
+  if not(BuildingConstructedBefore27July2000) then &#xd;
+    if ((S5.6.2.9.1Met and S5.6.2.9.2Met and S5.6.2.9.3Met) or&#xd;
+    (S5.6.2.9.1Met and S5.6.2.9.2Met = null and S5.6.2.9.3Met = null) or&#xd;
+    (S5.6.2.9.2Met and S5.6.2.9.3Met and S5.6.2.9.1Met = null) or&#xd;
+    (S5.6.2.9.2Met and S5.6.2.9.3Met = null and S5.6.2.9.1Met = null)) then true else false&#xd;
 else null&#xd;
 &#xd;
 &#xd;
@@ -357,7 +361,15 @@ not(AdditionIncreaseNonComplianceAccessoryBuilding) then true else&#xd;
     <dmn:informationRequirement id="_193ABF24-FF84-4AC7-92E9-5D4884E84C46">
       <dmn:requiredDecision href="#_85642967-F02A-4C13-9D7D-F7BF603C3249"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_415F9CA3-44D1-4BA9-A1D8-FD362E16EDEE">
+      <dmn:requiredDecision href="#_5650BE55-3461-4935-BDEE-8FF08C10D234"/>
+    </dmn:informationRequirement>
     <dmn:decisionTable id="_6BBA7F9A-154F-4C21-B2A6-AE5171F3B59C" hitPolicy="COLLECT" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_DF293A04-88BC-4372-AFC1-13F86BE1F501">
+        <dmn:inputExpression id="_AFA8CF2C-68B1-46FA-9D93-D8E501791CAA" typeRef="boolean">
+          <dmn:text>S5.6.2.5.3Met</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
       <dmn:input id="_56158215-28D4-4E72-BCB8-2A98E84CD86D">
         <dmn:inputExpression id="_AA21BFF2-0706-4674-AB16-8390E1B49F21" typeRef="boolean">
           <dmn:text>S5.6.2.9.1Met</dmn:text>
@@ -376,7 +388,33 @@ not(AdditionIncreaseNonComplianceAccessoryBuilding) then true else&#xd;
       <dmn:output id="_445FECFB-8E01-49B5-8B22-EE9E2139C02C" name="name" typeRef="string"/>
       <dmn:output id="_19116A54-A9CF-47B8-AE85-A83505798FF5" name="uuids" typeRef="string"/>
       <dmn:annotation name=""/>
+      <dmn:rule id="_B1A4CD8A-2C8F-4A07-84FD-A67019391802">
+        <dmn:inputEntry id="_FB70BD8A-8050-488A-9977-E01BC7A9B88E">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_65ED26F4-7428-401F-9F7F-60042E99C52C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_03D90414-C167-4E10-AC5F-2FC1C088F369">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3F3EF00F-5854-44B6-890C-94EFA2429B37">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_4E8CE371-C5CD-4AF5-8400-A0D8F392CD5D">
+          <dmn:text>"5.6.2.5.3"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_18C2A5A3-054C-4E02-82C1-2D22555A0BA6">
+          <dmn:text>"241400c2-d6bf-4db5-b4d3-df50f518f421"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
       <dmn:rule id="_DDDF150A-3A02-425B-A5E8-715AECB518C9">
+        <dmn:inputEntry id="_9DC9BA2E-471C-4CFF-9716-FC2936663BC5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
         <dmn:inputEntry id="_5CEB66F0-1AD2-4079-A111-C04224884607">
           <dmn:text>false</dmn:text>
         </dmn:inputEntry>
@@ -397,6 +435,9 @@ not(AdditionIncreaseNonComplianceAccessoryBuilding) then true else&#xd;
         </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_F6B451F6-3BF6-4619-913B-5A382381B1D0">
+        <dmn:inputEntry id="_83C53891-7527-4E80-9C7C-B09E4ABD23E8">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
         <dmn:inputEntry id="_7A681619-C8DE-49F5-B8E7-C449CB923AE3">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
@@ -417,6 +458,9 @@ not(AdditionIncreaseNonComplianceAccessoryBuilding) then true else&#xd;
         </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_C575B273-1A86-463A-8A05-8B3548FEDBB7">
+        <dmn:inputEntry id="_78C25722-1C13-4322-BE31-9B72C530B400">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
         <dmn:inputEntry id="_33D94A9B-B3D0-4042-9062-756191DFE9CF">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
@@ -568,6 +612,10 @@ else 0&#xd;
   <dmn:inputData id="_9AF94EE9-C81E-4E15-8287-3AFE94D76B74" name="SpatialLayers">
     <dmn:extensionElements/>
     <dmn:variable id="_5C72E1F7-03EE-448F-A3AE-9E65BCD42720" name="SpatialLayers" typeRef="Types.SpatialLayers"/>
+  </dmn:inputData>
+  <dmn:inputData id="_EEA9821A-BF5A-47D1-BA6F-71CE5CAE5409" name="AlterationWithinExistingVolumeAccessoryBuilding-1">
+    <dmn:extensionElements/>
+    <dmn:variable id="_5A99E1F6-6042-403E-B24F-429A1429212B" name="AlterationWithinExistingVolumeAccessoryBuilding-1" typeRef="boolean"/>
   </dmn:inputData>
   <dmn:decision id="_69755C18-1F1F-4AFA-A816-9BB075FBF7FE" name="S5.6.2.9.1">
     <dmn:extensionElements/>
@@ -735,10 +783,50 @@ list contains(Activities[Noun="accessory building"].Verb, "alter") then &#xd;
       </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
+  <dmn:decision id="_CBFB614E-2457-42D9-9BC6-C997B11AA8B7" name="S5.6.2.5.3">
+    <dmn:extensionElements/>
+    <dmn:variable id="_EDC6BC7F-FDEF-4C71-8F57-C826C9374116" name="S5.6.2.5.3" typeRef="string"/>
+    <dmn:informationRequirement id="_D724B13C-9148-4F8E-8E3A-8E7A4D3CB80A">
+      <dmn:requiredInput href="#_FF9E4109-6622-4987-BA94-B2DD13F30A1C"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_BE09D5E4-07FF-4548-98BF-2D60EB44C89B">
+      <dmn:requiredInput href="#_9AF94EE9-C81E-4E15-8287-3AFE94D76B74"/>
+    </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_4EEB0725-8813-46D0-95EE-0361FBCAE57E">
+      <dmn:requiredKnowledge href="#_D8F01EF1-7326-44E7-B8BB-CB6975F03CFB"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_FF4E1DB7-8927-4372-834E-AF80CE4005CE">
+      <dmn:requiredKnowledge href="#_0CD77B39-EC94-4EB6-8D36-74859D41E58C"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_1408CD40-B50A-4E4F-AB1A-072669BFA243">
+      <dmn:requiredKnowledge href="#_9C36EA52-022B-417B-87C0-D01E9CB65009"/>
+    </dmn:knowledgeRequirement>
+    <dmn:authorityRequirement id="_6B3FE53F-3557-475A-B36A-89B02BD6AB32">
+      <dmn:requiredAuthority href="#_6A6AAFA5-2A08-442F-8E16-894243A91B7C"/>
+    </dmn:authorityRequirement>
+    <dmn:literalExpression id="_95DD283C-2E26-4F62-AC69-36C25B4B8C22">
+      <dmn:text>if (InnerResidentialArea(SpatialLayers) or&#xd;
+MediumDensityResidentialArea(SpatialLayers) or&#xd;
+OuterResidentialArea(SpatialLayers)) and&#xd;
+(list contains(Activities[Noun="residential building"].Verb, "add to") or &#xd;
+list contains(Activities[Noun="residential building"].Verb, "alter")) then &#xd;
+"existing building compliant" else null&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:inputData id="_1AA707B8-0814-4363-9523-117A36E3C628" name="ExistingComplianceAccessoryBuildingSiteCoverageYards">
     <dmn:extensionElements/>
     <dmn:variable id="_3F67429A-0A07-495B-AD74-207EC92C8F26" name="ExistingComplianceAccessoryBuildingSiteCoverageYards" typeRef="boolean"/>
   </dmn:inputData>
+  <dmn:knowledgeSource id="_6A6AAFA5-2A08-442F-8E16-894243A91B7C" name="DP_5.6.2.5.3" locationURI="241400c2-d6bf-4db5-b4d3-df50f518f421">
+    <dmn:description>Wellington City District Plan Residential Standard
+Alterations and additions to buildings with an existing non-compliance 5.6.2.5.3</dmn:description>
+    <dmn:extensionElements/>
+    <dmn:type></dmn:type>
+  </dmn:knowledgeSource>
   <dmn:inputData id="_DC5D9C43-5312-4E64-AF65-ACEE6F26336E" name="AdditionIncreaseNonComplianceAccessoryBuilding">
     <dmn:extensionElements/>
     <dmn:variable id="_4907D398-9D47-41AA-A2ED-14BE08308309" name="AdditionIncreaseNonComplianceAccessoryBuilding" typeRef="boolean"/>
@@ -940,6 +1028,28 @@ Alterations and additions to buildings with an existing non-compliance 5.6.2.9.1
     <dmn:extensionElements/>
     <dmn:type></dmn:type>
   </dmn:knowledgeSource>
+  <dmn:decision id="_5650BE55-3461-4935-BDEE-8FF08C10D234" name="S5.6.2.5.3Met">
+    <dmn:extensionElements/>
+    <dmn:variable id="_B2F313A2-187D-4778-B110-34A529E86CF7" name="S5.6.2.5.3Met" typeRef="boolean"/>
+    <dmn:informationRequirement id="_6CF86ED7-3814-4500-B783-57E477330A03">
+      <dmn:requiredDecision href="#_CBFB614E-2457-42D9-9BC6-C997B11AA8B7"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_FBB4C05F-E409-4E70-A96F-0D479BD2F3FA">
+      <dmn:requiredInput href="#_5ED7285F-EF25-4EB0-BF42-A2BC8435F880"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_3F02ECD2-BB70-4134-8E16-28F612170335">
+      <dmn:requiredInput href="#_1AA707B8-0814-4363-9523-117A36E3C628"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_F21D9A9E-7C62-4000-9934-C182A315DA00">
+      <dmn:text>if S5.6.2.5.3 = "existing building compliant" and &#xd;
+ExistingAccessoryBuildingComplianceHeightBRP and&#xd;
+ExistingComplianceAccessoryBuildingSiteCoverageYards then true else&#xd;
+  if S5.6.2.5.3 = null then null else false&#xd;
+&#xd;
+&#xd;
+  </dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:businessKnowledgeModel id="_0CD77B39-EC94-4EB6-8D36-74859D41E58C" name="MediumDensityResidentialArea">
     <dmn:extensionElements/>
     <dmn:variable id="_C7C20CCE-2818-4586-B61F-39136FB5B850" name="MediumDensityResidentialArea" typeRef="boolean"/>
@@ -1177,20 +1287,11 @@ Alterations and additions to buildings with an existing non-compliance 5.6.2.9.1
             <kie:width>50.0</kie:width>
             <kie:width>658.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_5D23AB93-2F26-4A5F-AE6F-C8C61949BE30">
-            <kie:width>50.0</kie:width>
-            <kie:width>100.0</kie:width>
-            <kie:width>100.0</kie:width>
-            <kie:width>100.0</kie:width>
-            <kie:width>100.0</kie:width>
-            <kie:width>100.0</kie:width>
-            <kie:width>101.0</kie:width>
-            <kie:width>111.0</kie:width>
-            <kie:width>332.0</kie:width>
-            <kie:width>100.0</kie:width>
-          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_C4E8CDC4-B839-45B4-AEE1-E3CBB5542CEE">
             <kie:width>641.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_95DD283C-2E26-4F62-AC69-36C25B4B8C22">
+            <kie:width>960.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_922FC41C-4C05-4A74-8C54-0F9609C18FBC">
             <kie:width>658.0</kie:width>
@@ -1201,6 +1302,7 @@ Alterations and additions to buildings with an existing non-compliance 5.6.2.9.1
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_6BBA7F9A-154F-4C21-B2A6-AE5171F3B59C">
             <kie:width>50.0</kie:width>
+            <kie:width>100.0</kie:width>
             <kie:width>100.0</kie:width>
             <kie:width>100.0</kie:width>
             <kie:width>101.0</kie:width>
@@ -1239,6 +1341,9 @@ Alterations and additions to buildings with an existing non-compliance 5.6.2.9.1
             <kie:width>308.0</kie:width>
             <kie:width>328.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_F21D9A9E-7C62-4000-9934-C182A315DA00">
+            <kie:width>958.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_EB1DBEFB-8365-4BC6-BED4-E1FFC3D340FD">
             <kie:width>716.0</kie:width>
           </kie:ComponentWidths>
@@ -1248,6 +1353,18 @@ Alterations and additions to buildings with an existing non-compliance 5.6.2.9.1
           <kie:ComponentWidths dmnElementRef="_38D60E38-15F0-47F7-844E-014F3244E311">
             <kie:width>50.0</kie:width>
             <kie:width>658.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_5D23AB93-2F26-4A5F-AE6F-C8C61949BE30">
+            <kie:width>50.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>101.0</kie:width>
+            <kie:width>111.0</kie:width>
+            <kie:width>332.0</kie:width>
+            <kie:width>100.0</kie:width>
           </kie:ComponentWidths>
         </kie:ComponentsWidthsExtension>
       </di:extension>
@@ -1350,6 +1467,15 @@ Alterations and additions to buildings with an existing non-compliance 5.6.2.9.1
         <dc:Bounds x="467" y="201" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_EEA9821A-BF5A-47D1-BA6F-71CE5CAE5409" dmnElementRef="_EEA9821A-BF5A-47D1-BA6F-71CE5CAE5409" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="8">
+          <dmndi:FillColor red="243" green="229" blue="248"/>
+          <dmndi:StrokeColor red="210" green="193" blue="208"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="465.5981308411215" y="266" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_BB23ECF6-ABC5-4B77-BB28-5016CD0E58A9" dmnElementRef="_BB23ECF6-ABC5-4B77-BB28-5016CD0E58A9" isCollapsed="false">
         <dmndi:DMNStyle>
           <dmndi:FillColor red="255" green="255" blue="255"/>
@@ -1377,15 +1503,6 @@ Alterations and additions to buildings with an existing non-compliance 5.6.2.9.1
         <dc:Bounds x="64.59813084112147" y="549" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_7DFA79C0-1D68-4C14-B997-C3453CD4D2FF" dmnElementRef="_7DFA79C0-1D68-4C14-B997-C3453CD4D2FF" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="204" green="218" blue="183"/>
-          <dmndi:StrokeColor red="133" green="150" blue="99"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="1285" y="552" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_B0C85E95-1F10-4E92-85E7-3ABA5A15522A" dmnElementRef="_B0C85E95-1F10-4E92-85E7-3ABA5A15522A" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="238" green="238" blue="238"/>
@@ -1393,6 +1510,15 @@ Alterations and additions to buildings with an existing non-compliance 5.6.2.9.1
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="467" y="387.3157894736842" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_CBFB614E-2457-42D9-9BC6-C997B11AA8B7" dmnElementRef="_CBFB614E-2457-42D9-9BC6-C997B11AA8B7" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="169" green="192" blue="225"/>
+          <dmndi:StrokeColor red="71" green="104" blue="161"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="331" y="65" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_D8F01EF1-7326-44E7-B8BB-CB6975F03CFB" dmnElementRef="_D8F01EF1-7326-44E7-B8BB-CB6975F03CFB" isCollapsed="false">
@@ -1411,6 +1537,15 @@ Alterations and additions to buildings with an existing non-compliance 5.6.2.9.1
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="1285" y="487" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_6A6AAFA5-2A08-442F-8E16-894243A91B7C" dmnElementRef="_6A6AAFA5-2A08-442F-8E16-894243A91B7C" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="327.25" y="4.6842105263157805" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_B6634FCB-B429-49FD-8942-08E4F2A6DE29" dmnElementRef="_B6634FCB-B429-49FD-8942-08E4F2A6DE29" isCollapsed="false">
@@ -1539,6 +1674,15 @@ Alterations and additions to buildings with an existing non-compliance 5.6.2.9.1
         <dc:Bounds x="1285" y="121" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_5650BE55-3461-4935-BDEE-8FF08C10D234" dmnElementRef="_5650BE55-3461-4935-BDEE-8FF08C10D234" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="463" y="64" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_2E65C1B8-11A6-4A52-9A29-127CDF43837B" dmnElementRef="_2E65C1B8-11A6-4A52-9A29-127CDF43837B" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="224" green="204" blue="168"/>
@@ -1584,6 +1728,15 @@ Alterations and additions to buildings with an existing non-compliance 5.6.2.9.1
         <dc:Bounds x="64" y="481" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_7DFA79C0-1D68-4C14-B997-C3453CD4D2FF" dmnElementRef="_7DFA79C0-1D68-4C14-B997-C3453CD4D2FF" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="204" green="218" blue="183"/>
+          <dmndi:StrokeColor red="133" green="150" blue="99"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="1285" y="552" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNEdge id="dmnedge-_7399E61C-C404-49CD-BDD5-9FE9A0E1F267" dmnElementRef="_7399E61C-C404-49CD-BDD5-9FE9A0E1F267">
         <di:waypoint x="798" y="225"/>
         <di:waypoint x="797" y="104"/>
@@ -1614,6 +1767,10 @@ Alterations and additions to buildings with an existing non-compliance 5.6.2.9.1
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_39999380-8E09-4597-BA0B-D992EEA21C8F" dmnElementRef="_39999380-8E09-4597-BA0B-D992EEA21C8F">
         <di:waypoint x="796.5981308411215" y="160.68421052631578"/>
+        <di:waypoint x="798" y="225"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_9D0F9BE5-595E-46DA-BC2D-BC713735BAA5" dmnElementRef="_9D0F9BE5-595E-46DA-BC2D-BC713735BAA5">
+        <di:waypoint x="513" y="89"/>
         <di:waypoint x="798" y="225"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_ADB55B0D-1019-4EC0-A6EA-8CD14BDC5CF0" dmnElementRef="_ADB55B0D-1019-4EC0-A6EA-8CD14BDC5CF0">
@@ -1668,30 +1825,6 @@ Alterations and additions to buildings with an existing non-compliance 5.6.2.9.1
         <di:waypoint x="798" y="411"/>
         <di:waypoint x="1335" y="286"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_C4D41AFE-B980-4B3B-844F-8AC4C489D859" dmnElementRef="_C4D41AFE-B980-4B3B-844F-8AC4C489D859">
-        <di:waypoint x="947.2990654205607" y="406.3421052631579"/>
-        <di:waypoint x="1335" y="577"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_5E30B4B9-E5DD-4F7A-9427-DED129A52F36" dmnElementRef="_5E30B4B9-E5DD-4F7A-9427-DED129A52F36">
-        <di:waypoint x="517" y="226"/>
-        <di:waypoint x="1335" y="577"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_9588EC10-015E-4D22-9005-B6D64C4619DA" dmnElementRef="_9588EC10-015E-4D22-9005-B6D64C4619DA">
-        <di:waypoint x="517" y="412.3157894736842"/>
-        <di:waypoint x="1335" y="577"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_0DC3E17F-F124-4A82-BCFD-AAD1D2BEFC5D" dmnElementRef="_0DC3E17F-F124-4A82-BCFD-AAD1D2BEFC5D">
-        <di:waypoint x="517" y="623"/>
-        <di:waypoint x="1335" y="577"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_AB4E6BD3-70E6-40DF-9917-C73809F97D40" dmnElementRef="_AB4E6BD3-70E6-40DF-9917-C73809F97D40">
-        <di:waypoint x="114.5981308411215" y="367.6842105263158"/>
-        <di:waypoint x="1335" y="577"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_DD2719AE-AD1C-4F68-91EA-F3BDA4EF4641" dmnElementRef="_DD2719AE-AD1C-4F68-91EA-F3BDA4EF4641">
-        <di:waypoint x="931" y="225"/>
-        <di:waypoint x="1335" y="577"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_41E550CE-759E-4A6E-AC5C-3B39D0D6ACC4" dmnElementRef="_41E550CE-759E-4A6E-AC5C-3B39D0D6ACC4">
         <di:waypoint x="379" y="412"/>
         <di:waypoint x="517" y="412.3157894736842"/>
@@ -1699,6 +1832,30 @@ Alterations and additions to buildings with an existing non-compliance 5.6.2.9.1
       <dmndi:DMNEdge id="dmnedge-_39C67C2B-D20C-4F15-974F-F6BB412DAA33" dmnElementRef="_39C67C2B-D20C-4F15-974F-F6BB412DAA33">
         <di:waypoint x="515.5981308411215" y="340.3421052631579"/>
         <di:waypoint x="517" y="412.3157894736842"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_6B3FE53F-3557-475A-B36A-89B02BD6AB32" dmnElementRef="_6B3FE53F-3557-475A-B36A-89B02BD6AB32">
+        <di:waypoint x="377.25" y="29.68421052631578"/>
+        <di:waypoint x="381" y="90"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_D724B13C-9148-4F8E-8E3A-8E7A4D3CB80A" dmnElementRef="_D724B13C-9148-4F8E-8E3A-8E7A4D3CB80A">
+        <di:waypoint x="113.59813084112147" y="183.68421052631578"/>
+        <di:waypoint x="381" y="90"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_BE09D5E4-07FF-4548-98BF-2D60EB44C89B" dmnElementRef="_BE09D5E4-07FF-4548-98BF-2D60EB44C89B">
+        <di:waypoint x="114.5981308411215" y="367.6842105263158"/>
+        <di:waypoint x="381" y="90"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_4EEB0725-8813-46D0-95EE-0361FBCAE57E" dmnElementRef="_4EEB0725-8813-46D0-95EE-0361FBCAE57E">
+        <di:waypoint x="114" y="437"/>
+        <di:waypoint x="381" y="90"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_FF4E1DB7-8927-4372-834E-AF80CE4005CE" dmnElementRef="_FF4E1DB7-8927-4372-834E-AF80CE4005CE">
+        <di:waypoint x="114" y="506"/>
+        <di:waypoint x="381" y="90"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_1408CD40-B50A-4E4F-AB1A-072669BFA243" dmnElementRef="_1408CD40-B50A-4E4F-AB1A-072669BFA243">
+        <di:waypoint x="114.59813084112147" y="574"/>
+        <di:waypoint x="381" y="90"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_8F0AD37B-B281-4E8D-92F6-77E1FE5DF333" dmnElementRef="_8F0AD37B-B281-4E8D-92F6-77E1FE5DF333">
         <di:waypoint x="517" y="226"/>
@@ -1710,6 +1867,10 @@ Alterations and additions to buildings with an existing non-compliance 5.6.2.9.1
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_193ABF24-FF84-4AC7-92E9-5D4884E84C46" dmnElementRef="_193ABF24-FF84-4AC7-92E9-5D4884E84C46">
         <di:waypoint x="517" y="623"/>
+        <di:waypoint x="1335" y="512"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_415F9CA3-44D1-4BA9-A1D8-FD362E16EDEE" dmnElementRef="_415F9CA3-44D1-4BA9-A1D8-FD362E16EDEE">
+        <di:waypoint x="513" y="89"/>
         <di:waypoint x="1335" y="512"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_3B77B825-3D15-4AB5-AE01-281731FB6319" dmnElementRef="_3B77B825-3D15-4AB5-AE01-281731FB6319">
@@ -1832,6 +1993,18 @@ Alterations and additions to buildings with an existing non-compliance 5.6.2.9.1
         <di:waypoint x="798" y="411"/>
         <di:waypoint x="1335" y="146"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_6CF86ED7-3814-4500-B783-57E477330A03" dmnElementRef="_6CF86ED7-3814-4500-B783-57E477330A03">
+        <di:waypoint x="381" y="90"/>
+        <di:waypoint x="513" y="89"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_FBB4C05F-E409-4E70-A96F-0D479BD2F3FA" dmnElementRef="_FBB4C05F-E409-4E70-A96F-0D479BD2F3FA">
+        <di:waypoint x="114.59813084112147" y="247.34210526315792"/>
+        <di:waypoint x="513" y="114"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_3F02ECD2-BB70-4134-8E16-28F612170335" dmnElementRef="_3F02ECD2-BB70-4134-8E16-28F612170335">
+        <di:waypoint x="113.59813084112147" y="307.3421052631579"/>
+        <di:waypoint x="513" y="89"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_9599160E-98C1-4E65-A6B3-3E05A6AC595F" dmnElementRef="_9599160E-98C1-4E65-A6B3-3E05A6AC595F">
         <di:waypoint x="947.2990654205607" y="406.3421052631579"/>
         <di:waypoint x="798" y="411"/>
@@ -1851,6 +2024,30 @@ Alterations and additions to buildings with an existing non-compliance 5.6.2.9.1
       <dmndi:DMNEdge id="dmnedge-_02C4CE4C-A22E-4450-90A7-9409402F5831" dmnElementRef="_02C4CE4C-A22E-4450-90A7-9409402F5831">
         <di:waypoint x="796.5981308411215" y="346.6842105263158"/>
         <di:waypoint x="798" y="411"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_C4D41AFE-B980-4B3B-844F-8AC4C489D859" dmnElementRef="_C4D41AFE-B980-4B3B-844F-8AC4C489D859">
+        <di:waypoint x="947.2990654205607" y="406.3421052631579"/>
+        <di:waypoint x="1335" y="577"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_5E30B4B9-E5DD-4F7A-9427-DED129A52F36" dmnElementRef="_5E30B4B9-E5DD-4F7A-9427-DED129A52F36">
+        <di:waypoint x="517" y="226"/>
+        <di:waypoint x="1335" y="577"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_9588EC10-015E-4D22-9005-B6D64C4619DA" dmnElementRef="_9588EC10-015E-4D22-9005-B6D64C4619DA">
+        <di:waypoint x="517" y="412.3157894736842"/>
+        <di:waypoint x="1335" y="577"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_0DC3E17F-F124-4A82-BCFD-AAD1D2BEFC5D" dmnElementRef="_0DC3E17F-F124-4A82-BCFD-AAD1D2BEFC5D">
+        <di:waypoint x="517" y="623"/>
+        <di:waypoint x="1335" y="577"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_AB4E6BD3-70E6-40DF-9917-C73809F97D40" dmnElementRef="_AB4E6BD3-70E6-40DF-9917-C73809F97D40">
+        <di:waypoint x="114.5981308411215" y="367.6842105263158"/>
+        <di:waypoint x="1335" y="577"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_DD2719AE-AD1C-4F68-91EA-F3BDA4EF4641" dmnElementRef="_DD2719AE-AD1C-4F68-91EA-F3BDA4EF4641">
+        <di:waypoint x="931" y="225"/>
+        <di:waypoint x="1335" y="577"/>
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
