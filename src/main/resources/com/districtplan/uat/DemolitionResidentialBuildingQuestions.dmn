@@ -18,10 +18,17 @@
     <dmn:informationRequirement id="_654C8A6C-611B-46F8-A620-01E7F59A6A48">
       <dmn:requiredInput href="#_64B0E8D2-91EA-4558-94D7-C526AFAE525E"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_D83AFC8B-AE31-48A5-ACD9-10B7A36C316B">
+      <dmn:requiredInput href="#_BC8E862D-4BE5-4EC8-9C63-A65D685B0C7C"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_0213AE50-E21E-4AE4-ABA6-788E8C483B12">
       <dmn:text>if DemolishWholeBuilding > 0 and&#xd;
-not(DemolishWholeBuilding_Value) then&#xd;
-DemolishWholeBuilding + 1 else 0</dmn:text>
+not(DemolishWholeBuilding_Value) and&#xd;
+AdditionAffectingPrimaryForm_Value = null then&#xd;
+DemolishWholeBuilding + 1 else 0&#xd;
+&#xd;
+&#xd;
+</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:inputData id="_F645D741-2D72-48F2-B20B-8286C8DDAD37" name="ConstructedPriorTo1930_Value">
@@ -222,6 +229,9 @@ DemolitionBuildingStructureSpatialLayers(SpatialLayers_Value) then Activities + 
     <dmn:informationRequirement id="_F7C133D9-77FB-4A39-B3E8-D449F2E34467">
       <dmn:requiredDecision href="#_0C2916A3-B146-4FAF-986A-E445AF18DCD0"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_715F30FC-7F91-4F70-B396-0C4A8112E1CC">
+      <dmn:requiredDecision href="#_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_6068134B-AE26-489C-8E1E-6534C525E4D3">
       <dmn:text>if ConstructedPriorTo1930 > 0 and&#xd;
 ConstructedPriorTo1930_Value then&#xd;
@@ -230,6 +240,10 @@ ConstructedPriorTo1930_Value then&#xd;
   DemolishPrimaryForm > 0 and&#xd;
   not(DemolishPrimaryForm_Value) then&#xd;
   DemolishPrimaryForm + 1 else &#xd;
+  if DemolishWholeBuilding > 0 and&#xd;
+  not(DemolishWholeBuilding_Value) and&#xd;
+  AdditionAffectingPrimaryForm_Value != null then&#xd;
+  DemolishWholeBuilding + 1 else&#xd;
   if (list contains(Activities_Value[Noun="residential building"].Verb, "demolish") and&#xd;
   list contains(Activities_Value[Noun="residential building"].Verb, "alter")) and&#xd;
   DemolishPrimaryForm > 0 then&#xd;
@@ -448,6 +462,10 @@ else 0&#xd;
         <di:waypoint x="262" y="379.3421052631579"/>
         <di:waypoint x="450" y="380"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_D83AFC8B-AE31-48A5-ACD9-10B7A36C316B" dmnElementRef="_D83AFC8B-AE31-48A5-ACD9-10B7A36C316B">
+        <di:waypoint x="262" y="499"/>
+        <di:waypoint x="450" y="380"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_B7B562AC-67E8-4A68-A2CB-C4D525679791" dmnElementRef="_B7B562AC-67E8-4A68-A2CB-C4D525679791">
         <di:waypoint x="551" y="206"/>
         <di:waypoint x="666" y="286"/>
@@ -542,6 +560,10 @@ else 0&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_F7C133D9-77FB-4A39-B3E8-D449F2E34467" dmnElementRef="_F7C133D9-77FB-4A39-B3E8-D449F2E34467">
         <di:waypoint x="666" y="286"/>
+        <di:waypoint x="551" y="500"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_715F30FC-7F91-4F70-B396-0C4A8112E1CC" dmnElementRef="_715F30FC-7F91-4F70-B396-0C4A8112E1CC">
+        <di:waypoint x="450" y="282"/>
         <di:waypoint x="551" y="500"/>
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
