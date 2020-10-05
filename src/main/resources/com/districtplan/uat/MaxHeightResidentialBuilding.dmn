@@ -338,7 +338,7 @@ Maximum height 5.6.2.5</dmn:description>
   if S5.6.2.5.1 > 0 and &#xd;
   ProposedResidentialBuildingMaxHeight !=null and&#xd;
   RoofSlopeResidentialBuilding then&#xd;
-  (((S5.6.2.5.1 + S5.6.2.5.5) * R5.3.4.16) + (S5.6.2.5.1 + S5.6.2.5.5)) else&#xd;
+  (((S5.6.2.5.1) * R5.3.4.16) + (S5.6.2.5.1)) else&#xd;
   if S5.6.2.5.1 > 0 and &#xd;
   ProposedResidentialBuildingMaxHeight !=null and&#xd;
   (not(RoofSlopeResidentialBuilding) or&#xd;
@@ -425,7 +425,7 @@ else null&#xd;
 if S5.6.2.5.1 > 0 and &#xd;
   ProposedResidentialBuildingMaxHeight !=null and&#xd;
   RoofSlopeResidentialBuilding then&#xd;
-  (((S5.6.2.5.1 + S5.6.2.5.5) * R5.3.4.17) + (S5.6.2.5.1 + S5.6.2.5.5)) else&#xd;
+  (((S5.6.2.5.1) * R5.3.4.17) + (S5.6.2.5.1)) else&#xd;
 if S5.6.2.5.1 > 0 and &#xd;
   ProposedResidentialBuildingMaxHeight !=null and&#xd;
   (not(RoofSlopeResidentialBuilding) or&#xd;
@@ -759,6 +759,9 @@ else 0&#xd;
     <dmn:informationRequirement id="_DBCC4685-4395-42DE-8B98-96F60D9323C8">
       <dmn:requiredDecision href="#_0A486A57-F4C5-4F40-96F0-B2B2E3D2889B"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_ABEF0128-1441-476C-81EC-CD2D68AB424B">
+      <dmn:requiredDecision href="#_118935D0-007B-44D8-8A4D-9B0F9E49EDB7"/>
+    </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_515E5A32-8B52-4D1D-AD78-808397658777">
       <dmn:requiredKnowledge href="#_162DC7F1-EF22-4B75-AC18-37982D1DE529"/>
     </dmn:knowledgeRequirement>
@@ -805,21 +808,21 @@ else 0&#xd;
       <dmn:text>if MaxHeightResidentialBuildingActivities(Activities) and&#xd;
 S5.6.2.5.2 = 0 then&#xd;
   if MediumDensityResidentialArea(SpatialLayers) and&#xd;
-  Suburb="Kilbirnie" then 10 else&#xd;
+  Suburb="Kilbirnie" then (10 + S5.6.2.5.5) else&#xd;
   if MediumDensityResidentialArea(SpatialLayers) and&#xd;
-  Suburb="Johnsonville" then 8 else&#xd;
+  Suburb="Johnsonville" then (8 + S5.6.2.5.5) else&#xd;
   if InnerResidentialArea(SpatialLayers) and&#xd;
   not(IR3AroValley(SpatialLayers)) and&#xd;
   not(IR4MtCookNewtownBerhampore(SpatialLayers)) and&#xd;
   not(IR5OrientalBayHeightArea(SpatialLayers)) and&#xd;
-  not(IR6NorthKelburnBoltonStreet(SpatialLayers)) then 10 else&#xd;
-  if IR3AroValley(SpatialLayers) then 7.5 else&#xd;
-  if IR4MtCookNewtownBerhampore(SpatialLayers) then 9 else&#xd;
+  not(IR6NorthKelburnBoltonStreet(SpatialLayers)) then (10 + S5.6.2.5.5) else&#xd;
+  if IR3AroValley(SpatialLayers) then (7.5 + S5.6.2.5.5) else&#xd;
+  if IR4MtCookNewtownBerhampore(SpatialLayers) then (9 + S5.6.2.5.5) else&#xd;
   if IR5OrientalBayHeightArea(SpatialLayers) then Appendix4(SpatialLayers) else&#xd;
-  if IR6NorthKelburnBoltonStreet(SpatialLayers) then Appendix3(SpatialLayers) else&#xd;
+  if IR6NorthKelburnBoltonStreet(SpatialLayers) then (Appendix3(SpatialLayers) + S5.6.2.5.5) else&#xd;
   if OuterResidentialArea(SpatialLayers) and&#xd;
-  not(OR3Roseneath(SpatialLayers)) then 8 else&#xd;
-  if OR3Roseneath(SpatialLayers) then 10 else 0&#xd;
+  not(OR3Roseneath(SpatialLayers)) then (8 + S5.6.2.5.5) else&#xd;
+  if OR3Roseneath(SpatialLayers) then (10 + S5.6.2.5.5) else 0&#xd;
 else 0&#xd;
 &#xd;
 &#xd;
@@ -3821,6 +3824,10 @@ OR2ResidentialCoastalEdge(SpatialLayers) and&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_08CE2FA5-0236-4703-A70B-6AF0CD252B2C" dmnElementRef="_08CE2FA5-0236-4703-A70B-6AF0CD252B2C">
         <di:waypoint x="473.25" y="139.68421052631578"/>
+        <di:waypoint x="474" y="209"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_ABEF0128-1441-476C-81EC-CD2D68AB424B" dmnElementRef="_ABEF0128-1441-476C-81EC-CD2D68AB424B">
+        <di:waypoint x="474" y="478"/>
         <di:waypoint x="474" y="209"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_F121CD16-7121-4D42-9005-CC50600A5847" dmnElementRef="_F121CD16-7121-4D42-9005-CC50600A5847">
