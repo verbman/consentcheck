@@ -93,6 +93,9 @@ no</dmn:allowedAnswers>
     <dmn:informationRequirement id="_3403A206-053A-4E55-8A7A-1C4E8B152DD0">
       <dmn:requiredInput href="#_A9519E8C-12D0-4C39-9A13-544EDD8D0FA6"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_7A1C455F-99C1-42C2-9AAF-C96BC365DBF0">
+      <dmn:requiredDecision href="#_ECDD4E42-6F0A-4B20-A07D-BA7FACC9C428"/>
+    </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_037CEECE-20C9-4351-948A-C303F8CB37EA">
       <dmn:requiredKnowledge href="#_DA33A1FA-CEC4-496F-B4B3-CF18E9087212"/>
     </dmn:knowledgeRequirement>
@@ -101,8 +104,7 @@ no</dmn:allowedAnswers>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_3566D5C4-084D-42F7-ADDB-A8D13ABFE252">
       <dmn:text>if VehicleParkingActivities(Activities_Value) and&#xd;
-VehicleParkingSpatialLayers(SpatialLayers_Value) and&#xd;
-(BuildingConstructedBefore27July2000_Value = null or not(BuildingConstructedBefore27July2000_Value))&#xd;
+VehicleParkingSpatialLayers(SpatialLayers_Value) and TwoHouseholdUnitsParking &lt; 0&#xd;
 then (Activities + 1) &#xd;
 else 0&#xd;
 &#xd;
@@ -326,7 +328,7 @@ list contains(activities[Noun="residential building"].Verb, "add to")&#xd;
             <kie:width>515.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_3566D5C4-084D-42F7-ADDB-A8D13ABFE252">
-            <kie:width>994.0</kie:width>
+            <kie:width>731.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_297FED24-A1F0-40E9-82DE-370B5A1CC10F">
             <kie:width>848.0</kie:width>
@@ -415,7 +417,7 @@ list contains(activities[Noun="residential building"].Verb, "add to")&#xd;
           <dmndi:StrokeColor red="180" green="180" blue="180"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="542" y="306" width="100" height="50"/>
+        <dc:Bounds x="542" y="307" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9" dmnElementRef="_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9" isCollapsed="false">
@@ -535,32 +537,36 @@ list contains(activities[Noun="residential building"].Verb, "add to")&#xd;
         <di:waypoint x="592" y="415"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_46AE4AC8-E0DC-46E8-9FD4-D863A94803D7" dmnElementRef="_46AE4AC8-E0DC-46E8-9FD4-D863A94803D7">
-        <di:waypoint x="592" y="331"/>
+        <di:waypoint x="592" y="332"/>
         <di:waypoint x="592" y="415"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_E146A2A6-5D16-4A9E-98C0-629B241CA9E5" dmnElementRef="_E146A2A6-5D16-4A9E-98C0-629B241CA9E5">
         <di:waypoint x="223.59813084112147" y="129.3421052631579"/>
-        <di:waypoint x="592" y="331"/>
+        <di:waypoint x="592" y="332"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7B8330BA-B547-480D-8712-BB061C0163C0" dmnElementRef="_7B8330BA-B547-480D-8712-BB061C0163C0">
         <di:waypoint x="591" y="207"/>
-        <di:waypoint x="592" y="331"/>
+        <di:waypoint x="592" y="332"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_41F78431-DF64-4971-BFC7-19BAE2267CC1" dmnElementRef="_41F78431-DF64-4971-BFC7-19BAE2267CC1">
         <di:waypoint x="225.59813084112147" y="436.3421052631579"/>
-        <di:waypoint x="592" y="331"/>
+        <di:waypoint x="592" y="332"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_3403A206-053A-4E55-8A7A-1C4E8B152DD0" dmnElementRef="_3403A206-053A-4E55-8A7A-1C4E8B152DD0">
         <di:waypoint x="224.59813084112147" y="259.6842105263158"/>
-        <di:waypoint x="592" y="331"/>
+        <di:waypoint x="592" y="332"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_037CEECE-20C9-4351-948A-C303F8CB37EA" dmnElementRef="_037CEECE-20C9-4351-948A-C303F8CB37EA">
         <di:waypoint x="225.59813084112147" y="66.6842105263158"/>
-        <di:waypoint x="592" y="331"/>
+        <di:waypoint x="592" y="332"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_800EE1AE-576B-4196-B9F8-5049A730C748" dmnElementRef="_800EE1AE-576B-4196-B9F8-5049A730C748">
         <di:waypoint x="223.59813084112147" y="193.6842105263158"/>
-        <di:waypoint x="592" y="331"/>
+        <di:waypoint x="592" y="332"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_7A1C455F-99C1-42C2-9AAF-C96BC365DBF0" dmnElementRef="_7A1C455F-99C1-42C2-9AAF-C96BC365DBF0">
+        <di:waypoint x="408" y="338"/>
+        <di:waypoint x="542" y="332"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7E10C7ED-7E5B-4996-8E3B-DCB3F1B48D31" dmnElementRef="_7E10C7ED-7E5B-4996-8E3B-DCB3F1B48D31">
         <di:waypoint x="408" y="338"/>
@@ -619,7 +625,7 @@ list contains(activities[Noun="residential building"].Verb, "add to")&#xd;
         <di:waypoint x="408" y="338"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7F1984C9-5E07-478D-8BB2-ADCD3E8C3B2E" dmnElementRef="_7F1984C9-5E07-478D-8BB2-ADCD3E8C3B2E">
-        <di:waypoint x="592" y="331"/>
+        <di:waypoint x="592" y="332"/>
         <di:waypoint x="810" y="415"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_D86EC47B-E259-4968-8D55-5DA0DF50B90E" dmnElementRef="_D86EC47B-E259-4968-8D55-5DA0DF50B90E">
