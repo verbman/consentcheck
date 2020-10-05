@@ -251,8 +251,12 @@ The demolition of any building, excluding accessory buildings, constructed befor
       <dmn:requiredInput href="#_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_894A9098-15E8-464C-BBC6-27B8E8FF115C">
-      <dmn:text>R5.1.12-Whole = "remove or demolish whole residential building" and&#xd;
-not(DemolishWholeBuilding)&#xd;
+      <dmn:text>if R5.1.12-Whole = "remove or demolish whole residential building" and&#xd;
+not(DemolishWholeBuilding) then true else&#xd;
+if R5.1.12-Whole = null then null else false&#xd;
+&#xd;
+&#xd;
+&#xd;
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
@@ -660,9 +664,10 @@ list contains(activities[Noun="residential building"].Verb, "demolish")&#xd;
       <dmn:requiredDecision href="#_A59DBF96-5684-4062-961A-95EA13FEA2AB"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_0900F377-1E88-45CB-963A-9B3B8652CE3A">
-      <dmn:text>R5.1.12-PrimaryForm = "demolish or affect primary form" and&#xd;
+      <dmn:text>if R5.1.12-PrimaryForm = "demolish or affect primary form" and&#xd;
 not(AdditionAffectingPrimaryForm) or&#xd;
-not(DemolishPrimaryForm)&#xd;
+not(DemolishPrimaryForm) then true else&#xd;
+R5.1.12-PrimaryForm = null then null else false&#xd;
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
@@ -979,8 +984,9 @@ then "demolish or affect primary form" else null&#xd;
       <dmn:requiredInput href="#_F5D7E743-0A2D-4F16-9141-A43F2FD1C22E"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_A9567921-2A95-4D6F-BC1A-89724F890069">
-      <dmn:text>R5.1.12-ArchitecturalFeature = "remove or demolish architectural features" and&#xd;
-not(DemolishArchitecturalFeature)&#xd;
+      <dmn:text>if R5.1.12-ArchitecturalFeature = "remove or demolish architectural features" and&#xd;
+not(DemolishArchitecturalFeature) then true else&#xd;
+if R5.1.12-ArchitecturalFeature = null then null else false&#xd;
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
