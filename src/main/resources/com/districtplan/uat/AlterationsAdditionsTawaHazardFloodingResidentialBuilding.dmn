@@ -12,8 +12,8 @@ Construction, alteration of, and addition to residential buildings, including ac
   <dmn:decision id="_955C221A-CB1A-4E00-B081-D6CA61A86818" name="ObjectivesAndPolicies">
     <dmn:extensionElements/>
     <dmn:variable id="_D75CF3C9-23DD-4689-B050-B0BD9B0FFE15" name="ObjectivesAndPolicies" typeRef="Types.PlanContents"/>
-    <dmn:informationRequirement id="_FE56595D-0689-4033-A1DA-C7DC8B378881">
-      <dmn:requiredDecision href="#_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB"/>
+    <dmn:informationRequirement id="_E46ACD4D-83E9-4AD9-A102-9B18A629197B">
+      <dmn:requiredDecision href="#_BEA1FDA7-54EE-4FB5-916B-7FA910ACC868"/>
     </dmn:informationRequirement>
     <dmn:decisionTable id="_0032CC75-856C-48DE-AD5C-950DC0DC2926" hitPolicy="COLLECT" preferredOrientation="Rule-as-Row">
       <dmn:input id="_ED85BBDE-2AAD-42AE-A823-AA95888BF60F">
@@ -163,12 +163,29 @@ Construction, alteration of, and addition to residential buildings, including ac
       </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
+  <dmn:decision id="_BEA1FDA7-54EE-4FB5-916B-7FA910ACC868" name="R5.1.11.1Met">
+    <dmn:extensionElements/>
+    <dmn:variable id="_B8101CB4-762D-45D9-880D-570C526154DE" name="R5.1.11.1Met" typeRef="boolean"/>
+    <dmn:informationRequirement id="_5649D10C-A104-4786-A5A8-AE3C153A2BFA">
+      <dmn:requiredDecision href="#_CF8C9489-8824-408C-9981-DF8D7EF68FAF"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_AEE9FE83-82C8-4166-8838-8C142CB8FA32">
+      <dmn:requiredDecision href="#_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_460F9923-1653-43A3-8082-44851793A506">
+      <dmn:text>if R5.1.11.1-FloorLevelMet and&#xd;
+R5.1.11.1-FloorAreaMet then true else&#xd;
+  if R5.1.11.1-FloorLevelMet = null or R5.1.11.1-FloorAreaMet = null then null else false&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+  </dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:decision id="_F9338FB0-0FF7-4157-A44D-E34B2D41967A" name="R5.1.11">
     <dmn:extensionElements/>
     <dmn:variable id="_58BF5BD2-36E6-4ABC-8601-A7F9B48BE91A" name="R5.1.11" typeRef="boolean"/>
-    <dmn:informationRequirement id="_9D53CB17-27C1-4D12-997A-CB55BA279E60">
-      <dmn:requiredDecision href="#_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB"/>
-    </dmn:informationRequirement>
     <dmn:informationRequirement id="_C6767DC0-6852-4235-8D2E-63EF2AD49054">
       <dmn:requiredInput href="#_FF9E4109-6622-4987-BA94-B2DD13F30A1C"/>
     </dmn:informationRequirement>
@@ -177,6 +194,9 @@ Construction, alteration of, and addition to residential buildings, including ac
     </dmn:informationRequirement>
     <dmn:informationRequirement id="_13917108-DB3F-426C-98E1-6C1315B35BCB">
       <dmn:requiredInput href="#_9AF94EE9-C81E-4E15-8287-3AFE94D76B74"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_2CAC0086-E1DD-46F0-A5C5-76B8AA8143D4">
+      <dmn:requiredDecision href="#_BEA1FDA7-54EE-4FB5-916B-7FA910ACC868"/>
     </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_AB8CD60E-DE9A-474D-8251-F67B1A7B05A4">
       <dmn:requiredKnowledge href="#_162DC7F1-EF22-4B75-AC18-37982D1DE529"/>
@@ -209,27 +229,39 @@ Internal alterations, minor additions to existing residential buildings and new 
     <dmn:extensionElements/>
     <dmn:type></dmn:type>
   </dmn:knowledgeSource>
-  <dmn:decision id="_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB" name="R5.1.11.1Met">
+  <dmn:decision id="_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB" name="R5.1.11.1-FloorLevelMet">
     <dmn:extensionElements/>
-    <dmn:variable id="_F75E3AEF-2D4E-418E-B3EE-E275595C6158" name="R5.1.11.1Met" typeRef="boolean"/>
+    <dmn:variable id="_F75E3AEF-2D4E-418E-B3EE-E275595C6158" name="R5.1.11.1-FloorLevelMet" typeRef="boolean"/>
+    <dmn:informationRequirement id="_9BF130DC-D1D9-4051-AD4C-A7F0999B36F9">
+      <dmn:requiredInput href="#_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0"/>
+    </dmn:informationRequirement>
     <dmn:informationRequirement id="_C0AEC952-C96B-4ED5-97CF-CCCD2BFABC8D">
       <dmn:requiredDecision href="#_69755C18-1F1F-4AFA-A816-9BB075FBF7FE"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_9BF130DC-D1D9-4051-AD4C-A7F0999B36F9">
-      <dmn:requiredInput href="#_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0"/>
+    <dmn:literalExpression id="_059B26F4-1786-4F10-838B-6C2DFFD14DDC">
+      <dmn:text>if R5.1.11.1-FloorLevel="at or above floor level of existing residential building" and&#xd;
+ExistingFloorLevelResidentialBuilding then true else&#xd;
+  if R5.1.11.1-FloorLevel= null then null else false&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+  </dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_CF8C9489-8824-408C-9981-DF8D7EF68FAF" name="R5.1.11.1-FloorAreaMet">
+    <dmn:extensionElements/>
+    <dmn:variable id="_0FE2AA07-C8A9-49B9-9E70-EE7603A51227" name="R5.1.11.1-FloorAreaMet" typeRef="boolean"/>
+    <dmn:informationRequirement id="_DD383F2B-21F1-4953-B278-31DF9A535022">
+      <dmn:requiredDecision href="#_738039DA-C672-4375-B2CC-5E412DF3EDEF"/>
     </dmn:informationRequirement>
     <dmn:informationRequirement id="_75882477-3C62-4A9F-9E5D-20946D81549C">
       <dmn:requiredInput href="#_7FB7B9F9-DA93-430C-B155-823192A8F47F"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_71BB661F-6C81-4A7C-A0EF-967CF1B366ED">
-      <dmn:requiredDecision href="#_738039DA-C672-4375-B2CC-5E412DF3EDEF"/>
-    </dmn:informationRequirement>
-    <dmn:literalExpression id="_059B26F4-1786-4F10-838B-6C2DFFD14DDC">
-      <dmn:text>if R5.1.11.1-FloorLevel="at or above floor level of existing residential building" and&#xd;
-ExistingFloorLevelResidentialBuilding and&#xd;
-R5.1.11.1-FloorArea > 0 and&#xd;
+    <dmn:literalExpression id="_B476047B-A0E9-42F7-8E5B-EE77968E9A78">
+      <dmn:text>if R5.1.11.1-FloorArea > 0 and&#xd;
 AlterAddAreaResidentialBuilding &lt;= R5.1.11.1-FloorArea then true else&#xd;
-  if R5.1.11.1-FloorLevel= null then null else false&#xd;
+  if R5.1.11.1-FloorArea = null then null else false&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -342,8 +374,8 @@ list contains(activities[Noun="residential building"].Verb, "alter")&#xd;
   <dmn:decision id="_62D0A4BE-C422-49C0-8C68-2DA3FBB0CEFB" name="RulesNotMet">
     <dmn:extensionElements/>
     <dmn:variable id="_50E15702-3FF6-4223-A3A5-D02C771D1970" name="RulesNotMet" typeRef="Types.PlanContents"/>
-    <dmn:informationRequirement id="_8F0AD37B-B281-4E8D-92F6-77E1FE5DF333">
-      <dmn:requiredDecision href="#_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB"/>
+    <dmn:informationRequirement id="_8C412DB2-A04F-4801-85B4-971C32494000">
+      <dmn:requiredDecision href="#_BEA1FDA7-54EE-4FB5-916B-7FA910ACC868"/>
     </dmn:informationRequirement>
     <dmn:decisionTable id="_6BBA7F9A-154F-4C21-B2A6-AE5171F3B59C" hitPolicy="COLLECT" preferredOrientation="Rule-as-Row">
       <dmn:input id="_5EA49186-9A2B-4B88-A7B3-6D1FC3EEFFFF">
@@ -659,6 +691,9 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
     <dmndi:DMNDiagram>
       <di:extension>
         <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_B476047B-A0E9-42F7-8E5B-EE77968E9A78">
+            <kie:width>958.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_0032CC75-856C-48DE-AD5C-950DC0DC2926">
             <kie:width>50.0</kie:width>
             <kie:width>100.0</kie:width>
@@ -721,6 +756,9 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
           <kie:ComponentWidths dmnElementRef="_89CE1763-F6C4-4E91-9949-D9FAC940FFB2">
             <kie:width>691.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_460F9923-1653-43A3-8082-44851793A506">
+            <kie:width>958.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_5A8AFE1A-52FB-4140-8383-E84671F1EE0A">
             <kie:width>691.0</kie:width>
           </kie:ComponentWidths>
@@ -763,7 +801,16 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
           <dmndi:StrokeColor red="0" green="0" blue="0"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="879.5981308411215" y="136.6842105263158" width="100" height="50"/>
+        <dc:Bounds x="960.5981308411215" y="136.6842105263158" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_CF8C9489-8824-408C-9981-DF8D7EF68FAF" dmnElementRef="_CF8C9489-8824-408C-9981-DF8D7EF68FAF" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="467" y="331" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_955C221A-CB1A-4E00-B081-D6CA61A86818" dmnElementRef="_955C221A-CB1A-4E00-B081-D6CA61A86818" isCollapsed="false">
@@ -772,7 +819,7 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
           <dmndi:StrokeColor red="133" green="150" blue="99"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="1285" y="497" width="100" height="50"/>
+        <dc:Bounds x="1155" y="495" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_B15F9BCA-04E0-45C8-8051-697EF12DDFF4" dmnElementRef="_B15F9BCA-04E0-45C8-8051-697EF12DDFF4" isCollapsed="false">
@@ -781,7 +828,7 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
           <dmndi:StrokeColor red="0" green="0" blue="0"/>
           <dmndi:FontColor red="120" green="120" blue="120"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="748" y="79" width="100" height="50"/>
+        <dc:Bounds x="829" y="82" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_A879886E-5E56-42B3-9637-8A66A3AF4E7C" dmnElementRef="_A879886E-5E56-42B3-9637-8A66A3AF4E7C" isCollapsed="false">
@@ -799,7 +846,7 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
           <dmndi:StrokeColor red="210" green="193" blue="208"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="581" y="131.6842105263158" width="100" height="50"/>
+        <dc:Bounds x="466" y="258.3421052631579" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_500D6311-0C05-4F6F-9972-246B15225CBF" dmnElementRef="_500D6311-0C05-4F6F-9972-246B15225CBF" isCollapsed="false">
@@ -808,7 +855,7 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
           <dmndi:StrokeColor red="133" green="150" blue="99"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="1285" y="425" width="100" height="50"/>
+        <dc:Bounds x="1155" y="426" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_F9338FB0-0FF7-4157-A44D-E34B2D41967A" dmnElementRef="_F9338FB0-0FF7-4157-A44D-E34B2D41967A" isCollapsed="false">
@@ -817,7 +864,7 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
           <dmndi:StrokeColor red="161" green="134" blue="71"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="748" y="199" width="100" height="50"/>
+        <dc:Bounds x="829" y="199" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_E63C7A33-7F64-4653-9E97-019410AC8BAE" dmnElementRef="_E63C7A33-7F64-4653-9E97-019410AC8BAE" isCollapsed="false">
@@ -826,7 +873,7 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
           <dmndi:StrokeColor red="0" green="0" blue="0"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="746.5981308411215" y="135.68421052631578" width="100" height="50"/>
+        <dc:Bounds x="827.5981308411215" y="136.68421052631578" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB" dmnElementRef="_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB" isCollapsed="false">
@@ -835,7 +882,7 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
           <dmndi:StrokeColor red="180" green="180" blue="180"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="467" y="201" width="100" height="50"/>
+        <dc:Bounds x="469" y="199" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_BB23ECF6-ABC5-4B77-BB28-5016CD0E58A9" dmnElementRef="_BB23ECF6-ABC5-4B77-BB28-5016CD0E58A9" isCollapsed="false">
@@ -853,7 +900,7 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
           <dmndi:StrokeColor red="133" green="150" blue="99"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="1285" y="261" width="100" height="50"/>
+        <dc:Bounds x="1155" y="260" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_9C36EA52-022B-417B-87C0-D01E9CB65009" dmnElementRef="_9C36EA52-022B-417B-87C0-D01E9CB65009" isCollapsed="false">
@@ -889,7 +936,7 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
           <dmndi:StrokeColor red="133" green="150" blue="99"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="1285" y="348" width="100" height="50"/>
+        <dc:Bounds x="1155" y="347" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_96EC589B-9409-4624-A532-71A75B770261" dmnElementRef="_96EC589B-9409-4624-A532-71A75B770261" isCollapsed="false">
@@ -907,7 +954,7 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
           <dmndi:StrokeColor red="71" green="104" blue="161"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="329" y="265" width="100" height="50"/>
+        <dc:Bounds x="322" y="333" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_FF9E4109-6622-4987-BA94-B2DD13F30A1C" dmnElementRef="_FF9E4109-6622-4987-BA94-B2DD13F30A1C" isCollapsed="false">
@@ -917,6 +964,15 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="75.59813084112147" y="235" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_BEA1FDA7-54EE-4FB5-916B-7FA910ACC868" dmnElementRef="_BEA1FDA7-54EE-4FB5-916B-7FA910ACC868" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="601" y="266" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_9AF94EE9-C81E-4E15-8287-3AFE94D76B74" dmnElementRef="_9AF94EE9-C81E-4E15-8287-3AFE94D76B74" isCollapsed="false">
@@ -943,7 +999,7 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
           <dmndi:StrokeColor red="148" green="154" blue="170"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="881" y="200" width="100" height="50"/>
+        <dc:Bounds x="962" y="200" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_431C68E2-D314-4F83-85FA-22AFDF8929DC" dmnElementRef="_431C68E2-D314-4F83-85FA-22AFDF8929DC" isCollapsed="false">
@@ -952,7 +1008,7 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
           <dmndi:StrokeColor red="0" green="0" blue="0"/>
           <dmndi:FontColor red="120" green="120" blue="120"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="881" y="79" width="100" height="50"/>
+        <dc:Bounds x="962" y="82" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_B43B33D1-6CB5-4408-9DE5-3BA05B81F1FF" dmnElementRef="_B43B33D1-6CB5-4408-9DE5-3BA05B81F1FF" isCollapsed="false">
@@ -970,7 +1026,7 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
           <dmndi:StrokeColor red="133" green="150" blue="99"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="1285" y="585" width="100" height="50"/>
+        <dc:Bounds x="1155" y="584" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_ACBF9DC9-8567-4C59-A869-BE29AB326CC9" dmnElementRef="_ACBF9DC9-8567-4C59-A869-BE29AB326CC9" isCollapsed="false">
@@ -979,7 +1035,7 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
           <dmndi:StrokeColor red="133" green="150" blue="99"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="1285" y="121" width="100" height="50"/>
+        <dc:Bounds x="1155" y="120" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0" dmnElementRef="_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0" isCollapsed="false">
@@ -988,7 +1044,7 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
           <dmndi:StrokeColor red="210" green="193" blue="208"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="466.5981308411215" y="131.68421052631578" width="100" height="50"/>
+        <dc:Bounds x="467" y="125.68421052631578" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_28ABB71C-350F-4418-B7E7-C31E55E120D1" dmnElementRef="_28ABB71C-350F-4418-B7E7-C31E55E120D1" isCollapsed="false">
@@ -997,7 +1053,7 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
           <dmndi:StrokeColor red="0" green="0" blue="0"/>
           <dmndi:FontColor red="120" green="120" blue="120"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="1285" y="40" width="100" height="50"/>
+        <dc:Bounds x="1155" y="40" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_0CD77B39-EC94-4EB6-8D36-74859D41E58C" dmnElementRef="_0CD77B39-EC94-4EB6-8D36-74859D41E58C" isCollapsed="false">
@@ -1009,73 +1065,73 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
         <dc:Bounds x="76" y="416.3421052631579" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNEdge id="dmnedge-_FE56595D-0689-4033-A1DA-C7DC8B378881" dmnElementRef="_FE56595D-0689-4033-A1DA-C7DC8B378881">
-        <di:waypoint x="517" y="226"/>
-        <di:waypoint x="1335" y="522"/>
+      <dmndi:DMNEdge id="dmnedge-_DD383F2B-21F1-4953-B278-31DF9A535022" dmnElementRef="_DD383F2B-21F1-4953-B278-31DF9A535022">
+        <di:waypoint x="372" y="358"/>
+        <di:waypoint x="517" y="356"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_75882477-3C62-4A9F-9E5D-20946D81549C" dmnElementRef="_75882477-3C62-4A9F-9E5D-20946D81549C">
+        <di:waypoint x="516" y="283.3421052631579"/>
+        <di:waypoint x="517" y="356"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_E46ACD4D-83E9-4AD9-A102-9B18A629197B" dmnElementRef="_E46ACD4D-83E9-4AD9-A102-9B18A629197B">
+        <di:waypoint x="651" y="291"/>
+        <di:waypoint x="1205" y="495"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7399E61C-C404-49CD-BDD5-9FE9A0E1F267" dmnElementRef="_7399E61C-C404-49CD-BDD5-9FE9A0E1F267">
-        <di:waypoint x="798" y="224"/>
-        <di:waypoint x="798" y="104"/>
+        <di:waypoint x="879" y="224"/>
+        <di:waypoint x="879" y="107"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_2389C99E-A342-43EC-9CDF-AB3B26CDCE5B" dmnElementRef="_2389C99E-A342-43EC-9CDF-AB3B26CDCE5B">
-        <di:waypoint x="931" y="225"/>
-        <di:waypoint x="1335" y="450"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_9D53CB17-27C1-4D12-997A-CB55BA279E60" dmnElementRef="_9D53CB17-27C1-4D12-997A-CB55BA279E60">
-        <di:waypoint x="517" y="226"/>
-        <di:waypoint x="798" y="224"/>
+        <di:waypoint x="1012" y="225"/>
+        <di:waypoint x="1205" y="451"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_C6767DC0-6852-4235-8D2E-63EF2AD49054" dmnElementRef="_C6767DC0-6852-4235-8D2E-63EF2AD49054">
         <di:waypoint x="125.59813084112147" y="260"/>
-        <di:waypoint x="798" y="224"/>
+        <di:waypoint x="879" y="224"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_83E0A8E5-DBCD-4431-A746-0E2969F171AE" dmnElementRef="_83E0A8E5-DBCD-4431-A746-0E2969F171AE">
         <di:waypoint x="127.5981308411215" y="132.3421052631579"/>
-        <di:waypoint x="798" y="224"/>
+        <di:waypoint x="879" y="224"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_13917108-DB3F-426C-98E1-6C1315B35BCB" dmnElementRef="_13917108-DB3F-426C-98E1-6C1315B35BCB">
         <di:waypoint x="126.5981308411215" y="318.68421052631584"/>
-        <di:waypoint x="798" y="224"/>
+        <di:waypoint x="879" y="224"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_AB8CD60E-DE9A-474D-8251-F67B1A7B05A4" dmnElementRef="_AB8CD60E-DE9A-474D-8251-F67B1A7B05A4">
         <di:waypoint x="126.5981308411215" y="194.34210526315792"/>
-        <di:waypoint x="798" y="224"/>
+        <di:waypoint x="879" y="224"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_5FF3C5BE-31D3-46EE-93FC-F125DAB5FC3C" dmnElementRef="_5FF3C5BE-31D3-46EE-93FC-F125DAB5FC3C">
         <di:waypoint x="126.59813084112147" y="564"/>
-        <di:waypoint x="798" y="224"/>
+        <di:waypoint x="879" y="224"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_39999380-8E09-4597-BA0B-D992EEA21C8F" dmnElementRef="_39999380-8E09-4597-BA0B-D992EEA21C8F">
-        <di:waypoint x="796.5981308411215" y="160.68421052631578"/>
-        <di:waypoint x="798" y="224"/>
+        <di:waypoint x="877.5981308411215" y="161.68421052631578"/>
+        <di:waypoint x="879" y="224"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_2CAC0086-E1DD-46F0-A5C5-76B8AA8143D4" dmnElementRef="_2CAC0086-E1DD-46F0-A5C5-76B8AA8143D4">
+        <di:waypoint x="651" y="291"/>
+        <di:waypoint x="879" y="224"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_9BF130DC-D1D9-4051-AD4C-A7F0999B36F9" dmnElementRef="_9BF130DC-D1D9-4051-AD4C-A7F0999B36F9">
+        <di:waypoint x="517" y="150.68421052631578"/>
+        <di:waypoint x="519" y="224"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_C0AEC952-C96B-4ED5-97CF-CCCD2BFABC8D" dmnElementRef="_C0AEC952-C96B-4ED5-97CF-CCCD2BFABC8D">
         <di:waypoint x="379" y="225"/>
-        <di:waypoint x="517" y="226"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_9BF130DC-D1D9-4051-AD4C-A7F0999B36F9" dmnElementRef="_9BF130DC-D1D9-4051-AD4C-A7F0999B36F9">
-        <di:waypoint x="516.5981308411215" y="156.68421052631578"/>
-        <di:waypoint x="517" y="226"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_75882477-3C62-4A9F-9E5D-20946D81549C" dmnElementRef="_75882477-3C62-4A9F-9E5D-20946D81549C">
-        <di:waypoint x="631" y="156.6842105263158"/>
-        <di:waypoint x="517" y="226"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_71BB661F-6C81-4A7C-A0EF-967CF1B366ED" dmnElementRef="_71BB661F-6C81-4A7C-A0EF-967CF1B366ED">
-        <di:waypoint x="379" y="290"/>
-        <di:waypoint x="517" y="226"/>
+        <di:waypoint x="519" y="224"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_95AE9539-9644-4754-A7A5-303BB142D034" dmnElementRef="_95AE9539-9644-4754-A7A5-303BB142D034">
-        <di:waypoint x="931" y="225"/>
-        <di:waypoint x="1335" y="286"/>
+        <di:waypoint x="1012" y="225"/>
+        <di:waypoint x="1205" y="285"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_CE63E97F-D24E-4E34-975D-E3C625074C70" dmnElementRef="_CE63E97F-D24E-4E34-975D-E3C625074C70">
-        <di:waypoint x="798" y="224"/>
-        <di:waypoint x="1335" y="286"/>
+        <di:waypoint x="879" y="224"/>
+        <di:waypoint x="1205" y="285"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_8F0AD37B-B281-4E8D-92F6-77E1FE5DF333" dmnElementRef="_8F0AD37B-B281-4E8D-92F6-77E1FE5DF333">
-        <di:waypoint x="517" y="226"/>
-        <di:waypoint x="1335" y="373"/>
+      <dmndi:DMNEdge id="dmnedge-_8C412DB2-A04F-4801-85B4-971C32494000" dmnElementRef="_8C412DB2-A04F-4801-85B4-971C32494000">
+        <di:waypoint x="651" y="291"/>
+        <di:waypoint x="1205" y="372"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_9EEF5542-41E9-49D0-ACA2-C60521591657" dmnElementRef="_9EEF5542-41E9-49D0-ACA2-C60521591657">
         <di:waypoint x="125.59813084112147" y="260"/>
@@ -1095,39 +1151,47 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_F6844887-85F0-47B7-BD70-FFEB709BC2A5" dmnElementRef="_F6844887-85F0-47B7-BD70-FFEB709BC2A5">
         <di:waypoint x="126.5981308411215" y="318.68421052631584"/>
-        <di:waypoint x="379" y="290"/>
+        <di:waypoint x="372" y="358"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_786EE5CD-E5C4-46BD-AB77-9FABE8B6D6C7" dmnElementRef="_786EE5CD-E5C4-46BD-AB77-9FABE8B6D6C7">
         <di:waypoint x="125.59813084112147" y="260"/>
-        <di:waypoint x="379" y="290"/>
+        <di:waypoint x="372" y="358"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_EF20D696-AB9C-42F8-BFD1-9CB831D4780E" dmnElementRef="_EF20D696-AB9C-42F8-BFD1-9CB831D4780E">
         <di:waypoint x="127.5981308411215" y="132.3421052631579"/>
-        <di:waypoint x="379" y="290"/>
+        <di:waypoint x="372" y="358"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_681AF4E2-B034-46FA-AB36-759C3A9C0ED3" dmnElementRef="_681AF4E2-B034-46FA-AB36-759C3A9C0ED3">
         <di:waypoint x="126.59813084112147" y="564"/>
-        <di:waypoint x="379" y="290"/>
+        <di:waypoint x="372" y="358"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_3D37CED6-D9F8-40D3-8220-FB40F4245C40" dmnElementRef="_3D37CED6-D9F8-40D3-8220-FB40F4245C40">
         <di:waypoint x="126" y="380.3421052631579"/>
-        <di:waypoint x="379" y="290"/>
+        <di:waypoint x="372" y="358"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_03E65BC0-8C5F-41B0-833F-3583DB1B7FB6" dmnElementRef="_03E65BC0-8C5F-41B0-833F-3583DB1B7FB6">
         <di:waypoint x="126" y="503.3421052631579"/>
-        <di:waypoint x="379" y="290"/>
+        <di:waypoint x="372" y="358"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_AEA79619-84DE-423E-B669-CFF82AE11B11" dmnElementRef="_AEA79619-84DE-423E-B669-CFF82AE11B11">
         <di:waypoint x="126" y="441.3421052631579"/>
-        <di:waypoint x="379" y="290"/>
+        <di:waypoint x="372" y="358"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_CB331FA2-C9B0-4315-809A-42D856D3E515" dmnElementRef="_CB331FA2-C9B0-4315-809A-42D856D3E515">
         <di:waypoint x="126.5981308411215" y="194.34210526315792"/>
-        <di:waypoint x="379" y="290"/>
+        <di:waypoint x="372" y="358"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_0EAC1F4F-C36B-4243-A7FC-DAC40E3ED774" dmnElementRef="_0EAC1F4F-C36B-4243-A7FC-DAC40E3ED774">
         <di:waypoint x="249.29906542056074" y="250.34210526315792"/>
-        <di:waypoint x="379" y="290"/>
+        <di:waypoint x="372" y="358"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_5649D10C-A104-4786-A5A8-AE3C153A2BFA" dmnElementRef="_5649D10C-A104-4786-A5A8-AE3C153A2BFA">
+        <di:waypoint x="517" y="356"/>
+        <di:waypoint x="651" y="291"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_AEE9FE83-82C8-4166-8838-8C142CB8FA32" dmnElementRef="_AEE9FE83-82C8-4166-8838-8C142CB8FA32">
+        <di:waypoint x="519" y="224"/>
+        <di:waypoint x="651" y="291"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_F7813B3E-0881-4087-8082-FB0684724F95" dmnElementRef="_F7813B3E-0881-4087-8082-FB0684724F95">
         <di:waypoint x="125.59813084112147" y="260"/>
@@ -1166,28 +1230,28 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
         <di:waypoint x="379" y="225"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_13F3E416-5AC2-4A62-90EE-07F3AF3C20A3" dmnElementRef="_13F3E416-5AC2-4A62-90EE-07F3AF3C20A3">
-        <di:waypoint x="798" y="224"/>
-        <di:waypoint x="931" y="225"/>
+        <di:waypoint x="879" y="224"/>
+        <di:waypoint x="1012" y="225"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7E2710A6-C56E-412F-859B-CCF0224CBD6D" dmnElementRef="_7E2710A6-C56E-412F-859B-CCF0224CBD6D">
-        <di:waypoint x="929.5981308411215" y="161.6842105263158"/>
-        <di:waypoint x="931" y="225"/>
+        <di:waypoint x="1010.5981308411215" y="161.6842105263158"/>
+        <di:waypoint x="1012" y="225"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_624A459D-2937-4FCD-ABC5-4F0687CD15F1" dmnElementRef="_624A459D-2937-4FCD-ABC5-4F0687CD15F1">
-        <di:waypoint x="931" y="225"/>
-        <di:waypoint x="931" y="104"/>
+        <di:waypoint x="1012" y="225"/>
+        <di:waypoint x="1012" y="107"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_8779832D-B7EE-44A7-9FA9-5119151032A8" dmnElementRef="_8779832D-B7EE-44A7-9FA9-5119151032A8">
-        <di:waypoint x="931" y="225"/>
-        <di:waypoint x="1335" y="610"/>
+        <di:waypoint x="1012" y="225"/>
+        <di:waypoint x="1205" y="609"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_370521F6-D22A-44AE-B047-990430F8B97B" dmnElementRef="_370521F6-D22A-44AE-B047-990430F8B97B">
-        <di:waypoint x="798" y="224"/>
-        <di:waypoint x="1335" y="146"/>
+        <di:waypoint x="879" y="224"/>
+        <di:waypoint x="1205" y="145"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_3829BA40-835F-4A56-95E4-F4D2F1A29EFE" dmnElementRef="_3829BA40-835F-4A56-95E4-F4D2F1A29EFE">
-        <di:waypoint x="931" y="225"/>
-        <di:waypoint x="1335" y="146"/>
+        <di:waypoint x="1012" y="225"/>
+        <di:waypoint x="1205" y="145"/>
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
