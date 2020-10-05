@@ -21,11 +21,21 @@
     <dmn:informationRequirement id="_3CB618DA-3965-4826-AF73-F9FC42C60500">
       <dmn:requiredDecision href="#_A2F298C8-8542-41C1-A9E3-9452A323B85D"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_692E9473-1779-4954-B0E6-D9EC0FEA7DE6">
+      <dmn:requiredDecision href="#_43C90F49-3B90-47B6-81BF-29110BAD7B63"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_96F28A70-57B1-4DE2-8504-75C69650C44F">
+      <dmn:requiredInput href="#_E9EB9837-6650-419E-B02D-916F60BBAF86"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_0213AE50-E21E-4AE4-ABA6-788E8C483B12">
       <dmn:text>if RoofSlopeResidentialBuilding > 0 then&#xd;
 RoofSlopeResidentialBuilding + 1 else &#xd;
-  if list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "IR5 - Oriental Bay Height Area") then&#xd;
-  Activities + 1 else 0&#xd;
+  if not(Infill) and &#xd;
+  list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "IR5 - Oriental Bay Height Area") then&#xd;
+  Activities + 1 else &#xd;
+  if Infill and HighestPointMetresAboveSeaLevelInfill > 0 and&#xd;
+  list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "IR5 - Oriental Bay Height Area") then &#xd;
+  HighestPointMetresAboveSeaLevelInfill + 1 else 0&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -209,6 +219,9 @@ Activities + 1 else 0&#xd;
     <dmn:informationRequirement id="_E886E5DD-06E9-47B3-A10F-F314B2ECF7C8">
       <dmn:requiredInput href="#_E9EB9837-6650-419E-B02D-916F60BBAF86"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_3E68AEF3-A4DF-4D83-9112-23A182C94F67">
+      <dmn:requiredDecision href="#_43C90F49-3B90-47B6-81BF-29110BAD7B63"/>
+    </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_DFB1ECEC-50FF-4113-B2D7-8F4F537C3117">
       <dmn:requiredKnowledge href="#_451EE7E1-3B0A-4229-9EDE-300A2835B4BD"/>
     </dmn:knowledgeRequirement>
@@ -227,7 +240,10 @@ not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "I
   list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "OR2 - Residential Coastal Edge") then &#xd;
   Activities + 1 else&#xd;
   if not(Infill) and&#xd;
-  ResidentialBuildingAbove13MetreContour > 0 then ResidentialBuildingAbove13MetreContour + 1 else 0&#xd;
+  ResidentialBuildingAbove13MetreContour > 0 then ResidentialBuildingAbove13MetreContour + 1 else &#xd;
+  if Infill and HighestPointMetresAboveSeaLevelInfill > 0 and&#xd;
+  not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "IR5 - Oriental Bay Height Area")) then &#xd;
+  HighestPointMetresAboveSeaLevelInfill + 1 else 0&#xd;
 else 0&#xd;
 &#xd;
 &#xd;
@@ -476,7 +492,7 @@ ProposedResidentialBuildingMaxHeight + 1 else 0&#xd;
           <dmndi:StrokeColor red="180" green="180" blue="180"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="672" y="466" width="100" height="50"/>
+        <dc:Bounds x="701" y="466" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_347F2FBA-BE29-49BE-A803-40E23366FF2F" dmnElementRef="_347F2FBA-BE29-49BE-A803-40E23366FF2F" isCollapsed="false">
@@ -534,6 +550,14 @@ ProposedResidentialBuildingMaxHeight + 1 else 0&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_3CB618DA-3965-4826-AF73-F9FC42C60500" dmnElementRef="_3CB618DA-3965-4826-AF73-F9FC42C60500">
         <di:waypoint x="650" y="126"/>
+        <di:waypoint x="460" y="413"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_692E9473-1779-4954-B0E6-D9EC0FEA7DE6" dmnElementRef="_692E9473-1779-4954-B0E6-D9EC0FEA7DE6">
+        <di:waypoint x="751" y="491"/>
+        <di:waypoint x="460" y="413"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_96F28A70-57B1-4DE2-8504-75C69650C44F" dmnElementRef="_96F28A70-57B1-4DE2-8504-75C69650C44F">
+        <di:waypoint x="259.5981308411215" y="264.3421052631579"/>
         <di:waypoint x="460" y="413"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_169FA344-7B14-4740-9677-EFCCAFA8EB94" dmnElementRef="_169FA344-7B14-4740-9677-EFCCAFA8EB94">
@@ -628,17 +652,21 @@ ProposedResidentialBuildingMaxHeight + 1 else 0&#xd;
         <di:waypoint x="255.59813084112147" y="204.3421052631579"/>
         <di:waypoint x="460" y="283"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_3E68AEF3-A4DF-4D83-9112-23A182C94F67" dmnElementRef="_3E68AEF3-A4DF-4D83-9112-23A182C94F67">
+        <di:waypoint x="751" y="491"/>
+        <di:waypoint x="460" y="283"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_3EBF7286-B83C-4BED-983F-B581612137F6" dmnElementRef="_3EBF7286-B83C-4BED-983F-B581612137F6">
         <di:waypoint x="901" y="422"/>
-        <di:waypoint x="722" y="491"/>
+        <di:waypoint x="751" y="491"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_50A8B0CF-3F94-4629-9F42-C7D3F397F2BA" dmnElementRef="_50A8B0CF-3F94-4629-9F42-C7D3F397F2BA">
         <di:waypoint x="258.5981308411215" y="407"/>
-        <di:waypoint x="722" y="491"/>
+        <di:waypoint x="751" y="491"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_720551C5-42A3-467C-A956-F512D1C9201B" dmnElementRef="_720551C5-42A3-467C-A956-F512D1C9201B">
         <di:waypoint x="259.5981308411215" y="560"/>
-        <di:waypoint x="722" y="491"/>
+        <di:waypoint x="751" y="491"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_8CDF00FC-62CA-4E07-B093-D96E47BD356F" dmnElementRef="_8CDF00FC-62CA-4E07-B093-D96E47BD356F">
         <di:waypoint x="901" y="314"/>
