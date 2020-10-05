@@ -131,6 +131,9 @@ ConstructedPriorTo1930 + 1 else 0&#xd;
     <dmn:informationRequirement id="_3E5D4425-3338-4B1B-AD9A-7CC1CF4BA097">
       <dmn:requiredDecision href="#_0C2916A3-B146-4FAF-986A-E445AF18DCD0"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_4D63A62D-7D48-49C5-A641-7DD00391963D">
+      <dmn:requiredInput href="#_BC8E862D-4BE5-4EC8-9C63-A65D685B0C7C"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_9BB36F36-213A-43A8-A0E9-445FA9AF5E9D">
       <dmn:text>if ConstructedPriorTo1930 > 0 and&#xd;
 ConstructedPriorTo1930_Value then&#xd;
@@ -138,7 +141,8 @@ ConstructedPriorTo1930_Value then&#xd;
   not(list contains(Activities_Value[Noun="residential building"].Verb, "add to"))) then&#xd;
   ConstructedPriorTo1930 + 1 else&#xd;
   if (list contains(Activities_Value[Noun="residential building"].Verb, "demolish") and &#xd;
-  list contains(Activities_Value[Noun="residential building"].Verb, "add to")) then&#xd;
+  list contains(Activities_Value[Noun="residential building"].Verb, "add to")) and&#xd;
+  not(AdditionAffectingPrimaryForm_Value) then&#xd;
   AdditionAffectingPrimaryForm + 1 else 0&#xd;
 else 0&#xd;
 &#xd;
@@ -499,6 +503,10 @@ else 0&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_3E5D4425-3338-4B1B-AD9A-7CC1CF4BA097" dmnElementRef="_3E5D4425-3338-4B1B-AD9A-7CC1CF4BA097">
         <di:waypoint x="666" y="286"/>
+        <di:waypoint x="450" y="282"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_4D63A62D-7D48-49C5-A641-7DD00391963D" dmnElementRef="_4D63A62D-7D48-49C5-A641-7DD00391963D">
+        <di:waypoint x="262" y="499"/>
         <di:waypoint x="450" y="282"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_B0A5082F-DFB9-4636-9573-56E10D043820" dmnElementRef="_B0A5082F-DFB9-4636-9573-56E10D043820">
