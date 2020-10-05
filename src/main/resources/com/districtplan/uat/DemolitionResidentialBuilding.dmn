@@ -663,14 +663,144 @@ list contains(activities[Noun="residential building"].Verb, "demolish")&#xd;
     <dmn:informationRequirement id="_A165D3A1-E76E-4D7F-87F3-C381DB6ECD45">
       <dmn:requiredDecision href="#_A59DBF96-5684-4062-961A-95EA13FEA2AB"/>
     </dmn:informationRequirement>
-    <dmn:literalExpression id="_0900F377-1E88-45CB-963A-9B3B8652CE3A">
-      <dmn:text>if R5.1.12-PrimaryForm = "demolish or affect primary form" and&#xd;
-not(AdditionAffectingPrimaryForm) or&#xd;
-not(DemolishPrimaryForm) then true else&#xd;
-if R5.1.12-PrimaryForm = null then null else false&#xd;
-&#xd;
-</dmn:text>
-    </dmn:literalExpression>
+    <dmn:decisionTable id="_82CE5DD6-D068-4EAC-AA29-E6EDCC743233" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_5AEDEF1D-1CA3-4724-BCE4-4D96523095FD">
+        <dmn:inputExpression id="_B48B08F0-BAD7-4833-B663-B9C27154593A" typeRef="string">
+          <dmn:text>R5.1.12-PrimaryForm</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_FCE04BE8-047C-4AAD-B189-0A3F4AC7BA9B">
+        <dmn:inputExpression id="_7F20AB27-A496-4E37-8C63-92F53A07AA97" typeRef="boolean">
+          <dmn:text>AdditionAffectingPrimaryForm</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_A04F6BBC-FE16-4D3C-8183-2E66D67DA541">
+        <dmn:inputExpression id="_6F65D0B2-C93F-4803-A95A-6D03F2160C96" typeRef="boolean">
+          <dmn:text>DemolishPrimaryForm</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_99AB1E1D-1EB4-4C33-A188-33A1CD347124"/>
+      <dmn:annotation name="annotation-1"/>
+      <dmn:rule id="_957777C9-8D94-4ECD-B3CE-7627167CBA0F">
+        <dmn:inputEntry id="_EC101077-3FD2-4A0E-83D8-4CB20A944075">
+          <dmn:text>"demolish or affect primary form"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0DF58672-E2E3-4051-B50C-FA7BB59A97C7">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_479971CA-BA40-468A-A8A7-5BE9CEEE6EA7">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_8B806E17-B4E2-4A18-A424-7755DE361D54">
+          <dmn:text>true</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_27626D62-D7ED-4094-A687-19217907D022">
+        <dmn:inputEntry id="_8B13BBC2-7344-4F39-9046-A93CEB64B978">
+          <dmn:text>"demolish or affect primary form"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E9654DEB-5C3D-4A17-8C94-8EA6CF30E625">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A20B3A62-DBC1-4BF7-B5FA-CBC5DD04F352">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_E2C9A337-5EC2-4CB4-AEB8-4F4310DEFC09">
+          <dmn:text>true</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_50094AAD-75B0-421F-B679-FC5987B37587">
+        <dmn:inputEntry id="_17DC8B46-64C7-4A7C-84AC-C47105DFDE62">
+          <dmn:text>"demolish or affect primary form"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_434CA22A-C5E1-4E2D-AA6A-423CE821E770">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B51F50E4-30AD-4E69-9251-A2E8E47DC013">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_CA15E180-048A-4251-AB7A-03E6342B991F">
+          <dmn:text>true</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_A3A686A0-B6F5-457C-9A19-FC4693F1DCF0">
+        <dmn:inputEntry id="_3E0903A1-0EC0-4AB3-B7E0-351F35581B8E">
+          <dmn:text>"demolish or affect primary form"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_49037C3D-6572-44B5-A638-93193B1D5F42">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DFD56DE7-33B3-409D-BE31-DCA437067069">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_6F20F1DB-1643-4FC2-9C73-E151B66E282B">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_C74F0FC0-8977-4E04-A188-4F9F6AC64798">
+        <dmn:inputEntry id="_AE24D667-EE8B-414E-A983-3CF8EBED8839">
+          <dmn:text>"demolish or affect primary form"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F7BC4A12-E769-493A-9BEF-F8544BC7DCD5">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8ACDB9FF-64D9-4CDE-B089-934E2723635B">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_9A826877-6BED-47D5-BEEF-0441AB9BAEF1">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_FF846C7E-DA47-4C0C-85CE-BAF1AB283A0F">
+        <dmn:inputEntry id="_66D40837-1D54-4EFF-928B-8CA372970573">
+          <dmn:text>"demolish or affect primary form"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_92AB6F87-57A6-4A2B-967D-39A6655F1E2E">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_AF23BFEE-8606-4BD3-AF62-6FE1AE86995B">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_A53F6476-6D4B-48A1-9804-0124F8732EEC">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_48017DC0-E66B-4421-AE87-243B274447AE">
+        <dmn:inputEntry id="_E5BA2B2C-8230-4CDA-BAF7-A1AB4C7EB238">
+          <dmn:text>"demolish or affect primary form"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_40554D25-B902-43BE-8F1B-35937A448AF6">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_101987B9-C8D2-4FF6-ACA6-0554D1787E0E">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_AD417AF7-59FB-43E5-ACAA-9D65AAC0BBEC">
+          <dmn:text>null</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
   </dmn:decision>
   <dmn:decision id="_B0AB143E-F4C8-486C-9C4E-C110E8867AB6" name="R5.1.12-ArchitecturalFeature">
     <dmn:extensionElements/>
@@ -985,7 +1115,10 @@ ConstructedPriorTo1930 then "demolish or affect primary form" else null&#xd;
     <dmn:literalExpression id="_A9567921-2A95-4D6F-BC1A-89724F890069">
       <dmn:text>if R5.1.12-ArchitecturalFeature = "remove or demolish architectural features" and&#xd;
 not(DemolishArchitecturalFeature) then true else&#xd;
-if R5.1.12-ArchitecturalFeature = null then null else false&#xd;
+if R5.1.12-ArchitecturalFeature = null or DemolishArchitecturalFeature = null then null else false&#xd;
+&#xd;
+&#xd;
+&#xd;
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
@@ -1146,8 +1279,13 @@ if R5.1.12-ArchitecturalFeature = null then null else false&#xd;
             <kie:width>50.0</kie:width>
             <kie:width>953.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_0900F377-1E88-45CB-963A-9B3B8652CE3A">
-            <kie:width>791.0</kie:width>
+          <kie:ComponentWidths dmnElementRef="_82CE5DD6-D068-4EAC-AA29-E6EDCC743233">
+            <kie:width>50.0</kie:width>
+            <kie:width>158.0</kie:width>
+            <kie:width>215.0</kie:width>
+            <kie:width>199.0</kie:width>
+            <kie:width>227.0</kie:width>
+            <kie:width>100.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_E07F788A-399D-46DC-96D3-FB8DE62F655F">
             <kie:width>810.0</kie:width>
