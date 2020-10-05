@@ -494,6 +494,33 @@ Residential buildings, accessory buildings and residential structures subject to
     <dmn:extensionElements/>
     <dmn:type></dmn:type>
   </dmn:knowledgeSource>
+  <dmn:decision id="_A1567033-35D9-4A73-871F-4FC68E8005BE" name="IR5BuildingRecessionPlaneBreach_Message">
+    <dmn:extensionElements/>
+    <dmn:variable id="_7C8D4386-5833-4C3A-8B43-C0E9D6A2272C" name="IR5BuildingRecessionPlaneBreach_Message" typeRef="string"/>
+    <dmn:informationRequirement id="_87EB0771-D8CC-4A38-8270-FFD90EA4A09C">
+      <dmn:requiredInput href="#_7ADE87F0-D2A4-40CC-9045-46F0225AE9C8"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_869CB263-B847-450A-BDC0-421A5549626B" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_23877563-19CA-4CC5-846F-0A24007FCF03">
+        <dmn:inputExpression id="_CEE20A11-2D40-4AD0-BB0F-C76758D74095" typeRef="string">
+          <dmn:text>IR5BuildingRecessionPlaneBreach</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_51D76364-823B-4088-BF45-1645C816D5D3"/>
+      <dmn:annotation name="annotation-1"/>
+      <dmn:rule id="_A68AE578-FB2B-46B2-8B43-CBA61615907C">
+        <dmn:inputEntry id="_E8F7E49E-4E24-472D-B858-554C61C0202E">
+          <dmn:text>"I don't know"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_E46E7A2C-71AC-49E3-9354-0293E8BA64AB">
+          <dmn:text>"You may need a resource consent"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
   <dmn:decision id="_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB" name="S5.6.2.8.1Met">
     <dmn:extensionElements/>
     <dmn:variable id="_F75E3AEF-2D4E-418E-B3EE-E275595C6158" name="S5.6.2.8.1Met" typeRef="boolean"/>
@@ -1057,12 +1084,9 @@ else null&#xd;
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
-  <dmn:decision id="_1BAB75C0-C27F-403A-8FB4-FA543A022576" name="Message">
+  <dmn:decision id="_1BAB75C0-C27F-403A-8FB4-FA543A022576" name="BuildingRecessionEnvelopeBreach_Message">
     <dmn:extensionElements/>
-    <dmn:variable id="_776A65E8-46B7-4844-AD24-0472F825309B" name="Message" typeRef="string"/>
-    <dmn:informationRequirement id="_87EB0771-D8CC-4A38-8270-FFD90EA4A09C">
-      <dmn:requiredInput href="#_7ADE87F0-D2A4-40CC-9045-46F0225AE9C8"/>
-    </dmn:informationRequirement>
+    <dmn:variable id="_776A65E8-46B7-4844-AD24-0472F825309B" name="BuildingRecessionEnvelopeBreach_Message" typeRef="string"/>
     <dmn:informationRequirement id="_61527937-B715-49FC-81AC-9D09719EAF77">
       <dmn:requiredInput href="#_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0"/>
     </dmn:informationRequirement>
@@ -1072,35 +1096,13 @@ else null&#xd;
           <dmn:text>BuildingRecessionEnvelopeBreach</dmn:text>
         </dmn:inputExpression>
       </dmn:input>
-      <dmn:input id="_B25AD9E7-66C0-4F6E-86D8-62133E36A32E">
-        <dmn:inputExpression id="_56BBFE95-F316-4218-87E4-C52F617F5EBD" typeRef="string">
-          <dmn:text>IR5BuildingRecessionPlaneBreach</dmn:text>
-        </dmn:inputExpression>
-      </dmn:input>
       <dmn:output id="_01189041-8DFC-4091-B26A-F8387271EDFF"/>
       <dmn:annotation name="annotation-1"/>
       <dmn:rule id="_7B9292F6-B60B-4CBB-80AC-39B213BFF0FF">
         <dmn:inputEntry id="_FC75E598-CF90-4DD6-929F-C352EA58D630">
           <dmn:text>"I don't know"</dmn:text>
         </dmn:inputEntry>
-        <dmn:inputEntry id="_808F3793-1F65-4BCD-BC5C-0702A019B98F">
-          <dmn:text>null</dmn:text>
-        </dmn:inputEntry>
         <dmn:outputEntry id="_141183AB-C6D9-45E3-94AE-EDC82D796EED">
-          <dmn:text>"You may need a resource consent"</dmn:text>
-        </dmn:outputEntry>
-        <dmn:annotationEntry>
-          <dmn:text></dmn:text>
-        </dmn:annotationEntry>
-      </dmn:rule>
-      <dmn:rule id="_332C41C4-EFD1-4B6B-9998-189BBA46B42D">
-        <dmn:inputEntry id="_A5E31CA3-E98E-4D7E-A1E7-8672A1B80249">
-          <dmn:text>null</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_38B0A1C9-8F85-4F4A-93B2-54AAF93DB8D2">
-          <dmn:text>"I don't know"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_DD8DF76C-E293-48FF-90F2-1F544C55AF23">
           <dmn:text>"You may need a resource consent"</dmn:text>
         </dmn:outputEntry>
         <dmn:annotationEntry>
@@ -1782,7 +1784,6 @@ Building Recession Planes 5.6.2.8</dmn:description>
           <kie:ComponentWidths dmnElementRef="_530AD05E-E5A5-4790-97AC-2697C071CD9F">
             <kie:width>50.0</kie:width>
             <kie:width>254.0</kie:width>
-            <kie:width>233.0</kie:width>
             <kie:width>357.0</kie:width>
             <kie:width>100.0</kie:width>
           </kie:ComponentWidths>
@@ -1882,6 +1883,12 @@ Building Recession Planes 5.6.2.8</dmn:description>
           <kie:ComponentWidths dmnElementRef="_B914F4FF-D3A3-4907-87EA-B719C052920E">
             <kie:width>50.0</kie:width>
             <kie:width>658.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_869CB263-B847-450A-BDC0-421A5549626B">
+            <kie:width>50.0</kie:width>
+            <kie:width>233.0</kie:width>
+            <kie:width>357.0</kie:width>
+            <kie:width>100.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_A4A1E05C-5CA7-465F-8B38-51BCB0F1016B">
             <kie:width>658.0</kie:width>
@@ -2050,7 +2057,7 @@ Building Recession Planes 5.6.2.8</dmn:description>
           <dmndi:StrokeColor red="133" green="150" blue="99"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="1285" y="417" width="100" height="50"/>
+        <dc:Bounds x="1285" y="409" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_E40F83C5-FFE3-478B-A203-52FDB1824A5B" dmnElementRef="_E40F83C5-FFE3-478B-A203-52FDB1824A5B" isCollapsed="false">
@@ -2104,7 +2111,7 @@ Building Recession Planes 5.6.2.8</dmn:description>
           <dmndi:StrokeColor red="133" green="150" blue="99"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="1285" y="483" width="100" height="50"/>
+        <dc:Bounds x="1285" y="528" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_BB5C4269-B69C-4B8E-92DB-9C7F95F9E3E9" dmnElementRef="_BB5C4269-B69C-4B8E-92DB-9C7F95F9E3E9" isCollapsed="false">
@@ -2260,6 +2267,15 @@ Building Recession Planes 5.6.2.8</dmn:description>
         <dc:Bounds x="76" y="197" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_A1567033-35D9-4A73-871F-4FC68E8005BE" dmnElementRef="_A1567033-35D9-4A73-871F-4FC68E8005BE" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="204" green="218" blue="183"/>
+          <dmndi:StrokeColor red="133" green="150" blue="99"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="1285" y="472" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_74A50540-83EB-48FB-8963-DA5B12791200" dmnElementRef="_74A50540-83EB-48FB-8963-DA5B12791200" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="255" green="255" blue="255"/>
@@ -2284,7 +2300,7 @@ Building Recession Planes 5.6.2.8</dmn:description>
           <dmndi:StrokeColor red="133" green="150" blue="99"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="1284" y="553" width="100" height="50"/>
+        <dc:Bounds x="1285" y="600" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_9AF94EE9-C81E-4E15-8287-3AFE94D76B74" dmnElementRef="_9AF94EE9-C81E-4E15-8287-3AFE94D76B74" isCollapsed="false">
@@ -2452,13 +2468,9 @@ Building Recession Planes 5.6.2.8</dmn:description>
         <di:waypoint x="120.5981308411215" y="488.68421052631584"/>
         <di:waypoint x="378" y="689"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_87EB0771-D8CC-4A38-8270-FFD90EA4A09C" dmnElementRef="_87EB0771-D8CC-4A38-8270-FFD90EA4A09C">
-        <di:waypoint x="649.5981308411215" y="157.68421052631578"/>
-        <di:waypoint x="1335" y="442"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_61527937-B715-49FC-81AC-9D09719EAF77" dmnElementRef="_61527937-B715-49FC-81AC-9D09719EAF77">
         <di:waypoint x="516.2990654205607" y="154.68421052631578"/>
-        <di:waypoint x="1335" y="442"/>
+        <di:waypoint x="1335" y="434"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_30C70F04-9666-402A-AB33-08D33E010976" dmnElementRef="_30C70F04-9666-402A-AB33-08D33E010976">
         <di:waypoint x="120.5981308411215" y="415.6842105263158"/>
@@ -2550,7 +2562,7 @@ Building Recession Planes 5.6.2.8</dmn:description>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_F6543BE2-EB0D-4D63-A1C5-A2786E8A5E87" dmnElementRef="_F6543BE2-EB0D-4D63-A1C5-A2786E8A5E87">
         <di:waypoint x="934" y="449"/>
-        <di:waypoint x="1335" y="508"/>
+        <di:waypoint x="1335" y="553"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_D7C91A05-98D3-4695-8EB9-3885D35E4CED" dmnElementRef="_D7C91A05-98D3-4695-8EB9-3885D35E4CED">
         <di:waypoint x="378" y="363"/>
@@ -2688,13 +2700,17 @@ Building Recession Planes 5.6.2.8</dmn:description>
         <di:waypoint x="126" y="222"/>
         <di:waypoint x="379" y="492"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_87EB0771-D8CC-4A38-8270-FFD90EA4A09C" dmnElementRef="_87EB0771-D8CC-4A38-8270-FFD90EA4A09C">
+        <di:waypoint x="649.5981308411215" y="157.68421052631578"/>
+        <di:waypoint x="1335" y="497"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_95010F7C-20E0-44F8-8BC1-F26301325574" dmnElementRef="_95010F7C-20E0-44F8-8BC1-F26301325574">
         <di:waypoint x="517" y="222"/>
-        <di:waypoint x="1334" y="578"/>
+        <di:waypoint x="1335" y="625"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_ED2751B5-CEAE-4A56-9F36-673716D503DE" dmnElementRef="_ED2751B5-CEAE-4A56-9F36-673716D503DE">
         <di:waypoint x="120.5981308411215" y="415.6842105263158"/>
-        <di:waypoint x="1334" y="578"/>
+        <di:waypoint x="1335" y="625"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_624A459D-2937-4FCD-ABC5-4F0687CD15F1" dmnElementRef="_624A459D-2937-4FCD-ABC5-4F0687CD15F1">
         <di:waypoint x="933" y="223"/>
