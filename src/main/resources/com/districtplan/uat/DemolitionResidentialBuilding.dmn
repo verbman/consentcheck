@@ -241,6 +241,33 @@ The demolition of any building, excluding accessory buildings, constructed befor
     <dmn:extensionElements/>
     <dmn:type></dmn:type>
   </dmn:knowledgeSource>
+  <dmn:decision id="_5F3ED635-599F-4744-B57B-CBCE66DCB66B" name="RuleSetRelevance">
+    <dmn:extensionElements/>
+    <dmn:variable id="_867C5466-A755-4730-86D3-25C9A0AD1991" name="RuleSetRelevance" typeRef="boolean"/>
+    <dmn:informationRequirement id="_843936A9-7973-45A0-8468-4CEA4DFA5C94">
+      <dmn:requiredInput href="#_FF9E4109-6622-4987-BA94-B2DD13F30A1C"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_117D33EA-0FD3-413A-8B7D-B21D3499B556">
+      <dmn:requiredInput href="#_9AF94EE9-C81E-4E15-8287-3AFE94D76B74"/>
+    </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_F1291605-B183-4A24-9C71-18F35CBBF328">
+      <dmn:requiredKnowledge href="#_162DC7F1-EF22-4B75-AC18-37982D1DE529"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_785BB7DD-675D-40F1-A6E8-2B68128DC1C6">
+      <dmn:requiredKnowledge href="#_A2394239-9503-47FD-A1EA-5297FEA363B1"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_86E30D09-0508-44C6-B209-414746775A41">
+      <dmn:requiredKnowledge href="#_C2A0391E-652B-42B5-9E9B-196947E9BE0D"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_469AC4CE-331D-4BFF-A650-52DF99F3ECE7">
+      <dmn:requiredKnowledge href="#_0E74B5B2-A1F4-41EE-8AAE-656AAA8686F8"/>
+    </dmn:knowledgeRequirement>
+    <dmn:literalExpression id="_63E85B14-7759-436E-B148-30A098FD236E">
+      <dmn:text>ResidentialAreasPre-1930DemolitionControls(SpatialLayers) and&#xd;
+not(HeritageAreas(SpatialLayers)) and&#xd;
+not(HeritageFeatures(SpatialLayers))</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:decision id="_5CEB3BDE-6BCD-4DF3-B7A3-3D01FFF23EDA" name="R5.1.12-WholeMet">
     <dmn:extensionElements/>
     <dmn:variable id="_7098EE35-921D-496E-80ED-9AD07F606285" name="R5.1.12-WholeMet" typeRef="boolean"/>
@@ -1150,6 +1177,9 @@ not(HeritageFeatures(SpatialLayers)) then "constructed prior to 1930" else null&
           <kie:ComponentWidths dmnElementRef="_36AEFEA4-7039-4DCF-A98E-C96803218563">
             <kie:width>853.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_A7533A3D-3A68-472E-B73A-927796F25793">
+            <kie:width>791.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_C4BE5089-DA2B-481F-86C2-D5B37AC7DF3F">
             <kie:width>50.0</kie:width>
             <kie:width>100.0</kie:width>
@@ -1190,18 +1220,12 @@ not(HeritageFeatures(SpatialLayers)) then "constructed prior to 1930" else null&
             <kie:width>50.0</kie:width>
             <kie:width>910.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_5E800597-AE86-46B8-AC5A-CEE145A53168">
-            <kie:width>708.0</kie:width>
-          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_378D7E39-160B-4410-931A-2996D7B4DE90">
             <kie:width>50.0</kie:width>
             <kie:width>100.0</kie:width>
             <kie:width>100.0</kie:width>
             <kie:width>321.0</kie:width>
             <kie:width>100.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_A7533A3D-3A68-472E-B73A-927796F25793">
-            <kie:width>791.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_5A8AFE1A-52FB-4140-8383-E84671F1EE0A">
             <kie:width>708.0</kie:width>
@@ -1228,6 +1252,12 @@ not(HeritageFeatures(SpatialLayers)) then "constructed prior to 1930" else null&
             <kie:width>184.0</kie:width>
             <kie:width>308.0</kie:width>
             <kie:width>328.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_63E85B14-7759-436E-B148-30A098FD236E">
+            <kie:width>584.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_5E800597-AE86-46B8-AC5A-CEE145A53168">
+            <kie:width>708.0</kie:width>
           </kie:ComponentWidths>
         </kie:ComponentsWidthsExtension>
       </di:extension>
@@ -1321,6 +1351,15 @@ not(HeritageFeatures(SpatialLayers)) then "constructed prior to 1930" else null&
         <dc:Bounds x="742" y="284" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_D08CDE46-9935-4C5E-B8C8-6FF26E479B5D" dmnElementRef="_D08CDE46-9935-4C5E-B8C8-6FF26E479B5D" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="465" y="119" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_BB23ECF6-ABC5-4B77-BB28-5016CD0E58A9" dmnElementRef="_BB23ECF6-ABC5-4B77-BB28-5016CD0E58A9" isCollapsed="false">
         <dmndi:DMNStyle>
           <dmndi:FillColor red="255" green="255" blue="255"/>
@@ -1402,15 +1441,6 @@ not(HeritageFeatures(SpatialLayers)) then "constructed prior to 1930" else null&
         <dc:Bounds x="76.59813084112147" y="260" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_9D3D0928-6B98-43BF-A82F-0236ACAE8475" dmnElementRef="_9D3D0928-6B98-43BF-A82F-0236ACAE8475" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="169" green="192" blue="225"/>
-          <dmndi:StrokeColor red="71" green="104" blue="161"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="329" y="119" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_FF9E4109-6622-4987-BA94-B2DD13F30A1C" dmnElementRef="_FF9E4109-6622-4987-BA94-B2DD13F30A1C" isCollapsed="false">
         <dmndi:DMNStyle fontSize="8">
           <dmndi:FillColor red="243" green="229" blue="248"/>
@@ -1436,15 +1466,6 @@ not(HeritageFeatures(SpatialLayers)) then "constructed prior to 1930" else null&
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="70.5981308411215" y="384" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_D08CDE46-9935-4C5E-B8C8-6FF26E479B5D" dmnElementRef="_D08CDE46-9935-4C5E-B8C8-6FF26E479B5D" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="238" green="238" blue="238"/>
-          <dmndi:StrokeColor red="180" green="180" blue="180"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="465" y="119" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_69755C18-1F1F-4AFA-A816-9BB075FBF7FE" dmnElementRef="_69755C18-1F1F-4AFA-A816-9BB075FBF7FE" isCollapsed="false">
@@ -1517,6 +1538,24 @@ not(HeritageFeatures(SpatialLayers)) then "constructed prior to 1930" else null&
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="1427" y="122" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_5F3ED635-599F-4744-B57B-CBCE66DCB66B" dmnElementRef="_5F3ED635-599F-4744-B57B-CBCE66DCB66B" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="204" y="23" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_9D3D0928-6B98-43BF-A82F-0236ACAE8475" dmnElementRef="_9D3D0928-6B98-43BF-A82F-0236ACAE8475" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="169" green="192" blue="225"/>
+          <dmndi:StrokeColor red="71" green="104" blue="161"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="329" y="119" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0" dmnElementRef="_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0" isCollapsed="false">
@@ -1597,6 +1636,14 @@ not(HeritageFeatures(SpatialLayers)) then "constructed prior to 1930" else null&
         <di:waypoint x="515" y="144"/>
         <di:waypoint x="792" y="309"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_B01AF082-1BAF-406D-A09E-D0E155EEACA5" dmnElementRef="_B01AF082-1BAF-406D-A09E-D0E155EEACA5">
+        <di:waypoint x="379" y="144"/>
+        <di:waypoint x="515" y="144"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_7008447F-EAF6-4884-8E70-DDD2EB7A4DA6" dmnElementRef="_7008447F-EAF6-4884-8E70-DDD2EB7A4DA6">
+        <di:waypoint x="515.2990654205607" y="71.6842105263158"/>
+        <di:waypoint x="515" y="144"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_95AE9539-9644-4754-A7A5-303BB142D034" dmnElementRef="_95AE9539-9644-4754-A7A5-303BB142D034">
         <di:waypoint x="1069" y="226"/>
         <di:waypoint x="1477" y="287"/>
@@ -1653,41 +1700,9 @@ not(HeritageFeatures(SpatialLayers)) then "constructed prior to 1930" else null&
         <di:waypoint x="792" y="309"/>
         <di:waypoint x="1477" y="375"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_E3E22AB1-4F1D-4E0D-9567-46072B00B4D5" dmnElementRef="_E3E22AB1-4F1D-4E0D-9567-46072B00B4D5">
-        <di:waypoint x="126.5981308411215" y="95.6842105263158"/>
-        <di:waypoint x="379" y="144"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_28CF9C3B-2B4E-4225-B2DF-80B283DBCB57" dmnElementRef="_28CF9C3B-2B4E-4225-B2DF-80B283DBCB57">
-        <di:waypoint x="126.59813084112147" y="158.68421052631578"/>
-        <di:waypoint x="379" y="144"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_905F9E50-F9F0-4741-B71A-AFA64D177817" dmnElementRef="_905F9E50-F9F0-4741-B71A-AFA64D177817">
-        <di:waypoint x="126.5981308411215" y="223"/>
-        <di:waypoint x="379" y="144"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_7EE623C8-1281-46D7-9C6D-457E732EC381" dmnElementRef="_7EE623C8-1281-46D7-9C6D-457E732EC381">
-        <di:waypoint x="126.59813084112147" y="285"/>
-        <di:waypoint x="379" y="144"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_DF856416-0D6D-456D-97CD-F5688F6D8FDE" dmnElementRef="_DF856416-0D6D-456D-97CD-F5688F6D8FDE">
-        <di:waypoint x="126.5981308411215" y="345"/>
-        <di:waypoint x="379" y="144"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_2CB78B28-0791-4BF7-8FFA-ABB0B84FBCE1" dmnElementRef="_2CB78B28-0791-4BF7-8FFA-ABB0B84FBCE1">
-        <di:waypoint x="120.5981308411215" y="409"/>
-        <di:waypoint x="379" y="144"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_D127E882-DE59-401D-8145-82069B6123F9" dmnElementRef="_D127E882-DE59-401D-8145-82069B6123F9">
         <di:waypoint x="792" y="309"/>
         <di:waypoint x="1477" y="514"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_B01AF082-1BAF-406D-A09E-D0E155EEACA5" dmnElementRef="_B01AF082-1BAF-406D-A09E-D0E155EEACA5">
-        <di:waypoint x="379" y="144"/>
-        <di:waypoint x="515" y="144"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_7008447F-EAF6-4884-8E70-DDD2EB7A4DA6" dmnElementRef="_7008447F-EAF6-4884-8E70-DDD2EB7A4DA6">
-        <di:waypoint x="515.2990654205607" y="71.6842105263158"/>
-        <di:waypoint x="515" y="144"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_F7813B3E-0881-4087-8082-FB0684724F95" dmnElementRef="_F7813B3E-0881-4087-8082-FB0684724F95">
         <di:waypoint x="126.59813084112147" y="158.68421052631578"/>
@@ -1776,6 +1791,54 @@ not(HeritageFeatures(SpatialLayers)) then "constructed prior to 1930" else null&
       <dmndi:DMNEdge id="dmnedge-_3829BA40-835F-4A56-95E4-F4D2F1A29EFE" dmnElementRef="_3829BA40-835F-4A56-95E4-F4D2F1A29EFE">
         <di:waypoint x="1069" y="226"/>
         <di:waypoint x="1477" y="147"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_F1291605-B183-4A24-9C71-18F35CBBF328" dmnElementRef="_F1291605-B183-4A24-9C71-18F35CBBF328">
+        <di:waypoint x="126.5981308411215" y="95.6842105263158"/>
+        <di:waypoint x="254" y="48"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_843936A9-7973-45A0-8468-4CEA4DFA5C94" dmnElementRef="_843936A9-7973-45A0-8468-4CEA4DFA5C94">
+        <di:waypoint x="126.59813084112147" y="158.68421052631578"/>
+        <di:waypoint x="254" y="48"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_785BB7DD-675D-40F1-A6E8-2B68128DC1C6" dmnElementRef="_785BB7DD-675D-40F1-A6E8-2B68128DC1C6">
+        <di:waypoint x="126.5981308411215" y="223"/>
+        <di:waypoint x="254" y="48"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_86E30D09-0508-44C6-B209-414746775A41" dmnElementRef="_86E30D09-0508-44C6-B209-414746775A41">
+        <di:waypoint x="126.59813084112147" y="285"/>
+        <di:waypoint x="254" y="48"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_469AC4CE-331D-4BFF-A650-52DF99F3ECE7" dmnElementRef="_469AC4CE-331D-4BFF-A650-52DF99F3ECE7">
+        <di:waypoint x="126.5981308411215" y="345"/>
+        <di:waypoint x="254" y="48"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_117D33EA-0FD3-413A-8B7D-B21D3499B556" dmnElementRef="_117D33EA-0FD3-413A-8B7D-B21D3499B556">
+        <di:waypoint x="120.5981308411215" y="409"/>
+        <di:waypoint x="254" y="48"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_28CF9C3B-2B4E-4225-B2DF-80B283DBCB57" dmnElementRef="_28CF9C3B-2B4E-4225-B2DF-80B283DBCB57">
+        <di:waypoint x="126.59813084112147" y="158.68421052631578"/>
+        <di:waypoint x="379" y="144"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_2CB78B28-0791-4BF7-8FFA-ABB0B84FBCE1" dmnElementRef="_2CB78B28-0791-4BF7-8FFA-ABB0B84FBCE1">
+        <di:waypoint x="120.5981308411215" y="409"/>
+        <di:waypoint x="379" y="144"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_E3E22AB1-4F1D-4E0D-9567-46072B00B4D5" dmnElementRef="_E3E22AB1-4F1D-4E0D-9567-46072B00B4D5">
+        <di:waypoint x="126.5981308411215" y="95.6842105263158"/>
+        <di:waypoint x="379" y="144"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_905F9E50-F9F0-4741-B71A-AFA64D177817" dmnElementRef="_905F9E50-F9F0-4741-B71A-AFA64D177817">
+        <di:waypoint x="126.5981308411215" y="223"/>
+        <di:waypoint x="379" y="144"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_7EE623C8-1281-46D7-9C6D-457E732EC381" dmnElementRef="_7EE623C8-1281-46D7-9C6D-457E732EC381">
+        <di:waypoint x="126.59813084112147" y="285"/>
+        <di:waypoint x="379" y="144"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_DF856416-0D6D-456D-97CD-F5688F6D8FDE" dmnElementRef="_DF856416-0D6D-456D-97CD-F5688F6D8FDE">
+        <di:waypoint x="126.5981308411215" y="345"/>
+        <di:waypoint x="379" y="144"/>
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
