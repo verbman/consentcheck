@@ -781,6 +781,60 @@ Side and Rear Yards
       </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
+  <dmn:decision id="_DF522AFB-F580-4299-A375-240D6B244609" name="RuleSetRelevance">
+    <dmn:extensionElements/>
+    <dmn:variable id="_BB6456ED-4516-4F32-B0BD-F581419CDC8C" name="RuleSetRelevance" typeRef="boolean"/>
+    <dmn:informationRequirement id="_FDB9B776-BF1C-42B9-B981-D8A148237B4C">
+      <dmn:requiredInput href="#_21F67AC4-9580-4DC6-A41C-985A641CCA9B"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_86C83E22-AA07-4788-95E6-449F176173F2">
+      <dmn:requiredInput href="#_FBB0166C-753C-4720-9BD3-38FBAF2E380A"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_6D5B0401-8AE6-49A6-A567-140BC8C8392D">
+      <dmn:requiredInput href="#_3B2142F1-3C69-411A-AF36-C7D080EBB894"/>
+    </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_B7F0D368-531A-45AB-9F17-D7E0D2D7F914">
+      <dmn:requiredKnowledge href="#_50C1A451-ADEB-4DFB-8EA9-CC7A79BD1335"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_BB52D6A6-BA3A-415B-8A59-4B0123341CA4">
+      <dmn:requiredKnowledge href="#_530416AC-C9C2-4857-A75C-3B66ABDBD117"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_EC617E22-6F99-4508-A2ED-DF6F98F2E3ED">
+      <dmn:requiredKnowledge href="#_DFA234A1-54BE-47ED-8D05-52AC1F769B44"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_280A2E8B-4271-4BA3-B4E2-2D276BC30FA4">
+      <dmn:requiredKnowledge href="#_2530023E-AAB2-4B74-A2A6-86713312331C"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_3EA5BC68-AD0F-472B-9BC8-375E7EA82740">
+      <dmn:requiredKnowledge href="#_CC255B1C-0A80-4BDB-9CBF-BDF1AB877D60"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_E799C679-955A-4D81-A181-1ED5146F18B1">
+      <dmn:requiredKnowledge href="#_67E49679-A90D-42DA-A564-D1A1294D7719"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_A794FDE2-3833-402F-AE28-D7D97C68939A">
+      <dmn:requiredKnowledge href="#_821A3922-56CF-44FF-A75C-5A807BC129EB"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_17058D44-70FF-4077-A675-D6CD548CB8E8">
+      <dmn:requiredKnowledge href="#_98CFC386-9C0C-49D2-87AA-0F21D7AAB9A6"/>
+    </dmn:knowledgeRequirement>
+    <dmn:literalExpression id="_13D844DE-C559-4A5D-8251-7E5812165542">
+      <dmn:text>ActivityAtSideRear and&#xd;
+(S5.6.2.2.6_activities(Activities) or&#xd;
+S5.6.2.2.7_activities(Activities) or&#xd;
+S5.6.2.2.8_activities(Activities) or&#xd;
+S5.6.2.2.9_activities(Activities) or&#xd;
+S5.6.2.2.11_activities(Activities)) and&#xd;
+(InnerResidentialArea(SpatialLayers) or &#xd;
+OuterResidentialArea(SpatialLayers) or&#xd;
+MediumDensityResidentialArea(SpatialLayers))&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:decision id="_A4F2E65F-D51C-446F-840F-9868FDD0D321" name="S5.6.2.2.11-WaterBody">
     <dmn:extensionElements/>
     <dmn:variable id="_CAD48B90-9E89-424C-BF87-7CC1CEE0D0AF" name="S5.6.2.2.11-WaterBody" typeRef="number"/>
@@ -883,6 +937,10 @@ Yards</dmn:text>
 - have a finished floor, paving or turf level that is 1.5 metres or more above ground level at the boundary?</dmn:description>
     <dmn:extensionElements/>
     <dmn:variable id="_3C15BCE3-F1A2-4989-8298-B7AB2D57C560" name="DeckInSideYard" typeRef="string"/>
+  </dmn:inputData>
+  <dmn:inputData id="_3B2142F1-3C69-411A-AF36-C7D080EBB894" name="ActivityAtSideRear">
+    <dmn:extensionElements/>
+    <dmn:variable id="_AF32A824-3DAF-4968-B1FD-4D17B228143F" name="ActivityAtSideRear" typeRef="Types.Activities"/>
   </dmn:inputData>
   <dmn:decision id="_32F45A4D-E733-4596-926F-6398FC788398" name="S5.6.2.2.7">
     <dmn:extensionElements/>
@@ -1599,9 +1657,6 @@ CoastalMarineArea then 10 else 0&#xd;
             <kie:width>50.0</kie:width>
             <kie:width>602.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_EA3ED85A-A32E-4FAB-9823-F6F047733C57">
-            <kie:width>658.0</kie:width>
-          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_58716C06-D997-4F42-89CD-42625FC2B92B">
             <kie:width>1251.0</kie:width>
           </kie:ComponentWidths>
@@ -1618,9 +1673,6 @@ CoastalMarineArea then 10 else 0&#xd;
           <kie:ComponentWidths dmnElementRef="_52BE11A4-A08C-432A-8357-9F88B3B5BCD7">
             <kie:width>50.0</kie:width>
             <kie:width>880.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_61D165F9-6350-4152-8409-C96F69BCACF8">
-            <kie:width>658.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_B535D23F-4D94-4F5B-856D-197EFB474C6A">
             <kie:width>50.0</kie:width>
@@ -1643,9 +1695,6 @@ CoastalMarineArea then 10 else 0&#xd;
             <kie:width>50.0</kie:width>
             <kie:width>604.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_034E60A1-F874-4804-81E5-0082E7AF221B">
-            <kie:width>658.0</kie:width>
-          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_442DF0B1-3A69-4E88-BA5B-03D7C2CC286D">
             <kie:width>665.0</kie:width>
           </kie:ComponentWidths>
@@ -1665,8 +1714,17 @@ CoastalMarineArea then 10 else 0&#xd;
           <kie:ComponentWidths dmnElementRef="_2077A5F0-4932-452A-B50F-8598E1785C43">
             <kie:width>468.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_61D165F9-6350-4152-8409-C96F69BCACF8">
+            <kie:width>658.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_399821F0-ADC6-4540-80AC-13A73D8F918E">
             <kie:width>1003.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_EA3ED85A-A32E-4FAB-9823-F6F047733C57">
+            <kie:width>658.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_034E60A1-F874-4804-81E5-0082E7AF221B">
+            <kie:width>658.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_D68A9376-67F2-4150-8D66-0B65059EDA09">
             <kie:width>880.0</kie:width>
@@ -1745,6 +1803,9 @@ CoastalMarineArea then 10 else 0&#xd;
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_8C7677BE-5C16-457B-A4FD-1F36A0253A20">
             <kie:width>572.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_13D844DE-C559-4A5D-8251-7E5812165542">
+            <kie:width>488.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_84146601-EE08-4BED-A0A0-E6089F955853">
             <kie:width>1251.0</kie:width>
@@ -1832,15 +1893,6 @@ CoastalMarineArea then 10 else 0&#xd;
         <dc:Bounds x="607.2990654205607" y="517.3421052631579" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_E91BFCB1-A481-4F76-B31C-7B55E046FCB4" dmnElementRef="_E91BFCB1-A481-4F76-B31C-7B55E046FCB4" isCollapsed="false">
-        <dmndi:DMNStyle>
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="0" green="0" blue="0"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="765" y="737" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_48B4DA5D-1E72-4DF4-B67C-0F11141C21CB" dmnElementRef="_48B4DA5D-1E72-4DF4-B67C-0F11141C21CB" isCollapsed="false">
         <dmndi:DMNStyle fontSize="8">
           <dmndi:FillColor red="243" green="229" blue="248"/>
@@ -1895,15 +1947,6 @@ CoastalMarineArea then 10 else 0&#xd;
         <dc:Bounds x="760.2990654205607" y="794" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_F494812B-098B-4E43-BB02-49718CB5CADC" dmnElementRef="_F494812B-098B-4E43-BB02-49718CB5CADC" isCollapsed="false">
-        <dmndi:DMNStyle>
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="0" green="0" blue="0"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="759" y="991" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_62D0A4BE-C422-49C0-8C68-2DA3FBB0CEFB" dmnElementRef="_62D0A4BE-C422-49C0-8C68-2DA3FBB0CEFB" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="204" green="218" blue="183"/>
@@ -1931,6 +1974,15 @@ CoastalMarineArea then 10 else 0&#xd;
         <dc:Bounds x="1141" y="86.6842105263158" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_3B2142F1-3C69-411A-AF36-C7D080EBB894" dmnElementRef="_3B2142F1-3C69-411A-AF36-C7D080EBB894" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="8">
+          <dmndi:FillColor red="243" green="229" blue="248"/>
+          <dmndi:StrokeColor red="210" green="193" blue="208"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="106.5981308411215" y="124.68421052631584" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_FBB0166C-753C-4720-9BD3-38FBAF2E380A" dmnElementRef="_FBB0166C-753C-4720-9BD3-38FBAF2E380A" isCollapsed="false">
         <dmndi:DMNStyle fontSize="8">
           <dmndi:FillColor red="243" green="229" blue="248"/>
@@ -1947,15 +1999,6 @@ CoastalMarineArea then 10 else 0&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="489.5981308411215" y="84.68421052631578" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_B50AE36F-9C50-4089-907F-6EFF09A90291" dmnElementRef="_B50AE36F-9C50-4089-907F-6EFF09A90291" isCollapsed="false">
-        <dmndi:DMNStyle>
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="0" green="0" blue="0"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="761" y="864" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_69755C18-1F1F-4AFA-A816-9BB075FBF7FE" dmnElementRef="_69755C18-1F1F-4AFA-A816-9BB075FBF7FE" isCollapsed="false">
@@ -2012,6 +2055,15 @@ CoastalMarineArea then 10 else 0&#xd;
         <dc:Bounds x="1031" y="808" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_F494812B-098B-4E43-BB02-49718CB5CADC" dmnElementRef="_F494812B-098B-4E43-BB02-49718CB5CADC" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="759" y="991" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_46D53361-4C68-4EFD-8AAD-04F7C6A78A24" dmnElementRef="_46D53361-4C68-4EFD-8AAD-04F7C6A78A24" isCollapsed="false">
         <dmndi:DMNStyle>
           <dmndi:FillColor red="255" green="255" blue="255"/>
@@ -2019,6 +2071,24 @@ CoastalMarineArea then 10 else 0&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="764" y="587" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_E91BFCB1-A481-4F76-B31C-7B55E046FCB4" dmnElementRef="_E91BFCB1-A481-4F76-B31C-7B55E046FCB4" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="765" y="737" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_B50AE36F-9C50-4089-907F-6EFF09A90291" dmnElementRef="_B50AE36F-9C50-4089-907F-6EFF09A90291" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="761" y="864" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_E873BF1B-6C72-45D6-9C8C-BC7370B210D9" dmnElementRef="_E873BF1B-6C72-45D6-9C8C-BC7370B210D9" isCollapsed="false">
@@ -2135,7 +2205,7 @@ CoastalMarineArea then 10 else 0&#xd;
           <dmndi:StrokeColor red="0" green="0" blue="0"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="484.5981308411215" y="259.6842105263158" width="100" height="50"/>
+        <dc:Bounds x="484.5981308411215" y="260.6842105263158" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_821A3922-56CF-44FF-A75C-5A807BC129EB" dmnElementRef="_821A3922-56CF-44FF-A75C-5A807BC129EB" isCollapsed="false">
@@ -2162,7 +2232,7 @@ CoastalMarineArea then 10 else 0&#xd;
           <dmndi:StrokeColor red="0" green="0" blue="0"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="106.5981308411215" y="466.3421052631579" width="100" height="50"/>
+        <dc:Bounds x="106.5981308411215" y="471.3421052631579" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_62ED29EC-8221-4AEF-BC20-78CC604A995B" dmnElementRef="_62ED29EC-8221-4AEF-BC20-78CC604A995B" isCollapsed="false">
@@ -2217,6 +2287,15 @@ CoastalMarineArea then 10 else 0&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="774" y="10.684210526315795" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_DF522AFB-F580-4299-A375-240D6B244609" dmnElementRef="_DF522AFB-F580-4299-A375-240D6B244609" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="230" y="69" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_B3B8B90B-D1FD-4F48-8A8A-066C5C355F35" dmnElementRef="_B3B8B90B-D1FD-4F48-8A8A-066C5C355F35" isCollapsed="false">
@@ -2277,14 +2356,6 @@ CoastalMarineArea then 10 else 0&#xd;
         <di:waypoint x="663" y="465"/>
         <di:waypoint x="821" y="465"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_CE9BECA1-E1C9-47BA-9B2D-3C8C4967AFE8" dmnElementRef="_CE9BECA1-E1C9-47BA-9B2D-3C8C4967AFE8">
-        <di:waypoint x="662" y="761"/>
-        <di:waypoint x="815" y="762"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_3F22F0C6-3C28-499D-9ACC-F79E60D21BCA" dmnElementRef="_3F22F0C6-3C28-499D-9ACC-F79E60D21BCA">
-        <di:waypoint x="817" y="685"/>
-        <di:waypoint x="815" y="762"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_8BC0312D-3563-4A8A-96D5-BB8DC4DC759E" dmnElementRef="_8BC0312D-3563-4A8A-96D5-BB8DC4DC759E">
         <di:waypoint x="280" y="838"/>
         <di:waypoint x="612" y="761"/>
@@ -2310,20 +2381,12 @@ CoastalMarineArea then 10 else 0&#xd;
         <di:waypoint x="662" y="761"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_BD42E5FA-19FC-4F87-BB2F-AAB635B10D9D" dmnElementRef="_BD42E5FA-19FC-4F87-BB2F-AAB635B10D9D">
-        <di:waypoint x="156.5981308411215" y="491.3421052631579"/>
+        <di:waypoint x="156.5981308411215" y="496.3421052631579"/>
         <di:waypoint x="662" y="761"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_E909432F-FFCE-4546-B391-073427011AA6" dmnElementRef="_E909432F-FFCE-4546-B391-073427011AA6">
         <di:waypoint x="517.5981308411215" y="1016"/>
         <di:waypoint x="662" y="761"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_BF549FF2-34EF-4F85-8254-5E33672646FF" dmnElementRef="_BF549FF2-34EF-4F85-8254-5E33672646FF">
-        <di:waypoint x="810.2990654205607" y="945"/>
-        <di:waypoint x="809" y="1016"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_B54F3517-F896-42AE-9699-2399C5289D93" dmnElementRef="_B54F3517-F896-42AE-9699-2399C5289D93">
-        <di:waypoint x="658" y="1016"/>
-        <di:waypoint x="809" y="1016"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_4E7E88E6-3061-450D-A634-6B0D3F82DEE7" dmnElementRef="_4E7E88E6-3061-450D-A634-6B0D3F82DEE7">
         <di:waypoint x="824" y="114"/>
@@ -2366,7 +2429,7 @@ CoastalMarineArea then 10 else 0&#xd;
         <di:waypoint x="663" y="465"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_2B0FA674-E2DE-49F1-8931-32797DB9FC1A" dmnElementRef="_2B0FA674-E2DE-49F1-8931-32797DB9FC1A">
-        <di:waypoint x="156.5981308411215" y="491.3421052631579"/>
+        <di:waypoint x="156.5981308411215" y="496.3421052631579"/>
         <di:waypoint x="663" y="465"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_8D37B890-3A79-487C-BBDE-48AA00DAF7C7" dmnElementRef="_8D37B890-3A79-487C-BBDE-48AA00DAF7C7">
@@ -2376,14 +2439,6 @@ CoastalMarineArea then 10 else 0&#xd;
       <dmndi:DMNEdge id="dmnedge-_7BF6BB63-8F24-4F74-B338-24259310C2BF" dmnElementRef="_7BF6BB63-8F24-4F74-B338-24259310C2BF">
         <di:waypoint x="662.2990654205607" y="399"/>
         <di:waypoint x="663" y="465"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_E96FF540-81AA-48B8-98D3-DD8745C4115C" dmnElementRef="_E96FF540-81AA-48B8-98D3-DD8745C4115C">
-        <di:waypoint x="810.2990654205607" y="819"/>
-        <di:waypoint x="811" y="889"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_0D87DC51-8266-4B37-9690-0F8430A193C0" dmnElementRef="_0D87DC51-8266-4B37-9690-0F8430A193C0">
-        <di:waypoint x="659" y="885"/>
-        <di:waypoint x="811" y="889"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_86CFC692-B69A-444A-9C08-207217664C0F" dmnElementRef="_86CFC692-B69A-444A-9C08-207217664C0F">
         <di:waypoint x="156.5981308411215" y="743"/>
@@ -2437,6 +2492,14 @@ CoastalMarineArea then 10 else 0&#xd;
         <di:waypoint x="809" y="1016"/>
         <di:waypoint x="1081" y="833"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_BF549FF2-34EF-4F85-8254-5E33672646FF" dmnElementRef="_BF549FF2-34EF-4F85-8254-5E33672646FF">
+        <di:waypoint x="810.2990654205607" y="945"/>
+        <di:waypoint x="809" y="1016"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_B54F3517-F896-42AE-9699-2399C5289D93" dmnElementRef="_B54F3517-F896-42AE-9699-2399C5289D93">
+        <di:waypoint x="658" y="1016"/>
+        <di:waypoint x="809" y="1016"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_EBEBF26B-9BBF-4EC0-A729-2B17F997C2C4" dmnElementRef="_EBEBF26B-9BBF-4EC0-A729-2B17F997C2C4">
         <di:waypoint x="813" y="542.3421052631579"/>
         <di:waypoint x="814" y="612"/>
@@ -2444,6 +2507,22 @@ CoastalMarineArea then 10 else 0&#xd;
       <dmndi:DMNEdge id="dmnedge-_066932A8-E447-4A50-8181-0BE79B3C22A1" dmnElementRef="_066932A8-E447-4A50-8181-0BE79B3C22A1">
         <di:waypoint x="659" y="613"/>
         <di:waypoint x="814" y="612"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_CE9BECA1-E1C9-47BA-9B2D-3C8C4967AFE8" dmnElementRef="_CE9BECA1-E1C9-47BA-9B2D-3C8C4967AFE8">
+        <di:waypoint x="662" y="761"/>
+        <di:waypoint x="815" y="762"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_3F22F0C6-3C28-499D-9ACC-F79E60D21BCA" dmnElementRef="_3F22F0C6-3C28-499D-9ACC-F79E60D21BCA">
+        <di:waypoint x="817" y="685"/>
+        <di:waypoint x="815" y="762"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_E96FF540-81AA-48B8-98D3-DD8745C4115C" dmnElementRef="_E96FF540-81AA-48B8-98D3-DD8745C4115C">
+        <di:waypoint x="810.2990654205607" y="819"/>
+        <di:waypoint x="811" y="889"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_0D87DC51-8266-4B37-9690-0F8430A193C0" dmnElementRef="_0D87DC51-8266-4B37-9690-0F8430A193C0">
+        <di:waypoint x="659" y="885"/>
+        <di:waypoint x="811" y="889"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_78959FB1-6900-4F23-AEC0-EEEB899C414E" dmnElementRef="_78959FB1-6900-4F23-AEC0-EEEB899C414E">
         <di:waypoint x="1192" y="177"/>
@@ -2474,7 +2553,7 @@ CoastalMarineArea then 10 else 0&#xd;
         <di:waypoint x="658" y="1016"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_09653D14-01A7-4E3B-B2F9-5EB78D1FD0DC" dmnElementRef="_09653D14-01A7-4E3B-B2F9-5EB78D1FD0DC">
-        <di:waypoint x="156.5981308411215" y="491.3421052631579"/>
+        <di:waypoint x="156.5981308411215" y="496.3421052631579"/>
         <di:waypoint x="658" y="1016"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_EF68743C-B2C8-4780-BAB0-EEF705A238A3" dmnElementRef="_EF68743C-B2C8-4780-BAB0-EEF705A238A3">
@@ -2498,7 +2577,7 @@ CoastalMarineArea then 10 else 0&#xd;
         <di:waypoint x="664" y="284"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_F280B545-74A6-4118-8725-67B77ADAE9AA" dmnElementRef="_F280B545-74A6-4118-8725-67B77ADAE9AA">
-        <di:waypoint x="534.5981308411215" y="284.6842105263158"/>
+        <di:waypoint x="534.5981308411215" y="285.6842105263158"/>
         <di:waypoint x="664" y="284"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_8DA2C67F-8602-464E-A81F-3D138A12A659" dmnElementRef="_8DA2C67F-8602-464E-A81F-3D138A12A659">
@@ -2506,7 +2585,7 @@ CoastalMarineArea then 10 else 0&#xd;
         <di:waypoint x="664" y="284"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_8DC4FA45-C959-4F61-A0F4-A495C6F732D3" dmnElementRef="_8DC4FA45-C959-4F61-A0F4-A495C6F732D3">
-        <di:waypoint x="156.5981308411215" y="491.3421052631579"/>
+        <di:waypoint x="156.5981308411215" y="496.3421052631579"/>
         <di:waypoint x="664" y="284"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_2488F1EA-652A-469E-BE13-9B587194108F" dmnElementRef="_2488F1EA-652A-469E-BE13-9B587194108F">
@@ -2570,7 +2649,7 @@ CoastalMarineArea then 10 else 0&#xd;
         <di:waypoint x="659" y="613"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_DA968FA5-F59F-43FE-A74B-BE2A44242218" dmnElementRef="_DA968FA5-F59F-43FE-A74B-BE2A44242218">
-        <di:waypoint x="156.5981308411215" y="491.3421052631579"/>
+        <di:waypoint x="156.5981308411215" y="496.3421052631579"/>
         <di:waypoint x="659" y="613"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_2E076F6C-72C0-4FF4-9F9F-301FACD5B980" dmnElementRef="_2E076F6C-72C0-4FF4-9F9F-301FACD5B980">
@@ -2592,6 +2671,50 @@ CoastalMarineArea then 10 else 0&#xd;
       <dmndi:DMNEdge id="dmnedge-_2BE99D17-52F1-4D9D-9F88-7BF35BAD7BD7" dmnElementRef="_2BE99D17-52F1-4D9D-9F88-7BF35BAD7BD7">
         <di:waypoint x="824" y="35.684210526315795"/>
         <di:waypoint x="824" y="114"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_FDB9B776-BF1C-42B9-B981-D8A148237B4C" dmnElementRef="_FDB9B776-BF1C-42B9-B981-D8A148237B4C">
+        <di:waypoint x="156.5981308411215" y="282.6842105263158"/>
+        <di:waypoint x="280" y="94"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_B7F0D368-531A-45AB-9F17-D7E0D2D7F914" dmnElementRef="_B7F0D368-531A-45AB-9F17-D7E0D2D7F914">
+        <di:waypoint x="156.5981308411215" y="364.3421052631579"/>
+        <di:waypoint x="280" y="94"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_BB52D6A6-BA3A-415B-8A59-4B0123341CA4" dmnElementRef="_BB52D6A6-BA3A-415B-8A59-4B0123341CA4">
+        <di:waypoint x="156.5981308411215" y="427.3421052631579"/>
+        <di:waypoint x="280" y="94"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_EC617E22-6F99-4508-A2ED-DF6F98F2E3ED" dmnElementRef="_EC617E22-6F99-4508-A2ED-DF6F98F2E3ED">
+        <di:waypoint x="156.5981308411215" y="496.3421052631579"/>
+        <di:waypoint x="280" y="119"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_86C83E22-AA07-4788-95E6-449F176173F2" dmnElementRef="_86C83E22-AA07-4788-95E6-449F176173F2">
+        <di:waypoint x="156.5981308411215" y="743"/>
+        <di:waypoint x="280" y="94"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_6D5B0401-8AE6-49A6-A567-140BC8C8392D" dmnElementRef="_6D5B0401-8AE6-49A6-A567-140BC8C8392D">
+        <di:waypoint x="156.5981308411215" y="149.68421052631584"/>
+        <di:waypoint x="280" y="94"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_280A2E8B-4271-4BA3-B4E2-2D276BC30FA4" dmnElementRef="_280A2E8B-4271-4BA3-B4E2-2D276BC30FA4">
+        <di:waypoint x="539.5981308411215" y="109.68421052631578"/>
+        <di:waypoint x="280" y="94"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_3EA5BC68-AD0F-472B-9BC8-375E7EA82740" dmnElementRef="_3EA5BC68-AD0F-472B-9BC8-375E7EA82740">
+        <di:waypoint x="534.5981308411215" y="285.6842105263158"/>
+        <di:waypoint x="280" y="94"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_E799C679-955A-4D81-A181-1ED5146F18B1" dmnElementRef="_E799C679-955A-4D81-A181-1ED5146F18B1">
+        <di:waypoint x="534.5981308411215" y="463.3421052631579"/>
+        <di:waypoint x="280" y="119"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_A794FDE2-3833-402F-AE28-D7D97C68939A" dmnElementRef="_A794FDE2-3833-402F-AE28-D7D97C68939A">
+        <di:waypoint x="524.5981308411215" y="761.3421052631579"/>
+        <di:waypoint x="280" y="94"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_17058D44-70FF-4077-A675-D6CD548CB8E8" dmnElementRef="_17058D44-70FF-4077-A675-D6CD548CB8E8">
+        <di:waypoint x="525.5981308411215" y="615.6842105263158"/>
+        <di:waypoint x="280" y="94"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_B1A3345C-B3EE-4EFA-87BE-4F97F32A276D" dmnElementRef="_B1A3345C-B3EE-4EFA-87BE-4F97F32A276D">
         <di:waypoint x="280" y="905"/>
@@ -2618,7 +2741,7 @@ CoastalMarineArea then 10 else 0&#xd;
         <di:waypoint x="659" y="885"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_D3811C1F-5CA1-4FB7-BD39-E3976DE2B99C" dmnElementRef="_D3811C1F-5CA1-4FB7-BD39-E3976DE2B99C">
-        <di:waypoint x="156.5981308411215" y="491.3421052631579"/>
+        <di:waypoint x="156.5981308411215" y="496.3421052631579"/>
         <di:waypoint x="659" y="885"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_197F5450-6DDE-492C-847B-CA4F33EE356C" dmnElementRef="_197F5450-6DDE-492C-847B-CA4F33EE356C">
