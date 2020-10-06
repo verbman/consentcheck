@@ -9,6 +9,38 @@ Residential buildings, accessory buildings and residential structures not provid
     <dmn:extensionElements/>
     <dmn:type></dmn:type>
   </dmn:knowledgeSource>
+  <dmn:decision id="_35A84766-A356-49E4-9100-C9E59CD0805A" name="RuleSetRelevance">
+    <dmn:extensionElements/>
+    <dmn:variable id="_7A3F6EFF-F768-46F8-8457-7854B9E40D40" name="RuleSetRelevance" typeRef="boolean"/>
+    <dmn:informationRequirement id="_DE9888F9-49A4-430C-9ED2-734D739BF56C">
+      <dmn:requiredInput href="#_FF9E4109-6622-4987-BA94-B2DD13F30A1C"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_1E63DD3F-6833-4420-B37B-EAD0B0CD1D2B">
+      <dmn:requiredInput href="#_9AF94EE9-C81E-4E15-8287-3AFE94D76B74"/>
+    </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_D6C234D1-4BCF-4458-AF34-6E313153851D">
+      <dmn:requiredKnowledge href="#_162DC7F1-EF22-4B75-AC18-37982D1DE529"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_15A0B3C7-BEF2-4CEE-82F1-0D9643A82C54">
+      <dmn:requiredKnowledge href="#_D5F33437-10AA-43A8-8D51-12BB0F6E46B9"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_4DA86D75-B458-49C5-BEDC-5920B9CB84B2">
+      <dmn:requiredKnowledge href="#_D8F01EF1-7326-44E7-B8BB-CB6975F03CFB"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_11E08223-51FB-49C7-BCB4-86C891364C26">
+      <dmn:requiredKnowledge href="#_0CD77B39-EC94-4EB6-8D36-74859D41E58C"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_A822249D-E241-48A1-ADEB-57BB4E13626B">
+      <dmn:requiredKnowledge href="#_9C36EA52-022B-417B-87C0-D01E9CB65009"/>
+    </dmn:knowledgeRequirement>
+    <dmn:literalExpression id="_CAE61762-0217-4B06-9AD4-B3AFFF3C6D98">
+      <dmn:text>HighVoltageTransmissionLinesActivities(Activities) and &#xd;
+TransmissionLineBuffer(SpatialLayers) and&#xd;
+(InnerResidentialArea(SpatialLayers) or &#xd;
+MediumDensityResidentialArea(SpatialLayers) or &#xd;
+OuterResidentialArea(SpatialLayers))</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:businessKnowledgeModel id="_162DC7F1-EF22-4B75-AC18-37982D1DE529" name="HighVoltageTransmissionLinesActivities">
     <dmn:extensionElements/>
     <dmn:variable id="_878880E4-3EBF-4B99-B837-75C4F3EB1254" name="HighVoltageTransmissionLinesActivities" typeRef="boolean"/>
@@ -539,6 +571,9 @@ Proximity to high voltage transmission lines</dmn:text>
             <kie:width>50.0</kie:width>
             <kie:width>1038.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_CAE61762-0217-4B06-9AD4-B3AFFF3C6D98">
+            <kie:width>471.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_059B26F4-1786-4F10-838B-6C2DFFD14DDC">
             <kie:width>958.0</kie:width>
           </kie:ComponentWidths>
@@ -668,6 +703,15 @@ Proximity to high voltage transmission lines</dmn:text>
         <dc:Bounds x="637.5981308411215" y="136.3421052631579" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_35A84766-A356-49E4-9100-C9E59CD0805A" dmnElementRef="_35A84766-A356-49E4-9100-C9E59CD0805A" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="212" y="17" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB" dmnElementRef="_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="238" green="238" blue="238"/>
@@ -773,7 +817,7 @@ Proximity to high voltage transmission lines</dmn:text>
           <dmndi:StrokeColor red="71" green="104" blue="161"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="329" y="201" width="100" height="50"/>
+        <dc:Bounds x="329" y="202" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_A326BD00-DDE8-4B83-B58B-59D0C8DBA067" dmnElementRef="_A326BD00-DDE8-4B83-B58B-59D0C8DBA067" isCollapsed="false">
@@ -846,8 +890,36 @@ Proximity to high voltage transmission lines</dmn:text>
         <di:waypoint x="687.5981308411215" y="161.3421052631579"/>
         <di:waypoint x="689" y="226"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_D6C234D1-4BCF-4458-AF34-6E313153851D" dmnElementRef="_D6C234D1-4BCF-4458-AF34-6E313153851D">
+        <di:waypoint x="126.5981308411215" y="95.6842105263158"/>
+        <di:waypoint x="262" y="42"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_DE9888F9-49A4-430C-9ED2-734D739BF56C" dmnElementRef="_DE9888F9-49A4-430C-9ED2-734D739BF56C">
+        <di:waypoint x="120.5981308411215" y="157.68421052631578"/>
+        <di:waypoint x="262" y="67"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_1E63DD3F-6833-4420-B37B-EAD0B0CD1D2B" dmnElementRef="_1E63DD3F-6833-4420-B37B-EAD0B0CD1D2B">
+        <di:waypoint x="120.5981308411215" y="219"/>
+        <di:waypoint x="262" y="42"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_15A0B3C7-BEF2-4CEE-82F1-0D9643A82C54" dmnElementRef="_15A0B3C7-BEF2-4CEE-82F1-0D9643A82C54">
+        <di:waypoint x="119.5981308411215" y="274.6842105263158"/>
+        <di:waypoint x="262" y="42"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_4DA86D75-B458-49C5-BEDC-5920B9CB84B2" dmnElementRef="_4DA86D75-B458-49C5-BEDC-5920B9CB84B2">
+        <di:waypoint x="120.5981308411215" y="331"/>
+        <di:waypoint x="262" y="42"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_11E08223-51FB-49C7-BCB4-86C891364C26" dmnElementRef="_11E08223-51FB-49C7-BCB4-86C891364C26">
+        <di:waypoint x="120.5981308411215" y="387"/>
+        <di:waypoint x="262" y="42"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_A822249D-E241-48A1-ADEB-57BB4E13626B" dmnElementRef="_A822249D-E241-48A1-ADEB-57BB4E13626B">
+        <di:waypoint x="120" y="443"/>
+        <di:waypoint x="262" y="42"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_C0AEC952-C96B-4ED5-97CF-CCCD2BFABC8D" dmnElementRef="_C0AEC952-C96B-4ED5-97CF-CCCD2BFABC8D">
-        <di:waypoint x="379" y="226"/>
+        <di:waypoint x="379" y="227"/>
         <di:waypoint x="517" y="226"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_9BF130DC-D1D9-4051-AD4C-A7F0999B36F9" dmnElementRef="_9BF130DC-D1D9-4051-AD4C-A7F0999B36F9">
@@ -876,35 +948,35 @@ Proximity to high voltage transmission lines</dmn:text>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_F7813B3E-0881-4087-8082-FB0684724F95" dmnElementRef="_F7813B3E-0881-4087-8082-FB0684724F95">
         <di:waypoint x="120.5981308411215" y="157.68421052631578"/>
-        <di:waypoint x="379" y="226"/>
+        <di:waypoint x="379" y="227"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_1DC5C410-7F04-4F2A-BB04-5E101A16F067" dmnElementRef="_1DC5C410-7F04-4F2A-BB04-5E101A16F067">
         <di:waypoint x="120.5981308411215" y="219"/>
-        <di:waypoint x="329" y="226"/>
+        <di:waypoint x="329" y="227"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_515E5A32-8B52-4D1D-AD78-808397658777" dmnElementRef="_515E5A32-8B52-4D1D-AD78-808397658777">
         <di:waypoint x="126.5981308411215" y="95.6842105263158"/>
-        <di:waypoint x="379" y="226"/>
+        <di:waypoint x="379" y="227"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_05A64C15-AB86-4E7D-A4FF-8B9FD6D261E7" dmnElementRef="_05A64C15-AB86-4E7D-A4FF-8B9FD6D261E7">
         <di:waypoint x="120.5981308411215" y="331"/>
-        <di:waypoint x="379" y="226"/>
+        <di:waypoint x="379" y="227"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_A385FB52-D4BE-467B-B0C0-8E1A1E99C19C" dmnElementRef="_A385FB52-D4BE-467B-B0C0-8E1A1E99C19C">
         <di:waypoint x="120.5981308411215" y="387"/>
-        <di:waypoint x="379" y="226"/>
+        <di:waypoint x="379" y="227"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_58C58778-8B0F-4D2D-9D79-C26CC5F8B8E5" dmnElementRef="_58C58778-8B0F-4D2D-9D79-C26CC5F8B8E5">
         <di:waypoint x="120" y="443"/>
-        <di:waypoint x="379" y="226"/>
+        <di:waypoint x="379" y="227"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_F390828B-2BDA-414A-BBE2-FD2039E98B0C" dmnElementRef="_F390828B-2BDA-414A-BBE2-FD2039E98B0C">
         <di:waypoint x="119.5981308411215" y="274.6842105263158"/>
-        <di:waypoint x="379" y="226"/>
+        <di:waypoint x="379" y="227"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_08CE2FA5-0236-4703-A70B-6AF0CD252B2C" dmnElementRef="_08CE2FA5-0236-4703-A70B-6AF0CD252B2C">
         <di:waypoint x="378.25" y="154.68421052631578"/>
-        <di:waypoint x="379" y="226"/>
+        <di:waypoint x="379" y="227"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_A5185E4A-5695-463A-A2B7-D0331FC81D54" dmnElementRef="_A5185E4A-5695-463A-A2B7-D0331FC81D54">
         <di:waypoint x="689" y="226"/>
