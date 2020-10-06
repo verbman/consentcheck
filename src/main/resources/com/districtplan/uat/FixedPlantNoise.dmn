@@ -217,6 +217,9 @@ else 0&#xd;
     <dmn:informationRequirement id="_BF108480-66C1-4DB7-BA40-8EEC171CE9E7">
       <dmn:requiredDecision href="#_436F7BB1-4D26-46D8-95E1-DF6D41990793"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_1BF54CE6-8FA1-4C38-A0D6-13B4DC4C196A">
+      <dmn:requiredDecision href="#_17CB5D60-BDA9-498D-A5F8-54021FF15711"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_059B26F4-1786-4F10-838B-6C2DFFD14DDC">
       <dmn:text>if FixedPlantNoiseKnown !=null then&#xd;
   if FixedPlantNoiseKnown and&#xd;
@@ -224,12 +227,17 @@ else 0&#xd;
   S5.6.1.2.1-NightMet and&#xd;
   S5.6.1.2.1-Night_MaxMet then true else &#xd;
   if AdjoinsRuralFixedPlantNoiseLevelDay !=null and&#xd;
+  S5.6.1.2.1-RuralDayMet&#xd;
   AdjoinsRuralFixedPlantNoiseLevelDay &lt;= S5.6.1.2.1-RuralDay and&#xd;
   AdjoinsRuralFixedPlantNoiseLevelNight !=null and&#xd;
   AdjoinsRuralFixedPlantNoiseLevelNight &lt;= S5.6.1.2.1-RuralNight and&#xd;
   AdjoinsRuralFixedPlantNoiseLevelNightMax !=null and&#xd;
   AdjoinsRuralFixedPlantNoiseLevelNightMax &lt;= S5.6.1.2.1-RuralNight_Max then true else false&#xd;
 else null&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
@@ -2034,6 +2042,24 @@ Fixed plant noise</dmn:text>
       </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
+  <dmn:decision id="_17CB5D60-BDA9-498D-A5F8-54021FF15711" name="S5.6.1.2.1-RuralDayMet">
+    <dmn:extensionElements/>
+    <dmn:variable id="_313B159D-D23A-4B49-905A-B7BEF45C8FE9" name="S5.6.1.2.1-RuralDayMet" typeRef="boolean"/>
+    <dmn:informationRequirement id="_C47D8B5F-E930-4E25-89B4-96F628ED153E">
+      <dmn:requiredDecision href="#_EF100F95-6472-43CE-94D6-739F27C96B62"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_1D539832-942A-4B63-A737-5F8BB68ABCBB">
+      <dmn:text>if FixedPlantNoiseKnown !=null then&#xd;
+  if FixedPlantNoiseKnown and&#xd;
+  AdjoinsRuralFixedPlantNoiseLevelDay > 0 and&#xd;
+  AdjoinsRuralFixedPlantNoiseLevelDay &lt;= S5.6.1.2.1-RuralDay then true else false&#xd;
+else null&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:businessKnowledgeModel id="_162DC7F1-EF22-4B75-AC18-37982D1DE529" name="FixedPlantNoiseActivities">
     <dmn:extensionElements/>
     <dmn:variable id="_878880E4-3EBF-4B99-B837-75C4F3EB1254" name="FixedPlantNoiseActivities" typeRef="boolean"/>
@@ -2431,6 +2457,9 @@ else null&#xd;
           <kie:ComponentWidths dmnElementRef="_5A8AFE1A-52FB-4140-8383-E84671F1EE0A">
             <kie:width>1046.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_1D539832-942A-4B63-A737-5F8BB68ABCBB">
+            <kie:width>758.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_ADB74C97-D9DD-4A92-995A-1A1DDFFB3997">
             <kie:width>1046.0</kie:width>
           </kie:ComponentWidths>
@@ -2796,6 +2825,15 @@ else null&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="329" y="200" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_17CB5D60-BDA9-498D-A5F8-54021FF15711" dmnElementRef="_17CB5D60-BDA9-498D-A5F8-54021FF15711" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="465" y="397" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_B237DAA9-025B-462E-950B-F89A6C2240E7" dmnElementRef="_B237DAA9-025B-462E-950B-F89A6C2240E7" isCollapsed="false">
@@ -3370,6 +3408,10 @@ else null&#xd;
         <di:waypoint x="515" y="357"/>
         <di:waypoint x="751" y="295"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_1BF54CE6-8FA1-4C38-A0D6-13B4DC4C196A" dmnElementRef="_1BF54CE6-8FA1-4C38-A0D6-13B4DC4C196A">
+        <di:waypoint x="515" y="422"/>
+        <di:waypoint x="751" y="295"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_AD3F28A8-3481-4DC9-9D73-A1FCE63447AA" dmnElementRef="_AD3F28A8-3481-4DC9-9D73-A1FCE63447AA">
         <di:waypoint x="1628" y="400"/>
         <di:waypoint x="1628" y="276"/>
@@ -3593,6 +3635,10 @@ else null&#xd;
       <dmndi:DMNEdge id="dmnedge-_08CE2FA5-0236-4703-A70B-6AF0CD252B2C" dmnElementRef="_08CE2FA5-0236-4703-A70B-6AF0CD252B2C">
         <di:waypoint x="255.29906542056074" y="189.34210526315792"/>
         <di:waypoint x="379" y="225"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_C47D8B5F-E930-4E25-89B4-96F628ED153E" dmnElementRef="_C47D8B5F-E930-4E25-89B4-96F628ED153E">
+        <di:waypoint x="379" y="423"/>
+        <di:waypoint x="515" y="422"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_4DB76FF7-FF5A-4595-9A4B-2B99B4575E8B" dmnElementRef="_4DB76FF7-FF5A-4595-9A4B-2B99B4575E8B">
         <di:waypoint x="136.5981308411215" y="319.3421052631579"/>
