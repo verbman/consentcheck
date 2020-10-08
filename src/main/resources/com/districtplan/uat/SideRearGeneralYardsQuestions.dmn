@@ -615,13 +615,10 @@ BuildAddTo(Activities_Value[Noun="accessory building"].Verb) or&#xd;
 BuildAddTo(Activities_Value[Noun="residential structure"].Verb) or&#xd;
 BuildAddTo(Activities_Value[Noun="residential fence or wall"].Verb) or&#xd;
 BuildAddTo(Activities_Value[Noun="deck or balcony"].Verb)) &#xd;
-then (&#xd;
-  if DeckInSideYard > 0 then (DeckInSideYard + 1) else (&#xd;
-    if ((ProposedRearYard > 0) and (ProposedRearAccess &lt; 0)) then (ProposedRearYard + 1) else (&#xd;
-      if ((ProposedRearAccess > 0)) then (ProposedRearAccess + 1) else (Activities + 1)&#xd;
-    )&#xd;
-  )&#xd;
-) &#xd;
+then &#xd;
+  if DeckInSideYard > 0 then DeckInSideYard + 1 else &#xd;
+    if ProposedRearYard > 0 and ProposedRearAccess &lt; 0 then ProposedRearYard + 1 else &#xd;
+      if ProposedRearAccess > 0 then ProposedRearAccess + 1 else Activities + 1 &#xd;
 else 0</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
