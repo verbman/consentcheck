@@ -130,9 +130,9 @@ SiteAccessSpatialLayers(SpatialLayers) then "no access across restricted road fr
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
-  <dmn:decision id="_190D4BD1-875A-4043-B5A4-A8D35E852AFE" name="S5.6.1.4.6">
+  <dmn:decision id="_190D4BD1-875A-4043-B5A4-A8D35E852AFE" name="S5.6.1.4.6-LegalRightOfWay">
     <dmn:extensionElements/>
-    <dmn:variable id="_B007374D-FBBB-432A-8741-DBB7179D0270" name="S5.6.1.4.6" typeRef="string"/>
+    <dmn:variable id="_B007374D-FBBB-432A-8741-DBB7179D0270" name="S5.6.1.4.6-LegalRightOfWay" typeRef="string"/>
     <dmn:informationRequirement id="_4ED5570D-227A-430A-9541-D2D08A8A999C">
       <dmn:requiredInput href="#_9AF94EE9-C81E-4E15-8287-3AFE94D76B74"/>
     </dmn:informationRequirement>
@@ -884,14 +884,11 @@ if S5.6.1.4.6-VehicleAccessStandard = null then null else false</dmn:text>
   <dmn:decision id="_9B2C0952-EFAA-4011-AE58-FC66782C5332" name="S5.6.1.4.6Met">
     <dmn:extensionElements/>
     <dmn:variable id="_C7388E9E-3C38-4463-91D8-4964799225C3" name="S5.6.1.4.6Met" typeRef="boolean"/>
-    <dmn:informationRequirement id="_1C8A4F1F-EE3D-45CF-B3FA-BE121169F9B3">
-      <dmn:requiredDecision href="#_190D4BD1-875A-4043-B5A4-A8D35E852AFE"/>
-    </dmn:informationRequirement>
-    <dmn:informationRequirement id="_9F3ACBE9-38A2-4DCF-B1A8-C0657088B182">
-      <dmn:requiredInput href="#_F1DAB68A-F4C1-4239-8695-1F26ACB62B1A"/>
-    </dmn:informationRequirement>
     <dmn:informationRequirement id="_DA3A0606-E679-4FC3-93BF-56DD4CE733A7">
       <dmn:requiredDecision href="#_98B42AB8-23C0-49A9-93A7-97F831CBD01A"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_4A3E6C92-140B-4AE7-95AE-A266FBFD4595">
+      <dmn:requiredDecision href="#_61AF6E39-D8C3-4B50-90A0-BBE54340CADF"/>
     </dmn:informationRequirement>
     <dmn:decisionTable id="_063E0338-343C-4BE4-95A1-911DB859E0E2" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
       <dmn:input id="_7662EE5C-99A8-4FA3-B276-7F385657E65C">
@@ -900,13 +897,8 @@ if S5.6.1.4.6-VehicleAccessStandard = null then null else false</dmn:text>
         </dmn:inputExpression>
       </dmn:input>
       <dmn:input id="_9CC21C2A-8FA5-497C-9E8B-4332F57FFA82">
-        <dmn:inputExpression id="_E71821D6-6EA6-4D36-B81B-FA59D0856D85" typeRef="string">
-          <dmn:text>S5.6.1.4.6</dmn:text>
-        </dmn:inputExpression>
-      </dmn:input>
-      <dmn:input id="_654450E3-4610-405D-AFF5-26F2D4E9EE52">
-        <dmn:inputExpression id="_306FC4FC-BA5C-48ED-8746-8FE27F4AE058" typeRef="string">
-          <dmn:text>LegalRightOfWay</dmn:text>
+        <dmn:inputExpression id="_E71821D6-6EA6-4D36-B81B-FA59D0856D85" typeRef="boolean">
+          <dmn:text>S5.6.1.4.6-LegalRightOfWayMet</dmn:text>
         </dmn:inputExpression>
       </dmn:input>
       <dmn:output id="_FE8743E3-1C09-45C2-A590-BBA840635A32"/>
@@ -916,10 +908,7 @@ if S5.6.1.4.6-VehicleAccessStandard = null then null else false</dmn:text>
           <dmn:text>true</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_B6908D9D-1D5E-4C15-8B54-007BB16FE3D7">
-          <dmn:text>"legal right of way instrument"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_6698C9FB-E16F-47D1-A936-6AD811B01BF0">
-          <dmn:text>"Yes"</dmn:text>
+          <dmn:text>true</dmn:text>
         </dmn:inputEntry>
         <dmn:outputEntry id="_5BB35645-9DFD-449C-9E19-C171C5DFCD4C">
           <dmn:text>true</dmn:text>
@@ -933,10 +922,7 @@ if S5.6.1.4.6-VehicleAccessStandard = null then null else false</dmn:text>
           <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_9B308F7C-E06B-4C32-878A-58448F433847">
-          <dmn:text>"legal right of way instrument"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_ACD82C4C-A988-42B8-B7F1-6A04B2A0B63C">
-          <dmn:text>"Yes"</dmn:text>
+          <dmn:text>true</dmn:text>
         </dmn:inputEntry>
         <dmn:outputEntry id="_0557DBFE-CA6F-4D50-8851-F3324C839FE3">
           <dmn:text>false</dmn:text>
@@ -950,29 +936,9 @@ if S5.6.1.4.6-VehicleAccessStandard = null then null else false</dmn:text>
           <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_A526A678-370F-43CF-B58F-B6ACEBFD4BA4">
-          <dmn:text>"legal right of way instrument"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_476F7A71-1E0C-46B5-9DB7-AEADA0AB506F">
-          <dmn:text>"No"</dmn:text>
+          <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:outputEntry id="_6E310132-A07F-43C0-8ED8-ECCCC1898242">
-          <dmn:text>false</dmn:text>
-        </dmn:outputEntry>
-        <dmn:annotationEntry>
-          <dmn:text></dmn:text>
-        </dmn:annotationEntry>
-      </dmn:rule>
-      <dmn:rule id="_26858D89-96FF-407A-9299-DD07E10C1582">
-        <dmn:inputEntry id="_2D5A1418-105C-4F1A-BBD3-E370BD7C2590">
-          <dmn:text>false</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_C8810D82-456A-43BB-990B-C21476C940C3">
-          <dmn:text>"legal right of way instrument"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_01139875-AC94-4409-B06C-875F6F287FA9">
-          <dmn:text>"I don't know"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_14138DFB-7A40-46D1-936D-65AF9E802BA2">
           <dmn:text>false</dmn:text>
         </dmn:outputEntry>
         <dmn:annotationEntry>
@@ -984,29 +950,9 @@ if S5.6.1.4.6-VehicleAccessStandard = null then null else false</dmn:text>
           <dmn:text>true</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_417C187B-7BA8-4550-B070-A41FC70A8A2F">
-          <dmn:text>"legal right of way instrument"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_03DC0AF1-EEBA-4C9E-97EC-DF35079DE1D4">
-          <dmn:text>"No"</dmn:text>
+          <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:outputEntry id="_2D0BD7EC-C7D0-43FF-9096-7326C6282B7F">
-          <dmn:text>false</dmn:text>
-        </dmn:outputEntry>
-        <dmn:annotationEntry>
-          <dmn:text></dmn:text>
-        </dmn:annotationEntry>
-      </dmn:rule>
-      <dmn:rule id="_D2AE1452-8C9E-4713-9B5D-F518DB4E910C">
-        <dmn:inputEntry id="_F2620132-DE0D-4F04-A6E5-83831E3843F0">
-          <dmn:text>true</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_E5620626-FDB9-4759-A730-644FF2CD9A49">
-          <dmn:text>"legal right of way instrument"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_7B32CA86-4D98-460E-8812-3A6504F27610">
-          <dmn:text>"I don't know"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_61FC77A2-DAEE-4D44-86D3-2939A13825E6">
           <dmn:text>false</dmn:text>
         </dmn:outputEntry>
         <dmn:annotationEntry>
@@ -1020,9 +966,6 @@ if S5.6.1.4.6-VehicleAccessStandard = null then null else false</dmn:text>
         <dmn:inputEntry id="_4798FE3A-174A-4E56-910A-1D8E924C4828">
           <dmn:text>null</dmn:text>
         </dmn:inputEntry>
-        <dmn:inputEntry id="_4EA56991-3047-4B75-BFD5-1851DCBFCF8F">
-          <dmn:text>null</dmn:text>
-        </dmn:inputEntry>
         <dmn:outputEntry id="_0409D6C3-4ED2-43ED-AA90-514216FE65CC">
           <dmn:text>true</dmn:text>
         </dmn:outputEntry>
@@ -1030,18 +973,43 @@ if S5.6.1.4.6-VehicleAccessStandard = null then null else false</dmn:text>
           <dmn:text></dmn:text>
         </dmn:annotationEntry>
       </dmn:rule>
+      <dmn:rule id="_A59E6AD8-A40A-4181-9CF9-E9BA152BDC80">
+        <dmn:inputEntry id="_66CFDFB3-1C08-4F25-B5ED-1F0C3D5967A6">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C3C21237-31E2-4CB1-8489-8CD7F9F4491C">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_F2AA265D-8268-4BD2-BD7B-F9493B8C1450">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_56E21C89-85CD-4C6E-8472-E9D325D81F71">
+        <dmn:inputEntry id="_3557B8A3-9CD7-43B5-83BD-C08E931D6CE1">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7C241FD6-B98D-4C20-BCA0-17CBA116726A">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_9A9F8B09-B0E0-4C2E-B334-0993B6195D06">
+          <dmn:text>null</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
       <dmn:rule id="_8A6B11EE-E565-42DE-8177-5B1493D40571">
         <dmn:inputEntry id="_3DA13CAA-F4C5-4FA6-B56A-4A61EF9F5B91">
-          <dmn:text>false</dmn:text>
+          <dmn:text>null</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_2BE9DD50-2AFB-4CF0-B5D8-F73ADC6163DC">
-          <dmn:text>null</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_E74C8EF6-4314-4DE0-9B25-D05A7E82B822">
-          <dmn:text>null</dmn:text>
+          <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:outputEntry id="_9E80D807-B980-4B43-BE12-46CC2F6EFA24">
-          <dmn:text>false</dmn:text>
+          <dmn:text>null</dmn:text>
         </dmn:outputEntry>
         <dmn:annotationEntry>
           <dmn:text></dmn:text>
@@ -1216,6 +1184,24 @@ Site access</dmn:text>
         </dmn:annotationEntry>
       </dmn:rule>
     </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:decision id="_61AF6E39-D8C3-4B50-90A0-BBE54340CADF" name="S5.6.1.4.6-LegalRightOfWayMet">
+    <dmn:extensionElements/>
+    <dmn:variable id="_781064B6-39B8-4301-BC51-C4B758A8A3DA" name="S5.6.1.4.6-LegalRightOfWayMet" typeRef="boolean"/>
+    <dmn:informationRequirement id="_1C8A4F1F-EE3D-45CF-B3FA-BE121169F9B3">
+      <dmn:requiredDecision href="#_190D4BD1-875A-4043-B5A4-A8D35E852AFE"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_9F3ACBE9-38A2-4DCF-B1A8-C0657088B182">
+      <dmn:requiredInput href="#_F1DAB68A-F4C1-4239-8695-1F26ACB62B1A"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_D8669052-60C8-4D06-AAE9-5D77FFA88364">
+      <dmn:text>if S5.6.1.4.6-LegalRightOfWay = "legal right of way instrument" and&#xd;
+LegalRightOfWay = "Yes" then true else&#xd;
+if S5.6.1.4.6-LegalRightOfWay = null or LegalRightOfWay = null then null else false &#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
   </dmn:decision>
   <dmn:knowledgeSource id="_66E89FCC-3D8A-4ACA-9778-BF479916B446" name="DP_5.6.1.4.5" locationURI="9bb5ea62-0e0e-4195-86d5-1b1b937c49ba">
     <dmn:description>Wellington City District Plan Residential Activity Standard
@@ -1558,9 +1544,6 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
           <kie:ComponentWidths dmnElementRef="_D08EDD7E-DE5B-49D8-B2F5-E1CA64222B25">
             <kie:width>954.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_C71FEA3A-F3A0-467A-B3D9-1DA003A7CCB0">
-            <kie:width>707.0</kie:width>
-          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_3ABACF69-4910-4C86-B0D1-AB6EE7D6B021">
             <kie:width>958.0</kie:width>
           </kie:ComponentWidths>
@@ -1578,6 +1561,9 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
             <kie:width>50.0</kie:width>
             <kie:width>658.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_C71FEA3A-F3A0-467A-B3D9-1DA003A7CCB0">
+            <kie:width>707.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_5D96EF30-F075-4B23-9215-F6321F36912B">
             <kie:width>50.0</kie:width>
             <kie:width>100.0</kie:width>
@@ -1588,8 +1574,7 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
           <kie:ComponentWidths dmnElementRef="_063E0338-343C-4BE4-95A1-911DB859E0E2">
             <kie:width>50.0</kie:width>
             <kie:width>295.0</kie:width>
-            <kie:width>177.0</kie:width>
-            <kie:width>172.0</kie:width>
+            <kie:width>254.0</kie:width>
             <kie:width>100.0</kie:width>
             <kie:width>100.0</kie:width>
           </kie:ComponentWidths>
@@ -1629,6 +1614,9 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_5CBD87DA-49D5-4283-A54E-0CEC7AFBE70C">
             <kie:width>669.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_D8669052-60C8-4D06-AAE9-5D77FFA88364">
+            <kie:width>695.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_3BAA2AB3-DC2D-4F96-8C83-9CBA87E48099">
             <kie:width>958.0</kie:width>
@@ -1871,15 +1859,6 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
         <dc:Bounds x="1051" y="202" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_98B42AB8-23C0-49A9-93A7-97F831CBD01A" dmnElementRef="_98B42AB8-23C0-49A9-93A7-97F831CBD01A" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="238" green="238" blue="238"/>
-          <dmndi:StrokeColor red="180" green="180" blue="180"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="467" y="589" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_8B4ABF17-9653-4C93-A534-92927F605D4B" dmnElementRef="_8B4ABF17-9653-4C93-A534-92927F605D4B" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="238" green="238" blue="238"/>
@@ -1925,6 +1904,15 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
         <dc:Bounds x="307" y="823.3421052631579" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_98B42AB8-23C0-49A9-93A7-97F831CBD01A" dmnElementRef="_98B42AB8-23C0-49A9-93A7-97F831CBD01A" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="467" y="589" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_949D6C5D-73CB-46C6-B511-DDAA48D2EDDD" dmnElementRef="_949D6C5D-73CB-46C6-B511-DDAA48D2EDDD" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="204" green="218" blue="183"/>
@@ -1940,7 +1928,7 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
           <dmndi:StrokeColor red="180" green="180" blue="180"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="466" y="524" width="100" height="50"/>
+        <dc:Bounds x="625" y="545" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_37ED1347-E670-4265-A37A-7456E404B63A" dmnElementRef="_37ED1347-E670-4265-A37A-7456E404B63A" isCollapsed="false">
@@ -2069,6 +2057,15 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
         <dc:Bounds x="203.29906542056074" y="397.6842105263158" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_61AF6E39-D8C3-4B50-90A0-BBE54340CADF" dmnElementRef="_61AF6E39-D8C3-4B50-90A0-BBE54340CADF" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="468" y="526" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_FF9E4109-6622-4987-BA94-B2DD13F30A1C" dmnElementRef="_FF9E4109-6622-4987-BA94-B2DD13F30A1C" isCollapsed="false">
         <dmndi:DMNStyle fontSize="8">
           <dmndi:FillColor red="243" green="229" blue="248"/>
@@ -2156,7 +2153,7 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
           <dmndi:StrokeColor red="210" green="193" blue="208"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="625" y="541" width="100" height="50"/>
+        <dc:Bounds x="758.2990654205607" y="484" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0" dmnElementRef="_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0" isCollapsed="false">
@@ -2187,7 +2184,7 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="dmnedge-_26001B54-AB0C-4406-8439-F98224A0EE99" dmnElementRef="_26001B54-AB0C-4406-8439-F98224A0EE99">
-        <di:waypoint x="675" y="566"/>
+        <di:waypoint x="808.2990654205607" y="509"/>
         <di:waypoint x="1503" y="582"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7F445BDD-6019-4777-A33F-0539CF375BFB" dmnElementRef="_7F445BDD-6019-4777-A33F-0539CF375BFB">
@@ -2343,7 +2340,7 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
         <di:waypoint x="1503" y="439"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_11CA308D-F9DC-4C56-A8FF-06AD05849580" dmnElementRef="_11CA308D-F9DC-4C56-A8FF-06AD05849580">
-        <di:waypoint x="516" y="549"/>
+        <di:waypoint x="675" y="570"/>
         <di:waypoint x="1503" y="439"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_BE675433-B615-4FA2-BE9B-C746D7F60AC9" dmnElementRef="_BE675433-B615-4FA2-BE9B-C746D7F60AC9">
@@ -2386,14 +2383,6 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
         <di:waypoint x="1099" y="157.6842105263158"/>
         <di:waypoint x="1101" y="227"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_8617865F-E310-4B16-A61D-961BCE2F5714" dmnElementRef="_8617865F-E310-4B16-A61D-961BCE2F5714">
-        <di:waypoint x="379" y="610"/>
-        <di:waypoint x="517" y="614"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_300A4F57-7A59-4E62-881C-D287B1CF5388" dmnElementRef="_300A4F57-7A59-4E62-881C-D287B1CF5388">
-        <di:waypoint x="677.2990654205607" y="627"/>
-        <di:waypoint x="517" y="614"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_4EB99DFF-9CD1-4161-95B8-92552D72A669" dmnElementRef="_4EB99DFF-9CD1-4161-95B8-92552D72A669">
         <di:waypoint x="379" y="670"/>
         <di:waypoint x="517" y="671"/>
@@ -2414,21 +2403,25 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
         <di:waypoint x="1101" y="227"/>
         <di:waypoint x="1505" y="146"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_8617865F-E310-4B16-A61D-961BCE2F5714" dmnElementRef="_8617865F-E310-4B16-A61D-961BCE2F5714">
+        <di:waypoint x="379" y="610"/>
+        <di:waypoint x="517" y="614"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_300A4F57-7A59-4E62-881C-D287B1CF5388" dmnElementRef="_300A4F57-7A59-4E62-881C-D287B1CF5388">
+        <di:waypoint x="677.2990654205607" y="627"/>
+        <di:waypoint x="517" y="614"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_0756D3E8-9275-434B-931F-C5B0E6D3E540" dmnElementRef="_0756D3E8-9275-434B-931F-C5B0E6D3E540">
         <di:waypoint x="1101" y="227"/>
         <di:waypoint x="1503" y="509"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_1C8A4F1F-EE3D-45CF-B3FA-BE121169F9B3" dmnElementRef="_1C8A4F1F-EE3D-45CF-B3FA-BE121169F9B3">
-        <di:waypoint x="379" y="550"/>
-        <di:waypoint x="516" y="549"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_9F3ACBE9-38A2-4DCF-B1A8-C0657088B182" dmnElementRef="_9F3ACBE9-38A2-4DCF-B1A8-C0657088B182">
-        <di:waypoint x="675" y="566"/>
-        <di:waypoint x="516" y="549"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_DA3A0606-E679-4FC3-93BF-56DD4CE733A7" dmnElementRef="_DA3A0606-E679-4FC3-93BF-56DD4CE733A7">
         <di:waypoint x="517" y="614"/>
-        <di:waypoint x="516" y="549"/>
+        <di:waypoint x="675" y="570"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_4A3E6C92-140B-4AE7-95AE-A266FBFD4595" dmnElementRef="_4A3E6C92-140B-4AE7-95AE-A266FBFD4595">
+        <di:waypoint x="518" y="551"/>
+        <di:waypoint x="675" y="570"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_4956E7D3-3A5F-454A-9AE1-A09DB2F2F46E" dmnElementRef="_4956E7D3-3A5F-454A-9AE1-A09DB2F2F46E">
         <di:waypoint x="379" y="485"/>
@@ -2459,7 +2452,7 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
         <di:waypoint x="915" y="226"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_067FF927-8836-47B6-B8BF-AA01B91CEB15" dmnElementRef="_067FF927-8836-47B6-B8BF-AA01B91CEB15">
-        <di:waypoint x="516" y="549"/>
+        <di:waypoint x="675" y="570"/>
         <di:waypoint x="915" y="226"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_1FAE3FA5-9DA2-44B7-850C-52FBD42DC2D8" dmnElementRef="_1FAE3FA5-9DA2-44B7-850C-52FBD42DC2D8">
@@ -2557,6 +2550,14 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
       <dmndi:DMNEdge id="dmnedge-_2EDF8BF0-5BD4-4910-9577-2B9DCB1C8BF7" dmnElementRef="_2EDF8BF0-5BD4-4910-9577-2B9DCB1C8BF7">
         <di:waypoint x="253.29906542056074" y="422.6842105263158"/>
         <di:waypoint x="379" y="420"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_1C8A4F1F-EE3D-45CF-B3FA-BE121169F9B3" dmnElementRef="_1C8A4F1F-EE3D-45CF-B3FA-BE121169F9B3">
+        <di:waypoint x="379" y="550"/>
+        <di:waypoint x="518" y="551"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_9F3ACBE9-38A2-4DCF-B1A8-C0657088B182" dmnElementRef="_9F3ACBE9-38A2-4DCF-B1A8-C0657088B182">
+        <di:waypoint x="808.2990654205607" y="509"/>
+        <di:waypoint x="518" y="551"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_5012AEBD-3701-4BE5-A907-E9698223E7DC" dmnElementRef="_5012AEBD-3701-4BE5-A907-E9698223E7DC">
         <di:waypoint x="379" y="290"/>
