@@ -3259,6 +3259,9 @@ ResidentialArea(SpatialLayers) then 5 else null&#xd;
     <dmn:informationRequirement id="_5A7FCCB7-8B77-4923-B502-4AB79EE1A234">
       <dmn:requiredInput href="#_9AF94EE9-C81E-4E15-8287-3AFE94D76B74"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_7BEA0DEE-4F81-4E47-B6AA-2181D1B66DF3">
+      <dmn:requiredInput href="#_8D82B6F3-E300-4A1F-8FB7-CF275A72336F"/>
+    </dmn:informationRequirement>
     <dmn:authorityRequirement id="_52561C82-9488-4C7B-B2AE-61256A385605">
       <dmn:requiredAuthority href="#_4D6FD656-CAA5-46F8-8E43-AAFEC20E7176"/>
     </dmn:authorityRequirement>
@@ -3267,7 +3270,13 @@ ResidentialArea(SpatialLayers) then 5 else null&#xd;
 (not(list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge"))) and&#xd;
 (list contains(SpatialLayers[Type="Residential"].Title, "Inner Residential") or&#xd;
 list contains(SpatialLayers[Type="Residential"].Title, "Medium Density Residential Area") or&#xd;
-list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) then 250 else null</dmn:text>
+list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) and&#xd;
+EarthworksBuildingConsentObtained !=null then 250 else null&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:decision id="_E07E0AAA-AEA5-444D-8D21-B19A34B3F23E" name="R30.1.1.1_a_ivMet">
@@ -3583,12 +3592,16 @@ TransportedMaterialVolume > 200 then true else&#xd;
     <dmn:informationRequirement id="_FC45A0E7-1C24-4996-A1AC-59FAFA1A0CA8">
       <dmn:requiredInput href="#_9AF94EE9-C81E-4E15-8287-3AFE94D76B74"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_C59DB240-461B-4803-9B0E-EC220CE17CBE">
+      <dmn:requiredInput href="#_8D82B6F3-E300-4A1F-8FB7-CF275A72336F"/>
+    </dmn:informationRequirement>
     <dmn:authorityRequirement id="_491CD1EC-43D5-40AC-97BF-4A47F97C7F4E">
       <dmn:requiredAuthority href="#_1EF6ACDD-49C4-4D88-B7CC-20237431D022"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_76AA3ECC-A268-45EA-A951-76A4B8B47DFF">
       <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
-list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge") then 100 else null&#xd;
+list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge") and&#xd;
+EarthworksBuildingConsentObtained != null then 100 else null&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -3726,6 +3739,9 @@ ResidentialArea(SpatialLayers) then 5 else null&#xd;
     <dmn:informationRequirement id="_8FE7B0AB-7238-4683-BA99-B32428CFB85F">
       <dmn:requiredInput href="#_9AF94EE9-C81E-4E15-8287-3AFE94D76B74"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_B98F6FB4-5D1D-44BA-9168-2576C9D7EE2F">
+      <dmn:requiredInput href="#_8D82B6F3-E300-4A1F-8FB7-CF275A72336F"/>
+    </dmn:informationRequirement>
     <dmn:authorityRequirement id="_C3E9030A-3238-486A-AA1F-C866C0722231">
       <dmn:requiredAuthority href="#_AD551C4C-1BB3-4E3D-9627-2E2B67ED3176"/>
     </dmn:authorityRequirement>
@@ -3734,7 +3750,8 @@ ResidentialArea(SpatialLayers) then 5 else null&#xd;
 (not(list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge"))) and&#xd;
 (list contains(SpatialLayers[Type="Residential"].Title, "Inner Residential") or&#xd;
 list contains(SpatialLayers[Type="Residential"].Title, "Medium Density Residential Area") or&#xd;
-list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) then 250 else null&#xd;
+list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) and&#xd;
+EarthworksBuildingConsentObtained = null then 250 else null&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -3870,12 +3887,16 @@ list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) the
     <dmn:informationRequirement id="_19186592-9E3B-4C14-9012-D39F5E1196DA">
       <dmn:requiredInput href="#_AD806695-37F3-49E6-8F1E-A1F79838017D"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_56C11AEB-B022-4637-8571-3A2B4A14C04E">
+      <dmn:requiredInput href="#_8D82B6F3-E300-4A1F-8FB7-CF275A72336F"/>
+    </dmn:informationRequirement>
     <dmn:authorityRequirement id="_2549FF07-1C9E-460F-BE46-2CCA2B5D618D">
       <dmn:requiredAuthority href="#_61F142A6-1E35-4A2D-90BA-41E4922E8719"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_770AC521-DA82-499F-B97E-C68E554CC98C">
       <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
-list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge") then 100 else null&#xd;
+list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge") and&#xd;
+EarthworksBuildingConsentObtained = null then 100 else null&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -7390,6 +7411,9 @@ DistanceBoundary >= CutFillHeightDepth then true else&#xd;
           <kie:ComponentWidths dmnElementRef="_E194EAED-711E-457E-8D8E-30BC85B71960">
             <kie:width>728.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_67F7A602-A689-48EC-8B48-7059B762DCA6">
+            <kie:width>551.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_1EB6CCC7-96FB-4D38-AAF1-9279C145C655">
             <kie:width>628.0</kie:width>
           </kie:ComponentWidths>
@@ -7596,9 +7620,6 @@ DistanceBoundary >= CutFillHeightDepth then true else&#xd;
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_4AAD7539-B643-47B4-9593-1DF0C8BF3097">
             <kie:width>982.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_67F7A602-A689-48EC-8B48-7059B762DCA6">
-            <kie:width>551.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_F676A487-E69E-4790-A386-9A9EB5DE2E76">
             <kie:width>499.0</kie:width>
@@ -7812,6 +7833,15 @@ DistanceBoundary >= CutFillHeightDepth then true else&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="2571" y="650" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_75936AC5-2C16-4600-BFCC-A38791F7B1BB" dmnElementRef="_75936AC5-2C16-4600-BFCC-A38791F7B1BB" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="202" y="463.00000000000006" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_7022AEB1-111C-4DE1-97CC-968207201865" dmnElementRef="_7022AEB1-111C-4DE1-97CC-968207201865" isCollapsed="false">
@@ -8597,15 +8627,6 @@ DistanceBoundary >= CutFillHeightDepth then true else&#xd;
         <dc:Bounds x="2435" y="1226" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_75936AC5-2C16-4600-BFCC-A38791F7B1BB" dmnElementRef="_75936AC5-2C16-4600-BFCC-A38791F7B1BB" isCollapsed="false">
-        <dmndi:DMNStyle>
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="0" green="0" blue="0"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="202" y="463.00000000000006" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_B9A96F1D-45B5-4078-A01C-759309B0A25A" dmnElementRef="_B9A96F1D-45B5-4078-A01C-759309B0A25A" isCollapsed="false">
         <dmndi:DMNStyle>
           <dmndi:FillColor red="255" green="255" blue="255"/>
@@ -8928,6 +8949,10 @@ DistanceBoundary >= CutFillHeightDepth then true else&#xd;
       <dmndi:DMNEdge id="dmnedge-_72940561-396C-4021-93E9-8A8E20147E95" dmnElementRef="_72940561-396C-4021-93E9-8A8E20147E95">
         <di:waypoint x="2485" y="677"/>
         <di:waypoint x="2621" y="675"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_B46F9C59-CFE5-4AA0-BB82-94076C055074" dmnElementRef="_B46F9C59-CFE5-4AA0-BB82-94076C055074">
+        <di:waypoint x="250.59813084112147" y="649.6842105263158"/>
+        <di:waypoint x="252" y="488"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_683DB0B0-9E7D-422E-B9A8-07614FF71B75" dmnElementRef="_683DB0B0-9E7D-422E-B9A8-07614FF71B75">
         <di:waypoint x="250.59813084112147" y="649.6842105263158"/>
@@ -9345,6 +9370,10 @@ DistanceBoundary >= CutFillHeightDepth then true else&#xd;
         <di:waypoint x="622.5981308411215" y="436.6842105263158"/>
         <di:waypoint x="759" y="434"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_7BEA0DEE-4F81-4E47-B6AA-2181D1B66DF3" dmnElementRef="_7BEA0DEE-4F81-4E47-B6AA-2181D1B66DF3">
+        <di:waypoint x="933" y="158.68421052631578"/>
+        <di:waypoint x="759" y="434"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_10A6885C-547E-4C38-9AD7-3772F8031F0A" dmnElementRef="_10A6885C-547E-4C38-9AD7-3772F8031F0A">
         <di:waypoint x="759" y="252"/>
         <di:waypoint x="1165" y="247"/>
@@ -9489,6 +9518,10 @@ DistanceBoundary >= CutFillHeightDepth then true else&#xd;
         <di:waypoint x="623.5981308411215" y="1312"/>
         <di:waypoint x="759" y="1308"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_C59DB240-461B-4803-9B0E-EC220CE17CBE" dmnElementRef="_C59DB240-461B-4803-9B0E-EC220CE17CBE">
+        <di:waypoint x="933" y="158.68421052631578"/>
+        <di:waypoint x="759" y="1308"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_4FF4ED91-AC5D-49AE-8C12-BF100E853F32" dmnElementRef="_4FF4ED91-AC5D-49AE-8C12-BF100E853F32">
         <di:waypoint x="249.59813084112147" y="788.6842105263158"/>
         <di:waypoint x="759" y="1434"/>
@@ -9565,6 +9598,10 @@ DistanceBoundary >= CutFillHeightDepth then true else&#xd;
         <di:waypoint x="619.5981308411215" y="254.68421052631578"/>
         <di:waypoint x="759" y="252"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_B98F6FB4-5D1D-44BA-9168-2576C9D7EE2F" dmnElementRef="_B98F6FB4-5D1D-44BA-9168-2576C9D7EE2F">
+        <di:waypoint x="933" y="158.68421052631578"/>
+        <di:waypoint x="759" y="252"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_37D65435-E857-4BB7-8682-374A5E07271E" dmnElementRef="_37D65435-E857-4BB7-8682-374A5E07271E">
         <di:waypoint x="759" y="1368"/>
         <di:waypoint x="1350" y="1367"/>
@@ -9596,10 +9633,6 @@ DistanceBoundary >= CutFillHeightDepth then true else&#xd;
       <dmndi:DMNEdge id="dmnedge-_E67B42F7-745A-4D4F-9138-EF7F25CC16E6" dmnElementRef="_E67B42F7-745A-4D4F-9138-EF7F25CC16E6">
         <di:waypoint x="1871.2990654205607" y="1643"/>
         <di:waypoint x="2485" y="1251"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_B46F9C59-CFE5-4AA0-BB82-94076C055074" dmnElementRef="_B46F9C59-CFE5-4AA0-BB82-94076C055074">
-        <di:waypoint x="250.59813084112147" y="649.6842105263158"/>
-        <di:waypoint x="252" y="488.00000000000006"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_8AF2749B-23B0-4580-A743-ECF8C8E4C66F" dmnElementRef="_8AF2749B-23B0-4580-A743-ECF8C8E4C66F">
         <di:waypoint x="2075" y="1052"/>
@@ -9643,6 +9676,10 @@ DistanceBoundary >= CutFillHeightDepth then true else&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_2549FF07-1C9E-460F-BE46-2CCA2B5D618D" dmnElementRef="_2549FF07-1C9E-460F-BE46-2CCA2B5D618D">
         <di:waypoint x="625.5981308411215" y="1125"/>
+        <di:waypoint x="759" y="1125"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_56C11AEB-B022-4637-8571-3A2B4A14C04E" dmnElementRef="_56C11AEB-B022-4637-8571-3A2B4A14C04E">
+        <di:waypoint x="933" y="158.68421052631578"/>
         <di:waypoint x="759" y="1125"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_FE647469-5E74-4902-B2B1-3F8A5240618B" dmnElementRef="_FE647469-5E74-4902-B2B1-3F8A5240618B">
