@@ -807,6 +807,25 @@ Site Access 5.6.1.4</dmn:description>
       </dmn:literalExpression>
     </dmn:encapsulatedLogic>
   </dmn:businessKnowledgeModel>
+  <dmn:decision id="_98B42AB8-23C0-49A9-93A7-97F831CBD01A" name="S5.6.1.4.6S5.6.1.4.6-VehicleAccessStandardMetMet-1">
+    <dmn:extensionElements/>
+    <dmn:variable id="_15A878D7-2B6B-4EB6-80FF-3528F8FA212C" name="S5.6.1.4.6S5.6.1.4.6-VehicleAccessStandardMetMet-1" typeRef="boolean"/>
+    <dmn:informationRequirement id="_8617865F-E310-4B16-A61D-961BCE2F5714">
+      <dmn:requiredDecision href="#_0193753E-58F8-4086-8605-1C04FEF8FD10"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_300A4F57-7A59-4E62-881C-D287B1CF5388">
+      <dmn:requiredInput href="#_26E1A422-1EC4-4D83-9A34-7B6723BE1901"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_C71FEA3A-F3A0-467A-B3D9-1DA003A7CCB0">
+      <dmn:text>if S5.6.1.4.6-VehicleAccessStandard = "meets AUSNZ Parking Facilities Standard" and&#xd;
+VehicleAccessAUSNZStandard = "Yes" then true else&#xd;
+if S5.6.1.4.6-VehicleAccessStandard = null then null else false&#xd;
+&#xd;
+&#xd;
+&#xd;
+, )</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:decision id="_949D6C5D-73CB-46C6-B511-DDAA48D2EDDD" name="ObjectivesAndPolicies">
     <dmn:extensionElements/>
     <dmn:variable id="_E1AECA25-5AD1-46A8-93FB-14FF071595DC" name="ObjectivesAndPolicies" typeRef="Types.PlanContents"/>
@@ -875,26 +894,18 @@ Site Access 5.6.1.4</dmn:description>
     <dmn:informationRequirement id="_9F3ACBE9-38A2-4DCF-B1A8-C0657088B182">
       <dmn:requiredInput href="#_F1DAB68A-F4C1-4239-8695-1F26ACB62B1A"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_300A4F57-7A59-4E62-881C-D287B1CF5388">
-      <dmn:requiredInput href="#_26E1A422-1EC4-4D83-9A34-7B6723BE1901"/>
-    </dmn:informationRequirement>
-    <dmn:informationRequirement id="_8617865F-E310-4B16-A61D-961BCE2F5714">
-      <dmn:requiredDecision href="#_0193753E-58F8-4086-8605-1C04FEF8FD10"/>
+    <dmn:informationRequirement id="_DA3A0606-E679-4FC3-93BF-56DD4CE733A7">
+      <dmn:requiredDecision href="#_98B42AB8-23C0-49A9-93A7-97F831CBD01A"/>
     </dmn:informationRequirement>
     <dmn:decisionTable id="_063E0338-343C-4BE4-95A1-911DB859E0E2" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
       <dmn:input id="_7662EE5C-99A8-4FA3-B276-7F385657E65C">
-        <dmn:inputExpression id="_2A755101-F249-4903-9553-8A11ADBCBC68" typeRef="string">
-          <dmn:text>S5.6.1.4.6-VehicleAccessStandard</dmn:text>
+        <dmn:inputExpression id="_2A755101-F249-4903-9553-8A11ADBCBC68" typeRef="boolean">
+          <dmn:text>S5.6.1.4.6-VehicleAccessStandardMet</dmn:text>
         </dmn:inputExpression>
       </dmn:input>
       <dmn:input id="_9CC21C2A-8FA5-497C-9E8B-4332F57FFA82">
         <dmn:inputExpression id="_E71821D6-6EA6-4D36-B81B-FA59D0856D85" typeRef="string">
           <dmn:text>S5.6.1.4.6</dmn:text>
-        </dmn:inputExpression>
-      </dmn:input>
-      <dmn:input id="_6D5A656C-93C4-4C2D-8484-D807A2E197A6">
-        <dmn:inputExpression id="_AD2936C8-C8E0-448C-85DE-087208AE9CD4" typeRef="string">
-          <dmn:text>VehicleAccessAUSNZStandard</dmn:text>
         </dmn:inputExpression>
       </dmn:input>
       <dmn:input id="_654450E3-4610-405D-AFF5-26F2D4E9EE52">
@@ -906,13 +917,10 @@ Site Access 5.6.1.4</dmn:description>
       <dmn:annotation name="annotation-1"/>
       <dmn:rule id="_8F812123-0D1F-40B2-8E55-DBDF4371DA44">
         <dmn:inputEntry id="_D5432488-0C0C-454E-BC89-71920ACCBD45">
-          <dmn:text>"meets AUSNZ Parking Facilities Standard"</dmn:text>
+          <dmn:text>true</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_B6908D9D-1D5E-4C15-8B54-007BB16FE3D7">
           <dmn:text>"legal right of way instrument"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_1FAA6743-772B-4269-87D9-2C96EAB9A655">
-          <dmn:text>"Yes"</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_6698C9FB-E16F-47D1-A936-6AD811B01BF0">
           <dmn:text>"Yes"</dmn:text>
@@ -926,13 +934,10 @@ Site Access 5.6.1.4</dmn:description>
       </dmn:rule>
       <dmn:rule id="_47C9736D-0320-406A-8A8D-ECAFF86F9B47">
         <dmn:inputEntry id="_5DE408E2-2DAB-4BB0-AC47-41EEF5B3CE32">
-          <dmn:text>"meets AUSNZ Parking Facilities Standard"</dmn:text>
+          <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_9B308F7C-E06B-4C32-878A-58448F433847">
           <dmn:text>"legal right of way instrument"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_F82892EC-9EBC-46FD-B1B4-1E96D84DB0A3">
-          <dmn:text>"No"</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_ACD82C4C-A988-42B8-B7F1-6A04B2A0B63C">
           <dmn:text>"Yes"</dmn:text>
@@ -946,13 +951,10 @@ Site Access 5.6.1.4</dmn:description>
       </dmn:rule>
       <dmn:rule id="_91F55FBD-456A-4892-B562-4AF35ABCC96C">
         <dmn:inputEntry id="_C56B3D95-005E-4FD1-A107-B1648E5FDC6D">
-          <dmn:text>"meets AUSNZ Parking Facilities Standard"</dmn:text>
+          <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_A526A678-370F-43CF-B58F-B6ACEBFD4BA4">
           <dmn:text>"legal right of way instrument"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_8997CDBC-76F7-4540-B5B4-DB8D343A03B2">
-          <dmn:text>"No"</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_476F7A71-1E0C-46B5-9DB7-AEADA0AB506F">
           <dmn:text>"No"</dmn:text>
@@ -966,13 +968,10 @@ Site Access 5.6.1.4</dmn:description>
       </dmn:rule>
       <dmn:rule id="_26858D89-96FF-407A-9299-DD07E10C1582">
         <dmn:inputEntry id="_2D5A1418-105C-4F1A-BBD3-E370BD7C2590">
-          <dmn:text>"meets AUSNZ Parking Facilities Standard"</dmn:text>
+          <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_C8810D82-456A-43BB-990B-C21476C940C3">
           <dmn:text>"legal right of way instrument"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_05C7CB21-A07B-4ACB-913A-6C7F42D77964">
-          <dmn:text>"No"</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_01139875-AC94-4409-B06C-875F6F287FA9">
           <dmn:text>"I don't know"</dmn:text>
@@ -986,13 +985,10 @@ Site Access 5.6.1.4</dmn:description>
       </dmn:rule>
       <dmn:rule id="_42BE66F3-F64E-4B33-AB52-75D470F9B158">
         <dmn:inputEntry id="_43774B40-6679-4012-8B4F-84DB5DEF0A81">
-          <dmn:text>"meets AUSNZ Parking Facilities Standard"</dmn:text>
+          <dmn:text>true</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_417C187B-7BA8-4550-B070-A41FC70A8A2F">
           <dmn:text>"legal right of way instrument"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_4FB5B1D5-87C9-43D1-B86C-E226C469029E">
-          <dmn:text>"Yes"</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_03DC0AF1-EEBA-4C9E-97EC-DF35079DE1D4">
           <dmn:text>"No"</dmn:text>
@@ -1006,13 +1002,10 @@ Site Access 5.6.1.4</dmn:description>
       </dmn:rule>
       <dmn:rule id="_D2AE1452-8C9E-4713-9B5D-F518DB4E910C">
         <dmn:inputEntry id="_F2620132-DE0D-4F04-A6E5-83831E3843F0">
-          <dmn:text>"meets AUSNZ Parking Facilities Standard"</dmn:text>
+          <dmn:text>true</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_E5620626-FDB9-4759-A730-644FF2CD9A49">
           <dmn:text>"legal right of way instrument"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_A2736CB1-FEEB-48A5-AA2E-E25D6FFF1393">
-          <dmn:text>"Yes"</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_7B32CA86-4D98-460E-8812-3A6504F27610">
           <dmn:text>"I don't know"</dmn:text>
@@ -1024,75 +1017,12 @@ Site Access 5.6.1.4</dmn:description>
           <dmn:text></dmn:text>
         </dmn:annotationEntry>
       </dmn:rule>
-      <dmn:rule id="_B42EDF85-E0ED-4427-9734-151FD7FF4FDF">
-        <dmn:inputEntry id="_2AF65559-CAFD-4136-8980-5A889C7CD925">
-          <dmn:text>"meets AUSNZ Parking Facilities Standard"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_DD248815-457F-4F00-8F40-398EDAB94BB0">
-          <dmn:text>"legal right of way instrument"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_4F143648-9C36-44C8-AA05-40F5C9567600">
-          <dmn:text>"I don't know"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_F2F770A6-2DAB-40B4-B49E-8EAAD2164B2B">
-          <dmn:text>"Yes"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_2A9C9473-62F2-406B-81BC-F59998851577">
-          <dmn:text>false</dmn:text>
-        </dmn:outputEntry>
-        <dmn:annotationEntry>
-          <dmn:text></dmn:text>
-        </dmn:annotationEntry>
-      </dmn:rule>
-      <dmn:rule id="_F42A5BCE-859C-4351-A171-534588D4C9DB">
-        <dmn:inputEntry id="_D7BED649-0725-4B3A-8683-F179543281A7">
-          <dmn:text>"meets AUSNZ Parking Facilities Standard"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_994B0E36-B019-4169-8DE4-6FF24C422E56">
-          <dmn:text>"legal right of way instrument"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_820AAA74-6551-4DA6-9802-AB1C4142CC8A">
-          <dmn:text>"I don't know"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_37C51A40-CB1B-4567-B434-D5D447D0032F">
-          <dmn:text>"No"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_942A37D4-7990-4E0A-B478-CAF502E2DD8B">
-          <dmn:text>false</dmn:text>
-        </dmn:outputEntry>
-        <dmn:annotationEntry>
-          <dmn:text></dmn:text>
-        </dmn:annotationEntry>
-      </dmn:rule>
-      <dmn:rule id="_BC378987-40EA-4B6F-905A-D7C936D18C5F">
-        <dmn:inputEntry id="_718FA6D7-343B-44DD-9C79-77EE00402882">
-          <dmn:text>"meets AUSNZ Parking Facilities Standard"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_60602209-7A0B-4583-941A-9768A9AD8A2F">
-          <dmn:text>"legal right of way instrument"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_D457EC67-1EED-45A1-8B39-0B4299704F8C">
-          <dmn:text>"I don't know"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_01D32315-8640-4B36-B1AD-FE1F06A5CD5B">
-          <dmn:text>"I don't know"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_2E41A66C-F6AD-4FB2-8FF5-02E10FA21EF7">
-          <dmn:text>false</dmn:text>
-        </dmn:outputEntry>
-        <dmn:annotationEntry>
-          <dmn:text></dmn:text>
-        </dmn:annotationEntry>
-      </dmn:rule>
       <dmn:rule id="_20CFCA9B-840A-480C-A395-5B528D3AE017">
         <dmn:inputEntry id="_73627471-154F-469C-9794-A33CFA048C09">
-          <dmn:text>"meets AUSNZ Parking Facilities Standard"</dmn:text>
+          <dmn:text>true</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_4798FE3A-174A-4E56-910A-1D8E924C4828">
           <dmn:text>null</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_52507FDC-1AB0-4198-A180-9C0B1FA4C669">
-          <dmn:text>"Yes"</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_4EA56991-3047-4B75-BFD5-1851DCBFCF8F">
           <dmn:text>null</dmn:text>
@@ -1106,38 +1036,15 @@ Site Access 5.6.1.4</dmn:description>
       </dmn:rule>
       <dmn:rule id="_8A6B11EE-E565-42DE-8177-5B1493D40571">
         <dmn:inputEntry id="_3DA13CAA-F4C5-4FA6-B56A-4A61EF9F5B91">
-          <dmn:text>"meets AUSNZ Parking Facilities Standard"</dmn:text>
+          <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_2BE9DD50-2AFB-4CF0-B5D8-F73ADC6163DC">
           <dmn:text>null</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_B02C7A51-95A8-4F14-8D2D-C7D68EB1E6D2">
-          <dmn:text>"No"</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_E74C8EF6-4314-4DE0-9B25-D05A7E82B822">
           <dmn:text>null</dmn:text>
         </dmn:inputEntry>
         <dmn:outputEntry id="_9E80D807-B980-4B43-BE12-46CC2F6EFA24">
-          <dmn:text>false</dmn:text>
-        </dmn:outputEntry>
-        <dmn:annotationEntry>
-          <dmn:text></dmn:text>
-        </dmn:annotationEntry>
-      </dmn:rule>
-      <dmn:rule id="_1F8CABB6-CA57-47B5-8AEB-7800DCFD7E07">
-        <dmn:inputEntry id="_86D22DC4-758F-48EA-AF6F-6D7CD96D10C7">
-          <dmn:text>"meets AUSNZ Parking Facilities Standard"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_DA8F51BB-E402-4B28-8888-A50586B397B7">
-          <dmn:text>null</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_EAA63822-AE00-4931-A54E-471A4661212D">
-          <dmn:text>"I don't know"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:inputEntry id="_06B3E711-9AB0-4011-9BA4-B48B0C4A92B5">
-          <dmn:text>null</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_B1BA547A-F58F-4B1B-85D7-057A679B8598">
           <dmn:text>false</dmn:text>
         </dmn:outputEntry>
         <dmn:annotationEntry>
@@ -1655,6 +1562,9 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
           <kie:ComponentWidths dmnElementRef="_D08EDD7E-DE5B-49D8-B2F5-E1CA64222B25">
             <kie:width>954.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_C71FEA3A-F3A0-467A-B3D9-1DA003A7CCB0">
+            <kie:width>707.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_3ABACF69-4910-4C86-B0D1-AB6EE7D6B021">
             <kie:width>958.0</kie:width>
           </kie:ComponentWidths>
@@ -1681,9 +1591,8 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_063E0338-343C-4BE4-95A1-911DB859E0E2">
             <kie:width>50.0</kie:width>
-            <kie:width>154.0</kie:width>
+            <kie:width>155.0</kie:width>
             <kie:width>177.0</kie:width>
-            <kie:width>167.0</kie:width>
             <kie:width>172.0</kie:width>
             <kie:width>100.0</kie:width>
             <kie:width>100.0</kie:width>
@@ -1909,7 +1818,7 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
           <dmndi:StrokeColor red="210" green="193" blue="208"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="627.2990654205607" y="539" width="100" height="50"/>
+        <dc:Bounds x="627.2990654205607" y="598" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_14CC7FA0-D1B5-4A01-BC17-B15028AF3E5E" dmnElementRef="_14CC7FA0-D1B5-4A01-BC17-B15028AF3E5E" isCollapsed="false">
@@ -1964,6 +1873,15 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="1051" y="202" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_98B42AB8-23C0-49A9-93A7-97F831CBD01A" dmnElementRef="_98B42AB8-23C0-49A9-93A7-97F831CBD01A" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="468" y="585" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_8B4ABF17-9653-4C93-A534-92927F605D4B" dmnElementRef="_8B4ABF17-9653-4C93-A534-92927F605D4B" isCollapsed="false">
@@ -2026,7 +1944,7 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
           <dmndi:StrokeColor red="180" green="180" blue="180"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="467" y="526" width="100" height="50"/>
+        <dc:Bounds x="466" y="522" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_37ED1347-E670-4265-A37A-7456E404B63A" dmnElementRef="_37ED1347-E670-4265-A37A-7456E404B63A" isCollapsed="false">
@@ -2242,7 +2160,7 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
           <dmndi:StrokeColor red="210" green="193" blue="208"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="625" y="595" width="100" height="50"/>
+        <dc:Bounds x="625" y="543" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0" dmnElementRef="_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0" isCollapsed="false">
@@ -2273,11 +2191,11 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="dmnedge-_26001B54-AB0C-4406-8439-F98224A0EE99" dmnElementRef="_26001B54-AB0C-4406-8439-F98224A0EE99">
-        <di:waypoint x="675" y="620"/>
+        <di:waypoint x="675" y="568"/>
         <di:waypoint x="1503" y="582"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7F445BDD-6019-4777-A33F-0539CF375BFB" dmnElementRef="_7F445BDD-6019-4777-A33F-0539CF375BFB">
-        <di:waypoint x="677.2990654205607" y="564"/>
+        <di:waypoint x="677.2990654205607" y="623"/>
         <di:waypoint x="1503" y="582"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_4EDD2317-926B-47A1-98B9-7EC235CF5CFB" dmnElementRef="_4EDD2317-926B-47A1-98B9-7EC235CF5CFB">
@@ -2429,7 +2347,7 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
         <di:waypoint x="1503" y="439"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_11CA308D-F9DC-4C56-A8FF-06AD05849580" dmnElementRef="_11CA308D-F9DC-4C56-A8FF-06AD05849580">
-        <di:waypoint x="517" y="551"/>
+        <di:waypoint x="516" y="547"/>
         <di:waypoint x="1503" y="439"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_BE675433-B615-4FA2-BE9B-C746D7F60AC9" dmnElementRef="_BE675433-B615-4FA2-BE9B-C746D7F60AC9">
@@ -2472,6 +2390,14 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
         <di:waypoint x="1099" y="157.6842105263158"/>
         <di:waypoint x="1101" y="227"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_8617865F-E310-4B16-A61D-961BCE2F5714" dmnElementRef="_8617865F-E310-4B16-A61D-961BCE2F5714">
+        <di:waypoint x="379" y="610"/>
+        <di:waypoint x="518" y="610"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_300A4F57-7A59-4E62-881C-D287B1CF5388" dmnElementRef="_300A4F57-7A59-4E62-881C-D287B1CF5388">
+        <di:waypoint x="677.2990654205607" y="623"/>
+        <di:waypoint x="518" y="610"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_4EB99DFF-9CD1-4161-95B8-92552D72A669" dmnElementRef="_4EB99DFF-9CD1-4161-95B8-92552D72A669">
         <di:waypoint x="379" y="670"/>
         <di:waypoint x="517" y="671"/>
@@ -2498,19 +2424,15 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_1C8A4F1F-EE3D-45CF-B3FA-BE121169F9B3" dmnElementRef="_1C8A4F1F-EE3D-45CF-B3FA-BE121169F9B3">
         <di:waypoint x="379" y="550"/>
-        <di:waypoint x="517" y="551"/>
+        <di:waypoint x="516" y="547"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_9F3ACBE9-38A2-4DCF-B1A8-C0657088B182" dmnElementRef="_9F3ACBE9-38A2-4DCF-B1A8-C0657088B182">
-        <di:waypoint x="675" y="620"/>
-        <di:waypoint x="517" y="551"/>
+        <di:waypoint x="675" y="568"/>
+        <di:waypoint x="516" y="547"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_300A4F57-7A59-4E62-881C-D287B1CF5388" dmnElementRef="_300A4F57-7A59-4E62-881C-D287B1CF5388">
-        <di:waypoint x="677.2990654205607" y="564"/>
-        <di:waypoint x="517" y="551"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_8617865F-E310-4B16-A61D-961BCE2F5714" dmnElementRef="_8617865F-E310-4B16-A61D-961BCE2F5714">
-        <di:waypoint x="379" y="610"/>
-        <di:waypoint x="517" y="551"/>
+      <dmndi:DMNEdge id="dmnedge-_DA3A0606-E679-4FC3-93BF-56DD4CE733A7" dmnElementRef="_DA3A0606-E679-4FC3-93BF-56DD4CE733A7">
+        <di:waypoint x="518" y="610"/>
+        <di:waypoint x="516" y="547"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_4956E7D3-3A5F-454A-9AE1-A09DB2F2F46E" dmnElementRef="_4956E7D3-3A5F-454A-9AE1-A09DB2F2F46E">
         <di:waypoint x="379" y="485"/>
@@ -2541,7 +2463,7 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
         <di:waypoint x="915" y="226"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_067FF927-8836-47B6-B8BF-AA01B91CEB15" dmnElementRef="_067FF927-8836-47B6-B8BF-AA01B91CEB15">
-        <di:waypoint x="517" y="551"/>
+        <di:waypoint x="516" y="547"/>
         <di:waypoint x="915" y="226"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_1FAE3FA5-9DA2-44B7-850C-52FBD42DC2D8" dmnElementRef="_1FAE3FA5-9DA2-44B7-850C-52FBD42DC2D8">
