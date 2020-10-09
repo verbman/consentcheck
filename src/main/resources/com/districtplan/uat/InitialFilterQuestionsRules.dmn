@@ -29,7 +29,7 @@
       <dmn:requiredKnowledge href="#_F103623E-64F3-4BE0-A192-CFFC61561F29"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_08CCF121-69F7-4457-A865-EB38EF8D46B1">
-      <dmn:text>sum(for x in SpatialLayers return if ZonesList(x.Type) then 1 else 0)</dmn:text>
+      <dmn:text>if ZonesList(SpatialLayers[0].Type) then 1 else 0</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:businessKnowledgeModel id="_D8F01EF1-7326-44E7-B8BB-CB6975F03CFB" name="ResidentialCheck">
@@ -133,6 +133,9 @@ not(SingleZone(SpatialLayers))&#xd;
             <kie:width>50.0</kie:width>
             <kie:width>790.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_08CCF121-69F7-4457-A865-EB38EF8D46B1">
+            <kie:width>822.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_922FC41C-4C05-4A74-8C54-0F9609C18FBC">
             <kie:width>790.0</kie:width>
           </kie:ComponentWidths>
@@ -149,9 +152,6 @@ not(SingleZone(SpatialLayers))&#xd;
           <kie:ComponentWidths dmnElementRef="_EF3FF6A9-331C-44A4-873D-2426CD333062">
             <kie:width>50.0</kie:width>
             <kie:width>1249.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_08CCF121-69F7-4457-A865-EB38EF8D46B1">
-            <kie:width>822.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_651DDF0B-12F2-422B-A1FD-AF491311E41A">
             <kie:width>50.0</kie:width>
@@ -178,6 +178,15 @@ not(SingleZone(SpatialLayers))&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="60.5981308411215" y="302.3421052631579" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_AE514743-D74B-40F2-A9D6-0622626ABFED" dmnElementRef="_AE514743-D74B-40F2-A9D6-0622626ABFED" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="332" y="220" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_D8F01EF1-7326-44E7-B8BB-CB6975F03CFB" dmnElementRef="_D8F01EF1-7326-44E7-B8BB-CB6975F03CFB" isCollapsed="false">
@@ -207,15 +216,6 @@ not(SingleZone(SpatialLayers))&#xd;
         <dc:Bounds x="60.5981308411215" y="367" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_AE514743-D74B-40F2-A9D6-0622626ABFED" dmnElementRef="_AE514743-D74B-40F2-A9D6-0622626ABFED" isCollapsed="false">
-        <dmndi:DMNStyle>
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="0" green="0" blue="0"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="332" y="220" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0" dmnElementRef="_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0" isCollapsed="false">
         <dmndi:DMNStyle fontSize="8">
           <dmndi:FillColor red="243" green="229" blue="248"/>
@@ -238,6 +238,14 @@ not(SingleZone(SpatialLayers))&#xd;
         <di:waypoint x="110.5981308411215" y="392"/>
         <di:waypoint x="110.5981308411215" y="327.3421052631579"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_D396280B-E40B-480B-9D59-ABCD19D4387A" dmnElementRef="_D396280B-E40B-480B-9D59-ABCD19D4387A">
+        <di:waypoint x="111.59813084112147" y="191.3421052631579"/>
+        <di:waypoint x="382" y="245"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_855FE816-5833-417E-BD1D-FB53D8BC0DE0" dmnElementRef="_855FE816-5833-417E-BD1D-FB53D8BC0DE0">
+        <di:waypoint x="110.5981308411215" y="392"/>
+        <di:waypoint x="382" y="245"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_22F83C8B-AEB3-4184-B6D0-E40F3B0CFC08" dmnElementRef="_22F83C8B-AEB3-4184-B6D0-E40F3B0CFC08">
         <di:waypoint x="111.59813084112147" y="191.3421052631579"/>
         <di:waypoint x="322" y="72"/>
@@ -253,14 +261,6 @@ not(SingleZone(SpatialLayers))&#xd;
       <dmndi:DMNEdge id="dmnedge-_3B5D4969-75AD-4D1A-9931-1673A6788973" dmnElementRef="_3B5D4969-75AD-4D1A-9931-1673A6788973">
         <di:waypoint x="110.5981308411215" y="327.3421052631579"/>
         <di:waypoint x="322" y="72"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_855FE816-5833-417E-BD1D-FB53D8BC0DE0" dmnElementRef="_855FE816-5833-417E-BD1D-FB53D8BC0DE0">
-        <di:waypoint x="110.5981308411215" y="392"/>
-        <di:waypoint x="382" y="245"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_D396280B-E40B-480B-9D59-ABCD19D4387A" dmnElementRef="_D396280B-E40B-480B-9D59-ABCD19D4387A">
-        <di:waypoint x="111.59813084112147" y="191.3421052631579"/>
-        <di:waypoint x="382" y="245"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_9DBA42F1-5243-45E3-B574-F09844CF7EF1" dmnElementRef="_9DBA42F1-5243-45E3-B574-F09844CF7EF1">
         <di:waypoint x="322" y="72"/>
