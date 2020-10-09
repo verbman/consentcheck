@@ -430,12 +430,15 @@ TransmissionLineBuffer32m(SpatialLayers) then 12 else null&#xd;
   </dmn:decision>
   <dmn:decision id="_5428A0B6-D6C7-4DC8-BDF4-435B04C79BA6" name="R30.1.2.1_a_ii">
     <dmn:extensionElements/>
-    <dmn:variable id="_7660A29F-2665-4F71-9E6C-90E39EED9A76" name="R30.1.2.1_a_ii" typeRef="string"/>
+    <dmn:variable id="_7660A29F-2665-4F71-9E6C-90E39EED9A76" name="R30.1.2.1_a_ii" typeRef="number"/>
     <dmn:informationRequirement id="_1F5856CE-825B-4794-A236-47DD47495B2A">
       <dmn:requiredInput href="#_9AF94EE9-C81E-4E15-8287-3AFE94D76B74"/>
     </dmn:informationRequirement>
     <dmn:informationRequirement id="_F505C431-AE65-4B37-892C-53B72BFDC1ED">
       <dmn:requiredInput href="#_AD806695-37F3-49E6-8F1E-A1F79838017D"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_39CE45A2-7C8D-48C2-881D-F49E826E19BA">
+      <dmn:requiredInput href="#_C389C7B3-6F57-456E-8D44-E4DDE2334FD9"/>
     </dmn:informationRequirement>
     <dmn:authorityRequirement id="_8EF616CF-57D3-4B4F-9B9E-E436E808B255">
       <dmn:requiredAuthority href="#_29337949-4003-44AC-999B-9185AC154516"/>
@@ -443,7 +446,7 @@ TransmissionLineBuffer32m(SpatialLayers) then 12 else null&#xd;
     <dmn:literalExpression id="_F2F60FFB-0E6F-436C-A38E-ECC2F624C92E">
       <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
 list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge") then&#xd;
-"cut height or fill depth less than or equal to distance to nearest boundary, building, structure" else null&#xd;
+CutFillHeightDepth else null&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -2871,12 +2874,9 @@ Earthworks that do not comply with the permitted activity conditions under 30.1.
     <dmn:informationRequirement id="_7AA51513-BAFA-46E2-B4C8-3F1C46F0A429">
       <dmn:requiredInput href="#_2E4D4AEC-5651-4646-9FBE-AA2BFC975BA9"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_F3634F5B-D443-424D-9892-C0874F0F12FD">
-      <dmn:requiredInput href="#_C389C7B3-6F57-456E-8D44-E4DDE2334FD9"/>
-    </dmn:informationRequirement>
     <dmn:literalExpression id="_F278D519-3919-424E-8CD5-F33B3ABEAFD0">
       <dmn:text>if R30.1.1.1_a_iii !=null and&#xd;
-DistanceBoundary >= CutFillHeightDepth then true else&#xd;
+DistanceBoundary >= R30.1.1.1_a_iii then true else&#xd;
   if R30.1.1.1_a_iii =null or DistanceBoundary = null then null else false&#xd;
 &#xd;
 &#xd;
@@ -3120,12 +3120,15 @@ list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) the
   </dmn:knowledgeSource>
   <dmn:decision id="_752E9E67-5A29-4732-95AF-24888A6640CB" name="R30.1.1.1_a_iii">
     <dmn:extensionElements/>
-    <dmn:variable id="_79CD0F34-88DB-4815-9442-A22DF0DDC99F" name="R30.1.1.1_a_iii" typeRef="string"/>
+    <dmn:variable id="_79CD0F34-88DB-4815-9442-A22DF0DDC99F" name="R30.1.1.1_a_iii" typeRef="number"/>
     <dmn:informationRequirement id="_EC1C00C5-1E28-46F9-B1E4-71F9AF94A2FD">
       <dmn:requiredInput href="#_AD806695-37F3-49E6-8F1E-A1F79838017D"/>
     </dmn:informationRequirement>
     <dmn:informationRequirement id="_466E8047-77BD-4A3B-9BA7-5F491F988284">
       <dmn:requiredInput href="#_9AF94EE9-C81E-4E15-8287-3AFE94D76B74"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_171EE5D8-8BC3-4F4D-9BA2-E41832CB924F">
+      <dmn:requiredInput href="#_C389C7B3-6F57-456E-8D44-E4DDE2334FD9"/>
     </dmn:informationRequirement>
     <dmn:authorityRequirement id="_830A6B46-72E9-4D10-A4DC-B14B41BFC741">
       <dmn:requiredAuthority href="#_E12D1B66-F37B-49EF-8720-06AE66A643A4"/>
@@ -3136,7 +3139,7 @@ list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) the
 (list contains(SpatialLayers[Type="Residential"].Title, "Inner Residential") or&#xd;
 list contains(SpatialLayers[Type="Residential"].Title, "Medium Density Residential Area") or&#xd;
 list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) then&#xd;
-"cut height or fill depth less than or equal to distance to nearest boundary, building, structure" else null&#xd;
+CutFillHeightDepth else null&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -7338,15 +7341,12 @@ list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edg
     <dmn:informationRequirement id="_CCEC4C50-E88D-4CD2-95D1-4F027E6251EB">
       <dmn:requiredDecision href="#_5428A0B6-D6C7-4DC8-BDF4-435B04C79BA6"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_BC66B3B5-DBB8-4765-A6E8-D3488D76EA43">
-      <dmn:requiredInput href="#_C389C7B3-6F57-456E-8D44-E4DDE2334FD9"/>
-    </dmn:informationRequirement>
     <dmn:informationRequirement id="_916508BA-3DEA-4FE6-AD0F-D9D3CB8F46F6">
       <dmn:requiredInput href="#_2E4D4AEC-5651-4646-9FBE-AA2BFC975BA9"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_A605135D-89D2-4FC6-B47D-B0A214E69128">
       <dmn:text>if R30.1.2.1_a_ii !=null and&#xd;
-DistanceBoundary >= CutFillHeightDepth then true else&#xd;
+DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
   if R30.1.2.1_a_ii = null or DistanceBoundary = null then null else false&#xd;
 &#xd;
 &#xd;
@@ -9064,6 +9064,10 @@ DistanceBoundary >= CutFillHeightDepth then true else&#xd;
         <di:waypoint x="626.2990654205607" y="998"/>
         <di:waypoint x="759" y="998"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_39CE45A2-7C8D-48C2-881D-F49E826E19BA" dmnElementRef="_39CE45A2-7C8D-48C2-881D-F49E826E19BA">
+        <di:waypoint x="933" y="83.68421052631578"/>
+        <di:waypoint x="759" y="998"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_149A6ED7-212A-40EC-90D9-73594AC47D02" dmnElementRef="_149A6ED7-212A-40EC-90D9-73594AC47D02">
         <di:waypoint x="2057" y="268"/>
         <di:waypoint x="2905" y="220"/>
@@ -9216,10 +9220,6 @@ DistanceBoundary >= CutFillHeightDepth then true else&#xd;
         <di:waypoint x="932.5981308411215" y="319.6842105263158"/>
         <di:waypoint x="1164" y="185"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_F3634F5B-D443-424D-9892-C0874F0F12FD" dmnElementRef="_F3634F5B-D443-424D-9892-C0874F0F12FD">
-        <di:waypoint x="933" y="83.68421052631578"/>
-        <di:waypoint x="1164" y="185"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_BD75381B-49F2-4763-9315-EC65C72088DA" dmnElementRef="_BD75381B-49F2-4763-9315-EC65C72088DA">
         <di:waypoint x="932.5981308411215" y="391.6842105263158"/>
         <di:waypoint x="2485" y="1065"/>
@@ -9327,6 +9327,10 @@ DistanceBoundary >= CutFillHeightDepth then true else&#xd;
       <dmndi:DMNEdge id="dmnedge-_830A6B46-72E9-4D10-A4DC-B14B41BFC741" dmnElementRef="_830A6B46-72E9-4D10-A4DC-B14B41BFC741">
         <di:waypoint x="620.5981308411215" y="192.68421052631578"/>
         <di:waypoint x="709" y="190"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_171EE5D8-8BC3-4F4D-9BA2-E41832CB924F" dmnElementRef="_171EE5D8-8BC3-4F4D-9BA2-E41832CB924F">
+        <di:waypoint x="933" y="83.68421052631578"/>
+        <di:waypoint x="759" y="190"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_A5392DFA-A05B-45B9-9E47-D0C39B38A645" dmnElementRef="_A5392DFA-A05B-45B9-9E47-D0C39B38A645">
         <di:waypoint x="249.59813084112147" y="788.6842105263158"/>
@@ -9942,10 +9946,6 @@ DistanceBoundary >= CutFillHeightDepth then true else&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_CCEC4C50-E88D-4CD2-95D1-4F027E6251EB" dmnElementRef="_CCEC4C50-E88D-4CD2-95D1-4F027E6251EB">
         <di:waypoint x="759" y="998"/>
-        <di:waypoint x="1164" y="1000"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_BC66B3B5-DBB8-4765-A6E8-D3488D76EA43" dmnElementRef="_BC66B3B5-DBB8-4765-A6E8-D3488D76EA43">
-        <di:waypoint x="933" y="83.68421052631578"/>
         <di:waypoint x="1164" y="1000"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_916508BA-3DEA-4FE6-AD0F-D9D3CB8F46F6" dmnElementRef="_916508BA-3DEA-4FE6-AD0F-D9D3CB8F46F6">
