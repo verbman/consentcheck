@@ -1211,9 +1211,7 @@ OuterResidentialArea(SpatialLayers) then "private ground level open space adjoin
       <dmn:requiredAuthority href="#_BB23ECF6-ABC5-4B77-BB28-5016CD0E58A9"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_5A8AFE1A-52FB-4140-8383-E84671F1EE0A">
-      <dmn:text>if GoundLevelOpenSpaceActivities(Activities) and&#xd;
-(not(BuildingConstructedBefore27July2000) or&#xd;
-BuildingConstructedBefore27July2000 = null) then&#xd;
+      <dmn:text>if GoundLevelOpenSpaceActivities(Activities) then&#xd;
   if not(IR5OrientalBayHeightArea(SpatialLayers)) and&#xd;
   InnerResidentialArea(SpatialLayers) then 35 else&#xd;
   if MediumDensityResidentialArea2(SpatialLayers) and &#xd;
@@ -1265,6 +1263,9 @@ else 0&#xd;
     <dmn:informationRequirement id="_BB70605A-52DA-4897-AA1C-1A893ACF2735">
       <dmn:requiredInput href="#_1D91BC45-BD3B-4564-BFE8-0FE62942DED7"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_0CAF4875-4E70-45AD-8770-5ACB90170356">
+      <dmn:requiredInput href="#_7D6CFD22-CDBA-4B56-82B9-6C7439FC4D7C"/>
+    </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_BB65544D-ACA8-49E2-B091-8B94ECD39210">
       <dmn:requiredKnowledge href="#_162DC7F1-EF22-4B75-AC18-37982D1DE529"/>
     </dmn:knowledgeRequirement>
@@ -1282,12 +1283,11 @@ else 0&#xd;
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_26585F77-5FE7-48DA-B32F-C9AE60087B3E">
       <dmn:text>if GoundLevelOpenSpaceActivities(Activities) and&#xd;
-(not(BuildingConstructedBefore27July2000) or&#xd;
-BuildingConstructedBefore27July2000 = null) and&#xd;
 (not(IR5OrientalBayHeightArea(SpatialLayers)) and&#xd;
 InnerResidentialArea(SpatialLayers)) or&#xd;
 (MediumDensityResidentialArea2(SpatialLayers) and &#xd;
 Suburb="Johnsonville") then&#xd;
+  if NumberHouseholdUnits = 2 and BuildingConstructedBefore27July2000 then null else&#xd;
   if (TypeOpenSpace = "Shared" or&#xd;
   TypeOpenSpace = "Combination") then "30 square metres and 3 metres wide" else &#xd;
   if TypeOpenSpace = "Private" then "private open space" else null&#xd;
@@ -2256,6 +2256,10 @@ Ground level open space 5.6.2.3</dmn:description>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_E1210EA6-DB3E-4766-AFA4-82F64DE51437" dmnElementRef="_E1210EA6-DB3E-4766-AFA4-82F64DE51437">
         <di:waypoint x="378.25" y="637.2631578947369"/>
+        <di:waypoint x="379" y="710"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_0CAF4875-4E70-45AD-8770-5ACB90170356" dmnElementRef="_0CAF4875-4E70-45AD-8770-5ACB90170356">
+        <di:waypoint x="661.2990654205607" y="287.68421052631584"/>
         <di:waypoint x="379" y="710"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_370521F6-D22A-44AE-B047-990430F8B97B" dmnElementRef="_370521F6-D22A-44AE-B047-990430F8B97B">
