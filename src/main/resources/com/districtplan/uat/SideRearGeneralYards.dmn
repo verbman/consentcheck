@@ -634,9 +634,12 @@ Suburb="Seatoun"</dmn:text>
       <dmn:requiredDecision href="#_F494812B-098B-4E43-BB02-49718CB5CADC"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_2077A5F0-4932-452A-B50F-8598E1785C43">
-      <dmn:text>if not(S5.6.2.2.11-PoriruaStreamMet) or &#xd;
+      <dmn:text>if (not(S5.6.2.2.11-PoriruaStreamMet) or &#xd;
 not(S5.6.2.2.11-CoastalMarineEdgeMet) or &#xd;
-not(S5.6.2.2.11-WaterBodyMet) then false else &#xd;
+not(S5.6.2.2.11-WaterBodyMet)) then false else &#xd;
+if S5.6.2.2.11-PoriruaStreamMet = null and &#xd;
+S5.6.2.2.11-CoastalMarineEdgeMet = null and&#xd;
+S5.6.2.2.11-WaterBodyMet then true else&#xd;
 if (S5.6.2.2.11-PoriruaStreamMet = null and&#xd;
 S5.6.2.2.11-CoastalMarineEdgeMet = null and&#xd;
 S5.6.2.2.11-WaterBodyMet = null) then null else true&#xd;
