@@ -2,6 +2,16 @@
 <dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://districtplan.wellington.govt.nz/83/dmn/LegalRoadBuildingsStructures" xmlns:included1="https://districtplan.wellington.govt.nz/83/dmn/types" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_F3094ADC-147D-4D49-8098-0A90217DA7D0" name="LegalRoadBuildingsStructures" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://districtplan.wellington.govt.nz/83/dmn/LegalRoadBuildingsStructures">
   <dmn:extensionElements/>
   <dmn:import id="_37825258-54E8-4485-A1EC-80F95BDB9FE2" name="Types" namespace="https://districtplan.wellington.govt.nz/83/dmn/types" locationURI="../Types.dmn" importType="http://www.omg.org/spec/DMN/20180521/MODEL/"/>
+  <dmn:businessKnowledgeModel id="_66C9415C-4BD4-4D47-B8A1-59FB37FA46D1" name="OR2ResidentialCoastalEdge">
+    <dmn:extensionElements/>
+    <dmn:variable id="_AB7E904A-E9CF-479F-9338-33D2D1E8AFEA" name="OR2ResidentialCoastalEdge" typeRef="boolean"/>
+    <dmn:encapsulatedLogic id="_50446579-BCAB-4DB8-A55F-44A577AFC55C" kind="FEEL">
+      <dmn:formalParameter id="_37442956-8DC1-4B2C-8E52-2FD6B1ACFE77" name="spatiallayers" typeRef="Types.SpatialLayers"/>
+      <dmn:literalExpression id="_5DA4FF04-BA76-4B92-B2A9-9D19174DA334">
+        <dmn:text>list contains(spatiallayers[Type="Special Residential Area"].Title, "OR2 - Residential Coastal Edge")</dmn:text>
+      </dmn:literalExpression>
+    </dmn:encapsulatedLogic>
+  </dmn:businessKnowledgeModel>
   <dmn:inputData id="_F0FB562E-F6C3-44E9-8B53-04473450725D" name="LegalRoadResidentialBuilding">
     <dmn:extensionElements/>
     <dmn:variable id="_59108464-BB10-42EF-A4D8-24AB38E0E16A" name="LegalRoadResidentialBuilding" typeRef="boolean"/>
@@ -92,10 +102,29 @@ MediumDensityResidentialArea(SpatialLayers))&#xd;
     <dmn:informationRequirement id="_73610F66-B7F0-4746-859D-29380E59648D">
       <dmn:requiredDecision href="#_5B0C8C94-87DC-4438-AA27-4D7DFDACEA48"/>
     </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_7658D66C-EE6F-44EB-80F8-D6BD37F8B5C9">
+      <dmn:requiredKnowledge href="#_66C9415C-4BD4-4D47-B8A1-59FB37FA46D1"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_5E4C65AF-7A1D-4BAE-BD00-6028CA1A99CD">
+      <dmn:requiredKnowledge href="#_9C36EA52-022B-417B-87C0-D01E9CB65009"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_968C913C-1DE6-440B-92D0-09E01CAA09DA">
+      <dmn:requiredKnowledge href="#_D8F01EF1-7326-44E7-B8BB-CB6975F03CFB"/>
+    </dmn:knowledgeRequirement>
     <dmn:decisionTable id="_FC9B8AB6-4432-4F75-8D77-54D4E67547AD" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
-      <dmn:input id="_256F2F31-9AF1-48E3-BAB2-1A910C30FA5E">
-        <dmn:inputExpression id="_B6D3B6A0-2392-4831-8752-B7A59D7F69D1" typeRef="Types.SpatialLayers">
-          <dmn:text>SpatialLayers</dmn:text>
+      <dmn:input id="_38C0C65F-6BAB-4113-9829-894ADFEC26A0">
+        <dmn:inputExpression id="_C313C136-DB83-44C6-BDD5-6D0C2DEC6899" typeRef="boolean">
+          <dmn:text>InnerResidentialArea(SpatialLayers)</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_528FD08C-6C2E-49AA-8AB9-5ED7177D43E0">
+        <dmn:inputExpression id="_E1DE53D4-0561-4F90-A402-0D922A2142B1" typeRef="boolean">
+          <dmn:text>OuterResidentialArea(SpatialLayers)</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_4A76075E-A56C-406E-9859-5686B8C620F5">
+        <dmn:inputExpression id="_4B647642-9CFB-4609-AB50-03DD87B4E9DE" typeRef="boolean">
+          <dmn:text>OR2ResidentialCoastalEdge(SpatialLayers)</dmn:text>
         </dmn:inputExpression>
       </dmn:input>
       <dmn:input id="_49364467-ACE9-4512-B208-4DDB631DC2CF">
@@ -112,8 +141,14 @@ MediumDensityResidentialArea(SpatialLayers))&#xd;
       <dmn:output id="_56DC5946-1BBF-4AA3-883C-FAABB9A15CF5" name="uuids" typeRef="string"/>
       <dmn:annotation name="annotation-1"/>
       <dmn:rule id="_07C4FB8D-068F-49AF-992F-2AEEE929F2CA">
-        <dmn:inputEntry id="_CDB13878-1F7B-4936-899F-AE8FFB72AE79">
-          <dmn:text>list contains(SpatialLayers[Type="Special Residential Area"].Title, "OR2 - Residential Coastal Edge")</dmn:text>
+        <dmn:inputEntry id="_B6FC7F12-02D0-4982-8DF9-B99EB14A3551">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_57C9D0A1-97B8-46C3-859F-A4C5D11CFF53">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_52DE8135-3F98-4667-8588-D604EA390AF3">
+          <dmn:text>true</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_F134214E-DFF3-48D1-9A34-4F74C2807C2E">
           <dmn:text>-</dmn:text>
@@ -132,8 +167,14 @@ MediumDensityResidentialArea(SpatialLayers))&#xd;
         </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_A01B5EEA-010D-4826-A1CE-89CF031D8455">
-        <dmn:inputEntry id="_0E5F9E01-EA8A-49AB-B809-7CA051BDD852">
-          <dmn:text>list contains(SpatialLayers[Type="Special Residential Area"].Title, "OR2 - Residential Coastal Edge")</dmn:text>
+        <dmn:inputEntry id="_559904D7-C29D-47C8-8FBB-620E46C05F37">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3A332040-5FA1-4A03-801A-3B0DC1461986">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_96326961-E959-462A-B928-CC3223777976">
+          <dmn:text>true</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_2F0EFED0-CEEB-4D0E-9171-ADA722FFB295">
           <dmn:text>-</dmn:text>
@@ -152,7 +193,13 @@ MediumDensityResidentialArea(SpatialLayers))&#xd;
         </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_B1E30F25-400D-413B-B779-E332ECBAB101">
-        <dmn:inputEntry id="_E0C4DBE7-7C9C-4206-A0A6-D36C0518746E">
+        <dmn:inputEntry id="_96C2071F-D304-4118-AA6A-BFDA75DAE30A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_947A21E6-CA82-4FAD-BA4D-B33F5B520BF3">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1AE8B31C-AB87-4266-B281-FA0088351B07">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_A104017B-4DB3-4DAE-BED0-35B075CA143A">
@@ -172,8 +219,14 @@ MediumDensityResidentialArea(SpatialLayers))&#xd;
         </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_64A4F99E-841E-4B9C-858B-5FC7A6091CB3">
-        <dmn:inputEntry id="_1C995ED0-1949-4B85-8F52-95B23E0963C5">
-          <dmn:text>list contains(SpatialLayers[Type="Residential"].Title, "Inner Residential") or list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")</dmn:text>
+        <dmn:inputEntry id="_321AE021-DC0A-405B-BD23-3766050A8B5E">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_214AD2FC-5F44-46CA-A7C3-399A8B2B8BCE">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_60C570F3-8960-45F9-B297-AB8924A330EF">
+          <dmn:text>-</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_09E2755B-840C-4B03-9A8C-80E1AD679564">
           <dmn:text>-</dmn:text>
@@ -192,7 +245,13 @@ MediumDensityResidentialArea(SpatialLayers))&#xd;
         </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_3258F0AB-236B-4BF7-80C4-D8615D90091D">
-        <dmn:inputEntry id="_BA4C91D8-E4A4-4FE4-834A-EECE316D7D6C">
+        <dmn:inputEntry id="_60D43B75-8677-4ABE-A409-85A36E1D9095">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_054F3AA4-94DC-4BFD-8373-607C1999682B">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C0AE1605-DA3B-4188-89D1-36C8700332F6">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_7B427A47-E663-4DD3-B454-63AD0040825F">
@@ -212,7 +271,13 @@ MediumDensityResidentialArea(SpatialLayers))&#xd;
         </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_3BD871B6-9613-4840-9633-3581049870E4">
-        <dmn:inputEntry id="_F0CBEE7E-DE1A-474E-9354-04776B448EB5">
+        <dmn:inputEntry id="_74BAC996-E75E-45D8-A551-F06F1154B0AA">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2397DB30-696E-44AF-89E0-114FC5CCA8DB">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E81EDB3D-0C48-4871-BDA9-93E47567B8BF">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_C01AE763-2A2A-42FB-956A-A10910167D20">
@@ -232,7 +297,13 @@ MediumDensityResidentialArea(SpatialLayers))&#xd;
         </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_FB01D3E7-F65E-40FD-856A-1F2FB090CBE4">
-        <dmn:inputEntry id="_56605CC4-A549-44F9-AE09-4A92271C8B1D">
+        <dmn:inputEntry id="_8A863C54-9343-4D52-AEEC-6B6AE1370870">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7BB3D5BE-FB24-4EF7-8B7B-27407530A0EE">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A73F162A-6E49-4294-9892-05ED7C173D41">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_678825A2-CF16-4E94-B796-3E6DCDCF2E6B">
@@ -252,7 +323,13 @@ MediumDensityResidentialArea(SpatialLayers))&#xd;
         </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_CEE0B7BC-4C15-4FE5-859F-4B5BA4668937">
-        <dmn:inputEntry id="_C3EED3BD-4693-4A15-AC4A-1C036DB0A27D">
+        <dmn:inputEntry id="_64F38221-9DBD-4E12-B449-E909D33187B6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_024116EB-D11D-48F9-9BE9-2246D544EEFD">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2D1BFC33-9340-4DB9-9CA2-DA3A5C43A620">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_05ED9D63-AE69-4536-A922-B2FE84696B41">
@@ -272,7 +349,13 @@ MediumDensityResidentialArea(SpatialLayers))&#xd;
         </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_11C9B05C-0BAE-47BA-A20B-2E6A55DE966A">
-        <dmn:inputEntry id="_75AC71EA-C8CC-47F7-B2FF-BA49AB80AD6D">
+        <dmn:inputEntry id="_DC5596F8-7AD3-4E03-97E4-416F49818AEB">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_50D44C3E-4416-4FA2-B822-2A622E8720CB">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FB5B129E-4FB9-4C10-8FF8-E78DA4A5A3A7">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_ABADEB46-7947-4653-83E4-82BA5C06EAD6">
@@ -292,7 +375,13 @@ MediumDensityResidentialArea(SpatialLayers))&#xd;
         </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_069A4667-1979-4E8E-B310-9573BA4FF262">
-        <dmn:inputEntry id="_617D9A90-B072-4491-A6C8-CC230F94BBFA">
+        <dmn:inputEntry id="_71F7619A-3AF6-48CF-BDF5-64F89966DA71">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_12A00D50-3178-4BA5-BA5A-54811DA6A717">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0776B330-C0B0-4032-8FCC-EFD78112DC0B">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_2FDF2318-A466-411B-BBFE-34A5796CA050">
@@ -312,7 +401,13 @@ MediumDensityResidentialArea(SpatialLayers))&#xd;
         </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_E6C08857-7D65-457F-B2A9-C20A24CE70B3">
-        <dmn:inputEntry id="_11477E76-2011-410A-8F68-D3570798F11D">
+        <dmn:inputEntry id="_61602FEF-BD11-4399-837A-71A610E0CA69">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E688245E-F273-44DE-864F-55683A644210">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6C08082C-147F-4EF1-AA8C-60F1865EFEAA">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_8F70B2AC-705D-4103-AB27-045E5E147884">
@@ -332,7 +427,13 @@ MediumDensityResidentialArea(SpatialLayers))&#xd;
         </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_D985128F-EE5B-41F4-BE3B-6C395D839539">
-        <dmn:inputEntry id="_B89AC61D-6CF7-4FE6-928A-4B445B191CB4">
+        <dmn:inputEntry id="_D20946CE-52EF-4CAD-BB2C-0FD4B712C5E5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_16E5B99A-5A9F-480A-87DC-E265923BDCB4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DBBE6C13-020C-45F6-B598-A19A5117A9A6">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_5B23BCAF-7BC5-44AF-9638-D8308BA73EAF">
@@ -387,15 +488,18 @@ Suburb="Seatoun"</dmn:text>
     <dmn:informationRequirement id="_29BB53CE-C3B6-449C-8732-FDA07DBDDD11">
       <dmn:requiredInput href="#_9AF94EE9-C81E-4E15-8287-3AFE94D76B74"/>
     </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_7366B9CB-4A80-468E-8DB7-31405523116E">
+      <dmn:requiredKnowledge href="#_66C9415C-4BD4-4D47-B8A1-59FB37FA46D1"/>
+    </dmn:knowledgeRequirement>
     <dmn:decisionTable id="_552148D0-661F-46FE-A5D6-80CD3BE116F3" hitPolicy="COLLECT" preferredOrientation="Rule-as-Row">
       <dmn:input id="_5E3172FE-4FB2-42C0-9554-B2B33A63913D">
         <dmn:inputExpression id="_6707ACFA-51A8-4D63-859E-ECB7329383AC" typeRef="boolean">
           <dmn:text>R5.3.9Met</dmn:text>
         </dmn:inputExpression>
       </dmn:input>
-      <dmn:input id="_635C803F-6402-4F4B-8267-BA567066B4E3">
-        <dmn:inputExpression id="_A9AF63B3-5909-49AB-A772-1CFA7F4649BC" typeRef="Types.SpatialLayer">
-          <dmn:text>SpatialLayers</dmn:text>
+      <dmn:input id="_BA735BFC-DB3A-48E3-AC20-F064E8C44C0A">
+        <dmn:inputExpression id="_0A1D4376-82DE-4091-AC2B-079D1AD290F6" typeRef="boolean">
+          <dmn:text>OR2ResidentialCoastalEdge(SpatialLayers)</dmn:text>
         </dmn:inputExpression>
       </dmn:input>
       <dmn:output id="_AEF7DC96-B0E4-4F0D-8556-3CFBA79495BA" name="name" typeRef="string"/>
@@ -405,8 +509,8 @@ Suburb="Seatoun"</dmn:text>
         <dmn:inputEntry id="_8595E338-326D-4EF7-A6DF-7EF9055F4649">
           <dmn:text>false</dmn:text>
         </dmn:inputEntry>
-        <dmn:inputEntry id="_68499DC4-2F02-407D-9A95-09ED9963CF61">
-          <dmn:text>not(list contains(SpatialLayers[Type="Special Residential Area"].Title, "OR2 - Residential Coastal Edge"))</dmn:text>
+        <dmn:inputEntry id="_954C6561-4B5E-40F7-B8C9-F542D14B3B55">
+          <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:outputEntry id="_FE4A02FF-42F3-42E0-8EA2-32EAD3E85368">
           <dmn:text>"5.3.9.1"</dmn:text>
@@ -422,8 +526,8 @@ Suburb="Seatoun"</dmn:text>
         <dmn:inputEntry id="_A9E65524-C861-4BFB-85B9-FB3B125F377C">
           <dmn:text>false</dmn:text>
         </dmn:inputEntry>
-        <dmn:inputEntry id="_C0E1B340-0D10-4AAF-B756-4135C6E3C298">
-          <dmn:text>not(list contains(SpatialLayers[Type="Special Residential Area"].Title, "OR2 - Residential Coastal Edge"))</dmn:text>
+        <dmn:inputEntry id="_69B59403-5776-47FF-AAD3-316DFF4C9332">
+          <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:outputEntry id="_3E7E9ED6-40B3-4E20-B7F8-5ACCC4186638">
           <dmn:text>"5.3.9.2"</dmn:text>
@@ -439,8 +543,8 @@ Suburb="Seatoun"</dmn:text>
         <dmn:inputEntry id="_B87938C3-6A3E-4AC7-B2CE-2F6C8BF33334">
           <dmn:text>false</dmn:text>
         </dmn:inputEntry>
-        <dmn:inputEntry id="_8C7B233F-50A5-4F00-B603-A07A13FC4660">
-          <dmn:text>not(list contains(SpatialLayers[Type="Special Residential Area"].Title, "OR2 - Residential Coastal Edge"))</dmn:text>
+        <dmn:inputEntry id="_A0D3FC4C-75CB-4FAD-970D-C5536F42B44B">
+          <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:outputEntry id="_81294169-DA52-45C3-92B6-D368BEDB3078">
           <dmn:text>"5.3.9.4"</dmn:text>
@@ -456,8 +560,8 @@ Suburb="Seatoun"</dmn:text>
         <dmn:inputEntry id="_D3C0B13C-CACE-41EA-8D2F-1BC3494F93FF">
           <dmn:text>false</dmn:text>
         </dmn:inputEntry>
-        <dmn:inputEntry id="_8FF139B5-CE7C-4B0C-892E-D364961BB38F">
-          <dmn:text>list contains(SpatialLayers[Type="Special Residential Area"].Title, "OR2 - Residential Coastal Edge")</dmn:text>
+        <dmn:inputEntry id="_92FF1433-5FD6-4169-B151-39F2DAEED870">
+          <dmn:text>true</dmn:text>
         </dmn:inputEntry>
         <dmn:outputEntry id="_A0453BC0-A163-47AF-B48F-475A81A0AA1F">
           <dmn:text>"5.3.9.1"</dmn:text>
@@ -473,8 +577,8 @@ Suburb="Seatoun"</dmn:text>
         <dmn:inputEntry id="_E7A21B81-CCA2-4347-BA3A-034E3BBF49B5">
           <dmn:text>false</dmn:text>
         </dmn:inputEntry>
-        <dmn:inputEntry id="_5D24244F-58B4-4141-84BD-98AB223246DC">
-          <dmn:text>list contains(SpatialLayers[Type="Special Residential Area"].Title, "OR2 - Residential Coastal Edge")</dmn:text>
+        <dmn:inputEntry id="_0EE735EB-4F31-4280-A1F7-573046777F3D">
+          <dmn:text>true</dmn:text>
         </dmn:inputEntry>
         <dmn:outputEntry id="_4BFB688A-0930-4109-9D20-1AEE33673E9D">
           <dmn:text>"5.3.9.2"</dmn:text>
@@ -490,8 +594,8 @@ Suburb="Seatoun"</dmn:text>
         <dmn:inputEntry id="_5E96B9FA-7CB9-4F47-A8AB-02081EF4DAE7">
           <dmn:text>false</dmn:text>
         </dmn:inputEntry>
-        <dmn:inputEntry id="_8C5D7FE2-C441-4814-8C09-1C019AC472CD">
-          <dmn:text>list contains(SpatialLayers[Type="Special Residential Area"].Title, "OR2 - Residential Coastal Edge")</dmn:text>
+        <dmn:inputEntry id="_6488F050-4ADB-445C-9633-1791FC45B5D7">
+          <dmn:text>true</dmn:text>
         </dmn:inputEntry>
         <dmn:outputEntry id="_7348E809-1594-4019-B5F3-2CC84877983C">
           <dmn:text>"5.3.9.3"</dmn:text>
@@ -507,8 +611,8 @@ Suburb="Seatoun"</dmn:text>
         <dmn:inputEntry id="_E45A4D32-1359-4C20-A53A-3F3A28F71FBC">
           <dmn:text>false</dmn:text>
         </dmn:inputEntry>
-        <dmn:inputEntry id="_FD7CE3E3-7486-48CE-83D9-AEE255357614">
-          <dmn:text>list contains(SpatialLayers[Type="Special Residential Area"].Title, "OR2 - Residential Coastal Edge")</dmn:text>
+        <dmn:inputEntry id="_816DC205-6C74-452B-B2D8-BF22C4EF951B">
+          <dmn:text>true</dmn:text>
         </dmn:inputEntry>
         <dmn:outputEntry id="_EDC2E371-175F-4033-8F14-8425A5A665C6">
           <dmn:text>"5.3.9.4"</dmn:text>
@@ -760,7 +864,9 @@ Accessory buildings and residential structures including fences and walls, on a 
         <kie:ComponentsWidthsExtension>
           <kie:ComponentWidths dmnElementRef="_FC9B8AB6-4432-4F75-8D77-54D4E67547AD">
             <kie:width>50.0</kie:width>
-            <kie:width>879.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>113.0</kie:width>
+            <kie:width>100.0</kie:width>
             <kie:width>156.0</kie:width>
             <kie:width>212.0</kie:width>
             <kie:width>150.0</kie:width>
@@ -770,7 +876,7 @@ Accessory buildings and residential structures including fences and walls, on a 
           <kie:ComponentWidths dmnElementRef="_552148D0-661F-46FE-A5D6-80CD3BE116F3">
             <kie:width>50.0</kie:width>
             <kie:width>100.0</kie:width>
-            <kie:width>355.0</kie:width>
+            <kie:width>100.0</kie:width>
             <kie:width>100.0</kie:width>
             <kie:width>328.0</kie:width>
             <kie:width>100.0</kie:width>
@@ -828,6 +934,13 @@ Accessory buildings and residential structures including fences and walls, on a 
             <kie:width>308.0</kie:width>
             <kie:width>328.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_5DA4FF04-BA76-4B92-B2A9-9D19174DA334">
+            <kie:width>658.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_50446579-BCAB-4DB8-A55F-44A577AFC55C">
+            <kie:width>50.0</kie:width>
+            <kie:width>658.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_B57ADD6B-1032-4D7B-93DB-285BEFB870A4">
             <kie:width>658.0</kie:width>
           </kie:ComponentWidths>
@@ -843,7 +956,7 @@ Accessory buildings and residential structures including fences and walls, on a 
           <dmndi:StrokeColor red="62" green="179" blue="247"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="73.59813084112149" y="435" width="100" height="50"/>
+        <dc:Bounds x="73.59813084112149" y="495" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_BD02D150-FB36-48B8-A0AB-35933F70DF25" dmnElementRef="_BD02D150-FB36-48B8-A0AB-35933F70DF25" isCollapsed="false">
@@ -862,6 +975,15 @@ Accessory buildings and residential structures including fences and walls, on a 
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="834" y="236" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_F8626623-FAD1-4D0A-A2A4-CF8A47C4AA6A" dmnElementRef="_F8626623-FAD1-4D0A-A2A4-CF8A47C4AA6A" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="8">
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="62" green="179" blue="247"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="75.59813084112147" y="12.68421052631578" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB" dmnElementRef="_4FEC398A-6E1B-40E9-BEC3-0C8334D6D1CB" isCollapsed="false">
@@ -889,15 +1011,6 @@ Accessory buildings and residential structures including fences and walls, on a 
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="466.5981308411215" y="268" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_F8626623-FAD1-4D0A-A2A4-CF8A47C4AA6A" dmnElementRef="_F8626623-FAD1-4D0A-A2A4-CF8A47C4AA6A" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="8">
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="62" green="179" blue="247"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="75.59813084112147" y="12.68421052631578" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_782ADAE1-78B6-47B3-921F-5F4088B177D8" dmnElementRef="_782ADAE1-78B6-47B3-921F-5F4088B177D8" isCollapsed="false">
@@ -969,7 +1082,7 @@ Accessory buildings and residential structures including fences and walls, on a 
           <dmndi:StrokeColor red="0" green="0" blue="0"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="74" y="519" width="100" height="50"/>
+        <dc:Bounds x="75" y="579" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_FF9E4109-6622-4987-BA94-B2DD13F30A1C" dmnElementRef="_FF9E4109-6622-4987-BA94-B2DD13F30A1C" isCollapsed="false">
@@ -987,7 +1100,7 @@ Accessory buildings and residential structures including fences and walls, on a 
           <dmndi:StrokeColor red="62" green="179" blue="247"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="73.59813084112149" y="374" width="100" height="50"/>
+        <dc:Bounds x="73.59813084112149" y="435" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_355DF20A-0D24-4747-8279-A9704F87B4A4" dmnElementRef="_355DF20A-0D24-4747-8279-A9704F87B4A4" isCollapsed="false">
@@ -996,7 +1109,7 @@ Accessory buildings and residential structures including fences and walls, on a 
           <dmndi:StrokeColor red="133" green="150" blue="99"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="834" y="361" width="100" height="50"/>
+        <dc:Bounds x="833" y="366" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_69755C18-1F1F-4AFA-A816-9BB075FBF7FE" dmnElementRef="_69755C18-1F1F-4AFA-A816-9BB075FBF7FE" isCollapsed="false">
@@ -1044,6 +1157,15 @@ Accessory buildings and residential structures including fences and walls, on a 
         <dc:Bounds x="834" y="18" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_66C9415C-4BD4-4D47-B8A1-59FB37FA46D1" dmnElementRef="_66C9415C-4BD4-4D47-B8A1-59FB37FA46D1" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="62" green="179" blue="247"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="73" y="374.6842105263158" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_0CD77B39-EC94-4EB6-8D36-74859D41E58C" dmnElementRef="_0CD77B39-EC94-4EB6-8D36-74859D41E58C" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="255" green="255" blue="255"/>
@@ -1058,11 +1180,23 @@ Accessory buildings and residential structures including fences and walls, on a 
         <di:waypoint x="883" y="326"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_3C645381-B961-4336-9F46-BE55E83B7AE2" dmnElementRef="_3C645381-B961-4336-9F46-BE55E83B7AE2">
-        <di:waypoint x="123.59813084112147" y="399"/>
+        <di:waypoint x="123.59813084112147" y="460"/>
         <di:waypoint x="883" y="326"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_73610F66-B7F0-4746-859D-29380E59648D" dmnElementRef="_73610F66-B7F0-4746-859D-29380E59648D">
-        <di:waypoint x="124" y="544"/>
+        <di:waypoint x="125" y="604"/>
+        <di:waypoint x="883" y="326"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_7658D66C-EE6F-44EB-80F8-D6BD37F8B5C9" dmnElementRef="_7658D66C-EE6F-44EB-80F8-D6BD37F8B5C9">
+        <di:waypoint x="123" y="399.6842105263158"/>
+        <di:waypoint x="883" y="326"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_5E4C65AF-7A1D-4BAE-BD00-6028CA1A99CD" dmnElementRef="_5E4C65AF-7A1D-4BAE-BD00-6028CA1A99CD">
+        <di:waypoint x="126" y="337.3421052631579"/>
+        <di:waypoint x="883" y="326"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_968C913C-1DE6-440B-92D0-09E01CAA09DA" dmnElementRef="_968C913C-1DE6-440B-92D0-09E01CAA09DA">
+        <di:waypoint x="126.5981308411215" y="222.3421052631579"/>
         <di:waypoint x="883" y="326"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7FE18AEA-C985-4512-BD17-40C087C729CE" dmnElementRef="_7FE18AEA-C985-4512-BD17-40C087C729CE">
@@ -1070,7 +1204,11 @@ Accessory buildings and residential structures including fences and walls, on a 
         <di:waypoint x="884" y="261"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_29BB53CE-C3B6-449C-8732-FDA07DBDDD11" dmnElementRef="_29BB53CE-C3B6-449C-8732-FDA07DBDDD11">
-        <di:waypoint x="123.59813084112147" y="399"/>
+        <di:waypoint x="123.59813084112147" y="460"/>
+        <di:waypoint x="884" y="261"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_7366B9CB-4A80-468E-8DB7-31405523116E" dmnElementRef="_7366B9CB-4A80-468E-8DB7-31405523116E">
+        <di:waypoint x="123" y="399.6842105263158"/>
         <di:waypoint x="884" y="261"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_C0AEC952-C96B-4ED5-97CF-CCCD2BFABC8D" dmnElementRef="_C0AEC952-C96B-4ED5-97CF-CCCD2BFABC8D">
@@ -1102,7 +1240,11 @@ Accessory buildings and residential structures including fences and walls, on a 
         <di:waypoint x="260" y="39"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_5618B675-459E-47C1-95C7-43F35B8C7490" dmnElementRef="_5618B675-459E-47C1-95C7-43F35B8C7490">
-        <di:waypoint x="123.59813084112147" y="399"/>
+        <di:waypoint x="123.59813084112147" y="460"/>
+        <di:waypoint x="260" y="39"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_CE7C85AF-5BDE-4A86-840B-12E120E521E9" dmnElementRef="_CE7C85AF-5BDE-4A86-840B-12E120E521E9">
+        <di:waypoint x="125.59813084112147" y="37.68421052631578"/>
         <di:waypoint x="260" y="39"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_B85A7E4E-AAE2-4773-A414-FFFD7DA3ADE4" dmnElementRef="_B85A7E4E-AAE2-4773-A414-FFFD7DA3ADE4">
@@ -1121,25 +1263,25 @@ Accessory buildings and residential structures including fences and walls, on a 
         <di:waypoint x="126" y="337.3421052631579"/>
         <di:waypoint x="260" y="39"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_CE7C85AF-5BDE-4A86-840B-12E120E521E9" dmnElementRef="_CE7C85AF-5BDE-4A86-840B-12E120E521E9">
-        <di:waypoint x="125.59813084112147" y="37.68421052631578"/>
-        <di:waypoint x="260" y="39"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_F19997FB-5F9B-49DA-9261-FB86FBBBB815" dmnElementRef="_F19997FB-5F9B-49DA-9261-FB86FBBBB815">
-        <di:waypoint x="123.59813084112147" y="460"/>
-        <di:waypoint x="124" y="544"/>
+        <di:waypoint x="123.59813084112147" y="520"/>
+        <di:waypoint x="125" y="604"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_E8771CF3-C0ED-48DA-8B93-706B19AF90D4" dmnElementRef="_E8771CF3-C0ED-48DA-8B93-706B19AF90D4">
         <di:waypoint x="517" y="226"/>
-        <di:waypoint x="884" y="386"/>
+        <di:waypoint x="883" y="391"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_F7813B3E-0881-4087-8082-FB0684724F95" dmnElementRef="_F7813B3E-0881-4087-8082-FB0684724F95">
         <di:waypoint x="126.59813084112147" y="158.3421052631579"/>
         <di:waypoint x="378" y="225"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_1DC5C410-7F04-4F2A-BB04-5E101A16F067" dmnElementRef="_1DC5C410-7F04-4F2A-BB04-5E101A16F067">
-        <di:waypoint x="123.59813084112147" y="399"/>
+        <di:waypoint x="123.59813084112147" y="460"/>
         <di:waypoint x="328" y="225"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_493241E6-ABAB-4A04-8EDA-4333B4AA0B40" dmnElementRef="_493241E6-ABAB-4A04-8EDA-4333B4AA0B40">
+        <di:waypoint x="125.59813084112147" y="37.68421052631578"/>
+        <di:waypoint x="378" y="225"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_515E5A32-8B52-4D1D-AD78-808397658777" dmnElementRef="_515E5A32-8B52-4D1D-AD78-808397658777">
         <di:waypoint x="126.5981308411215" y="95.6842105263158"/>
@@ -1159,10 +1301,6 @@ Accessory buildings and residential structures including fences and walls, on a 
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_08CE2FA5-0236-4703-A70B-6AF0CD252B2C" dmnElementRef="_08CE2FA5-0236-4703-A70B-6AF0CD252B2C">
         <di:waypoint x="378.25" y="154.68421052631578"/>
-        <di:waypoint x="378" y="225"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_493241E6-ABAB-4A04-8EDA-4333B4AA0B40" dmnElementRef="_493241E6-ABAB-4A04-8EDA-4333B4AA0B40">
-        <di:waypoint x="125.59813084112147" y="37.68421052631578"/>
         <di:waypoint x="378" y="225"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_927C8439-0358-462C-815B-EA0D30AE36D2" dmnElementRef="_927C8439-0358-462C-815B-EA0D30AE36D2">
