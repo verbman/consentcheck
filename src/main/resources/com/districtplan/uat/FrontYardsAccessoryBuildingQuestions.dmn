@@ -221,12 +221,11 @@ not(StructureDeckOnly(Activities_Value)) then&#xd;
       <dmn:text>if (list contains(Activities_Value[Noun="accessory building"].Verb, "build") or&#xd;
 list contains(Activities_Value[Noun="accessory building"].Verb, "add to")) and&#xd;
 not(CuldesacDeadendSite_Value) then&#xd;
+  if not(list contains(Activities_Value[Noun="residential building"].Verb, "build")) and &#xd;
+  not(list contains(Activities_Value[Noun="residential building"].Verb, "add to")) and&#xd;
+  CornerSite_Value then CornerSite + 1 else&#xd;
   if CornerSite_Value and AccessoryBuildingStructureFrontYard_Value = null then&#xd;
-  AccessoryBuildingStructureFrontYard + 1 else&#xd;
-  if CornerSite_Value and AccessoryBuildingStructureFrontYard_Value !=null then&#xd;
-  AccessoryBuildingStructureFrontYard + 1 else&#xd;
-  if CornerSite_Value = null and AccessoryBuildingStructureFrontYard_Value !=null then&#xd;
-  CornerSite + 1 else 0&#xd;
+  AccessoryBuildingStructureFrontYard + 1 else 0&#xd;
 else 0&#xd;
 &#xd;
 &#xd;
@@ -650,8 +649,7 @@ no</dmn:allowedAnswers>
       <dmn:requiredKnowledge href="#_CDF2F1B1-4002-46C9-B06E-211B4C7F3014"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_D67F88CC-5A33-4531-AAF3-C832B81D6800">
-      <dmn:text>if CuldesacDeadendSite_Value = null and&#xd;
-list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential") and&#xd;
+      <dmn:text>if list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential") and&#xd;
 AccessoryBuildingStructureFrontYard_Value then &#xd;
   if StructureDeckOnly(Activities_Value) then 0 else&#xd;
   if not(list contains(Activities_Value[Noun="residential building"].Verb, "build")) and &#xd;
