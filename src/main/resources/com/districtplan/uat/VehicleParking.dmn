@@ -505,28 +505,6 @@ TwoHouseholdUnitsParking = null&#xd;
           <dmn:text></dmn:text>
         </dmn:annotationEntry>
       </dmn:rule>
-      <dmn:rule id="_6BFC8C25-BA8F-473F-8C5F-95ED05BF7B10">
-        <dmn:inputEntry id="_6F0C8BFD-98E8-4A01-B613-E6CD0DB1C32F">
-          <dmn:text>"Yes"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_2A344770-6D05-4B9B-973D-6299D23B0282">
-          <dmn:text>""</dmn:text>
-        </dmn:outputEntry>
-        <dmn:annotationEntry>
-          <dmn:text></dmn:text>
-        </dmn:annotationEntry>
-      </dmn:rule>
-      <dmn:rule id="_E130CFC9-C0C5-4902-80C8-4BF4B6B49C1C">
-        <dmn:inputEntry id="_E62842E0-5124-40AF-B8B2-7BDB8B1C7EC1">
-          <dmn:text>"No"</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_63CE0016-75B0-4A5D-BFA3-E8710055229A">
-          <dmn:text>""</dmn:text>
-        </dmn:outputEntry>
-        <dmn:annotationEntry>
-          <dmn:text></dmn:text>
-        </dmn:annotationEntry>
-      </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
   <dmn:decision id="_62D0A4BE-C422-49C0-8C68-2DA3FBB0CEFB" name="StandardsNotMet">
@@ -914,10 +892,21 @@ Vehicle Parking 5.3.1.2</dmn:description>
     <dmn:informationRequirement id="_1CC57B4B-C71C-45DE-BD6F-A38E772AB9F1">
       <dmn:requiredInput href="#_47043C26-11E7-43C2-A572-7BD7A9C94E0C"/>
     </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_F01C3C68-E11A-4569-8C7D-CDFBA525AAFB">
+      <dmn:requiredKnowledge href="#_382242DC-F75D-4F62-A398-DD2DA171687F"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_1466FACF-C8BC-4085-9A0B-6D2BF872095B">
+      <dmn:requiredKnowledge href="#_EED89588-D289-4F39-B9DE-9A4AB1C14501"/>
+    </dmn:knowledgeRequirement>
     <dmn:decisionTable id="_AB04DAC7-2F47-4929-8A3E-296CDFAE5E10" hitPolicy="COLLECT" preferredOrientation="Rule-as-Row">
-      <dmn:input id="_25C000BE-3C94-419C-9EFC-8671B9B6A205">
-        <dmn:inputExpression id="_03FA4414-B32D-4D14-B4B1-431D54F56C96" typeRef="Types.SpatialLayers">
-          <dmn:text>SpatialLayers</dmn:text>
+      <dmn:input id="_C8C6E802-0D5C-4DB9-87AC-B658C6FF3D91">
+        <dmn:inputExpression id="_1FE77673-935C-406D-B38E-2B55194F956D" typeRef="boolean">
+          <dmn:text>InnerResidentialArea(SpatialLayers)</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_DFC03336-27A9-476C-8D28-DC2FD155D9CF">
+        <dmn:inputExpression id="_AC677B41-8FB7-41C1-8D6E-915CE1179299" typeRef="boolean">
+          <dmn:text>OuterResidentialArea(SpatialLayers)</dmn:text>
         </dmn:inputExpression>
       </dmn:input>
       <dmn:input id="_74934C5B-3A7F-4D1E-AB4B-5C8D480AE867">
@@ -944,8 +933,11 @@ Vehicle Parking 5.3.1.2</dmn:description>
       <dmn:output id="_BFA0D029-219B-4B7D-852F-21AF4EF88BD5" name="uuids" typeRef="string"/>
       <dmn:annotation name=""/>
       <dmn:rule id="_4FC93ABA-CEE4-4B31-A46B-07C743FB1374">
-        <dmn:inputEntry id="_AFBF2C10-CEA8-4848-BA60-E919729F789C">
-          <dmn:text>list contains(SpatialLayers[Type="Residential"].Title, "Inner Residential")</dmn:text>
+        <dmn:inputEntry id="_AE4FB1DB-4BC7-44D7-BCAF-9FB443B123B3">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_AF4B17CC-C977-404C-84B5-A5AFFDA10026">
+          <dmn:text>-</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_C8140C62-6249-4148-A2E5-781D9F47E683">
           <dmn:text>true</dmn:text>
@@ -969,9 +961,41 @@ Vehicle Parking 5.3.1.2</dmn:description>
           <dmn:text></dmn:text>
         </dmn:annotationEntry>
       </dmn:rule>
+      <dmn:rule id="_3E9B9924-5661-4A30-9C3F-307512DF96B5">
+        <dmn:inputEntry id="_81514AF6-8E39-4BE4-8B44-9E8E7A55E118">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8102A5D1-9350-4FC8-B6E2-0EAD07F3993C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B9072A92-3BAB-44F4-920B-9F541D12A175">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B597AF32-70FC-41D1-AAC0-87640B708D8E">
+          <dmn:text>2</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_EE806290-CE15-4E93-B503-5171AD3EF6E2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_27E103CB-4A5B-4EC6-808E-0E636C699F59">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_A80DFDA5-47D5-46B4-AFC6-CEE370442C8A">
+          <dmn:text>"4.2.2.1"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_435E4062-C76D-4294-B592-B515D9801D85">
+          <dmn:text>"60512b52-fa40-442f-84a4-fc5f938a9eb9"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
       <dmn:rule id="_3ACFB383-72A3-404C-9C08-76A5C3BA3941">
-        <dmn:inputEntry id="_982DAE94-FACE-42C5-A466-11D55E3B7A31">
-          <dmn:text>list contains(SpatialLayers[Type="Residential"].Title, "Inner Residential")</dmn:text>
+        <dmn:inputEntry id="_BCA0584B-168E-44D0-8175-AE6C544AF76E">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_58C72ED9-4108-432A-8286-5C4B93726185">
+          <dmn:text>-</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_EEA2162C-257A-4A1A-ABE2-C929409BDC82">
           <dmn:text>true</dmn:text>
@@ -986,7 +1010,7 @@ Vehicle Parking 5.3.1.2</dmn:description>
           <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:outputEntry id="_0E5F2F94-FA0E-4CE3-A8A8-2965A515522D">
-          <dmn:text>"4.2.2.1"</dmn:text>
+          <dmn:text>"4.2.2.1f"</dmn:text>
         </dmn:outputEntry>
         <dmn:outputEntry id="_A67A5CF5-8B64-434F-B352-A22A721BECEA">
           <dmn:text>"c0fb96f0-e70e-4896-ac36-501f7f906aed"</dmn:text>
@@ -996,8 +1020,11 @@ Vehicle Parking 5.3.1.2</dmn:description>
         </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_DC51EC6C-5DA3-43A9-9267-EE78EF2A6A57">
-        <dmn:inputEntry id="_0E73AB2D-A897-4E0C-A5F6-695D70FA6AA9">
-          <dmn:text>list contains(SpatialLayers[Type="Residential"].Title, "Inner Residential") or list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")</dmn:text>
+        <dmn:inputEntry id="_0C60A9C7-C3E7-4A65-9F6C-B2A988B713C2">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2E26C63B-76CA-4717-8FEC-195B0F973FA5">
+          <dmn:text>true</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_B7F860F6-956E-4C6A-BCC5-A049808D1F03">
           <dmn:text>-</dmn:text>
@@ -1022,8 +1049,11 @@ Vehicle Parking 5.3.1.2</dmn:description>
         </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_ECE18311-A11D-4B00-96CA-F3842A562AD9">
-        <dmn:inputEntry id="_1023AE97-3241-4038-B06E-1F4B6E313056">
-          <dmn:text>list contains(SpatialLayers[Type="Residential"].Title, "Inner Residential") or list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")</dmn:text>
+        <dmn:inputEntry id="_29156530-C110-4B26-9B7A-8F280EE49358">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_478E8F0D-7E27-484A-8125-4DF9DE560ABF">
+          <dmn:text>true</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_B54EC396-B06C-4ED0-AF25-20432DB4A408">
           <dmn:text>-</dmn:text>
@@ -1048,7 +1078,10 @@ Vehicle Parking 5.3.1.2</dmn:description>
         </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_953DD2AF-C0F6-49CF-9368-3432E7922BDF">
-        <dmn:inputEntry id="_E3160E66-6E43-444B-BEDC-8FE2021119DA">
+        <dmn:inputEntry id="_B53CD858-C4F4-4003-A346-95A6E6AC0E75">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DFE640A4-2D7A-4158-BA6C-C79706A5DE61">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_6D76DA61-917E-458C-A3AD-1E5BFE1ED445">
@@ -1074,7 +1107,10 @@ Vehicle Parking 5.3.1.2</dmn:description>
         </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_8C37D857-021F-47B5-A7AB-7C34037DB27F">
-        <dmn:inputEntry id="_F3C8AAA9-4B47-446E-BC36-7B3E7C9CC83C">
+        <dmn:inputEntry id="_E2530ABB-F5BC-41E5-BB95-596CAEEFD586">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F38247B7-E61A-4AD9-9741-475F401EF1D8">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_D70C6DEF-722E-4917-9F77-3915BD2291D6">
@@ -1100,7 +1136,10 @@ Vehicle Parking 5.3.1.2</dmn:description>
         </dmn:annotationEntry>
       </dmn:rule>
       <dmn:rule id="_529F333A-0E9F-4A8C-B82E-7F2D1F698985">
-        <dmn:inputEntry id="_D58448C8-5ABD-4746-AC68-8911056ECF50">
+        <dmn:inputEntry id="_1114CDDA-6DAB-4351-B302-A4A1ED9A16B4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F8E65D02-8BA6-452D-A27B-4BD2D64168B5">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_3E89A71D-9232-4296-9FCC-945A5EEB4CA0">
@@ -1193,9 +1232,6 @@ Residential activities that comply with standards 5.6.1</dmn:description>
           <kie:ComponentWidths dmnElementRef="_EB4DD0DD-BF91-4478-B5AC-7997CC221B64">
             <kie:width>1548.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_5531183D-12D7-48B4-8721-356D8D8F4D96">
-            <kie:width>468.0</kie:width>
-          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_ED649124-7BE8-4922-AB0C-778C31541F14">
             <kie:width>50.0</kie:width>
             <kie:width>100.0</kie:width>
@@ -1244,6 +1280,9 @@ Residential activities that comply with standards 5.6.1</dmn:description>
             <kie:width>320.0</kie:width>
             <kie:width>269.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_5531183D-12D7-48B4-8721-356D8D8F4D96">
+            <kie:width>468.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_0CD4D50C-A463-46CC-8892-3DF48ED24671">
             <kie:width>415.0</kie:width>
           </kie:ComponentWidths>
@@ -1282,7 +1321,8 @@ Residential activities that comply with standards 5.6.1</dmn:description>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_AB04DAC7-2F47-4929-8A3E-296CDFAE5E10">
             <kie:width>50.0</kie:width>
-            <kie:width>148.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>164.0</kie:width>
             <kie:width>202.0</kie:width>
             <kie:width>100.0</kie:width>
             <kie:width>160.0</kie:width>
@@ -1353,7 +1393,7 @@ Residential activities that comply with standards 5.6.1</dmn:description>
           <dmndi:StrokeColor red="0" green="0" blue="0"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="115.59813084112147" y="380.3421052631579" width="100" height="50"/>
+        <dc:Bounds x="115.59813084112147" y="381.6842105263158" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_BDF7EF5E-FF2D-4B23-84EB-FE9D84FDE638" dmnElementRef="_BDF7EF5E-FF2D-4B23-84EB-FE9D84FDE638" isCollapsed="false">
@@ -1455,15 +1495,6 @@ Residential activities that comply with standards 5.6.1</dmn:description>
         <dc:Bounds x="344" y="529" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_8C456238-D989-4909-A7FC-9BC64D767357" dmnElementRef="_8C456238-D989-4909-A7FC-9BC64D767357" isCollapsed="false">
-        <dmndi:DMNStyle>
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="0" green="0" blue="0"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="250" y="39" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_782ADAE1-78B6-47B3-921F-5F4088B177D8" dmnElementRef="_782ADAE1-78B6-47B3-921F-5F4088B177D8" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="204" green="218" blue="183"/>
@@ -1534,6 +1565,15 @@ Residential activities that comply with standards 5.6.1</dmn:description>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="1714" y="334" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_8C456238-D989-4909-A7FC-9BC64D767357" dmnElementRef="_8C456238-D989-4909-A7FC-9BC64D767357" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="250" y="39" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_382242DC-F75D-4F62-A398-DD2DA171687F" dmnElementRef="_382242DC-F75D-4F62-A398-DD2DA171687F" isCollapsed="false">
@@ -1757,7 +1797,7 @@ Residential activities that comply with standards 5.6.1</dmn:description>
         <di:waypoint x="394" y="490"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_D5AC27D6-0061-4240-9D5A-3AAE2C12DA37" dmnElementRef="_D5AC27D6-0061-4240-9D5A-3AAE2C12DA37">
-        <di:waypoint x="165.59813084112147" y="405.3421052631579"/>
+        <di:waypoint x="165.59813084112147" y="406.6842105263158"/>
         <di:waypoint x="394" y="465"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7681C8AF-5AA1-4FA7-A03C-4AE042FF2F2B" dmnElementRef="_7681C8AF-5AA1-4FA7-A03C-4AE042FF2F2B">
@@ -1785,7 +1825,7 @@ Residential activities that comply with standards 5.6.1</dmn:description>
         <di:waypoint x="394" y="554"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_E5A15754-77B6-488D-B371-1BD8306B0745" dmnElementRef="_E5A15754-77B6-488D-B371-1BD8306B0745">
-        <di:waypoint x="165.59813084112147" y="405.3421052631579"/>
+        <di:waypoint x="165.59813084112147" y="406.6842105263158"/>
         <di:waypoint x="394" y="554"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_A592C4D2-75EC-4CE9-88CD-89B4FE5AE06B" dmnElementRef="_A592C4D2-75EC-4CE9-88CD-89B4FE5AE06B">
@@ -1795,30 +1835,6 @@ Residential activities that comply with standards 5.6.1</dmn:description>
       <dmndi:DMNEdge id="dmnedge-_6C44799C-C148-4EE0-ACCE-0301FC8BA75E" dmnElementRef="_6C44799C-C148-4EE0-ACCE-0301FC8BA75E">
         <di:waypoint x="165.29906542056074" y="553.3421052631579"/>
         <di:waypoint x="394" y="554"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_ECE79D1A-BC5F-4A23-AF01-88E2CE6CE8DF" dmnElementRef="_ECE79D1A-BC5F-4A23-AF01-88E2CE6CE8DF">
-        <di:waypoint x="166.5981308411215" y="135.68421052631578"/>
-        <di:waypoint x="300" y="64"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_5941684C-ECD4-4D65-991F-BE8DB323B41C" dmnElementRef="_5941684C-ECD4-4D65-991F-BE8DB323B41C">
-        <di:waypoint x="171.5981308411215" y="203.3421052631579"/>
-        <di:waypoint x="300" y="64"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_76445768-D2BE-40F8-A6E7-CA55EFBCACFF" dmnElementRef="_76445768-D2BE-40F8-A6E7-CA55EFBCACFF">
-        <di:waypoint x="166.5981308411215" y="268.3421052631579"/>
-        <di:waypoint x="300" y="64"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_FCB36BBF-F5A9-41D9-9584-9306BE284D5E" dmnElementRef="_FCB36BBF-F5A9-41D9-9584-9306BE284D5E">
-        <di:waypoint x="166.29906542056074" y="338.6842105263158"/>
-        <di:waypoint x="300" y="64"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_5E05FEA5-54AE-42D5-B021-B3BD780EC7F8" dmnElementRef="_5E05FEA5-54AE-42D5-B021-B3BD780EC7F8">
-        <di:waypoint x="165.59813084112147" y="405.3421052631579"/>
-        <di:waypoint x="300" y="64"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_7B75E29B-9608-401B-9325-24ECCFE10C36" dmnElementRef="_7B75E29B-9608-401B-9325-24ECCFE10C36">
-        <di:waypoint x="165.29906542056074" y="473"/>
-        <di:waypoint x="300" y="64"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7979862B-4559-49F0-8DD9-41902ABD0A95" dmnElementRef="_7979862B-4559-49F0-8DD9-41902ABD0A95">
         <di:waypoint x="1433" y="168"/>
@@ -1857,7 +1873,7 @@ Residential activities that comply with standards 5.6.1</dmn:description>
         <di:waypoint x="394" y="203"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_EF8EFF56-6773-4AD0-B707-74AE42CFB2CE" dmnElementRef="_EF8EFF56-6773-4AD0-B707-74AE42CFB2CE">
-        <di:waypoint x="165.59813084112147" y="405.3421052631579"/>
+        <di:waypoint x="165.59813084112147" y="406.6842105263158"/>
         <di:waypoint x="394" y="228"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_35C9C37E-5EC1-4030-AB6D-2BE8DFC7E406" dmnElementRef="_35C9C37E-5EC1-4030-AB6D-2BE8DFC7E406">
@@ -1883,6 +1899,30 @@ Residential activities that comply with standards 5.6.1</dmn:description>
       <dmndi:DMNEdge id="dmnedge-_25AF85DB-82E9-45AD-9FAC-FFFC8F368A21" dmnElementRef="_25AF85DB-82E9-45AD-9FAC-FFFC8F368A21">
         <di:waypoint x="1265" y="264"/>
         <di:waypoint x="1764" y="359"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_ECE79D1A-BC5F-4A23-AF01-88E2CE6CE8DF" dmnElementRef="_ECE79D1A-BC5F-4A23-AF01-88E2CE6CE8DF">
+        <di:waypoint x="166.5981308411215" y="135.68421052631578"/>
+        <di:waypoint x="300" y="64"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_76445768-D2BE-40F8-A6E7-CA55EFBCACFF" dmnElementRef="_76445768-D2BE-40F8-A6E7-CA55EFBCACFF">
+        <di:waypoint x="166.5981308411215" y="268.3421052631579"/>
+        <di:waypoint x="300" y="64"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_5941684C-ECD4-4D65-991F-BE8DB323B41C" dmnElementRef="_5941684C-ECD4-4D65-991F-BE8DB323B41C">
+        <di:waypoint x="171.5981308411215" y="203.3421052631579"/>
+        <di:waypoint x="300" y="64"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_FCB36BBF-F5A9-41D9-9584-9306BE284D5E" dmnElementRef="_FCB36BBF-F5A9-41D9-9584-9306BE284D5E">
+        <di:waypoint x="166.29906542056074" y="338.6842105263158"/>
+        <di:waypoint x="300" y="64"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_5E05FEA5-54AE-42D5-B021-B3BD780EC7F8" dmnElementRef="_5E05FEA5-54AE-42D5-B021-B3BD780EC7F8">
+        <di:waypoint x="165.59813084112147" y="406.6842105263158"/>
+        <di:waypoint x="300" y="64"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_7B75E29B-9608-401B-9325-24ECCFE10C36" dmnElementRef="_7B75E29B-9608-401B-9325-24ECCFE10C36">
+        <di:waypoint x="165.29906542056074" y="473"/>
+        <di:waypoint x="300" y="64"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_FBF07D25-CAAA-4D3A-8AD3-67E91D4E6ADE" dmnElementRef="_FBF07D25-CAAA-4D3A-8AD3-67E91D4E6ADE">
         <di:waypoint x="485.5981308411215" y="89.6842105263158"/>
@@ -1961,7 +2001,7 @@ Residential activities that comply with standards 5.6.1</dmn:description>
         <di:waypoint x="394" y="373"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_ED37F0F7-8994-4DF4-A5DF-64DD6F69A5E8" dmnElementRef="_ED37F0F7-8994-4DF4-A5DF-64DD6F69A5E8">
-        <di:waypoint x="165.59813084112147" y="405.3421052631579"/>
+        <di:waypoint x="165.59813084112147" y="406.6842105263158"/>
         <di:waypoint x="394" y="373"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_46A8DCF6-99B6-4176-97D4-10DE69E6FE04" dmnElementRef="_46A8DCF6-99B6-4176-97D4-10DE69E6FE04">
@@ -2014,6 +2054,14 @@ Residential activities that comply with standards 5.6.1</dmn:description>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_1CC57B4B-C71C-45DE-BD6F-A38E772AB9F1" dmnElementRef="_1CC57B4B-C71C-45DE-BD6F-A38E772AB9F1">
         <di:waypoint x="819.2990654205607" y="87.68421052631581"/>
+        <di:waypoint x="1764" y="516"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_F01C3C68-E11A-4569-8C7D-CDFBA525AAFB" dmnElementRef="_F01C3C68-E11A-4569-8C7D-CDFBA525AAFB">
+        <di:waypoint x="166.29906542056074" y="338.6842105263158"/>
+        <di:waypoint x="1764" y="516"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_1466FACF-C8BC-4085-9A0B-6D2BF872095B" dmnElementRef="_1466FACF-C8BC-4085-9A0B-6D2BF872095B">
+        <di:waypoint x="165.59813084112147" y="406.6842105263158"/>
         <di:waypoint x="1764" y="516"/>
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
