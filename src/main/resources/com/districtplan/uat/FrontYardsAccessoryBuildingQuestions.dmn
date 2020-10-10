@@ -214,12 +214,15 @@ not(StructureDeckOnly(Activities_Value)) then&#xd;
     <dmn:informationRequirement id="_9E3F28DC-2286-45D7-B4EA-DDA6D95EA77C">
       <dmn:requiredInput href="#_D5A135DD-D0D3-4FB1-A87B-D141B31C387F"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_D91744EC-A6A8-48B7-9C30-68A7C9FC7E42">
+      <dmn:requiredDecision href="#_82B3654B-4FBE-4ABB-B4C3-B8B159BD12AB"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_CEE42BE3-4E3E-4A3B-975C-2E0636260546">
       <dmn:text>if (list contains(Activities_Value[Noun="accessory building"].Verb, "build") or&#xd;
-list contains(Activities_Value[Noun="accessory building"].Verb, "add to")) and&#xd;
-not(CuldesacDeadendSite_Value) and&#xd;
-CornerSite_Value&#xd;
-and AccessoryBuildingStructureFrontYard_Value !=null then&#xd;
+list contains(Activities_Value[Noun="accessory building"].Verb, "add to")) then&#xd;
+if CornerSite_Value and AccessoryBuildingStructureFrontYard_Value !=null then&#xd;
+AccessoryBuildingStructureFrontYard + 1 else&#xd;
+if CornerSite_Value = null then&#xd;
 CornerSite + 1 else 0&#xd;
 &#xd;
 &#xd;
@@ -1209,6 +1212,10 @@ ProposedSetBackAccessoryBuildingRoad1 + 1 else&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_9E3F28DC-2286-45D7-B4EA-DDA6D95EA77C" dmnElementRef="_9E3F28DC-2286-45D7-B4EA-DDA6D95EA77C">
         <di:waypoint x="1139" y="342.3421052631579"/>
+        <di:waypoint x="870" y="666"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_D91744EC-A6A8-48B7-9C30-68A7C9FC7E42" dmnElementRef="_D91744EC-A6A8-48B7-9C30-68A7C9FC7E42">
+        <di:waypoint x="695" y="192"/>
         <di:waypoint x="870" y="666"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_2CBA68F6-4071-4F5D-9B12-559C4CEB77EB" dmnElementRef="_2CBA68F6-4071-4F5D-9B12-559C4CEB77EB">
