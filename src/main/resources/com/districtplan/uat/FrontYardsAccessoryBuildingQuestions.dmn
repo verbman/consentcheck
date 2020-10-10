@@ -325,11 +325,15 @@ then (Activities + 1) else 0&#xd;
     <dmn:informationRequirement id="_16984928-F49F-4AA8-BA69-E8AF9D723913">
       <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_4EBBC778-2093-4CDF-B553-A0744F401305">
+      <dmn:requiredInput href="#_4A12512F-D824-4ACA-B66A-FCB3F0836A26"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_1FAFE413-0D29-4033-A650-93768F1ED3EB">
       <dmn:text>if (list contains(Activities_Value[Noun="accessory building"].Verb, "build") or&#xd;
 list contains(Activities_Value[Noun="accessory building"].Verb, "add to")) and&#xd;
-MinimumWidthOfRoad1 > 0 then MinimumWidthOfRoad1 + 1 else&#xd;
-  if ProposedSetBackAccessoryBuildingRoad1_Value >= 3 then ProposedSetBackAccessoryBuildingRoad1 + 1 else 0&#xd;
+(MinimumWidthOfRoad1 > 0 or MinimumWidthOfRoad1_Value = null) then MinimumWidthOfRoad1 + 1 else&#xd;
+  if ProposedSetBackAccessoryBuildingRoad1_Value >= 3 then ProposedSetBackAccessoryBuildingRoad1 + 1 else &#xd;
+  if MinimumWidthOfRoad1_Value !=null then ProposedSetBackAccessoryBuildingRoad1 + 1 else 0&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -1259,6 +1263,10 @@ ProposedSetBackAccessoryBuildingRoad1 + 1 else&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_16984928-F49F-4AA8-BA69-E8AF9D723913" dmnElementRef="_16984928-F49F-4AA8-BA69-E8AF9D723913">
         <di:waypoint x="240.59813084112147" y="370"/>
+        <di:waypoint x="871" y="823"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_4EBBC778-2093-4CDF-B553-A0744F401305" dmnElementRef="_4EBBC778-2093-4CDF-B553-A0744F401305">
+        <di:waypoint x="1142" y="738.3421052631579"/>
         <di:waypoint x="871" y="823"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_3EB00453-248E-41DD-9BEC-6835FF4BFC9F" dmnElementRef="_3EB00453-248E-41DD-9BEC-6835FF4BFC9F">
