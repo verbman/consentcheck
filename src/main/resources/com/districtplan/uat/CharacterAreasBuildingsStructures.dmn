@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://districtplan.wellington.govt.nz/83/dmn/CharacterAreasBuildingsStructures1" xmlns:included1="https://districtplan.wellington.govt.nz/83/dmn/types" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_F3094ADC-147D-4D49-8098-0A90217DA7D0" name="CharacterAreasBuildingsStructures" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://districtplan.wellington.govt.nz/83/dmn/CharacterAreasBuildingsStructures">
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://districtplan.wellington.govt.nz/83/dmn/CharacterAreasBuildingsStructures" xmlns:included1="https://districtplan.wellington.govt.nz/83/dmn/types" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_F3094ADC-147D-4D49-8098-0A90217DA7D0" name="CharacterAreasBuildingsStructures" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://districtplan.wellington.govt.nz/83/dmn/CharacterAreasBuildingsStructures">
   <dmn:extensionElements/>
   <dmn:import id="_85CF1083-5FA9-4104-B801-0F0FB6A8D89A" name="Types" namespace="https://districtplan.wellington.govt.nz/83/dmn/types" locationURI="Types.dmn" importType="http://www.omg.org/spec/DMN/20180521/MODEL/"/>
   <dmn:decision id="_B7164404-A721-41FE-A76A-DD2990612776" name="ObjectivesAndPolicies">
@@ -401,6 +401,12 @@ The construction, alteration of, and addition to residential buildings, accessor
     <dmn:informationRequirement id="_29BB53CE-C3B6-449C-8732-FDA07DBDDD11">
       <dmn:requiredInput href="#_9AF94EE9-C81E-4E15-8287-3AFE94D76B74"/>
     </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_6364E4C7-0DDC-432C-965E-072B2F5B1242">
+      <dmn:requiredKnowledge href="#_26A63D9B-CADC-4EA8-8B0E-CD704A078BB8"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_216E986E-5873-4658-BFA2-ACD7946E15AB">
+      <dmn:requiredKnowledge href="#_692BA5B4-88FB-4BD4-BCE9-C31D2D02A79F"/>
+    </dmn:knowledgeRequirement>
     <dmn:decisionTable id="_71CEB06D-872E-47CD-AA3F-04555B0FE66A" hitPolicy="COLLECT" preferredOrientation="Rule-as-Row">
       <dmn:input id="_31A454D0-5A0E-40BF-B36C-05633CF4F35D">
         <dmn:inputExpression id="_A06859F4-FCD3-4125-98DC-FA508F2E06B1" typeRef="boolean">
@@ -408,8 +414,13 @@ The construction, alteration of, and addition to residential buildings, accessor
         </dmn:inputExpression>
       </dmn:input>
       <dmn:input id="_89CEB4DB-6632-455A-8FCE-47193F72EBA6">
-        <dmn:inputExpression id="_7778B6BC-1DA7-45B9-BD6C-F8894545F065" typeRef="Types.SpatialLayers">
-          <dmn:text>SpatialLayers</dmn:text>
+        <dmn:inputExpression id="_7778B6BC-1DA7-45B9-BD6C-F8894545F065" typeRef="boolean">
+          <dmn:text>ThorndonCharacterArea(SpatialLayers)</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_B838F83C-9CFD-4AA5-990A-8A6E4B9C4EBF">
+        <dmn:inputExpression id="_76C5EAA9-00BF-4F74-8FF5-64E7BF02F81D" typeRef="boolean">
+          <dmn:text>MtVictoriaNorthCharacterArea(SpatialLayers)</dmn:text>
         </dmn:inputExpression>
       </dmn:input>
       <dmn:output id="_E4DF8191-271C-453E-BA2D-6573B260AA66" name="name" typeRef="string"/>
@@ -420,6 +431,9 @@ The construction, alteration of, and addition to residential buildings, accessor
           <dmn:text>true</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_8557B96C-6CCC-4A50-93A8-859C767F3C53">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6FF1614A-3978-468C-A055-284A9373B657">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
         <dmn:outputEntry id="_4E6D990F-DF16-4993-913A-2A8C103472D9">
@@ -437,7 +451,10 @@ The construction, alteration of, and addition to residential buildings, accessor
           <dmn:text>true</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_6CEADEB2-D248-4611-A54D-29318D956361">
-          <dmn:text>list contains(SpatialLayers[Type="Character Area Boundary"].Title, "Thorndon Character Area")</dmn:text>
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B938D117-1617-438A-8D6C-24FE6374F07F">
+          <dmn:text>-</dmn:text>
         </dmn:inputEntry>
         <dmn:outputEntry id="_EFF7D154-F800-490A-8801-AB015532EEE1">
           <dmn:text>"Thorndon Character Area Design Guide"</dmn:text>
@@ -454,7 +471,10 @@ The construction, alteration of, and addition to residential buildings, accessor
           <dmn:text>true</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_64F35F89-10DC-4FD9-9D96-68C7E2FEC689">
-          <dmn:text>list contains(SpatialLayers[Type="Character Area Boundary"].Title, "Mt. Victoria North Character Area")</dmn:text>
+          <dmn:text></dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0E7A773A-F886-4186-8874-D9A3C671B440">
+          <dmn:text>true</dmn:text>
         </dmn:inputEntry>
         <dmn:outputEntry id="_E34C6A23-453F-41AF-A24E-119863D5A1CE">
           <dmn:text>"Mt Victoria North Design Guide"</dmn:text>
@@ -599,7 +619,8 @@ The construction, alteration of, and addition to residential buildings, accessor
           <kie:ComponentWidths dmnElementRef="_71CEB06D-872E-47CD-AA3F-04555B0FE66A">
             <kie:width>50.0</kie:width>
             <kie:width>100.0</kie:width>
-            <kie:width>705.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
             <kie:width>357.0</kie:width>
             <kie:width>280.0</kie:width>
             <kie:width>100.0</kie:width>
@@ -896,6 +917,14 @@ The construction, alteration of, and addition to residential buildings, accessor
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_29BB53CE-C3B6-449C-8732-FDA07DBDDD11" dmnElementRef="_29BB53CE-C3B6-449C-8732-FDA07DBDDD11">
         <di:waypoint x="125.59813084112147" y="526"/>
+        <di:waypoint x="884" y="453"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_6364E4C7-0DDC-432C-965E-072B2F5B1242" dmnElementRef="_6364E4C7-0DDC-432C-965E-072B2F5B1242">
+        <di:waypoint x="126" y="462"/>
+        <di:waypoint x="884" y="453"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_216E986E-5873-4658-BFA2-ACD7946E15AB" dmnElementRef="_216E986E-5873-4658-BFA2-ACD7946E15AB">
+        <di:waypoint x="126" y="397.6842105263158"/>
         <di:waypoint x="884" y="453"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_52CBF7B2-F5CC-4467-893F-8BEFED374193" dmnElementRef="_52CBF7B2-F5CC-4467-893F-8BEFED374193">
