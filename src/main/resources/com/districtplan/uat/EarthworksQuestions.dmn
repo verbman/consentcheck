@@ -15,14 +15,11 @@
     <dmn:informationRequirement id="_FEDDE12C-8055-431F-A00C-45B74937561D">
       <dmn:requiredInput href="#_62F984C7-9B89-4F78-A53C-989DEE7724AE"/>
     </dmn:informationRequirement>
-    <dmn:knowledgeRequirement id="_15F19C75-1925-43D8-8B3F-C060B948F6D8">
-      <dmn:requiredKnowledge href="#_E875248B-18A9-4129-95DD-DF494D9931DB"/>
-    </dmn:knowledgeRequirement>
     <dmn:knowledgeRequirement id="_8A66D252-3A5D-41FD-B86B-2BE7CE19ED95">
       <dmn:requiredKnowledge href="#_A7CF33AE-11F9-479E-8017-B44755A6A1E4"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_4D614351-52EA-4E58-8F9D-A6FFE1BB7577">
-      <dmn:text>if EarthworksActivities(Activities_Value) and&#xd;
+      <dmn:text>if list contains(Activities_Value[Noun="earthworks"].Verb, "undertake") and&#xd;
 EarthworksSpatialLayers(SpatialLayers_Value) then &#xd;
 Activities + 1 else 0</dmn:text>
     </dmn:literalExpression>
@@ -59,16 +56,6 @@ Activities + 1 else 0</dmn:text>
       <dmn:text>if DistanceWaterway_Value then DistanceWaterway + 1 else 0</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
-  <dmn:businessKnowledgeModel id="_E875248B-18A9-4129-95DD-DF494D9931DB" name="EarthworksActivities">
-    <dmn:extensionElements/>
-    <dmn:variable id="_99CFB37E-B598-4D02-85F6-DBB1BC867325" name="EarthworksActivities" typeRef="boolean"/>
-    <dmn:encapsulatedLogic id="_4B2005EF-8487-466B-996A-F577837AD77F" kind="FEEL">
-      <dmn:formalParameter id="_D6251D2F-A976-4562-A9A8-567B9EA3A162" name="activities" typeRef="Types.Activities"/>
-      <dmn:literalExpression id="_7CB004A6-0835-4706-9F02-44C843521140">
-        <dmn:text>list contains(activities[Noun="earthworks"].Verb, "undertake")</dmn:text>
-      </dmn:literalExpression>
-    </dmn:encapsulatedLogic>
-  </dmn:businessKnowledgeModel>
   <dmn:decision id="_9D696667-91E0-4BD5-B073-F0B78ED96F80" name="DistanceWaterway">
     <dmn:extensionElements/>
     <dmn:question>Will your earthworks be within 20 m of a river, wetland, or the coastal marine area?</dmn:question>
@@ -289,9 +276,6 @@ else 0&#xd;
     <dmn:informationRequirement id="_56B140BA-CCB7-43FD-A681-99B544C8A753">
       <dmn:requiredInput href="#_62F984C7-9B89-4F78-A53C-989DEE7724AE"/>
     </dmn:informationRequirement>
-    <dmn:knowledgeRequirement id="_372D955A-4517-4F69-92BB-77DFF8899ADD">
-      <dmn:requiredKnowledge href="#_E875248B-18A9-4129-95DD-DF494D9931DB"/>
-    </dmn:knowledgeRequirement>
     <dmn:knowledgeRequirement id="_41908371-47AE-4AD4-AEEB-10B43CED32E3">
       <dmn:requiredKnowledge href="#_A7CF33AE-11F9-479E-8017-B44755A6A1E4"/>
     </dmn:knowledgeRequirement>
@@ -337,13 +321,6 @@ no</dmn:allowedAnswers>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_1A189715-6A3C-49A3-8BE7-4F8591B34EB2">
             <kie:width>637.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_7CB004A6-0835-4706-9F02-44C843521140">
-            <kie:width>663.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_4B2005EF-8487-466B-996A-F577837AD77F">
-            <kie:width>50.0</kie:width>
-            <kie:width>663.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_A51C0434-13F4-40D9-A9F8-42A17132832E">
             <kie:width>592.0</kie:width>
@@ -421,15 +398,6 @@ no</dmn:allowedAnswers>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="596" y="721" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_E875248B-18A9-4129-95DD-DF494D9931DB" dmnElementRef="_E875248B-18A9-4129-95DD-DF494D9931DB" isCollapsed="false">
-        <dmndi:DMNStyle>
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="0" green="0" blue="0"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="255" y="169.68421052631578" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_9D696667-91E0-4BD5-B073-F0B78ED96F80" dmnElementRef="_9D696667-91E0-4BD5-B073-F0B78ED96F80" isCollapsed="false">
@@ -606,10 +574,6 @@ no</dmn:allowedAnswers>
         <di:waypoint x="305" y="610.3421052631579"/>
         <di:waypoint x="576" y="333"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_15F19C75-1925-43D8-8B3F-C060B948F6D8" dmnElementRef="_15F19C75-1925-43D8-8B3F-C060B948F6D8">
-        <di:waypoint x="305" y="194.68421052631578"/>
-        <di:waypoint x="576" y="333"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_8A66D252-3A5D-41FD-B86B-2BE7CE19ED95" dmnElementRef="_8A66D252-3A5D-41FD-B86B-2BE7CE19ED95">
         <di:waypoint x="305" y="336"/>
         <di:waypoint x="576" y="333"/>
@@ -720,10 +684,6 @@ no</dmn:allowedAnswers>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_56B140BA-CCB7-43FD-A681-99B544C8A753" dmnElementRef="_56B140BA-CCB7-43FD-A681-99B544C8A753">
         <di:waypoint x="305" y="610.3421052631579"/>
-        <di:waypoint x="156.28571428571428" y="191"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_372D955A-4517-4F69-92BB-77DFF8899ADD" dmnElementRef="_372D955A-4517-4F69-92BB-77DFF8899ADD">
-        <di:waypoint x="305" y="194.68421052631578"/>
         <di:waypoint x="156.28571428571428" y="191"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_41908371-47AE-4AD4-AEEB-10B43CED32E3" dmnElementRef="_41908371-47AE-4AD4-AEEB-10B43CED32E3">
