@@ -332,8 +332,14 @@ list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) the
     <dmn:informationRequirement id="_3FDE743D-C4AE-4138-8FD3-C351DE7EFF86">
       <dmn:requiredDecision href="#_A63745FA-F3EE-4A6E-813E-96B48D0700FA"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_74C00B14-39FE-4EA4-AABA-4F91DF3DEC0F">
+      <dmn:requiredDecision href="#_AB70689D-0172-4021-A397-96694DEFA8AB"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_CA9D238C-A2B1-402A-8569-AFFD3337903F">
+      <dmn:requiredDecision href="#_B4EBC842-351F-45B5-8E64-D3F661F2746A"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_1621BD28-3E90-4797-A62F-A65D91864124">
-      <dmn:text>if R30.1.1 or R30.1.2 then "Permitted" else "Discretionary Restricted"&#xd;
+      <dmn:text>if R30.1.1 or R30.1.2 or R30.1.5 then "Permitted" else "Discretionary Restricted"&#xd;
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
@@ -487,6 +493,12 @@ CutFillHeightDepth else null&#xd;
     <dmn:informationRequirement id="_0671C4D2-A760-441B-9E00-6D082A1557CC">
       <dmn:requiredDecision href="#_A63745FA-F3EE-4A6E-813E-96B48D0700FA"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_A0BC269E-EBBD-4162-8235-F53513AE81B7">
+      <dmn:requiredDecision href="#_AB70689D-0172-4021-A397-96694DEFA8AB"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_9A61FF2A-1365-4AEB-9C0E-2B87A2AB4075">
+      <dmn:requiredDecision href="#_B4EBC842-351F-45B5-8E64-D3F661F2746A"/>
+    </dmn:informationRequirement>
     <dmn:decisionTable id="_FB315DAB-BA10-4EAB-BEA1-1FFDADCB139B" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
       <dmn:input id="_6E4163A1-9C74-43D1-B027-B45EBA65FE7B">
         <dmn:inputExpression id="_312C4920-2159-434A-9F6F-69590F713D77" typeRef="boolean">
@@ -503,6 +515,16 @@ CutFillHeightDepth else null&#xd;
           <dmn:text>R30.2.1</dmn:text>
         </dmn:inputExpression>
       </dmn:input>
+      <dmn:input id="_DE519436-DFE0-48EB-937C-65C4D710C9F3">
+        <dmn:inputExpression id="_06AF0E47-A296-4F90-8301-648119D7EF46" typeRef="boolean">
+          <dmn:text>R30.1.5</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_F57E751F-7D9C-4764-8803-B28286751C7E">
+        <dmn:inputExpression id="_F473FDEA-5035-4DCD-9795-DE7C097DD7DC" typeRef="number">
+          <dmn:text>R30.2.3</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
       <dmn:output id="_B686784F-E3EA-418F-A172-FBCAF397444E" name="name" typeRef="string"/>
       <dmn:output id="_2D9799AB-A764-473C-B443-B94DC971C9D3" name="uuids" typeRef="string"/>
       <dmn:annotation name=""/>
@@ -515,6 +537,12 @@ CutFillHeightDepth else null&#xd;
         </dmn:inputEntry>
         <dmn:inputEntry id="_4E0A1B7E-3D5F-4F47-BC53-E3BC5DCE70D3">
           <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_59BFA44F-0742-4B87-92A5-BC0D5019929C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F65587F5-DFB9-44A7-8F19-E35728E1BFC1">
+          <dmn:text>-</dmn:text>
         </dmn:inputEntry>
         <dmn:outputEntry id="_02758174-610D-49E5-9A59-761BAB675816">
           <dmn:text>"30.1.1"</dmn:text>
@@ -536,6 +564,12 @@ CutFillHeightDepth else null&#xd;
         <dmn:inputEntry id="_F1C078C5-8136-4116-ADC1-8652D3F1C053">
           <dmn:text>false</dmn:text>
         </dmn:inputEntry>
+        <dmn:inputEntry id="_D55317D2-6BCB-4FF7-88C9-0BF881D6D8F4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C69B2070-0A9A-4C8D-BD2C-0AD8BEF6913C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
         <dmn:outputEntry id="_CB41BC3F-EE61-434C-AD9B-E6B0A2DD89EC">
           <dmn:text>"30.1.2"</dmn:text>
         </dmn:outputEntry>
@@ -546,24 +580,82 @@ CutFillHeightDepth else null&#xd;
           <dmn:text>Earthworks in the Urban Coastal Edge, Open Space B, Conservation sites, Ridgelines and Hilltops (Rural Area), and Heritage Areas</dmn:text>
         </dmn:annotationEntry>
       </dmn:rule>
-      <dmn:rule id="_1CFFBA4F-803C-487F-9A30-83E49B7500D0">
-        <dmn:inputEntry id="_3C34AA96-9FEB-435D-A20D-873EBA14F841">
+      <dmn:rule id="_61A48891-7DE6-4B86-B1F5-C80495787525">
+        <dmn:inputEntry id="_ED541643-7590-44EC-8332-6BFF04ED36AC">
           <dmn:text>false</dmn:text>
         </dmn:inputEntry>
-        <dmn:inputEntry id="_8EDD0C90-45D8-4EE4-94ED-54A58110741A">
+        <dmn:inputEntry id="_1819766E-82BB-4791-BA18-ABB4C6D92C18">
           <dmn:text>false</dmn:text>
         </dmn:inputEntry>
-        <dmn:inputEntry id="_564A1B23-A8C9-4511-AA23-6363B396A38E">
+        <dmn:inputEntry id="_988050EE-8DF8-4793-A0F3-DCED500ED704">
           <dmn:text>true</dmn:text>
         </dmn:inputEntry>
-        <dmn:outputEntry id="_9D202EC6-53FF-4B23-BF6A-392A56B72C91">
+        <dmn:inputEntry id="_64E79775-AB9E-482C-B3F8-455680E2392D">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C41A0971-0348-4B3A-8A20-35CE3D69049A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_BE0D1304-1593-4936-9B17-0EA330AD1606">
           <dmn:text>"30.2.1"</dmn:text>
         </dmn:outputEntry>
-        <dmn:outputEntry id="_667E3EE0-6B28-4873-8346-048D1E8F15E1">
+        <dmn:outputEntry id="_0B100801-C4BE-4CE3-AEF9-F274D3F0D0C8">
           <dmn:text>"5c3ec60c-8a24-4573-86be-e174cff735c9"</dmn:text>
         </dmn:outputEntry>
         <dmn:annotationEntry>
           <dmn:text>Earthworks that do not comply with the permitted activity conditions under 30.1.1 and 30.1.2</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_C52E160B-7980-468A-B24C-73122F66994B">
+        <dmn:inputEntry id="_3E23B3DF-08E4-4489-A77B-F4AD451086FE">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9F9F0A89-7A91-4001-BECA-73CBB93E6132">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DB194127-BE20-474D-8820-574B9658D861">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_955B659A-E014-4961-937B-E3A8607F4A23">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_732F1D3F-43A9-42F3-86F1-0C959829C1A1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_976F861D-270F-42A1-96EE-C415EA513C79">
+          <dmn:text>"30.1.5"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_3D9606C8-288C-4010-BFAA-D54E26C60B8D">
+          <dmn:text>"6321329f-8da5-4c89-a01d-48d03c8877ee"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>Retaining a landslip</dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_1CFFBA4F-803C-487F-9A30-83E49B7500D0">
+        <dmn:inputEntry id="_3C34AA96-9FEB-435D-A20D-873EBA14F841">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8EDD0C90-45D8-4EE4-94ED-54A58110741A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_564A1B23-A8C9-4511-AA23-6363B396A38E">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4A6BAF5D-DAD4-414E-A1BB-EC7D12B22955">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CD6EAC4A-C89D-4EA0-925E-4DE18AC101BA">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_9D202EC6-53FF-4B23-BF6A-392A56B72C91">
+          <dmn:text>"30.2.3"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_667E3EE0-6B28-4873-8346-048D1E8F15E1">
+          <dmn:text>"0a0e8a92-f5bf-4098-a90a-b304ae465bc1"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text>Structures or materials to retain or stabilise landslips that exceed 2.5m in height</dmn:text>
         </dmn:annotationEntry>
       </dmn:rule>
     </dmn:decisionTable>
@@ -7753,6 +7845,8 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
             <kie:width>100.0</kie:width>
             <kie:width>100.0</kie:width>
             <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
             <kie:width>321.0</kie:width>
             <kie:width>626.0</kie:width>
           </kie:ComponentWidths>
@@ -9370,6 +9464,14 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
         <di:waypoint x="2075" y="1052"/>
         <di:waypoint x="2905" y="139"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_74C00B14-39FE-4EA4-AABA-4F91DF3DEC0F" dmnElementRef="_74C00B14-39FE-4EA4-AABA-4F91DF3DEC0F">
+        <di:waypoint x="2065" y="1898"/>
+        <di:waypoint x="2905" y="139"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_CA9D238C-A2B1-402A-8569-AFFD3337903F" dmnElementRef="_CA9D238C-A2B1-402A-8569-AFFD3337903F">
+        <di:waypoint x="2205" y="1898"/>
+        <di:waypoint x="2905" y="139"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_39B2E569-90D0-4E3A-8F9F-765477597786" dmnElementRef="_39B2E569-90D0-4E3A-8F9F-765477597786">
         <di:waypoint x="759" y="311"/>
         <di:waypoint x="1165" y="308"/>
@@ -9444,6 +9546,14 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_0671C4D2-A760-441B-9E00-6D082A1557CC" dmnElementRef="_0671C4D2-A760-441B-9E00-6D082A1557CC">
         <di:waypoint x="2075" y="1052"/>
+        <di:waypoint x="2905" y="220"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_A0BC269E-EBBD-4162-8235-F53513AE81B7" dmnElementRef="_A0BC269E-EBBD-4162-8235-F53513AE81B7">
+        <di:waypoint x="2065" y="1898"/>
+        <di:waypoint x="2905" y="220"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_9A61FF2A-1365-4AEB-9C0E-2B87A2AB4075" dmnElementRef="_9A61FF2A-1365-4AEB-9C0E-2B87A2AB4075">
+        <di:waypoint x="2205" y="1898"/>
         <di:waypoint x="2905" y="220"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_01A1D77C-87F4-4005-B56F-F245E6CF0035" dmnElementRef="_01A1D77C-87F4-4005-B56F-F245E6CF0035">
