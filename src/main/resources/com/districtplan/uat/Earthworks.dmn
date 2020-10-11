@@ -32,7 +32,8 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
       <dmn:requiredAuthority href="#_12F4E73A-4ECA-498A-948F-517AF7996D3A"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_EB4FCAB9-F48A-418B-8B91-9DD0FF1956DF">
-      <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
+      <dmn:text>if (list contains(Activities[Noun="earthworks"].Verb, "undertake") or&#xd;
+list contains(Activities[Noun="landslip"].Verb, "stabilise")) and&#xd;
 list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge") then 1.5 else null&#xd;
 &#xd;
 &#xd;
@@ -56,7 +57,8 @@ list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edg
       <dmn:requiredAuthority href="#_62BBC8E0-C34A-44C5-9109-C9FF509E815B"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_D40AF077-5F57-4B14-835C-205DE40CF736">
-      <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
+      <dmn:text>if (list contains(Activities[Noun="earthworks"].Verb, "undertake") or&#xd;
+list contains(Activities[Noun="landslip"].Verb, "stabilise")) and&#xd;
 (not(list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge"))) and&#xd;
 (list contains(SpatialLayers[Type="Residential"].Title, "Inner Residential") or&#xd;
 list contains(SpatialLayers[Type="Residential"].Title, "Medium Density Residential Area") or&#xd;
@@ -142,7 +144,8 @@ Earthworks in the Urban Coastal Edge, Open Space B, Conservation sites, Ridgelin
       <dmn:requiredAuthority href="#_8CB22AEC-2C61-4333-8C77-0C1105D07DF8"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_9E415374-2788-4F9A-B542-F5115B0FF282">
-      <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
+      <dmn:text>if (list contains(Activities[Noun="earthworks"].Verb, "undertake") or&#xd;
+list contains(Activities[Noun="landslip"].Verb, "stabilise")) and&#xd;
 (not(list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge"))) and&#xd;
 (list contains(SpatialLayers[Type="Residential"].Title, "Inner Residential") or&#xd;
 list contains(SpatialLayers[Type="Residential"].Title, "Medium Density Residential Area") or&#xd;
@@ -182,7 +185,8 @@ TransmissionLineBuffer32m(SpatialLayers) then 10 else null&#xd;
       <dmn:requiredAuthority href="#_4B63E4FD-36CE-4AD2-ADBF-551998C6EC70"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_5F10F511-AA2D-402D-9F47-A690ED72E912">
-      <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
+      <dmn:text>if (list contains(Activities[Noun="earthworks"].Verb, "undertake") or&#xd;
+list contains(Activities[Noun="landslip"].Verb, "stabilise")) and&#xd;
 (not(list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge"))) and&#xd;
 (list contains(SpatialLayers[Type="Residential"].Title, "Inner Residential") or&#xd;
 list contains(SpatialLayers[Type="Residential"].Title, "Medium Density Residential Area") or&#xd;
@@ -200,6 +204,10 @@ CutFillHeightDepth > R30.1.1.1_a_i then 2.5 else null&#xd;
   <dmn:inputData id="_AD806695-37F3-49E6-8F1E-A1F79838017D" name="Activities">
     <dmn:extensionElements/>
     <dmn:variable id="_015A2885-2B23-4C11-9219-36A524EAFA64" name="Activities" typeRef="Types.Activities"/>
+  </dmn:inputData>
+  <dmn:inputData id="_24E2722D-E919-4523-BBF9-5A11F9C3E08F" name="LandslipRetainingStructureHeight">
+    <dmn:extensionElements/>
+    <dmn:variable id="_80E65A25-E5E8-4030-875A-379ECF12CF8F" name="LandslipRetainingStructureHeight" typeRef="number"/>
   </dmn:inputData>
   <dmn:decision id="_6EE7B969-9E41-4759-8A21-C41874F0887B" name="R30.1.1.2Met">
     <dmn:extensionElements/>
@@ -261,7 +269,8 @@ list contains(Activities[Noun="landslip"].Verb, "stabilise")</dmn:text>
       <dmn:requiredAuthority href="#_E0785CA3-47B4-4B7D-8FE7-411153D3B677"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_0A3F000D-D120-4031-8A50-74C0E66B3B5F">
-      <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
+      <dmn:text>if (list contains(Activities[Noun="earthworks"].Verb, "undertake") or&#xd;
+list contains(Activities[Noun="landslip"].Verb, "stabilise")) and&#xd;
 (not(list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge"))) and&#xd;
 (list contains(SpatialLayers[Type="Residential"].Title, "Inner Residential") or&#xd;
 list contains(SpatialLayers[Type="Residential"].Title, "Medium Density Residential Area") or&#xd;
@@ -387,7 +396,8 @@ list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) the
       <dmn:requiredAuthority href="#_152CA5C0-F10A-4252-B8D6-730DAA51E707"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_88C86A2C-A6E0-4E2B-AD74-F49698BCD8D2">
-      <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
+      <dmn:text>if (list contains(Activities[Noun="earthworks"].Verb, "undertake") or&#xd;
+list contains(Activities[Noun="landslip"].Verb, "stabilise")) and&#xd;
 list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge") and&#xd;
 TransmissionLineBuffer32m(SpatialLayers) then 10 else null&#xd;
 &#xd;
@@ -418,7 +428,8 @@ Earthworks in the Residential Area (except Urban Coastal Edge), Centres and Busi
       <dmn:requiredAuthority href="#_E7EDAA87-85F0-4F63-A9EE-71BBDE9C8775"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_73A0E0E2-E093-4B5D-88CC-B742A0C88D0B">
-      <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
+      <dmn:text>if (list contains(Activities[Noun="earthworks"].Verb, "undertake") or&#xd;
+list contains(Activities[Noun="landslip"].Verb, "stabilise")) and&#xd;
 (not(list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge"))) and&#xd;
 (list contains(SpatialLayers[Type="Residential"].Title, "Inner Residential") or&#xd;
 list contains(SpatialLayers[Type="Residential"].Title, "Medium Density Residential Area") or&#xd;
@@ -429,6 +440,13 @@ TransmissionLineBuffer32m(SpatialLayers) then 12 else null&#xd;
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
+  <dmn:knowledgeSource id="_41C10650-CCB8-4F61-876A-CFF43589EF20" name="DP_30.1.5.1" locationURI="">
+    <dmn:description>Wellington City District Plan Residential Permitted Rule
+Earthworks
+30.1.5.1</dmn:description>
+    <dmn:extensionElements/>
+    <dmn:type></dmn:type>
+  </dmn:knowledgeSource>
   <dmn:decision id="_5428A0B6-D6C7-4DC8-BDF4-435B04C79BA6" name="R30.1.2.1_a_ii">
     <dmn:extensionElements/>
     <dmn:variable id="_7660A29F-2665-4F71-9E6C-90E39EED9A76" name="R30.1.2.1_a_ii" typeRef="number"/>
@@ -445,7 +463,8 @@ TransmissionLineBuffer32m(SpatialLayers) then 12 else null&#xd;
       <dmn:requiredAuthority href="#_29337949-4003-44AC-999B-9185AC154516"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_F2F60FFB-0E6F-436C-A38E-ECC2F624C92E">
-      <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
+      <dmn:text>if (list contains(Activities[Noun="earthworks"].Verb, "undertake") or&#xd;
+list contains(Activities[Noun="landslip"].Verb, "stabilise")) and&#xd;
 list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge") then&#xd;
 CutFillHeightDepth else null&#xd;
 &#xd;
@@ -2826,6 +2845,19 @@ Earthworks that do not comply with the permitted activity conditions under 30.1.
       </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
+  <dmn:decision id="_1EA4B2B5-C7B9-460B-915D-6EF4D6459D61" name="R30.1.5.1">
+    <dmn:extensionElements/>
+    <dmn:variable id="_70C43931-E95C-41B5-A8A9-8E1E9B2AE25F" name="R30.1.5.1" typeRef="number"/>
+    <dmn:informationRequirement id="_980F92D7-8D1C-4D4D-9CA2-052FE801CD18">
+      <dmn:requiredInput href="#_AD806695-37F3-49E6-8F1E-A1F79838017D"/>
+    </dmn:informationRequirement>
+    <dmn:authorityRequirement id="_E1910166-C208-4D13-96AA-2C9C38D1644A">
+      <dmn:requiredAuthority href="#_41C10650-CCB8-4F61-876A-CFF43589EF20"/>
+    </dmn:authorityRequirement>
+    <dmn:literalExpression id="_693A39CD-19E2-4242-9F74-7E87558BAFB5">
+      <dmn:text>list contains(Activities[Noun="landslip"].Verb, "stabilise") then 2.5 else 0</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:knowledgeSource id="_A69142B9-72F9-4077-A2C8-0DA883C635AD" name="DP_30.1.1.2" locationURI="f06ec26b-e5d0-4bf6-95c0-8c1477c98916">
     <dmn:description>Wellington City District Plan Earthworks Rules
 30.1.1.2</dmn:description>
@@ -2959,7 +2991,8 @@ DistanceBoundary >= R30.1.1.1_a_iii then true else&#xd;
       <dmn:requiredAuthority href="#_DBC031F1-333D-4681-B3DD-408A847E5848"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_01981490-C5F4-47BE-BD5F-33D5C584725C">
-      <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
+      <dmn:text>if (list contains(Activities[Noun="earthworks"].Verb, "undertake") or&#xd;
+list contains(Activities[Noun="landslip"].Verb, "stabilise")) and&#xd;
 list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge") then 34 else null&#xd;
 &#xd;
 &#xd;
@@ -2983,7 +3016,8 @@ list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edg
       <dmn:requiredAuthority href="#_1D5CB85F-90CC-4FB0-A61E-8F06646095DD"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_0D0AE111-9A4B-46BB-B1DB-039C92F03F4B">
-      <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
+      <dmn:text>if (list contains(Activities[Noun="earthworks"].Verb, "undertake") or&#xd;
+list contains(Activities[Noun="landslip"].Verb, "stabilise")) and&#xd;
 (not(list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge"))) and&#xd;
 (list contains(SpatialLayers[Type="Residential"].Title, "Inner Residential") or&#xd;
 list contains(SpatialLayers[Type="Residential"].Title, "Medium Density Residential Area") or&#xd;
@@ -3109,6 +3143,20 @@ list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) the
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
+  <dmn:decision id="_AB70689D-0172-4021-A397-96694DEFA8AB" name="R30.1.5">
+    <dmn:extensionElements/>
+    <dmn:variable id="_8677E51A-747A-4FBB-952E-081DC68C07DC" name="R30.1.5" typeRef="boolean"/>
+    <dmn:informationRequirement id="_21807551-3812-4AB9-87A6-2E84AB0FAA4B">
+      <dmn:requiredDecision href="#_31332B97-4CAC-49FE-8B0A-217789FD14B1"/>
+    </dmn:informationRequirement>
+    <dmn:authorityRequirement id="_E7D575A7-0247-4588-B936-51A9756B4649">
+      <dmn:requiredAuthority href="#_1E718CCF-DAE1-447E-B66E-9FAED3FA03A7"/>
+    </dmn:authorityRequirement>
+    <dmn:literalExpression id="_5AAE54C9-628A-4ECA-8E06-401A15772FBC">
+      <dmn:text>if R30.1.5.1Met then true else&#xd;
+if R30.1.5.1Met = null then null else false</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:inputData id="_1E5CAE3A-F69F-40D8-AEF5-03DEED6C0631" name="GroundSlope34">
     <dmn:extensionElements/>
     <dmn:variable id="_701CA7B3-2DB4-4A61-9B39-87CA3AD5F639" name="GroundSlope34" typeRef="boolean"/>
@@ -3135,7 +3183,8 @@ list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) the
       <dmn:requiredAuthority href="#_E12D1B66-F37B-49EF-8720-06AE66A643A4"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_062E7B63-F293-4F47-975F-A725B01F5329">
-      <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
+      <dmn:text>if (list contains(Activities[Noun="earthworks"].Verb, "undertake") or&#xd;
+list contains(Activities[Noun="landslip"].Verb, "stabilise")) and&#xd;
 (not(list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge"))) and&#xd;
 (list contains(SpatialLayers[Type="Residential"].Title, "Inner Residential") or&#xd;
 list contains(SpatialLayers[Type="Residential"].Title, "Medium Density Residential Area") or&#xd;
@@ -3172,7 +3221,8 @@ CutFillHeightDepth else null&#xd;
       <dmn:requiredAuthority href="#_0E15C7B1-439E-46B6-A847-BEAB09981EE3"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_B6B824F3-6D65-40D2-93A2-DE216B98DF80">
-      <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
+      <dmn:text>if (list contains(Activities[Noun="earthworks"].Verb, "undertake") or&#xd;
+list contains(Activities[Noun="landslip"].Verb, "stabilise")) and&#xd;
 list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge") and&#xd;
 ResidentialArea(SpatialLayers) then 5 else null&#xd;
 &#xd;
@@ -3271,7 +3321,8 @@ ResidentialArea(SpatialLayers) then 5 else null&#xd;
       <dmn:requiredAuthority href="#_4D6FD656-CAA5-46F8-8E43-AAFEC20E7176"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_0FEAA7F3-F939-470C-9BD6-CCE64F7D5973">
-      <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
+      <dmn:text>if (list contains(Activities[Noun="earthworks"].Verb, "undertake") or&#xd;
+list contains(Activities[Noun="landslip"].Verb, "stabilise")) and&#xd;
 (not(list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge"))) and&#xd;
 (list contains(SpatialLayers[Type="Residential"].Title, "Inner Residential") or&#xd;
 list contains(SpatialLayers[Type="Residential"].Title, "Medium Density Residential Area") or&#xd;
@@ -3320,7 +3371,8 @@ EarthworksBuildingConsentObtained !=null then 250 else null&#xd;
       <dmn:requiredAuthority href="#_42CAE652-8CC4-43C2-9F61-7BDBA25F2708"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_9230E82B-9C58-4174-B067-466A5D173382">
-      <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
+      <dmn:text>if (list contains(Activities[Noun="earthworks"].Verb, "undertake") or&#xd;
+list contains(Activities[Noun="landslip"].Verb, "stabilise")) and&#xd;
 list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge") then 1.5 else null&#xd;
 &#xd;
 &#xd;
@@ -3406,7 +3458,8 @@ list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edg
       <dmn:requiredAuthority href="#_903A19FD-E3C2-463A-8A7F-5B23AEC7B707"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_448C440B-0781-4588-9F5E-C1CAA58B0E2D">
-      <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
+      <dmn:text>if (list contains(Activities[Noun="earthworks"].Verb, "undertake") or&#xd;
+list contains(Activities[Noun="landslip"].Verb, "stabilise")) and&#xd;
 (not(list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge"))) and&#xd;
 (list contains(SpatialLayers[Type="Residential"].Title, "Inner Residential") or&#xd;
 list contains(SpatialLayers[Type="Residential"].Title, "Medium Density Residential Area") or&#xd;
@@ -3482,6 +3535,13 @@ not(HazardFloodingArea(SpatialLayers)) then true else&#xd;
     <dmn:extensionElements/>
     <dmn:variable id="_567AB91D-A423-4719-A30D-6137F44D66FB" name="DistanceWaterwayMetres" typeRef="number"/>
   </dmn:inputData>
+  <dmn:knowledgeSource id="_1E718CCF-DAE1-447E-B66E-9FAED3FA03A7" name="DP_30.1.5" locationURI="">
+    <dmn:description>Wellington City District Plan Earthworks Permitted Rule
+Retaining a landslip
+30.1.5</dmn:description>
+    <dmn:extensionElements/>
+    <dmn:type></dmn:type>
+  </dmn:knowledgeSource>
   <dmn:decision id="_EDD417A6-3EC0-487A-B398-07506C4754B2" name="R30.1.2.1_b_ii">
     <dmn:extensionElements/>
     <dmn:variable id="_A3B4436D-4B44-476A-ACDB-E87F783428DD" name="R30.1.2.1_b_ii" typeRef="string"/>
@@ -3495,7 +3555,8 @@ not(HazardFloodingArea(SpatialLayers)) then true else&#xd;
       <dmn:requiredAuthority href="#_68D20760-741E-4DBE-A951-226C35122E6C"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_D3436901-AB02-4FDD-ACDE-3966BDBCD772">
-      <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
+      <dmn:text>if (list contains(Activities[Noun="earthworks"].Verb, "undertake") or&#xd;
+list contains(Activities[Noun="landslip"].Verb, "stabilise")) and&#xd;
 list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge") then "building consent obtained" else null&#xd;
 &#xd;
 &#xd;
@@ -3604,7 +3665,8 @@ TransportedMaterialVolume > 200 then true else&#xd;
       <dmn:requiredAuthority href="#_1EF6ACDD-49C4-4D88-B7CC-20237431D022"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_76AA3ECC-A268-45EA-A951-76A4B8B47DFF">
-      <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
+      <dmn:text>if (list contains(Activities[Noun="earthworks"].Verb, "undertake") or&#xd;
+list contains(Activities[Noun="landslip"].Verb, "stabilise")) and&#xd;
 list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge") and&#xd;
 EarthworksBuildingConsentObtained != null then 100 else null&#xd;
 &#xd;
@@ -3629,7 +3691,8 @@ EarthworksBuildingConsentObtained != null then 100 else null&#xd;
       <dmn:requiredAuthority href="#_BDDDCFC5-14BB-4565-B458-FBC2556125B3"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_7B300DEF-A08E-4BD9-B51E-996C48B649A6">
-      <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
+      <dmn:text>if (list contains(Activities[Noun="earthworks"].Verb, "undertake") or&#xd;
+list contains(Activities[Noun="landslip"].Verb, "stabilise")) and&#xd;
 list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge") and &#xd;
 not(HazardFloodingArea(SpatialLayers)) then true else&#xd;
   if not(list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge")) then null else false&#xd;
@@ -3660,7 +3723,8 @@ not(HazardFloodingArea(SpatialLayers)) then true else&#xd;
       <dmn:requiredAuthority href="#_4725C1EE-E231-4EC6-84C9-B23FE9106406"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_36715D8F-0A35-4BDC-BEDC-E34FEEA991F0">
-      <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
+      <dmn:text>if (list contains(Activities[Noun="earthworks"].Verb, "undertake") or&#xd;
+list contains(Activities[Noun="landslip"].Verb, "stabilise")) and&#xd;
 (not(list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge"))) and&#xd;
 (list contains(SpatialLayers[Type="Residential"].Title, "Inner Residential") or&#xd;
 list contains(SpatialLayers[Type="Residential"].Title, "Medium Density Residential Area") or&#xd;
@@ -3690,7 +3754,8 @@ list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) the
       <dmn:requiredAuthority href="#_533BF8EE-CC5E-4009-BC38-10655CE0EF33"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_6A40E626-1861-4ED9-9B6B-D5D9377AB9D9">
-      <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
+      <dmn:text>if (list contains(Activities[Noun="earthworks"].Verb, "undertake") or&#xd;
+list contains(Activities[Noun="landslip"].Verb, "stabilise")) and&#xd;
 list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge") and&#xd;
 TransmissionLineBuffer32m(SpatialLayers) then 12 else null&#xd;
 &#xd;
@@ -3714,7 +3779,8 @@ TransmissionLineBuffer32m(SpatialLayers) then 12 else null&#xd;
       <dmn:requiredAuthority href="#_A69142B9-72F9-4077-A2C8-0DA883C635AD"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_06673737-46B0-4413-84E5-C2F6152D2706">
-      <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
+      <dmn:text>if (list contains(Activities[Noun="earthworks"].Verb, "undertake") or&#xd;
+list contains(Activities[Noun="landslip"].Verb, "stabilise")) and&#xd;
 (not(list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge"))) and&#xd;
 (list contains(SpatialLayers[Type="Residential"].Title, "Inner Residential") or&#xd;
 list contains(SpatialLayers[Type="Residential"].Title, "Medium Density Residential Area") or&#xd;
@@ -3751,7 +3817,8 @@ ResidentialArea(SpatialLayers) then 5 else null&#xd;
       <dmn:requiredAuthority href="#_AD551C4C-1BB3-4E3D-9627-2E2B67ED3176"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_ACB40906-A4C6-418B-93F3-DE26AE216E6A">
-      <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
+      <dmn:text>if (list contains(Activities[Noun="earthworks"].Verb, "undertake") or&#xd;
+list contains(Activities[Noun="landslip"].Verb, "stabilise")) and&#xd;
 (not(list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge"))) and&#xd;
 (list contains(SpatialLayers[Type="Residential"].Title, "Inner Residential") or&#xd;
 list contains(SpatialLayers[Type="Residential"].Title, "Medium Density Residential Area") or&#xd;
@@ -3838,6 +3905,13 @@ EarthworksBuildingConsentObtained = null then 250 else null&#xd;
     <dmn:extensionElements/>
     <dmn:type></dmn:type>
   </dmn:knowledgeSource>
+  <dmn:knowledgeSource id="_14FCCB69-43E3-497F-A9A5-8F4D57AE35EA" name="DP_30.2.3" locationURI="">
+    <dmn:description>Wellington City District Plan Earthworks Discretionary Restricted Rule
+Structures or materials to retain or stabilise landslips that exceed 2.5m in height
+30.2.3</dmn:description>
+    <dmn:extensionElements/>
+    <dmn:type></dmn:type>
+  </dmn:knowledgeSource>
   <dmn:decision id="_C2258654-EB0C-4B3A-90A3-5BEF8495C5CC" name="R30.2.1.2_v">
     <dmn:extensionElements/>
     <dmn:variable id="_08136FE7-6ED1-415F-960A-82AC930BB4D2" name="R30.2.1.2_v" typeRef="boolean"/>
@@ -3856,6 +3930,24 @@ EarthworksBuildingConsentObtained = null then 250 else null&#xd;
 &#xd;
 &#xd;
    </dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_31332B97-4CAC-49FE-8B0A-217789FD14B1" name="R30.1.5.1Met">
+    <dmn:extensionElements/>
+    <dmn:variable id="_D10428AD-4F1C-499B-B009-B4CEC59D4E37" name="R30.1.5.1Met" typeRef="boolean"/>
+    <dmn:informationRequirement id="_6F1440AB-AFCA-4839-9047-7BAD611DB573">
+      <dmn:requiredDecision href="#_1EA4B2B5-C7B9-460B-915D-6EF4D6459D61"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_EBC6EEFE-DFEB-4842-BFCA-08B4F363F885">
+      <dmn:requiredInput href="#_24E2722D-E919-4523-BBF9-5A11F9C3E08F"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_3305F9BE-4B83-430A-9817-915D2D2E16E3">
+      <dmn:text>if LandslipRetainingStructureHeight &lt;= R30.1.5.1 then true else&#xd;
+if LandslipRetainingStructureHeight = null then null else false&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:decision id="_F9338FB0-0FF7-4157-A44D-E34B2D41967A" name="R30.1.1">
@@ -3899,7 +3991,8 @@ EarthworksBuildingConsentObtained = null then 250 else null&#xd;
       <dmn:requiredAuthority href="#_61F142A6-1E35-4A2D-90BA-41E4922E8719"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_770AC521-DA82-499F-B97E-C68E554CC98C">
-      <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
+      <dmn:text>if (list contains(Activities[Noun="earthworks"].Verb, "undertake") or&#xd;
+list contains(Activities[Noun="landslip"].Verb, "stabilise")) and&#xd;
 list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge") and&#xd;
 EarthworksBuildingConsentObtained = null then 100 else null&#xd;
 &#xd;
@@ -5940,6 +6033,20 @@ EarthworksBuildingConsentObtained = null then 100 else null&#xd;
     <dmn:extensionElements/>
     <dmn:variable id="_3B9995D5-37D2-41B4-8E40-8518EC2A27DA" name="CutFillHeightDepth" typeRef="number"/>
   </dmn:inputData>
+  <dmn:decision id="_23C8D458-1666-4951-AA49-A50301FF1A97" name="R30.1.2.5_iiMet-2">
+    <dmn:extensionElements/>
+    <dmn:variable id="_AF4BAD9C-229B-41A7-9217-A17C47301543" name="R30.1.2.5_iiMet-2" typeRef="boolean"/>
+    <dmn:literalExpression id="_6BD94FB8-0853-48AA-9E7D-5AA7FEEBC7AF">
+      <dmn:text>if R30.1.2.5_ii !=null and TransmissionLineFoundationClearance then true else&#xd;
+  if R30.1.2.5_ii = null then null else false&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:decision id="_1E9CB957-DBFE-4322-8D55-6A673892261E" name="R30.1.2.1_b_iiiMet">
     <dmn:extensionElements/>
     <dmn:variable id="_272B04B9-649E-47C0-90AE-C037D859E947" name="R30.1.2.1_b_iiiMet" typeRef="boolean"/>
@@ -7316,6 +7423,20 @@ TransportedMaterialVolume > 200 then true else&#xd;
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
+  <dmn:decision id="_B4EBC842-351F-45B5-8E64-D3F661F2746A" name="R30.2.3">
+    <dmn:extensionElements/>
+    <dmn:variable id="_9D28B8DF-E974-49D3-B93D-7D4D081FE526" name="R30.2.3" typeRef="boolean"/>
+    <dmn:informationRequirement id="_C6B59434-65C8-477C-8734-48C52EFEF729">
+      <dmn:requiredDecision href="#_AB70689D-0172-4021-A397-96694DEFA8AB"/>
+    </dmn:informationRequirement>
+    <dmn:authorityRequirement id="_F7D81211-C7B8-4EDA-938A-E26CFB4E7D5E">
+      <dmn:requiredAuthority href="#_14FCCB69-43E3-497F-A9A5-8F4D57AE35EA"/>
+    </dmn:authorityRequirement>
+    <dmn:literalExpression id="_F9751D72-31B6-43DA-964B-1F42C029CC7A">
+      <dmn:text>if not(R30.1.5) then true else&#xd;
+if R30.1.5 = null then null else false</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:decision id="_E42F9EFE-44CB-4CC6-AD11-29A2D7A4856C" name="R30.1.2.4">
     <dmn:extensionElements/>
     <dmn:variable id="_FE01DC75-CAD1-437E-AD95-070B85515378" name="R30.1.2.4" typeRef="string"/>
@@ -7329,7 +7450,8 @@ TransportedMaterialVolume > 200 then true else&#xd;
       <dmn:requiredAuthority href="#_B9A96F1D-45B5-4078-A01C-759309B0A25A"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_1308D67C-0431-4E28-8556-EDED713086BA">
-      <dmn:text>if list contains(Activities[Noun="earthworks"].Verb, "undertake") and&#xd;
+      <dmn:text>if (list contains(Activities[Noun="earthworks"].Verb, "undertake") or&#xd;
+list contains(Activities[Noun="landslip"].Verb, "stabilise")) and&#xd;
 list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge") then "no visible dust" else null&#xd;
 &#xd;
 &#xd;
@@ -7558,8 +7680,14 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
           <kie:ComponentWidths dmnElementRef="_B6B824F3-6D65-40D2-93A2-DE216B98DF80">
             <kie:width>631.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_F9751D72-31B6-43DA-964B-1F42C029CC7A">
+            <kie:width>354.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_9525A96B-E113-4295-93E8-8A32FFCF9FB8">
             <kie:width>728.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_693A39CD-19E2-4242-9F74-7E87558BAFB5">
+            <kie:width>670.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_F2103022-FAB8-41B4-BDA8-22CD1F95E91E">
             <kie:width>608.0</kie:width>
@@ -7572,6 +7700,9 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_CAD53FF4-82B9-4E3D-9984-6CEB12E93083">
             <kie:width>540.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_3305F9BE-4B83-430A-9817-915D2D2E16E3">
+            <kie:width>556.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_9230E82B-9C58-4174-B067-466A5D173382">
             <kie:width>827.0</kie:width>
@@ -7622,7 +7753,7 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
             <kie:width>631.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_06673737-46B0-4413-84E5-C2F6152D2706">
-            <kie:width>631.0</kie:width>
+            <kie:width>971.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_ACB40906-A4C6-418B-93F3-DE26AE216E6A">
             <kie:width>925.0</kie:width>
@@ -7635,6 +7766,9 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_4AAD7539-B643-47B4-9593-1DF0C8BF3097">
             <kie:width>982.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_6BD94FB8-0853-48AA-9E7D-5AA7FEEBC7AF">
+            <kie:width>885.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_F676A487-E69E-4790-A386-9A9EB5DE2E76">
             <kie:width>499.0</kie:width>
@@ -7698,6 +7832,9 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
             <kie:width>335.0</kie:width>
             <kie:width>100.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_5AAE54C9-628A-4ECA-8E06-401A15772FBC">
+            <kie:width>524.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_E69E3F87-821F-4BA6-A688-87F37D1C469D">
             <kie:width>1002.0</kie:width>
           </kie:ComponentWidths>
@@ -7760,6 +7897,15 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
         <dc:Bounds x="709" y="593" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_1E718CCF-DAE1-447E-B66E-9FAED3FA03A7" dmnElementRef="_1E718CCF-DAE1-447E-B66E-9FAED3FA03A7" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="2013.5981308411215" y="1809" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_29C0B0F8-1390-4BF2-8A1B-2740EC51AEC9" dmnElementRef="_29C0B0F8-1390-4BF2-8A1B-2740EC51AEC9" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="206" green="193" blue="214"/>
@@ -7785,6 +7931,15 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="2025" y="1027" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_41C10650-CCB8-4F61-876A-CFF43589EF20" dmnElementRef="_41C10650-CCB8-4F61-876A-CFF43589EF20" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="1693.5981308411215" y="1806" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_81F13E6F-C880-40EB-9C97-C167EE0986B4" dmnElementRef="_81F13E6F-C880-40EB-9C97-C167EE0986B4" isCollapsed="false">
@@ -7938,6 +8093,15 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="571.5981308411215" y="285.68421052631584" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_24E2722D-E919-4523-BBF9-5A11F9C3E08F" dmnElementRef="_24E2722D-E919-4523-BBF9-5A11F9C3E08F" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="8">
+          <dmndi:FillColor red="243" green="229" blue="248"/>
+          <dmndi:StrokeColor red="210" green="193" blue="208"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="1849.2990654205607" y="1803" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_68F8AE0A-1020-4C8B-9324-EE032E0121A9" dmnElementRef="_68F8AE0A-1020-4C8B-9324-EE032E0121A9" isCollapsed="false">
@@ -8300,6 +8464,15 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
         <dc:Bounds x="709" y="1343" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_B4EBC842-351F-45B5-8E64-D3F661F2746A" dmnElementRef="_B4EBC842-351F-45B5-8E64-D3F661F2746A" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="207" green="213" blue="232"/>
+          <dmndi:StrokeColor red="148" green="154" blue="170"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="2155" y="1873" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_903A19FD-E3C2-463A-8A7F-5B23AEC7B707" dmnElementRef="_903A19FD-E3C2-463A-8A7F-5B23AEC7B707" isCollapsed="false">
         <dmndi:DMNStyle>
           <dmndi:FillColor red="255" green="255" blue="255"/>
@@ -8316,6 +8489,24 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="1301" y="1530" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_1EA4B2B5-C7B9-460B-915D-6EF4D6459D61" dmnElementRef="_1EA4B2B5-C7B9-460B-915D-6EF4D6459D61" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="224" green="204" blue="168"/>
+          <dmndi:StrokeColor red="161" green="134" blue="71"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="1694" y="1873" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_14FCCB69-43E3-497F-A9A5-8F4D57AE35EA" dmnElementRef="_14FCCB69-43E3-497F-A9A5-8F4D57AE35EA" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="2154" y="1809" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_2E4D4AEC-5651-4646-9FBE-AA2BFC975BA9" dmnElementRef="_2E4D4AEC-5651-4646-9FBE-AA2BFC975BA9" isCollapsed="false">
@@ -8379,6 +8570,15 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="882.5981308411215" y="366.6842105263158" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_31332B97-4CAC-49FE-8B0A-217789FD14B1" dmnElementRef="_31332B97-4CAC-49FE-8B0A-217789FD14B1" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="1851" y="1873" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_DB51F458-C77D-482F-B08C-09BB8148818A" dmnElementRef="_DB51F458-C77D-482F-B08C-09BB8148818A" isCollapsed="false">
@@ -8642,6 +8842,15 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
         <dc:Bounds x="2435" y="1226" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_23C8D458-1666-4951-AA49-A50301FF1A97" dmnElementRef="_23C8D458-1666-4951-AA49-A50301FF1A97" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="1851" y="3624.315789473684" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_B9A96F1D-45B5-4078-A01C-759309B0A25A" dmnElementRef="_B9A96F1D-45B5-4078-A01C-759309B0A25A" isCollapsed="false">
         <dmndi:DMNStyle>
           <dmndi:FillColor red="255" green="255" blue="255"/>
@@ -8739,6 +8948,15 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="2855" y="790" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_AB70689D-0172-4021-A397-96694DEFA8AB" dmnElementRef="_AB70689D-0172-4021-A397-96694DEFA8AB" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="224" green="204" blue="168"/>
+          <dmndi:StrokeColor red="161" green="134" blue="71"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="2015" y="1873" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_B9FD9144-175C-470A-BBB1-F245546D17AD" dmnElementRef="_B9FD9144-175C-470A-BBB1-F245546D17AD" isCollapsed="false">
@@ -9349,6 +9567,14 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
         <di:waypoint x="624.5981308411215" y="1369.6842105263158"/>
         <di:waypoint x="759" y="1368"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_F7D81211-C7B8-4EDA-938A-E26CFB4E7D5E" dmnElementRef="_F7D81211-C7B8-4EDA-938A-E26CFB4E7D5E">
+        <di:waypoint x="2204" y="1834"/>
+        <di:waypoint x="2205" y="1898"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_C6B59434-65C8-477C-8734-48C52EFEF729" dmnElementRef="_C6B59434-65C8-477C-8734-48C52EFEF729">
+        <di:waypoint x="2065" y="1898"/>
+        <di:waypoint x="2205" y="1898"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_CF2CA546-061C-4F78-9FFB-0CCEE31C89D9" dmnElementRef="_CF2CA546-061C-4F78-9FFB-0CCEE31C89D9">
         <di:waypoint x="1164" y="1552"/>
         <di:waypoint x="1351" y="1555"/>
@@ -9356,6 +9582,14 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
       <dmndi:DMNEdge id="dmnedge-_B361CFDF-F427-4C7E-ADA0-BDD8C2237024" dmnElementRef="_B361CFDF-F427-4C7E-ADA0-BDD8C2237024">
         <di:waypoint x="1164" y="1611"/>
         <di:waypoint x="1351" y="1555"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_E1910166-C208-4D13-96AA-2C9C38D1644A" dmnElementRef="_E1910166-C208-4D13-96AA-2C9C38D1644A">
+        <di:waypoint x="1743.5981308411215" y="1831"/>
+        <di:waypoint x="1744" y="1898"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_980F92D7-8D1C-4D4D-9CA2-052FE801CD18" dmnElementRef="_980F92D7-8D1C-4D4D-9CA2-052FE801CD18">
+        <di:waypoint x="250.59813084112147" y="649.6842105263158"/>
+        <di:waypoint x="1744" y="1898"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_0537D151-0C17-4E55-8CDF-A5E0F9B838AB" dmnElementRef="_0537D151-0C17-4E55-8CDF-A5E0F9B838AB">
         <di:waypoint x="982.5981308411215" y="659.6842105263158"/>
@@ -9400,6 +9634,14 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
       <dmndi:DMNEdge id="dmnedge-_E708C419-D662-4E06-A8F1-0769E856308E" dmnElementRef="_E708C419-D662-4E06-A8F1-0769E856308E">
         <di:waypoint x="932.5981308411215" y="391.6842105263158"/>
         <di:waypoint x="1165" y="247"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_6F1440AB-AFCA-4839-9047-7BAD611DB573" dmnElementRef="_6F1440AB-AFCA-4839-9047-7BAD611DB573">
+        <di:waypoint x="1744" y="1898"/>
+        <di:waypoint x="1901" y="1898"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_EBC6EEFE-DFEB-4842-BFCA-08B4F363F885" dmnElementRef="_EBC6EEFE-DFEB-4842-BFCA-08B4F363F885">
+        <di:waypoint x="1899.2990654205607" y="1828"/>
+        <di:waypoint x="1901" y="1898"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_DDB7C696-B108-438B-B64A-A3C6023635E2" dmnElementRef="_DDB7C696-B108-438B-B64A-A3C6023635E2">
         <di:waypoint x="249.59813084112147" y="788.6842105263158"/>
@@ -9852,6 +10094,14 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
       <dmndi:DMNEdge id="dmnedge-_7DDA1B11-A26D-4138-B1A5-1A7784D77C0E" dmnElementRef="_7DDA1B11-A26D-4138-B1A5-1A7784D77C0E">
         <di:waypoint x="2485" y="1376"/>
         <di:waypoint x="2905" y="815"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_E7D575A7-0247-4588-B936-51A9756B4649" dmnElementRef="_E7D575A7-0247-4588-B936-51A9756B4649">
+        <di:waypoint x="2063.5981308411215" y="1834"/>
+        <di:waypoint x="2065" y="1898"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_21807551-3812-4AB9-87A6-2E84AB0FAA4B" dmnElementRef="_21807551-3812-4AB9-87A6-2E84AB0FAA4B">
+        <di:waypoint x="1901" y="1898"/>
+        <di:waypoint x="2015" y="1898"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_B9112A00-07FA-44D8-B40E-F7670AF8DB11" dmnElementRef="_B9112A00-07FA-44D8-B40E-F7670AF8DB11">
         <di:waypoint x="933" y="83.68421052631578"/>
