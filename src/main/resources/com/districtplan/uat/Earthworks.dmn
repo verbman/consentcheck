@@ -305,7 +305,8 @@ list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) the
       <dmn:requiredAuthority href="#_256E6AAF-0A87-4C1B-B8A5-544B38BBB2A3"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_D08EDD7E-DE5B-49D8-B2F5-E1CA64222B25">
-      <dmn:text>(not(R30.1.1) or R30.1.1 = null) and (not(R30.1.2) or R30.1.2 = null)</dmn:text>
+      <dmn:text>if not(R30.1.1) or not(R30.1.2) then true else&#xd;
+if R30.1.1 = null and R30.1.2 = null then null else false</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:businessKnowledgeModel id="_D925AC8E-7AEA-4A3E-B269-B9971EB37E43" name="TransmissionLineBuffer32m">
@@ -9225,7 +9226,7 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
             <kie:width>908.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_D08EDD7E-DE5B-49D8-B2F5-E1CA64222B25">
-            <kie:width>954.0</kie:width>
+            <kie:width>499.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_12E8C4CC-A4BB-44B1-914A-732979216C77">
             <kie:width>1124.0</kie:width>
