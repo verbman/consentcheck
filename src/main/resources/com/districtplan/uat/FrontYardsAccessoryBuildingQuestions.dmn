@@ -401,9 +401,14 @@ FrontYardsAccessoryBuildingActivities(Activities_Value)</dmn:text>
       <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_187EBBA1-43E3-4079-A1E6-7232A4822C76">
-      <dmn:text>if (list contains(Activities_Value[Noun="residential building"].Verb, "build") or&#xd;
-list contains(Activities_Value[Noun="residential building"].Verb, "add to")) and &#xd;
-MinimumWidthOfRoad2_Value !=null then 0 else&#xd;
+      <dmn:text>if MinimumWidthOfRoad2_Value !=null and&#xd;
+(list contains(Activities_Value[Noun="residential building"].Verb, "build") or&#xd;
+list contains(Activities_Value[Noun="residential building"].Verb, "add to")) then 0 else&#xd;
+if MinimumWidthOfRoad2_Value =null and&#xd;
+(list contains(Activities_Value[Noun="residential building"].Verb, "build") or&#xd;
+list contains(Activities_Value[Noun="residential building"].Verb, "add to")) and&#xd;
+ProposedSetBackAccessoryBuildingRoad2_Value &lt; 3 then &#xd;
+ProposedSetBackAccessoryBuildingRoad2 + 1 else&#xd;
 if (not(list contains(Activities_Value[Noun="residential building"].Verb, "build")) or&#xd;
 not(list contains(Activities_Value[Noun="residential building"].Verb, "add to"))) and&#xd;
 ProposedSetBackAccessoryBuildingRoad2 > 0 and&#xd;
