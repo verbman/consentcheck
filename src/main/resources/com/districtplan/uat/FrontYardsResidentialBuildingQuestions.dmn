@@ -316,8 +316,12 @@ CornerSite_Value then &#xd;
     <dmn:extensionElements/>
     <dmn:question>What is the width of road next to your largest front yard, measured from the site’s front property boundary to the property boundary opposite your site, in metres?</dmn:question>
     <dmn:variable id="_B3C3EB9E-7A44-42F8-A4AD-71B09C0118B4" name="ProposedSetBackAccessoryBuildingRoad1" typeRef="number"/>
+    <dmn:informationRequirement id="_88BCE610-6C06-4C24-A19A-DA322F32AA48">
+      <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_1398CDB6-1D46-4C87-83BA-E313C9F6F21C">
-      <dmn:text>null</dmn:text>
+      <dmn:text>list contains(activities[Noun="accessory building"].Verb, "build") or &#xd;
+list contains(activities[Noun="accessory building"].Verb, "add to") then 4 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:inputData id="_E338F649-6437-45F9-BD68-F37CB815DF6C" name="ProposedSetBackRoad1_Value">
@@ -498,11 +502,11 @@ ProposedSetBackRoad1 + 1 else 0&#xd;
           <kie:ComponentWidths dmnElementRef="_B67CA254-44CD-4494-9719-C887E3EBE42E">
             <kie:width>701.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_1398CDB6-1D46-4C87-83BA-E313C9F6F21C">
+            <kie:width>617.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_F955AD13-AFE4-4812-96DE-989DCD918493">
             <kie:width>768.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_1398CDB6-1D46-4C87-83BA-E313C9F6F21C">
-            <kie:width>387.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_D67F88CC-5A33-4531-AAF3-C832B81D6800">
             <kie:width>853.0</kie:width>
@@ -674,6 +678,15 @@ ProposedSetBackRoad1 + 1 else 0&#xd;
         <dc:Bounds x="383" y="322" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_7163EB93-3E7A-4AF6-AF3E-F5AA7E161EE5" dmnElementRef="_7163EB93-3E7A-4AF6-AF3E-F5AA7E161EE5" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="462" y="673" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_33DB0DEE-EEBD-4412-922C-4EE3327A387E" dmnElementRef="_33DB0DEE-EEBD-4412-922C-4EE3327A387E" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="238" green="238" blue="238"/>
@@ -681,15 +694,6 @@ ProposedSetBackRoad1 + 1 else 0&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="622" y="324" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_7163EB93-3E7A-4AF6-AF3E-F5AA7E161EE5" dmnElementRef="_7163EB93-3E7A-4AF6-AF3E-F5AA7E161EE5" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="238" green="238" blue="238"/>
-          <dmndi:StrokeColor red="180" green="180" blue="180"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="1196" y="733" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_D6E96C90-7B9A-4F7A-B0F7-F14EE1992232" dmnElementRef="_D6E96C90-7B9A-4F7A-B0F7-F14EE1992232" isCollapsed="false">
@@ -864,6 +868,10 @@ ProposedSetBackRoad1 + 1 else 0&#xd;
         <di:waypoint x="241.59813084112147" y="310.3421052631579"/>
         <di:waypoint x="433" y="347"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_88BCE610-6C06-4C24-A19A-DA322F32AA48" dmnElementRef="_88BCE610-6C06-4C24-A19A-DA322F32AA48">
+        <di:waypoint x="239.59813084112147" y="108.68421052631578"/>
+        <di:waypoint x="512" y="698"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_DACE2996-B5A0-49E2-B0A4-8CDCE0E0E7F0" dmnElementRef="_DACE2996-B5A0-49E2-B0A4-8CDCE0E0E7F0">
         <di:waypoint x="549" y="239"/>
         <di:waypoint x="672" y="349"/>
@@ -913,7 +921,7 @@ ProposedSetBackRoad1 + 1 else 0&#xd;
         <di:waypoint x="923" y="696"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_8660C3CB-1AB5-486F-81CA-357864B33CED" dmnElementRef="_8660C3CB-1AB5-486F-81CA-357864B33CED">
-        <di:waypoint x="1246" y="758"/>
+        <di:waypoint x="512" y="698"/>
         <di:waypoint x="923" y="696"/>
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
