@@ -646,6 +646,9 @@ IR5OrientalBayHeightArea(SpatialLayers) then &#xd;
     <dmn:knowledgeRequirement id="_34BD9596-7AFC-4A00-A1F1-1B39BCF57B91">
       <dmn:requiredKnowledge href="#_74A50540-83EB-48FB-8963-DA5B12791200"/>
     </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_876D7404-78FA-483F-AB2C-98DA224F774B">
+      <dmn:requiredKnowledge href="#_30124C6C-8ECB-432B-ADF3-A1B82E1D2D4F"/>
+    </dmn:knowledgeRequirement>
     <dmn:authorityRequirement id="_08CE2FA5-0236-4703-A70B-6AF0CD252B2C">
       <dmn:requiredAuthority href="#_BB23ECF6-ABC5-4B77-BB28-5016CD0E58A9"/>
     </dmn:authorityRequirement>
@@ -723,6 +726,31 @@ IR5OrientalBayHeightArea(SpatialLayers) then "building consent required" else nu
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
+  <dmn:businessKnowledgeModel id="_30124C6C-8ECB-432B-ADF3-A1B82E1D2D4F" name="R5.3.4Triggered">
+    <dmn:extensionElements/>
+    <dmn:variable id="_5326A438-A127-4B57-B6ED-7430860EDDC0" name="R5.3.4Triggered" typeRef="boolean"/>
+    <dmn:encapsulatedLogic id="_1BF179CC-4989-47B4-98A3-CBEBA469F6BB" kind="FEEL">
+      <dmn:formalParameter id="_81DD1F1B-C1BD-4B12-B1A4-FEC67FBC758B" name="r534" typeRef="Types.PlanContents"/>
+      <dmn:literalExpression id="_4D825097-37D2-46E9-AD51-562FC1869238">
+        <dmn:text>list contains(r534.name, "5.3.4.1") or&#xd;
+list contains(r534.name, "5.3.4.2") or&#xd;
+list contains(r534.name, "5.3.4.3") or&#xd;
+list contains(r534.name, "5.3.4.4") or&#xd;
+list contains(r534.name, "5.3.4.5") or&#xd;
+list contains(r534.name, "5.3.4.6") or&#xd;
+list contains(r534.name, "5.3.4.7") or&#xd;
+list contains(r534.name, "5.3.4.8") or&#xd;
+list contains(r534.name, "5.3.4.9") or&#xd;
+list contains(r534.name, "5.3.4.10") or&#xd;
+list contains(r534.name, "5.3.4.11") or&#xd;
+list contains(r534.name, "5.3.4.12") or&#xd;
+list contains(r534.name, "5.3.4.13")&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+      </dmn:literalExpression>
+    </dmn:encapsulatedLogic>
+  </dmn:businessKnowledgeModel>
   <dmn:decision id="_ACBF9DC9-8567-4C59-A869-BE29AB326CC9" name="Status">
     <dmn:extensionElements/>
     <dmn:variable id="_8B244CF2-9921-4C40-96B6-75EC6209021F" name="Status" typeRef="Types.Status"/>
@@ -863,6 +891,13 @@ not(AdditionAlterationAccessoryBuildingPublicVisible) then true else&#xd;
           <kie:ComponentWidths dmnElementRef="_F47BA2C2-691F-4209-AAE4-381E5F815A89">
             <kie:width>841.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_4D825097-37D2-46E9-AD51-562FC1869238">
+            <kie:width>1061.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_1BF179CC-4989-47B4-98A3-CBEBA469F6BB">
+            <kie:width>50.0</kie:width>
+            <kie:width>1061.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_059B26F4-1786-4F10-838B-6C2DFFD14DDC">
             <kie:width>609.0</kie:width>
           </kie:ComponentWidths>
@@ -988,6 +1023,15 @@ not(AdditionAlterationAccessoryBuildingPublicVisible) then true else&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="746.5981308411215" y="133.68421052631578" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_30124C6C-8ECB-432B-ADF3-A1B82E1D2D4F" dmnElementRef="_30124C6C-8ECB-432B-ADF3-A1B82E1D2D4F" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="235" y="39.00000000000001" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_A193E454-9107-4ABF-91DF-6E8ED83985D1" dmnElementRef="_A193E454-9107-4ABF-91DF-6E8ED83985D1" isCollapsed="false">
@@ -1466,6 +1510,10 @@ not(AdditionAlterationAccessoryBuildingPublicVisible) then true else&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_08CE2FA5-0236-4703-A70B-6AF0CD252B2C" dmnElementRef="_08CE2FA5-0236-4703-A70B-6AF0CD252B2C">
         <di:waypoint x="378.25" y="154.68421052631578"/>
+        <di:waypoint x="379" y="225"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_876D7404-78FA-483F-AB2C-98DA224F774B" dmnElementRef="_876D7404-78FA-483F-AB2C-98DA224F774B">
+        <di:waypoint x="285" y="64"/>
         <di:waypoint x="379" y="225"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_03D56BA0-253B-4973-A559-571AB1B45FAB" dmnElementRef="_03D56BA0-253B-4973-A559-571AB1B45FAB">
