@@ -263,8 +263,13 @@ no</dmn:allowedAnswers>
 list contains(Activities_Value[Noun="earthworks"].Verb, "undertake") and&#xd;
 not(list contains(Activities_Value[Noun="landslip"].Verb, "stabilise")) then &#xd;
 Activities + 1 else&#xd;
-if LandslipCause_Value or LandslipReshapeGround_Value then &#xd;
+if not(list contains(Activities_Value[Noun="earthworks"].Verb, "undertake")) and&#xd;
+LandslipCause_Value or LandslipReshapeGround_Value then &#xd;
 LandslipRetainingStructureHeight + 1 else 0&#xd;
+if list contains(Activities_Value[Noun="earthworks"].Verb, "undertake") and&#xd;
+list contains(Activities_Value[Noun="landslip"].Verb, "stabilise") then &#xd;
+LandslipRetainingStructureHeight + 1 else 0&#xd;
+&#xd;
 &#xd;
 &#xd;
 &#xd;
