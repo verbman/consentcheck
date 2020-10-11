@@ -167,7 +167,8 @@ TransmissionLineBuffer32m(SpatialLayers) then 10 else null&#xd;
       <dmn:requiredDecision href="#_016BD999-C670-4511-A108-B1529E42CC64"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_F0EED28B-59DD-4A32-B162-4276A557464B">
-      <dmn:text>R30.1.2.3</dmn:text>
+      <dmn:text>if R30.1.2.3 then true else&#xd;
+  if R30.1.2.3 = null then null else false</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:decision id="_725A73D7-5E77-4F63-97DC-513004766152" name="R30.1.1.1_b_i">
@@ -229,7 +230,8 @@ CutFillHeightDepth > R30.1.1.1_a_i then 2.5 else null&#xd;
       <dmn:text>if R30.1.1.2 !=null and not(DistanceWaterway) then true else&#xd;
   if R30.1.1.2 !=null and DistanceWaterway and DistanceWaterwayMetres >= R30.1.1.2 then true else&#xd;
   if R30.1.1.2 = null then null else&#xd;
-  if DistanceWaterway and DistanceWaterwayMetres = null then false else false&#xd;
+  if DistanceWaterway and DistanceWaterwayMetres = null then false else &#xd;
+  if DistanceWaterway = null then null else false&#xd;
   &#xd;
 &#xd;
 &#xd;
@@ -706,7 +708,7 @@ if R30.1.1 = null and R30.1.2 = null then null else false</dmn:text>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_445C239C-3B3B-443A-803F-CA6D848488EF">
       <dmn:text>if R30.1.1.1_b_i !=null and CutFillHeightDepth &lt;= R30.1.1.1_b_i then true else&#xd;
-  if R30.1.1.1_b_i = null then null else false&#xd;
+  if R30.1.1.1_b_i = null or CutFillHeightDepth = null then null else false&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -732,7 +734,7 @@ if R30.1.1 = null and R30.1.2 = null then null else false</dmn:text>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_B774D998-FEEF-4989-A48F-15A1E0CC935D">
       <dmn:text>if R30.1.1.1_a_i > 0 and CutFillHeightDepth &lt;= R30.1.1.1_a_i then true else&#xd;
-  if R30.1.1.1_a_i = null then null else false&#xd;
+  if R30.1.1.1_a_i = null or CutFillHeightDepth = null then null else false&#xd;
 &#xd;
 &#xd;
 </dmn:text>
@@ -3485,7 +3487,7 @@ Earthworks that do not comply with the permitted activity conditions under 30.1.
     </dmn:informationRequirement>
     <dmn:literalExpression id="_5F45FA59-F819-4A6C-B8D0-C0AB553CB46D">
       <dmn:text>if R30.1.2.1_a_iv !=null and EarthworksArea &lt;= R30.1.2.1_a_iv then true else&#xd;
-  if R30.1.2.1_a_iv = null then null else false&#xd;
+  if R30.1.2.1_a_iv = null or EarthworksArea = null then null else false&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -3652,7 +3654,7 @@ list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) the
     </dmn:informationRequirement>
     <dmn:literalExpression id="_CEA00EF2-1467-4E7A-B6A8-6EEA6CD41D9D">
       <dmn:text>if R30.1.1.4 !=null and not(SettledDust) then true else&#xd;
-  if R30.1.1.4 = null then null else false</dmn:text>
+  if R30.1.1.4 = null or SettledDust = null then null else false</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:decision id="_3CDBF087-767E-4605-98C0-854B0876972C" name="R30.1.1.1Met">
@@ -3745,7 +3747,7 @@ list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) the
     </dmn:informationRequirement>
     <dmn:literalExpression id="_A3C868BC-0A4D-4E54-A781-256E61439C1C">
       <dmn:text>if R30.1.2.1_a_i !=null and CutFillHeightDepth &lt;= R30.1.2.1_a_i then true else&#xd;
-  if R30.1.2.1_a_i &lt;= null then null else false&#xd;
+  if R30.1.2.1_a_i &lt;= null or CutFillHeightDepth = null then null else false&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -3934,7 +3936,7 @@ ResidentialArea(SpatialLayers) then 5 else null&#xd;
     </dmn:informationRequirement>
     <dmn:literalExpression id="_9FEFDA4E-6980-45C6-AB63-9C843645FB6F">
       <dmn:text>if R30.1.1.1_a_ii !=null and GroundSlope34 then true else &#xd;
-  if R30.1.1.1_a_ii = null or GroundSlope34 = null then null else false&#xd;
+  if R30.1.1.1_a_ii = null or CutFillHeightDepth = null or GroundSlope34 = null then null else false&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -4069,7 +4071,7 @@ list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edg
     </dmn:informationRequirement>
     <dmn:literalExpression id="_ACB10539-C54A-4754-A0C9-BC92D85E23A9">
       <dmn:text>if R30.1.1.1_b_iii !=null and EarthworksArea &lt;= R30.1.1.1_b_iii then true else&#xd;
-  if R30.1.1.1_b_iii = null or R30.1.1.1_b_iMet = null then null else false&#xd;
+  if R30.1.1.1_b_iii = null or EarthworksArea = null R30.1.1.1_b_iMet = null then null else false&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -4164,7 +4166,7 @@ not(HazardFloodingArea(SpatialLayers)) then true else&#xd;
     </dmn:informationRequirement>
     <dmn:literalExpression id="_8233A3ED-976E-49B3-BBC7-58BEE1823689">
       <dmn:text>if R30.1.2.1_b_i !=null and CutFillHeightDepth &lt;= R30.1.2.1_b_i then true else&#xd;
-  if R30.1.2.1_b_i = null then null else false&#xd;
+  if R30.1.2.1_b_i = null or CutFillHeightDepth = null then null else false&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -4492,7 +4494,8 @@ EarthworksBuildingConsentObtained = null then 250 else null&#xd;
       <dmn:text>if R30.1.2.2 !=null and not(DistanceWaterway) then true else&#xd;
   if R30.1.2.2 !=null and DistanceWaterway and DistanceWaterwayMetres >= R30.1.2.2 then true else&#xd;
   if R30.1.2.2 = null then null else&#xd;
-  if DistanceWaterway and DistanceWaterwayMetres = null then false else false&#xd;
+  if DistanceWaterway and DistanceWaterwayMetres = null then false else &#xd;
+  if DistanceWaterway = null then null else false&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -7747,7 +7750,7 @@ EarthworksBuildingConsentObtained = null then 100 else null&#xd;
     </dmn:informationRequirement>
     <dmn:literalExpression id="_5BF5E3DD-9F8D-47B1-A674-790E5351E29E">
       <dmn:text>if R30.1.2.1_b_iii !=null and EarthworksArea &lt;= R30.1.2.1_b_iii then true else&#xd;
-  if R30.1.2.1_b_iii = null or R30.1.2.1_b_iMet = null then null else false&#xd;
+  if R30.1.2.1_b_iii = null or R30.1.2.1_b_iMet = null or EarthworksArea = null then null else false&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -9406,7 +9409,7 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
             <kie:width>856.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_CAD53FF4-82B9-4E3D-9984-6CEB12E93083">
-            <kie:width>540.0</kie:width>
+            <kie:width>784.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_9230E82B-9C58-4174-B067-466A5D173382">
             <kie:width>827.0</kie:width>
@@ -10034,7 +10037,7 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
           <dmndi:StrokeColor red="210" green="193" blue="208"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="883" y="570" width="100" height="50"/>
+        <dc:Bounds x="882.5981308411215" y="569.6842105263158" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_3443EB53-F012-4C27-AF95-510F617DF947" dmnElementRef="_3443EB53-F012-4C27-AF95-510F617DF947" isCollapsed="false">
@@ -11061,7 +11064,7 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
         <di:waypoint x="1351" y="1493"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_3D695D41-415D-4BFA-9D86-B292C9EA5897" dmnElementRef="_3D695D41-415D-4BFA-9D86-B292C9EA5897">
-        <di:waypoint x="933" y="595"/>
+        <di:waypoint x="932.5981308411215" y="594.6842105263158"/>
         <di:waypoint x="1351" y="1493"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_3A4933DF-7CE2-4A53-92DC-73C63478A275" dmnElementRef="_3A4933DF-7CE2-4A53-92DC-73C63478A275">
@@ -11245,7 +11248,7 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
         <di:waypoint x="1339" y="618"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_AF57D418-71F3-4994-83F2-706ED3DDEA69" dmnElementRef="_AF57D418-71F3-4994-83F2-706ED3DDEA69">
-        <di:waypoint x="933" y="595"/>
+        <di:waypoint x="932.5981308411215" y="594.6842105263158"/>
         <di:waypoint x="1339" y="618"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_A5CCA77B-9C72-4BB4-A731-94A4320E93A5" dmnElementRef="_A5CCA77B-9C72-4BB4-A731-94A4320E93A5">
