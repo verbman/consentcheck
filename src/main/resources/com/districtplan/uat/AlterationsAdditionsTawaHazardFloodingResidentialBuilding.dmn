@@ -204,6 +204,9 @@ R5.1.11.1-FloorAreaMet then true else&#xd;
     <dmn:knowledgeRequirement id="_5FF3C5BE-31D3-46EE-93FC-F125DAB5FC3C">
       <dmn:requiredKnowledge href="#_B43B33D1-6CB5-4408-9DE5-3BA05B81F1FF"/>
     </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_ED52756F-61AE-4F65-9DFE-3C29DC7DDD5E">
+      <dmn:requiredKnowledge href="#_234A8829-CE81-40D4-ADFB-2A6FB2B37420"/>
+    </dmn:knowledgeRequirement>
     <dmn:authorityRequirement id="_39999380-8E09-4597-BA0B-D992EEA21C8F">
       <dmn:requiredAuthority href="#_E63C7A33-7F64-4653-9E97-019410AC8BAE"/>
     </dmn:authorityRequirement>
@@ -212,7 +215,7 @@ R5.1.11.1-FloorAreaMet then true else&#xd;
 if not(R5.1.11.1Met) then false else&#xd;
 if TawaFloodingHazardArea(SpatialLayers) then&#xd;
   if AlterationsAdditionsTawaHazardFloodingActivities(Activities) and&#xd;
-  not(list contains(RulesTriggered_Value.name, "5.3.4")) then true else&#xd;
+  not(R5.3.4Triggered(RulesTriggered_Value)) then true else&#xd;
   if list contains(Activities[Noun="residential building"].Verb, "build") then true else false&#xd;
 else null&#xd;
 &#xd;
@@ -249,6 +252,31 @@ ExistingFloorLevelResidentialBuilding then true else&#xd;
   </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
+  <dmn:businessKnowledgeModel id="_234A8829-CE81-40D4-ADFB-2A6FB2B37420" name="R5.3.4Triggered">
+    <dmn:extensionElements/>
+    <dmn:variable id="_F8E58B5A-37A1-4AB9-9D88-A3ACC1AC2C47" name="R5.3.4Triggered" typeRef="boolean"/>
+    <dmn:encapsulatedLogic id="_2340D53D-E221-4B1B-8137-38E5747DAF97" kind="FEEL">
+      <dmn:formalParameter id="_CA993B89-E65B-4955-9AD6-04FCA7405E71" name="r534" typeRef="Types.PlanContents"/>
+      <dmn:literalExpression id="_3171CDA7-A31B-46EE-AD0C-3C0410B3ADD9">
+        <dmn:text>list contains(r534.name, "5.3.4.1") or&#xd;
+list contains(r534.name, "5.3.4.2") or&#xd;
+list contains(r534.name, "5.3.4.3") or&#xd;
+list contains(r534.name, "5.3.4.4") or&#xd;
+list contains(r534.name, "5.3.4.5") or&#xd;
+list contains(r534.name, "5.3.4.6") or&#xd;
+list contains(r534.name, "5.3.4.7") or&#xd;
+list contains(r534.name, "5.3.4.8") or&#xd;
+list contains(r534.name, "5.3.4.9") or&#xd;
+list contains(r534.name, "5.3.4.10") or&#xd;
+list contains(r534.name, "5.3.4.11") or&#xd;
+list contains(r534.name, "5.3.4.12") or&#xd;
+list contains(r534.name, "5.3.4.13")&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+      </dmn:literalExpression>
+    </dmn:encapsulatedLogic>
+  </dmn:businessKnowledgeModel>
   <dmn:decision id="_CF8C9489-8824-408C-9981-DF8D7EF68FAF" name="R5.1.11.1-FloorAreaMet">
     <dmn:extensionElements/>
     <dmn:variable id="_0FE2AA07-C8A9-49B9-9E70-EE7603A51227" name="R5.1.11.1-FloorAreaMet" typeRef="boolean"/>
@@ -452,11 +480,14 @@ list contains(Activities[Noun="residential building"].Verb, "build"))&#xd;
     <dmn:knowledgeRequirement id="_CB331FA2-C9B0-4315-809A-42D856D3E515">
       <dmn:requiredKnowledge href="#_162DC7F1-EF22-4B75-AC18-37982D1DE529"/>
     </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_35441B72-AE45-4192-AD23-E583E7606F9E">
+      <dmn:requiredKnowledge href="#_234A8829-CE81-40D4-ADFB-2A6FB2B37420"/>
+    </dmn:knowledgeRequirement>
     <dmn:authorityRequirement id="_0EAC1F4F-C36B-4243-A7FC-DAC40E3ED774">
       <dmn:requiredAuthority href="#_BB23ECF6-ABC5-4B77-BB28-5016CD0E58A9"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_89CE1763-F6C4-4E91-9949-D9FAC940FFB2">
-      <dmn:text>if not(list contains(RulesTriggered_Value.name, "5.3.4")) and&#xd;
+      <dmn:text>if not(R5.3.4Triggered(RulesTriggered_Value)) and&#xd;
 AlterationsAdditionsTawaHazardFloodingActivities(Activities) and&#xd;
 (InnerResidentialArea(SpatialLayers) or&#xd;
 OuterResidentialArea(SpatialLayers) or&#xd;
@@ -504,11 +535,14 @@ TawaFloodingHazardArea(SpatialLayers) then 10 else 0&#xd;
     <dmn:knowledgeRequirement id="_A385FB52-D4BE-467B-B0C0-8E1A1E99C19C">
       <dmn:requiredKnowledge href="#_0CD77B39-EC94-4EB6-8D36-74859D41E58C"/>
     </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_BA0757A9-F234-494E-A65E-ABCAEC4702B6">
+      <dmn:requiredKnowledge href="#_234A8829-CE81-40D4-ADFB-2A6FB2B37420"/>
+    </dmn:knowledgeRequirement>
     <dmn:authorityRequirement id="_08CE2FA5-0236-4703-A70B-6AF0CD252B2C">
       <dmn:requiredAuthority href="#_BB23ECF6-ABC5-4B77-BB28-5016CD0E58A9"/>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_5A8AFE1A-52FB-4140-8383-E84671F1EE0A">
-      <dmn:text>if not(list contains(RulesTriggered_Value.name, "5.3.4")) and&#xd;
+      <dmn:text>if not(R5.3.4Triggered(RulesTriggered_Value)) and&#xd;
 AlterationsAdditionsTawaHazardFloodingActivities(Activities) and&#xd;
 (InnerResidentialArea(SpatialLayers) or&#xd;
 OuterResidentialArea(SpatialLayers) or&#xd;
@@ -711,6 +745,13 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
           <kie:ComponentWidths dmnElementRef="_3F94077C-DA92-48B5-AC18-748394B3B37F">
             <kie:width>777.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_3171CDA7-A31B-46EE-AD0C-3C0410B3ADD9">
+            <kie:width>579.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_2340D53D-E221-4B1B-8137-38E5747DAF97">
+            <kie:width>50.0</kie:width>
+            <kie:width>579.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_059B26F4-1786-4F10-838B-6C2DFFD14DDC">
             <kie:width>958.0</kie:width>
           </kie:ComponentWidths>
@@ -865,6 +906,15 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="829" y="199" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_234A8829-CE81-40D4-ADFB-2A6FB2B37420" dmnElementRef="_234A8829-CE81-40D4-ADFB-2A6FB2B37420" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="648.2990654205607" y="113.68421052631578" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_E63C7A33-7F64-4653-9E97-019410AC8BAE" dmnElementRef="_E63C7A33-7F64-4653-9E97-019410AC8BAE" isCollapsed="false">
@@ -1113,6 +1163,10 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
         <di:waypoint x="877.5981308411215" y="161.68421052631578"/>
         <di:waypoint x="879" y="224"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_ED52756F-61AE-4F65-9DFE-3C29DC7DDD5E" dmnElementRef="_ED52756F-61AE-4F65-9DFE-3C29DC7DDD5E">
+        <di:waypoint x="698.2990654205607" y="138.68421052631578"/>
+        <di:waypoint x="879" y="224"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_9BF130DC-D1D9-4051-AD4C-A7F0999B36F9" dmnElementRef="_9BF130DC-D1D9-4051-AD4C-A7F0999B36F9">
         <di:waypoint x="517" y="150.68421052631578"/>
         <di:waypoint x="519" y="224"/>
@@ -1193,6 +1247,10 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
         <di:waypoint x="249.29906542056074" y="250.34210526315792"/>
         <di:waypoint x="372" y="358"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_35441B72-AE45-4192-AD23-E583E7606F9E" dmnElementRef="_35441B72-AE45-4192-AD23-E583E7606F9E">
+        <di:waypoint x="698.2990654205607" y="138.68421052631578"/>
+        <di:waypoint x="372" y="358"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_F7813B3E-0881-4087-8082-FB0684724F95" dmnElementRef="_F7813B3E-0881-4087-8082-FB0684724F95">
         <di:waypoint x="125.59813084112147" y="260"/>
         <di:waypoint x="379" y="225"/>
@@ -1227,6 +1285,10 @@ TawaFloodingHazardArea(SpatialLayers) then &#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_08CE2FA5-0236-4703-A70B-6AF0CD252B2C" dmnElementRef="_08CE2FA5-0236-4703-A70B-6AF0CD252B2C">
         <di:waypoint x="249.29906542056074" y="250.34210526315792"/>
+        <di:waypoint x="379" y="225"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_BA0757A9-F234-494E-A65E-ABCAEC4702B6" dmnElementRef="_BA0757A9-F234-494E-A65E-ABCAEC4702B6">
+        <di:waypoint x="698.2990654205607" y="138.68421052631578"/>
         <di:waypoint x="379" y="225"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_13F3E416-5AC2-4A62-90EE-07F3AF3C20A3" dmnElementRef="_13F3E416-5AC2-4A62-90EE-07F3AF3C20A3">
