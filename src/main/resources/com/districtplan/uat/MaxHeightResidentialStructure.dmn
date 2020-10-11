@@ -239,11 +239,20 @@ if list contains(spatiallayers[Type="North Kelburn Bolton Street Area"].Title, "
     <dmn:informationRequirement id="_F1F4FD62-C036-4E07-91DE-80E398EC4042">
       <dmn:requiredDecision href="#_0A486A57-F4C5-4F40-96F0-B2B2E3D2889B"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_A4B02AE3-0C4A-4FC7-A914-1AF3E6A947E5">
+      <dmn:requiredInput href="#_9AF94EE9-C81E-4E15-8287-3AFE94D76B74"/>
+    </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_1BC4D1DE-E23D-4D1E-93C5-3261FB481197">
+      <dmn:requiredKnowledge href="#_74A50540-83EB-48FB-8963-DA5B12791200"/>
+    </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_059B26F4-1786-4F10-838B-6C2DFFD14DDC">
-      <dmn:text>if S5.6.2.5.1 > 0 and&#xd;
-ProposedResidentialStructureMaxHeight !=null and&#xd;
-ProposedResidentialStructureMaxHeight &lt;= S5.6.2.5.1 then true else &#xd;
-  if S5.6.2.5.1 = 0 then null else false&#xd;
+      <dmn:text>if S5.6.2.5.1 !=null then&#xd;
+  if IR5OrientalBayHeightArea(SpatialLayers) and&#xd;
+  HighestPointMetresAboveSeaLevelResidentialStructure != null and &#xd;
+  HighestPointMetresAboveSeaLevelResidentialStructure &lt;= S5.6.2.5.1 then true else&#xd;
+  if ProposedResidentialStructureMaxHeight !=null and&#xd;
+  ProposedResidentialStructureMaxHeight &lt;= S5.6.2.5.1 then true else &#xd;
+  if S5.6.2.5.1 = null then null else false&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -561,8 +570,8 @@ S5.6.2.5.2 = 0 then&#xd;
   if IR6NorthKelburnBoltonStreet(SpatialLayers) then Appendix3(SpatialLayers) else&#xd;
   if OuterResidentialArea(SpatialLayers) and&#xd;
   not(OR3Roseneath(SpatialLayers)) then 8 else&#xd;
-  if OR3Roseneath(SpatialLayers) then 10 else 0&#xd;
-else 0&#xd;
+  if OR3Roseneath(SpatialLayers) then 10 else null&#xd;
+else null&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -1715,7 +1724,7 @@ Maximum height 5.6.2.5</dmn:description>
   if S5.6.2.5.2 > 0 and &#xd;
   ProposedResidentialStructureMaxHeight !=null then&#xd;
   ((S5.6.2.5.2 * R5.3.4.16) + S5.6.2.5.2) else&#xd;
-  if S5.6.2.5.1 > 0 and &#xd;
+  if S5.6.2.5.1 !=null and &#xd;
   ProposedResidentialStructureMaxHeight !=null then&#xd;
   ((S5.6.2.5.1 * R5.3.4.16) + S5.6.2.5.1) else null&#xd;
 else null&#xd;
@@ -1901,6 +1910,20 @@ Residential buildings, accessory buildings and residential structures subject to
     <dmn:extensionElements/>
     <dmn:type></dmn:type>
   </dmn:knowledgeSource>
+  <dmn:decision id="_9E83C6C4-07CB-4015-B266-C5CD6DE8100D" name="HighestPointAboveSeaLevelStandard">
+    <dmn:extensionElements/>
+    <dmn:variable id="_199786F7-5929-44CB-939C-47854C0814F9" name="HighestPointAboveSeaLevelStandard" typeRef="number"/>
+    <dmn:informationRequirement id="_20C44C3B-BA8F-4CEE-89C1-FC605FC26FFB">
+      <dmn:requiredDecision href="#_69755C18-1F1F-4AFA-A816-9BB075FBF7FE"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_D7A0FA51-1919-4E26-A584-F3E78213E46D">
+      <dmn:requiredDecision href="#_49FF5985-0A0A-43E4-A199-C3B220401592"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_43AC35E5-813C-46E9-A5CC-F418AA31CEE2">
+      <dmn:text>if S5.6.2.5.1 != null then S5.6.2.5.1 else&#xd;
+if S5.6.2.6.1 != null then S5.6.2.6.1 else null</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:decision id="_4C7D4362-CBD4-4763-BF03-2764BAC04185" name="S5.6.2.6.2">
     <dmn:extensionElements/>
     <dmn:variable id="_CF195DA9-D708-4F4C-9A48-AC1DE6405C71" name="S5.6.2.6.2" typeRef="boolean"/>
@@ -2282,7 +2305,7 @@ else null&#xd;
     <dmn:literalExpression id="_8EB6069C-64D8-4C1A-B592-08333FA0A5C0">
       <dmn:text>if MaxHeightResidentialStructureActivities(Activities) and&#xd;
 OR2ResidentialCoastalEdge(SpatialLayers) and&#xd;
-(S5.6.2.6.2 = null or not(S5.6.2.6.2)) then 13 else 0&#xd;
+(S5.6.2.6.2 = null or not(S5.6.2.6.2)) then 13 else null&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -2319,6 +2342,9 @@ OR2ResidentialCoastalEdge(SpatialLayers) and&#xd;
         <kie:ComponentsWidthsExtension>
           <kie:ComponentWidths dmnElementRef="_0BA23CB7-F473-4473-A87E-E657526DF625">
             <kie:width>958.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_43AC35E5-813C-46E9-A5CC-F418AA31CEE2">
+            <kie:width>300.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_65683577-A0EB-452A-8924-19B524F4DC4F">
             <kie:width>50.0</kie:width>
@@ -2566,6 +2592,15 @@ OR2ResidentialCoastalEdge(SpatialLayers) and&#xd;
           <dmndi:FontColor red="120" green="120" blue="120"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="843" y="63" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_9E83C6C4-07CB-4015-B266-C5CD6DE8100D" dmnElementRef="_9E83C6C4-07CB-4015-B266-C5CD6DE8100D" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="573" y="61" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_500D6311-0C05-4F6F-9972-246B15225CBF" dmnElementRef="_500D6311-0C05-4F6F-9972-246B15225CBF" isCollapsed="false">
@@ -3084,6 +3119,14 @@ OR2ResidentialCoastalEdge(SpatialLayers) and&#xd;
         <di:waypoint x="893" y="210"/>
         <di:waypoint x="893" y="88"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_20C44C3B-BA8F-4CEE-89C1-FC605FC26FFB" dmnElementRef="_20C44C3B-BA8F-4CEE-89C1-FC605FC26FFB">
+        <di:waypoint x="474" y="209"/>
+        <di:waypoint x="623" y="86"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_D7A0FA51-1919-4E26-A584-F3E78213E46D" dmnElementRef="_D7A0FA51-1919-4E26-A584-F3E78213E46D">
+        <di:waypoint x="473" y="546"/>
+        <di:waypoint x="623" y="86"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_BCF20C78-86A5-4160-9A3C-ADE5AFE98184" dmnElementRef="_BCF20C78-86A5-4160-9A3C-ADE5AFE98184">
         <di:waypoint x="879.2990654205607" y="842"/>
         <di:waypoint x="1430" y="410"/>
@@ -3138,6 +3181,14 @@ OR2ResidentialCoastalEdge(SpatialLayers) and&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_F1F4FD62-C036-4E07-91DE-80E398EC4042" dmnElementRef="_F1F4FD62-C036-4E07-91DE-80E398EC4042">
         <di:waypoint x="474" y="347"/>
+        <di:waypoint x="612" y="211"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_1BC4D1DE-E23D-4D1E-93C5-3261FB481197" dmnElementRef="_1BC4D1DE-E23D-4D1E-93C5-3261FB481197">
+        <di:waypoint x="176.5981308411215" y="501.68421052631584"/>
+        <di:waypoint x="612" y="211"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_A4B02AE3-0C4A-4FC7-A914-1AF3E6A947E5" dmnElementRef="_A4B02AE3-0C4A-4FC7-A914-1AF3E6A947E5">
+        <di:waypoint x="879.2990654205607" y="842"/>
         <di:waypoint x="612" y="211"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_22300292-4CBD-4539-815A-7591C5BB9D37" dmnElementRef="_22300292-4CBD-4539-815A-7591C5BB9D37">
