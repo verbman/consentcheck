@@ -259,12 +259,15 @@ no</dmn:allowedAnswers>
       <dmn:requiredKnowledge href="#_A7CF33AE-11F9-479E-8017-B44755A6A1E4"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_4D614351-52EA-4E58-8F9D-A6FFE1BB7577">
-      <dmn:text>if list contains(Activities_Value[Noun="earthworks"].Verb, "undertake") and&#xd;
-not(list contains(Activities_Value[Noun="landslip"].Verb, "stabilise")) and&#xd;
-EarthworksSpatialLayers(SpatialLayers_Value) then &#xd;
+      <dmn:text>if EarthworksSpatialLayers(SpatialLayers_Value) and &#xd;
+list contains(Activities_Value[Noun="earthworks"].Verb, "undertake") and&#xd;
+not(list contains(Activities_Value[Noun="landslip"].Verb, "stabilise")) then &#xd;
 Activities + 1 else&#xd;
 if LandslipCause_Value or LandslipReshapeGround_Value then &#xd;
-LandslipRetainingStructureHeight + 1&#xd;
+LandslipRetainingStructureHeight + 1 else 0&#xd;
+&#xd;
+&#xd;
+&#xd;
 &#xd;
 &#xd;
 </dmn:text>
