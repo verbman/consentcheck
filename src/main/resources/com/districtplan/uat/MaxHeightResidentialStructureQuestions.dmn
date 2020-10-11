@@ -90,12 +90,17 @@ MaxHeightResidentialStructureActivities(Activities_Value)</dmn:text>
     <dmn:informationRequirement id="_CC7D1DD2-0CEF-4B9C-9848-1BA629035822">
       <dmn:requiredDecision href="#_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_2D668B43-E82F-4DA9-AD8D-E24A57CF7234">
+      <dmn:requiredDecision href="#_A2F298C8-8542-41C1-A9E3-9452A323B85D"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_8E4AAA4C-33EF-494D-8CF8-DC9D25C51F3E">
       <dmn:text>if list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "OR2 - Residential Coastal Edge") and&#xd;
 (not(ResidentialStructureAbove13MetreContour_Value) or&#xd;
 ResidentialStructureAbove13MetreContour_Value = null) and&#xd;
 ProposedResidentialStructureMaxHeight > 0 then&#xd;
-ProposedResidentialStructureMaxHeight + 1 else 0&#xd;
+ProposedResidentialStructureMaxHeight + 1 else &#xd;
+if list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "IR5 - Oriental Bay Height Area") then&#xd;
+Activities + 1 else 0&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -164,9 +169,10 @@ Activities + 1 else 0&#xd;
       <dmn:requiredKnowledge href="#_4306AB83-CA4B-437E-84AF-0485953E2E56"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_9BB36F36-213A-43A8-A0E9-445FA9AF5E9D">
-      <dmn:text>if MaxHeightResidentialStructureSpatialLayers(SpatialLayers_Value) then&#xd;
-  if MaxHeightResidentialStructureActivities(Activities_Value) and&#xd;
-  not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "OR2 - Residential Coastal Edge")) then &#xd;
+      <dmn:text>if MaxHeightResidentialStructureSpatialLayers(SpatialLayers_Value) and &#xd;
+MaxHeightResidentialStructureActivities(Activities_Value) and &#xd;
+not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "IR5 - Oriental Bay Height Area")) then&#xd;
+  if not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "OR2 - Residential Coastal Edge")) then &#xd;
   Activities + 1 else&#xd;
   if (list contains(Activities_Value[Noun="residential structure"].Verb, "build") or&#xd;
   list contains(Activities_Value[Noun="deck or balcony"].Verb, "build")) and&#xd;
@@ -295,7 +301,7 @@ else 0&#xd;
           <dmndi:StrokeColor red="180" green="180" blue="180"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="616" y="387" width="100" height="50"/>
+        <dc:Bounds x="508" y="387" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_A2F298C8-8542-41C1-A9E3-9452A323B85D" dmnElementRef="_A2F298C8-8542-41C1-A9E3-9452A323B85D" isCollapsed="false">
@@ -343,15 +349,19 @@ else 0&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_F45E220C-C01B-4E50-8CD6-41DB10979C26" dmnElementRef="_F45E220C-C01B-4E50-8CD6-41DB10979C26">
         <di:waypoint x="271" y="411"/>
-        <di:waypoint x="666" y="412"/>
+        <di:waypoint x="558" y="412"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_94E16299-2802-4687-AF80-FA95D754B121" dmnElementRef="_94E16299-2802-4687-AF80-FA95D754B121">
         <di:waypoint x="271.5981308411215" y="346.3421052631579"/>
-        <di:waypoint x="666" y="412"/>
+        <di:waypoint x="558" y="412"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_CC7D1DD2-0CEF-4B9C-9848-1BA629035822" dmnElementRef="_CC7D1DD2-0CEF-4B9C-9848-1BA629035822">
         <di:waypoint x="472" y="206"/>
-        <di:waypoint x="666" y="412"/>
+        <di:waypoint x="558" y="412"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_2D668B43-E82F-4DA9-AD8D-E24A57CF7234" dmnElementRef="_2D668B43-E82F-4DA9-AD8D-E24A57CF7234">
+        <di:waypoint x="662" y="130"/>
+        <di:waypoint x="558" y="412"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_1551339C-3421-4646-B87A-0792B40190F7" dmnElementRef="_1551339C-3421-4646-B87A-0792B40190F7">
         <di:waypoint x="662" y="53"/>
