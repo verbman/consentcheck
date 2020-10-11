@@ -22,7 +22,7 @@ Residential buildings, accessory buildings and residential structures not provid
       <dmn:requiredInput href="#_A889FBA9-80DF-47BE-A632-8C5F0C2FDCB7"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_0BA23CB7-F473-4473-A87E-E657526DF625">
-      <dmn:text>if S5.6.2.6.1 > 0 then&#xd;
+      <dmn:text>if S5.6.2.6.1 !=null then&#xd;
   if HighestPointMetresAboveSeaLevelResidentialBuilding != null and&#xd;
   HighestPointMetresAboveSeaLevelResidentialBuilding &lt;= S5.6.2.6.1 then true else&#xd;
   if HighestPointMetresAboveSeaLevelInfill != null and&#xd;
@@ -264,7 +264,7 @@ if list contains(spatiallayers[Type="North Kelburn Bolton Street Area"].Title, "
       <dmn:requiredKnowledge href="#_74A50540-83EB-48FB-8963-DA5B12791200"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_059B26F4-1786-4F10-838B-6C2DFFD14DDC">
-      <dmn:text>if S5.6.2.5.1 > 0 then&#xd;
+      <dmn:text>if S5.6.2.5.1 !=null then&#xd;
   if IR5OrientalBayHeightArea(SpatialLayers) and&#xd;
   HighestPointMetresAboveSeaLevelResidentialBuilding != null and &#xd;
   HighestPointMetresAboveSeaLevelResidentialBuilding &lt; S5.6.2.5.1 then true else&#xd;
@@ -872,8 +872,8 @@ S5.6.2.5.2 = 0 then&#xd;
   if IR6NorthKelburnBoltonStreet(SpatialLayers) then (Appendix3(SpatialLayers) + S5.6.2.5.5) else&#xd;
   if OuterResidentialArea(SpatialLayers) and&#xd;
   not(OR3Roseneath(SpatialLayers)) then (8 + S5.6.2.5.5) else&#xd;
-  if OR3Roseneath(SpatialLayers) then (10 + S5.6.2.5.5) else 0&#xd;
-else 0&#xd;
+  if OR3Roseneath(SpatialLayers) then (10 + S5.6.2.5.5) else null&#xd;
+else null&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -3044,7 +3044,7 @@ else 0&#xd;
       <dmn:text>if (list contains(Activities[Noun="residential building"].Verb, "build") or &#xd;
 list contains(Activities[Noun="residential building"].Verb, "add to")) and&#xd;
 OR2ResidentialCoastalEdge(SpatialLayers) and&#xd;
-(S5.6.2.6.2 = null or not(S5.6.2.6.2)) then 13 else 0&#xd;
+(S5.6.2.6.2 = null or not(S5.6.2.6.2)) then 13 else null&#xd;
 &#xd;
 &#xd;
 &#xd;
