@@ -160,20 +160,24 @@ no</dmn:allowedAnswers>
     <dmn:informationRequirement id="_5613053F-5532-4A08-A1A7-1914283FAFDE">
       <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_0D70BBF0-EF9C-4D0C-A3DC-3F8DA8442959">
+      <dmn:requiredInput href="#_3D7FE2C3-569A-4E39-A81B-D00596D24EDD"/>
+    </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_61BB74D3-12EE-48CF-9364-06E3D5EA6A76">
       <dmn:requiredKnowledge href="#_CDF2F1B1-4002-46C9-B06E-211B4C7F3014"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_B875ED68-83DB-4215-B0A7-A5EB937446DA">
-      <dmn:text>if (list contains(SpatialLayers_Value[Type="Residential"].Title, "Inner Residential") or&#xd;
-list contains(SpatialLayers_Value[Type="Residential"].Title, "Medium Density Residential Area")) and&#xd;
-AccessoryBuildingStructureFrontYard_Value and&#xd;
-not(StructureDeckOnly(Activities_Value)) then&#xd;
-(AccessoryBuildingStructureFrontYard + 1) else&#xd;
+      <dmn:text>if CornerSite_Value = null then&#xd;
+  if (list contains(SpatialLayers_Value[Type="Residential"].Title, "Inner Residential") or&#xd;
+  list contains(SpatialLayers_Value[Type="Residential"].Title, "Medium Density Residential Area")) and&#xd;
+  AccessoryBuildingStructureFrontYard_Value and&#xd;
+  not(StructureDeckOnly(Activities_Value)) then&#xd;
+  (AccessoryBuildingStructureFrontYard + 1) else&#xd;
   if list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential") and&#xd;
   not(CuldesacDeadendSite_Value) then&#xd;
   (CuldesacDeadendSite + 1) else&#xd;
   if StructureDeckOnly(Activities_Value) then 0 else 0&#xd;
-&#xd;
+else 0&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -215,6 +219,7 @@ not(StructureDeckOnly(Activities_Value)) then&#xd;
     </dmn:informationRequirement>
     <dmn:literalExpression id="_CEE42BE3-4E3E-4A3B-975C-2E0636260546">
       <dmn:text>if AccessoryBuildingStructureFrontYard_Value and&#xd;
+list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential") and&#xd;
 (list contains(Activities_Value[Noun="accessory building"].Verb, "build") or&#xd;
 list contains(Activities_Value[Noun="accessory building"].Verb, "add to")) and&#xd;
 not(CuldesacDeadendSite_Value) and CornerSite_Value then CornerSite + 1 else 0&#xd;
@@ -1165,6 +1170,10 @@ else 0&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_61BB74D3-12EE-48CF-9364-06E3D5EA6A76" dmnElementRef="_61BB74D3-12EE-48CF-9364-06E3D5EA6A76">
         <di:waypoint x="246.59813084112147" y="234.34210526315792"/>
+        <di:waypoint x="556" y="290"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_0D70BBF0-EF9C-4D0C-A3DC-3F8DA8442959" dmnElementRef="_0D70BBF0-EF9C-4D0C-A3DC-3F8DA8442959">
+        <di:waypoint x="240.59813084112147" y="438.3421052631579"/>
         <di:waypoint x="556" y="290"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_051A805A-304F-4E21-85F2-112F164F47BF" dmnElementRef="_051A805A-304F-4E21-85F2-112F164F47BF">
