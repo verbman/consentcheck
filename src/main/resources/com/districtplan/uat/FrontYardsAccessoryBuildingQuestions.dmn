@@ -762,18 +762,7 @@ not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "O
       <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_C284B79E-25EF-4402-A184-F861D9C7FA4D">
-      <dmn:text>if MinimumWidthOfRoad1_Value !=null and&#xd;
-(list contains(Activities_Value[Noun="residential building"].Verb, "build") or&#xd;
-list contains(Activities_Value[Noun="residential building"].Verb, "add to")) then 0 else&#xd;
-if MinimumWidthOfRoad1_Value =null and&#xd;
-(list contains(Activities_Value[Noun="residential building"].Verb, "build") or&#xd;
-list contains(Activities_Value[Noun="residential building"].Verb, "add to")) and&#xd;
-ProposedSetBackAccessoryBuildingRoad1_Value &lt; 3 then &#xd;
-ProposedSetBackAccessoryBuildingRoad1 + 1 else&#xd;
-if (not(list contains(Activities_Value[Noun="residential building"].Verb, "build")) or&#xd;
-not(list contains(Activities_Value[Noun="residential building"].Verb, "add to"))) and&#xd;
-ProposedSetBackAccessoryBuildingRoad1 > 0 and&#xd;
-ProposedSetBackAccessoryBuildingRoad1_Value &lt; 3 then &#xd;
+      <dmn:text>if ProposedSetBackAccessoryBuildingRoad1_Value &lt; 3 then &#xd;
 ProposedSetBackAccessoryBuildingRoad1 + 1 else&#xd;
   if (list contains(Activities_Value[Noun="residential structure"].Verb, "build") or&#xd;
   list contains(Activities_Value[Noun="residential structure"].Verb, "add to")) and&#xd;
