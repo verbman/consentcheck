@@ -427,8 +427,13 @@ else 0&#xd;
   (not(list contains(Activities_Value[Noun="accessory building"].Verb, "build")) and  &#xd;
   not(list contains(Activities_Value[Noun="accessory building"].Verb, "add to"))) then 0 else&#xd;
   if not(CornerSite_Value) and&#xd;
-  not(CuldesacDeadendSite_Value) and &#xd;
+  not(CuldesacDeadendSite_Value) then &#xd;
+  if (not(list contains(Activities_Value[Noun="residential building"].Verb, "build")) and &#xd;
+  not(list contains(Activities_Value[Noun="residential building"].Verb, "add to"))) and&#xd;
   ProposedSetBackAccessoryBuilding_Value &lt; 3 then&#xd;
+  ProposedSetBackAccessoryBuilding + 1 else 0&#xd;
+  if (list contains(Activities_Value[Noun="residential building"].Verb, "build") or &#xd;
+  list contains(Activities_Value[Noun="residential building"].Verb, "add to")) then&#xd;
   ProposedSetBackAccessoryBuilding + 1 else 0&#xd;
 else 0&#xd;
 &#xd;
@@ -731,7 +736,12 @@ not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "O
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_C284B79E-25EF-4402-A184-F861D9C7FA4D">
       <dmn:text>if FrontYardsAccessoryBuildingActivities(Activities_Value) then&#xd;
-  if ProposedSetBackAccessoryBuildingRoad1_Value &lt; 3 then &#xd;
+  if (not(list contains(Activities_Value[Noun="residential building"].Verb, "build")) and &#xd;
+  not(list contains(Activities_Value[Noun="residential building"].Verb, "add to"))) and&#xd;
+  ProposedSetBackAccessoryBuildingRoad1_Value &lt; 3 then &#xd;
+  ProposedSetBackAccessoryBuildingRoad1 + 1 else &#xd;
+  if (list contains(Activities_Value[Noun="residential building"].Verb, "build")) or &#xd;
+  list contains(Activities_Value[Noun="residential building"].Verb, "add to")) then&#xd;
   ProposedSetBackAccessoryBuildingRoad1 + 1 else &#xd;
   if (list contains(Activities_Value[Noun="residential structure"].Verb, "build") or&#xd;
   list contains(Activities_Value[Noun="residential structure"].Verb, "add to")) and&#xd;
