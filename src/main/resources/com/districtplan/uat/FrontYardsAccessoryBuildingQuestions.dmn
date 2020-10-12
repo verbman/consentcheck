@@ -163,16 +163,20 @@ no</dmn:allowedAnswers>
     <dmn:knowledgeRequirement id="_61BB74D3-12EE-48CF-9364-06E3D5EA6A76">
       <dmn:requiredKnowledge href="#_CDF2F1B1-4002-46C9-B06E-211B4C7F3014"/>
     </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_CE6E9DEE-FE64-4BAD-B56E-CFE2B42023CC">
+      <dmn:requiredKnowledge href="#_819C1576-CB4C-4FA9-ADC8-720A7C0964C6"/>
+    </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_B875ED68-83DB-4215-B0A7-A5EB937446DA">
-      <dmn:text>if (list contains(SpatialLayers_Value[Type="Residential"].Title, "Inner Residential") or&#xd;
-list contains(SpatialLayers_Value[Type="Residential"].Title, "Medium Density Residential Area")) and&#xd;
-AccessoryBuildingStructureFrontYard_Value and&#xd;
-not(StructureDeckOnly(Activities_Value)) then&#xd;
-(AccessoryBuildingStructureFrontYard + 1) else&#xd;
-if list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential") and&#xd;
-not(CuldesacDeadendSite_Value) then&#xd;
-(CuldesacDeadendSite + 1) else&#xd;
-if StructureDeckOnly(Activities_Value) then 0 else 0&#xd;
+      <dmn:text>if FrontYardsAccessoryBuildingActivities(Activities_Value) then&#xd;
+  if (list contains(SpatialLayers_Value[Type="Residential"].Title, "Inner Residential") or&#xd;
+  list contains(SpatialLayers_Value[Type="Residential"].Title, "Medium Density Residential Area")) and&#xd;
+  AccessoryBuildingStructureFrontYard_Value and&#xd;
+  not(StructureDeckOnly(Activities_Value)) then&#xd;
+  (AccessoryBuildingStructureFrontYard + 1) else&#xd;
+  if list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential") and&#xd;
+  not(CuldesacDeadendSite_Value) then&#xd;
+  (CuldesacDeadendSite + 1) else&#xd;
+  if StructureDeckOnly(Activities_Value) then 0 else 0&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -622,10 +626,14 @@ no</dmn:allowedAnswers>
     <dmn:knowledgeRequirement id="_78765D9B-083F-484E-AF29-964BD12DB7CA">
       <dmn:requiredKnowledge href="#_CDF2F1B1-4002-46C9-B06E-211B4C7F3014"/>
     </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_ED7DA2A9-7C1D-4AAB-BF36-BFC2507FD29E">
+      <dmn:requiredKnowledge href="#_819C1576-CB4C-4FA9-ADC8-720A7C0964C6"/>
+    </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_D67F88CC-5A33-4531-AAF3-C832B81D6800">
-      <dmn:text>if StructureDeckOnly(Activities_Value) then 0 else&#xd;
-if list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential") and&#xd;
-AccessoryBuildingStructureFrontYard_Value then AccessoryBuildingStructureFrontYard + 1 else 0&#xd;
+      <dmn:text>if FrontYardsAccessoryBuildingActivities(Activities_Value) and &#xd;
+list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential") then&#xd;
+  if AccessoryBuildingStructureFrontYard_Value then AccessoryBuildingStructureFrontYard + 1 else&#xd;
+  if StructureDeckOnly(Activities_Value) then 0 else 0&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -1147,6 +1155,10 @@ not(list contains(Activities_Value[Noun="accessory building"].Verb, "add to"))) 
         <di:waypoint x="246.59813084112147" y="234.34210526315792"/>
         <di:waypoint x="556" y="289"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_CE6E9DEE-FE64-4BAD-B56E-CFE2B42023CC" dmnElementRef="_CE6E9DEE-FE64-4BAD-B56E-CFE2B42023CC">
+        <di:waypoint x="248.59813084112147" y="103.68421052631581"/>
+        <di:waypoint x="556" y="289"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_051A805A-304F-4E21-85F2-112F164F47BF" dmnElementRef="_051A805A-304F-4E21-85F2-112F164F47BF">
         <di:waypoint x="556" y="289"/>
         <di:waypoint x="870" y="666"/>
@@ -1369,6 +1381,10 @@ not(list contains(Activities_Value[Noun="accessory building"].Verb, "add to"))) 
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_78765D9B-083F-484E-AF29-964BD12DB7CA" dmnElementRef="_78765D9B-083F-484E-AF29-964BD12DB7CA">
         <di:waypoint x="246.59813084112147" y="234.34210526315792"/>
+        <di:waypoint x="864" y="288"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_ED7DA2A9-7C1D-4AAB-BF36-BFC2507FD29E" dmnElementRef="_ED7DA2A9-7C1D-4AAB-BF36-BFC2507FD29E">
+        <di:waypoint x="248.59813084112147" y="103.68421052631581"/>
         <di:waypoint x="864" y="288"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_A96E0525-3670-4141-99B7-307ACCAB9750" dmnElementRef="_A96E0525-3670-4141-99B7-307ACCAB9750">
