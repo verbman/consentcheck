@@ -193,30 +193,9 @@ list contains(rule.name, "5.3.8.1")</dmn:text>
       <dmn:requiredInput href="#_DD6217A7-9E9C-427D-AB4C-D2BFA5ED5CFB"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_6F2F393B-4CDA-427E-A06A-92427EC95773">
-      <dmn:text>if not(BoundaryActivities) then&#xd;
-if list contains(ActivityStatus,"Non Complying") then "Non Complying" else&#xd;
-if list contains(ActivityStatus,"Discretionary Unrestricted") and&#xd;
-not(list contains(ActivityStatus,"Non Complying")) then "Discretionary Unrestricted" else &#xd;
-if list contains(ActivityStatus,"Discretionary Restricted") and&#xd;
-not(list contains(ActivityStatus,"Discretionary Unrestricted")) and&#xd;
-not(list contains(ActivityStatus,"Non Complying")) then "Discretionary Restricted" else&#xd;
-if list contains(ActivityStatus,"Controlled") and&#xd;
-not(list contains(ActivityStatus,"Discretionary Restricted")) and&#xd;
-not(list contains(ActivityStatus,"Discretionary Unrestricted")) and&#xd;
-not(list contains(ActivityStatus,"Non Complying")) then "Controlled" else&#xd;
-if list contains(ActivityStatus,"Permitted") and&#xd;
-not(list contains(ActivityStatus,"Controlled")) and&#xd;
-not(list contains(ActivityStatus,"Discretionary Restricted")) and&#xd;
-not(list contains(ActivityStatus,"Discretionary Unrestricted")) and&#xd;
-not(list contains(ActivityStatus,"Non Complying")) then "Permitted" else null&#xd;
-else null&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-</dmn:text>
+      <dmn:text>if OverallActivityStatus = "Discretionary Unrestricted" then 30.3 else&#xd;
+if OverallActivityStatus = "Discretionary Restricted" then 30.2 else&#xd;
+if OverallActivityStatus = "Permitted" then 30.1 else 0</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:businessKnowledgeModel id="_2F793E9F-9F2F-43FB-9174-E74DD13ECB25" name="R5.2.1Triggered">
@@ -597,6 +576,11 @@ list contains(NotificationClause.name, "5.3.4.13")&#xd;
     <dmn:literalExpression id="_7472213B-01DF-4CF6-831B-384A3ED5A544">
       <dmn:text>if OverallActivityStatus = "Non Complying" then 5.5 else&#xd;
 if OverallActivityStatus = "Discretionary Unrestricted" then 5.4 else&#xd;
+if OverallActivityStatus = "Discretionary Restricted" then 5.3 else&#xd;
+if OverallActivityStatus = "Controlled" then 5.2 else&#xd;
+if OverallActivityStatus = "Permitted" then 5.1 else 0&#xd;
+&#xd;
+&#xd;
 &#xd;
 &#xd;
 </dmn:text>
