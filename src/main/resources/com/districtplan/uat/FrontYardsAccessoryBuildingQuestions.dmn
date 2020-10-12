@@ -330,8 +330,8 @@ then (Activities + 1) else 0&#xd;
     <dmn:literalExpression id="_1FAFE413-0D29-4033-A650-93768F1ED3EB">
       <dmn:text>if (list contains(Activities_Value[Noun="accessory building"].Verb, "build") or&#xd;
 list contains(Activities_Value[Noun="accessory building"].Verb, "add to")) then&#xd;
-  if MinimumWidthOfRoad1_Value !=null then ProposedSetBackAccessoryBuildingRoad1 + 1 else&#xd;
   if MinimumWidthOfRoad1 > 0 then MinimumWidthOfRoad1 + 1 else&#xd;
+  if MinimumWidthOfRoad1 = 0 ProposedSetBackAccessoryBuildingRoad1 + 1 else&#xd;
   if ProposedSetBackAccessoryBuildingRoad1_Value >= 3 then ProposedSetBackAccessoryBuildingRoad1 + 1 else 0&#xd;
 else 0&#xd;
 &#xd;
@@ -394,7 +394,7 @@ FrontYardsAccessoryBuildingActivities(Activities_Value)</dmn:text>
       <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_187EBBA1-43E3-4079-A1E6-7232A4822C76">
-      <dmn:text>if MinimumWidthOfRoad2_Value = null then 0 else&#xd;
+      <dmn:text>if MinimumWidthOfRoad2_Value != null then 0 else&#xd;
 if MinimumWidthOfRoad2_Value =null and&#xd;
 ProposedSetBackAccessoryBuildingRoad2_Value &lt; 3 then &#xd;
 ProposedSetBackAccessoryBuildingRoad2 + 1 else&#xd;
@@ -737,13 +737,14 @@ not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "O
       <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_C284B79E-25EF-4402-A184-F861D9C7FA4D">
-      <dmn:text>if MinimumWidthOfRoad1_Value = null then 0 else&#xd;
+      <dmn:text>if MinimumWidthOfRoad1_Value = null then&#xd;
 if ProposedSetBackAccessoryBuildingRoad1_Value &lt; 3 then &#xd;
 ProposedSetBackAccessoryBuildingRoad1 + 1 else&#xd;
 if (list contains(Activities_Value[Noun="residential structure"].Verb, "build") or&#xd;
 list contains(Activities_Value[Noun="residential structure"].Verb, "add to")) and&#xd;
 (not(list contains(Activities_Value[Noun="accessory building"].Verb, "build")) and  &#xd;
 not(list contains(Activities_Value[Noun="accessory building"].Verb, "add to"))) then 0 else 0&#xd;
+else 0&#xd;
 &#xd;
 &#xd;
 &#xd;
