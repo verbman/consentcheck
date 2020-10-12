@@ -183,6 +183,42 @@ list contains(rule.name, "5.3.8.1")</dmn:text>
       </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
+  <dmn:decision id="_0424E0D3-27DB-4634-8D49-CA242BFD0513" name="EarthworksRulesTriggered">
+    <dmn:extensionElements/>
+    <dmn:variable id="_C7CFA4EC-5D38-4C82-8052-226D1366FCAA" name="EarthworksRulesTriggered" typeRef="number"/>
+    <dmn:informationRequirement id="_B78033F0-85BE-4763-8D1D-67CA5C4EFF1A">
+      <dmn:requiredDecision href="#_ACBF9DC9-8567-4C59-A869-BE29AB326CC9"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_F12BCBFF-52E8-4E13-87A6-CA7B4376D002">
+      <dmn:requiredInput href="#_DD6217A7-9E9C-427D-AB4C-D2BFA5ED5CFB"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_6F2F393B-4CDA-427E-A06A-92427EC95773">
+      <dmn:text>if not(BoundaryActivities) then&#xd;
+if list contains(ActivityStatus,"Non Complying") then "Non Complying" else&#xd;
+if list contains(ActivityStatus,"Discretionary Unrestricted") and&#xd;
+not(list contains(ActivityStatus,"Non Complying")) then "Discretionary Unrestricted" else &#xd;
+if list contains(ActivityStatus,"Discretionary Restricted") and&#xd;
+not(list contains(ActivityStatus,"Discretionary Unrestricted")) and&#xd;
+not(list contains(ActivityStatus,"Non Complying")) then "Discretionary Restricted" else&#xd;
+if list contains(ActivityStatus,"Controlled") and&#xd;
+not(list contains(ActivityStatus,"Discretionary Restricted")) and&#xd;
+not(list contains(ActivityStatus,"Discretionary Unrestricted")) and&#xd;
+not(list contains(ActivityStatus,"Non Complying")) then "Controlled" else&#xd;
+if list contains(ActivityStatus,"Permitted") and&#xd;
+not(list contains(ActivityStatus,"Controlled")) and&#xd;
+not(list contains(ActivityStatus,"Discretionary Restricted")) and&#xd;
+not(list contains(ActivityStatus,"Discretionary Unrestricted")) and&#xd;
+not(list contains(ActivityStatus,"Non Complying")) then "Permitted" else null&#xd;
+else null&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:businessKnowledgeModel id="_2F793E9F-9F2F-43FB-9174-E74DD13ECB25" name="R5.2.1Triggered">
     <dmn:extensionElements/>
     <dmn:variable id="_B9C1CB93-CBBF-4AC6-85EC-BD847B3B2A4E" name="R5.2.1Triggered" typeRef="boolean"/>
@@ -549,6 +585,23 @@ list contains(NotificationClause.name, "5.3.4.13")&#xd;
       <dmn:text>list contains(NotificationClause.name, "5.3.5")</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
+  <dmn:decision id="_B3BD9C49-0088-4162-8F2D-D5C26DB5185A" name="ResidentialRulesTriggered">
+    <dmn:extensionElements/>
+    <dmn:variable id="_FDA23836-321A-4D35-97AA-25540F07580B" name="ResidentialRulesTriggered" typeRef="number"/>
+    <dmn:informationRequirement id="_D7B8CD6D-FA68-4F6A-9567-4F06646BA2C0">
+      <dmn:requiredDecision href="#_ACBF9DC9-8567-4C59-A869-BE29AB326CC9"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_0B80074A-380E-4777-8B62-4FFE8A93E2C8">
+      <dmn:requiredInput href="#_DD6217A7-9E9C-427D-AB4C-D2BFA5ED5CFB"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_7472213B-01DF-4CF6-831B-384A3ED5A544">
+      <dmn:text>if OverallActivityStatus = "Non Complying" then 5.5 else&#xd;
+if OverallActivityStatus = "Discretionary Unrestricted" then 5.4 else&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:decision id="_98B9B9B4-7E51-4655-8945-6E0C64B6FFB5" name="OverallActivityStatusGuidance">
     <dmn:extensionElements/>
     <dmn:variable id="_068486A2-C167-4CAF-BB03-242DCDA12DEA" name="OverallActivityStatusGuidance" typeRef="Types.PlanContents"/>
@@ -752,7 +805,7 @@ list contains(rule.name, "5.3.10.B.4")&#xd;
   </dmn:businessKnowledgeModel>
   <dmn:decision id="_DAFD80F5-971D-47C7-B731-33D031B3CC81" name="OverallRulesTriggered">
     <dmn:extensionElements/>
-    <dmn:variable id="_01521074-F4F9-4CB5-85D7-F349E7CA3AAD" name="OverallRulesTriggered" typeRef="boolean"/>
+    <dmn:variable id="_01521074-F4F9-4CB5-85D7-F349E7CA3AAD" name="OverallRulesTriggered" typeRef="number"/>
     <dmn:informationRequirement id="_16D2A9D9-1C2F-40FA-A7A2-B5090B2A6A5A">
       <dmn:requiredInput href="#_DD6217A7-9E9C-427D-AB4C-D2BFA5ED5CFB"/>
     </dmn:informationRequirement>
@@ -802,7 +855,11 @@ list contains(rule.name, "5.3.10.B.4")&#xd;
       <dmn:requiredKnowledge href="#_2F793E9F-9F2F-43FB-9174-E74DD13ECB25"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_8FCB82E1-F73B-4D8C-9B13-93C0BC6178C4">
-      <dmn:text>R5.1.7Triggered(RulesTriggered)&#xd;
+      <dmn:text>If OverallActivityStatus = "Non Complying" then 5.5 else&#xd;
+OverallActivityStatus = "Discretionary Unrestricted" then 5.4 &#xd;
+&#xd;
+&#xd;
+R5.1.7Triggered(RulesTriggered)&#xd;
 R5.2.1Triggered(RulesTriggered)&#xd;
 R5.1.8Triggered(RulesTriggered)&#xd;
 R5.3.4Triggered(RulesTriggered)&#xd;
@@ -2464,6 +2521,9 @@ list contains(StandardsNotMet.name, "5.6.2.15.2")</dmn:text>
             <kie:width>50.0</kie:width>
             <kie:width>575.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_7472213B-01DF-4CF6-831B-384A3ED5A544">
+            <kie:width>722.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_CA05FEA8-E452-4B00-B30E-351D29BBAC40">
             <kie:width>432.0</kie:width>
           </kie:ComponentWidths>
@@ -2532,6 +2592,9 @@ list contains(StandardsNotMet.name, "5.6.2.15.2")</dmn:text>
           <kie:ComponentWidths dmnElementRef="_13E34E95-2C9D-4073-B767-B05F97307EFA">
             <kie:width>50.0</kie:width>
             <kie:width>575.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_6F2F393B-4CDA-427E-A06A-92427EC95773">
+            <kie:width>722.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_5D57CE84-1DAA-4D4F-9627-58CD32B76A9C">
             <kie:width>575.0</kie:width>
@@ -2976,6 +3039,15 @@ list contains(StandardsNotMet.name, "5.6.2.15.2")</dmn:text>
         <dc:Bounds x="1668" y="266" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_B3BD9C49-0088-4162-8F2D-D5C26DB5185A" dmnElementRef="_B3BD9C49-0088-4162-8F2D-D5C26DB5185A" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="204" green="218" blue="183"/>
+          <dmndi:StrokeColor red="133" green="150" blue="99"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="559" y="464" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_3C31E54F-B0EE-4CEE-AA62-F9885BEACA79" dmnElementRef="_3C31E54F-B0EE-4CEE-AA62-F9885BEACA79" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="204" green="207" blue="199"/>
@@ -3073,6 +3145,15 @@ list contains(StandardsNotMet.name, "5.6.2.15.2")</dmn:text>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="856" y="607" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_0424E0D3-27DB-4634-8D49-CA242BFD0513" dmnElementRef="_0424E0D3-27DB-4634-8D49-CA242BFD0513" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="204" green="218" blue="183"/>
+          <dmndi:StrokeColor red="133" green="150" blue="99"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="696" y="463" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_8D113803-F2A3-4AE1-B0B6-ED557863B81F" dmnElementRef="_8D113803-F2A3-4AE1-B0B6-ED557863B81F" isCollapsed="false">
@@ -3610,6 +3691,14 @@ list contains(StandardsNotMet.name, "5.6.2.15.2")</dmn:text>
         <di:waypoint x="136.29906542056074" y="364.3421052631579"/>
         <di:waypoint x="301" y="525"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_D7B8CD6D-FA68-4F6A-9567-4F06646BA2C0" dmnElementRef="_D7B8CD6D-FA68-4F6A-9567-4F06646BA2C0">
+        <di:waypoint x="451" y="61"/>
+        <di:waypoint x="609" y="489"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_0B80074A-380E-4777-8B62-4FFE8A93E2C8" dmnElementRef="_0B80074A-380E-4777-8B62-4FFE8A93E2C8">
+        <di:waypoint x="136.29906542056074" y="824.3421052631579"/>
+        <di:waypoint x="609" y="489"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_280F0612-68A4-4E0F-BBE7-3EB7B41092A2" dmnElementRef="_280F0612-68A4-4E0F-BBE7-3EB7B41092A2">
         <di:waypoint x="136.29906542056074" y="824.3421052631579"/>
         <di:waypoint x="301" y="824"/>
@@ -3617,6 +3706,14 @@ list contains(StandardsNotMet.name, "5.6.2.15.2")</dmn:text>
       <dmndi:DMNEdge id="dmnedge-_610EEAE4-9351-4201-AC10-98B13BAE9FCD" dmnElementRef="_610EEAE4-9351-4201-AC10-98B13BAE9FCD">
         <di:waypoint x="136.29906542056074" y="364.3421052631579"/>
         <di:waypoint x="301" y="464"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_B78033F0-85BE-4763-8D1D-67CA5C4EFF1A" dmnElementRef="_B78033F0-85BE-4763-8D1D-67CA5C4EFF1A">
+        <di:waypoint x="451" y="61"/>
+        <di:waypoint x="746" y="463"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_F12BCBFF-52E8-4E13-87A6-CA7B4376D002" dmnElementRef="_F12BCBFF-52E8-4E13-87A6-CA7B4376D002">
+        <di:waypoint x="136.29906542056074" y="824.3421052631579"/>
+        <di:waypoint x="746" y="488"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_3B0E5E4A-F47F-48D6-8D43-8F775B086482" dmnElementRef="_3B0E5E4A-F47F-48D6-8D43-8F775B086482">
         <di:waypoint x="136.29906542056074" y="364.3421052631579"/>
