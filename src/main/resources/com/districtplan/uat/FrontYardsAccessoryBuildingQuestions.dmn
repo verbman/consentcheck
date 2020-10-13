@@ -379,11 +379,15 @@ FrontYardsAccessoryBuildingActivities(Activities_Value)</dmn:text>
     <dmn:informationRequirement id="_FE8EE012-A30A-4D31-B642-5A4CB0EBBB6D">
       <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_A029B8E2-9E0E-4CAA-952C-AD137E3933E4">
+      <dmn:requiredInput href="#_110689B3-7F3A-4421-BB20-67677E9B15C5"/>
+    </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_A7F17CEA-D728-4455-8E39-7AFB74F22DF0">
       <dmn:requiredKnowledge href="#_819C1576-CB4C-4FA9-ADC8-720A7C0964C6"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_187EBBA1-43E3-4079-A1E6-7232A4822C76">
-      <dmn:text>if FrontYardsAccessoryBuildingActivities(Activities_Value) then&#xd;
+      <dmn:text>if FrontYardsAccessoryBuildingActivities(Activities_Value) and&#xd;
+list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential") then&#xd;
   if (list contains(Activities_Value[Noun="residential building"].Verb, "build") or  &#xd;
   list contains(Activities_Value[Noun="residential building"].Verb, "add to") and&#xd;
   not(list contains(Activities_Value[Noun="residential structure"].Verb, "build")) or&#xd;
@@ -736,14 +740,18 @@ not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "O
     <dmn:informationRequirement id="_87F660E8-2F81-4E86-BE49-09CDDBE261A6">
       <dmn:requiredInput href="#_3D7FE2C3-569A-4E39-A81B-D00596D24EDD"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_4D6070BB-043D-414C-9A2F-9DEA964F43BF">
+      <dmn:requiredInput href="#_110689B3-7F3A-4421-BB20-67677E9B15C5"/>
+    </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_7F92A769-0459-4A43-8B28-0DB7E16A7FF2">
       <dmn:requiredKnowledge href="#_819C1576-CB4C-4FA9-ADC8-720A7C0964C6"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_C284B79E-25EF-4402-A184-F861D9C7FA4D">
-      <dmn:text>if FrontYardsAccessoryBuildingActivities(Activities_Value) then&#xd;
+      <dmn:text>if FrontYardsAccessoryBuildingActivities(Activities_Value) and&#xd;
+list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential") then&#xd;
   if (list contains(Activities_Value[Noun="residential building"].Verb, "build") or  &#xd;
-  list contains(Activities_Value[Noun="residential building"].Verb, "add to") and&#xd;
-  not(list contains(Activities_Value[Noun="residential structure"].Verb, "build")) or&#xd;
+  list contains(Activities_Value[Noun="residential building"].Verb, "add to")) or&#xd;
+  (not(list contains(Activities_Value[Noun="residential structure"].Verb, "build")) or&#xd;
   not(list contains(Activities_Value[Noun="residential structure"].Verb, "add to"))) then 7 else&#xd;
   if ProposedSetBackAccessoryBuildingRoad1 > 0 then&#xd;
     if (list contains(Activities_Value[Noun="residential structure"].Verb, "build") or&#xd;
@@ -1291,6 +1299,10 @@ else 0&#xd;
         <di:waypoint x="248.59813084112147" y="103.68421052631581"/>
         <di:waypoint x="870" y="907"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_A029B8E2-9E0E-4CAA-952C-AD137E3933E4" dmnElementRef="_A029B8E2-9E0E-4CAA-952C-AD137E3933E4">
+        <di:waypoint x="240.59813084112147" y="297.6842105263158"/>
+        <di:waypoint x="870" y="907"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_3424CAF8-111B-4359-8328-31D8669A0809" dmnElementRef="_3424CAF8-111B-4359-8328-31D8669A0809">
         <di:waypoint x="694" y="398"/>
         <di:waypoint x="870" y="480"/>
@@ -1473,6 +1485,10 @@ else 0&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7F92A769-0459-4A43-8B28-0DB7E16A7FF2" dmnElementRef="_7F92A769-0459-4A43-8B28-0DB7E16A7FF2">
         <di:waypoint x="248.59813084112147" y="103.68421052631581"/>
+        <di:waypoint x="928" y="739"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_4D6070BB-043D-414C-9A2F-9DEA964F43BF" dmnElementRef="_4D6070BB-043D-414C-9A2F-9DEA964F43BF">
+        <di:waypoint x="240.59813084112147" y="297.6842105263158"/>
         <di:waypoint x="928" y="739"/>
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
