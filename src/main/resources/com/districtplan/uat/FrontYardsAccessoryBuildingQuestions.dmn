@@ -726,17 +726,23 @@ not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "O
     <dmn:informationRequirement id="_41DED29F-9DEA-45B5-A959-315A3E1FE0D6">
       <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_87F660E8-2F81-4E86-BE49-09CDDBE261A6">
+      <dmn:requiredInput href="#_3D7FE2C3-569A-4E39-A81B-D00596D24EDD"/>
+    </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_7F92A769-0459-4A43-8B28-0DB7E16A7FF2">
       <dmn:requiredKnowledge href="#_819C1576-CB4C-4FA9-ADC8-720A7C0964C6"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_C284B79E-25EF-4402-A184-F861D9C7FA4D">
-      <dmn:text>if FrontYardsAccessoryBuildingActivities(Activities_Value) then&#xd;
-  if ProposedSetBackAccessoryBuildingRoad1_Value &lt; 3 then &#xd;
-  ProposedSetBackAccessoryBuildingRoad1 + 1 else &#xd;
+      <dmn:text>if FrontYardsAccessoryBuildingActivities(Activities_Value) and &#xd;
+ProposedSetBackAccessoryBuildingRoad1 > 0 then&#xd;
   if (list contains(Activities_Value[Noun="residential structure"].Verb, "build") or&#xd;
   list contains(Activities_Value[Noun="residential structure"].Verb, "add to")) and&#xd;
   (not(list contains(Activities_Value[Noun="accessory building"].Verb, "build")) and  &#xd;
-  not(list contains(Activities_Value[Noun="accessory building"].Verb, "add to"))) then 0 else 0&#xd;
+  not(list contains(Activities_Value[Noun="accessory building"].Verb, "add to"))) then 0 else&#xd;
+  if (list contains(activities[Noun="residential building"].Verb, "build") or &#xd;
+  list contains(activities[Noun="residential building"].Verb, "add to")) then 7 else&#xd;
+  if ProposedSetBackAccessoryBuildingRoad1_Value &lt; 3 then &#xd;
+  ProposedSetBackAccessoryBuildingRoad1 + 1 else 0&#xd;
 else 0&#xd;
 &#xd;
 &#xd;
@@ -1453,6 +1459,10 @@ else 0&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7F92A769-0459-4A43-8B28-0DB7E16A7FF2" dmnElementRef="_7F92A769-0459-4A43-8B28-0DB7E16A7FF2">
         <di:waypoint x="248.59813084112147" y="103.68421052631581"/>
+        <di:waypoint x="929" y="740"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_87F660E8-2F81-4E86-BE49-09CDDBE261A6" dmnElementRef="_87F660E8-2F81-4E86-BE49-09CDDBE261A6">
+        <di:waypoint x="240.59813084112147" y="438.3421052631579"/>
         <di:waypoint x="929" y="740"/>
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
