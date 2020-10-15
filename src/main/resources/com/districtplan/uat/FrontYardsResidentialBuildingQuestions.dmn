@@ -298,7 +298,9 @@ list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential"
     <dmn:literalExpression id="_CEE42BE3-4E3E-4A3B-975C-2E0636260546">
       <dmn:text>if not(CuldesacDeadendSite_Value) and&#xd;
 CornerSite_Value then&#xd;
-  if (list contains(Activities_Value[Noun="accessory building"].Verb, "build") or  &#xd;
+  if (list contains(Activities_Value[Noun="residential building"].Verb, "build") or  &#xd;
+  list contains(Activities_Value[Noun="residential building"].Verb, "add to")) and&#xd;
+  (list contains(Activities_Value[Noun="accessory building"].Verb, "build") or  &#xd;
   list contains(Activities_Value[Noun="accessory building"].Verb, "add to")) then 6 else&#xd;
 CornerSite + 1 else 0&#xd;
 &#xd;
