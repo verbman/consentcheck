@@ -25,7 +25,9 @@
     </dmn:informationRequirement>
     <dmn:literalExpression id="_187EBBA1-43E3-4079-A1E6-7232A4822C76">
       <dmn:text>if ProposedSetBackRoad2 > 0 then&#xd;
-  if (list contains(Activities_Value[Noun="accessory building"].Verb, "build") or  &#xd;
+  if (list contains(Activities_Value[Noun="residential building"].Verb, "build") or  &#xd;
+  list contains(Activities_Value[Noun="residential building"].Verb, "add to")) and&#xd;
+  (list contains(Activities_Value[Noun="accessory building"].Verb, "build") or  &#xd;
   list contains(Activities_Value[Noun="accessory building"].Verb, "add to")) then 9 else&#xd;
   if (list contains(Activities_Value[Noun="accessory building"].Verb, "build") or  &#xd;
   list contains(Activities_Value[Noun="accessory building"].Verb, "add to")) and&#xd;
@@ -74,9 +76,13 @@ else 0&#xd;
     </dmn:informationRequirement>
     <dmn:literalExpression id="_3BA87EAE-5FD4-4859-8609-A9A58050A7F7">
       <dmn:text>if not(CornerSite_Value) and&#xd;
-not(CuldesacDeadendSite_Value) and&#xd;
-ProposedSetBack_Value &lt; 3 then&#xd;
-ProposedSetBack + 1 else 0&#xd;
+not(CuldesacDeadendSite_Value) then&#xd;
+  if list contains(Activities_Value[Noun="accessory building"].Verb, "add to")) and&#xd;
+  (not(list contains(Activities_Value[Noun="residential building"].Verb, "build")) and  &#xd;
+  not(list contains(Activities_Value[Noun="residential building"].Verb, "add to"))) then 0 else&#xd;
+  if ProposedSetBack_Value &lt; 3 then&#xd;
+  ProposedSetBack + 1 else 0&#xd;
+else 0&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -461,7 +467,9 @@ else 0&#xd;
     </dmn:informationRequirement>
     <dmn:literalExpression id="_C284B79E-25EF-4402-A184-F861D9C7FA4D">
       <dmn:text>if ProposedSetBackRoad1 > 0 then&#xd;
-  if (list contains(Activities_Value[Noun="accessory building"].Verb, "build") or  &#xd;
+  if (list contains(Activities_Value[Noun="residential building"].Verb, "build") or  &#xd;
+  list contains(Activities_Value[Noun="residential building"].Verb, "add to")) and&#xd;
+  (list contains(Activities_Value[Noun="accessory building"].Verb, "build") or  &#xd;
   list contains(Activities_Value[Noun="accessory building"].Verb, "add to")) then 7 else&#xd;
   if (list contains(Activities_Value[Noun="accessory building"].Verb, "build") or  &#xd;
   list contains(Activities_Value[Noun="accessory building"].Verb, "add to")) and&#xd;
