@@ -277,7 +277,9 @@ if list contains(spatiallayers[Type="North Kelburn Bolton Street Area"].Title, "
   ProposedResidentialBuildingMaxHeight &lt;= S5.6.2.5.1 then true else&#xd;
   if ProposedResidentialBuildingMaxHeight = null and&#xd;
   ProposedInfillMaxHeight != null and&#xd;
-  ProposedInfillMaxHeight &lt;= S5.6.2.5.1 then true else false&#xd;
+  ProposedInfillMaxHeight &lt;= S5.6.2.5.1 then true else &#xd;
+  if ProposedResidentialBuildingMaxHeight = null and &#xd;
+  ProposedInfillMaxHeight = null then null else false&#xd;
 else null&#xd;
 &#xd;
 &#xd;
@@ -3207,6 +3209,9 @@ OR2ResidentialCoastalEdge(SpatialLayers) and&#xd;
             <kie:width>50.0</kie:width>
             <kie:width>658.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_E423E5A9-E0C9-4A1E-AB01-5761CA01D1EA">
+            <kie:width>300.0</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_A892692C-EB4B-45BA-9DCE-AEC40BE09B80">
             <kie:width>50.0</kie:width>
             <kie:width>100.0</kie:width>
@@ -3311,9 +3316,6 @@ OR2ResidentialCoastalEdge(SpatialLayers) and&#xd;
           <kie:ComponentWidths dmnElementRef="_16DD9825-7C24-4665-8946-99907739FC58">
             <kie:width>50.0</kie:width>
             <kie:width>875.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_E423E5A9-E0C9-4A1E-AB01-5761CA01D1EA">
-            <kie:width>300.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_A4A1E05C-5CA7-465F-8B38-51BCB0F1016B">
             <kie:width>658.0</kie:width>
@@ -3666,6 +3668,15 @@ OR2ResidentialCoastalEdge(SpatialLayers) and&#xd;
         <dc:Bounds x="975" y="276.6842105263158" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_96257A6F-C3F8-4638-A781-9F182008FF0F" dmnElementRef="_96257A6F-C3F8-4638-A781-9F182008FF0F" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="556" y="64" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_F2508D1D-F361-4DF5-A728-C63F349F75F5" dmnElementRef="_F2508D1D-F361-4DF5-A728-C63F349F75F5" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="204" green="218" blue="183"/>
@@ -3844,15 +3855,6 @@ OR2ResidentialCoastalEdge(SpatialLayers) and&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="124.5981308411215" y="1005" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_96257A6F-C3F8-4638-A781-9F182008FF0F" dmnElementRef="_96257A6F-C3F8-4638-A781-9F182008FF0F" isCollapsed="false">
-        <dmndi:DMNStyle>
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="0" green="0" blue="0"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="556" y="64" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_B96E69D4-B34B-4D1F-A9B9-C8021CE93A83" dmnElementRef="_B96E69D4-B34B-4D1F-A9B9-C8021CE93A83" isCollapsed="false">
@@ -4380,6 +4382,14 @@ OR2ResidentialCoastalEdge(SpatialLayers) and&#xd;
         <di:waypoint x="1034" y="501"/>
         <di:waypoint x="1430" y="509"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_A1436C45-AF05-441B-9ED0-0E7D11FAB13C" dmnElementRef="_A1436C45-AF05-441B-9ED0-0E7D11FAB13C">
+        <di:waypoint x="474" y="209"/>
+        <di:waypoint x="606" y="89"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_F0F799FF-CD24-41D5-AB9B-593ECCC9036C" dmnElementRef="_F0F799FF-CD24-41D5-AB9B-593ECCC9036C">
+        <di:waypoint x="474" y="605"/>
+        <di:waypoint x="606" y="89"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_58453B00-E63D-4238-8FFB-FBF26C9E2888" dmnElementRef="_58453B00-E63D-4238-8FFB-FBF26C9E2888">
         <di:waypoint x="474" y="209"/>
         <di:waypoint x="1430" y="665"/>
@@ -4515,14 +4525,6 @@ OR2ResidentialCoastalEdge(SpatialLayers) and&#xd;
       <dmndi:DMNEdge id="dmnedge-_051D7738-FF1C-4ED0-B8F4-5FC44FCD96B4" dmnElementRef="_051D7738-FF1C-4ED0-B8F4-5FC44FCD96B4">
         <di:waypoint x="176.5981308411215" y="501.3421052631579"/>
         <di:waypoint x="1430" y="586"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_A1436C45-AF05-441B-9ED0-0E7D11FAB13C" dmnElementRef="_A1436C45-AF05-441B-9ED0-0E7D11FAB13C">
-        <di:waypoint x="474" y="209"/>
-        <di:waypoint x="606" y="89"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_F0F799FF-CD24-41D5-AB9B-593ECCC9036C" dmnElementRef="_F0F799FF-CD24-41D5-AB9B-593ECCC9036C">
-        <di:waypoint x="474" y="605"/>
-        <di:waypoint x="606" y="89"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_624A459D-2937-4FCD-ABC5-4F0687CD15F1" dmnElementRef="_624A459D-2937-4FCD-ABC5-4F0687CD15F1">
         <di:waypoint x="1026" y="210"/>
