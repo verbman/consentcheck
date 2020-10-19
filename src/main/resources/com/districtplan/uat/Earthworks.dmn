@@ -25,12 +25,19 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
     <dmn:informationRequirement id="_AB7FFA16-F3DD-4D0F-8DDF-C7684CE1A587">
       <dmn:requiredDecision href="#_77B3BB44-CB53-4CDD-9D4E-30D4B41D46B9"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_D728C721-5066-41AE-ADCD-05C30E63FEC2">
-      <dmn:requiredDecision href="#_725A73D7-5E77-4F63-97DC-513004766152"/>
+    <dmn:informationRequirement id="_B66A58BC-6AF9-407C-BA53-E3D57E47D166">
+      <dmn:requiredInput href="#_9AF94EE9-C81E-4E15-8287-3AFE94D76B74"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_9FDEAA98-2968-42B0-AE0F-90A85150A0D8">
-      <dmn:text>if R30.1.1.1_b_i !=null then R30.1.1.1_b_i else&#xd;
-if R30.1.2.1_b_i !=null then R30.1.2.1_b_i else 0</dmn:text>
+      <dmn:text>if (not(list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edge"))) and&#xd;
+(list contains(SpatialLayers[Type="Residential"].Title, "Inner Residential") or&#xd;
+list contains(SpatialLayers[Type="Residential"].Title, "Medium Density Residential Area") or&#xd;
+list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) then 2.5 else&#xd;
+if R30.1.2.1_b_i !=null then R30.1.2.1_b_i else 0&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:decision id="_77B3BB44-CB53-4CDD-9D4E-30D4B41D46B9" name="R30.1.2.1_b_i">
@@ -211,7 +218,7 @@ list contains(Activities[Noun="landslip"].Verb, "stabilise")) and&#xd;
 (list contains(SpatialLayers[Type="Residential"].Title, "Inner Residential") or&#xd;
 list contains(SpatialLayers[Type="Residential"].Title, "Medium Density Residential Area") or&#xd;
 list contains(SpatialLayers[Type="Residential"].Title, "Outer Residential")) and&#xd;
-CutFillHeightDepth > R30.1.1.1_a_i then 2.5 else 0&#xd;
+CutFillHeightDepth > R30.1.1.1_a_i then 2.5 else null&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -10580,8 +10587,8 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
         <di:waypoint x="759" y="1186"/>
         <di:waypoint x="926" y="835"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_D728C721-5066-41AE-ADCD-05C30E63FEC2" dmnElementRef="_D728C721-5066-41AE-ADCD-05C30E63FEC2">
-        <di:waypoint x="759" y="311"/>
+      <dmndi:DMNEdge id="dmnedge-_B66A58BC-6AF9-407C-BA53-E3D57E47D166" dmnElementRef="_B66A58BC-6AF9-407C-BA53-E3D57E47D166">
+        <di:waypoint x="249.59813084112147" y="788.6842105263158"/>
         <di:waypoint x="926" y="835"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_383FBE26-154A-4433-A40B-FFA2387614E7" dmnElementRef="_383FBE26-154A-4433-A40B-FFA2387614E7">
