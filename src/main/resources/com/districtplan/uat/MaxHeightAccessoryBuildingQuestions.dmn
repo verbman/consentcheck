@@ -109,6 +109,9 @@ list contains(activities[Noun="accessory building"].Verb, "add to")&#xd;
     <dmn:informationRequirement id="_6C3A0681-1314-418C-9F7D-311EB3C0F992">
       <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_2D34F5CC-78A0-458E-98B2-77CC6ACE51D0">
+      <dmn:requiredInput href="#_F5E6AE4A-91CE-4BCD-89BC-72A096471B68"/>
+    </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_D6FCE218-6FA1-458C-8A8A-7975F48F0799">
       <dmn:requiredKnowledge href="#_451EE7E1-3B0A-4229-9EDE-300A2835B4BD"/>
     </dmn:knowledgeRequirement>
@@ -117,7 +120,8 @@ list contains(activities[Noun="accessory building"].Verb, "add to")&#xd;
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_8FAE5DC9-6730-4FA1-99AB-9CA45A86A5F4">
       <dmn:text>if MaxHeightAccessoryBuildingActivities(Activities_Value) and&#xd;
-ResidentialAreasPre1930DemolitionControls(SpatialLayers_Value) then Activities + 1 else 0&#xd;
+ResidentialAreasPre1930DemolitionControls(SpatialLayers_Value) and&#xd;
+list contains(ExistingBuildings, "residential building") then Activities + 1 else 0&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -127,6 +131,10 @@ ResidentialAreasPre1930DemolitionControls(SpatialLayers_Value) then Activities +
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
+  <dmn:inputData id="_F5E6AE4A-91CE-4BCD-89BC-72A096471B68" name="ExistingBuildings">
+    <dmn:extensionElements/>
+    <dmn:variable id="_F82CB901-EF50-4889-BB0B-3DEBD4461749" name="ExistingBuildings" typeRef="Types.ExistingBuildings"/>
+  </dmn:inputData>
   <dmn:decision id="_A2F298C8-8542-41C1-A9E3-9452A323B85D" name="Activities">
     <dmn:extensionElements/>
     <dmn:variable id="_4F716487-C01F-47E3-87B2-5704C699E77A" name="Activities" typeRef="number"/>
@@ -208,6 +216,8 @@ not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "I
   list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "OR2 - Residential Coastal Edge") then &#xd;
   Activities + 1 else&#xd;
   if AccessoryBuildingAbove13MetreContour > 0 then AccessoryBuildingAbove13MetreContour + 1 else&#xd;
+  if AccessoryBuildingAbove13MetreContour = 0 and &#xd;
+  AccessoryBuildingStreetFront = 0 then Activities + 1 else&#xd;
   if not(AccessoryBuildingStreetFront_Value) then AccessoryBuildingStreetFront + 1 else 0&#xd;
 else 0&#xd;
 &#xd;
@@ -411,6 +421,15 @@ ProposedAccessoryBuildingMaxHeight + 1 else 0&#xd;
         <dc:Bounds x="811" y="246" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_F5E6AE4A-91CE-4BCD-89BC-72A096471B68" dmnElementRef="_F5E6AE4A-91CE-4BCD-89BC-72A096471B68" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="940" y="244.6842105263158" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_A2F298C8-8542-41C1-A9E3-9452A323B85D" dmnElementRef="_A2F298C8-8542-41C1-A9E3-9452A323B85D" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="238" green="238" blue="238"/>
@@ -546,6 +565,10 @@ ProposedAccessoryBuildingMaxHeight + 1 else 0&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_946C56C2-9A21-4A39-86BE-2A5C1022A270" dmnElementRef="_946C56C2-9A21-4A39-86BE-2A5C1022A270">
         <di:waypoint x="229.59813084112147" y="257.3421052631579"/>
+        <di:waypoint x="861" y="271"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_2D34F5CC-78A0-458E-98B2-77CC6ACE51D0" dmnElementRef="_2D34F5CC-78A0-458E-98B2-77CC6ACE51D0">
+        <di:waypoint x="990" y="269.68421052631584"/>
         <di:waypoint x="861" y="271"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_1551339C-3421-4646-B87A-0792B40190F7" dmnElementRef="_1551339C-3421-4646-B87A-0792B40190F7">
