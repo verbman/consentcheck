@@ -162,6 +162,61 @@
       </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
+  <dmn:decision id="_34737E6B-65A6-4F10-9814-7930BE7474C9" name="NotNotificationClauseRules">
+    <dmn:extensionElements/>
+    <dmn:variable id="_50F517FE-52A7-4BE1-B520-25666979160E" name="NotNotificationClauseRules" typeRef="boolean"/>
+    <dmn:informationRequirement id="_7A4379A5-410D-4268-90CE-651DCC0F7700">
+      <dmn:requiredInput href="#_DD6217A7-9E9C-427D-AB4C-D2BFA5ED5CFB"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_FADBCDF4-2943-408E-B51C-882F62218AFC">
+      <dmn:text>list contains(RulesTriggered.name, "5.3.1.1") or&#xd;
+list contains(RulesTriggered.name, "5.3.1.2") or&#xd;
+list contains(RulesTriggered.name, "5.3.1.3") or&#xd;
+list contains(RulesTriggered.name, "5.3.1.4") or&#xd;
+list contains(RulesTriggered.name, "5.3.2.1") or&#xd;
+list contains(RulesTriggered.name, "5.3.2.2") or&#xd;
+list contains(RulesTriggered.name, "5.3.2.3") or&#xd;
+list contains(RulesTriggered.name, "5.3.2.4") or&#xd;
+list contains(RulesTriggered.name, "5.3.2.5") or&#xd;
+list contains(RulesTriggered.name, "5.3.2.6") or&#xd;
+list contains(RulesTriggered.name, "5.3.2.7") or&#xd;
+list contains(RulesTriggered.name, "5.3.2.8") or&#xd;
+list contains(RulesTriggered.name, "5.3.3") or&#xd;
+list contains(RulesTriggered.name, "5.3.5") or&#xd;
+list contains(RulesTriggered.name, "5.3.6") or&#xd;
+list contains(RulesTriggered.name, "5.3.7") or&#xd;
+list contains(RulesTriggered.name, "5.3.8") or&#xd;
+list contains(RulesTriggered.name, "5.3.9") or&#xd;
+list contains(RulesTriggered.name, "5.3.10") or&#xd;
+list contains(RulesTriggered.name, "5.3.10A") or&#xd;
+list contains(RulesTriggered.name, "5.3.10B") or&#xd;
+list contains(RulesTriggered.name, "5.3.11") or&#xd;
+list contains(RulesTriggered.name, "5.3.12") or&#xd;
+list contains(RulesTriggered.name, "5.3.13") or&#xd;
+list contains(RulesTriggered.name, "5.3.14") or&#xd;
+list contains(RulesTriggered.name, "5.3.14.9") or&#xd;
+list contains(RulesTriggered.name, "5.3.14.10") or&#xd;
+list contains(RulesTriggered.name, "5.3.14.11") or&#xd;
+list contains(RulesTriggered.name, "5.3.14.12") or&#xd;
+list contains(RulesTriggered.name, "5.3.14.13") or&#xd;
+list contains(RulesTriggered.name, "5.4.1") or&#xd;
+list contains(RulesTriggered.name, "5.4.2") or&#xd;
+list contains(RulesTriggered.name, "5.4.3") or&#xd;
+list contains(RulesTriggered.name, "5.4.4") or&#xd;
+list contains(RulesTriggered.name, "5.4.4.A") or&#xd;
+list contains(RulesTriggered.name, "5.4.5") or&#xd;
+list contains(RulesTriggered.name, "5.4.6") or&#xd;
+list contains(RulesTriggered.name, "5.4.7") or&#xd;
+list contains(RulesTriggered.name, "5.4.8") or&#xd;
+list contains(RulesTriggered.name, "5.5") &#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:decision id="_E14FFA00-42C2-412C-B6AD-EC579AB7805A" name="R5.3.10Notification">
     <dmn:extensionElements/>
     <dmn:variable id="_BDE334D2-A1BC-4B76-93CC-518C4190BD56" name="R5.3.10Notification" typeRef="boolean"/>
@@ -1109,6 +1164,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
     <dmn:informationRequirement id="_50E11D73-5813-4D60-91DF-7416C02AFB5C">
       <dmn:requiredInput href="#_1E770150-979C-49EA-AD68-399F5F571842"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_82E3F9A1-0DF9-4261-B1D6-30D11F750B80">
+      <dmn:requiredDecision href="#_34737E6B-65A6-4F10-9814-7930BE7474C9"/>
+    </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_B0A9E8D2-44C4-49F7-A743-EB2639DA7725">
       <dmn:requiredKnowledge href="#_4DC3E6CA-FDDC-44F8-B840-9447F7E6B336"/>
     </dmn:knowledgeRequirement>
@@ -1116,6 +1174,11 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
       <dmn:input id="_42D65579-03A5-442E-B33E-9C6C92266BA6">
         <dmn:inputExpression id="_96854239-A5C2-43FB-BDE1-F822771D1168" typeRef="Types.Status">
           <dmn:text>OverallActivityStatus</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_A5282E21-16E3-40D9-8DBD-6018E0458B46">
+        <dmn:inputExpression id="_9E4CAB22-8254-4B82-BFBC-5E2199AE1F64" typeRef="boolean">
+          <dmn:text>NotNotificationClauseRules</dmn:text>
         </dmn:inputExpression>
       </dmn:input>
       <dmn:input id="_CA6F23D8-B168-4EF0-800A-337FF2A4CDA6">
@@ -1170,6 +1233,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
         <dmn:inputEntry id="_7ABDB7C9-455E-4BC9-AAE5-A57E44B76B54">
           <dmn:text>"Boundary Activity"</dmn:text>
         </dmn:inputEntry>
+        <dmn:inputEntry id="_B257AF44-A786-4FB5-9E93-AE012B5D1C22">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
         <dmn:inputEntry id="_0C9E8141-77F0-453B-8223-BEC9AADC5CFC">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
@@ -1210,6 +1276,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
       <dmn:rule id="_0D1E5C79-D454-4E00-8BAE-AF5B4D47CF4A">
         <dmn:inputEntry id="_336A4C6C-7ABA-4E20-9609-E744115659AA">
           <dmn:text>"Permitted"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E5B74ECD-7B40-41A1-B31E-F954B9CE4C6B">
+          <dmn:text>-</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_77C3D9C6-2C0F-49F5-A54A-4341F43C8BD1">
           <dmn:text>-</dmn:text>
@@ -1252,6 +1321,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
         <dmn:inputEntry id="_D716997C-5BA2-455F-AA2B-44BDA44035CE">
           <dmn:text>"Controlled"</dmn:text>
         </dmn:inputEntry>
+        <dmn:inputEntry id="_20052CAD-F180-420F-B4BF-6A9EB9CF4CD6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
         <dmn:inputEntry id="_1F787957-D70F-43E4-B553-5B9BC56E3A9D">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
@@ -1292,6 +1364,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
       <dmn:rule id="_5B8445E4-EEBD-4004-9BED-EBBEF21510E7">
         <dmn:inputEntry id="_C0B6E324-A95D-4376-B098-2CF293AD30E3">
           <dmn:text>"Discretionary Restricted"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_04366F70-7002-4175-B7F7-A79E02F1FA84">
+          <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_F2C72624-5462-442A-8CFD-64A04060BCEF">
           <dmn:text>-</dmn:text>
@@ -1334,6 +1409,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
         <dmn:inputEntry id="_553375E6-B5AC-46C4-9B93-87B853B45189">
           <dmn:text>"Discretionary Unrestricted"</dmn:text>
         </dmn:inputEntry>
+        <dmn:inputEntry id="_E28F37A5-C1EE-4F10-B748-EC33248E5000">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
         <dmn:inputEntry id="_885A0383-E9E8-4F7A-A7C1-6C294E31DE02">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
@@ -1374,6 +1452,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
       <dmn:rule id="_B97698DF-A265-42F0-9C1F-44D8755D2DC5">
         <dmn:inputEntry id="_1927D829-3905-4095-B1CB-F86F2A84C240">
           <dmn:text>"Non Complying"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F61778CF-3259-49D7-81BE-2F2D9C2F634E">
+          <dmn:text>-</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_EAF68518-61BB-447B-A8EE-A10F7BDEB67C">
           <dmn:text>-</dmn:text>
@@ -1416,6 +1497,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
         <dmn:inputEntry id="_B28D1215-CB80-46A6-8895-CB8D87F4CD42">
           <dmn:text>"Discretionary Restricted"</dmn:text>
         </dmn:inputEntry>
+        <dmn:inputEntry id="_39BE0FC3-BBF3-4A56-83C3-34705C773987">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
         <dmn:inputEntry id="_BE4536C0-A196-4048-8D19-E29EA7FD3190">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
@@ -1456,6 +1540,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
       <dmn:rule id="_15DD3C8F-49B9-41CA-8DEE-167CD93C8891">
         <dmn:inputEntry id="_68B1053C-45BE-4B1D-A21E-A08792F16E38">
           <dmn:text>"Discretionary Unrestricted"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_471E0811-1C80-4846-8A83-85AA836EAAEF">
+          <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_79F3991D-5C61-471B-871A-327365376BE2">
           <dmn:text>-</dmn:text>
@@ -1498,6 +1585,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
         <dmn:inputEntry id="_6B849BBE-8CAC-4F44-A1A2-74B60D30A0C9">
           <dmn:text>"Discretionary Restricted"</dmn:text>
         </dmn:inputEntry>
+        <dmn:inputEntry id="_F4F8B802-B71C-4D65-86E9-6D9C56B79613">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
         <dmn:inputEntry id="_668C090D-EE07-4210-ABD7-B971AA76A0AF">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
@@ -1538,6 +1628,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
       <dmn:rule id="_DE51AEDA-9F60-47A6-A20F-D97869AC0C37">
         <dmn:inputEntry id="_9CFF3C55-8A90-465E-9473-65349E9BD340">
           <dmn:text>"Discretionary Unrestricted"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_73010B93-38A6-4C6D-8D06-CC4A771B9EB2">
+          <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_D5FE8697-0723-47C0-8106-ABB78EA0F8B2">
           <dmn:text>-</dmn:text>
@@ -1580,6 +1673,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
         <dmn:inputEntry id="_A9DC27F5-4803-4E8C-A778-12CD18280157">
           <dmn:text>"Discretionary Restricted"</dmn:text>
         </dmn:inputEntry>
+        <dmn:inputEntry id="_9507A673-5198-4D6D-B21A-1A4B73D022D1">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
         <dmn:inputEntry id="_C8BF346F-DB14-43FD-8720-0768D429DE7E">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
@@ -1620,6 +1716,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
       <dmn:rule id="_FC2E8E2E-C9BE-4633-9B4F-FA6FA94F65F9">
         <dmn:inputEntry id="_1E495476-6400-4FCF-B4AA-C69B6A3014BE">
           <dmn:text>"Discretionary Unrestricted"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4737D9A5-898B-4E08-826E-79FC77075A94">
+          <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_FD15CE26-EDBB-4DB2-9008-D9FAB636D5A2">
           <dmn:text>-</dmn:text>
@@ -1662,6 +1761,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
         <dmn:inputEntry id="_E6916C9D-8CCA-4DC8-93E9-3A9AE3D8F161">
           <dmn:text>"Discretionary Restricted"</dmn:text>
         </dmn:inputEntry>
+        <dmn:inputEntry id="_02E540BE-0A78-44B6-A4E8-F5973774C012">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
         <dmn:inputEntry id="_0DAA3E4A-CE2A-48A3-8B80-9304999E7F9F">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
@@ -1702,6 +1804,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
       <dmn:rule id="_1B27A055-27F5-419E-9FBF-13065143CAE3">
         <dmn:inputEntry id="_4303C55A-B4D7-423F-B433-5C4BE800A5A4">
           <dmn:text>"Discretionary Unrestricted"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_EBF6EF6C-0AB3-43BE-99CC-5070276290B7">
+          <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_518D775D-B354-4F3E-A5A2-7F821BAB340E">
           <dmn:text>-</dmn:text>
@@ -1744,6 +1849,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
         <dmn:inputEntry id="_34565F49-2C0C-4A28-901D-F41617744934">
           <dmn:text>"Discretionary Restricted"</dmn:text>
         </dmn:inputEntry>
+        <dmn:inputEntry id="_CBBF17A2-D3C6-4019-BD46-5F2A7A66C3A9">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
         <dmn:inputEntry id="_1F33962E-B376-455E-81A0-ECC1960A09B1">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
@@ -1784,6 +1892,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
       <dmn:rule id="_EF92EDE7-D020-4502-A632-F06CD56B3D16">
         <dmn:inputEntry id="_CE414625-797B-4917-B03C-05EE5B3C3776">
           <dmn:text>"Discretionary Unrestricted"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_97CA6B59-B396-4A02-997A-230895BC0B1D">
+          <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_F8D170C7-C016-4847-AA6A-93EF0792608C">
           <dmn:text>-</dmn:text>
@@ -1826,6 +1937,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
         <dmn:inputEntry id="_D1949D58-A632-4287-A895-909F8B8AA286">
           <dmn:text>"Discretionary Restricted"</dmn:text>
         </dmn:inputEntry>
+        <dmn:inputEntry id="_71FA8722-F4E9-4A45-85E1-C1172821F517">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
         <dmn:inputEntry id="_1EE4BD89-37DD-4418-A83B-52A937CB6AEE">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
@@ -1866,6 +1980,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
       <dmn:rule id="_E72D300E-C9F5-47F2-9779-07CEBA487FE1">
         <dmn:inputEntry id="_D98CA3A6-1633-43DE-B6FC-012E6E2046B7">
           <dmn:text>"Discretionary Unrestricted"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B8A56845-2D5F-47A1-950E-0ED04FA6FCC4">
+          <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_4B3541E2-5EE4-4F63-A70D-B35B53F2B186">
           <dmn:text>-</dmn:text>
@@ -1908,6 +2025,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
         <dmn:inputEntry id="_766C2856-9762-434D-BEE6-7E0E348CB5A4">
           <dmn:text>"Discretionary Restricted"</dmn:text>
         </dmn:inputEntry>
+        <dmn:inputEntry id="_FA86734E-6321-4469-B1DD-F0B4BE5F8900">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
         <dmn:inputEntry id="_4465FD74-67E6-4B7B-8762-7BD372513632">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
@@ -1948,6 +2068,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
       <dmn:rule id="_A9FF0DE8-E627-4AF7-B5F8-8B878A7E4EE2">
         <dmn:inputEntry id="_19B4F89A-F07C-4626-AAE9-FD7415924646">
           <dmn:text>"Discretionary Unrestricted"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_86251AE4-A156-4BAE-A0AD-22A65037B1D3">
+          <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_C7DF3E55-50D5-4510-9CF3-E76B2363F56E">
           <dmn:text>-</dmn:text>
@@ -1990,6 +2113,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
         <dmn:inputEntry id="_3ECE2981-99F3-4A59-BC41-459847EAF6BA">
           <dmn:text>"Discretionary Restricted"</dmn:text>
         </dmn:inputEntry>
+        <dmn:inputEntry id="_9D5C602E-97FB-4CDA-A4A7-1B49EE26BE30">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
         <dmn:inputEntry id="_28B8BF72-BC03-41A3-B543-9DE694C49B8F">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
@@ -2030,6 +2156,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
       <dmn:rule id="_98CE1FAF-4D96-42DE-A5C3-A2C7DE630ABF">
         <dmn:inputEntry id="_89B96A83-06AD-4274-A9A4-8E4C7853E1F9">
           <dmn:text>"Discretionary Unrestricted"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_71D75C39-B055-4A91-BBA4-7060EC3857DB">
+          <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_3CDC926B-E46B-48D4-97DE-3045D92A6EF2">
           <dmn:text>-</dmn:text>
@@ -2072,6 +2201,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
         <dmn:inputEntry id="_7ED9510B-6453-4BCC-ADD2-50F5B97C82CE">
           <dmn:text>"Discretionary Restricted"</dmn:text>
         </dmn:inputEntry>
+        <dmn:inputEntry id="_E2D560AB-CC5E-4E75-8DE8-507F8A6C920B">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
         <dmn:inputEntry id="_F8F067C4-4C79-49F6-B4F2-222D1BF46CD1">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
@@ -2112,6 +2244,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
       <dmn:rule id="_60A2808C-EE09-44F3-BF78-763317ABDF50">
         <dmn:inputEntry id="_AB0E8973-063D-4248-8072-B3F574257B71">
           <dmn:text>"Discretionary Unrestricted"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_64CCE362-984C-4EF2-9AF5-109A88E53AFA">
+          <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_F27D7A7C-AECB-47A5-B8DC-4B7574F87A59">
           <dmn:text>-</dmn:text>
@@ -2154,6 +2289,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
         <dmn:inputEntry id="_F30AB665-2EBF-4304-B2F0-327BB9D75B75">
           <dmn:text>"Discretionary Restricted"</dmn:text>
         </dmn:inputEntry>
+        <dmn:inputEntry id="_B6D8598D-0A60-4DBC-915A-2BC46A2EA008">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
         <dmn:inputEntry id="_E104762F-97FD-4681-8ABF-FC62C7348802">
           <dmn:text>false</dmn:text>
         </dmn:inputEntry>
@@ -2194,6 +2332,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
       <dmn:rule id="_07F99F9A-A712-4393-9453-18F7711E69A4">
         <dmn:inputEntry id="_2BD3DC98-C28C-4BB7-9AE0-985457B93576">
           <dmn:text>"Discretionary Unrestricted"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_34B2388F-83F9-44B5-9F11-C7637B8274E9">
+          <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_436BE0F6-98C1-4AB1-9419-5B1D2505C407">
           <dmn:text>false</dmn:text>
@@ -2236,6 +2377,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
         <dmn:inputEntry id="_AFEF92C4-881A-4C1F-B184-7673E92F220A">
           <dmn:text>"Discretionary Restricted"</dmn:text>
         </dmn:inputEntry>
+        <dmn:inputEntry id="_6EED04FC-BB50-4F8D-9981-CE9602C62F11">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
         <dmn:inputEntry id="_4C1F9AA2-F1E7-41C8-B0C0-0F1FEA9A3391">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
@@ -2276,6 +2420,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
       <dmn:rule id="_48437DE9-5E75-4442-99EE-1BD143D24C5A">
         <dmn:inputEntry id="_91953D1A-123A-42DD-8D9C-62BE360489A8">
           <dmn:text>"Discretionary Unrestricted"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E2D691C6-8004-48A1-BB20-7682946B65E7">
+          <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_2B52EC30-47F8-4F07-A194-8FC5DF13FC9F">
           <dmn:text>-</dmn:text>
@@ -2318,6 +2465,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
         <dmn:inputEntry id="_5918D8D8-7F61-4A5B-9FC0-E246204CA02A">
           <dmn:text>"Discretionary Restricted"</dmn:text>
         </dmn:inputEntry>
+        <dmn:inputEntry id="_704AC534-A084-4C05-98A6-D16E7B6E9ECE">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
         <dmn:inputEntry id="_C7C13FA9-F642-4A8C-96B9-EE6AD5A46F6D">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
@@ -2358,6 +2508,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
       <dmn:rule id="_CB10D606-B977-4495-972C-14C82CDCE097">
         <dmn:inputEntry id="_87151DEA-446B-411C-BDEE-01014305C91C">
           <dmn:text>"Discretionary Unrestricted"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_22BC6E1E-25A3-46CF-A4A0-803B6C996625">
+          <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_7F53F8F3-1E7A-46C7-9AD2-1FBCDBB6D00E">
           <dmn:text>-</dmn:text>
@@ -2400,6 +2553,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
         <dmn:inputEntry id="_A1808CBD-55B9-4FC0-A399-B2E544576C0E">
           <dmn:text>"Discretionary Restricted"</dmn:text>
         </dmn:inputEntry>
+        <dmn:inputEntry id="_60AA3DA4-AF72-4602-8E3E-7D305805461B">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
         <dmn:inputEntry id="_7ECF2EC9-EDBE-42E5-BB20-04EF22E6BD75">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
@@ -2440,6 +2596,9 @@ list contains(NotificationClauses.name, "5.3.1.3")</dmn:text>
       <dmn:rule id="_90F56E18-F695-4307-967B-45232F810D41">
         <dmn:inputEntry id="_727FD368-4FA7-45CF-B894-7DEFC461C440">
           <dmn:text>"Discretionary Unrestricted"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7B4084C5-45C0-4853-B4BA-B0E12F74594C">
+          <dmn:text>false</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_40F76422-263D-42B2-ABA9-82C6AC987896">
           <dmn:text>-</dmn:text>
@@ -2904,7 +3063,8 @@ list contains(StandardsNotMet.name, "5.6.2.15.2")</dmn:text>
           <kie:ComponentWidths dmnElementRef="_17C07266-925B-4EA7-83F3-FD1C42D45E4C">
             <kie:width>50.0</kie:width>
             <kie:width>266.0</kie:width>
-            <kie:width>121.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>101.0</kie:width>
             <kie:width>154.0</kie:width>
             <kie:width>100.0</kie:width>
             <kie:width>100.0</kie:width>
@@ -2925,6 +3085,9 @@ list contains(StandardsNotMet.name, "5.6.2.15.2")</dmn:text>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_482E510D-CE71-4FE9-AAC8-DF7D0A4CD3BD">
             <kie:width>832.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_FADBCDF4-2943-408E-B51C-882F62218AFC">
+            <kie:width>658.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_61F942A0-D258-42B8-B5ED-6AC752B49E1D">
             <kie:width>749.0</kie:width>
@@ -2987,7 +3150,7 @@ list contains(StandardsNotMet.name, "5.6.2.15.2")</dmn:text>
           <dmndi:StrokeColor red="210" green="193" blue="208"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="86.29906542056074" y="898" width="100" height="50"/>
+        <dc:Bounds x="86.29906542056074" y="862.3421052631579" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_1E770150-979C-49EA-AD68-399F5F571842" dmnElementRef="_1E770150-979C-49EA-AD68-399F5F571842" isCollapsed="false">
@@ -3005,7 +3168,7 @@ list contains(StandardsNotMet.name, "5.6.2.15.2")</dmn:text>
           <dmndi:StrokeColor red="133" green="150" blue="99"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="694" y="831" width="100" height="50"/>
+        <dc:Bounds x="696" y="884" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_E14FFA00-42C2-412C-B6AD-EC579AB7805A" dmnElementRef="_E14FFA00-42C2-412C-B6AD-EC579AB7805A" isCollapsed="false">
@@ -3023,7 +3186,7 @@ list contains(StandardsNotMet.name, "5.6.2.15.2")</dmn:text>
           <dmndi:StrokeColor red="112" green="113" blue="111"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="251" y="898" width="100" height="50"/>
+        <dc:Bounds x="251" y="813" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_430C8609-C56A-43A7-AEEC-A3CF90907F5A" dmnElementRef="_430C8609-C56A-43A7-AEEC-A3CF90907F5A" isCollapsed="false">
@@ -3041,7 +3204,7 @@ list contains(StandardsNotMet.name, "5.6.2.15.2")</dmn:text>
           <dmndi:StrokeColor red="112" green="113" blue="111"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="251" y="758" width="100" height="50"/>
+        <dc:Bounds x="251" y="884" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_B12A6C38-499A-4AD9-A9C1-420E04DBC4BC" dmnElementRef="_B12A6C38-499A-4AD9-A9C1-420E04DBC4BC" isCollapsed="false">
@@ -3104,7 +3267,7 @@ list contains(StandardsNotMet.name, "5.6.2.15.2")</dmn:text>
           <dmndi:StrokeColor red="133" green="150" blue="99"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="549" y="831" width="100" height="50"/>
+        <dc:Bounds x="549" y="884" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_C7B6ADF1-5D58-4D63-AD62-C2F3FDE86E34" dmnElementRef="_C7B6ADF1-5D58-4D63-AD62-C2F3FDE86E34" isCollapsed="false">
@@ -3149,7 +3312,7 @@ list contains(StandardsNotMet.name, "5.6.2.15.2")</dmn:text>
           <dmndi:StrokeColor red="210" green="193" blue="208"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="86.29906542056074" y="802" width="100" height="50"/>
+        <dc:Bounds x="86.29906542056074" y="927" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_A03C0987-0D14-41C7-BE87-7A9CDBFF20B3" dmnElementRef="_A03C0987-0D14-41C7-BE87-7A9CDBFF20B3" isCollapsed="false">
@@ -3159,6 +3322,15 @@ list contains(StandardsNotMet.name, "5.6.2.15.2")</dmn:text>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="251" y="175" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_34737E6B-65A6-4F10-9814-7930BE7474C9" dmnElementRef="_34737E6B-65A6-4F10-9814-7930BE7474C9" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="204" green="207" blue="199"/>
+          <dmndi:StrokeColor red="112" green="113" blue="111"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="251" y="628" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_4DC3E6CA-FDDC-44F8-B840-9447F7E6B336" dmnElementRef="_4DC3E6CA-FDDC-44F8-B840-9447F7E6B336" isCollapsed="false">
@@ -3212,7 +3384,7 @@ list contains(StandardsNotMet.name, "5.6.2.15.2")</dmn:text>
           <dmndi:StrokeColor red="112" green="113" blue="111"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="251" y="831" width="100" height="50"/>
+        <dc:Bounds x="251" y="951" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_B6AA8734-4259-45BE-BC15-96CC43D80EF9" dmnElementRef="_B6AA8734-4259-45BE-BC15-96CC43D80EF9" isCollapsed="false">
@@ -3233,20 +3405,20 @@ list contains(StandardsNotMet.name, "5.6.2.15.2")</dmn:text>
         <di:waypoint x="827" y="212"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_796A676B-D48D-409A-AE3D-C12008BBD122" dmnElementRef="_796A676B-D48D-409A-AE3D-C12008BBD122">
-        <di:waypoint x="599" y="856"/>
-        <di:waypoint x="744" y="856"/>
+        <di:waypoint x="599" y="909"/>
+        <di:waypoint x="746" y="909"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_81AA1767-CF4C-4BC7-BF9E-ABE50F27A092" dmnElementRef="_81AA1767-CF4C-4BC7-BF9E-ABE50F27A092">
         <di:waypoint x="136.29906542056074" y="364.3421052631579"/>
         <di:waypoint x="301" y="525"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_280F0612-68A4-4E0F-BBE7-3EB7B41092A2" dmnElementRef="_280F0612-68A4-4E0F-BBE7-3EB7B41092A2">
-        <di:waypoint x="136.29906542056074" y="923"/>
-        <di:waypoint x="301" y="923"/>
+        <di:waypoint x="136.29906542056074" y="887.3421052631579"/>
+        <di:waypoint x="301" y="838"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_9DE9B502-4A9A-4270-A613-00C60D2F5B69" dmnElementRef="_9DE9B502-4A9A-4270-A613-00C60D2F5B69">
-        <di:waypoint x="136.29906542056074" y="827"/>
-        <di:waypoint x="301" y="783"/>
+        <di:waypoint x="136.29906542056074" y="952"/>
+        <di:waypoint x="301" y="909"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_610EEAE4-9351-4201-AC10-98B13BAE9FCD" dmnElementRef="_610EEAE4-9351-4201-AC10-98B13BAE9FCD">
         <di:waypoint x="136.29906542056074" y="364.3421052631579"/>
@@ -3269,23 +3441,23 @@ list contains(StandardsNotMet.name, "5.6.2.15.2")</dmn:text>
         <di:waypoint x="827" y="306"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_090484C2-743D-4B22-A85C-45DDC6E0AD68" dmnElementRef="_090484C2-743D-4B22-A85C-45DDC6E0AD68">
-        <di:waypoint x="301" y="783"/>
-        <di:waypoint x="599" y="856"/>
+        <di:waypoint x="301" y="909"/>
+        <di:waypoint x="599" y="909"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_AE2C2E4E-A32D-4416-BFF9-C8C8A563EC6E" dmnElementRef="_AE2C2E4E-A32D-4416-BFF9-C8C8A563EC6E">
-        <di:waypoint x="301" y="856"/>
-        <di:waypoint x="599" y="856"/>
+        <di:waypoint x="301" y="976"/>
+        <di:waypoint x="599" y="909"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_1CA7E536-C930-4556-94E0-7320632802E5" dmnElementRef="_1CA7E536-C930-4556-94E0-7320632802E5">
-        <di:waypoint x="301" y="923"/>
-        <di:waypoint x="599" y="856"/>
+        <di:waypoint x="301" y="838"/>
+        <di:waypoint x="599" y="909"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_DAC52822-9A73-402E-895D-341670126D91" dmnElementRef="_DAC52822-9A73-402E-895D-341670126D91">
         <di:waypoint x="599" y="61"/>
         <di:waypoint x="827" y="126"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_2673039F-9B4B-4B48-B531-C81E150C3C19" dmnElementRef="_2673039F-9B4B-4B48-B531-C81E150C3C19">
-        <di:waypoint x="599" y="856"/>
+        <di:waypoint x="599" y="909"/>
         <di:waypoint x="827" y="126"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_84AC14C3-F566-41BA-8B29-A14FF1D8AE1E" dmnElementRef="_84AC14C3-F566-41BA-8B29-A14FF1D8AE1E">
@@ -3336,6 +3508,10 @@ list contains(StandardsNotMet.name, "5.6.2.15.2")</dmn:text>
         <di:waypoint x="144" y="658.3421052631579"/>
         <di:waypoint x="494" y="365"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_82E3F9A1-0DF9-4261-B1D6-30D11F750B80" dmnElementRef="_82E3F9A1-0DF9-4261-B1D6-30D11F750B80">
+        <di:waypoint x="301" y="653"/>
+        <di:waypoint x="494" y="365"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_D7B8CD6D-FA68-4F6A-9567-4F06646BA2C0" dmnElementRef="_D7B8CD6D-FA68-4F6A-9567-4F06646BA2C0">
         <di:waypoint x="599" y="61"/>
         <di:waypoint x="704" y="342"/>
@@ -3343,6 +3519,10 @@ list contains(StandardsNotMet.name, "5.6.2.15.2")</dmn:text>
       <dmndi:DMNEdge id="dmnedge-_3B0E5E4A-F47F-48D6-8D43-8F775B086482" dmnElementRef="_3B0E5E4A-F47F-48D6-8D43-8F775B086482">
         <di:waypoint x="136.29906542056074" y="364.3421052631579"/>
         <di:waypoint x="301" y="200"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_7A4379A5-410D-4268-90CE-651DCC0F7700" dmnElementRef="_7A4379A5-410D-4268-90CE-651DCC0F7700">
+        <di:waypoint x="136.29906542056074" y="887.3421052631579"/>
+        <di:waypoint x="301" y="678"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_E42E5350-46A3-4AA7-911A-E10C81820772" dmnElementRef="_E42E5350-46A3-4AA7-911A-E10C81820772">
         <di:waypoint x="136.29906542056074" y="364.3421052631579"/>
@@ -3353,7 +3533,7 @@ list contains(StandardsNotMet.name, "5.6.2.15.2")</dmn:text>
         <di:waypoint x="827" y="61"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_3B0E5EFD-F59A-48B5-9F7B-68BAD005135B" dmnElementRef="_3B0E5EFD-F59A-48B5-9F7B-68BAD005135B">
-        <di:waypoint x="599" y="856"/>
+        <di:waypoint x="599" y="909"/>
         <di:waypoint x="827" y="61"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_91D3E7D4-1F6D-46FE-A50E-692E9A3BEF00" dmnElementRef="_91D3E7D4-1F6D-46FE-A50E-692E9A3BEF00">
@@ -3361,12 +3541,12 @@ list contains(StandardsNotMet.name, "5.6.2.15.2")</dmn:text>
         <di:waypoint x="599" y="61"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_5FFB2555-8CA2-4B71-88C8-40315E8B4A46" dmnElementRef="_5FFB2555-8CA2-4B71-88C8-40315E8B4A46">
-        <di:waypoint x="599" y="856"/>
+        <di:waypoint x="599" y="909"/>
         <di:waypoint x="599" y="61"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_4D48C9EB-4501-4497-A923-93A8DAEA7267" dmnElementRef="_4D48C9EB-4501-4497-A923-93A8DAEA7267">
-        <di:waypoint x="136.29906542056074" y="827"/>
-        <di:waypoint x="301" y="856"/>
+        <di:waypoint x="136.29906542056074" y="952"/>
+        <di:waypoint x="301" y="976"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_5770E3BB-D716-4E99-8822-6DE569AF7945" dmnElementRef="_5770E3BB-D716-4E99-8822-6DE569AF7945">
         <di:waypoint x="136.29906542056074" y="364.3421052631579"/>
