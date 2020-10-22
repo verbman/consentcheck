@@ -134,8 +134,12 @@ list contains(ExistingBuildings,"residential building")</dmn:text>
     <dmn:informationRequirement id="_B66D4959-48E8-4AFB-8383-88739F865CA0">
       <dmn:requiredInput href="#_1A0D5511-043B-4EF5-A189-16ED1E71F1F6"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_50787F61-CBD0-4C56-838B-AF140F0EDD1A">
+      <dmn:requiredInput href="#_A32B3D33-1833-41AF-86F7-2D3A06EA0079"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_5A6554D9-2A02-4C09-9866-5658EF7F55FA">
-      <dmn:text>if (not(ExistingResidentialBuildingComplianceHeightBRP_Value) or&#xd;
+      <dmn:text>if (not(ExistingResidentialBuildingComplianceHeight_Value) or&#xd;
+not(ExistingResidentialBuildingComplianceBRP_Value) or&#xd;
 not(ExistingComplianceResidentialBuildingSiteCoverageYards_Value)) then&#xd;
   if (list contains(Activities_Value[Noun="residential building"].Verb, "add to") and &#xd;
   not(list contains(Activities_Value[Noun="residential building"].Verb, "alter"))) then&#xd;
@@ -180,8 +184,12 @@ ExistingResidentialBuildingComplianceHeight + 1 else 0</dmn:text>
     <dmn:informationRequirement id="_18684B42-1626-4424-B768-568CC348429A">
       <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_D6062B47-2983-42D2-9FFA-36DD579DF223">
+      <dmn:requiredInput href="#_A32B3D33-1833-41AF-86F7-2D3A06EA0079"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_39BD7ECF-0EC8-4EC4-944D-84F0ACE9E9CC">
-      <dmn:text>if (not(ExistingResidentialBuildingComplianceHeightBRP_Value) or&#xd;
+      <dmn:text>if (not(ExistingResidentialBuildingComplianceHeight_Value) or&#xd;
+not(ExistingResidentialBuildingComplianceBRP_Value) or&#xd;
 not(ExistingComplianceResidentialBuildingSiteCoverageYards_Value)) and&#xd;
 list contains(Activities_Value[Noun="residential building"].Verb, "alter") then&#xd;
 ExistingComplianceResidentialBuildingSiteCoverageYards + 1 else 0&#xd;
@@ -226,6 +234,10 @@ list contains(ExistingBuildings,"residential building") then Activities + 1 else
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
+  <dmn:inputData id="_A32B3D33-1833-41AF-86F7-2D3A06EA0079" name="ExistingResidentialBuildingComplianceBRP_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_42578B59-D6F9-40E0-BE2F-C081BF6F83F8" name="ExistingResidentialBuildingComplianceBRP_Value" typeRef="boolean"/>
+  </dmn:inputData>
   <dmn:decision id="_F50500C0-34D3-44F2-84E9-37D1DAB098E6" name="SiteGroundSlope1">
     <dmn:extensionElements/>
     <dmn:variable id="_B87E8DBA-D9F7-4570-B2B9-129E2A67F4C6" name="SiteGroundSlope1" typeRef="number"/>
@@ -259,9 +271,9 @@ AdditionProposedResidentialBuildingHeight + 1 else 0&#xd;
     <dmn:extensionElements/>
     <dmn:variable id="_9644CB59-388E-4EC0-A876-636247417CF9" name="ExistingBuildings" typeRef="Types.ExistingBuildings"/>
   </dmn:inputData>
-  <dmn:inputData id="_C2429ABB-48E3-4E63-B351-0532677AE4B7" name="ExistingResidentialBuildingComplianceHeightBRP_Value">
+  <dmn:inputData id="_C2429ABB-48E3-4E63-B351-0532677AE4B7" name="ExistingResidentialBuildingComplianceHeight_Value">
     <dmn:extensionElements/>
-    <dmn:variable id="_99EEECF0-54E2-47E9-9F4D-52B0F1E0F9A6" name="ExistingResidentialBuildingComplianceHeightBRP_Value" typeRef="boolean"/>
+    <dmn:variable id="_99EEECF0-54E2-47E9-9F4D-52B0F1E0F9A6" name="ExistingResidentialBuildingComplianceHeight_Value" typeRef="boolean"/>
   </dmn:inputData>
   <dmn:decision id="_41124519-21E8-463D-9304-475F9A6AA26F" name="AdditionInsideFootprintResidentialBuilding">
     <dmn:extensionElements/>
@@ -272,9 +284,13 @@ AdditionProposedResidentialBuildingHeight + 1 else 0&#xd;
     <dmn:informationRequirement id="_6B2A9CF5-A0D6-489A-9F93-868604548F6D">
       <dmn:requiredInput href="#_C2429ABB-48E3-4E63-B351-0532677AE4B7"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_7BC9076A-F9AB-46DD-9716-91FB0C7F246D">
+      <dmn:requiredInput href="#_A32B3D33-1833-41AF-86F7-2D3A06EA0079"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_8E4AAA4C-33EF-494D-8CF8-DC9D25C51F3E">
       <dmn:text>if AdditionIncreaseNonComplianceResidentialBuilding > 0 and&#xd;
-not(ExistingResidentialBuildingComplianceHeightBRP_Value) then&#xd;
+(not(ExistingResidentialBuildingComplianceHeight_Value) or&#xd;
+not(ExistingResidentialBuildingComplianceBRP_Value)) then&#xd;
 AdditionIncreaseNonComplianceResidentialBuilding + 1 else 0&#xd;
 &#xd;
 &#xd;
@@ -364,6 +380,15 @@ AdditionIncreaseNonComplianceResidentialBuilding + 1 else 0&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="410" y="333" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_A32B3D33-1833-41AF-86F7-2D3A06EA0079" dmnElementRef="_A32B3D33-1833-41AF-86F7-2D3A06EA0079" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="629" y="522" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_4306AB83-CA4B-437E-84AF-0485953E2E56" dmnElementRef="_4306AB83-CA4B-437E-84AF-0485953E2E56" isCollapsed="false">
@@ -588,6 +613,10 @@ AdditionIncreaseNonComplianceResidentialBuilding + 1 else 0&#xd;
         <di:waypoint x="679" y="434.6842105263158"/>
         <di:waypoint x="543" y="437"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_50787F61-CBD0-4C56-838B-AF140F0EDD1A" dmnElementRef="_50787F61-CBD0-4C56-838B-AF140F0EDD1A">
+        <di:waypoint x="679" y="547"/>
+        <di:waypoint x="543" y="437"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_56383476-F3F9-40DA-92E5-CEA8362CD140" dmnElementRef="_56383476-F3F9-40DA-92E5-CEA8362CD140">
         <di:waypoint x="460" y="358"/>
         <di:waypoint x="373" y="439"/>
@@ -602,6 +631,10 @@ AdditionIncreaseNonComplianceResidentialBuilding + 1 else 0&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_18684B42-1626-4424-B768-568CC348429A" dmnElementRef="_18684B42-1626-4424-B768-568CC348429A">
         <di:waypoint x="259.5981308411215" y="346.3421052631579"/>
+        <di:waypoint x="373" y="439"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_D6062B47-2983-42D2-9FFA-36DD579DF223" dmnElementRef="_D6062B47-2983-42D2-9FFA-36DD579DF223">
+        <di:waypoint x="679" y="547"/>
         <di:waypoint x="373" y="439"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_99DBEA1A-D530-4F86-903C-81E33E0BBE6E" dmnElementRef="_99DBEA1A-D530-4F86-903C-81E33E0BBE6E">
@@ -642,6 +675,10 @@ AdditionIncreaseNonComplianceResidentialBuilding + 1 else 0&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_6B2A9CF5-A0D6-489A-9F93-868604548F6D" dmnElementRef="_6B2A9CF5-A0D6-489A-9F93-868604548F6D">
         <di:waypoint x="679" y="491.3421052631579"/>
+        <di:waypoint x="543" y="519"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_7BC9076A-F9AB-46DD-9716-91FB0C7F246D" dmnElementRef="_7BC9076A-F9AB-46DD-9716-91FB0C7F246D">
+        <di:waypoint x="679" y="547"/>
         <di:waypoint x="543" y="519"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_CCF8153D-6ED2-486E-B986-3B683BBBB7AC" dmnElementRef="_CCF8153D-6ED2-486E-B986-3B683BBBB7AC">
