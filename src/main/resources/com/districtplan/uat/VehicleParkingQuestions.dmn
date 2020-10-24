@@ -32,9 +32,17 @@ list contains(spatiallayers[Type="Residential"].Title, "Medium Density Residenti
     <dmn:extensionElements/>
     <dmn:variable id="_9995FEEA-7A6E-471A-9724-FC81CCF96FD4" name="NumberBoardingHouseBedrooms_Value" typeRef="number"/>
   </dmn:inputData>
+  <dmn:inputData id="_B4A6257C-C479-4C43-BCCB-1A428DD10E8C" name="NumberHouseholdUnitCarParks_Value-1">
+    <dmn:extensionElements/>
+    <dmn:variable id="_A4A93EB8-FEBA-4D3A-B3AE-B12C88C1610D" name="NumberHouseholdUnitCarParks_Value-1" typeRef="number"/>
+  </dmn:inputData>
   <dmn:inputData id="_8DA501EC-3711-499F-990D-8FF533A2C162" name="NumberHouseholdUnits_Value">
     <dmn:extensionElements/>
     <dmn:variable id="_59AB41A4-927B-45B8-A0D4-5DF1F704175E" name="NumberHouseholdUnits_Value" typeRef="number"/>
+  </dmn:inputData>
+  <dmn:inputData id="_3414400A-E726-4604-A31D-F007D9580A58" name="NumberVisitorCarParks_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_527D0071-BEFD-430E-BAFF-52444D263781" name="NumberVisitorCarParks_Value" typeRef="number"/>
   </dmn:inputData>
   <dmn:decision id="_A2F298C8-8542-41C1-A9E3-9452A323B85D" name="Activities">
     <dmn:extensionElements/>
@@ -139,21 +147,42 @@ I don't know</dmn:allowedAnswers>
     <dmn:informationRequirement id="_8D136E1D-7644-4CC4-89DA-7F88899309A2">
       <dmn:requiredDecision href="#_503B97EB-4395-4CC6-A996-910BE9D84BF1"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_2360F569-0529-4C35-98D0-58C8A7A86626">
+      <dmn:requiredInput href="#_20375FAC-F7D1-4664-81B7-92A2C8FBD4DB"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_FA1EAF66-00D2-483A-B7ED-A257F7927A91">
+      <dmn:requiredInput href="#_1893F5D8-CF44-46E8-8E24-58699D1089C6"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_599345A7-3414-4D36-9A61-8CA814A00A07">
+      <dmn:requiredInput href="#_3414400A-E726-4604-A31D-F007D9580A58"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_297FED24-A1F0-40E9-82DE-370B5A1CC10F">
       <dmn:text>if TwoHouseholdUnitsParking_Value > 0&#xd;
-then (TwoHouseholdUnitsParking + 1) &#xd;
-else (&#xd;
-  if NumberBoardingHouseCarParks > 0 then (NumberBoardingHouseCarParks + 1) else (&#xd;
-    if ((NumberHouseholdUnitCarParks > 0) and (NumberHouseholdUnits_Value &lt; 7)) then (NumberHouseholdUnitCarParks + 1) else (&#xd;
-      if ((NumberHouseholdUnitCarParks > 0) and (NumberHouseholdUnits_Value >= 7)) then (NumberVisitorCarParks + 1) else 0&#xd;
-    )&#xd;
-  )&#xd;
-)</dmn:text>
+then TwoHouseholdUnitsParking + 1 else&#xd;
+  if NumberBoardingHouseCarParks > 0 and &#xd;
+  NumberBoardingHouseCarParks_Value > 0 then &#xd;
+  NumberBoardingHouseCarParks + 1 else &#xd;
+  if NumberHouseholdUnitCarParks > 0 and &#xd;
+  NumberHouseholdUnits_Value &lt; 7 and&#xd;
+  NumberHouseholdUnitCarParks_Value > 0 then &#xd;
+  NumberHouseholdUnitCarParks + 1 else&#xd;
+  if NumberHouseholdUnitCarParks > 0 and&#xd;
+  NumberHouseholdUnits_Value >= 7 and&#xd;
+  NumberVisitorCarParks_Value > 0 then&#xd;
+  NumberVisitorCarParks + 1 else 0&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:inputData id="_17472C3C-3E93-42C6-AA7E-D433F03A1C6E" name="BoardingHouse_Value">
     <dmn:extensionElements/>
     <dmn:variable id="_48D6A5A4-FF8C-4769-AE53-93920677F342" name="BoardingHouse_Value" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmn:inputData id="_1893F5D8-CF44-46E8-8E24-58699D1089C6" name="NumberHouseholdUnitCarParks_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_76BC3508-9F79-4CC9-A258-321CCA753265" name="NumberHouseholdUnitCarParks_Value" typeRef="number"/>
   </dmn:inputData>
   <dmn:decision id="_57F1A185-8E0A-4AAD-A367-AD60E4649190" name="QuestionSetRelevance">
     <dmn:extensionElements/>
@@ -282,6 +311,10 @@ else 0&#xd;
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
+  <dmn:inputData id="_20375FAC-F7D1-4664-81B7-92A2C8FBD4DB" name="NumberBoardingHouseCarParks_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_26AAC913-D8B1-48A1-8EE3-F6115116139E" name="NumberBoardingHouseCarParks_Value" typeRef="number"/>
+  </dmn:inputData>
   <dmn:businessKnowledgeModel id="_DA33A1FA-CEC4-496F-B4B3-CF18E9087212" name="VehicleParkingActivities">
     <dmn:extensionElements/>
     <dmn:variable id="_14FC1106-6912-4539-B21D-3B4D0B7BD43E" name="VehicleParkingActivities" typeRef="boolean"/>
@@ -367,6 +400,15 @@ list contains(activities[Noun="residential building"].Verb, "alter")&#xd;
         <dc:Bounds x="541" y="106" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_3414400A-E726-4604-A31D-F007D9580A58" dmnElementRef="_3414400A-E726-4604-A31D-F007D9580A58" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="542" y="730.3421052631579" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_9C262F21-F3C3-4485-A004-B2DE1F62AF7D" dmnElementRef="_9C262F21-F3C3-4485-A004-B2DE1F62AF7D" isCollapsed="false">
         <dmndi:DMNStyle>
           <dmndi:FillColor red="255" green="255" blue="255"/>
@@ -412,6 +454,15 @@ list contains(activities[Noun="residential building"].Verb, "alter")&#xd;
         <dc:Bounds x="542" y="390" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_B4A6257C-C479-4C43-BCCB-1A428DD10E8C" dmnElementRef="_B4A6257C-C479-4C43-BCCB-1A428DD10E8C" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="542" y="922.6842105263158" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_5D302B9B-D524-4B29-9D32-C7D3B41A598C" dmnElementRef="_5D302B9B-D524-4B29-9D32-C7D3B41A598C" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="238" green="238" blue="238"/>
@@ -437,6 +488,15 @@ list contains(activities[Noun="residential building"].Verb, "alter")&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="908" y="298.3421052631579" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_1893F5D8-CF44-46E8-8E24-58699D1089C6" dmnElementRef="_1893F5D8-CF44-46E8-8E24-58699D1089C6" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="542" y="665.3421052631579" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_57F1A185-8E0A-4AAD-A367-AD60E4649190" dmnElementRef="_57F1A185-8E0A-4AAD-A367-AD60E4649190" isCollapsed="false">
@@ -520,6 +580,15 @@ list contains(activities[Noun="residential building"].Verb, "alter")&#xd;
         <dc:Bounds x="760" y="473" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_20375FAC-F7D1-4664-81B7-92A2C8FBD4DB" dmnElementRef="_20375FAC-F7D1-4664-81B7-92A2C8FBD4DB" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="542" y="600.3421052631579" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_DA33A1FA-CEC4-496F-B4B3-CF18E9087212" dmnElementRef="_DA33A1FA-CEC4-496F-B4B3-CF18E9087212" isCollapsed="false">
         <dmndi:DMNStyle>
           <dmndi:FillColor red="255" green="255" blue="255"/>
@@ -591,6 +660,18 @@ list contains(activities[Noun="residential building"].Verb, "alter")&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_8D136E1D-7644-4CC4-89DA-7F88899309A2" dmnElementRef="_8D136E1D-7644-4CC4-89DA-7F88899309A2">
         <di:waypoint x="810" y="415"/>
+        <di:waypoint x="408" y="625"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_2360F569-0529-4C35-98D0-58C8A7A86626" dmnElementRef="_2360F569-0529-4C35-98D0-58C8A7A86626">
+        <di:waypoint x="592" y="625.3421052631579"/>
+        <di:waypoint x="408" y="625"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_FA1EAF66-00D2-483A-B7ED-A257F7927A91" dmnElementRef="_FA1EAF66-00D2-483A-B7ED-A257F7927A91">
+        <di:waypoint x="592" y="690.3421052631579"/>
+        <di:waypoint x="408" y="625"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_599345A7-3414-4D36-9A61-8CA814A00A07" dmnElementRef="_599345A7-3414-4D36-9A61-8CA814A00A07">
+        <di:waypoint x="592" y="755.3421052631579"/>
         <di:waypoint x="408" y="625"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_21F32C47-9D1C-4C74-A72E-4B75BF3EF9B1" dmnElementRef="_21F32C47-9D1C-4C74-A72E-4B75BF3EF9B1">
