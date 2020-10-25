@@ -6991,6 +6991,10 @@ else false&#xd;
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_EA62D032-6CD8-4CBC-9654-54C1D21D48EF">
       <dmn:text>if NumberHouseholdUnits >=2 then&#xd;
+  if NumberHouseholdUnits >=3 and &#xd;
+  OuterResidentialArea(SpatialLayers) and &#xd;
+  not(OR2ResidentialCoastalEdge(SpatialLayers)) and &#xd;
+  not(HazardFaultLineArea(SpatialLayers)) then true else&#xd;
   if not(IR5OrientalBayHeightArea(SpatialLayers)) and &#xd;
   (InnerResidentialArea(SpatialLayers) or MediumDensityResidentialArea(SpatialLayers)) and&#xd;
   NumberHouseholdUnits =2 and BuildingConstructedBefore27July2000 then false else&#xd;
@@ -7000,12 +7004,11 @@ else false&#xd;
   if IR5OrientalBayHeightArea(SpatialLayers) then true else&#xd;
   if OR2ResidentialCoastalEdge(SpatialLayers) then true else&#xd;
   if HazardFaultLineArea(SpatialLayers) then true else&#xd;
-  if AirNoiseBoundary(SpatialLayers) then true else&#xd;
-  if NumberHouseholdUnits >=3 and &#xd;
-  OuterResidentialArea(SpatialLayers) and &#xd;
-  not(OR2ResidentialCoastalEdge(SpatialLayers)) and &#xd;
-  not(HazardFaultLineArea(SpatialLayers)) then true else false&#xd;
+  if AirNoiseBoundary(SpatialLayers) then true else false&#xd;
 else false&#xd;
+&#xd;
+&#xd;
+&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -7235,7 +7238,7 @@ else false&#xd;
             <kie:width>771.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_EA62D032-6CD8-4CBC-9654-54C1D21D48EF">
-            <kie:width>1299.0</kie:width>
+            <kie:width>896.0</kie:width>
           </kie:ComponentWidths>
         </kie:ComponentsWidthsExtension>
       </di:extension>
