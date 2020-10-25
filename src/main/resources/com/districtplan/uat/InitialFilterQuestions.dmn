@@ -327,6 +327,9 @@ no</dmn:allowedAnswers>
     <dmn:informationRequirement id="_D4F1185E-DC30-4DF1-ABD4-307649ED77AD">
       <dmn:requiredInput href="#_91A08DE1-F013-46FB-BBC7-99398C33177B"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_59B08138-4331-4F21-A3B3-2AE1BCCAB66C">
+      <dmn:requiredInput href="#_D7276D21-70DE-4424-887B-51260899BD75"/>
+    </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_BA2B669E-52DD-4CD6-B462-F424BD89807A">
       <dmn:requiredKnowledge href="#_0DA8114E-D8DE-4E56-9AA4-E1AE9869A4A6"/>
     </dmn:knowledgeRequirement>
@@ -334,21 +337,19 @@ no</dmn:allowedAnswers>
       <dmn:requiredKnowledge href="#_65B37B84-4FF4-48A7-B330-C66A5C2E2DD7"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_EF37C764-7D6E-4C83-B30A-6CAEB896CE6B">
-      <dmn:text>if list contains (SpatialLayers_Value[Type="Residential"].Title, "Inner Residential") and&#xd;
+      <dmn:text>if (list contains (SpatialLayers_Value[Type="Residential"].Title, "Inner Residential") or&#xd;
+list contains (SpatialLayers_Value[Type="Residential"].Title, "Medium Density Residential Area")) and&#xd;
 (list contains (Activities_Value[Noun="residential building"].Verb, "add to") or&#xd;
 list contains (Activities_Value[Noun="residential building"].Verb, "alter")) and&#xd;
-ExistingBuildingsCheck(ExistingBuildings_Value) then (&#xd;
+ExistingBuildingsCheck(ExistingBuildings_Value) and&#xd;
+NumberHouseholdUnits_Value = 2 then&#xd;
   if SecondHouseholdUnitExistingResidentialBuilding > 0 then&#xd;
-  SecondHouseholdUnitExistingResidentialBuilding + 1 else (&#xd;
-    if NumberHouseholdUnits > 0 then (NumberHouseholdUnits + 1) else (&#xd;
-      if ActivityAtSideRear > 0 then (ActivityAtSideRear + 1) else (&#xd;
-        if SitePosition > 0 then (SitePosition + 1) else (&#xd;
-          if ExistingBuildings > 0 then (ExistingBuildings + 1) else 3&#xd;
-        )&#xd;
-      )&#xd;
-    )&#xd;
-  )&#xd;
-) else 0&#xd;
+  SecondHouseholdUnitExistingResidentialBuilding + 1 else&#xd;
+  if NumberHouseholdUnits > 0 then NumberHouseholdUnits + 1 else&#xd;
+  if ActivityAtSideRear > 0 then ActivityAtSideRear + 1 else&#xd;
+  if SitePosition > 0 then SitePosition + 1 else &#xd;
+  if ExistingBuildings > 0 then ExistingBuildings + 1 else 3&#xd;
+else 0&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -856,6 +857,10 @@ else 0&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_C2DC9B7C-8436-4FF3-8369-846EA3A0557C" dmnElementRef="_C2DC9B7C-8436-4FF3-8369-846EA3A0557C">
         <di:waypoint x="889" y="549.3421052631579"/>
+        <di:waypoint x="684" y="766"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_59B08138-4331-4F21-A3B3-2AE1BCCAB66C" dmnElementRef="_59B08138-4331-4F21-A3B3-2AE1BCCAB66C">
+        <di:waypoint x="889" y="692"/>
         <di:waypoint x="684" y="766"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_D3DB5D4F-A87A-4B57-93C8-7CA7D9A77ED6" dmnElementRef="_D3DB5D4F-A87A-4B57-93C8-7CA7D9A77ED6">
