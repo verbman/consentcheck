@@ -6965,6 +6965,9 @@ else false&#xd;
     <dmn:informationRequirement id="_66DBB39F-2EEB-4B58-994D-3F082C073A5A">
       <dmn:requiredInput href="#_9AF94EE9-C81E-4E15-8287-3AFE94D76B74"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_1FC133EC-32EC-4D61-B768-8679E03A256B">
+      <dmn:requiredInput href="#_E2D4B67F-869A-4A14-AC77-D0B7DFA53ED1"/>
+    </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_C46E7A6F-9E48-4DA9-A544-617F13645942">
       <dmn:requiredKnowledge href="#_C14B7951-B3B4-4049-830F-11A46C4912F3"/>
     </dmn:knowledgeRequirement>
@@ -6988,12 +6991,20 @@ else false&#xd;
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_EA62D032-6CD8-4CBC-9654-54C1D21D48EF">
       <dmn:text>if NumberHouseholdUnits >=2 then&#xd;
-  if not(IR5OrientalBayHeightArea(SpatialLayers)) and (InnerResidentialArea(SpatialLayers) or MediumDensityResidentialArea(SpatialLayers)) then true else &#xd;
+  if not(IR5OrientalBayHeightArea(SpatialLayers)) and &#xd;
+  (InnerResidentialArea(SpatialLayers) or MediumDensityResidentialArea(SpatialLayers)) and&#xd;
+  NumberHouseholdUnits =2 and BuildingConstructedBefore27July2000 then false else&#xd;
+  if not(IR5OrientalBayHeightArea(SpatialLayers)) and &#xd;
+  (InnerResidentialArea(SpatialLayers) or MediumDensityResidentialArea(SpatialLayers)) and&#xd;
+  not(BuildingConstructedBefore27July2000) or BuildingConstructedBefore27July2000 = null then true else &#xd;
   if IR5OrientalBayHeightArea(SpatialLayers) then true else&#xd;
   if OR2ResidentialCoastalEdge(SpatialLayers) then true else&#xd;
   if HazardFaultLineArea(SpatialLayers) then true else&#xd;
   if AirNoiseBoundary(SpatialLayers) then true else&#xd;
-  if NumberHouseholdUnits >=3 and OuterResidentialArea(SpatialLayers) and not(OR2ResidentialCoastalEdge(SpatialLayers)) and not(HazardFaultLineArea(SpatialLayers)) then true else false&#xd;
+  if NumberHouseholdUnits >=3 and &#xd;
+  OuterResidentialArea(SpatialLayers) and &#xd;
+  not(OR2ResidentialCoastalEdge(SpatialLayers)) and &#xd;
+  not(HazardFaultLineArea(SpatialLayers)) then true else false&#xd;
 else false&#xd;
 &#xd;
 &#xd;
@@ -8083,6 +8094,10 @@ else false&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_4D75C920-E491-4E79-9C7A-54B7BE23B79F" dmnElementRef="_4D75C920-E491-4E79-9C7A-54B7BE23B79F">
         <di:waypoint x="181.5981308411215" y="525"/>
+        <di:waypoint x="398" y="231"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_1FC133EC-32EC-4D61-B768-8679E03A256B" dmnElementRef="_1FC133EC-32EC-4D61-B768-8679E03A256B">
+        <di:waypoint x="928" y="134.68421052631578"/>
         <di:waypoint x="398" y="231"/>
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
