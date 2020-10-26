@@ -101,8 +101,8 @@ Ground level open space 5.6.2.3</dmn:description>
     <dmn:informationRequirement id="_7E7E2A19-A898-442D-9E4F-052AA6F4946C">
       <dmn:requiredInput href="#_FF9E4109-6622-4987-BA94-B2DD13F30A1C"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_699DC6E4-66E5-46EE-8479-501628A59E8A">
-      <dmn:requiredInput href="#_7D6CFD22-CDBA-4B56-82B9-6C7439FC4D7C"/>
+    <dmn:informationRequirement id="_5EBB85CE-BCDF-4D48-BECE-F17341028784">
+      <dmn:requiredInput href="#_3A3F23E0-9A9D-4F5D-A5E2-AF59EBC565D1"/>
     </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_D4F8287D-0225-445C-AF87-A16062C8C6BD">
       <dmn:requiredKnowledge href="#_D8F01EF1-7326-44E7-B8BB-CB6975F03CFB"/>
@@ -112,8 +112,7 @@ Ground level open space 5.6.2.3</dmn:description>
     </dmn:authorityRequirement>
     <dmn:literalExpression id="_1587EE86-26CA-4E2C-86AC-8E8805E7B9F7">
       <dmn:text>if InnerResidentialArea(SpatialLayers) and &#xd;
-list contains(Activities[Noun="residential building"].Verb, "alter") and &#xd;
-NumberHouseholdUnits = 2 then&#xd;
+SecondHouseholdUnitExistingResidentialBuildingIR then&#xd;
   if BuildingConstructedBefore27July2000 then true else &#xd;
   if not(BuildingConstructedBefore27July2000) then false else null&#xd;
 else null&#xd;
@@ -191,14 +190,14 @@ Residential buildings, accessory buildings and residential structures subject to
     <dmn:informationRequirement id="_22F83C8B-AEB3-4184-B6D0-E40F3B0CFC08">
       <dmn:requiredInput href="#_9AF94EE9-C81E-4E15-8287-3AFE94D76B74"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_83DCE050-D5F5-4741-AA06-DABCAA1B7BB9">
-      <dmn:requiredInput href="#_7D6CFD22-CDBA-4B56-82B9-6C7439FC4D7C"/>
-    </dmn:informationRequirement>
     <dmn:informationRequirement id="_6E7001FC-7031-40F5-8AC0-47AC4A1AF77A">
       <dmn:requiredInput href="#_F7FF5174-3A85-45C0-A5C8-340B23D1AC17"/>
     </dmn:informationRequirement>
     <dmn:informationRequirement id="_5281913A-1E44-4A51-9D5A-DB208502BB9F">
       <dmn:requiredInput href="#_F5BCCE45-51D5-4E48-8D9C-16590200BDE9"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_83DCE050-D5F5-4741-AA06-DABCAA1B7BB9">
+      <dmn:requiredInput href="#_7D6CFD22-CDBA-4B56-82B9-6C7439FC4D7C"/>
     </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_8E605B14-DA47-4F1A-BEFA-B9D782144C24">
       <dmn:requiredKnowledge href="#_D8F01EF1-7326-44E7-B8BB-CB6975F03CFB"/>
@@ -372,6 +371,10 @@ list contains(activities[Noun="deck or balcony"].Verb, "add to or alter")&#xd;
       </dmn:literalExpression>
     </dmn:encapsulatedLogic>
   </dmn:businessKnowledgeModel>
+  <dmn:inputData id="_3A3F23E0-9A9D-4F5D-A5E2-AF59EBC565D1" name="SecondHouseholdUnitExistingResidentialBuildingIR">
+    <dmn:extensionElements/>
+    <dmn:variable id="_20EF2EB3-3158-40E2-A8B1-696E7EB1E887" name="SecondHouseholdUnitExistingResidentialBuildingIR" typeRef="boolean"/>
+  </dmn:inputData>
   <dmn:decision id="_A1C7017D-14CC-4AC6-AC7B-B61D20680BC8" name="S5.6.2.3.4">
     <dmn:extensionElements/>
     <dmn:variable id="_A900EACE-02C2-4896-A961-03E997B57663" name="S5.6.2.3.4" typeRef="string"/>
@@ -1192,8 +1195,8 @@ OuterResidentialArea(SpatialLayers) then "private ground level open space adjoin
     <dmn:informationRequirement id="_28AF692A-87A8-4C94-90A0-9EFFA7ADEC3E">
       <dmn:requiredInput href="#_608CF74D-8C2B-498A-B448-BC852A93FE44"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_2282D3A6-6378-4D12-B945-B96F4C2EB770">
-      <dmn:requiredInput href="#_7D6CFD22-CDBA-4B56-82B9-6C7439FC4D7C"/>
+    <dmn:informationRequirement id="_35C3A7EB-B6B4-4E32-88C3-9822A0AA694D">
+      <dmn:requiredInput href="#_3A3F23E0-9A9D-4F5D-A5E2-AF59EBC565D1"/>
     </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_515E5A32-8B52-4D1D-AD78-808397658777">
       <dmn:requiredKnowledge href="#_162DC7F1-EF22-4B75-AC18-37982D1DE529"/>
@@ -1216,8 +1219,8 @@ OuterResidentialArea(SpatialLayers) then "private ground level open space adjoin
     <dmn:literalExpression id="_5A8AFE1A-52FB-4140-8383-E84671F1EE0A">
       <dmn:text>if GoundLevelOpenSpaceActivities(Activities) then&#xd;
   if InnerResidentialArea(SpatialLayers) and &#xd;
-  list contains(Activities[Noun="residential building"].Verb, "alter") and &#xd;
-  NumberHouseholdUnits = 2 and BuildingConstructedBefore27July2000 then null else&#xd;
+  SecondHouseholdUnitExistingResidentialBuildingIR and &#xd;
+  BuildingConstructedBefore27July2000 then null else&#xd;
   if not(IR5OrientalBayHeightArea(SpatialLayers)) and&#xd;
   InnerResidentialArea(SpatialLayers) then 35 else&#xd;
   if MediumDensityResidentialArea2(SpatialLayers) and &#xd;
@@ -1269,8 +1272,8 @@ else null&#xd;
     <dmn:informationRequirement id="_BB70605A-52DA-4897-AA1C-1A893ACF2735">
       <dmn:requiredInput href="#_1D91BC45-BD3B-4564-BFE8-0FE62942DED7"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_0CAF4875-4E70-45AD-8770-5ACB90170356">
-      <dmn:requiredInput href="#_7D6CFD22-CDBA-4B56-82B9-6C7439FC4D7C"/>
+    <dmn:informationRequirement id="_B7DB8842-2FD8-4AF5-B1E9-F3F323F849F8">
+      <dmn:requiredInput href="#_3A3F23E0-9A9D-4F5D-A5E2-AF59EBC565D1"/>
     </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_BB65544D-ACA8-49E2-B091-8B94ECD39210">
       <dmn:requiredKnowledge href="#_162DC7F1-EF22-4B75-AC18-37982D1DE529"/>
@@ -1297,8 +1300,8 @@ Suburb="Johnsonville") then&#xd;
   TypeOpenSpace = "Combination") then "30 square metres and 3 metres wide" else &#xd;
   if TypeOpenSpace = "Private" then "private open space" else&#xd;
   if InnerResidentialArea(SpatialLayers) and &#xd;
-  list contains(Activities[Noun="residential building"].Verb, "alter") and &#xd;
-  NumberHouseholdUnits = 2 and BuildingConstructedBefore27July2000 then null else null&#xd;
+  SecondHouseholdUnitExistingResidentialBuildingIR and &#xd;
+  BuildingConstructedBefore27July2000 then null else null&#xd;
 else null&#xd;
 &#xd;
 &#xd;
@@ -1395,13 +1398,13 @@ Ground level open space 5.6.2.3</dmn:description>
       </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
-  <dmn:inputData id="_7D6CFD22-CDBA-4B56-82B9-6C7439FC4D7C" name="NumberHouseholdUnits">
-    <dmn:extensionElements/>
-    <dmn:variable id="_DF3FA3DA-5DA8-4E0A-AC34-71B10C4716C2" name="NumberHouseholdUnits" typeRef="number"/>
-  </dmn:inputData>
   <dmn:inputData id="_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0" name="TotalGroundLevelOpenSpace">
     <dmn:extensionElements/>
     <dmn:variable id="_CC0AA15A-835C-41DE-BB61-840D6242067E" name="TotalGroundLevelOpenSpace" typeRef="number"/>
+  </dmn:inputData>
+  <dmn:inputData id="_7D6CFD22-CDBA-4B56-82B9-6C7439FC4D7C" name="NumberHouseholdUnits">
+    <dmn:extensionElements/>
+    <dmn:variable id="_DF3FA3DA-5DA8-4E0A-AC34-71B10C4716C2" name="NumberHouseholdUnits" typeRef="number"/>
   </dmn:inputData>
   <dmn:knowledgeSource id="_C96F7B28-5F6B-422D-90EA-9C0866A3CFAC" name="DP_5.6.2.3.3" locationURI="ff4f95a2-b930-4c79-8e05-4ae58b271bc1">
     <dmn:description>Wellington City District Plan Residential Standard
@@ -1567,7 +1570,7 @@ Ground level open space 5.6.2.3</dmn:description>
           <dmndi:StrokeColor red="210" green="193" blue="208"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="70" y="321" width="100" height="50"/>
+        <dc:Bounds x="72" y="320.6842105263158" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_01EAD564-244D-43DE-B4CA-0F9F7ACFEFFF" dmnElementRef="_01EAD564-244D-43DE-B4CA-0F9F7ACFEFFF" isCollapsed="false">
@@ -1594,7 +1597,7 @@ Ground level open space 5.6.2.3</dmn:description>
           <dmndi:StrokeColor red="62" green="179" blue="247"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="70.29906542056074" y="633" width="100" height="50"/>
+        <dc:Bounds x="69.29906542056074" y="682" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_F6355EFE-ED4B-4CA7-928E-A955C9FA757D" dmnElementRef="_F6355EFE-ED4B-4CA7-928E-A955C9FA757D" isCollapsed="false">
@@ -1696,6 +1699,15 @@ Ground level open space 5.6.2.3</dmn:description>
         <dc:Bounds x="1210" y="261" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_3A3F23E0-9A9D-4F5D-A5E2-AF59EBC565D1" dmnElementRef="_3A3F23E0-9A9D-4F5D-A5E2-AF59EBC565D1" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="8">
+          <dmndi:FillColor red="243" green="229" blue="248"/>
+          <dmndi:StrokeColor red="210" green="193" blue="208"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="71.59813084112147" y="375.6842105263158" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_2D867D46-9CEE-4BA1-B0EB-F693C0527B62" dmnElementRef="_2D867D46-9CEE-4BA1-B0EB-F693C0527B62" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="238" green="238" blue="238"/>
@@ -1711,7 +1723,7 @@ Ground level open space 5.6.2.3</dmn:description>
           <dmndi:StrokeColor red="62" green="179" blue="247"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="70.59813084112147" y="690" width="100" height="50"/>
+        <dc:Bounds x="69.59813084112147" y="738" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_216DD080-AEE2-4A01-BE13-7395BFA455DA" dmnElementRef="_216DD080-AEE2-4A01-BE13-7395BFA455DA" isCollapsed="false">
@@ -1738,7 +1750,7 @@ Ground level open space 5.6.2.3</dmn:description>
           <dmndi:StrokeColor red="62" green="179" blue="247"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="71.59813084112147" y="383.6842105263158" width="100" height="50"/>
+        <dc:Bounds x="69.59813084112147" y="431.6842105263158" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_D8F01EF1-7326-44E7-B8BB-CB6975F03CFB" dmnElementRef="_D8F01EF1-7326-44E7-B8BB-CB6975F03CFB" isCollapsed="false">
@@ -1747,7 +1759,7 @@ Ground level open space 5.6.2.3</dmn:description>
           <dmndi:StrokeColor red="62" green="179" blue="247"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="72" y="513" width="100" height="50"/>
+        <dc:Bounds x="69" y="562" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_A1C7017D-14CC-4AC6-AC7B-B61D20680BC8" dmnElementRef="_A1C7017D-14CC-4AC6-AC7B-B61D20680BC8" isCollapsed="false">
@@ -1792,7 +1804,7 @@ Ground level open space 5.6.2.3</dmn:description>
           <dmndi:StrokeColor red="62" green="179" blue="247"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="72" y="573" width="100" height="50"/>
+        <dc:Bounds x="69" y="621" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_FF9E4109-6622-4987-BA94-B2DD13F30A1C" dmnElementRef="_FF9E4109-6622-4987-BA94-B2DD13F30A1C" isCollapsed="false">
@@ -1819,7 +1831,7 @@ Ground level open space 5.6.2.3</dmn:description>
           <dmndi:StrokeColor red="62" green="179" blue="247"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="71.5981308411215" y="451" width="100" height="50"/>
+        <dc:Bounds x="69.5981308411215" y="499" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_69755C18-1F1F-4AFA-A816-9BB075FBF7FE" dmnElementRef="_69755C18-1F1F-4AFA-A816-9BB075FBF7FE" isCollapsed="false">
@@ -1885,15 +1897,6 @@ Ground level open space 5.6.2.3</dmn:description>
         <dc:Bounds x="1210" y="120" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_7D6CFD22-CDBA-4B56-82B9-6C7439FC4D7C" dmnElementRef="_7D6CFD22-CDBA-4B56-82B9-6C7439FC4D7C" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="8">
-          <dmndi:FillColor red="243" green="229" blue="248"/>
-          <dmndi:StrokeColor red="210" green="193" blue="208"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="610.2990654205607" y="262.68421052631584" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0" dmnElementRef="_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0" isCollapsed="false">
         <dmndi:DMNStyle fontSize="8">
           <dmndi:FillColor red="243" green="229" blue="248"/>
@@ -1910,6 +1913,15 @@ Ground level open space 5.6.2.3</dmn:description>
           <dmndi:FontColor red="120" green="120" blue="120"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="1210" y="40" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_7D6CFD22-CDBA-4B56-82B9-6C7439FC4D7C" dmnElementRef="_7D6CFD22-CDBA-4B56-82B9-6C7439FC4D7C" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="8">
+          <dmndi:FillColor red="243" green="229" blue="248"/>
+          <dmndi:StrokeColor red="210" green="193" blue="208"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="611.2990654205607" y="181.68421052631578" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_C96F7B28-5F6B-422D-90EA-9C0866A3CFAC" dmnElementRef="_C96F7B28-5F6B-422D-90EA-9C0866A3CFAC" isCollapsed="false">
@@ -1935,11 +1947,11 @@ Ground level open space 5.6.2.3</dmn:description>
         <di:waypoint x="241" y="106"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7E8FC3A4-CF9A-430F-A2F1-75B64EC0550F" dmnElementRef="_7E8FC3A4-CF9A-430F-A2F1-75B64EC0550F">
-        <di:waypoint x="121.5981308411215" y="476"/>
+        <di:waypoint x="119.5981308411215" y="524"/>
         <di:waypoint x="241" y="106"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_EFA646E2-E3ED-4A47-8250-637AE0F0C4FF" dmnElementRef="_EFA646E2-E3ED-4A47-8250-637AE0F0C4FF">
-        <di:waypoint x="121.59813084112147" y="408.6842105263158"/>
+        <di:waypoint x="119.59813084112147" y="456.6842105263158"/>
         <di:waypoint x="241" y="106"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_2E5E2F9E-8531-4812-BF40-02046C420B55" dmnElementRef="_2E5E2F9E-8531-4812-BF40-02046C420B55">
@@ -1947,19 +1959,19 @@ Ground level open space 5.6.2.3</dmn:description>
         <di:waypoint x="241" y="131"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_F56D106F-54C4-4F03-9A6C-EF384F3D4D07" dmnElementRef="_F56D106F-54C4-4F03-9A6C-EF384F3D4D07">
-        <di:waypoint x="120.59813084112147" y="715"/>
+        <di:waypoint x="119.59813084112147" y="763"/>
         <di:waypoint x="241" y="106"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7CB1AAE2-13C2-45B7-9B51-701A45294A1B" dmnElementRef="_7CB1AAE2-13C2-45B7-9B51-701A45294A1B">
-        <di:waypoint x="120.29906542056074" y="658"/>
+        <di:waypoint x="119.29906542056074" y="707"/>
         <di:waypoint x="241" y="106"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_5EFCD6D4-5FA3-413B-8754-CD8777B8AA7D" dmnElementRef="_5EFCD6D4-5FA3-413B-8754-CD8777B8AA7D">
-        <di:waypoint x="122" y="538"/>
+        <di:waypoint x="119" y="587"/>
         <di:waypoint x="241" y="106"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_A75511AA-4919-4A1D-B07D-D22ED22CE9AF" dmnElementRef="_A75511AA-4919-4A1D-B07D-D22ED22CE9AF">
-        <di:waypoint x="122" y="598"/>
+        <di:waypoint x="119" y="646"/>
         <di:waypoint x="241" y="106"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7399E61C-C404-49CD-BDD5-9FE9A0E1F267" dmnElementRef="_7399E61C-C404-49CD-BDD5-9FE9A0E1F267">
@@ -1971,27 +1983,27 @@ Ground level open space 5.6.2.3</dmn:description>
         <di:waypoint x="517" y="367.3157894736842"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_40A76C44-1B85-4F4A-8E07-6189418286A6" dmnElementRef="_40A76C44-1B85-4F4A-8E07-6189418286A6">
-        <di:waypoint x="120" y="346"/>
+        <di:waypoint x="122" y="345.6842105263158"/>
         <di:waypoint x="379" y="367"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_D498697F-875C-421E-A7FC-0523B9B80FBD" dmnElementRef="_D498697F-875C-421E-A7FC-0523B9B80FBD">
-        <di:waypoint x="121.5981308411215" y="476"/>
+        <di:waypoint x="119.5981308411215" y="524"/>
         <di:waypoint x="379" y="367"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7E7E2A19-A898-442D-9E4F-052AA6F4946C" dmnElementRef="_7E7E2A19-A898-442D-9E4F-052AA6F4946C">
         <di:waypoint x="119.59813084112147" y="287"/>
         <di:waypoint x="379" y="367"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_699DC6E4-66E5-46EE-8479-501628A59E8A" dmnElementRef="_699DC6E4-66E5-46EE-8479-501628A59E8A">
-        <di:waypoint x="660.2990654205607" y="287.68421052631584"/>
-        <di:waypoint x="379" y="367"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_D4F8287D-0225-445C-AF87-A16062C8C6BD" dmnElementRef="_D4F8287D-0225-445C-AF87-A16062C8C6BD">
-        <di:waypoint x="122" y="538"/>
+        <di:waypoint x="119" y="587"/>
         <di:waypoint x="379" y="367"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_DA73E543-DB69-4E9D-892F-3BA4A05CBFAC" dmnElementRef="_DA73E543-DB69-4E9D-892F-3BA4A05CBFAC">
         <di:waypoint x="378.25" y="295"/>
+        <di:waypoint x="379" y="367"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_5EBB85CE-BCDF-4D48-BECE-F17341028784" dmnElementRef="_5EBB85CE-BCDF-4D48-BECE-F17341028784">
+        <di:waypoint x="121.59813084112147" y="400.6842105263158"/>
         <di:waypoint x="379" y="367"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_9D53CB17-27C1-4D12-997A-CB55BA279E60" dmnElementRef="_9D53CB17-27C1-4D12-997A-CB55BA279E60">
@@ -2015,11 +2027,11 @@ Ground level open space 5.6.2.3</dmn:description>
         <di:waypoint x="944" y="225"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_3F25BDD1-E689-4280-BF53-E8718A2CEC24" dmnElementRef="_3F25BDD1-E689-4280-BF53-E8718A2CEC24">
-        <di:waypoint x="121.5981308411215" y="476"/>
+        <di:waypoint x="119.5981308411215" y="524"/>
         <di:waypoint x="944" y="225"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_1CF775CE-2611-43C7-B89C-B646A47F4A6E" dmnElementRef="_1CF775CE-2611-43C7-B89C-B646A47F4A6E">
-        <di:waypoint x="120.59813084112147" y="715"/>
+        <di:waypoint x="119.59813084112147" y="763"/>
         <di:waypoint x="944" y="225"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_39999380-8E09-4597-BA0B-D992EEA21C8F" dmnElementRef="_39999380-8E09-4597-BA0B-D992EEA21C8F">
@@ -2035,11 +2047,7 @@ Ground level open space 5.6.2.3</dmn:description>
         <di:waypoint x="517" y="226"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_22F83C8B-AEB3-4184-B6D0-E40F3B0CFC08" dmnElementRef="_22F83C8B-AEB3-4184-B6D0-E40F3B0CFC08">
-        <di:waypoint x="121.5981308411215" y="476"/>
-        <di:waypoint x="517" y="226"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_83DCE050-D5F5-4741-AA06-DABCAA1B7BB9" dmnElementRef="_83DCE050-D5F5-4741-AA06-DABCAA1B7BB9">
-        <di:waypoint x="660.2990654205607" y="287.68421052631584"/>
+        <di:waypoint x="119.5981308411215" y="524"/>
         <di:waypoint x="517" y="226"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_6E7001FC-7031-40F5-8AC0-47AC4A1AF77A" dmnElementRef="_6E7001FC-7031-40F5-8AC0-47AC4A1AF77A">
@@ -2047,23 +2055,27 @@ Ground level open space 5.6.2.3</dmn:description>
         <di:waypoint x="517" y="226"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_5281913A-1E44-4A51-9D5A-DB208502BB9F" dmnElementRef="_5281913A-1E44-4A51-9D5A-DB208502BB9F">
-        <di:waypoint x="121.59813084112147" y="408.6842105263158"/>
+        <di:waypoint x="119.59813084112147" y="456.6842105263158"/>
         <di:waypoint x="517" y="226"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_8E605B14-DA47-4F1A-BEFA-B9D782144C24" dmnElementRef="_8E605B14-DA47-4F1A-BEFA-B9D782144C24">
-        <di:waypoint x="122" y="538"/>
+        <di:waypoint x="119" y="587"/>
         <di:waypoint x="517" y="226"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_1BC3A9C5-AB2A-49C6-9818-ACEE58E4367E" dmnElementRef="_1BC3A9C5-AB2A-49C6-9818-ACEE58E4367E">
-        <di:waypoint x="122" y="598"/>
+        <di:waypoint x="119" y="646"/>
         <di:waypoint x="517" y="226"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_C5D88832-E59D-4CBB-BC33-285D4C93B08A" dmnElementRef="_C5D88832-E59D-4CBB-BC33-285D4C93B08A">
-        <di:waypoint x="120.29906542056074" y="658"/>
+        <di:waypoint x="119.29906542056074" y="707"/>
         <di:waypoint x="517" y="226"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_C3BC7111-5B35-408A-9014-906B696F6B43" dmnElementRef="_C3BC7111-5B35-408A-9014-906B696F6B43">
-        <di:waypoint x="120.59813084112147" y="715"/>
+        <di:waypoint x="119.59813084112147" y="763"/>
+        <di:waypoint x="517" y="226"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_83DCE050-D5F5-4741-AA06-DABCAA1B7BB9" dmnElementRef="_83DCE050-D5F5-4741-AA06-DABCAA1B7BB9">
+        <di:waypoint x="661.2990654205607" y="206.68421052631578"/>
         <di:waypoint x="517" y="226"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_95AE9539-9644-4754-A7A5-303BB142D034" dmnElementRef="_95AE9539-9644-4754-A7A5-303BB142D034">
@@ -2095,7 +2107,7 @@ Ground level open space 5.6.2.3</dmn:description>
         <di:waypoint x="379" y="572"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_9DBEFE2B-6A5B-4373-A1EA-A50DDB00DE17" dmnElementRef="_9DBEFE2B-6A5B-4373-A1EA-A50DDB00DE17">
-        <di:waypoint x="121.5981308411215" y="476"/>
+        <di:waypoint x="119.5981308411215" y="524"/>
         <di:waypoint x="379" y="572"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_E43BA87F-5CB9-4D23-AD81-6EBD753422FA" dmnElementRef="_E43BA87F-5CB9-4D23-AD81-6EBD753422FA">
@@ -2103,7 +2115,7 @@ Ground level open space 5.6.2.3</dmn:description>
         <di:waypoint x="379" y="547"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_77B4BCA6-5066-47B2-AD85-12FA8D333ECB" dmnElementRef="_77B4BCA6-5066-47B2-AD85-12FA8D333ECB">
-        <di:waypoint x="120.59813084112147" y="715"/>
+        <di:waypoint x="119.59813084112147" y="763"/>
         <di:waypoint x="379" y="572"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_B7F8930C-FEF3-483E-ADF7-5E07AE71AF55" dmnElementRef="_B7F8930C-FEF3-483E-ADF7-5E07AE71AF55">
@@ -2147,23 +2159,23 @@ Ground level open space 5.6.2.3</dmn:description>
         <di:waypoint x="1260" y="513"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_4737061B-20F6-4B25-B74C-F7ED37CBBCF2" dmnElementRef="_4737061B-20F6-4B25-B74C-F7ED37CBBCF2">
-        <di:waypoint x="121.5981308411215" y="476"/>
+        <di:waypoint x="119.5981308411215" y="524"/>
         <di:waypoint x="1260" y="513"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_DDC4BCEF-E039-4D88-8110-0575E8868087" dmnElementRef="_DDC4BCEF-E039-4D88-8110-0575E8868087">
-        <di:waypoint x="122" y="538"/>
+        <di:waypoint x="119" y="587"/>
         <di:waypoint x="1260" y="513"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_92EA0800-459A-4A75-A005-177364736C8B" dmnElementRef="_92EA0800-459A-4A75-A005-177364736C8B">
-        <di:waypoint x="122" y="598"/>
+        <di:waypoint x="119" y="646"/>
         <di:waypoint x="1260" y="513"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_8C7AA715-F53C-4401-B0BF-0CD5755772FE" dmnElementRef="_8C7AA715-F53C-4401-B0BF-0CD5755772FE">
-        <di:waypoint x="120.29906542056074" y="658"/>
+        <di:waypoint x="119.29906542056074" y="707"/>
         <di:waypoint x="1260" y="513"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_B5D4DC47-913D-4190-B1A9-D34F689F9AD8" dmnElementRef="_B5D4DC47-913D-4190-B1A9-D34F689F9AD8">
-        <di:waypoint x="120.59813084112147" y="715"/>
+        <di:waypoint x="119.59813084112147" y="763"/>
         <di:waypoint x="1260" y="513"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_4EC9797A-8E6C-452A-83D8-5DBD53E903C1" dmnElementRef="_4EC9797A-8E6C-452A-83D8-5DBD53E903C1">
@@ -2179,19 +2191,15 @@ Ground level open space 5.6.2.3</dmn:description>
         <di:waypoint x="378" y="225"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_1DC5C410-7F04-4F2A-BB04-5E101A16F067" dmnElementRef="_1DC5C410-7F04-4F2A-BB04-5E101A16F067">
-        <di:waypoint x="121.5981308411215" y="476"/>
+        <di:waypoint x="119.5981308411215" y="524"/>
         <di:waypoint x="328" y="225"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_9723544D-AC31-4467-BB7F-5CBE63FCAA5D" dmnElementRef="_9723544D-AC31-4467-BB7F-5CBE63FCAA5D">
-        <di:waypoint x="121.59813084112147" y="408.6842105263158"/>
+        <di:waypoint x="119.59813084112147" y="456.6842105263158"/>
         <di:waypoint x="378" y="225"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_28AF692A-87A8-4C94-90A0-9EFFA7ADEC3E" dmnElementRef="_28AF692A-87A8-4C94-90A0-9EFFA7ADEC3E">
-        <di:waypoint x="120" y="346"/>
-        <di:waypoint x="378" y="225"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_2282D3A6-6378-4D12-B945-B96F4C2EB770" dmnElementRef="_2282D3A6-6378-4D12-B945-B96F4C2EB770">
-        <di:waypoint x="660.2990654205607" y="287.68421052631584"/>
+        <di:waypoint x="122" y="345.6842105263158"/>
         <di:waypoint x="378" y="225"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_515E5A32-8B52-4D1D-AD78-808397658777" dmnElementRef="_515E5A32-8B52-4D1D-AD78-808397658777">
@@ -2199,23 +2207,27 @@ Ground level open space 5.6.2.3</dmn:description>
         <di:waypoint x="378" y="225"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_05A64C15-AB86-4E7D-A4FF-8B9FD6D261E7" dmnElementRef="_05A64C15-AB86-4E7D-A4FF-8B9FD6D261E7">
-        <di:waypoint x="122" y="538"/>
+        <di:waypoint x="119" y="587"/>
         <di:waypoint x="378" y="225"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_58C58778-8B0F-4D2D-9D79-C26CC5F8B8E5" dmnElementRef="_58C58778-8B0F-4D2D-9D79-C26CC5F8B8E5">
-        <di:waypoint x="120.59813084112147" y="715"/>
+        <di:waypoint x="119.59813084112147" y="763"/>
         <di:waypoint x="378" y="225"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_72418D4B-F2E5-4BED-9D35-5C4877C455BC" dmnElementRef="_72418D4B-F2E5-4BED-9D35-5C4877C455BC">
-        <di:waypoint x="122" y="598"/>
+        <di:waypoint x="119" y="646"/>
         <di:waypoint x="378" y="225"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_81419C23-BD90-4BA3-992E-B037538BF341" dmnElementRef="_81419C23-BD90-4BA3-992E-B037538BF341">
-        <di:waypoint x="120.29906542056074" y="658"/>
+        <di:waypoint x="119.29906542056074" y="707"/>
         <di:waypoint x="378" y="225"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_08CE2FA5-0236-4703-A70B-6AF0CD252B2C" dmnElementRef="_08CE2FA5-0236-4703-A70B-6AF0CD252B2C">
         <di:waypoint x="378.25" y="153.68421052631578"/>
+        <di:waypoint x="378" y="225"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_35C3A7EB-B6B4-4E32-88C3-9822A0AA694D" dmnElementRef="_35C3A7EB-B6B4-4E32-88C3-9822A0AA694D">
+        <di:waypoint x="121.59813084112147" y="400.6842105263158"/>
         <di:waypoint x="378" y="225"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_5FE3DB98-1224-431C-9BAC-F513DB6A44CD" dmnElementRef="_5FE3DB98-1224-431C-9BAC-F513DB6A44CD">
@@ -2235,23 +2247,19 @@ Ground level open space 5.6.2.3</dmn:description>
         <di:waypoint x="379" y="710"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_C2295460-2B29-4EBA-ACFD-45EEF83E6100" dmnElementRef="_C2295460-2B29-4EBA-ACFD-45EEF83E6100">
-        <di:waypoint x="121.5981308411215" y="476"/>
+        <di:waypoint x="119.5981308411215" y="524"/>
         <di:waypoint x="379" y="710"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_2D562FC4-CE6E-4C17-82C2-0E1B726222B3" dmnElementRef="_2D562FC4-CE6E-4C17-82C2-0E1B726222B3">
-        <di:waypoint x="121.59813084112147" y="408.6842105263158"/>
+        <di:waypoint x="119.59813084112147" y="456.6842105263158"/>
         <di:waypoint x="379" y="710"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_649220CA-7C1C-4CD1-8DDA-731C2DFF2A0A" dmnElementRef="_649220CA-7C1C-4CD1-8DDA-731C2DFF2A0A">
-        <di:waypoint x="120" y="346"/>
+        <di:waypoint x="122" y="345.6842105263158"/>
         <di:waypoint x="379" y="710"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_BB70605A-52DA-4897-AA1C-1A893ACF2735" dmnElementRef="_BB70605A-52DA-4897-AA1C-1A893ACF2735">
         <di:waypoint x="515.2990654205607" y="638"/>
-        <di:waypoint x="379" y="710"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_0CAF4875-4E70-45AD-8770-5ACB90170356" dmnElementRef="_0CAF4875-4E70-45AD-8770-5ACB90170356">
-        <di:waypoint x="660.2990654205607" y="287.68421052631584"/>
         <di:waypoint x="379" y="710"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_BB65544D-ACA8-49E2-B091-8B94ECD39210" dmnElementRef="_BB65544D-ACA8-49E2-B091-8B94ECD39210">
@@ -2259,19 +2267,23 @@ Ground level open space 5.6.2.3</dmn:description>
         <di:waypoint x="379" y="710"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_5FA5656B-F92A-4954-A0C0-ECB393996FFB" dmnElementRef="_5FA5656B-F92A-4954-A0C0-ECB393996FFB">
-        <di:waypoint x="122" y="598"/>
+        <di:waypoint x="119" y="646"/>
         <di:waypoint x="379" y="710"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_FEEB5F01-293D-46C4-A4F0-2A92120AD3A5" dmnElementRef="_FEEB5F01-293D-46C4-A4F0-2A92120AD3A5">
-        <di:waypoint x="120.29906542056074" y="658"/>
+        <di:waypoint x="119.29906542056074" y="707"/>
         <di:waypoint x="379" y="710"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_A90B608D-6EE5-42D2-9955-CE23C1EABBAC" dmnElementRef="_A90B608D-6EE5-42D2-9955-CE23C1EABBAC">
-        <di:waypoint x="122" y="538"/>
+        <di:waypoint x="119" y="587"/>
         <di:waypoint x="379" y="710"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_E1210EA6-DB3E-4766-AFA4-82F64DE51437" dmnElementRef="_E1210EA6-DB3E-4766-AFA4-82F64DE51437">
         <di:waypoint x="378.25" y="637.2631578947369"/>
+        <di:waypoint x="379" y="710"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_B7DB8842-2FD8-4AF5-B1E9-F3F323F849F8" dmnElementRef="_B7DB8842-2FD8-4AF5-B1E9-F3F323F849F8">
+        <di:waypoint x="121.59813084112147" y="400.6842105263158"/>
         <di:waypoint x="379" y="710"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_370521F6-D22A-44AE-B047-990430F8B97B" dmnElementRef="_370521F6-D22A-44AE-B047-990430F8B97B">
