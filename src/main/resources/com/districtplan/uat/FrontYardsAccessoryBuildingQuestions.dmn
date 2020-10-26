@@ -459,15 +459,17 @@ else 0&#xd;
       <dmn:requiredKnowledge href="#_819C1576-CB4C-4FA9-ADC8-720A7C0964C6"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_3BA87EAE-5FD4-4859-8609-A9A58050A7F7">
-      <dmn:text>if list contains(Activities_Value[Noun="residential structure"].Verb) and&#xd;
-not(list contains(Activities_Value[Noun="accessory building"].Verb)) then 0 else&#xd;
-  if (not(CornerSite_Value) or &#xd;
-  not(CornerSiteAccessoryBuilding_Value)) and&#xd;
-  (not(CuldesacDeadendSite_Value) or&#xd;
-  not(CuldesacDeadendSiteAccessoryBuilding_Value)) then&#xd;
-  if MinimumWidthOfRoad_Value !=null then 0 else&#xd;
-  if ProposedSetBackAccessoryBuilding_Value &lt; 3 then&#xd;
-  ProposedSetBackAccessoryBuilding + 1 else 0&#xd;
+      <dmn:text>if (list contains(Activities_Value[Noun="residential structure"].Verb, "build") or&#xd;
+list contains(Activities_Value[Noun="residential structure"].Verb, "add to or alter")) and&#xd;
+(not(list contains(Activities_Value[Noun="accessory building"].Verb, "build")) or&#xd;
+not(list contains(Activities_Value[Noun="accessory building"].Verb, "add to or alter"))) then 0 else&#xd;
+if (not(CornerSite_Value) or &#xd;
+not(CornerSiteAccessoryBuilding_Value)) and&#xd;
+(not(CuldesacDeadendSite_Value) or&#xd;
+not(CuldesacDeadendSiteAccessoryBuilding_Value)) then&#xd;
+if MinimumWidthOfRoad_Value !=null then 0 else&#xd;
+if ProposedSetBackAccessoryBuilding_Value &lt; 3 then&#xd;
+ProposedSetBackAccessoryBuilding + 1 else 0&#xd;
 else 0&#xd;
 &#xd;
 &#xd;
@@ -565,7 +567,8 @@ ProposedSetBackAccessoryBuilding + 1 else&#xd;
       <dmn:requiredInput href="#_4E1A89A0-24B6-4E63-970B-7852E8CEF434"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_B67CA254-44CD-4494-9719-C887E3EBE42E">
-      <dmn:text>if list contains(Activities_Value[Noun="accessory building"].Verb) and&#xd;
+      <dmn:text>if (list contains(Activities_Value[Noun="accessory building"].Verb, "build") or&#xd;
+list contains(Activities_Value[Noun="accessory building"].Verb, "add to or alter")) and&#xd;
 not(list contains(SpatialLayers_Value[Type="Residential"].Title, "Outer Residential")) then&#xd;
   if CornerSiteAccessoryBuilding_Value then &#xd;
   CornerSiteAccessoryBuilding + 1 else &#xd;
@@ -617,7 +620,8 @@ else 0&#xd;
       <dmn:requiredInput href="#_4E1A89A0-24B6-4E63-970B-7852E8CEF434"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_F955AD13-AFE4-4812-96DE-989DCD918493">
-      <dmn:text>if list contains(Activities_Value[Noun="accessory building"].Verb) then&#xd;
+      <dmn:text>if(list contains(Activities_Value[Noun="accessory building"].Verb, "build") or&#xd;
+list contains(Activities_Value[Noun="accessory building"].Verb, "add to or alter")) then&#xd;
   if CornerSiteAccessoryBuilding > 0 and &#xd;
   not(CornerSiteAccessoryBuilding_Value) then &#xd;
   CornerSiteAccessoryBuilding + 1 else &#xd;
