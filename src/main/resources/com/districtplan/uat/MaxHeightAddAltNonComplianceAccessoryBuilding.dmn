@@ -316,7 +316,7 @@ OuterResidentialArea(SpatialLayers)) and&#xd;
 (not(ExistingAccessoryBuildingComplianceHeight) or&#xd;
 not(ExistingAccessoryBuildingComplianceBRP) or&#xd;
 not(ExistingComplianceAccessoryBuildingSiteCoverageYards)) and&#xd;
-list contains(Activities[Noun="accessory building"].Verb, "add to") then &#xd;
+list contains(Activities[Noun="accessory building"].Verb, "add to or alter") then &#xd;
 "no increase in the degree of non-compliance" else null&#xd;
 &#xd;
 &#xd;
@@ -345,8 +345,10 @@ Residential buildings, accessory buildings and residential structures subject to
       <dmn:requiredInput href="#_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_059B26F4-1786-4F10-838B-6C2DFFD14DDC">
-      <dmn:text>if S5.6.2.9.1 = "contained within existing building volume" and AlterationWithinExistingVolumeAccessoryBuilding then true else&#xd;
-  if S5.6.2.9.1 = null or AlterationWithinExistingVolumeAccessoryBuilding = null then null else false</dmn:text>
+      <dmn:text>if S5.6.2.9.1 = "contained within existing building volume" and AlterationWithinExistingVolumeAccessoryBuilding = "Yes" then true else&#xd;
+  if S5.6.2.9.1 = null or &#xd;
+  AlterationWithinExistingVolumeAccessoryBuilding = "Not an alteration" or&#xd;
+  AlterationWithinExistingVolumeAccessoryBuilding = null then null else false</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:businessKnowledgeModel id="_6B5CCF36-1522-461E-81EA-3067EF176A0C" name="OR2ResidentialCoastalEdge">
@@ -637,8 +639,7 @@ not(AdditionIncreaseNonComplianceAccessoryBuilding) then true else&#xd;
       <dmn:text>if (InnerResidentialArea(SpatialLayers) or&#xd;
 MediumDensityResidentialArea(SpatialLayers) or&#xd;
 OuterResidentialArea(SpatialLayers)) and&#xd;
-(list contains(Activities[Noun="accessory building"].Verb, "add to") or &#xd;
-list contains(Activities[Noun="accessory building"].Verb, "alter")) then &#xd;
+list contains(Activities[Noun="accessory building"].Verb, "add to or alter") then &#xd;
 "existing building compliant" else null&#xd;
 &#xd;
 &#xd;
@@ -993,7 +994,7 @@ MediumDensityResidentialArea(SpatialLayers) or&#xd;
 OuterResidentialArea(SpatialLayers)) and&#xd;
 (not(ExistingAccessoryBuildingComplianceHeight) or&#xd;
 not(ExistingAccessoryBuildingComplianceBRP)) and&#xd;
-list contains(Activities[Noun="accessory building"].Verb, "add to") and&#xd;
+list contains(Activities[Noun="accessory building"].Verb, "add to or alter") and&#xd;
 not(AdditionInsideFootprintAccessoryBuilding) then&#xd;
   if SiteGroundSlope1 = null then 4.5 else&#xd;
   if SiteGroundSlope1 then 4.5 else&#xd;
@@ -1047,7 +1048,7 @@ OuterResidentialArea(SpatialLayers)) and&#xd;
 (not(ExistingAccessoryBuildingComplianceHeight) or&#xd;
 not(ExistingAccessoryBuildingComplianceBRP) or&#xd;
 not(ExistingComplianceAccessoryBuildingSiteCoverageYards)) and&#xd;
-list contains(Activities[Noun="accessory building"].Verb, "alter") then &#xd;
+list contains(Activities[Noun="accessory building"].Verb, "add to or alter") then &#xd;
 "contained within existing building volume" else null&#xd;
 &#xd;
 &#xd;
@@ -1199,8 +1200,7 @@ list contains(Activities[Noun="accessory building"].Verb, "alter") then &#xd;
       <dmn:requiredKnowledge href="#_9C36EA52-022B-417B-87C0-D01E9CB65009"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_1B9B3C9D-DB6D-4EA8-942B-F51F88030B71">
-      <dmn:text>(list contains(Activities[Noun="accessory building"].Verb, "add to") or &#xd;
-list contains(Activities[Noun="accessory building"].Verb, "alter")) and&#xd;
+      <dmn:text>list contains(Activities[Noun="accessory building"].Verb, "add to or alter") and&#xd;
 (InnerResidentialArea(SpatialLayers) or&#xd;
 MediumDensityResidentialArea(SpatialLayers) or&#xd;
 OuterResidentialArea(SpatialLayers))&#xd;
@@ -1238,8 +1238,7 @@ OuterResidentialArea(SpatialLayers))&#xd;
       <dmn:text>if (InnerResidentialArea(SpatialLayers) or&#xd;
 MediumDensityResidentialArea(SpatialLayers) or&#xd;
 OuterResidentialArea(SpatialLayers)) and&#xd;
-(list contains(Activities[Noun="accessory building"].Verb, "add to") or &#xd;
-list contains(Activities[Noun="accessory building"].Verb, "alter")) then &#xd;
+list contains(Activities[Noun="accessory building"].Verb, "add to or alter") then &#xd;
 "existing building compliant" else null&#xd;
 &#xd;
 &#xd;
@@ -1489,7 +1488,7 @@ else null&#xd;
   </dmn:decision>
   <dmn:inputData id="_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0" name="AlterationWithinExistingVolumeAccessoryBuilding">
     <dmn:extensionElements/>
-    <dmn:variable id="_CC0AA15A-835C-41DE-BB61-840D6242067E" name="AlterationWithinExistingVolumeAccessoryBuilding" typeRef="boolean"/>
+    <dmn:variable id="_CC0AA15A-835C-41DE-BB61-840D6242067E" name="AlterationWithinExistingVolumeAccessoryBuilding" typeRef="string"/>
   </dmn:inputData>
   <dmn:knowledgeSource id="_77E68C4D-DDF7-485A-9708-CBDF34FADE01" name="DP_5.6.2.9.3" locationURI="f335d998-f536-44be-ace8-8290bb888f41">
     <dmn:description>Wellington City District Plan Residential Standard
@@ -2535,12 +2534,12 @@ S5.6.2.5.3-AccessoryBuildingSiteCoverageYardsMet then true else&#xd;
         <di:waypoint x="134.5981308411215" y="460"/>
         <di:waypoint x="1342" y="397"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_8D0A140B-6AF1-4765-8B50-6CE7D0BDC380" dmnElementRef="_8D0A140B-6AF1-4765-8B50-6CE7D0BDC380">
-        <di:waypoint x="134.5981308411215" y="733"/>
-        <di:waypoint x="1342" y="397"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_13136F38-0A57-41D8-AAD6-A4F5B0701BCE" dmnElementRef="_13136F38-0A57-41D8-AAD6-A4F5B0701BCE">
         <di:waypoint x="528" y="747"/>
+        <di:waypoint x="1342" y="397"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_8D0A140B-6AF1-4765-8B50-6CE7D0BDC380" dmnElementRef="_8D0A140B-6AF1-4765-8B50-6CE7D0BDC380">
+        <di:waypoint x="134.5981308411215" y="733"/>
         <di:waypoint x="1342" y="397"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_9D53CB17-27C1-4D12-997A-CB55BA279E60" dmnElementRef="_9D53CB17-27C1-4D12-997A-CB55BA279E60">
