@@ -38,12 +38,12 @@
 (list contains(SpatialLayers_Value[Type="Residential"].Title, "Inner Residential") or&#xd;
 list contains(SpatialLayers_Value[Type="Residential"].Title, "Medium Density Residential Area") or&#xd;
 list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "OR2 - Residential Coastal Edge")) then &#xd;
-  if (list contains(Activities_Value[Noun="residential structure"].Verb, "build") or&#xd;
+  if (not(list contains(Activities_Value[Noun="accessory building"].Verb, "build")) or&#xd;
+  not(list contains(Activities_Value[Noun="accessory building"].Verb, "add to or alter"))) and&#xd;
+  (list contains(Activities_Value[Noun="residential structure"].Verb, "build") or&#xd;
   list contains(Activities_Value[Noun="residential structure"].Verb, "add to or alter") or&#xd;
   list contains(Activities_Value[Noun="deck or balcony"].Verb, "build") or&#xd;
-  list contains(Activities_Value[Noun="deck or balcony"].Verb, "add to or alter")) and&#xd;
-  (not(list contains(Activities_Value[Noun="accessory building"].Verb, "build")) or&#xd;
-  not(list contains(Activities_Value[Noun="accessory building"].Verb, "add to or alter"))) then &#xd;
+  list contains(Activities_Value[Noun="deck or balcony"].Verb, "add to or alter")) then &#xd;
   AccessoryBuildingStructureFrontYard + 1 else&#xd;
   if ProposedSetBackAccessoryBuildingRoad2 > 0 then AccessoryBuildingMinimumWidthOfRoad2 + 1 else&#xd;
   if AdjoiningBuildingLineAccessoryBuilding_Value then AdjoiningBuildingLineAccessoryBuilding + 1 else&#xd;
