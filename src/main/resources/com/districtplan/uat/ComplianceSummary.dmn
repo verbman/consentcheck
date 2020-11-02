@@ -208,33 +208,6 @@ list contains(r534.name, "5.3.4.13")&#xd;
       </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
-  <dmn:decision id="_2062CCE6-B9B7-42C9-80FD-8C7D8FE99E3C" name="AdditionalActivityStatus">
-    <dmn:extensionElements/>
-    <dmn:variable id="_DF690985-0193-44D2-9094-DDCF7ED612BE" name="AdditionalActivityStatus" typeRef="Types.Status"/>
-    <dmn:informationRequirement id="_CE5B2F7C-4CA8-4929-B8D2-EB16977426C8">
-      <dmn:requiredDecision href="#_0F6E5434-D37E-4BF5-8BC9-3F2B1C4474E7"/>
-    </dmn:informationRequirement>
-    <dmn:decisionTable id="_1CD4F5DB-3258-4325-85FF-3472781CC67E" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
-      <dmn:input id="_F34FFAD6-8B0F-4F03-BFEF-B57A403BCE32">
-        <dmn:inputExpression id="_75CF57F4-E973-47CC-A513-EA69DE53F013" typeRef="boolean">
-          <dmn:text>R5.3.8</dmn:text>
-        </dmn:inputExpression>
-      </dmn:input>
-      <dmn:output id="_DCE82DFA-5267-4418-B9B2-3D04DCC500BB"/>
-      <dmn:annotation name="annotation-1"/>
-      <dmn:rule id="_3784D3DF-7F6B-4D77-9133-E87DAA2AD106">
-        <dmn:inputEntry id="_C543189F-E20C-4280-BCAB-F3B92276508B">
-          <dmn:text>true</dmn:text>
-        </dmn:inputEntry>
-        <dmn:outputEntry id="_73D84504-0D6A-48C7-A4A2-BDA209D690DB">
-          <dmn:text>"Discretionary Restricted"</dmn:text>
-        </dmn:outputEntry>
-        <dmn:annotationEntry>
-          <dmn:text></dmn:text>
-        </dmn:annotationEntry>
-      </dmn:rule>
-    </dmn:decisionTable>
-  </dmn:decision>
   <dmn:decision id="_34737E6B-65A6-4F10-9814-7930BE7474C9" name="NotNotificationClauseRules">
     <dmn:extensionElements/>
     <dmn:variable id="_50F517FE-52A7-4BE1-B520-25666979160E" name="NotNotificationClauseRules" typeRef="boolean"/>
@@ -2709,19 +2682,6 @@ list contains(NotificationClauses.name, "5.3.10B")&#xd;
       </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
-  <dmn:decision id="_4B6164EB-D668-443F-87E6-5FFDD3C77022" name="FullListActivityStatus">
-    <dmn:extensionElements/>
-    <dmn:variable id="_004BBFAB-E645-4E00-8AB9-F3D8D3B9C9D1" name="FullListActivityStatus" typeRef="Types.ActivityStatus"/>
-    <dmn:informationRequirement id="_CB4D2E22-9BCE-4281-8E29-74B52CB03C91">
-      <dmn:requiredInput href="#_3C5E42C7-88BB-4E68-BABF-2D47A35AB0B0"/>
-    </dmn:informationRequirement>
-    <dmn:informationRequirement id="_A31DE23C-285D-4727-97F6-A8892131BA95">
-      <dmn:requiredDecision href="#_2062CCE6-B9B7-42C9-80FD-8C7D8FE99E3C"/>
-    </dmn:informationRequirement>
-    <dmn:literalExpression id="_D2D886B7-EFA9-40C0-8709-56CEB2DDAC41">
-      <dmn:text>if AdditionalActivityStatus != null then concatenate([ActivityStatus],[AdditionalActivityStatus]) else ActivityStatus</dmn:text>
-    </dmn:literalExpression>
-  </dmn:decision>
   <dmn:inputData id="_3339928E-4F9A-4EF4-998E-97DA1EC5F54E" name="StandardsNotMet">
     <dmn:extensionElements/>
     <dmn:variable id="_0619E9D8-04EC-49B6-813E-C6377F1A17D4" name="StandardsNotMet" typeRef="Types.PlanContents"/>
@@ -3066,12 +3026,6 @@ list contains(NotificationClauses.name, "5.3.7")&#xd;
             <kie:width>331.0</kie:width>
             <kie:width>100.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_1CD4F5DB-3258-4325-85FF-3472781CC67E">
-            <kie:width>50.0</kie:width>
-            <kie:width>100.0</kie:width>
-            <kie:width>222.0</kie:width>
-            <kie:width>100.0</kie:width>
-          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_FADBCDF4-2943-408E-B51C-882F62218AFC">
             <kie:width>658.0</kie:width>
           </kie:ComponentWidths>
@@ -3159,9 +3113,6 @@ list contains(NotificationClauses.name, "5.3.7")&#xd;
             <kie:width>231.0</kie:width>
             <kie:width>149.0</kie:width>
             <kie:width>100.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_D2D886B7-EFA9-40C0-8709-56CEB2DDAC41">
-            <kie:width>832.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_482E510D-CE71-4FE9-AAC8-DF7D0A4CD3BD">
             <kie:width>832.0</kie:width>
@@ -3280,15 +3231,6 @@ list contains(NotificationClauses.name, "5.3.7")&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="696" y="884" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_2062CCE6-B9B7-42C9-80FD-8C7D8FE99E3C" dmnElementRef="_2062CCE6-B9B7-42C9-80FD-8C7D8FE99E3C" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="204" green="207" blue="199"/>
-          <dmndi:StrokeColor red="112" green="113" blue="111"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="729" y="537" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_34737E6B-65A6-4F10-9814-7930BE7474C9" dmnElementRef="_34737E6B-65A6-4F10-9814-7930BE7474C9" isCollapsed="false">
@@ -3444,15 +3386,6 @@ list contains(NotificationClauses.name, "5.3.7")&#xd;
         <dc:Bounds x="654" y="317" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_4B6164EB-D668-443F-87E6-5FFDD3C77022" dmnElementRef="_4B6164EB-D668-443F-87E6-5FFDD3C77022" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="204" green="207" blue="199"/>
-          <dmndi:StrokeColor red="112" green="113" blue="111"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="256" y="8" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_3339928E-4F9A-4EF4-998E-97DA1EC5F54E" dmnElementRef="_3339928E-4F9A-4EF4-998E-97DA1EC5F54E" isCollapsed="false">
         <dmndi:DMNStyle fontSize="8">
           <dmndi:FillColor red="243" green="229" blue="248"/>
@@ -3558,10 +3491,6 @@ list contains(NotificationClauses.name, "5.3.7")&#xd;
       <dmndi:DMNEdge id="dmnedge-_796A676B-D48D-409A-AE3D-C12008BBD122" dmnElementRef="_796A676B-D48D-409A-AE3D-C12008BBD122">
         <di:waypoint x="599" y="909"/>
         <di:waypoint x="746" y="909"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_CE5B2F7C-4CA8-4929-B8D2-EB16977426C8" dmnElementRef="_CE5B2F7C-4CA8-4929-B8D2-EB16977426C8">
-        <di:waypoint x="779" y="640"/>
-        <di:waypoint x="779" y="562"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7A4379A5-410D-4268-90CE-651DCC0F7700" dmnElementRef="_7A4379A5-410D-4268-90CE-651DCC0F7700">
         <di:waypoint x="138.29906542056074" y="836.3421052631579"/>
@@ -3706,14 +3635,6 @@ list contains(NotificationClauses.name, "5.3.7")&#xd;
       <dmndi:DMNEdge id="dmnedge-_D7B8CD6D-FA68-4F6A-9567-4F06646BA2C0" dmnElementRef="_D7B8CD6D-FA68-4F6A-9567-4F06646BA2C0">
         <di:waypoint x="599" y="61"/>
         <di:waypoint x="704" y="342"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_CB4D2E22-9BCE-4281-8E29-74B52CB03C91" dmnElementRef="_CB4D2E22-9BCE-4281-8E29-74B52CB03C91">
-        <di:waypoint x="136.29906542056074" y="60.684210526315795"/>
-        <di:waypoint x="306" y="33"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_A31DE23C-285D-4727-97F6-A8892131BA95" dmnElementRef="_A31DE23C-285D-4727-97F6-A8892131BA95">
-        <di:waypoint x="779" y="562"/>
-        <di:waypoint x="306" y="33"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_3B0E5E4A-F47F-48D6-8D43-8F775B086482" dmnElementRef="_3B0E5E4A-F47F-48D6-8D43-8F775B086482">
         <di:waypoint x="136.29906542056074" y="364.3421052631579"/>
