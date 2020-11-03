@@ -9,9 +9,13 @@
       <dmn:text>1</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
-  <dmn:inputData id="_CB6F6766-B5DE-47AC-BF78-7654940EA57F" name="RulesTriggered_Value">
+  <dmn:inputData id="_7CB3099F-2F91-4580-AF96-5253846136D3" name="AdditionAlterationResidentialStructurePublicVisible_Value">
     <dmn:extensionElements/>
-    <dmn:variable id="_B89777A9-A861-403C-8396-E96A5B7D5E54" name="RulesTriggered_Value" typeRef="Types.PlanContents"/>
+    <dmn:variable id="_1CB4BDFF-1D1D-48AE-BDC0-8BFA2FA0FE6A" name="AdditionAlterationResidentialStructurePublicVisible_Value" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmn:inputData id="_347F2FBA-BE29-49BE-A803-40E23366FF2F" name="SpatialLayers_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_5BC9A235-4930-40D9-9AB5-12F7D1BEC681" name="SpatialLayers_Value" typeRef="Types.SpatialLayers"/>
   </dmn:inputData>
   <dmn:businessKnowledgeModel id="_4306AB83-CA4B-437E-84AF-0485953E2E56" name="AlterationsAdditionsOrientalBayHeightAreaResidentialStructureSpatialLayers">
     <dmn:extensionElements/>
@@ -64,35 +68,33 @@ AdditionAlterationResidentialStructurePublicVisible + 1 else 0&#xd;
 </dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
+  <dmn:inputData id="_B7D4AF81-3425-4132-AECA-ABB8315BAD66" name="Activities_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_BEF5BB6B-98C5-4093-A1A3-7F10F651EA36" name="Activities_Value" typeRef="Types.Activities"/>
+  </dmn:inputData>
   <dmn:inputData id="_2BBCA728-1011-4635-B39E-803717D5EC93" name="AlterAppearanceResidentialStructure_Value">
     <dmn:extensionElements/>
     <dmn:variable id="_06353E4C-B2AD-4259-ACBF-02BB6FC660CA" name="AlterAppearanceResidentialStructure_Value" typeRef="boolean"/>
   </dmn:inputData>
-  <dmn:businessKnowledgeModel id="_516F1FDF-B683-4763-B79E-CFCA6D55F73B" name="R5.3.4Triggered">
+  <dmn:decision id="_41124519-21E8-463D-9304-475F9A6AA26F" name="AdditionAlterationResidentialStructurePublicVisible">
     <dmn:extensionElements/>
-    <dmn:variable id="_ABC1682F-454A-4B9F-BFF4-EB2A0F6FA939" name="R5.3.4Triggered" typeRef="boolean"/>
-    <dmn:encapsulatedLogic id="_E83452DE-8711-44DF-92FE-5E8263DF611B" kind="FEEL">
-      <dmn:formalParameter id="_C32660FF-F6B9-46EB-8EDE-8C824C9A48DE" name="r534" typeRef="Types.PlanContents"/>
-      <dmn:literalExpression id="_7765A74E-83C9-4643-BA89-8002B7D6FF0B">
-        <dmn:text>list contains(r534.name, "5.3.4.1") or&#xd;
-list contains(r534.name, "5.3.4.2") or&#xd;
-list contains(r534.name, "5.3.4.3") or&#xd;
-list contains(r534.name, "5.3.4.4") or&#xd;
-list contains(r534.name, "5.3.4.5") or&#xd;
-list contains(r534.name, "5.3.4.6") or&#xd;
-list contains(r534.name, "5.3.4.7") or&#xd;
-list contains(r534.name, "5.3.4.8") or&#xd;
-list contains(r534.name, "5.3.4.9") or&#xd;
-list contains(r534.name, "5.3.4.10") or&#xd;
-list contains(r534.name, "5.3.4.11") or&#xd;
-list contains(r534.name, "5.3.4.12") or&#xd;
-list contains(r534.name, "5.3.4.13")&#xd;
+    <dmn:variable id="_9F6DD4A2-1C39-44C5-8AA7-329115EB39A3" name="AdditionAlterationResidentialStructurePublicVisible" typeRef="number"/>
+    <dmn:informationRequirement id="_04392CD8-8A44-4A6C-A793-60D4CBDC487A">
+      <dmn:requiredDecision href="#_CC99E2DF-E9BF-4BE5-98F9-47E6E912D742"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_BA83B324-F5FC-4037-92CC-689A57476BDC">
+      <dmn:requiredInput href="#_2BBCA728-1011-4635-B39E-803717D5EC93"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_8E4AAA4C-33EF-494D-8CF8-DC9D25C51F3E">
+      <dmn:text>if AlterAppearanceResidentialStructure_Value then&#xd;
+AlterAppearanceResidentialStructure + 1 else 0&#xd;
+&#xd;
+&#xd;
 &#xd;
 &#xd;
 </dmn:text>
-      </dmn:literalExpression>
-    </dmn:encapsulatedLogic>
-  </dmn:businessKnowledgeModel>
+    </dmn:literalExpression>
+  </dmn:decision>
   <dmn:decision id="_A2F298C8-8542-41C1-A9E3-9452A323B85D" name="Activities">
     <dmn:extensionElements/>
     <dmn:variable id="_4F716487-C01F-47E3-87B2-5704C699E77A" name="Activities" typeRef="number"/>
@@ -112,9 +114,6 @@ list contains(r534.name, "5.3.4.13")&#xd;
     <dmn:informationRequirement id="_D60929DF-25C1-43AB-B0B0-FEE5D3E1C912">
       <dmn:requiredInput href="#_347F2FBA-BE29-49BE-A803-40E23366FF2F"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_81FFE857-8B00-4F97-9A23-7FA869F2B9D0">
-      <dmn:requiredInput href="#_CB6F6766-B5DE-47AC-BF78-7654940EA57F"/>
-    </dmn:informationRequirement>
     <dmn:informationRequirement id="_37EF5306-C397-4545-BF66-5DEE2C915127">
       <dmn:requiredDecision href="#_A2F298C8-8542-41C1-A9E3-9452A323B85D"/>
     </dmn:informationRequirement>
@@ -124,12 +123,8 @@ list contains(r534.name, "5.3.4.13")&#xd;
     <dmn:knowledgeRequirement id="_B0163362-2C6E-4274-9FB3-931AFFD9EA72">
       <dmn:requiredKnowledge href="#_4306AB83-CA4B-437E-84AF-0485953E2E56"/>
     </dmn:knowledgeRequirement>
-    <dmn:knowledgeRequirement id="_C4A3FE54-8E53-4F9E-B545-A709A7969134">
-      <dmn:requiredKnowledge href="#_516F1FDF-B683-4763-B79E-CFCA6D55F73B"/>
-    </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_5A6554D9-2A02-4C09-9866-5658EF7F55FA">
-      <dmn:text>if not(R5.3.4Triggered(RulesTriggered_Value)) and&#xd;
-AlterationsAdditionsOrientalBayHeightAreaResidentialStructureActivities(Activities_Value) and &#xd;
+      <dmn:text>if AlterationsAdditionsOrientalBayHeightAreaResidentialStructureActivities(Activities_Value) and &#xd;
 AlterationsAdditionsOrientalBayHeightAreaResidentialStructureSpatialLayers(SpatialLayers_Value) then &#xd;
 Activities + 1 else 0</dmn:text>
     </dmn:literalExpression>
@@ -143,9 +138,6 @@ Activities + 1 else 0</dmn:text>
     <dmn:informationRequirement id="_05CD4D26-29B2-40A2-BB2B-D02D281B658E">
       <dmn:requiredInput href="#_347F2FBA-BE29-49BE-A803-40E23366FF2F"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_D9CA5CEA-E942-47B8-8630-29186C265063">
-      <dmn:requiredInput href="#_CB6F6766-B5DE-47AC-BF78-7654940EA57F"/>
-    </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_58B69B39-34B9-4B68-9B6F-D30F69AA8EF6">
       <dmn:requiredKnowledge href="#_451EE7E1-3B0A-4229-9EDE-300A2835B4BD"/>
     </dmn:knowledgeRequirement>
@@ -155,37 +147,6 @@ Activities + 1 else 0</dmn:text>
     <dmn:literalExpression id="_C580889E-4FFC-4B73-81D7-0BD79700798A">
       <dmn:text>AlterationsAdditionsOrientalBayHeightAreaResidentialStructureActivities(Activities_Value) and &#xd;
 AlterationsAdditionsOrientalBayHeightAreaResidentialStructureSpatialLayers(SpatialLayers_Value)</dmn:text>
-    </dmn:literalExpression>
-  </dmn:decision>
-  <dmn:inputData id="_7CB3099F-2F91-4580-AF96-5253846136D3" name="AdditionAlterationResidentialStructurePublicVisible_Value">
-    <dmn:extensionElements/>
-    <dmn:variable id="_1CB4BDFF-1D1D-48AE-BDC0-8BFA2FA0FE6A" name="AdditionAlterationResidentialStructurePublicVisible_Value" typeRef="boolean"/>
-  </dmn:inputData>
-  <dmn:inputData id="_347F2FBA-BE29-49BE-A803-40E23366FF2F" name="SpatialLayers_Value">
-    <dmn:extensionElements/>
-    <dmn:variable id="_5BC9A235-4930-40D9-9AB5-12F7D1BEC681" name="SpatialLayers_Value" typeRef="Types.SpatialLayers"/>
-  </dmn:inputData>
-  <dmn:inputData id="_B7D4AF81-3425-4132-AECA-ABB8315BAD66" name="Activities_Value">
-    <dmn:extensionElements/>
-    <dmn:variable id="_BEF5BB6B-98C5-4093-A1A3-7F10F651EA36" name="Activities_Value" typeRef="Types.Activities"/>
-  </dmn:inputData>
-  <dmn:decision id="_41124519-21E8-463D-9304-475F9A6AA26F" name="AdditionAlterationResidentialStructurePublicVisible">
-    <dmn:extensionElements/>
-    <dmn:variable id="_9F6DD4A2-1C39-44C5-8AA7-329115EB39A3" name="AdditionAlterationResidentialStructurePublicVisible" typeRef="number"/>
-    <dmn:informationRequirement id="_04392CD8-8A44-4A6C-A793-60D4CBDC487A">
-      <dmn:requiredDecision href="#_CC99E2DF-E9BF-4BE5-98F9-47E6E912D742"/>
-    </dmn:informationRequirement>
-    <dmn:informationRequirement id="_BA83B324-F5FC-4037-92CC-689A57476BDC">
-      <dmn:requiredInput href="#_2BBCA728-1011-4635-B39E-803717D5EC93"/>
-    </dmn:informationRequirement>
-    <dmn:literalExpression id="_8E4AAA4C-33EF-494D-8CF8-DC9D25C51F3E">
-      <dmn:text>if AlterAppearanceResidentialStructure_Value then&#xd;
-AlterAppearanceResidentialStructure + 1 else 0&#xd;
-&#xd;
-&#xd;
-&#xd;
-&#xd;
-</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmndi:DMNDI>
@@ -212,13 +173,6 @@ AlterAppearanceResidentialStructure + 1 else 0&#xd;
           <kie:ComponentWidths dmnElementRef="_F96DB62C-E903-4793-BE9B-C911A489F6E2">
             <kie:width>526.0</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_7765A74E-83C9-4643-BA89-8002B7D6FF0B">
-            <kie:width>462.0</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_E83452DE-8711-44DF-92FE-5E8263DF611B">
-            <kie:width>50.0</kie:width>
-            <kie:width>462.0</kie:width>
-          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_FEF5DC4A-BC02-41FC-83DA-BBDFD5C2AC77">
             <kie:width>300.0</kie:width>
           </kie:ComponentWidths>
@@ -240,15 +194,6 @@ AlterAppearanceResidentialStructure + 1 else 0&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="491" y="30" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_CB6F6766-B5DE-47AC-BF78-7654940EA57F" dmnElementRef="_CB6F6766-B5DE-47AC-BF78-7654940EA57F" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="137" green="203" blue="200"/>
-          <dmndi:StrokeColor red="129" green="178" blue="177"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="729" y="202.68421052631578" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_4306AB83-CA4B-437E-84AF-0485953E2E56" dmnElementRef="_4306AB83-CA4B-437E-84AF-0485953E2E56" isCollapsed="false">
@@ -285,15 +230,6 @@ AlterAppearanceResidentialStructure + 1 else 0&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="194" y="283.3421052631579" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_516F1FDF-B683-4763-B79E-CFCA6D55F73B" dmnElementRef="_516F1FDF-B683-4763-B79E-CFCA6D55F73B" isCollapsed="false">
-        <dmndi:DMNStyle>
-          <dmndi:FillColor red="255" green="255" blue="255"/>
-          <dmndi:StrokeColor red="0" green="0" blue="0"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="729" y="140" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_A2F298C8-8542-41C1-A9E3-9452A323B85D" dmnElementRef="_A2F298C8-8542-41C1-A9E3-9452A323B85D" isCollapsed="false">
@@ -379,10 +315,6 @@ AlterAppearanceResidentialStructure + 1 else 0&#xd;
         <di:waypoint x="246" y="228.34210526315792"/>
         <di:waypoint x="541" y="228"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_81FFE857-8B00-4F97-9A23-7FA869F2B9D0" dmnElementRef="_81FFE857-8B00-4F97-9A23-7FA869F2B9D0">
-        <di:waypoint x="779" y="227.68421052631578"/>
-        <di:waypoint x="541" y="228"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_37EF5306-C397-4545-BF66-5DEE2C915127" dmnElementRef="_37EF5306-C397-4545-BF66-5DEE2C915127">
         <di:waypoint x="541" y="125"/>
         <di:waypoint x="541" y="228"/>
@@ -395,20 +327,12 @@ AlterAppearanceResidentialStructure + 1 else 0&#xd;
         <di:waypoint x="245" y="174.3421052631579"/>
         <di:waypoint x="541" y="228"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_C4A3FE54-8E53-4F9E-B545-A709A7969134" dmnElementRef="_C4A3FE54-8E53-4F9E-B545-A709A7969134">
-        <di:waypoint x="779" y="165"/>
-        <di:waypoint x="541" y="228"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_318CDDB1-1446-4B86-972C-B996DBA98991" dmnElementRef="_318CDDB1-1446-4B86-972C-B996DBA98991">
         <di:waypoint x="245" y="115.68421052631578"/>
         <di:waypoint x="111" y="55"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_05CD4D26-29B2-40A2-BB2B-D02D281B658E" dmnElementRef="_05CD4D26-29B2-40A2-BB2B-D02D281B658E">
         <di:waypoint x="246" y="228.34210526315792"/>
-        <di:waypoint x="111" y="55"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_D9CA5CEA-E942-47B8-8630-29186C265063" dmnElementRef="_D9CA5CEA-E942-47B8-8630-29186C265063">
-        <di:waypoint x="779" y="227.68421052631578"/>
         <di:waypoint x="111" y="55"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_58B69B39-34B9-4B68-9B6F-D30F69AA8EF6" dmnElementRef="_58B69B39-34B9-4B68-9B6F-D30F69AA8EF6">
