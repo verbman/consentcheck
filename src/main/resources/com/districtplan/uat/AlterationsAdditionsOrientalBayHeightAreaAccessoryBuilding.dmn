@@ -55,9 +55,6 @@ Construction of, alteration of, and addition to, buildings and structures within
     <dmn:informationRequirement id="_5614BF2B-5FE6-4668-8957-9FF4581D4998">
       <dmn:requiredDecision href="#_8B547115-CE07-4B7D-91DB-3FA4FD927656"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_E7CFBE71-F330-4A56-8EF3-5F6420573787">
-      <dmn:requiredInput href="#_CF4F802E-C75E-4C03-8A3A-B4AE75465E9F"/>
-    </dmn:informationRequirement>
     <dmn:informationRequirement id="_7C442AE6-5D21-4184-8320-8BFA5F0D0DE6">
       <dmn:requiredInput href="#_FF9E4109-6622-4987-BA94-B2DD13F30A1C"/>
     </dmn:informationRequirement>
@@ -79,9 +76,9 @@ Construction of, alteration of, and addition to, buildings and structures within
     <dmn:literalExpression id="_F47BA2C2-691F-4209-AAE4-381E5F815A89">
       <dmn:text>if any(R5.1.10.1Met,R5.1.10.2Met,R5.1.10.3Met,R5.1.10.4Met) then true else&#xd;
 if not(any(R5.1.10.1Met,R5.1.10.2Met,R5.1.10.3Met,R5.1.10.4Met)) then false else&#xd;
-if R5.1.10.1Met=null and not(R5.1.10.2Met) and not(R5.1.10.3Met) and not(R5.1.10.4Met) then false else&#xd;
-if AlterationsAdditionsOrientalBayHeightAreaAccessoryBuildingActivities(Activities) and&#xd;
-IR5OrientalBayHeightArea(SpatialLayers) and R5.3.4Triggered(RulesTriggered_Value) then false else null&#xd;
+if R5.1.10.1Met=null and not(R5.1.10.2Met) and not(R5.1.10.3Met) and not(R5.1.10.4Met) then false else null&#xd;
+&#xd;
+&#xd;
 &#xd;
 &#xd;
 </dmn:text>
@@ -606,10 +603,6 @@ IR5OrientalBayHeightArea(SpatialLayers) then &#xd;
   <dmn:inputData id="_9AF94EE9-C81E-4E15-8287-3AFE94D76B74" name="SpatialLayers">
     <dmn:extensionElements/>
     <dmn:variable id="_5C72E1F7-03EE-448F-A3AE-9E65BCD42720" name="SpatialLayers" typeRef="Types.SpatialLayers"/>
-  </dmn:inputData>
-  <dmn:inputData id="_CF4F802E-C75E-4C03-8A3A-B4AE75465E9F" name="RulesTriggered_Value">
-    <dmn:extensionElements/>
-    <dmn:variable id="_F6277A97-F694-4103-BD57-F830D82E4599" name="RulesTriggered_Value" typeRef="Types.PlanContents"/>
   </dmn:inputData>
   <dmn:decision id="_69755C18-1F1F-4AFA-A816-9BB075FBF7FE" name="R5.1.10.1">
     <dmn:extensionElements/>
@@ -1186,15 +1179,6 @@ not(AdditionAlterationAccessoryBuildingPublicVisible) then true else&#xd;
         <dc:Bounds x="66.5981308411215" y="517.3421052631579" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_CF4F802E-C75E-4C03-8A3A-B4AE75465E9F" dmnElementRef="_CF4F802E-C75E-4C03-8A3A-B4AE75465E9F" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="8">
-          <dmndi:FillColor red="243" green="229" blue="248"/>
-          <dmndi:StrokeColor red="210" green="193" blue="208"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="66.5981308411215" y="264.6842105263158" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_69755C18-1F1F-4AFA-A816-9BB075FBF7FE" dmnElementRef="_69755C18-1F1F-4AFA-A816-9BB075FBF7FE" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="169" green="192" blue="225"/>
@@ -1309,10 +1293,6 @@ not(AdditionAlterationAccessoryBuildingPublicVisible) then true else&#xd;
         <di:waypoint x="517" y="636"/>
         <di:waypoint x="798" y="225"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_E7CFBE71-F330-4A56-8EF3-5F6420573787" dmnElementRef="_E7CFBE71-F330-4A56-8EF3-5F6420573787">
-        <di:waypoint x="116.5981308411215" y="289.6842105263158"/>
-        <di:waypoint x="798" y="250"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7C442AE6-5D21-4184-8320-8BFA5F0D0DE6" dmnElementRef="_7C442AE6-5D21-4184-8320-8BFA5F0D0DE6">
         <di:waypoint x="116.5981308411215" y="416"/>
         <di:waypoint x="798" y="225"/>
@@ -1353,8 +1333,12 @@ not(AdditionAlterationAccessoryBuildingPublicVisible) then true else&#xd;
         <di:waypoint x="798" y="225"/>
         <di:waypoint x="1335" y="286"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_1D763BE1-4FE6-48CF-B048-6F9C1904F7CE" dmnElementRef="_1D763BE1-4FE6-48CF-B048-6F9C1904F7CE">
-        <di:waypoint x="378.25" y="427.3157894736842"/>
+      <dmndi:DMNEdge id="dmnedge-_056EF6A9-2DEC-4F58-A4AC-FC6D68D02BCD" dmnElementRef="_056EF6A9-2DEC-4F58-A4AC-FC6D68D02BCD">
+        <di:waypoint x="116.5981308411215" y="542.3421052631579"/>
+        <di:waypoint x="379" y="498"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_2AB72B9A-1CEE-4B26-9D52-A6FB1E6D2EF9" dmnElementRef="_2AB72B9A-1CEE-4B26-9D52-A6FB1E6D2EF9">
+        <di:waypoint x="116.5981308411215" y="416"/>
         <di:waypoint x="379" y="498"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_45B895A5-45FA-466F-BA7C-5983DFEC398F" dmnElementRef="_45B895A5-45FA-466F-BA7C-5983DFEC398F">
@@ -1369,12 +1353,8 @@ not(AdditionAlterationAccessoryBuildingPublicVisible) then true else&#xd;
         <di:waypoint x="116.5981308411215" y="354.6842105263158"/>
         <di:waypoint x="379" y="498"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_056EF6A9-2DEC-4F58-A4AC-FC6D68D02BCD" dmnElementRef="_056EF6A9-2DEC-4F58-A4AC-FC6D68D02BCD">
-        <di:waypoint x="116.5981308411215" y="542.3421052631579"/>
-        <di:waypoint x="379" y="498"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_2AB72B9A-1CEE-4B26-9D52-A6FB1E6D2EF9" dmnElementRef="_2AB72B9A-1CEE-4B26-9D52-A6FB1E6D2EF9">
-        <di:waypoint x="116.5981308411215" y="416"/>
+      <dmndi:DMNEdge id="dmnedge-_1D763BE1-4FE6-48CF-B048-6F9C1904F7CE" dmnElementRef="_1D763BE1-4FE6-48CF-B048-6F9C1904F7CE">
+        <di:waypoint x="378.25" y="427.3157894736842"/>
         <di:waypoint x="379" y="498"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_9CBA2F4F-CF0D-470B-9A28-E9FDC9AE47C2" dmnElementRef="_9CBA2F4F-CF0D-470B-9A28-E9FDC9AE47C2">
