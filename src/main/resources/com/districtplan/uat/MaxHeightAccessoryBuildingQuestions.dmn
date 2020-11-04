@@ -77,10 +77,13 @@ Activities + 1 else 0&#xd;
     <dmn:knowledgeRequirement id="_94F5324B-036C-4651-9B87-1920F4C8C686">
       <dmn:requiredKnowledge href="#_4306AB83-CA4B-437E-84AF-0485953E2E56"/>
     </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_D3E6BE5C-16C3-4F55-8331-1FDB79EA5B60">
+      <dmn:requiredKnowledge href="#_1EE040EC-4FE1-4C26-860F-12DEF3E4913B"/>
+    </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_F05934EF-0F00-4580-BFC7-8C000CF47965">
       <dmn:text>MaxHeightAccessoryBuildingSpatialLayers(SpatialLayers_Value) and&#xd;
 MaxHeightAccessoryBuildingActivities(Activities_Value) and&#xd;
-(AdditionAccessoryBuilding or AdditionAccessoryBuilding = null)&#xd;
+(AdditionBuild(Activities_Value, AdditionAccessoryBuilding)&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -314,14 +317,14 @@ else 0&#xd;
       </dmn:literalExpression>
     </dmn:encapsulatedLogic>
   </dmn:businessKnowledgeModel>
-  <dmn:businessKnowledgeModel id="_1EE040EC-4FE1-4C26-860F-12DEF3E4913B" name="Addition">
+  <dmn:businessKnowledgeModel id="_1EE040EC-4FE1-4C26-860F-12DEF3E4913B" name="AdditionBuild">
     <dmn:extensionElements/>
-    <dmn:variable id="_EEB88657-9FB1-427D-B675-51E7E8ED9292" name="Addition" typeRef="boolean"/>
+    <dmn:variable id="_EEB88657-9FB1-427D-B675-51E7E8ED9292" name="AdditionBuild" typeRef="boolean"/>
     <dmn:encapsulatedLogic id="_D7FA5FCB-25FA-456C-974A-A7D37B2EE843" kind="FEEL">
       <dmn:formalParameter id="_55F1260F-8134-4DB7-80D6-6A97A2722EFC" name="activities" typeRef="Types.Activities"/>
       <dmn:formalParameter id="_4CDABAF1-D9E4-4A96-ABF9-862FFDE7C1AB" name="addition" typeRef="boolean"/>
       <dmn:literalExpression id="_6F881009-7F5C-4965-8C0C-D58269436A2F">
-        <dmn:text>list contains(activities[Noun="accessory building"].Verb, "add to or alter") and addition&#xd;
+        <dmn:text>list contains(activities[Noun="accessory building"].Verb, "build") or addition&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -669,6 +672,10 @@ ProposedAccessoryBuildingMaxHeight + 1 else 0&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_94F5324B-036C-4651-9B87-1920F4C8C686" dmnElementRef="_94F5324B-036C-4651-9B87-1920F4C8C686">
         <di:waypoint x="225.59813084112147" y="318.3421052631579"/>
+        <di:waypoint x="106" y="80"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_D3E6BE5C-16C3-4F55-8331-1FDB79EA5B60" dmnElementRef="_D3E6BE5C-16C3-4F55-8331-1FDB79EA5B60">
+        <di:waypoint x="220.59813084112147" y="382.3421052631579"/>
         <di:waypoint x="106" y="80"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_169FA344-7B14-4740-9677-EFCCAFA8EB94" dmnElementRef="_169FA344-7B14-4740-9677-EFCCAFA8EB94">
