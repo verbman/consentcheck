@@ -29,11 +29,17 @@ no</dmn:allowedAnswers>
     <dmn:literalExpression id="_E7725C1A-DED0-41B5-9473-DEB6354FC711">
       <dmn:text>if (BuildAddtoAlter(Activities_Value.Verb) or &#xd;
 list contains(Activities_Value[Noun="earthworks"].Verb, "undertake")) then &#xd;
-  if AdditionResidentialBuilding > 0 then AdditionResidentialBuilding + 1 else&#xd;
-  if AdditionAccessoryBuilding > 0 then AdditionAccessoryBuilding + 1 else&#xd;
+  if AdditionResidentialBuilding > 0 and&#xd;
+  AdditionAccessoryBuilding = 0 and&#xd;
+  AdditionResidentialStructure = 0 then AdditionResidentialBuilding + 1 else&#xd;
+  if AdditionAccessoryBuilding > 0 and&#xd;
+  AdditionResidentialStructure = 0 then AdditionAccessoryBuilding + 1 else&#xd;
   if AdditionResidentialStructure > 0 then AdditionResidentialStructure + 1 else&#xd;
   if ExistingBuildings > 0 then ExistingBuildings + 1 else 3&#xd;
 else 0&#xd;
+&#xd;
+&#xd;
+&#xd;
 &#xd;
 &#xd;
 </dmn:text>
