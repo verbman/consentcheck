@@ -46,8 +46,8 @@ if AccessoryBuildingStreetFront > 0 and&#xd;
 not(AccessoryBuildingStreetFront_Value) then &#xd;
 AccessoryBuildingStreetFront + 1 else&#xd;
 if list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "IR5 - Oriental Bay Height Area") and &#xd;
-(Addition(Activities_Value, AdditionAccessoryBuilding) or&#xd;
-Addition(Activities_Value, AdditionAccessoryBuilding) = null) and&#xd;
+(NotAlteration(Activities_Value, AdditionAccessoryBuilding) or&#xd;
+NotAlteration(Activities_Value, AdditionAccessoryBuilding) = null) and&#xd;
 AccessoryBuildingStreetFront = 0 then&#xd;
 Activities + 1 else 0&#xd;
 &#xd;
@@ -83,8 +83,8 @@ Activities + 1 else 0&#xd;
     <dmn:literalExpression id="_F05934EF-0F00-4580-BFC7-8C000CF47965">
       <dmn:text>MaxHeightAccessoryBuildingSpatialLayers(SpatialLayers_Value) and&#xd;
 MaxHeightAccessoryBuildingActivities(Activities_Value) and&#xd;
-(Addition(Activities_Value, AdditionAccessoryBuilding) or&#xd;
-Addition(Activities_Value, AdditionAccessoryBuilding) = null)&#xd;
+(NotAlteration(Activities_Value, AdditionAccessoryBuilding) or&#xd;
+NotAlteration(Activities_Value, AdditionAccessoryBuilding) = null)&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -161,8 +161,8 @@ list contains(activities[Noun="accessory building"].Verb, "add to or alter")&#xd
       <dmn:text>if MaxHeightAccessoryBuildingActivities(Activities_Value) and&#xd;
 ResidentialAreasPre1930DemolitionControls(SpatialLayers_Value) and&#xd;
 list contains(ExistingBuildings, "residential building") and&#xd;
-(Addition(Activities_Value, AdditionAccessoryBuilding) or&#xd;
-Addition(Activities_Value, AdditionAccessoryBuilding) = null) then &#xd;
+(NotAlteration(Activities_Value, AdditionAccessoryBuilding) or&#xd;
+NotAlteration(Activities_Value, AdditionAccessoryBuilding) = null) then &#xd;
 Activities + 1 else 0&#xd;
 &#xd;
 &#xd;
@@ -212,8 +212,8 @@ Activities + 1 else 0&#xd;
       <dmn:text>if MaxHeightAccessoryBuildingSpatialLayers(SpatialLayers_Value) and&#xd;
 list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "OR2 - Residential Coastal Edge") and&#xd;
 list contains(Activities_Value[Noun="accessory building"].Verb, "add to or alter") and&#xd;
-(Addition(Activities_Value, AdditionAccessoryBuilding) or&#xd;
-Addition(Activities_Value, AdditionAccessoryBuilding) = null) then &#xd;
+(NotAlteration(Activities_Value, AdditionAccessoryBuilding) or&#xd;
+NotAlteration(Activities_Value, AdditionAccessoryBuilding) = null) then &#xd;
 Activities + 1 else 0&#xd;
 &#xd;
 &#xd;
@@ -263,8 +263,8 @@ Activities + 1 else 0&#xd;
     <dmn:literalExpression id="_9BB36F36-213A-43A8-A0E9-445FA9AF5E9D">
       <dmn:text>if MaxHeightAccessoryBuildingSpatialLayers(SpatialLayers_Value) and &#xd;
 not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "IR5 - Oriental Bay Height Area")) and&#xd;
-(Addition(Activities_Value, AdditionAccessoryBuilding) or&#xd;
-Addition(Activities_Value, AdditionAccessoryBuilding) = null) then&#xd;
+(NotAlteration(Activities_Value, AdditionAccessoryBuilding) or&#xd;
+NotAlteration(Activities_Value, AdditionAccessoryBuilding) = null) then&#xd;
   if not(ResidentialAreasPre1930DemolitionControls(SpatialLayers_Value)) and&#xd;
   MaxHeightAccessoryBuildingActivities(Activities_Value) and&#xd;
   not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "OR2 - Residential Coastal Edge")) then &#xd;
@@ -318,9 +318,9 @@ else 0&#xd;
       </dmn:literalExpression>
     </dmn:encapsulatedLogic>
   </dmn:businessKnowledgeModel>
-  <dmn:businessKnowledgeModel id="_1EE040EC-4FE1-4C26-860F-12DEF3E4913B" name="Addition">
+  <dmn:businessKnowledgeModel id="_1EE040EC-4FE1-4C26-860F-12DEF3E4913B" name="NotAlteration">
     <dmn:extensionElements/>
-    <dmn:variable id="_EEB88657-9FB1-427D-B675-51E7E8ED9292" name="Addition" typeRef="boolean"/>
+    <dmn:variable id="_EEB88657-9FB1-427D-B675-51E7E8ED9292" name="NotAlteration" typeRef="boolean"/>
     <dmn:encapsulatedLogic id="_D7FA5FCB-25FA-456C-974A-A7D37B2EE843" kind="FEEL">
       <dmn:formalParameter id="_55F1260F-8134-4DB7-80D6-6A97A2722EFC" name="activities" typeRef="Types.Activities"/>
       <dmn:formalParameter id="_4CDABAF1-D9E4-4A96-ABF9-862FFDE7C1AB" name="addition" typeRef="boolean"/>
