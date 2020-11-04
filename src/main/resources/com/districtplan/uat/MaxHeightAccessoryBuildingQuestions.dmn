@@ -46,7 +46,8 @@ if AccessoryBuildingStreetFront > 0 and&#xd;
 not(AccessoryBuildingStreetFront_Value) then &#xd;
 AccessoryBuildingStreetFront + 1 else&#xd;
 if list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "IR5 - Oriental Bay Height Area") and &#xd;
-not(AlterationOnly(Activities_Value, AdditionAccessoryBuilding)) and&#xd;
+(Addition(Activities_Value, AdditionAccessoryBuilding) or&#xd;
+Addition(Activities_Value, AdditionAccessoryBuilding) = null) and&#xd;
 AccessoryBuildingStreetFront = 0 then&#xd;
 Activities + 1 else 0&#xd;
 &#xd;
@@ -82,7 +83,8 @@ Activities + 1 else 0&#xd;
     <dmn:literalExpression id="_F05934EF-0F00-4580-BFC7-8C000CF47965">
       <dmn:text>MaxHeightAccessoryBuildingSpatialLayers(SpatialLayers_Value) and&#xd;
 MaxHeightAccessoryBuildingActivities(Activities_Value) and&#xd;
-not(AlterationOnly(Activities_Value, AdditionAccessoryBuilding)) &#xd;
+(Addition(Activities_Value, AdditionAccessoryBuilding) or&#xd;
+Addition(Activities_Value, AdditionAccessoryBuilding) = null)&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -159,7 +161,9 @@ list contains(activities[Noun="accessory building"].Verb, "add to or alter")&#xd
       <dmn:text>if MaxHeightAccessoryBuildingActivities(Activities_Value) and&#xd;
 ResidentialAreasPre1930DemolitionControls(SpatialLayers_Value) and&#xd;
 list contains(ExistingBuildings, "residential building") and&#xd;
-not(AlterationOnly(Activities_Value, AdditionAccessoryBuilding)) then Activities + 1 else 0&#xd;
+(Addition(Activities_Value, AdditionAccessoryBuilding) or&#xd;
+Addition(Activities_Value, AdditionAccessoryBuilding) = null) then &#xd;
+Activities + 1 else 0&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -208,7 +212,8 @@ not(AlterationOnly(Activities_Value, AdditionAccessoryBuilding)) then Activities
       <dmn:text>if MaxHeightAccessoryBuildingSpatialLayers(SpatialLayers_Value) and&#xd;
 list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "OR2 - Residential Coastal Edge") and&#xd;
 list contains(Activities_Value[Noun="accessory building"].Verb, "add to or alter") and&#xd;
-not(AlterationOnly(Activities_Value, AdditionAccessoryBuilding)) then &#xd;
+(Addition(Activities_Value, AdditionAccessoryBuilding) or&#xd;
+Addition(Activities_Value, AdditionAccessoryBuilding) = null) then &#xd;
 Activities + 1 else 0&#xd;
 &#xd;
 &#xd;
@@ -258,7 +263,8 @@ Activities + 1 else 0&#xd;
     <dmn:literalExpression id="_9BB36F36-213A-43A8-A0E9-445FA9AF5E9D">
       <dmn:text>if MaxHeightAccessoryBuildingSpatialLayers(SpatialLayers_Value) and &#xd;
 not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "IR5 - Oriental Bay Height Area")) and&#xd;
-not(AlterationOnly(Activities_Value, AdditionAccessoryBuilding)) then&#xd;
+(Addition(Activities_Value, AdditionAccessoryBuilding) or&#xd;
+Addition(Activities_Value, AdditionAccessoryBuilding) = null) then&#xd;
   if not(ResidentialAreasPre1930DemolitionControls(SpatialLayers_Value)) and&#xd;
   MaxHeightAccessoryBuildingActivities(Activities_Value) and&#xd;
   not(list contains(SpatialLayers_Value[Type="Special Residential Area"].Title, "OR2 - Residential Coastal Edge")) then &#xd;
@@ -312,14 +318,14 @@ else 0&#xd;
       </dmn:literalExpression>
     </dmn:encapsulatedLogic>
   </dmn:businessKnowledgeModel>
-  <dmn:businessKnowledgeModel id="_1EE040EC-4FE1-4C26-860F-12DEF3E4913B" name="AlterationOnly">
+  <dmn:businessKnowledgeModel id="_1EE040EC-4FE1-4C26-860F-12DEF3E4913B" name="Addition">
     <dmn:extensionElements/>
-    <dmn:variable id="_EEB88657-9FB1-427D-B675-51E7E8ED9292" name="AlterationOnly" typeRef="boolean"/>
+    <dmn:variable id="_EEB88657-9FB1-427D-B675-51E7E8ED9292" name="Addition" typeRef="boolean"/>
     <dmn:encapsulatedLogic id="_D7FA5FCB-25FA-456C-974A-A7D37B2EE843" kind="FEEL">
       <dmn:formalParameter id="_55F1260F-8134-4DB7-80D6-6A97A2722EFC" name="activities" typeRef="Types.Activities"/>
       <dmn:formalParameter id="_4CDABAF1-D9E4-4A96-ABF9-862FFDE7C1AB" name="addition" typeRef="boolean"/>
       <dmn:literalExpression id="_6F881009-7F5C-4965-8C0C-D58269436A2F">
-        <dmn:text>not(list contains(activities[Noun="accessory building"].Verb, "build")) and not(addition)&#xd;
+        <dmn:text>if list contains(activities[Noun="accessory building"].Verb, "add to or alter")) and addition&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -574,7 +580,7 @@ ProposedAccessoryBuildingMaxHeight + 1 else 0&#xd;
           <dmndi:StrokeColor red="129" green="178" blue="177"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="174.59813084112147" y="123.6842105263158" width="100" height="50"/>
+        <dc:Bounds x="174.59813084112147" y="118.6842105263158" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_C0C7BE55-D454-4CC6-9038-E21C728C7F32" dmnElementRef="_C0C7BE55-D454-4CC6-9038-E21C728C7F32" isCollapsed="false">
@@ -638,7 +644,7 @@ ProposedAccessoryBuildingMaxHeight + 1 else 0&#xd;
         <di:waypoint x="427" y="488"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_879F3C8C-CA46-4848-9375-7FC2F1C3F0FF" dmnElementRef="_879F3C8C-CA46-4848-9375-7FC2F1C3F0FF">
-        <di:waypoint x="224.59813084112147" y="148.68421052631578"/>
+        <di:waypoint x="224.59813084112147" y="143.68421052631578"/>
         <di:waypoint x="427" y="488"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_2A1681F2-9C9C-4762-B6A8-3D57DC4696A5" dmnElementRef="_2A1681F2-9C9C-4762-B6A8-3D57DC4696A5">
@@ -650,7 +656,7 @@ ProposedAccessoryBuildingMaxHeight + 1 else 0&#xd;
         <di:waypoint x="427" y="488"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_7901A7F3-7703-48C4-93C1-80995026CD6F" dmnElementRef="_7901A7F3-7703-48C4-93C1-80995026CD6F">
-        <di:waypoint x="224.59813084112147" y="148.68421052631578"/>
+        <di:waypoint x="224.59813084112147" y="143.68421052631578"/>
         <di:waypoint x="106" y="80"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_38AF4966-232E-4EC9-9AD6-81780938B606" dmnElementRef="_38AF4966-232E-4EC9-9AD6-81780938B606">
@@ -682,7 +688,7 @@ ProposedAccessoryBuildingMaxHeight + 1 else 0&#xd;
         <di:waypoint x="861" y="271"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_6C3A0681-1314-418C-9F7D-311EB3C0F992" dmnElementRef="_6C3A0681-1314-418C-9F7D-311EB3C0F992">
-        <di:waypoint x="224.59813084112147" y="148.68421052631578"/>
+        <di:waypoint x="224.59813084112147" y="143.68421052631578"/>
         <di:waypoint x="861" y="271"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_2D34F5CC-78A0-458E-98B2-77CC6ACE51D0" dmnElementRef="_2D34F5CC-78A0-458E-98B2-77CC6ACE51D0">
@@ -710,7 +716,7 @@ ProposedAccessoryBuildingMaxHeight + 1 else 0&#xd;
         <di:waypoint x="615" y="126"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_E146A2A6-5D16-4A9E-98C0-629B241CA9E5" dmnElementRef="_E146A2A6-5D16-4A9E-98C0-629B241CA9E5">
-        <di:waypoint x="224.59813084112147" y="148.68421052631578"/>
+        <di:waypoint x="224.59813084112147" y="143.68421052631578"/>
         <di:waypoint x="619" y="208"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_B6A64CEA-2DFF-4853-BEAF-254F337F9A77" dmnElementRef="_B6A64CEA-2DFF-4853-BEAF-254F337F9A77">
@@ -734,7 +740,7 @@ ProposedAccessoryBuildingMaxHeight + 1 else 0&#xd;
         <di:waypoint x="619" y="208"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_99DBEA1A-D530-4F86-903C-81E33E0BBE6E" dmnElementRef="_99DBEA1A-D530-4F86-903C-81E33E0BBE6E">
-        <di:waypoint x="224.59813084112147" y="148.68421052631578"/>
+        <di:waypoint x="224.59813084112147" y="143.68421052631578"/>
         <di:waypoint x="425" y="208"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_D60929DF-25C1-43AB-B0B0-FEE5D3E1C912" dmnElementRef="_D60929DF-25C1-43AB-B0B0-FEE5D3E1C912">
