@@ -24,16 +24,23 @@
     <dmn:informationRequirement id="_7C6E5D13-1D04-498E-8944-500F3DA3E4F4">
       <dmn:requiredInput href="#_7638927D-524D-42EF-B614-C616DF423CC5"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_2DA42164-552B-4117-B296-1BE5FD69C85E">
+      <dmn:requiredInput href="#_E6A76FE5-79DF-47AD-909E-C3B6EC04F8A8"/>
+    </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_831F2E63-01BE-49D5-986E-6352940136C6">
       <dmn:requiredKnowledge href="#_451EE7E1-3B0A-4229-9EDE-300A2835B4BD"/>
     </dmn:knowledgeRequirement>
     <dmn:knowledgeRequirement id="_9D54EBC9-490C-44B7-81E3-065B102C26DA">
       <dmn:requiredKnowledge href="#_4306AB83-CA4B-437E-84AF-0485953E2E56"/>
     </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_2423043E-A640-449F-AB04-BFA4115E9CE7">
+      <dmn:requiredKnowledge href="#_1954385F-82E6-497F-A671-1393326350C2"/>
+    </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_B84FF411-B5F4-41FC-BC42-79C7F3378BFF">
       <dmn:text>MinimumSiteAreaActivities(Activities_Value) and&#xd;
 MinimumSiteAreaSpatialLayers(SpatialLayers_Value) and&#xd;
-Suburb="Johnsonville" and MultiUnit&#xd;
+Suburb="Johnsonville" and MultiUnit and&#xd;
+AdditionBuild(AdditionResidentialBuilding)&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -79,10 +86,33 @@ list contains(activities[Noun="residential building"].Verb, "add to or alter")&#
     <dmn:extensionElements/>
     <dmn:variable id="_BEF5BB6B-98C5-4093-A1A3-7F10F651EA36" name="Activities_Value" typeRef="Types.Activities"/>
   </dmn:inputData>
+  <dmn:inputData id="_E6A76FE5-79DF-47AD-909E-C3B6EC04F8A8" name="AdditionResidentialBuilding">
+    <dmn:extensionElements/>
+    <dmn:variable id="_3455C231-4455-4E5A-B6F2-19F91E398492" name="AdditionResidentialBuilding" typeRef="boolean"/>
+  </dmn:inputData>
   <dmn:inputData id="_7638927D-524D-42EF-B614-C616DF423CC5" name="MultiUnit">
     <dmn:extensionElements/>
     <dmn:variable id="_2AD5A6FF-1C06-4501-9C67-8F8CA577108D" name="MultiUnit" typeRef="boolean"/>
   </dmn:inputData>
+  <dmn:businessKnowledgeModel id="_1954385F-82E6-497F-A671-1393326350C2" name="AdditionBuild">
+    <dmn:extensionElements/>
+    <dmn:variable id="_022FC6FB-045A-46B5-BA29-A0D2DDC05385" name="AdditionBuild" typeRef="boolean"/>
+    <dmn:encapsulatedLogic id="_1C7A4B0D-FB53-4603-A727-AD7D77DA8D94" kind="FEEL">
+      <dmn:formalParameter id="_F0A9271F-9BEC-4F55-862C-FCB6DFFAD8AB" name="activities" typeRef="Types.Activities"/>
+      <dmn:formalParameter id="_B7E84D56-F15B-4490-B5A0-D833DECC9B21" name="additionresidentialbuilding" typeRef="boolean"/>
+      <dmn:literalExpression id="_86793385-281F-4BE1-97F0-31D944698254">
+        <dmn:text>list contains(activities[Noun="residential building"].Verb, "build") or additionresidentialbuilding&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+      </dmn:literalExpression>
+    </dmn:encapsulatedLogic>
+  </dmn:businessKnowledgeModel>
   <dmn:decision id="_A2F298C8-8542-41C1-A9E3-9452A323B85D" name="Activities">
     <dmn:extensionElements/>
     <dmn:variable id="_4F716487-C01F-47E3-87B2-5704C699E77A" name="Activities" typeRef="number"/>
@@ -112,16 +142,23 @@ list contains(activities[Noun="residential building"].Verb, "add to or alter")&#
     <dmn:informationRequirement id="_8B943F36-C69D-4BC4-AFB4-516AC8910EC0">
       <dmn:requiredInput href="#_7638927D-524D-42EF-B614-C616DF423CC5"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_8DB8218D-534B-4DAF-91F2-56146FE56177">
+      <dmn:requiredInput href="#_E6A76FE5-79DF-47AD-909E-C3B6EC04F8A8"/>
+    </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_3F60921A-55DD-4888-8CB1-76BE659E17A0">
       <dmn:requiredKnowledge href="#_451EE7E1-3B0A-4229-9EDE-300A2835B4BD"/>
     </dmn:knowledgeRequirement>
     <dmn:knowledgeRequirement id="_FDCD2097-91D5-41FD-9B79-011A63B0AB87">
       <dmn:requiredKnowledge href="#_4306AB83-CA4B-437E-84AF-0485953E2E56"/>
     </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_A19D3FF7-B9B6-4BEF-B01E-84F731919BE7">
+      <dmn:requiredKnowledge href="#_1954385F-82E6-497F-A671-1393326350C2"/>
+    </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_E08B10DE-410B-42D3-A027-AE593370271C">
       <dmn:text>if MinimumSiteAreaActivities(Activities_Value) and&#xd;
 MinimumSiteAreaSpatialLayers(SpatialLayers_Value) and&#xd;
-Suburb="Johnsonville" and MultiUnit then Activities + 1 else 0&#xd;
+Suburb="Johnsonville" and MultiUnit and&#xd;
+AdditionBuild(AdditionResidentialBuilding) then Activities + 1 else 0&#xd;
 &#xd;
 &#xd;
 &#xd;
@@ -145,6 +182,13 @@ Suburb="Johnsonville" and MultiUnit then Activities + 1 else 0&#xd;
           <kie:ComponentWidths dmnElementRef="_FD919AF9-84BB-4991-8CD1-E112529569A7">
             <kie:width>50.0</kie:width>
             <kie:width>897.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_86793385-281F-4BE1-97F0-31D944698254">
+            <kie:width>834.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_1C7A4B0D-FB53-4603-A727-AD7D77DA8D94">
+            <kie:width>50.0</kie:width>
+            <kie:width>834.0</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_53EC070A-DBB9-48F9-8E99-E4DC2CA34A6C">
             <kie:width>624.0</kie:width>
@@ -179,15 +223,6 @@ Suburb="Johnsonville" and MultiUnit then Activities + 1 else 0&#xd;
         <dc:Bounds x="58" y="252" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_347F2FBA-BE29-49BE-A803-40E23366FF2F" dmnElementRef="_347F2FBA-BE29-49BE-A803-40E23366FF2F" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="137" green="203" blue="200"/>
-          <dmndi:StrokeColor red="129" green="178" blue="177"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="220" y="285.6842105263158" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_4306AB83-CA4B-437E-84AF-0485953E2E56" dmnElementRef="_4306AB83-CA4B-437E-84AF-0485953E2E56" isCollapsed="false">
         <dmndi:DMNStyle>
           <dmndi:FillColor red="255" green="255" blue="255"/>
@@ -197,6 +232,15 @@ Suburb="Johnsonville" and MultiUnit then Activities + 1 else 0&#xd;
         <dc:Bounds x="220" y="216.34210526315792" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_1954385F-82E6-497F-A671-1393326350C2" dmnElementRef="_1954385F-82E6-497F-A671-1393326350C2" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="220" y="544" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_451EE7E1-3B0A-4229-9EDE-300A2835B4BD" dmnElementRef="_451EE7E1-3B0A-4229-9EDE-300A2835B4BD" isCollapsed="false">
         <dmndi:DMNStyle>
           <dmndi:FillColor red="255" green="255" blue="255"/>
@@ -204,6 +248,33 @@ Suburb="Johnsonville" and MultiUnit then Activities + 1 else 0&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="220.59813084112147" y="82.6842105263158" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_A2F298C8-8542-41C1-A9E3-9452A323B85D" dmnElementRef="_A2F298C8-8542-41C1-A9E3-9452A323B85D" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="516" y="139" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_5D302B9B-D524-4B29-9D32-C7D3B41A598C" dmnElementRef="_5D302B9B-D524-4B29-9D32-C7D3B41A598C" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="516" y="218" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_347F2FBA-BE29-49BE-A803-40E23366FF2F" dmnElementRef="_347F2FBA-BE29-49BE-A803-40E23366FF2F" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="220" y="285.6842105263158" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_29848503-B906-4770-B922-414ECEB46BB5" dmnElementRef="_29848503-B906-4770-B922-414ECEB46BB5" isCollapsed="false">
@@ -224,6 +295,15 @@ Suburb="Johnsonville" and MultiUnit then Activities + 1 else 0&#xd;
         <dc:Bounds x="220" y="150.34210526315792" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_E6A76FE5-79DF-47AD-909E-C3B6EC04F8A8" dmnElementRef="_E6A76FE5-79DF-47AD-909E-C3B6EC04F8A8" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="220" y="480" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_7638927D-524D-42EF-B614-C616DF423CC5" dmnElementRef="_7638927D-524D-42EF-B614-C616DF423CC5" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="137" green="203" blue="200"/>
@@ -231,24 +311,6 @@ Suburb="Johnsonville" and MultiUnit then Activities + 1 else 0&#xd;
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="220" y="415" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_A2F298C8-8542-41C1-A9E3-9452A323B85D" dmnElementRef="_A2F298C8-8542-41C1-A9E3-9452A323B85D" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="238" green="238" blue="238"/>
-          <dmndi:StrokeColor red="180" green="180" blue="180"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="516" y="139" width="100" height="50"/>
-        <dmndi:DMNLabel/>
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-_5D302B9B-D524-4B29-9D32-C7D3B41A598C" dmnElementRef="_5D302B9B-D524-4B29-9D32-C7D3B41A598C" isCollapsed="false">
-        <dmndi:DMNStyle fontSize="9">
-          <dmndi:FillColor red="238" green="238" blue="238"/>
-          <dmndi:StrokeColor red="180" green="180" blue="180"/>
-          <dmndi:FontColor red="0" green="0" blue="0"/>
-        </dmndi:DMNStyle>
-        <dc:Bounds x="516" y="218" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="dmnedge-_F710501A-191A-4E15-A0D0-8DB70800C9BD" dmnElementRef="_F710501A-191A-4E15-A0D0-8DB70800C9BD">
@@ -274,6 +336,14 @@ Suburb="Johnsonville" and MultiUnit then Activities + 1 else 0&#xd;
       <dmndi:DMNEdge id="dmnedge-_9D54EBC9-490C-44B7-81E3-065B102C26DA" dmnElementRef="_9D54EBC9-490C-44B7-81E3-065B102C26DA">
         <di:waypoint x="270" y="241.34210526315792"/>
         <di:waypoint x="108" y="277"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_2DA42164-552B-4117-B296-1BE5FD69C85E" dmnElementRef="_2DA42164-552B-4117-B296-1BE5FD69C85E">
+        <di:waypoint x="270" y="505"/>
+        <di:waypoint x="108" y="277"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_2423043E-A640-449F-AB04-BFA4115E9CE7" dmnElementRef="_2423043E-A640-449F-AB04-BFA4115E9CE7">
+        <di:waypoint x="270" y="569"/>
+        <di:waypoint x="108" y="302"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_1551339C-3421-4646-B87A-0792B40190F7" dmnElementRef="_1551339C-3421-4646-B87A-0792B40190F7">
         <di:waypoint x="566" y="85"/>
@@ -305,6 +375,14 @@ Suburb="Johnsonville" and MultiUnit then Activities + 1 else 0&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_FDCD2097-91D5-41FD-9B79-011A63B0AB87" dmnElementRef="_FDCD2097-91D5-41FD-9B79-011A63B0AB87">
         <di:waypoint x="270" y="241.34210526315792"/>
+        <di:waypoint x="566" y="243"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_A19D3FF7-B9B6-4BEF-B01E-84F731919BE7" dmnElementRef="_A19D3FF7-B9B6-4BEF-B01E-84F731919BE7">
+        <di:waypoint x="270" y="569"/>
+        <di:waypoint x="566" y="243"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_8DB8218D-534B-4DAF-91F2-56146FE56177" dmnElementRef="_8DB8218D-534B-4DAF-91F2-56146FE56177">
+        <di:waypoint x="270" y="505"/>
         <di:waypoint x="566" y="243"/>
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
