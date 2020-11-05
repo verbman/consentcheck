@@ -13,6 +13,10 @@
     <dmn:extensionElements/>
     <dmn:variable id="_84537C4E-BBBE-44E7-9454-5B51570D084D" name="AdditionInsideFootprintResidentialBuilding_Value" typeRef="boolean"/>
   </dmn:inputData>
+  <dmn:inputData id="_252DB9FD-3AC5-4595-A568-09DBDFB9B87B" name="AdditionResidentialBuilding">
+    <dmn:extensionElements/>
+    <dmn:variable id="_27C6E8BD-34EC-441E-8179-7E964B1C6CB2" name="AdditionResidentialBuilding" typeRef="boolean"/>
+  </dmn:inputData>
   <dmn:decision id="_29CBF409-4B49-4B15-ACDD-DAE04BC6120F" name="ExistingComplianceResidentialBuildingSiteCoverageYards">
     <dmn:extensionElements/>
     <dmn:variable id="_119C44AE-78CF-4BA4-A2D6-8BBF7453DD9D" name="ExistingComplianceResidentialBuildingSiteCoverageYards" typeRef="number"/>
@@ -118,8 +122,12 @@ list contains(ExistingBuildings,"residential building")</dmn:text>
     <dmn:informationRequirement id="_226F5671-37E2-4DCC-89BC-EC9B8D80DB41">
       <dmn:requiredDecision href="#_075FC4E6-BA83-4CD9-A818-92345262A83A"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_A008B89E-6E86-4991-94F9-822ABA38F62C">
+      <dmn:requiredInput href="#_252DB9FD-3AC5-4595-A568-09DBDFB9B87B"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_5A6554D9-2A02-4C09-9866-5658EF7F55FA">
-      <dmn:text>if AlterationWithinExistingVolumeResidentialBuilding > 0 then &#xd;
+      <dmn:text>if AlterationWithinExistingVolumeResidentialBuilding > 0 and&#xd;
+AdditionResidentialBuilding then &#xd;
 AlterationWithinExistingVolumeResidentialBuilding + 1 else 0&#xd;
 &#xd;
 &#xd;
@@ -472,6 +480,15 @@ AdditionIncreaseNonComplianceResidentialBuilding + 1 else 0&#xd;
         <dc:Bounds x="209.5981308411215" y="321.3421052631579" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_252DB9FD-3AC5-4595-A568-09DBDFB9B87B" dmnElementRef="_252DB9FD-3AC5-4595-A568-09DBDFB9B87B" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="211.59813084112147" y="521.3421052631579" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-_03890125-B39C-4085-AAB5-1E5BF6DC62A3" dmnElementRef="_03890125-B39C-4085-AAB5-1E5BF6DC62A3" isCollapsed="false">
         <dmndi:DMNStyle fontSize="9">
           <dmndi:FillColor red="137" green="203" blue="200"/>
@@ -546,6 +563,10 @@ AdditionIncreaseNonComplianceResidentialBuilding + 1 else 0&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_226F5671-37E2-4DCC-89BC-EC9B8D80DB41" dmnElementRef="_226F5671-37E2-4DCC-89BC-EC9B8D80DB41">
         <di:waypoint x="463" y="457"/>
+        <di:waypoint x="463" y="547"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_A008B89E-6E86-4991-94F9-822ABA38F62C" dmnElementRef="_A008B89E-6E86-4991-94F9-822ABA38F62C">
+        <di:waypoint x="261.5981308411215" y="546.3421052631579"/>
         <di:waypoint x="463" y="547"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_CCF8153D-6ED2-486E-B986-3B683BBBB7AC" dmnElementRef="_CCF8153D-6ED2-486E-B986-3B683BBBB7AC">
