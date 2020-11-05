@@ -249,6 +249,12 @@ list contains(NotificationClauses.name, "5.3.9")</dmn:text>
     <dmn:informationRequirement id="_AADF462E-10DC-43DC-B3A3-6841A7D1C508">
       <dmn:requiredDecision href="#_8283CCAF-20C8-49ED-A7AF-5DF712EB093C"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_AFF3026E-1459-40B7-87BA-EADD00334092">
+      <dmn:requiredInput href="#_56F16E18-23AE-46F9-906A-949BA9F06D91"/>
+    </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_5E42C316-9DBA-458D-ABF7-F6A6578557F8">
+      <dmn:requiredKnowledge href="#_B22C85F9-E937-48AA-A784-31B737996EC9"/>
+    </dmn:knowledgeRequirement>
     <dmn:decisionTable id="_48B59F5C-CEB9-4375-B886-BC1D89EB5D26" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
       <dmn:input id="_42199076-B380-4E50-ABE7-ECC6F15737B3">
         <dmn:inputExpression id="_707A0FD6-08A6-462C-8F4B-94098AB5830E" typeRef="string">
@@ -257,7 +263,7 @@ list contains(NotificationClauses.name, "5.3.9")</dmn:text>
       </dmn:input>
       <dmn:input id="_39274890-8283-4B77-B6B6-7D353DBEE95A">
         <dmn:inputExpression id="_462A9489-D9B9-42F2-B32A-148BA4B9E0B7" typeRef="boolean">
-          <dmn:text>StatutoryAcknowledgementAreas</dmn:text>
+          <dmn:text>StatutoryAcknowledgementAreas2(Suburb)</dmn:text>
         </dmn:inputExpression>
       </dmn:input>
       <dmn:output id="_BD3E2C28-6FE0-46A6-A555-C7072AC6AE2D"/>
@@ -3365,6 +3371,19 @@ list contains(NotificationClauses.name, "5.3.10B")&#xd;
     <dmn:extensionElements/>
     <dmn:variable id="_0619E9D8-04EC-49B6-813E-C6377F1A17D4" name="StandardsNotMet" typeRef="Types.PlanContents"/>
   </dmn:inputData>
+  <dmn:businessKnowledgeModel id="_B22C85F9-E937-48AA-A784-31B737996EC9" name="StatutoryAcknowledgementAreas2">
+    <dmn:extensionElements/>
+    <dmn:variable id="_BF33CB2F-DC8F-4999-BE25-0F5659934E8B" name="StatutoryAcknowledgementAreas2" typeRef="boolean"/>
+    <dmn:encapsulatedLogic id="_CD7C9918-A8F5-47EF-9666-DBCA0C4EA216" kind="FEEL">
+      <dmn:formalParameter id="_6241BA05-2B84-4D1E-9786-BD32D181BD95" name="suburb" typeRef="Types.Suburb"/>
+      <dmn:literalExpression id="_19986AC0-0E17-461C-AB20-186802FC5408">
+        <dmn:text>Suburb="Kaiwharawhara" or&#xd;
+Suburb="Pipitea" or&#xd;
+Suburb="Kelburn" or&#xd;
+Suburb="Wellington Central"</dmn:text>
+      </dmn:literalExpression>
+    </dmn:encapsulatedLogic>
+  </dmn:businessKnowledgeModel>
   <dmn:decision id="_A03C0987-0D14-41C7-BE87-7A9CDBFF20B3" name="R5.3.4Notification">
     <dmn:extensionElements/>
     <dmn:variable id="_D0EEE4F7-468F-4D78-ADA1-ABD381427B8A" name="R5.3.4Notification" typeRef="boolean"/>
@@ -3893,6 +3912,13 @@ list contains(NotificationClauses.name, "5.3.7")&#xd;
           <kie:ComponentWidths dmnElementRef="_82265089-C09E-40F0-B071-ECF567B33140">
             <kie:width>832.0</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_19986AC0-0E17-461C-AB20-186802FC5408">
+            <kie:width>1170.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_CD7C9918-A8F5-47EF-9666-DBCA0C4EA216">
+            <kie:width>50.0</kie:width>
+            <kie:width>1170.0</kie:width>
+          </kie:ComponentWidths>
         </kie:ComponentsWidthsExtension>
       </di:extension>
       <dmndi:DMNShape id="dmnshape-_B6F0EEEC-7793-494D-A6E2-3310F6835BE1" dmnElementRef="_B6F0EEEC-7793-494D-A6E2-3310F6835BE1" isCollapsed="false">
@@ -4282,6 +4308,15 @@ list contains(NotificationClauses.name, "5.3.7")&#xd;
         <dc:Bounds x="252" y="492" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_B22C85F9-E937-48AA-A784-31B737996EC9" dmnElementRef="_B22C85F9-E937-48AA-A784-31B737996EC9" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="890" y="517" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNEdge id="dmnedge-_C6A85EF2-937C-4FE5-97D9-D0865DDEB512" dmnElementRef="_C6A85EF2-937C-4FE5-97D9-D0865DDEB512">
         <di:waypoint x="137.29906542056074" y="484.3421052631579"/>
         <di:waypoint x="302" y="450"/>
@@ -4576,6 +4611,14 @@ list contains(NotificationClauses.name, "5.3.7")&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_AADF462E-10DC-43DC-B3A3-6841A7D1C508" dmnElementRef="_AADF462E-10DC-43DC-B3A3-6841A7D1C508">
         <di:waypoint x="951" y="464"/>
+        <di:waypoint x="1077" y="497"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_AFF3026E-1459-40B7-87BA-EADD00334092" dmnElementRef="_AFF3026E-1459-40B7-87BA-EADD00334092">
+        <di:waypoint x="787.2990654205607" y="466.3421052631579"/>
+        <di:waypoint x="1077" y="497"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_5E42C316-9DBA-458D-ABF7-F6A6578557F8" dmnElementRef="_5E42C316-9DBA-458D-ABF7-F6A6578557F8">
+        <di:waypoint x="940" y="542"/>
         <di:waypoint x="1077" y="497"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_4D48C9EB-4501-4497-A923-93A8DAEA7267" dmnElementRef="_4D48C9EB-4501-4497-A923-93A8DAEA7267">
