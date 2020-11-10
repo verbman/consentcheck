@@ -25,15 +25,11 @@ list contains(spatiallayers[Type="Residential"].Title, "Outer Residential")&#xd;
     <dmn:informationRequirement id="_859D1208-E87C-4A5B-BEA8-018C7B606FA5">
       <dmn:requiredInput href="#_9AF94EE9-C81E-4E15-8287-3AFE94D76B74"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_44D1847F-8CDC-4B08-8425-E152B699466A">
-      <dmn:requiredDecision href="#_F9338FB0-0FF7-4157-A44D-E34B2D41967A"/>
-    </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_8642B9BB-2A28-4880-A2C6-4CCB7BA55787">
       <dmn:requiredKnowledge href="#_57F7FE4E-3D87-4ECA-B3BD-AE381063BACB"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_77B584F1-3757-48D6-9B98-1224F458E427">
-      <dmn:text>if ResidentialArea(SpatialLayers) and&#xd;
-not(R30.1.1) then 200 else null</dmn:text>
+      <dmn:text>if ResidentialArea(SpatialLayers) then 200 else null</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:decision id="_032E17B7-D127-465A-B094-4B35EEFF0339" name="CutFillStandardWithBC">
@@ -63,15 +59,11 @@ if R30.1.2.1_b_i !=null then R30.1.2.1_b_i else 0&#xd;
     <dmn:informationRequirement id="_C8D8A806-ED6D-4742-B738-F4BF83D4BB70">
       <dmn:requiredInput href="#_9AF94EE9-C81E-4E15-8287-3AFE94D76B74"/>
     </dmn:informationRequirement>
-    <dmn:informationRequirement id="_7D59450E-F854-4581-B27A-4317BF56E0B6">
-      <dmn:requiredDecision href="#_A63745FA-F3EE-4A6E-813E-96B48D0700FA"/>
-    </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_CAAEB38E-A08B-4680-A66D-26B55C1F2FD2">
       <dmn:requiredKnowledge href="#_57F7FE4E-3D87-4ECA-B3BD-AE381063BACB"/>
     </dmn:knowledgeRequirement>
     <dmn:literalExpression id="_19D64AB9-2A3D-48AC-9EBC-85115FA49585">
-      <dmn:text>if ResidentialArea(SpatialLayers) and&#xd;
-not(R30.1.2) then 200 else null</dmn:text>
+      <dmn:text>if ResidentialArea(SpatialLayers) then 200 else null</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:decision id="_77B3BB44-CB53-4CDD-9D4E-30D4B41D46B9" name="R30.1.2.1_b_i">
@@ -4261,8 +4253,11 @@ list contains(SpatialLayers[Type="Urban Coastal Edge"].Title, "Urban Coastal Edg
     <dmn:informationRequirement id="_B5666994-EF3B-45C1-B446-FA66DB2683BC">
       <dmn:requiredDecision href="#_D0EAAD2D-3147-48F9-873D-769B6D3ABDD3"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_44D1847F-8CDC-4B08-8425-E152B699466A">
+      <dmn:requiredDecision href="#_F9338FB0-0FF7-4157-A44D-E34B2D41967A"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_CB827D9E-2DFA-4482-BB8C-99A44043BE31">
-      <dmn:text>if R30.2.1.1_viValue = 200 and not(TransportedMaterialVolume) then true else&#xd;
+      <dmn:text>if not(R30.1.1) and R30.2.1.1_viValue = 200 and not(TransportedMaterialVolume) then true else&#xd;
   if R30.2.1.1_viValue = null then null else false&#xd;
 &#xd;
 &#xd;
@@ -8717,8 +8712,11 @@ if R30.1.2.1_a_i !=null then R30.1.2.1_a_i else 0</dmn:text>
     <dmn:informationRequirement id="_512C3124-C731-42EF-B2CA-4F7F9751BC15">
       <dmn:requiredDecision href="#_606A0109-2EEA-4D12-B1BF-0717D1849135"/>
     </dmn:informationRequirement>
+    <dmn:informationRequirement id="_7D59450E-F854-4581-B27A-4317BF56E0B6">
+      <dmn:requiredDecision href="#_A63745FA-F3EE-4A6E-813E-96B48D0700FA"/>
+    </dmn:informationRequirement>
     <dmn:literalExpression id="_13F36B4E-01E8-4D34-8312-8E85D97B4120">
-      <dmn:text>if R30.2.1.2_viiValue = 200 and&#xd;
+      <dmn:text>if not(R30.1.2) and R30.2.1.2_viiValue = 200 and&#xd;
 not(TransportedMaterialVolume) then true else&#xd;
   if R30.2.1.2_viiValue = null then null else false&#xd;
 &#xd;
@@ -10510,10 +10508,6 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
         <di:waypoint x="249.59813084112147" y="788.6842105263158"/>
         <di:waypoint x="2286" y="679"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_44D1847F-8CDC-4B08-8425-E152B699466A" dmnElementRef="_44D1847F-8CDC-4B08-8425-E152B699466A">
-        <di:waypoint x="2057" y="268"/>
-        <di:waypoint x="2286" y="679"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_8642B9BB-2A28-4880-A2C6-4CCB7BA55787" dmnElementRef="_8642B9BB-2A28-4880-A2C6-4CCB7BA55787">
         <di:waypoint x="1539" y="1650"/>
         <di:waypoint x="2286" y="679"/>
@@ -10533,10 +10527,6 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
       <dmndi:DMNEdge id="dmnedge-_C8D8A806-ED6D-4742-B738-F4BF83D4BB70" dmnElementRef="_C8D8A806-ED6D-4742-B738-F4BF83D4BB70">
         <di:waypoint x="249.59813084112147" y="788.6842105263158"/>
         <di:waypoint x="2280" y="1316"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-_7D59450E-F854-4581-B27A-4317BF56E0B6" dmnElementRef="_7D59450E-F854-4581-B27A-4317BF56E0B6">
-        <di:waypoint x="2075" y="1052"/>
-        <di:waypoint x="2280" y="1291"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_CAAEB38E-A08B-4680-A66D-26B55C1F2FD2" dmnElementRef="_CAAEB38E-A08B-4680-A66D-26B55C1F2FD2">
         <di:waypoint x="1539" y="1650"/>
@@ -11226,6 +11216,10 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
         <di:waypoint x="2286" y="679"/>
         <di:waypoint x="2482" y="677"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_44D1847F-8CDC-4B08-8425-E152B699466A" dmnElementRef="_44D1847F-8CDC-4B08-8425-E152B699466A">
+        <di:waypoint x="2057" y="268"/>
+        <di:waypoint x="2482" y="677"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_DA99CAA2-8143-4FBE-A862-AEF827EDC636" dmnElementRef="_DA99CAA2-8143-4FBE-A862-AEF827EDC636">
         <di:waypoint x="2057" y="268"/>
         <di:waypoint x="2485" y="617"/>
@@ -11656,6 +11650,10 @@ DistanceBoundary >= R30.1.2.1_a_ii then true else&#xd;
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_512C3124-C731-42EF-B2CA-4F7F9751BC15" dmnElementRef="_512C3124-C731-42EF-B2CA-4F7F9751BC15">
         <di:waypoint x="2280" y="1316"/>
+        <di:waypoint x="2485" y="1312"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_7D59450E-F854-4581-B27A-4317BF56E0B6" dmnElementRef="_7D59450E-F854-4581-B27A-4317BF56E0B6">
+        <di:waypoint x="2075" y="1052"/>
         <di:waypoint x="2485" y="1312"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-_6C41265E-6D93-40D2-835E-B54636E76BF7" dmnElementRef="_6C41265E-6D93-40D2-835E-B54636E76BF7">
