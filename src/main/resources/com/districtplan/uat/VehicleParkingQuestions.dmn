@@ -1,0 +1,272 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://districtplan.wellington.govt.nz/83/dmn/VehicleParkingQuestions" xmlns:included1="https://districtplan.wellington.govt.nz/83/dmn/types" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_280DDB79-6DD6-4E8C-A27F-0A60C895B3AD" name="VehicleParkingQuestions" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://districtplan.wellington.govt.nz/83/dmn/VehicleParkingQuestions">
+  <dmn:extensionElements/>
+  <dmn:import id="_E0A5DD94-AE0F-44CE-9ABD-20034AEAB0F0" name="Types" namespace="https://districtplan.wellington.govt.nz/83/dmn/types" locationURI="Types.dmn" importType="http://www.omg.org/spec/DMN/20180521/MODEL/"/>
+  <dmn:decision id="_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE" name="SpatialLayers">
+    <dmn:extensionElements/>
+    <dmn:question>What is the street address of the property?</dmn:question>
+    <dmn:variable id="_DFAE501B-7D6E-409E-9B6F-495E405EA0F5" name="SpatialLayers" typeRef="number"/>
+    <dmn:literalExpression id="_4D614351-52EA-4E58-8F9D-A6FFE1BB7577">
+      <dmn:text>1</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:businessKnowledgeModel id="_9C262F21-F3C3-4485-A004-B2DE1F62AF7D" name="VehicleParkingSpatialLayers">
+    <dmn:extensionElements/>
+    <dmn:variable id="_09A0CDD9-69A3-44AA-A12B-9B73C74248F4" name="VehicleParkingSpatialLayers" typeRef="boolean"/>
+    <dmn:encapsulatedLogic id="_288432B0-32C5-49ED-AE4C-93A11EFA15F2" kind="FEEL">
+      <dmn:formalParameter id="_AA125C26-71B0-42D8-94EA-35D2F8D413C2" name="spatiallayers" typeRef="Types.SpatialLayers"/>
+      <dmn:literalExpression id="_9B182488-AA8F-4993-B99F-6899A29EE9AB">
+        <dmn:text>list contains(spatiallayers[Type="Residential"].Title, "Inner Residential") or&#xd;
+list contains(spatiallayers[Type="Residential"].Title, "Outer Residential") or&#xd;
+list contains(spatiallayers[Type="Residential"].Title, "Medium Density Residential Area")&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+</dmn:text>
+      </dmn:literalExpression>
+    </dmn:encapsulatedLogic>
+  </dmn:businessKnowledgeModel>
+  <dmn:decision id="_57F1A185-8E0A-4AAD-A367-AD60E4649190" name="QuestionSetRelevance">
+    <dmn:extensionElements/>
+    <dmn:variable id="_E60501EE-043E-4F6D-A7D0-A88E349B2F2E" name="QuestionSetRelevance" typeRef="boolean"/>
+    <dmn:informationRequirement id="_21F32C47-9D1C-4C74-A72E-4B75BF3EF9B1">
+      <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_994637D6-B949-48D1-9AA1-7E6B3FF8237D">
+      <dmn:requiredInput href="#_A9519E8C-12D0-4C39-9A13-544EDD8D0FA6"/>
+    </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_06984E41-800F-48BD-88BA-5C7C4E55CF7B">
+      <dmn:requiredKnowledge href="#_DA33A1FA-CEC4-496F-B4B3-CF18E9087212"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_8FFF79C2-1173-4630-87B7-97A183A86001">
+      <dmn:requiredKnowledge href="#_9C262F21-F3C3-4485-A004-B2DE1F62AF7D"/>
+    </dmn:knowledgeRequirement>
+    <dmn:literalExpression id="_EA6B8B4A-5773-47EA-8703-7E61684DCEEF">
+      <dmn:text>VehicleParkingActivities(Activities_Value) and&#xd;
+VehicleParkingSpatialLayers(SpatialLayers_Value)</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:inputData id="_B7D4AF81-3425-4132-AECA-ABB8315BAD66" name="Activities_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_BEF5BB6B-98C5-4093-A1A3-7F10F651EA36" name="Activities_Value" typeRef="Types.Activities"/>
+  </dmn:inputData>
+  <dmn:inputData id="_A9519E8C-12D0-4C39-9A13-544EDD8D0FA6" name="SpatialLayers_Value">
+    <dmn:extensionElements/>
+    <dmn:variable id="_06B9EA4E-4BCC-4D22-B721-65012AB18B5B" name="SpatialLayers_Value" typeRef="Types.SpatialLayers"/>
+  </dmn:inputData>
+  <dmn:decision id="_A2F298C8-8542-41C1-A9E3-9452A323B85D" name="Activities">
+    <dmn:extensionElements/>
+    <dmn:question>Which of these activities are you planning?</dmn:question>
+    <dmn:allowedAnswers>Build Residential building
+Build Accessory building
+Build Residential structure
+Add to Residential building
+Add to Accessory building
+Add to Residential structure
+Alter Residential building
+Alter Accessory building
+Alter Residential structure
+Demolish or alter all or part of an existing residential building that was built or consented before 1930
+Change the vehicle access to your site
+Install any fixed plant
+Undertake earthworks
+Stabilise a landslip</dmn:allowedAnswers>
+    <dmn:variable id="_4F716487-C01F-47E3-87B2-5704C699E77A" name="Activities" typeRef="number"/>
+    <dmn:informationRequirement id="_7CB215FB-173A-4441-AF28-B001777504A5">
+      <dmn:requiredDecision href="#_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_FEF5DC4A-BC02-41FC-83DA-BBDFD5C2AC77">
+      <dmn:text>2</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:decision id="_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9" name="CarParkAUSNZStandard">
+    <dmn:extensionElements/>
+    <dmn:question>Will all car parking be provided and maintained in accordance with the AUSNZ Parking facilities - Off-street car parking standard?</dmn:question>
+    <dmn:allowedAnswers>yes
+no
+I don't know</dmn:allowedAnswers>
+    <dmn:variable id="_A9442935-BB06-40B4-94FF-E4DB88ABE88F" name="CarParkAUSNZStandard" typeRef="number"/>
+    <dmn:informationRequirement id="_99DBEA1A-D530-4F86-903C-81E33E0BBE6E">
+      <dmn:requiredInput href="#_B7D4AF81-3425-4132-AECA-ABB8315BAD66"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_678BADD0-6A3E-4E70-9548-E40B65B10C9A">
+      <dmn:requiredInput href="#_A9519E8C-12D0-4C39-9A13-544EDD8D0FA6"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_EEA2C204-A1A4-4E46-BE87-10CFD060B068">
+      <dmn:requiredDecision href="#_A2F298C8-8542-41C1-A9E3-9452A323B85D"/>
+    </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_1AB21F9D-8A27-4E98-898D-FD3B8230F340">
+      <dmn:requiredKnowledge href="#_DA33A1FA-CEC4-496F-B4B3-CF18E9087212"/>
+    </dmn:knowledgeRequirement>
+    <dmn:knowledgeRequirement id="_2994D46C-4B57-454A-9BEB-F55D51468DBE">
+      <dmn:requiredKnowledge href="#_9C262F21-F3C3-4485-A004-B2DE1F62AF7D"/>
+    </dmn:knowledgeRequirement>
+    <dmn:literalExpression id="_297FED24-A1F0-40E9-82DE-370B5A1CC10F">
+      <dmn:text>if VehicleParkingActivities(Activities_Value) and&#xd;
+VehicleParkingSpatialLayers(SpatialLayers_Value) then&#xd;
+Activities + 1 else 0</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:businessKnowledgeModel id="_DA33A1FA-CEC4-496F-B4B3-CF18E9087212" name="VehicleParkingActivities">
+    <dmn:extensionElements/>
+    <dmn:variable id="_14FC1106-6912-4539-B21D-3B4D0B7BD43E" name="VehicleParkingActivities" typeRef="boolean"/>
+    <dmn:encapsulatedLogic id="_D447BE3F-AB2A-4F6E-B50F-25CFCD104A2A" kind="FEEL">
+      <dmn:formalParameter id="_D59632BA-BBC3-4B64-A3D3-AEF1EB4447A3" name="activities" typeRef="Types.Activities"/>
+      <dmn:literalExpression id="_BA6E3605-140F-4125-8CD7-A8532F487CD4">
+        <dmn:text>list contains(activities[Noun="vehicle parking"].Verb, "change") or&#xd;
+list contains(activities[Noun="residential building"].Verb, "build") or &#xd;
+list contains(activities[Noun="residential building"].Verb, "add to or alter") or&#xd;
+list contains(activities[Noun="accessory building"].Verb, "build") or&#xd;
+list contains(activities[Noun="accessory building"].Verb, "add to or alter")</dmn:text>
+      </dmn:literalExpression>
+    </dmn:encapsulatedLogic>
+  </dmn:businessKnowledgeModel>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_4D614351-52EA-4E58-8F9D-A6FFE1BB7577">
+            <kie:width>300.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_9B182488-AA8F-4993-B99F-6899A29EE9AB">
+            <kie:width>893.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_288432B0-32C5-49ED-AE4C-93A11EFA15F2">
+            <kie:width>50.0</kie:width>
+            <kie:width>893.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_EA6B8B4A-5773-47EA-8703-7E61684DCEEF">
+            <kie:width>719.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_FEF5DC4A-BC02-41FC-83DA-BBDFD5C2AC77">
+            <kie:width>300.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_297FED24-A1F0-40E9-82DE-370B5A1CC10F">
+            <kie:width>848.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_BA6E3605-140F-4125-8CD7-A8532F487CD4">
+            <kie:width>852.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_D447BE3F-AB2A-4F6E-B50F-25CFCD104A2A">
+            <kie:width>50.0</kie:width>
+            <kie:width>852.0</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE" dmnElementRef="_B7BB20E5-F475-4F80-BA0F-02934FBF6DAE" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="543" y="43" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_9C262F21-F3C3-4485-A004-B2DE1F62AF7D" dmnElementRef="_9C262F21-F3C3-4485-A004-B2DE1F62AF7D" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="173.5981308411215" y="168.6842105263158" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_57F1A185-8E0A-4AAD-A367-AD60E4649190" dmnElementRef="_57F1A185-8E0A-4AAD-A367-AD60E4649190" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="56" y="98" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_B7D4AF81-3425-4132-AECA-ABB8315BAD66" dmnElementRef="_B7D4AF81-3425-4132-AECA-ABB8315BAD66" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="173.5981308411215" y="104.34210526315789" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_A9519E8C-12D0-4C39-9A13-544EDD8D0FA6" dmnElementRef="_A9519E8C-12D0-4C39-9A13-544EDD8D0FA6" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="137" green="203" blue="200"/>
+          <dmndi:StrokeColor red="129" green="178" blue="177"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="174.5981308411215" y="234.68421052631578" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_A2F298C8-8542-41C1-A9E3-9452A323B85D" dmnElementRef="_A2F298C8-8542-41C1-A9E3-9452A323B85D" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="543" y="118" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9" dmnElementRef="_1CE5B207-DBD3-488A-BE65-72E3C19B8AB9" isCollapsed="false">
+        <dmndi:DMNStyle fontSize="9">
+          <dmndi:FillColor red="238" green="238" blue="238"/>
+          <dmndi:StrokeColor red="180" green="180" blue="180"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="543" y="203" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_DA33A1FA-CEC4-496F-B4B3-CF18E9087212" dmnElementRef="_DA33A1FA-CEC4-496F-B4B3-CF18E9087212" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="174.5981308411215" y="41.684210526315795" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-_21F32C47-9D1C-4C74-A72E-4B75BF3EF9B1" dmnElementRef="_21F32C47-9D1C-4C74-A72E-4B75BF3EF9B1">
+        <di:waypoint x="223.59813084112147" y="129.3421052631579"/>
+        <di:waypoint x="106" y="123"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_994637D6-B949-48D1-9AA1-7E6B3FF8237D" dmnElementRef="_994637D6-B949-48D1-9AA1-7E6B3FF8237D">
+        <di:waypoint x="224.59813084112147" y="259.6842105263158"/>
+        <di:waypoint x="106" y="123"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_06984E41-800F-48BD-88BA-5C7C4E55CF7B" dmnElementRef="_06984E41-800F-48BD-88BA-5C7C4E55CF7B">
+        <di:waypoint x="224.59813084112147" y="66.6842105263158"/>
+        <di:waypoint x="106" y="123"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_8FFF79C2-1173-4630-87B7-97A183A86001" dmnElementRef="_8FFF79C2-1173-4630-87B7-97A183A86001">
+        <di:waypoint x="223.59813084112147" y="193.6842105263158"/>
+        <di:waypoint x="106" y="123"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_7CB215FB-173A-4441-AF28-B001777504A5" dmnElementRef="_7CB215FB-173A-4441-AF28-B001777504A5">
+        <di:waypoint x="593" y="68"/>
+        <di:waypoint x="593" y="143"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_99DBEA1A-D530-4F86-903C-81E33E0BBE6E" dmnElementRef="_99DBEA1A-D530-4F86-903C-81E33E0BBE6E">
+        <di:waypoint x="223.59813084112147" y="129.3421052631579"/>
+        <di:waypoint x="593" y="228"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_678BADD0-6A3E-4E70-9548-E40B65B10C9A" dmnElementRef="_678BADD0-6A3E-4E70-9548-E40B65B10C9A">
+        <di:waypoint x="224.59813084112147" y="259.6842105263158"/>
+        <di:waypoint x="593" y="228"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_EEA2C204-A1A4-4E46-BE87-10CFD060B068" dmnElementRef="_EEA2C204-A1A4-4E46-BE87-10CFD060B068">
+        <di:waypoint x="593" y="143"/>
+        <di:waypoint x="593" y="228"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_1AB21F9D-8A27-4E98-898D-FD3B8230F340" dmnElementRef="_1AB21F9D-8A27-4E98-898D-FD3B8230F340">
+        <di:waypoint x="224.59813084112147" y="66.6842105263158"/>
+        <di:waypoint x="593" y="228"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_2994D46C-4B57-454A-9BEB-F55D51468DBE" dmnElementRef="_2994D46C-4B57-454A-9BEB-F55D51468DBE">
+        <di:waypoint x="223.59813084112147" y="193.6842105263158"/>
+        <di:waypoint x="593" y="228"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
